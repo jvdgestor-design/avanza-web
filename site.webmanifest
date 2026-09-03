@@ -1,0 +1,14 @@
+{
+  "name": "Grupo Avanza Consultores",
+  "short_name": "Avanza",
+  "icons": [
+    {
+      "src": "img/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1F3763",
+  "background_color": "#FAF9F6",
+  "display": "browser"
+}
