@@ -80,6 +80,24 @@
     <p class="form__nota">Te contesta un asesor, no un formulario automático. Tus datos solo se usan para responderte: <a href="privacidad.html">política de privacidad</a>.</p>
   </div>
 </form>
+<script>
+(function(){
+  if (window.__avanzaEnvio) return; window.__avanzaEnvio = 1;
+  document.addEventListener('submit', function(e){
+    var f = e.target;
+    if (!f || !f.classList || !f.classList.contains('form')) return;
+    if (!window.fetch || !window.URLSearchParams || !window.FormData) return;
+    if (f.action.indexOf('script.google.com') === -1) return;
+    e.preventDefault();
+    var b = f.querySelector('button[type=submit]');
+    if (b) { b.disabled = true; b.textContent = 'Enviando…'; }
+    var cuerpo = new URLSearchParams(new FormData(f));
+    fetch(f.action, { method: 'POST', mode: 'no-cors', body: cuerpo })
+      .catch(function(){})
+      .then(function(){ window.location.href = 'gracias.html'; });
+  });
+})();
+</script>
     </div>
     <aside class="card">
       <h3>Si prefieres hablar</h3>
