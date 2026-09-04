@@ -107,14 +107,14 @@ h3{font-size:22px;font-weight:600}
 .hero__note{font-size:14px;color:var(--ink-faint);margin-top:20px}
 .hero__logo{justify-self:center;text-align:center}
 .hero__logo img{width:min(272px,68%);height:auto;display:block;margin-inline:auto}
-.hero__logo img.lg-l{display:block}
-.hero__logo img.lg-d{display:none}
+.hero__logo .lg-l{display:block}
+.hero__logo .lg-d{display:none}
 .hero__logo p{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);line-height:2}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero__logo img.lg-l{display:none}:root:not([data-theme="light"]) .hero__logo img.lg-d{display:block}}
-:root[data-theme="dark"] .hero__logo img.lg-l{display:none}
-:root[data-theme="dark"] .hero__logo img.lg-d{display:block}
-:root[data-theme="light"] .hero__logo img.lg-l{display:block}
-:root[data-theme="light"] .hero__logo img.lg-d{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero__logo .lg-l{display:none}:root:not([data-theme="light"]) .hero__logo .lg-d{display:block}}
+:root[data-theme="dark"] .hero__logo .lg-l{display:none}
+:root[data-theme="dark"] .hero__logo .lg-d{display:block}
+:root[data-theme="light"] .hero__logo .lg-l{display:block}
+:root[data-theme="light"] .hero__logo .lg-d{display:none}
 .persona{display:flex;align-items:center;gap:20px;margin-top:30px;padding-top:26px;border-top:1px solid var(--line)}
 .persona img{width:112px;height:112px;border-radius:50%;flex:none;box-shadow:var(--shadow-md)}
 .persona b{display:block;font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);line-height:1.25}
