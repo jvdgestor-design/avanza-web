@@ -94,3 +94,7 @@ hr.rule{width:56px;height:2px;background:var(--gold);border:0;margin:0 0 22px}
 /* --- sin barra horizontal por el sangrado --- */
 html,body{overflow-x:clip}
 .hero{overflow-x:clip}
+
+/* --- accesos de urgencia: tres en una fila --- */
+.hero__note + .ctas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.hero__note + .ctas .btn{width:100%;justify-content:center;text-align:center;padding:15px 10px;font-size:15px;font-weight:500}
