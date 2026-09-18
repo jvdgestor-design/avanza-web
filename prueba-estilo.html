@@ -50,14 +50,19 @@
 .hero .eyebrow{letter-spacing:.24em}
 .hero__logo{background:var(--navy);color:var(--on-navy);margin-right:calc(var(--gutter) * -1);padding:76px var(--gutter) 64px 72px;display:flex;flex-direction:column;justify-content:center;gap:30px;border-top:3px solid var(--gold)}
 .hero__logo picture{display:none}
-.hero__logo .lg-l{display:none!important}
-.hero__logo .lg-d{display:block;max-width:230px}
-.hero__logo .lg-d img{width:100%;height:auto}
+.hero__logo .lg-d{display:none!important}
+.hero__logo .lg-l{display:block!important;max-width:190px;filter:brightness(0) invert(1)}
+.hero__logo .lg-l img{width:100%;height:auto;display:block}
+
 .hero__logo > p{color:var(--on-navy-soft);letter-spacing:.2em;font-size:12px;margin:0}
 .hero__logo .trust{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;background:transparent;border:0;width:auto;margin:0}
 .hero__logo .trust > div{padding:20px 26px 18px 0;border-top:1px solid rgba(255,255,255,.18);background:transparent}
 .hero__logo .trust > div b{color:#fff;font-size:34px;line-height:1;display:block;margin-bottom:6px}
 .hero__logo .trust > div span{color:var(--on-navy-soft);font-size:13px;line-height:1.45;display:block}
+.hero__logo .trust > div b{color:#fff!important;opacity:1!important}
+.hero__logo .trust > div span{color:rgba(255,255,255,.82)!important;opacity:1!important}
+.hero .lead, .band p, .card p, .wrap--narrow p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.hero .eyebrow, .hero__note, .trust span, .band .eyebrow{text-align:left}
 .band{padding:112px 0}
 .band h2{font-size:clamp(2rem,2.2vw,2.8rem);line-height:1.12;letter-spacing:-.01em}
 .band--navy{background:var(--navy-deep)}
@@ -401,7 +406,7 @@ body{padding-top:56px}
 (function(){
   var h=document.querySelector('.hero__logo'), t=document.querySelector('.trust');
   if(h&&t) h.appendChild(t);
-  document.documentElement.setAttribute('data-v','1');
+  document.documentElement.setAttribute('data-v','2');
   document.getElementById('sel2').addEventListener('click',function(e){
     var b=e.target.closest('button'); if(!b) return;
     if(b.dataset.set==='0') document.documentElement.removeAttribute('data-v');
