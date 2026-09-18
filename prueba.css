@@ -62,13 +62,5 @@ hr.rule{width:56px;height:2px;background:var(--gold);border:0;margin:0 0 22px}
  .band{padding:72px 0}
  .step{border-left:0;padding:0!important}
 }
-/* --- alineacion del bloque azul: todo al mismo eje izquierdo --- */
-.hero__logo{text-align:left!important;align-items:flex-start}
-.hero__logo>p{text-align:left!important;max-width:34ch}
-.hero__logo .trust,.hero__logo .trust>div,.hero__logo .trust>div b,.hero__logo .trust>div span{text-align:left!important}
-.hero__logo .marca{margin:0}
-.hero__logo .trust{width:100%;column-gap:48px}
-.hero__logo .trust>div{padding:22px 0 20px}
-/* el aire de abajo del hero, igualado con el de arriba */
-.hero__grid>div:first-child{padding-bottom:96px}
-.hero__logo{padding-bottom:84px}
+.hero__logo .marca{width:236px}
+.hero__logo{gap:34px}
