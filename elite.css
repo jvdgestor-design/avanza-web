@@ -1,0 +1,275 @@
+/* ===== Capa «élite» sobre prueba.css — Grupo Avanza · 18/09/2026 =====
+   Azules de la marca (#1F3763 del logotipo) + azul noche para los bloques,
+   fondo hueso, dorado solo en filetes de 1 px. Texto alineado a la izquierda. */
+:root{
+ --brand:#1F3763;                 /* azul del logotipo */
+ --navy:#1F3763; --navy-deep:#0E1E3C; --navy-darkest:#091630;
+ --steel:#A9B8D2;                 /* azul claro para rotular sobre noche */
+ --paper:#FAF8F4; --surface:#F2EFE9; --raised:#FFFFFF;
+ --line:#DCD8CF; --line-soft:#E8E4DC;
+ --ink:#0F1A2E; --ink-soft:#3A4458; --ink-faint:#6B7385;
+ --gold:#B8924A; --gold-deep:#1F3763; --gold-soft:#E9E3D6;
+ --on-navy:#FFFFFF; --on-navy-soft:rgba(255,255,255,.84); --on-navy-faint:rgba(169,184,210,.9);
+}
+body{background:var(--paper);color:var(--ink-soft);font-weight:300}
+a:hover{color:var(--brand)}
+
+/* Texto: nada de justificado (en móvil abre ríos entre palabras) */
+.band p,.hero .lead,.hero p{text-align:left!important;hyphens:manual!important}
+
+/* Cabecera en una sola línea */
+.topbar{background:rgba(250,248,244,.94)}
+.topbar__in{flex-wrap:nowrap;padding-block:16px}
+.topnav{gap:24px;white-space:nowrap}
+.topnav a{font-size:14px;color:var(--ink-soft);letter-spacing:.01em}
+.topnav a::after{height:1px;background:var(--brand)}
+.topbar__cta{padding:12px 22px!important;font-size:13px!important;letter-spacing:.06em;text-transform:uppercase}
+.langsw{border-radius:0;border-color:var(--line);letter-spacing:.08em}
+@media(max-width:1380px){.topnav{gap:18px}.topnav a{font-size:13.5px}.langsw__full{display:none}.langsw__short{display:inline!important}}
+
+/* Eyebrows y filetes */
+.eyebrow,.hero .eyebrow,.band .eyebrow{font-size:11px;letter-spacing:.32em;font-weight:500;color:var(--ink-faint)}
+hr.rule,.rule{width:40px;height:1px;background:var(--gold);margin:0 0 26px}
+
+/* Títulos: serif ligera, más aire */
+h1,h2,h3{color:var(--ink)}
+.hero h1{font-weight:300;font-size:clamp(2.8rem,3.5vw,4.4rem);letter-spacing:-.022em;line-height:1.05}
+.band h2{font-weight:300;letter-spacing:-.016em}
+.hero .lead{color:var(--ink-soft);font-size:19px}
+.hero .lead strong{color:var(--ink);font-weight:500}
+
+/* Portada: una acción principal; teléfono en fantasma; los tres casos, como índice */
+.btn{border-radius:0!important;letter-spacing:.04em}
+.btn--primary{background:var(--brand)}
+.btn--primary:hover{background:var(--navy-deep);color:#fff}
+.btn--ghost{border:1px solid var(--brand)!important}
+.hero__grid>div:first-child>.ctas:last-of-type{display:block;margin-top:6px;border-top:1px solid var(--line);max-width:34em}
+.hero__grid>div:first-child>.ctas:last-of-type .btn{display:flex;justify-content:space-between;align-items:center;width:100%;
+ border:0!important;border-bottom:1px solid var(--line)!important;padding:15px 0!important;margin:0;background:transparent;
+ font-family:var(--serif);font-weight:400;font-size:18px;letter-spacing:0;color:var(--ink);text-align:left}
+.hero__grid>div:first-child>.ctas:last-of-type .btn::after{content:"→";font-family:var(--sans);color:var(--ink-faint);transition:transform .2s,color .2s}
+.hero__grid>div:first-child>.ctas:last-of-type .btn:hover{background:transparent;color:var(--brand)}
+.hero__grid>div:first-child>.ctas:last-of-type .btn:hover::after{transform:translateX(4px);color:var(--brand)}
+.hero__note{color:var(--ink-faint)}
+.hero__note+.hero__note{font-size:11px;letter-spacing:.32em;text-transform:uppercase;margin-top:40px!important}
+
+/* Bloque azul de la portada */
+.hero__logo{background:var(--navy-deep);border-top:1px solid var(--gold)}
+.hero__logo>p{color:var(--steel);letter-spacing:.32em}
+.hero__logo .trust>div{border-top:1px solid rgba(169,184,210,.22)}
+.hero__logo .trust>div b{font-weight:300;font-size:40px}
+.hero__logo .trust>div span{color:var(--on-navy-soft)!important}
+
+/* Servicios: filete azul fino, marcas en azul */
+.card{border-top:1px solid var(--brand)!important}
+.card:hover{border-top-color:var(--gold)!important}
+.card::before{display:none}
+.card h3{font-weight:400}
+.card li svg,.creds li svg{color:var(--brand)}
+.card__more{letter-spacing:.04em}
+
+/* Sobre el despacho: el aviso de vencimiento acompaña al texto */
+#despacho .contact{align-items:start!important}
+#despacho .deadline{position:sticky;top:120px;border-radius:0;border:1px solid var(--line);box-shadow:none}
+
+/* Bandas azules */
+.band--navy{background:var(--navy-deep)}
+.band--navy .eyebrow{color:var(--steel)}
+.step__n{color:var(--steel)!important;font-weight:300}
+.step{border-left-color:rgba(169,184,210,.2)!important}
+
+/* Guías: la última ocupa la fila entera (no queda hueco) */
+.guias{background:var(--line)}
+.guias li:last-child:nth-child(odd){grid-column:1/-1}
+.guias b{color:var(--brand)!important;letter-spacing:.2em;font-size:11px}
+
+/* Opiniones y preguntas */
+.op blockquote p::before,.op blockquote p::after{color:var(--ink-faint)}
+summary::after{border-color:var(--brand)!important}
+
+/* Formulario y pie */
+.foot{background:var(--navy-darkest)}
+input,textarea,select{border-radius:0!important}
+
+/* Móvil: márgenes de 16-20 px, cabecera en una línea, titular contenido */
+@media(max-width:980px){
+ .hero h1{font-size:clamp(2.3rem,8.4vw,3rem)}
+ .hero__grid>div:first-child{padding:48px 0 40px}
+}
+@media(max-width:600px){
+ :root{--gutter:20px}
+ .wrap,.wrap--narrow{width:calc(100% - 40px)!important}
+ .topbar__in{padding-block:12px;gap:10px}
+ .brand span i{display:none}
+ .hero__logo{padding:48px 20px}
+ .hero__logo .marca{width:170px}
+ .hero__logo .trust>div{padding-right:14px}
+ .hero__logo .trust>div b{font-size:32px}
+ .ctas .btn{width:100%;justify-content:center}
+}
+
+/* Opiniones: sin bloque gris de fondo, como columnas editoriales */
+.ops{background:transparent!important;border:0!important;border-radius:0!important;gap:0 56px!important;overflow:visible!important}
+.op{background:transparent!important;border-top:1px solid var(--line)!important;padding:28px 0 32px!important}
+.op p{color:var(--ink)}
+.op__sello,.op [class*=verif],.op figcaption em,.op figcaption i{color:var(--ink-faint)!important;border-color:var(--line)!important;border-radius:0!important}
+
+/* Guías: esquinas vivas */
+.guias{border-radius:0!important;overflow:visible}
+.guias a:hover{background:var(--raised)}
+
+/* Botón de menú en móvil, recto como el resto */
+.navtoggle{border-radius:0!important;border-color:var(--line)!important}
+.form-wrap{border-radius:0!important;box-shadow:none!important}
+
+/* ===== v2 (18/09): párrafos justificados y logotipo centrado ===== */
+main p,.band p,.hero .lead,.hero p,.op p,.card p,.step p,.guias span{
+ text-align:justify!important;text-justify:inter-word;hyphens:auto!important;-webkit-hyphens:auto!important;text-align-last:left}
+.eyebrow,.hero__note,.hero__logo p,.ops__fuente,figcaption,.hero__logo span{text-align:left;hyphens:manual!important}
+
+/* Bloque azul: todo centrado, márgenes iguales a los dos lados */
+.hero__logo{align-items:center!important;text-align:center!important;padding:96px 64px 88px!important;gap:0!important}
+.hero__logo .marca{margin:0 auto!important;width:250px!important}
+.hero__logo .marca img{margin:0 auto}
+.hero__logo>p{text-align:center!important;margin:34px auto 0!important;padding-top:0;border-top:0;width:auto;letter-spacing:.34em;line-height:2.1}
+.hero__logo>p::before{content:"";display:block;width:56px;height:1px;background:var(--gold);margin:0 auto 24px}
+.hero__logo .trust{width:100%!important;max-width:460px;margin:46px auto 0!important;column-gap:0!important}
+.hero__logo .trust>div{text-align:center!important;padding:26px 12px 24px!important;border-top:1px solid rgba(169,184,210,.22)}
+.hero__logo .trust>div:nth-child(odd){border-right:1px solid rgba(169,184,210,.22)}
+.hero__logo .trust>div b,.hero__logo .trust>div span{text-align:center!important}
+.hero__logo .trust>div span{max-width:17em;margin:0 auto}
+@media(max-width:600px){
+ .hero__logo{padding:56px 20px 48px!important}
+ .hero__logo .marca{width:190px!important}
+}
+
+/* Portada a sangre: el azul ocupa de verdad la mitad derecha hasta el borde */
+.hero{overflow-x:clip}
+.hero .hero__grid{width:100%!important;max-width:none!important;margin:0!important;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr)!important}
+.hero__grid>div:first-child{padding-left:var(--gutter)!important;padding-right:80px!important}
+.hero__logo{margin:0!important;border-top:0!important}
+@media(max-width:980px){
+ .hero .hero__grid{grid-template-columns:minmax(0,1fr)!important}
+ .hero__grid>div:first-child{padding-left:var(--gutter)!important;padding-right:var(--gutter)!important}
+}
+.hero__logo{justify-self:stretch!important;align-self:stretch}
+.hero .hero__grid{gap:0!important}
+@media(min-width:901px) and (max-width:1180px){.topnav{gap:14px}.topnav a{font-size:13px}.topbar__cta{display:none!important}}
+.hero__logo>p,.hero__logo .trust span{text-align-last:center!important}
+@media(max-width:600px){.hero .lead{font-size:17px!important;line-height:1.7}.band p{font-size:16.5px}}
+
+/* ===== v3 (18/09): vida, luz y textura de banca privada ===== */
+:root{--azul-luz:#3F6BB5;--oro-luz:#D9B870}
+/* Azul con profundidad: luz arriba, noche abajo, y un guilloche finísimo (como un billete o un título valor) */
+.hero__logo,.band--navy,#contacto{position:relative;isolation:isolate;
+ background:
+  radial-gradient(120% 70% at 25% -10%,rgba(63,107,181,.55),transparent 60%),
+  radial-gradient(90% 60% at 110% 110%,rgba(185,146,74,.14),transparent 60%),
+  linear-gradient(165deg,#1A3569 0%,#0F2246 48%,#081530 100%)!important}
+.hero__logo::before,.band--navy::before,#contacto::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+ background:
+  repeating-radial-gradient(circle at 78% 18%,rgba(169,184,210,.07) 0 1px,transparent 1px 14px),
+  repeating-radial-gradient(circle at 12% 92%,rgba(169,184,210,.05) 0 1px,transparent 1px 18px);
+ -webkit-mask-image:linear-gradient(180deg,#000,rgba(0,0,0,.25));mask-image:linear-gradient(180deg,#000,rgba(0,0,0,.25))}
+/* Filetes dorados con brillo (se apagan hacia los extremos) */
+.hero__logo>p::before{width:120px;background:linear-gradient(90deg,transparent,var(--oro-luz),transparent)}
+hr.rule,.rule{width:48px;background:linear-gradient(90deg,var(--gold),var(--oro-luz))}
+.hero__logo{box-shadow:inset 0 1px 0 rgba(217,184,112,.55)}
+/* Logo con un halo muy suave */
+.hero__logo .marca img{filter:brightness(0) invert(1) drop-shadow(0 10px 30px rgba(63,107,181,.55))!important}
+/* Cifras con brillo metálico */
+.hero__logo .trust>div b{background:linear-gradient(180deg,#FFFFFF 30%,#C9D5EA)!important;-webkit-background-clip:text;background-clip:text;color:transparent!important;font-size:46px}
+.step__n{background:linear-gradient(180deg,var(--oro-luz),#A9844A)!important;-webkit-background-clip:text;background-clip:text;color:transparent!important;font-size:52px!important}
+/* Portada clara con luz cálida */
+.hero{background:radial-gradient(70% 90% at 0% 0%,#FFFFFF 0%,transparent 60%),var(--paper)}
+.hero h1{color:#0B1830}
+/* Botón principal: azul con luz y filo */
+.btn--primary{background:linear-gradient(180deg,#2A4A85,#1F3763)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 24px -12px rgba(31,55,99,.7)!important;border:1px solid #1A2F57}
+.btn--primary:hover{background:linear-gradient(180deg,#1F3763,#132A52)!important;box-shadow:inset 0 -2px 0 var(--oro-luz),0 14px 28px -12px rgba(31,55,99,.8)!important}
+.btn--ghost:hover{background:#1F3763!important;color:#fff!important}
+.topbar__cta{background:linear-gradient(180deg,#2A4A85,#1F3763)!important}
+/* Servicios: al pasar, se enciende el filete y la tarjeta sube un poco */
+.card{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;position:relative}
+.card::after{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:linear-gradient(90deg,var(--gold),var(--oro-luz));transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover::after{width:100%}
+.card:hover{transform:translateY(-3px)}
+.card h3{font-size:24px!important}
+/* Accesos de la portada: subrayado dorado al pasar */
+.hero__grid>div:first-child>.ctas:last-of-type .btn{background-image:linear-gradient(90deg,var(--gold),var(--oro-luz))!important;background-size:0 1px!important;background-repeat:no-repeat!important;background-position:0 100%!important;transition:background-size .4s,color .2s}
+.hero__grid>div:first-child>.ctas:last-of-type .btn:hover{background-size:100% 1px!important}
+/* Guías y vencimiento: un punto de luz */
+.guias a:hover{background:#FFFFFF;box-shadow:inset 3px 0 0 var(--brand)}
+#despacho .deadline{box-shadow:0 24px 50px -30px rgba(15,34,70,.45)}
+#despacho .deadline>*:first-child{background:linear-gradient(90deg,#1F3763,#2A4A85)!important}
+/* Contacto: el formulario, blanco puro sobre el azul */
+.form-wrap{background:#FFFFFF!important;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)!important;border-top:2px solid var(--oro-luz)}
+@media (prefers-reduced-motion:reduce){.card,.card::after,.hero__grid .btn{transition:none!important}.card:hover{transform:none}}
+.step__n,.hero__logo .trust>div b{-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent;display:inline-block}
+.hero__logo .trust>div b{display:block}
+
+/* ===== v4 (18/09): blancos más limpios y la mitad izquierda con vida ===== */
+/* Blancos: fondo blanco puro; las bandas alternas pasan de beige a un blanco azulado frío */
+:root{--paper:#FFFFFF;--surface:#F3F6FB;--line:#DDE3EE;--line-soft:#EAEFF6;--raised:#FFFFFF}
+body{background:#FFFFFF}
+.topbar{background:rgba(255,255,255,.96)!important}
+.band--surface{background:linear-gradient(180deg,#F5F8FC,#EEF3FA)!important}
+.guias{background:var(--line)!important}.guias li{background:#FFFFFF}
+.guias a:hover{background:#F5F8FC}
+/* Blancos sobre azul: más puros y con más contraste */
+.band--navy h2,.band--navy h3,#contacto h2,.hero__logo .trust>div b{color:#FFFFFF}
+.band--navy p,#contacto p,#contacto dd,.hero__logo .trust>div span{color:rgba(255,255,255,.9)!important}
+.hero__logo>p{color:#D5DEEE!important}
+
+/* Mitad izquierda de la portada: luz azul, textura muy leve y monograma de fondo */
+.hero__grid>div:first-child{position:relative;isolation:isolate;
+ background:
+  radial-gradient(60% 55% at 100% 100%,rgba(63,107,181,.13),transparent 70%),
+  radial-gradient(55% 60% at 0% 0%,rgba(185,146,74,.07),transparent 65%),
+  linear-gradient(180deg,#FFFFFF 0%,#F4F7FC 100%)}
+.hero__grid>div:first-child::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;
+ background:repeating-radial-gradient(circle at 105% 105%,rgba(31,55,99,.06) 0 1px,transparent 1px 16px);
+ -webkit-mask-image:radial-gradient(70% 70% at 100% 100%,#000,transparent);mask-image:radial-gradient(70% 70% at 100% 100%,#000,transparent)}
+.hero__grid>div:first-child::after{content:"";position:absolute;z-index:-1;pointer-events:none;right:24px;bottom:-30px;width:420px;height:470px;opacity:.045;
+ background:url(img/logo-avanza.svg) no-repeat center/contain;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
+/* Antetítulo con filete dorado delante y en azul de marca */
+.hero .eyebrow{color:var(--brand)!important;display:flex;align-items:center;gap:14px}
+.hero .eyebrow::before{content:"";width:36px;height:1px;background:linear-gradient(90deg,var(--gold),var(--oro-luz));flex:none}
+/* Titular: tinta azul noche con un leve brillo hacia el azul de marca */
+.hero h1{background:linear-gradient(100deg,#0B1830 0%,#1F3763 70%,#2E5296 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-bottom:.08em}
+/* La frase en negrita, en azul */
+.hero .lead strong{color:var(--brand)!important;font-weight:600}
+/* Índice de casos: marcador azul y flecha que se enciende */
+.hero__grid>div:first-child>.ctas:last-of-type .btn{padding-left:18px!important;position:relative}
+.hero__grid>div:first-child>.ctas:last-of-type .btn::before{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;margin-top:-3px;background:var(--brand);transform:rotate(45deg);transition:background .2s}
+.hero__grid>div:first-child>.ctas:last-of-type .btn:hover::before{background:var(--gold)}
+.hero__grid>div:first-child>.ctas:last-of-type .btn::after{color:var(--brand)}
+.hero__note+.hero__note{color:var(--brand)!important}
+@media(max-width:980px){.hero__grid>div:first-child::after{width:260px;height:290px;right:0}}
+/* Monograma: solo la «A», arriba a la derecha, sin tocar la lista */
+.hero__grid>div:first-child::after{right:-50px!important;left:auto;top:70px;bottom:auto!important;width:380px!important;height:424px!important;opacity:.05!important;
+ -webkit-mask-image:linear-gradient(180deg,#000 40%,transparent 60%)!important;mask-image:linear-gradient(180deg,#000 40%,transparent 60%)!important}
+@media(max-width:980px){.hero__grid>div:first-child::after{right:-40px!important;top:30px;width:240px!important;height:268px!important}}
+.hero__grid>div:first-child::after{right:20px!important;top:90px;width:300px!important;height:335px!important}
+@media(max-width:600px){.hero__grid>div:first-child>.ctas:last-of-type .btn{font-size:16.5px!important}.hero__grid>div:first-child::after{right:-20px!important;top:40px;width:200px!important;height:224px!important}}
+
+/* ===== v5 (18/09): fuera la «A» de fondo, blanco puro y textos con cuerpo ===== */
+.hero__grid>div:first-child::after,.hero__grid>div:first-child::before{display:none!important;content:none!important}
+.hero__grid>div:first-child{background:#FFFFFF!important}
+.hero{background:#FFFFFF!important}
+/* Texto: más peso y tinta más oscura en toda la página */
+:root{--ink:#0A1428;--ink-soft:#243049;--ink-faint:#56607A}
+body{font-weight:400!important;color:var(--ink-soft)}
+main p,.band p,.hero .lead,.card li,.guias span,.op p,.step p,dd{font-weight:400!important}
+.hero .lead{color:#1C2740!important;font-size:19.5px}
+/* Titular: tinta sólida, peso normal (se acabó el degradado que lo aclaraba) */
+.hero h1{background:none!important;-webkit-text-fill-color:#0A1428!important;color:#0A1428!important;font-weight:500!important;letter-spacing:-.025em}
+.band h2{font-weight:400!important;color:#0A1428}
+.card h3,.step h3,.op h3{font-weight:500!important}
+.hero__note{color:#56607A!important}
+.eyebrow{color:#3A4766!important;font-weight:600!important}
+.hero .eyebrow{color:var(--brand)!important}
+/* Sobre azul: blanco puro y sin transparencias */
+.band--navy p,#contacto p,#contacto dd,.hero__logo .trust>div span,.step p{color:#FFFFFF!important;opacity:1}
+.band--navy h2,.band--navy h3,#contacto h2,#contacto h3{color:#FFFFFF!important;font-weight:400!important}
+.hero__logo>p,.band--navy .eyebrow,#contacto .eyebrow,#contacto dt{color:#E3EAF6!important}
+.hero__logo .trust>div b{background:none!important;-webkit-text-fill-color:#FFFFFF!important;color:#FFFFFF!important;font-weight:400!important}
