@@ -51,7 +51,9 @@
 .hero__logo{background:var(--navy);color:var(--on-navy);margin-right:calc(var(--gutter) * -1);padding:76px var(--gutter) 64px 72px;display:flex;flex-direction:column;justify-content:center;gap:30px;border-top:3px solid var(--gold)}
 .hero__logo picture{display:none}
 .hero__logo .lg-d{display:none!important}
-.hero__logo .lg-l{display:block!important;max-width:190px;filter:brightness(0) invert(1)}
+.hero__logo .lg-l{display:none!important}
+.hero__logo .marca{width:215px;display:block}
+.hero__logo .marca img{width:100%;height:auto;display:block;filter:brightness(0) invert(1)}
 .hero__logo .lg-l img{width:100%;height:auto;display:block}
 
 .hero__logo > p{color:var(--on-navy-soft);letter-spacing:.2em;font-size:12px;margin:0}
@@ -405,6 +407,7 @@ body{padding-top:56px}
 <script>
 (function(){
   var h=document.querySelector('.hero__logo'), t=document.querySelector('.trust');
+  if(h){var d=document.createElement('div'); d.className='marca'; d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">'; h.insertBefore(d,h.firstChild);}
   if(h&&t) h.appendChild(t);
   document.documentElement.setAttribute('data-v','2');
   document.getElementById('sel2').addEventListener('click',function(e){
