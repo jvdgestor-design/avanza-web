@@ -64,3 +64,13 @@ hr.rule{width:56px;height:2px;background:var(--gold);border:0;margin:0 0 22px}
 }
 .hero__logo .marca{width:236px}
 .hero__logo{gap:34px}
+
+/* --- bloque azul: todo al mismo eje izquierdo --- */
+.hero__logo{text-align:left!important;align-items:flex-start;gap:34px}
+.hero__logo>p{text-align:left!important;max-width:none;line-height:2;font-size:11px}
+.hero__logo .trust,.hero__logo .trust>div,.hero__logo .trust>div b,.hero__logo .trust>div span{text-align:left!important}
+.hero__logo .marca{margin:0;width:236px}
+.hero__logo .trust{width:100%;column-gap:48px}
+.hero__logo .trust>div{padding:22px 0 20px}
+.hero__grid>div:first-child{padding-bottom:96px}
+.hero__logo{padding-bottom:84px}
