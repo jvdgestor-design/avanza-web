@@ -86,3 +86,7 @@ hr.rule{width:56px;height:2px;background:var(--gold);border:0;margin:0 0 22px}
 /* menos hueco entre el hero y la primera banda */
 .hero__grid>div:first-child{padding-bottom:80px}
 .hero + .trust + .band, .hero + .band{padding-top:88px}
+
+/* --- sangrado real hasta el borde de la pantalla --- */
+.hero__logo{background:transparent!important;border-top:0!important;margin-right:0!important;position:relative;isolation:isolate;padding:96px 96px 88px 88px}
+.hero__logo::before{content:"";position:absolute;top:0;bottom:0;left:0;right:-100vw;background:var(--navy);border-top:2px solid var(--gold);z-index:-1}
