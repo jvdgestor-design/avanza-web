@@ -74,3 +74,15 @@ hr.rule{width:56px;height:2px;background:var(--gold);border:0;margin:0 0 22px}
 .hero__logo .trust>div{padding:22px 0 20px}
 .hero__grid>div:first-child{padding-bottom:96px}
 .hero__logo{padding-bottom:84px}
+
+/* --- ajuste usuario: el azul respira igual por los dos lados --- */
+.hero__logo{padding:96px 96px 88px 88px;justify-content:center}
+.hero__logo .trust{column-gap:64px}
+.hero__logo .marca{width:250px}
+/* los tres accesos de urgencia, en una sola fila y del mismo ancho */
+.hero .ctas + .hero__note + .hero__note + .ctas,
+.hero__grid>div:first-child > .ctas:last-of-type{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.hero__grid>div:first-child > .ctas:last-of-type .btn{width:100%;text-align:center;padding:14px 12px;font-size:15px}
+/* menos hueco entre el hero y la primera banda */
+.hero__grid>div:first-child{padding-bottom:80px}
+.hero + .trust + .band, .hero + .band{padding-top:88px}
