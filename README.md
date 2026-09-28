@@ -1,1 +1,43 @@
-Web de Grupo Avanza Consultores. Sitio estatico publicado con GitHub Pages en grupoavanzaconsultores.es
+# Grupo Avanza Consultores
+
+> Asesoría fiscal, contable y laboral que lleva de forma continua y a distancia la contabilidad y los impuestos de autónomos, sociedades y no residentes de toda España, con atención en español y en ruso. El cliente trata directamente con el asesor que lleva su caso. Domicilio en Paterna (Valencia).
+
+- Titular: Jose Vicente Díaz Madrid, Diplomado en Ciencias Empresariales, asesor fiscal, contable y laboral con despacho propio desde 2011.
+- Forma de trabajo: a distancia con clientes de toda España, por correo, teléfono, WhatsApp y videollamada; en persona, con cita, en Paterna y el área de Valencia.
+- Servicio continuo: contabilidad, declaraciones trimestrales y anuales, nóminas y gestión laboral, sociedades y no residentes. Presupuesto según el caso.
+- Idiomas: español y ruso.
+- Contacto: teléfono 614 365 547 · avanza@grupoavanzaconsultores.es · https://grupoavanzaconsultores.es/contacto.html
+
+## Servicios
+
+- [Asesoría y gestoría en Valencia](https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-valencia.html): asesoría fiscal, contable y laboral y gestoría para autónomos y pymes de Valencia ciudad, Paterna, La Cañada, Burjassot y el área metropolitana; online para toda España y en persona con cita.
+- [Te llevamos los impuestos todo el año, online](https://grupoavanzaconsultores.es/impuestos-todo-el-ano-online.html): el servicio continuo para autónomos, sociedades y no residentes de toda España — qué se lleva cada trimestre y cada año, cómo se trabaja a distancia y cómo se cambia de gestoría.
+- [Asesoría fiscal y contable](https://grupoavanzaconsultores.es/asesoria-fiscal-y-contable.html): contabilidad e impuestos de autónomos y sociedades (IVA, IRPF, Sociedades, libros y cuentas anuales).
+- [Nóminas y gestión laboral](https://grupoavanzaconsultores.es/nominas-y-gestion-laboral.html): nóminas, seguros sociales, contratos, altas y bajas.
+- [Constitución de sociedades y trámites](https://grupoavanzaconsultores.es/constitucion-de-sociedades-y-tramites.html): alta de autónomo, sociedades limitadas, herencias y donaciones.
+- [Fiscalidad de no residentes y extranjeros](https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html): modelo 210, residencia fiscal y convenios de doble imposición.
+- [Trámites de gestoría](https://grupoavanzaconsultores.es/tramites.html): lista completa de trámites.
+
+## Guías
+
+- [Cambiar de asesoría](https://grupoavanzaconsultores.es/cambiar-de-asesoria.html): qué documentación debe entregar la anterior y cómo se hace el traspaso.
+- [Modelo 210 de no residentes](https://grupoavanzaconsultores.es/modelo-210-no-residentes.html): quién lo presenta, plazos y el piso vacío.
+- [Carta de Hacienda o requerimiento](https://grupoavanzaconsultores.es/carta-de-hacienda-requerimiento.html): plazos y qué no hacer.
+- [Aplazar una deuda con Hacienda](https://grupoavanzaconsultores.es/aplazar-una-deuda-con-hacienda.html): aplazamiento, fraccionamiento y garantías.
+- [Modelo 347](https://grupoavanzaconsultores.es/modelo-347-operaciones-con-terceros.html): operaciones con terceros.
+- [Alta de autónomo](https://grupoavanzaconsultores.es/alta-de-autonomo-en-valencia.html): orden de los trámites y cuota reducida.
+- [Capitalizar el paro](https://grupoavanzaconsultores.es/capitalizar-el-paro-pago-unico.html): pago único para emprender.
+- [Licencia de actividad y cambio de titularidad](https://grupoavanzaconsultores.es/licencia-de-actividad-cambio-de-titularidad.html)
+- [Ayudas a la contratación en Paterna](https://grupoavanzaconsultores.es/ayudas-contratacion-paterna.html)
+- [Calendario fiscal](https://grupoavanzaconsultores.es/calendario-fiscal.html): vencimientos del autónomo y la pyme.
+
+## En ruso (на русском)
+
+- [Налоговый и бухгалтерский консультант](https://grupoavanzaconsultores.es/ru.html): atención en ruso para residentes y no residentes.
+- [Процедуры](https://grupoavanzaconsultores.es/ru-tramites.html): trámites en ruso.
+- [Ведём ваши налоги круглый год, онлайн](https://grupoavanzaconsultores.es/ru-impuestos-todo-el-ano-online.html): el servicio continuo en ruso — contabilidad e impuestos de autónomos, sociedades y no residentes de toda España.
+
+## Optional
+
+- [Aviso legal](https://grupoavanzaconsultores.es/aviso-legal.html)
+- [Política de privacidad](https://grupoavanzaconsultores.es/privacidad.html)
