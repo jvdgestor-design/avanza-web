@@ -17,6 +17,7 @@
 - [Asesoría fiscal y contable](https://grupoavanzaconsultores.es/asesoria-fiscal-y-contable.html): contabilidad e impuestos de autónomos y sociedades (IVA, IRPF, Sociedades, libros y cuentas anuales).
 - [Nóminas y gestión laboral](https://grupoavanzaconsultores.es/nominas-y-gestion-laboral.html): nóminas, seguros sociales, contratos, altas y bajas.
 - [Constitución de sociedades y trámites](https://grupoavanzaconsultores.es/constitucion-de-sociedades-y-tramites.html): alta de autónomo, sociedades limitadas, herencias y donaciones.
+- [Asesoría fiscal en ruso en Valencia](https://grupoavanzaconsultores.es/asesoria-fiscal-en-ruso-valencia.html): asesoría fiscal, contable y laboral con atención en ruso para residentes y no residentes de Rusia, Ucrania y otros países de habla rusa: residencia fiscal, modelo 210, inmuebles, herencias y donaciones, y alta de autónomo o sociedad; en persona solo con cita y a distancia en toda España.
 - [Fiscalidad de no residentes y extranjeros](https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html): modelo 210, residencia fiscal y convenios de doble imposición.
 - [Trámites de gestoría](https://grupoavanzaconsultores.es/tramites.html): lista completa de trámites.
 
