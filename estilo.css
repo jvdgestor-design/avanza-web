@@ -788,3 +788,7 @@ main p,.band p,.hero .lead,.card li,.guias span,.op p,.step p,dd{font-weight:400
 
 /* Página rusa: el logo va en <img> sin <picture> */
 .hero__logo>img.lg-l,.hero__logo>img.lg-d{display:none!important}
+
+/* Nota del formulario (30/09): la tarjeta es blanca, la nota no puede heredar el blanco del bloque azul */
+.form-wrap .form__nota,#contacto .form-wrap .form__nota{color:#4F5A72!important;text-align:left!important;text-align-last:left;hyphens:manual!important;-webkit-hyphens:manual!important}
+.form-wrap .form__nota a,#contacto .form-wrap .form__nota a{color:#1B2F5E!important}
