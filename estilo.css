@@ -793,3 +793,7 @@ main p,.band p,.hero .lead,.card li,.guias span,.op p,.step p,dd{font-weight:400
 /* Nota del formulario (30/09): la tarjeta es blanca, la nota no puede heredar el blanco del bloque azul */
 .form-wrap .form__nota,#contacto .form-wrap .form__nota{color:#4F5A72!important;text-align:left!important;text-align-last:left;hyphens:manual!important;-webkit-hyphens:manual!important}
 .form-wrap .form__nota a,#contacto .form-wrap .form__nota a{color:#1B2F5E!important}
+/* Selector ES/РУС/EN (03/10/2026): espaciado de la cabecera en anchos intermedios */
+@media(min-width:1001px) and (max-width:1460px){.topnav{gap:14px}.topbar__acc{gap:8px}.langsw{padding-inline:9px}}
+@media(min-width:1001px) and (max-width:1300px){.topnav{gap:11px}.topnav a{font-size:13px}.brand span i{letter-spacing:.14em}}
+@media(min-width:1001px) and (max-width:1240px){.topnav{gap:9px}.topnav a{font-size:12.5px}.topbar__acc{gap:6px}.langsw{padding-inline:7px}}
