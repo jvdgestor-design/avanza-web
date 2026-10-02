@@ -315,15 +315,16 @@ textarea:focus-visible, summary:focus-visible{
 @media (min-width:560px){.form__row{grid-template-columns:1fr 1fr}}
 .field{display:flex;flex-direction:column;gap:7px}
 .field label{font-size:13.5px;font-weight:600;letter-spacing:.02em;color:var(--ink)}
-.field input, .field textarea{
+.field input, .field textarea, .field select{
   font-family:var(--sans);font-size:16px;color:var(--ink);
   background:var(--paper);border:1px solid var(--line);border-radius:8px;
   padding:12px 14px;width:100%;transition:border-color .18s ease, box-shadow .18s ease}
 .field textarea{resize:vertical;min-height:118px;line-height:1.55}
 .field input::placeholder, .field textarea::placeholder{color:var(--ink-faint)}
-.field input:focus, .field textarea:focus{outline:none;border-color:var(--navy);
+.field input:focus, .field textarea:focus, .field select:focus{outline:none;border-color:var(--navy);
   box-shadow:0 0 0 3px color-mix(in srgb, var(--navy) 16%, transparent)}
 .field input:user-invalid, .field textarea:user-invalid{border-color:#B4453C}
+.field__opc{font-weight:400;color:var(--ink-soft)}
 .form__pie{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:2px}
 .form__nota{font-size:13px;color:var(--ink-soft);max-width:44ch;margin:0;line-height:1.5}
 .form__nota a{color:inherit;text-decoration:underline;text-underline-offset:2px}
