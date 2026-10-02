@@ -41,6 +41,7 @@
 - [Modelo 347](https://grupoavanzaconsultores.es/modelo-347-operaciones-con-terceros.html): operaciones con terceros.
 - [Alta de autónomo](https://grupoavanzaconsultores.es/alta-de-autonomo-en-valencia.html): orden de los trámites y cuota reducida.
 - [Autónomo en dos países de la UE](https://grupoavanzaconsultores.es/autonomo-extranjero-en-espana.html): para quien vive o trabaja desde España y mantiene actividad por cuenta propia en otro Estado de la UE/EEE/Suiza; residencia fiscal, legislación de Seguridad Social aplicable, A1, CUE y posible OSS.
+- [Amazon KDP e impuestos en España](https://grupoavanzaconsultores.es/amazon-kdp-impuestos-espana.html): cómo clasificar las regalías del propio autor en IRPF, cuándo puede existir actividad económica y RETA, por qué el SMI no es una exclusión automática, IVA de los servicios de autor y retenciones extranjeras.
 - [Capitalizar el paro](https://grupoavanzaconsultores.es/capitalizar-el-paro-pago-unico.html): pago único para emprender.
 - [Licencia de actividad y cambio de titularidad](https://grupoavanzaconsultores.es/licencia-de-actividad-cambio-de-titularidad.html)
 - [Ayudas a la contratación en Paterna](https://grupoavanzaconsultores.es/ayudas-contratacion-paterna.html)
