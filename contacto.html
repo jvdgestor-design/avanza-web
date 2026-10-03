@@ -94,6 +94,7 @@
     <button class="btn btn--primary" type="submit">Enviar consulta</button>
     <p class="form__nota">Te contesta un asesor, no un formulario automático. Tus datos solo se usan para responderte: <a href="privacidad.html">política de privacidad</a>.</p>
   </div>
+  <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>No hemos podido completar el envío. Puedes escribirnos por <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> o por <a href="mailto:avanza@grupoavanzaconsultores.es">correo electrónico</a>, o volver a intentarlo.</p>
 </form>
 <script>
 (function(){
@@ -104,7 +105,12 @@
     if (!window.fetch || !window.URLSearchParams || !window.FormData) return;
     if (f.action.indexOf('script.google.com') === -1) return;
     e.preventDefault();
+    if (f.getAttribute('aria-busy') === 'true') return;
+    f.setAttribute('aria-busy', 'true');
     var b = f.querySelector('button[type=submit]');
+    var textoBoton = b ? b.textContent : '';
+    var aviso = f.querySelector('[data-envio-error]');
+    if (aviso) aviso.hidden = true;
     if (b) { b.disabled = true; b.textContent = 'Enviando…'; }
     var datos = new FormData(f);
     var origen = datos.get('origen') || 'sin indicar';
@@ -112,8 +118,12 @@
     datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + ' · Nos conoció por: ' + origen + ']');
     var cuerpo = new URLSearchParams(datos);
     fetch(f.action, { method: 'POST', mode: 'no-cors', body: cuerpo })
-      .catch(function(){})
-      .then(function(){ window.location.href = 'gracias.html'; });
+      .then(function(){ window.location.href = 'gracias.html'; })
+      .catch(function(){
+        f.removeAttribute('aria-busy');
+        if (b) { b.disabled = false; b.textContent = textoBoton; }
+        if (aviso) { aviso.hidden = false; aviso.focus(); }
+      });
   });
 })();
 </script>
