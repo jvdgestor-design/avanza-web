@@ -797,3 +797,21 @@ main p,.band p,.hero .lead,.card li,.guias span,.op p,.step p,dd{font-weight:400
 @media(min-width:1001px) and (max-width:1460px){.topnav{gap:14px}.topbar__acc{gap:8px}.langsw{padding-inline:9px}}
 @media(min-width:1001px) and (max-width:1300px){.topnav{gap:11px}.topnav a{font-size:13px}.brand span i{letter-spacing:.14em}}
 @media(min-width:1001px) and (max-width:1240px){.topnav{gap:9px}.topnav a{font-size:12.5px}.topbar__acc{gap:6px}.langsw{padding-inline:7px}}
+
+/* ===== 03/10/2026: la web se ve siempre en claro =====
+   El diseño aprobado es de blancos puros y textos oscuros. Con el móvil o el ordenador
+   en modo oscuro, el fondo seguía blanco pero los textos pasaban a claros y casi no se leían.
+   Estos valores son los mismos que calcula el modo claro. */
+:root{color-scheme:light}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="dark"]){
+    --paper:#FFFFFF; --surface:#F3F6FB; --raised:#FFFFFF;
+    --navy:#1F3763; --navy-deep:#0E1E3C; --navy-darkest:#091630;
+    --ink:#0A1428; --ink-soft:#243049; --ink-faint:#56607A;
+    --gold:#B8924A; --gold-deep:#1F3763; --gold-soft:#E9E3D6;
+    --line:#DDE3EE; --line-soft:#EAEFF6;
+  }
+  :root:not([data-theme="dark"]) .hero__logo .lg-l{display:block}
+  :root:not([data-theme="dark"]) .hero__logo .lg-d{display:none}
+  :root:not([data-theme="dark"]) .ru-note a{color:var(--navy)}
+}
