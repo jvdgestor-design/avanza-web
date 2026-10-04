@@ -816,3 +816,10 @@ main p,.band p,.hero .lead,.card li,.guias span,.op p,.step p,dd{font-weight:400
   :root:not([data-theme="dark"]) .hero__logo .lg-d{display:none}
   :root:not([data-theme="dark"]) .ru-note a{color:var(--navy)}
 }
+
+/* --- cabecera rusa entre 641 y 700 px: el botón de WhatsApp en ruso es más largo y el menú
+   desbordaba 1-4 px (641-645). Solo se aprietan los huecos; mismo diseño. --- */
+@media (min-width:641px) and (max-width:700px){
+  html[lang="ru"] .topbar__acc{gap:6px}
+  html[lang="ru"] .topbar__in{gap:12px}
+}
