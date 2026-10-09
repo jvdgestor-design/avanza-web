@@ -195,7 +195,10 @@ def texto_bloque(ident, id_bloque, hoy):
         return v.get("fecha_vigencia") or v.get("fecha_publicacion") or ""
     pasadas = [v for v in versiones if fecha(v) <= hoy]
     futuras = sorted((v for v in versiones if fecha(v) > hoy), key=fecha)
-    vigente = max(pasadas, key=fecha) if pasadas else None
+    # Dos versiones con la misma vigencia (p. ej. dos reales decretos con efectos el 1 de enero): manda la
+    # publicada después y, a igualdad, la última del documento.
+    orden = {id(v): n for n, v in enumerate(versiones)}
+    vigente = max(pasadas, key=lambda v: (fecha(v), v.get("fecha_publicacion") or "", orden[id(v)])) if pasadas else None
     partes, recortado = [], False
     for etiqueta, v, tope in ([("VIGENTE HOY", vigente, TOPE_ARTICULO)] if vigente is not None else []) + \
             [("VIGENCIA FUTURA", f, TOPE_ARTICULO // 2) for f in futuras]:
