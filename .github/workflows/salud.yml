@@ -5,6 +5,7 @@ on:
     - cron: "17 5 * * *"   # 07:17 en Madrid en horario de verano, 06:17 en invierno
   workflow_dispatch:
   push:
+    branches: [main, "motor/**"]
     paths:
       - ".github/motor/**"
       - ".github/workflows/salud.yml"
@@ -13,7 +14,7 @@ permissions:
 jobs:
   salud:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Repositorio y web en vivo
