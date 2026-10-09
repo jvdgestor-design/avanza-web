@@ -255,6 +255,9 @@ def main():
     ap.add_argument("--estado", default="boe-estado.json")
     ap.add_argument("--revisado", default="",
                     help="normas ya revisadas (nombre o BOE-A), separadas por «;»; «todo» para todas")
+    ap.add_argument("--pendientes-desde", default="",
+                    help="AAAAMMDD: las normas actualizadas desde esa fecha quedan pendientes de revisión (en rojo) "
+                         "hasta que se marquen como revisadas; para cuando no consta que se revisaran")
     ap.add_argument("--inicial", action="store_true",
                     help="no hay estado anterior a propósito (primera ejecución): se toma como punto de partida")
     a = ap.parse_args()
@@ -330,12 +333,15 @@ def main():
         guardar = fi["actualizacion"]
         if fi["derogada"] or fi["agotada"]:
             errores.append(f"{nombres} ({boe_id}): el BOE la da por {'derogada' if fi['derogada'] else 'con vigencia agotada'}. Revisar: {paginas}")
+        if a.pendientes_desde and fi["actualizacion"][:8] >= a.pendientes_desde and not (
+                "todo" in revisado or boe_id in revisado or info["claves"] & revisado):
+            antes = "pendiente de revisión"
         if antes and fi["actualizacion"] != antes:
             if "todo" in revisado or boe_id in revisado or info["claves"] & revisado:
                 avisos.append(f"{nombres} ({boe_id}): actualizada ({fi['actualizacion']}), marcada como revisada")
             else:
                 guardar = antes  # sigue en rojo cada día hasta que se marque como revisada
-                cambios.append(f"{nombres} ({boe_id}): actualizada el {fi['actualizacion'][:8]} (antes {antes[:8]}). "
+                cambios.append(f"{nombres} ({boe_id}): actualizada el {fi['actualizacion'][:8]} (antes: {antes[:20]}). "
                                f"Revisar contra el BOE: {paginas}")
         for c in info["claves"]:
             nuevo[c] = {"id": boe_id, "actualizacion": guardar, "titulo": fi["titulo"][:160]}

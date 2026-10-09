@@ -14,6 +14,10 @@ on:
         description: "Primera ejecución sin estado anterior (true)"
         required: false
         default: "false"
+      pendientes_desde:
+        description: "AAAAMMDD: normas actualizadas desde esa fecha quedan en rojo hasta revisarlas"
+        required: false
+        default: ""
   push:
     branches: [main, "motor/**"]
     paths:
@@ -37,9 +41,11 @@ jobs:
         env:
           REVISADO: ${{ github.event.inputs.revisado }}
           INICIAL: ${{ github.event.inputs.inicial }}
+          PENDIENTES: ${{ github.event.inputs.pendientes_desde }}
         run: |
           EXTRA=""
           if [ "$INICIAL" = "true" ]; then EXTRA="--inicial"; fi
+          if [ -n "$PENDIENTES" ]; then EXTRA="$EXTRA --pendientes-desde $PENDIENTES"; fi
           python3 .github/motor/boe.py --estado boe-estado.json --revisado "$REVISADO" $EXTRA
       - name: Guardar estado
         if: always()
