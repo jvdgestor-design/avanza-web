@@ -1,0 +1,79 @@
+# Revisión de fondo contra el BOE (créditos de API, sin usos de Claude): para cada norma que la «Vigilancia
+# del BOE» da por actualizada, lee los artículos citados en el consolidado vigente y pide a Claude qué
+# afirmación de las páginas ya no casa. Informe en las anotaciones de cada trabajo.
+# A mano: gh workflow run boe-revision.yml --ref main -f normas="LIVA;Ley 13/1997"  (vacío = las pendientes)
+name: Revisión contra el BOE
+on:
+  workflow_dispatch:
+    inputs:
+      normas:
+        description: "Normas separadas por ; (sigla, «Ley 37/1992», «RDL 29/2026» o BOE-A). Vacío = las pendientes de la última vigilancia"
+        required: false
+        default: ""
+permissions:
+  contents: read
+  actions: read
+  checks: read
+jobs:
+  prepara:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      normas: ${{ steps.lista.outputs.normas }}
+    steps:
+      - name: Lista de normas
+        id: lista
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NORMAS: ${{ github.event.inputs.normas }}
+          REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, re, subprocess, sys
+          MAXIMO = 14
+          normas = [n.strip() for n in os.environ.get("NORMAS", "").split(";") if n.strip()]
+          if not normas:
+              def gh(*a):
+                  r = subprocess.run(["gh", "api", *a], capture_output=True, text=True)
+                  if r.returncode:
+                      print(f"::error::gh api {a[0]}: {r.stderr.strip()[:300]}")
+                      sys.exit(1)
+                  return r.stdout
+              runs = json.loads(gh(f"repos/{os.environ['REPO']}/actions/workflows/boe.yml/runs?status=completed&per_page=1"))["workflow_runs"]
+              if not runs:
+                  print("::error::No hay ninguna ejecución terminada de la Vigilancia del BOE")
+                  sys.exit(1)
+              run = runs[0]
+              for job in json.loads(gh(f"repos/{os.environ['REPO']}/actions/runs/{run['id']}/jobs"))["jobs"]:
+                  for an in json.loads(gh(f"repos/{os.environ['REPO']}/check-runs/{job['id']}/annotations?per_page=100")):
+                      msg = an.get("message") or ""
+                      if an.get("annotation_level") == "failure" and "actualizada el" in msg:
+                          normas += re.findall(r"\((BOE-A-\d{4}-\d+)\)", msg)[:1]
+              print(f"Vigilancia {run['id']} ({run['conclusion']}): pendientes {normas or 'ninguna'}")
+              if run["conclusion"] == "failure" and not normas:
+                  print("::error::La vigilancia está en rojo pero no se ha sacado ninguna norma pendiente (¿errores de identificación?). Revisar sus anotaciones.")
+                  sys.exit(1)
+          normas = list(dict.fromkeys(normas))
+          if len(normas) > MAXIMO:
+              print(f"::error::{len(normas)} normas: más de {MAXIMO} por ejecución (tope de gasto). Lanzar en tandas con -f normas=...")
+              sys.exit(1)
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write("normas=" + json.dumps(normas, ensure_ascii=False) + "\n")
+          EOF
+  revisa:
+    needs: prepara
+    if: needs.prepara.outputs.normas != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        norma: ${{ fromJson(needs.prepara.outputs.normas) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Páginas contra el texto vigente
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NORMA: ${{ matrix.norma }}
+        run: python3 .github/motor/boe_revisor.py --norma="$NORMA"
