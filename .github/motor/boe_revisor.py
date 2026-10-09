@@ -40,6 +40,7 @@ RX_ART = re.compile(
     r"\b(?:arts?\.|artículos?|articles?)\s*"
     r"((?:\d{1,4}(?:\s*(?:bis|ter|quater|quinquies|sexies))?(?:\.[0-9A-Za-zºª]+)*\.?(?:\s*(?:,|y|e|and|a|al)\s*)?)+)",
     re.I)
+RX_TITULO = re.compile(r"(?i)^art(?:ículo)?\.?\s+(\d{1,4}(?:\s+(?:bis|ter|quater|quinquies|sexies))?)\.?$")
 RX_NUM = re.compile(r"(?<!\d)(\d{1,4})(?!\d)(?:\s*(bis|ter|quater|quinquies|sexies))?", re.I)
 ENCARGO = """Eres un asesor fiscal y laboral que revisa una web profesional contra el texto vigente del BOE. La web la firma un asesor y la usan abogados: un error publicado es grave, y una falsa alarma hace perder tiempo.
 
@@ -102,6 +103,9 @@ def canonica(entrada):
             return inverso[e], e
         titulo = boe.ficha(e)["titulo"]
         m = boe.RX_NORMA.match(titulo.strip())
+        o = boe.RX_ORDEN.match(titulo.strip())
+        if o and not m:
+            return f"Orden {o.group(1)}/{o.group(2)}/{o.group(3)}", e
         if not m:
             raise LookupError(f"{e}: no se sabe con qué nombre la citan las páginas («{titulo[:90]}»)")
         return f"{boe.canon_tipo(m.group(1))} {m.group(2)}/{m.group(3)}", e
@@ -246,7 +250,11 @@ def main():
             return 0
         indice = boe.pide(f"{boe.API}/id/{ident}/texto/indice")
         bloques = indice["data"][0]["bloque"] if isinstance(indice["data"], list) else indice["data"]["bloque"]
-        por_titulo = {re.sub(r"\s+", " ", b.get("titulo", "")).strip().lower(): b["id"] for b in bloques}
+        por_titulo = {}
+        for b in bloques:
+            m = RX_TITULO.match(re.sub(r"\s+", " ", b.get("titulo", "")).strip())
+            if m:
+                por_titulo.setdefault(m.group(1).lower(), []).append(b["id"])
     except (LookupError, boe.SinRespuesta, KeyError, IndexError, TypeError, ValueError) as e:
         msg = f"Revisión BOE de {a.norma}: no se pudo preparar ({type(e).__name__}: {e})"
         di(msg)
@@ -268,17 +276,19 @@ def main():
     pedidos = list(dict.fromkeys(pedidos))
     textos, no_hallados, fallos, recortes = [], [], [], []
     for art in pedidos:
-        idb = por_titulo.get(f"artículo {art}")
-        if not idb:
+        ids = por_titulo.get(art.lower())
+        if not ids:
             no_hallados.append(art)
             continue
-        try:
-            t, rec = texto_bloque(ident, idb, hoy)
-            textos.append(f"=== Artículo {art} ({ident}, bloque {idb}) ===\n{t}")
-            if rec:
-                recortes.append(art)
-        except (boe.SinRespuesta, ET.ParseError, ValueError) as e:
-            fallos.append(f"{art} ({e})")
+        for idb in ids:
+            nota = f" — hay {len(ids)} artículos {art} en el texto (la norma y el reglamento que aprueba): este es el bloque {idb}" if len(ids) > 1 else ""
+            try:
+                t, rec = texto_bloque(ident, idb, hoy)
+                textos.append(f"=== Artículo {art} ({ident}, bloque {idb}){nota} ===\n{t}")
+                if rec:
+                    recortes.append(art)
+            except (boe.SinRespuesta, ET.ParseError, ValueError) as e:
+                fallos.append(f"{art} ({e})")
     if fallos:
         msg = f"Revisión BOE de {a.norma}: no se pudieron leer del BOE los artículos {'; '.join(fallos)[:600]}. No se llama al modelo."
         di(msg)
