@@ -1,0 +1,41 @@
+# Vigilancia diaria del BOE: si una norma citada en la web se actualiza, sale en rojo y dice qué páginas revisar.
+# Sigue en rojo hasta que se marca como revisada: gh workflow run boe.yml -f revisado="Ley 35/2006"
+name: Vigilancia del BOE
+on:
+  schedule:
+    - cron: "41 4 * * *"   # 06:41 en Madrid en horario de verano, 05:41 en invierno
+  workflow_dispatch:
+    inputs:
+      revisado:
+        description: "Normas ya revisadas tras su cambio, separadas por ; (todo = todas)"
+        required: false
+        default: ""
+  push:
+    branches: [main, "motor/**"]
+    paths:
+      - ".github/motor/boe.py"
+      - ".github/workflows/boe.yml"
+permissions:
+  contents: read
+jobs:
+  boe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Estado de la ejecución anterior
+        uses: actions/cache/restore@v4
+        with:
+          path: boe-estado.json
+          key: boe-estado-${{ github.run_id }}
+          restore-keys: boe-estado-
+      - name: Normas citadas contra el BOE
+        env:
+          REVISADO: ${{ github.event.inputs.revisado }}
+        run: python3 .github/motor/boe.py --estado boe-estado.json --revisado "$REVISADO"
+      - name: Guardar estado
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: boe-estado.json
+          key: boe-estado-${{ github.run_id }}
