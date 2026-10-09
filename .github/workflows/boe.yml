@@ -7,9 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       revisado:
-        description: "Normas ya revisadas tras su cambio, separadas por ; (todo = todas)"
+        description: "Normas ya revisadas tras su cambio (nombre o BOE-A), separadas por ; (todo = todas)"
         required: false
         default: ""
+      inicial:
+        description: "Primera ejecución sin estado anterior (true)"
+        required: false
+        default: "false"
   push:
     branches: [main, "motor/**"]
     paths:
@@ -27,15 +31,19 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: boe-estado.json
-          key: boe-estado-${{ github.run_id }}
+          key: boe-estado-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: boe-estado-
       - name: Normas citadas contra el BOE
         env:
           REVISADO: ${{ github.event.inputs.revisado }}
-        run: python3 .github/motor/boe.py --estado boe-estado.json --revisado "$REVISADO"
+          INICIAL: ${{ github.event.inputs.inicial }}
+        run: |
+          EXTRA=""
+          if [ "$INICIAL" = "true" ]; then EXTRA="--inicial"; fi
+          python3 .github/motor/boe.py --estado boe-estado.json --revisado "$REVISADO" $EXTRA
       - name: Guardar estado
         if: always()
         uses: actions/cache/save@v4
         with:
           path: boe-estado.json
-          key: boe-estado-${{ github.run_id }}
+          key: boe-estado-${{ github.run_id }}-${{ github.run_attempt }}
