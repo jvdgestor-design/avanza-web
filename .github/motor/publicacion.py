@@ -61,6 +61,12 @@ def huella_viva(url):
         return None
 
 
+def anota(nivel, texto):
+    """Anotación de GitHub Actions: se lee con la API (check-runs/<job>/annotations), sin descargar logs."""
+    t = texto.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    print(f"::{nivel}::{t}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--antes", default="")
@@ -104,6 +110,8 @@ def main():
     if pendientes:
         for f in sorted(pendientes):
             print(f"ERROR: a los {ESPERA_MAX // 60} min la web aún no sirve lo publicado en {f}")
+            if os.environ.get("GITHUB_ACTIONS"):
+                anota("error", f"La web aún no sirve lo publicado en {f} (huella distinta tras {ESPERA_MAX // 60} min)")
         return 1
 
     if not urls:
@@ -132,6 +140,8 @@ def main():
         time.sleep(20 * (intento + 1))
     lineas = [f"IndexNow: {estado or 'sin respuesta'} para {len(urls)} URL"] + [f"- {u}" for u in urls]
     print("\n".join(lineas))
+    if os.environ.get("GITHUB_ACTIONS"):
+        anota("notice" if estado in (200, 202) else "error", "\n".join(lineas))
     resumen = os.environ.get("GITHUB_STEP_SUMMARY")
     if resumen:
         with open(resumen, "a", encoding="utf-8") as f:

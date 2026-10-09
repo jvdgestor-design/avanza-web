@@ -579,6 +579,12 @@ def comprueba_vivo(raiz, urls, errores, base, espera):
             errores.append(f"EN VIVO {u}: la huella SHA-256 no coincide con el repositorio")
 
 
+def anota(nivel, texto):
+    """Anotación de GitHub Actions: se lee con la API (check-runs/<job>/annotations), sin descargar logs."""
+    t = texto.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    print(f"::{nivel}::{t}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--raiz", default=".")
@@ -605,8 +611,9 @@ def main():
     salida = "\n".join(lineas)
     print(salida)
     if os.environ.get("GITHUB_ACTIONS"):
-        for x in avisos:
-            print(f"::warning::{x}")
+        anota("notice", salida)
+        for e in errores[:9]:
+            anota("error", e)
     resumen = os.environ.get("GITHUB_STEP_SUMMARY")
     if resumen:
         with open(resumen, "a", encoding="utf-8") as f:

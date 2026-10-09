@@ -136,6 +136,12 @@ def resuelve(norma):
     return None
 
 
+def anota(nivel, texto):
+    """Anotación de GitHub Actions: se lee con la API (check-runs/<job>/annotations), sin descargar logs."""
+    t = texto.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    print(f"::{nivel}::{t}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--raiz", default=".")
@@ -227,6 +233,10 @@ def main():
     lineas += ["## Vigiladas", ""] + [f"- {x}" for x in vigiladas]
     salida = "\n".join(lineas)
     print(salida)
+    if os.environ.get("GITHUB_ACTIONS"):
+        anota("notice", salida)
+        for e in (cambios + errores)[:9]:
+            anota("error", e)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(salida + "\n")
