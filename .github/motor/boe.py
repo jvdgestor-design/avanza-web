@@ -75,8 +75,19 @@ TITULO_ESPERADO = {
     "Código Civil": "Real Decreto de 24 de julio de 1889",
     "Código de Comercio": "Real Decreto de 22 de agosto de 1885",
 }
+# Normas con el mismo número que otra (estatal y autonómica, por ejemplo): lo que tiene que decir su título
+# para ser la que citan las páginas (comprobado en el contexto de cada cita).
+TITULO_CONTIENE = {
+    "Ley 12/2002": "concierto económico",      # art. 25: Concierto con el País Vasco (no la del transporte por cable)
+    "Ley 14/2013": "emprendedores",            # art. 18: legalización de libros (no la valenciana de 26/12/2013)
+    "Ley 13/1997": "tramo autonómico",         # Generalitat Valenciana
+    "Ley 28/1990": "convenio económico",       # Navarra
+    "Ley 22/2009": "financiación",
+}
 # Citas que se sabe que no están en legislación consolidada (no se vigilan, se dice por qué).
-NO_VIGILABLES = {}
+NO_VIGILABLES = {
+    "Orden HAC/623/2026": "orden de modelos sin texto consolidado en el BOE; su vigencia la mira la pasada",
+}
 
 TIPOS = r"(Ley Orgánica|Real Decreto-ley|Real Decreto Legislativo|Real Decreto|Decreto Legislativo|Decreto-ley|Decreto|Ley)"
 INGLES = {"Organic Law": "Ley Orgánica", "Royal Decree-Law": "Real Decreto-ley",
@@ -137,8 +148,11 @@ def pide(url):
 def busca(nodo, claves):
     if isinstance(nodo, dict):
         for k, v in nodo.items():
-            if any(c in k.lower() for c in claves) and isinstance(v, (str, int)):
-                return str(v)
+            if any(c in k.lower() for c in claves):
+                if isinstance(v, (str, int)):
+                    return str(v)
+                if isinstance(v, dict) and isinstance(v.get("texto"), str):
+                    return v["texto"]
         for v in nodo.values():
             r = busca(v, claves)
             if r:
@@ -168,7 +182,9 @@ def lista_resultados(datos):
 def es_esa_norma(norma, titulo):
     t = re.sub(r"\s+", " ", titulo).strip().lower()
     esperado = TITULO_ESPERADO.get(norma, norma).lower()
-    return t.startswith(esperado + ",") or t.startswith(esperado + " ")
+    if not (t.startswith(esperado + ",") or t.startswith(esperado + " ")):
+        return False
+    return TITULO_CONTIENE.get(norma, "") in t
 
 
 def ficha(boe_id):
@@ -253,13 +269,19 @@ def main():
         if clave in NO_VIGILABLES:
             avisos.append(f"{clave}: no se vigila ({NO_VIGILABLES[clave]})")
             continue
-        candidatos = [clave] if RX_ID.fullmatch(clave) else [
-            (previo.get(clave) or {}).get("id"), SEMILLA.get(clave), "BUSCAR"]
+        candidatos = [clave] if RX_ID.fullmatch(clave) else [SEMILLA.get(clave), "BUSCAR"]
+        guardado = None if RX_ID.fullmatch(clave) else (previo.get(clave) or {}).get("id")
         hallado, motivo = None, ""
         try:
             for cand in dict.fromkeys(c for c in candidatos if c):
                 if cand == "BUSCAR":
-                    cand, motivo = resuelve(clave)
+                    try:
+                        cand, motivo = resuelve(clave)
+                    except SinRespuesta:
+                        if not guardado:
+                            raise
+                        cand, motivo = guardado, ""
+                        avisos.append(f"{clave}: buscador del BOE caído; se usa el identificador guardado {guardado}")
                     if not cand:
                         break
                 if cand in por_id:
