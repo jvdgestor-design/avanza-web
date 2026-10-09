@@ -69,7 +69,11 @@ SEMILLA = {
     "Real Decreto 1065/2007": "BOE-A-2007-15984", "Real Decreto 939/2005": "BOE-A-2005-14803",
     "Ley 39/2015": "BOE-A-2015-10565",
     "Código Civil": "BOE-A-1889-4763", "Código de Comercio": "BOE-A-1885-6627",
+    # Ley 5/2026, de 31 de julio, de la Generalitat (modifica la Ley 13/1997); la Ley 5/2026 de Madrid es otra.
+    "Ley 5/2026": "BOE-A-2026-19331",
 }
+# Emisor que tiene que tener la norma (departamento del BOE).
+DEPARTAMENTO_ESPERADO = {"Ley 5/2026": "valenciana", "Ley 13/1997": "valenciana"}
 # Normas cuyo título del BOE no empieza por su nombre corto: se comprueba este comienzo.
 TITULO_ESPERADO = {
     "Código Civil": "Real Decreto de 24 de julio de 1889",
@@ -297,6 +301,9 @@ def main():
                     continue
                 if not RX_ID.fullmatch(clave) and not es_esa_norma(clave, fi["titulo"]):
                     motivo = f"{cand} no es esa norma (BOE: «{fi['titulo'][:90]}»)"
+                    continue
+                if DEPARTAMENTO_ESPERADO.get(clave, "") not in fi["departamento"].lower():
+                    motivo = f"{cand} es de otro emisor ({fi['departamento']}), no de la {DEPARTAMENTO_ESPERADO[clave]}"
                     continue
                 if not fi["actualizacion"]:
                     motivo = f"la ficha {cand} no trae fecha de actualización"
