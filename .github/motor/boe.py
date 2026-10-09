@@ -116,6 +116,12 @@ def ficha(boe_id):
     return titulo, act, datos
 
 
+def es_esa_norma(norma, titulo):
+    """El título del BOE tiene que EMPEZAR por la norma («Real Decreto 84/1996, de…»), no solo citarla."""
+    t = re.sub(r"\s+", " ", titulo).strip().lower()
+    return t.startswith(norma.lower() + ",") or t.startswith(norma.lower() + " ")
+
+
 def resuelve(norma):
     """Busca en el BOE el identificador de una norma citada por número."""
     tipo, resto = norma.rsplit(" ", 1)
@@ -131,7 +137,7 @@ def resuelve(norma):
         for item in lista_resultados(datos):
             ident = busca(item, ["identificador"]) or ""
             titulo = busca(item, ["titulo"]) or ""
-            if RX_ID.fullmatch(ident) and titulo.lower().startswith(tipo.lower()) and f" {resto}," in titulo + ",":
+            if RX_ID.fullmatch(ident) and es_esa_norma(norma, titulo):
                 return ident
     return None
 
@@ -178,23 +184,33 @@ def main():
     nuevo = {}
     hoy = date.today()
     for clave, info in sorted(citas.items()):
-        boe_id = info["id"] or (previo.get(clave) or {}).get("id") or SEMILLA.get(clave) or resuelve(clave)
-        if not boe_id:
-            fuera.append(f"{clave} ({', '.join(sorted(info['paginas']))})")
-            continue
-        try:
-            titulo, act, crudo = ficha(boe_id)
-        except RuntimeError as e:
-            errores.append(f"{clave} → {boe_id}: el BOE no contesta ({e})")
-            continue
-        if not titulo:
-            errores.append(f"{clave} → {boe_id}: la ficha del BOE no trae título. Muestra: {json.dumps(crudo)[:300]}")
-            continue
-        if not clave.startswith("BOE-A-"):
-            numero = clave.rsplit(" ", 1)[1]
-            if numero not in titulo:
-                errores.append(f"{clave} → {boe_id}: el identificador no es esa norma (BOE: «{titulo[:90]}»)")
+        candidatos = [info["id"]] if info["id"] else [
+            (previo.get(clave) or {}).get("id"), SEMILLA.get(clave), "BUSCAR"]
+        boe_id, titulo, act, crudo, fallo = None, "", None, None, ""
+        for cand in dict.fromkeys(c for c in candidatos if c):
+            if cand == "BUSCAR":
+                cand = resuelve(clave)
+                if not cand:
+                    continue
+            try:
+                t, f_act, datos = ficha(cand)
+            except RuntimeError as e:
+                fallo = f"el BOE no contesta ({e})"
                 continue
+            if not t:
+                fallo = f"la ficha {cand} no trae título. Muestra: {json.dumps(datos)[:300]}"
+                continue
+            if not clave.startswith("BOE-A-") and not es_esa_norma(clave, t):
+                fallo = f"{cand} no es esa norma (BOE: «{t[:90]}»)"
+                continue
+            boe_id, titulo, act, crudo = cand, t, f_act, datos
+            break
+        if not boe_id:
+            if fallo:
+                errores.append(f"{clave}: {fallo}")
+            else:
+                fuera.append(f"{clave} ({', '.join(sorted(info['paginas']))})")
+            continue
         if act is None:
             errores.append(f"{clave} → {boe_id}: la ficha del BOE no trae fecha de actualización")
             continue
@@ -230,11 +246,13 @@ def main():
         lineas += ["## Avisos", ""] + [f"- {x}" for x in avisos] + [""]
     if fuera:
         lineas += ["## Citadas sin identificador en el BOE (no se vigilan)", ""] + [f"- {x}" for x in fuera] + [""]
+    cabeza = "\n".join(lineas)
     lineas += ["## Vigiladas", ""] + [f"- {x}" for x in vigiladas]
     salida = "\n".join(lineas)
     print(salida)
     if os.environ.get("GITHUB_ACTIONS"):
-        anota("notice", salida)
+        anota("notice", cabeza)
+        anota("notice", "Vigiladas:\n" + "\n".join(re.sub(r" · [^·]*$", "", x) for x in vigiladas))
         for e in (cambios + errores)[:9]:
             anota("error", e)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
