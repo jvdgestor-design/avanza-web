@@ -1,0 +1,20 @@
+# Salud diaria de la web sin usos de Claude. Si falla, GitHub manda un correo.
+name: Salud de la web
+on:
+  schedule:
+    - cron: "17 5 * * *"   # 07:17 en Madrid en horario de verano, 06:17 en invierno
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/motor/**"
+      - ".github/workflows/salud.yml"
+permissions:
+  contents: read
+jobs:
+  salud:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Repositorio y web en vivo
+        run: python3 .github/motor/salud.py --vivo

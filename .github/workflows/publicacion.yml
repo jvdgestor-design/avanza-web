@@ -1,0 +1,37 @@
+# Tras cada publicación en main: espera a que la web sirva lo publicado (misma huella SHA-256),
+# avisa a IndexNow con las páginas cambiadas y repasa la salud en vivo. Sin usos de Claude.
+name: Después de publicar
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.html"
+      - "sitemap.xml"
+      - "llms.txt"
+      - "robots.txt"
+permissions:
+  contents: read
+concurrency:
+  group: publicacion
+  cancel-in-progress: false
+jobs:
+  publicacion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Páginas cambiadas, huella en vivo e IndexNow
+        env:
+          ANTES: ${{ github.event.before }}
+        run: |
+          if [ -z "$ANTES" ] || [ "$ANTES" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$ANTES" 2>/dev/null; then
+            ANTES=HEAD~1
+          fi
+          CAMBIADOS=$(git diff --name-only --diff-filter=AM "$ANTES" HEAD -- '*.html' | tr '\n' ' ')
+          echo "Cambiados: $CAMBIADOS"
+          python3 .github/motor/publicacion.py $CAMBIADOS
+      - name: Salud en vivo después de publicar
+        if: always()
+        run: python3 .github/motor/salud.py --vivo
