@@ -298,7 +298,11 @@ def main():
         if gha:
             anota("error", msg)
         return 1
-    cabeza = (f"NORMA: {canon or ident} · {ident} · «{fi['titulo'][:160]}» · última actualización {fi['actualizacion'][:8]} · hoy {hoy}\n"
+    fecha_texto = max((b.get("fecha_actualizacion") or "" for b in bloques), default="")
+    cabeza = (f"NORMA: {canon or ident} · {ident} · «{fi['titulo'][:160]}» · última actualización del TEXTO consolidado "
+              f"(la que el BOE publica como «Última actualización publicada el …»): {fecha_texto[:8]} · hoy {hoy}. "
+              f"(La ficha de metadatos dice {fi['actualizacion'][:8]}, pero esa fecha cambia también sin cambios de texto: "
+              f"no la uses para juzgar las fechas de consulta que citan las páginas.)\n"
               + (f"Artículos citados que no existen en el índice del BOE: {', '.join(no_hallados)}\n" if no_hallados else ""))
     contenido = cabeza + "\n\n" + "\n\n".join(secciones) + "\n\n=== TEXTO DEL BOE ===\n\n" + "\n\n".join(textos)
     if len(contenido) > TOPE_ENCARGO:
