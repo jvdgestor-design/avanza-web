@@ -69,8 +69,6 @@ SEMILLA = {
     "Real Decreto 1065/2007": "BOE-A-2007-15984", "Real Decreto 939/2005": "BOE-A-2005-14803",
     "Ley 39/2015": "BOE-A-2015-10565",
     "Código Civil": "BOE-A-1889-4763", "Código de Comercio": "BOE-A-1885-6627",
-    # Ley 5/2026, de 31 de julio, de la Generalitat (modifica la Ley 13/1997); la Ley 5/2026 de Madrid es otra.
-    "Ley 5/2026": "BOE-A-2026-19331",
 }
 # Emisor que tiene que tener la norma (departamento del BOE).
 DEPARTAMENTO_ESPERADO = {"Ley 5/2026": "valenciana", "Ley 13/1997": "valenciana"}
@@ -91,6 +89,9 @@ TITULO_CONTIENE = {
 # Citas que se sabe que no están en legislación consolidada (no se vigilan, se dice por qué).
 NO_VIGILABLES = {
     "Orden HAC/623/2026": "orden de modelos sin texto consolidado en el BOE; su vigencia la mira la pasada",
+    # Ley 5/2026, de 31 de julio, de la Generalitat (BOE-A-2026-19331), que modifica la Ley 13/1997; la Ley 5/2026
+    # de la Comunidad de Madrid es otra. No tiene texto consolidado propio: sus cambios se ven en la Ley 13/1997.
+    "Ley 5/2026": "ley valenciana de modificación (BOE-A-2026-19331) sin texto consolidado propio; se vigila en la Ley 13/1997",
 }
 
 TIPOS = r"(Ley Orgánica|Real Decreto-ley|Real Decreto Legislativo|Real Decreto|Decreto Legislativo|Decreto-ley|Decreto|Ley)"
