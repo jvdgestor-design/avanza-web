@@ -67,3 +67,4 @@
 
 - [Aviso legal](https://grupoavanzaconsultores.es/aviso-legal.html)
 - [Política de privacidad](https://grupoavanzaconsultores.es/privacidad.html)
+- [Política de cookies](https://grupoavanzaconsultores.es/cookies.html)
