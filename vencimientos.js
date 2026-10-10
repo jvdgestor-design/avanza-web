@@ -6,11 +6,12 @@
     { m: 0, d: 30,    items: ['IVA del 4.º trimestre (303)', 'Pago fraccionado de IRPF (130 o 131)', 'Resumen anual de IVA (390)'] },
     { m: 0, d: 31,    items: ['Resúmenes anuales de retenciones (190 y 180)'] },
     { m: 1, d: 'fin', items: ['Operaciones con terceros (347)'] },
-    { m: 3, d: 20,    items: ['IVA del 1.er trimestre (303)', 'Pago fraccionado de IRPF (130 o 131)', 'Retenciones (111 y 115)'] },
+    { m: 3, d: 20,    items: ['IVA del 1.er trimestre (303)', 'Pago fraccionado de IRPF (130 o 131)', 'Retenciones (111 y 115)', 'Pago fraccionado de Sociedades (202)'] },
     { m: 5, d: 30,    items: ['Fin de la campaña de la Renta (100)'] },
     { m: 6, d: 20,    items: ['IVA del 2.º trimestre (303)', 'Pago fraccionado de IRPF (130 o 131)', 'Retenciones (111 y 115)'] },
     { m: 6, d: 25,    items: ['Impuesto sobre Sociedades (200)'] },
-    { m: 9, d: 20,    items: ['IVA del 3.er trimestre (303)', 'Pago fraccionado de IRPF (130 o 131)', 'Retenciones (111 y 115)'] }
+    { m: 9, d: 20,    items: ['IVA del 3.er trimestre (303)', 'Pago fraccionado de IRPF (130 o 131)', 'Retenciones (111 y 115)', 'Pago fraccionado de Sociedades (202)'] },
+    { m: 11, d: 20,   items: ['Pago fraccionado de Sociedades (202)'] }
   ];
   var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
                'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
