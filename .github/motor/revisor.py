@@ -21,6 +21,7 @@ from html.parser import HTMLParser
 
 MODELO = os.environ.get("AVANZA_MODELO_REVISOR", "claude-sonnet-5-5")
 DOMINIO = "grupoavanzaconsultores.es"
+LOTE = int(os.environ.get("AVANZA_LOTE_REVISOR", "5"))  # páginas cambiadas por llamada
 
 NORMAS = """Normas de la web (proyecto AVANZA WEB de Grupo Avanza Consultores, asesoría fiscal, contable y laboral):
 - Titular: Jose Vicente Díaz Madrid, Diplomado en Ciencias Empresariales (nunca «licenciado»), despacho propio desde 2011. Nunca «gestor administrativo». No se atribuye ninguna titulación ni colegiación.
@@ -106,28 +107,9 @@ def parejas(fichero):
     return [p for p in dict.fromkeys(salida) if p != fichero and os.path.isfile(p)]
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--base", default="origin/main")
-    ap.add_argument("--prueba", action="store_true", help="arma el encargo y lo cuenta, sin llamar a la API")
-    a = ap.parse_args()
-
-    try:
-        git("rev-parse", "--verify", a.base)
-        cambiados = [f for f in git("diff", "--no-renames", "--name-only", "--diff-filter=AM", f"{a.base}...HEAD").split()
-                     if f.endswith((".html", ".txt", ".xml")) and not f.startswith(".github/")]
-        if not cambiados:
-            print("Nada que revisar: la rama no cambia páginas.")
-            return 0
-        diff = git("diff", "--no-renames", "--unified=3", f"{a.base}...HEAD", "--", *cambiados)
-    except ErrorGit as e:
-        print(f"ERROR: {e}")
-        if os.environ.get("GITHUB_ACTIONS"):
-            anota("error", f"Revisión puerta 5: no se pudo sacar el cambio ({e})")
-        return 1
-    if len(diff) > 120000:
-        diff = diff[:120000] + "\n[DIFF RECORTADO: el revisor no ve el resto]"
-    paginas = list(dict.fromkeys(cambiados + [p for f in cambiados if f.endswith(".html") for p in parejas(f)]))
+def armar(lote, diff, cambiados):
+    """Encargo de un lote: normas, diff del lote y texto de sus páginas y parejas de idioma."""
+    paginas = list(dict.fromkeys(lote + [p for f in lote if f.endswith(".html") for p in parejas(f)]))
     bloques = []
     for p in paginas:
         if p.endswith(".html") and os.path.isfile(p):
@@ -148,9 +130,71 @@ def main():
     contenido = f"{NORMAS}\n\n=== DIFF contra main ===\n{diff}\n\n" + "\n\n".join(bloques)
     if len(contenido) > 400000:
         contenido = contenido[:400000] + "\n[ENCARGO RECORTADO: faltan páginas al final; revísalas aparte]"
+    return contenido
+
+
+def llamar(clave, contenido):
+    cuerpo = json.dumps({"model": MODELO, "max_tokens": 16000, "system": ENCARGO,
+                         "messages": [{"role": "user", "content": contenido}]}).encode()
+    msg = ""
+    for intento in range(2):
+        req = urllib.request.Request("https://api.anthropic.com/v1/messages", data=cuerpo, method="POST",
+                                     headers={"x-api-key": clave, "anthropic-version": "2023-06-01",
+                                              "content-type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=600) as r:
+                return json.loads(r.read().decode("utf-8")), ""
+        except urllib.error.HTTPError as e:
+            msg = f"La API de Claude respondió {e.code}: {e.read().decode('utf-8', 'replace')[:400]}"
+            if e.code not in (429, 500, 502, 503, 529):
+                break
+        except Exception as e:  # tiempo, red
+            msg = f"La API de Claude no contestó: {type(e).__name__}"
+        if intento == 0:
+            time.sleep(30)
+    return None, msg
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--base", default="origin/main")
+    ap.add_argument("--prueba", action="store_true", help="arma el encargo y lo cuenta, sin llamar a la API")
+    a = ap.parse_args()
+
+    try:
+        git("rev-parse", "--verify", a.base)
+        cambiados = [f for f in git("diff", "--no-renames", "--name-only", "--diff-filter=AM", f"{a.base}...HEAD").split()
+                     if f.endswith((".html", ".txt", ".xml")) and not f.startswith(".github/")]
+        if not cambiados:
+            print("Nada que revisar: la rama no cambia páginas.")
+            return 0
+    except ErrorGit as e:
+        print(limpio(f"ERROR: {e}"))
+        if os.environ.get("GITHUB_ACTIONS"):
+            anota("error", f"Revisión puerta 5: no se pudo sacar el cambio ({e})")
+        return 1
+    # Ramas grandes: por lotes de páginas, para que la respuesta no se quede sin salida (max_tokens).
+    html = [f for f in cambiados if f.endswith(".html")]
+    otros = [f for f in cambiados if not f.endswith(".html")]
+    lotes = [html[i:i + LOTE] for i in range(0, len(html), LOTE)]
+    if otros:
+        lotes.append(otros)
+    encargos = []
+    for lote in lotes:
+        try:
+            d = git("diff", "--no-renames", "--unified=3", f"{a.base}...HEAD", "--", *lote)
+        except ErrorGit as e:
+            print(limpio(f"ERROR: {e}"))
+            if os.environ.get("GITHUB_ACTIONS"):
+                anota("error", f"Revisión puerta 5: no se pudo sacar el cambio ({e})")
+            return 1
+        if len(d) > 120000:
+            d = d[:120000] + "\n[DIFF RECORTADO: el revisor no ve el resto]"
+        encargos.append((lote, armar(lote, d, cambiados)))
 
     if a.prueba:
-        print(f"Páginas: {', '.join(paginas)} · {len(contenido)} caracteres (~{len(contenido) // 4} tokens)")
+        for lote, contenido in encargos:
+            print(f"Lote {', '.join(lote)} · {len(contenido)} caracteres (~{len(contenido) // 4} tokens)")
         return 0
     clave = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     if not clave:
@@ -160,37 +204,41 @@ def main():
             anota("warning", msg)
         return 0
 
-    cuerpo = json.dumps({"model": MODELO, "max_tokens": 16000, "system": ENCARGO,
-                         "messages": [{"role": "user", "content": contenido}]}).encode()
-    datos, msg = None, ""
-    for intento in range(2):
-        req = urllib.request.Request("https://api.anthropic.com/v1/messages", data=cuerpo, method="POST",
-                                     headers={"x-api-key": clave, "anthropic-version": "2023-06-01",
-                                              "content-type": "application/json"})
-        try:
-            with urllib.request.urlopen(req, timeout=600) as r:
-                datos = json.loads(r.read().decode("utf-8"))
+    informes, entrada, salida, fallo = [], 0, 0, False
+    for n, (lote, contenido) in enumerate(encargos, 1):
+        datos, msg = llamar(clave, contenido)
+        etiqueta = f"lote {n}/{len(encargos)} ({', '.join(lote)})"
+        if datos is None:
+            print(limpio(f"{etiqueta}: {msg}"))
+            if os.environ.get("GITHUB_ACTIONS"):
+                anota("error", f"Revisión puerta 5, {etiqueta}: {msg}")
+            fallo = True
             break
-        except urllib.error.HTTPError as e:
-            msg = f"La API de Claude respondió {e.code}: {e.read().decode('utf-8', 'replace')[:400]}"
-            if e.code not in (429, 500, 502, 503, 529):
-                break
-        except Exception as e:  # tiempo, red
-            msg = f"La API de Claude no contestó: {type(e).__name__}"
-        time.sleep(30)
-    if datos is None:
-        print(msg)
-        if os.environ.get("GITHUB_ACTIONS"):
-            anota("error", msg)
+        informe = "".join(b.get("text", "") for b in datos.get("content", []) if b.get("type") == "text").strip()
+        parada = datos.get("stop_reason")
+        veredicto = re.match(r"\W*VEREDICTO\W*\s*(BLOQUEA|SIGUE)\b", informe, re.I)
+        if not informe or parada not in ("end_turn", "stop_sequence") or not veredicto:
+            msg = (f"Revisión puerta 5 incompleta, {etiqueta}: stop_reason={parada}, {len(informe)} caracteres"
+                   f"{'' if veredicto else ', sin veredicto en la primera línea'}. No vale como revisión.")
+            print(limpio(msg + ("\n\n" + informe if informe else "")))
+            if os.environ.get("GITHUB_ACTIONS"):
+                anota("error", msg)
+            fallo = True
+            break
+        uso = datos.get("usage", {})
+        entrada += uso.get("input_tokens", 0) or 0
+        salida += uso.get("output_tokens", 0) or 0
+        informes.append((etiqueta, informe, veredicto.group(1).upper() == "BLOQUEA"))
+    if not informes:
         return 1
-    informe = "".join(b.get("text", "") for b in datos.get("content", []) if b.get("type") == "text").strip()
-    parada = datos.get("stop_reason")
-    if not informe or parada not in ("end_turn", "stop_sequence"):
-        msg = f"Revisión puerta 5 incompleta: stop_reason={parada}, {len(informe)} caracteres. No vale como revisión."
-        print(msg + ("\n\n" + limpio(informe) if informe else ""))
-        if os.environ.get("GITHUB_ACTIONS"):
-            anota("error", msg)
-        return 1
+    bloquea = any(b for _, _, b in informes)
+    if len(informes) == 1 and not fallo:
+        informe = informes[0][1]
+    else:
+        informe = ("VEREDICTO: BLOQUEA" if bloquea else "VEREDICTO: INCOMPLETO" if fallo else "VEREDICTO: SIGUE") + (
+            " (faltan lotes: no vale como revisión completa)" if fallo else "") + "\n\n" + "\n\n".join(
+            f"## {e}\n{i}" for e, i, _ in informes)
+    datos = {"usage": {"input_tokens": entrada, "output_tokens": salida}}
     uso = datos.get("usage", {})
     cabecera = (f"Puerta 5 — revisión de {MODELO} sobre {', '.join(cambiados)} "
                 f"(entrada {uso.get('input_tokens', '?')}, salida {uso.get('output_tokens', '?')} tokens)")
@@ -203,10 +251,9 @@ def main():
         total = len(trozos)
         for n, t in enumerate(trozos[:8], 1):
             anota("notice", f"{cabecera} — parte {n}/{total}" + (" (recortado: el resto, en el resumen del trabajo)" if total > 8 and n == 8 else "") + f"\n\n{t}")
-    bloquea = informe.splitlines()[0].strip().upper().startswith("VEREDICTO: BLOQUEA")
     if bloquea and os.environ.get("GITHUB_ACTIONS"):
         anota("error", "Puerta 5: el revisor BLOQUEA. Ver los reparos en las anotaciones; cada uno se contrasta en la fuente.")
-    return 1 if bloquea else 0
+    return 1 if (bloquea or fallo) else 0
 
 
 if __name__ == "__main__":
