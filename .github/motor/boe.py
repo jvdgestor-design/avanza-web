@@ -92,6 +92,8 @@ NO_VIGILABLES = {
     # Ley 5/2026, de 31 de julio, de la Generalitat (BOE-A-2026-19331), que modifica la Ley 13/1997; la Ley 5/2026
     # de la Comunidad de Madrid es otra. No tiene texto consolidado propio: sus cambios se ven en la Ley 13/1997.
     "Ley 5/2026": "ley valenciana de modificación (BOE-A-2026-19331) sin texto consolidado propio; se vigila en la Ley 13/1997",
+    # Ley 5/2025, de 30 de mayo, de la Generalitat (BOE-A-2025-11959): fija el 9 % / 11 % de ITP desde el 1/6/2026 (art. 33).
+    "Ley 5/2025": "ley valenciana de modificación (BOE-A-2025-11959) sin texto consolidado propio; se vigila en la Ley 13/1997",
 }
 
 TIPOS = r"(Ley Orgánica|Real Decreto-ley|Real Decreto Legislativo|Real Decreto|Decreto Legislativo|Decreto-ley|Decreto|Ley)"
