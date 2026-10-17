@@ -88,6 +88,7 @@ TITULO_CONTIENE = {
 }
 # Citas que se sabe que no están en legislación consolidada (no se vigilan, se dice por qué).
 NO_VIGILABLES = {
+    "Orden HFP/886/2023": "orden del modelo 721 que la vigilancia no localiza en la legislación consolidada (17/10/2026); su vigencia la mira la pasada",
     "Orden HAC/623/2026": "orden de modelos sin texto consolidado en el BOE; su vigencia la mira la pasada",
     # Ley 5/2026, de 31 de julio, de la Generalitat (BOE-A-2026-19331), que modifica la Ley 13/1997; la Ley 5/2026
     # de la Comunidad de Madrid es otra. No tiene texto consolidado propio: sus cambios se ven en la Ley 13/1997.
