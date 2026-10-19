@@ -1,0 +1,27 @@
+name: Revisión móvil 390 px
+on:
+  push:
+    branches: ['posicionar/**']
+    paths: ['**.html', '**.css', '.github/workflows/movil-390.yml', '.github/motor/movil-390.cjs']
+permissions:
+  contents: read
+concurrency:
+  group: movil-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  movil:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Preparar navegador de pruebas
+        run: |
+          npm install --prefix /tmp/avanza-qa --no-audit --no-fund playwright@1.62.1
+          /tmp/avanza-qa/node_modules/.bin/playwright install --with-deps chromium
+      - name: Comprobar páginas del sitemap a 390 px
+        env:
+          NODE_PATH: /tmp/avanza-qa/node_modules
+        run: node .github/motor/movil-390.cjs
