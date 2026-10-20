@@ -1,6 +1,6 @@
 # Puerta 5 automática: cuando una rama (que no sea main) cambia páginas, Sonnet intenta tumbar el cambio
 # por la API de Claude (créditos de API del plan). El informe sale como anotaciones del trabajo.
-# Sin el secreto ANTHROPIC_API_KEY no hace nada y lo dice.
+# Sin el secreto ANTHROPIC_API_KEY la puerta queda cerrada.
 name: Revisión puerta 5
 on:
   push:
@@ -8,6 +8,7 @@ on:
     paths:
       - "**.html"
       - "llms.txt"
+      - "robots.txt"
       - "sitemap.xml"
   workflow_dispatch:
 permissions:
@@ -26,7 +27,15 @@ jobs:
       - name: Revisión adversarial
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python3 .github/motor/revisor.py --base origin/main
+        run: python3 -B .github/motor/revisor.py --base origin/main --informe "$RUNNER_TEMP/revision"
+      - name: Conservar dictamen y cobertura del HEAD
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: revision-${{ github.sha }}
+          path: ${{ runner.temp }}/revision/
+          if-no-files-found: error
+          retention-days: 30
       - name: Salud de la rama (solo repositorio)
         if: always()
         run: python3 .github/motor/salud.py

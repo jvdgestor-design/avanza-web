@@ -1,0 +1,28 @@
+name: Pruebas y diagnóstico del motor
+on:
+  push:
+    paths: [".github/motor/**", ".github/workflows/motor-pruebas.yml", ".github/workflows/revision.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: motor-pruebas-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pruebas de cierres y diagnóstico (sin claves ni API)
+        run: python3 -B -m unittest discover -s .github/motor/tests -v
+      - name: Pasada de diagnóstico del repositorio
+        run: python3 -B .github/motor/pulso.py --salida "$RUNNER_TEMP/pulso"
+      - name: Conservar diagnóstico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pulso-${{ github.sha }}
+          path: ${{ runner.temp }}/pulso/
+          if-no-files-found: error
+          retention-days: 30
