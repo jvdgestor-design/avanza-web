@@ -143,6 +143,24 @@ class BOE(unittest.TestCase):
                     api.assert_not_called()
 
 
+class Huellas(unittest.TestCase):
+    def test_normaliza_solo_conversion_de_git_acreditada(self):
+        raiz = Path(tempfile.mkdtemp(prefix="avanza-eol-"))
+        datos = b"contenido\r\ncon cambio\r\n"
+        (raiz / "pagina.html").write_bytes(datos)
+        for estado, esperado in (("i/lf    w/crlf attr/\tpagina.html", datos.replace(b"\r\n", b"\n")),
+                                 ("i/crlf w/crlf attr/\tpagina.html", datos),
+                                 ("i/-text w/-text attr/\tpagina.html", datos), ("", datos)):
+            with self.subTest(estado=estado), patch.object(pulso.salud.subprocess, "run", return_value=SimpleNamespace(returncode=0, stdout=estado)):
+                self.assertEqual(pulso.salud.contenido_publicable(raiz, "pagina.html"), esperado)
+
+    def test_error_git_no_oculta_diferencias(self):
+        raiz = Path(tempfile.mkdtemp(prefix="avanza-eol-"))
+        (raiz / "pagina.html").write_bytes(b"cambio real\r\n")
+        with patch.object(pulso.salud.subprocess, "run", side_effect=OSError("sin git")):
+            self.assertEqual(pulso.salud.contenido_publicable(raiz, "pagina.html"), b"cambio real\r\n")
+
+
 class Pulso(unittest.TestCase):
     def test_ciclos_y_aisladas(self):
         g = {"a": {"b"}, "b": {"a", "c"}, "c": set(), "aislada": set()}

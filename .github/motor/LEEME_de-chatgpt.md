@@ -73,3 +73,7 @@ motor-pruebas.yml ejecuta pruebas y diagnóstico sin secretos. Conserva el infor
 Integrar mediante revisión y PR. Claude debe revisar estos cambios antes de main. Al combinar con ramas de contenido, conservar sus fuentes-revision.json y mejoras posteriores: este cambio parte de main y no incluye modificaciones aún pendientes en otras ramas. Un SIGUE antiguo no se hereda después de resolver conflictos o cambiar contenido.
 
 No sustituye el panel fijo de consultas de IA ni demuestra recomendaciones reales. No se instala suscripción, publicidad, compra de enlaces o solicitudes automáticas.
+
+## Huellas en Windows
+
+salud.py normaliza CRLF a LF para el cotejo en vivo solo si git ls-files --eol acredita i/lf y w/crlf. Conserva los bytes de binarios, contenido no versionado y archivos que ya usan CRLF en el propio repositorio. Así la conversión local de Windows no dispara una alarma falsa de despliegue. Las huellas por página del diagnóstico siguen identificando los bytes locales. La comprobación de publicación compara contra los bytes publicables.

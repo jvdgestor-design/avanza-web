@@ -265,6 +265,7 @@ def main(argv=None):
                     help="tope preventivo de entrada; caracteres, no tokens ni coste")
     a = ap.parse_args(argv)
     r = {"fecha_utc": dt.datetime.now(dt.timezone.utc).isoformat(), "modelo": MODELO,
+         "sha256_revisor": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
          "estado": "INCOMPLETO", "revision_valida": False, "lotes": [],
          "pendientes": [], "uso": {"input_tokens": 0, "output_tokens": 0}}
     codigo = 1
@@ -284,12 +285,14 @@ def main(argv=None):
             r["estado"], codigo = "SIN_CAMBIOS", 0
         else:
             encargos = planificar(cambiados, a.base, a.lote, a.max_caracteres, a.max_diff)
-            if len(encargos) > a.max_lotes or sum(len(c) for _, c in encargos) > a.max_caracteres_total:
-                raise EncargoExcesivo("Se supera el límite preventivo de llamadas/entrada; no se ha llamado a la API")
+            r["plan"] = {"lotes": len(encargos), "caracteres": sum(len(c) for _, c in encargos),
+                         "limite_lotes": a.max_lotes, "limite_caracteres": a.max_caracteres_total}
             for lote, contenido in encargos:
                 r["lotes"].append({"ficheros": lote, "estado": "PENDIENTE",
                                    "caracteres": len(contenido),
                                    "sha256_encargo": hashlib.sha256(contenido.encode()).hexdigest()})
+            if len(encargos) > a.max_lotes or r["plan"]["caracteres"] > a.max_caracteres_total:
+                raise EncargoExcesivo(f"Se supera el límite preventivo de llamadas/entrada: {r['plan']}; no se ha llamado a la API")
             if a.prueba:
                 r["estado"], codigo = "SOLO_PLAN", 0
                 for lote in r["lotes"]:
