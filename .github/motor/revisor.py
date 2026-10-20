@@ -109,7 +109,10 @@ def parejas(fichero):
 
 def armar(lote, diff, cambiados):
     """Encargo de un lote: normas, diff del lote y texto de sus páginas y parejas de idioma."""
-    paginas = list(dict.fromkeys(lote + [p for f in lote if f.endswith(".html") for p in parejas(f)]))
+    # Los lotes de sitemap/llms necesitan ver el destino HTML para poder contrastar sus afirmaciones.
+    contexto = [p for p in cambiados if p.endswith(".html")] if any(not p.endswith(".html") for p in lote) else []
+    revisables = list(dict.fromkeys(lote + contexto))
+    paginas = list(dict.fromkeys(revisables + [p for f in revisables if f.endswith(".html") for p in parejas(f)]))
     bloques = []
     for p in paginas:
         if p.endswith(".html") and os.path.isfile(p):
@@ -182,7 +185,9 @@ def main():
     encargos = []
     for lote in lotes:
         try:
-            d = git("diff", "--no-renames", "--unified=3", f"{a.base}...HEAD", "--", *lote)
+            contexto_diff = html if any(not p.endswith(".html") for p in lote) else []
+            rutas_diff = list(dict.fromkeys(lote + contexto_diff))
+            d = git("diff", "--no-renames", "--unified=3", f"{a.base}...HEAD", "--", *rutas_diff)
         except ErrorGit as e:
             print(limpio(f"ERROR: {e}"))
             if os.environ.get("GITHUB_ACTIONS"):
