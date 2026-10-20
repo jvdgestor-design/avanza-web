@@ -25,6 +25,7 @@ import html
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 import urllib.error
@@ -538,6 +539,24 @@ def descarga(url, intentos=3):
     return ultimo
 
 
+def contenido_publicable(raiz, fichero):
+    """Bytes para el cotejo: Git puede convertir LF del repo a CRLF solo al descargar en Windows."""
+    with open(os.path.join(raiz, fichero), "rb") as f:
+        datos = f.read()
+    if b"\r\n" not in datos:
+        return datos
+    try:
+        estado = subprocess.run(["git", "-C", str(raiz), "ls-files", "--eol", "--", fichero],
+                                capture_output=True, text=True, timeout=10)
+        # Solo la conversión de texto acreditada por Git; no normaliza binarios,
+        # ficheros cuyo propio repositorio usa CRLF ni contenido no versionado.
+        if estado.returncode == 0 and re.match(r"^i/lf\s+w/crlf\s", estado.stdout):
+            return datos.replace(b"\r\n", b"\n")
+    except (OSError, subprocess.TimeoutExpired):
+        pass  # conservar bytes originales: una duda no convierte la comprobación en éxito
+    return datos
+
+
 def comprueba_vivo(raiz, urls, errores, base, espera):
     objetivos = list(urls)
     for f in EXTRA_VIVO:
@@ -547,8 +566,7 @@ def comprueba_vivo(raiz, urls, errores, base, espera):
     objetivos = [u for u in dict.fromkeys(objetivos) if existe(raiz, fichero_de(u))]
     huellas = {}
     for u in objetivos:
-        with open(os.path.join(raiz, fichero_de(u)), "rb") as f:
-            huellas[u] = hashlib.sha256(f.read()).hexdigest()
+        huellas[u] = hashlib.sha256(contenido_publicable(raiz, fichero_de(u))).hexdigest()
 
     limite = time.time() + max(espera, 0) + 8 * 60
     pendientes = set(objetivos)

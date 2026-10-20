@@ -308,8 +308,12 @@ def main():
     if len(contenido) > TOPE_ENCARGO:
         contenido = contenido[:TOPE_ENCARGO] + "\n[ENCARGO RECORTADO]"
         recortes.append("encargo entero")
-    if recortes and gha:
-        anota("warning", f"Revisión BOE de {a.norma}: texto recortado ({', '.join(recortes)}); lo recortado se revisa a mano.")
+    if recortes:
+        msg = f"Revisión BOE de {a.norma}: cobertura incompleta por recortes ({', '.join(recortes)}); no se llama al modelo. Dividir el encargo o revisar el original completo."
+        di(msg)
+        if gha:
+            anota("error", msg)
+        return 1
     resumen = (f"{canon or ident} ({ident}): {len(paginas)} páginas, {len(pedidos)} artículos citados "
                f"({len(no_hallados)} no hallados), {sin_articulo} frases sin artículo, {len(contenido)} caracteres")
     if a.prueba:
@@ -339,7 +343,7 @@ def main():
             anota("error", f"Revisión BOE de {a.norma}: {msg}")
         return 1
     informe = "".join(b.get("text", "") for b in datos.get("content", []) if b.get("type") == "text").strip()
-    if not informe or datos.get("stop_reason") not in ("end_turn", "stop_sequence"):
+    if not informe or datos.get("stop_reason") != "end_turn":
         msg = f"Revisión BOE de {a.norma} incompleta: stop_reason={datos.get('stop_reason')}. No vale."
         di(msg)
         if gha:
@@ -351,7 +355,7 @@ def main():
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(f"# {cab}\n\n~~~~\n{informe.replace('~~~~', '~ ~ ~ ~')}\n~~~~\n")
-    m = re.search(r"VEREDICTO:\s*\**\s*(DESFASE|CASA)", informe[:300], re.I)
+    m = re.fullmatch(r"VEREDICTO: (DESFASE|CASA)", informe.splitlines()[0])
     discrepancias = re.search(r"DISCREPANCIAS\W*\n+\s*(?:\**\s*1[.)]|[-*•])", informe)
     if not m:
         estado = "SIN VEREDICTO"
