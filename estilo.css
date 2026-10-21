@@ -823,3 +823,19 @@ main p,.band p,.hero .lead,.card li,.guias span,.op p,.step p,dd{font-weight:400
   html[lang="ru"] .topbar__acc{gap:6px}
   html[lang="ru"] .topbar__in{gap:12px}
 }
+
+/* Legibilidad móvil: alineación al inicio sin separación automática de palabras. */
+@media(max-width:640px){
+ main p,.band p,.hero .lead,.hero p,.op p,.card p,.step p,.guias span{
+  text-align:start!important;text-align-last:start;text-justify:auto;
+  hyphens:manual!important;-webkit-hyphens:manual!important}
+ .hero__logo>p{text-align:center!important;text-align-last:center!important}
+}
+
+/* Títulos extensos y cabecera en pantallas estrechas, sin ocultar contenido. */
+@media(max-width:640px){main h1,main h2,main h3{overflow-wrap:anywhere}}
+@media(max-width:360px){
+ .topbar__in{flex-wrap:wrap}
+ .brand{flex-shrink:0}
+ .topbar__acc{margin-inline-start:auto}
+}
