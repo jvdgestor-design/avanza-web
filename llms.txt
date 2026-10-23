@@ -130,3 +130,7 @@
 - [Irse de España: impuestos al dejar de ser residente](https://grupoavanzaconsultores.es/irse-de-espana-impuestos-cambio-residencia.html): año de la salida (arts. 9.1 y 12.1 LIRPF), rentas pendientes (art. 14.3), impuesto de salida sobre acciones con aplazamiento, devolución y régimen UE/EEE (art. 95 bis; modelo 113) y paraísos fiscales (art. 8.2).
 - [Leaving Spain: taxes when you stop being resident](https://grupoavanzaconsultores.es/leaving-spain-tax-residence.html): English guide: the year you leave, pending income, the exit tax on shares and what you still declare in Spain. Written support in English.
 - [Отъезд из Испании: налоги при утрате резидентства](https://grupoavanzaconsultores.es/ru-otezd-iz-ispanii-nalogi.html): на русском: год отъезда по статьям 9.1 и 12.1 Закона об IRPF, отложенные доходы (статья 14.3), налог на выезд по акциям (статья 95 bis, форма 113) и декларации нерезидента.
+
+## Modelo 720 — ES / EN
+- [Modelo 720: bienes en el extranjero si vives en España](https://grupoavanzaconsultores.es/modelo-720-bienes-en-el-extranjero.html): quién informa de cuentas, valores, seguros e inmuebles en el extranjero, límite de 50.000 euros por bloque, plazo del 1 de enero al 31 de marzo, regla de los 20.000 euros y régimen sancionador general desde la Ley 5/2022.
+- [Form 720 Spain: declaring assets abroad](https://grupoavanzaconsultores.es/form-720-spain-assets-abroad.html): English guide to the Spanish report of foreign accounts, securities, insurance and property: thresholds, deadline, later years and late filing.
