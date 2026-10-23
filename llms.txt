@@ -139,3 +139,7 @@
 ## Pensión del Reino Unido — ES / EN
 - [Pensión del Reino Unido si vives en España](https://grupoavanzaconsultores.es/pension-reino-unido-residente-en-espana.html): dónde tributa según el Convenio España-Reino Unido (artículos 17, 18 y 22), pensiones de la función pública, declaración en la Renta (límite de 15.876 euros, artículo 96.3.c LIRPF) y formulario DT-Individual Spain de HMRC con el certificado de residencia.
 - [UK pension and living in Spain](https://grupoavanzaconsultores.es/uk-pension-tax-spain-resident.html): English guide for Spanish tax residents with a UK State Pension, work, private or government service pension: where it is taxed, how it is declared in Spain and how to stop UK tax being deducted.
+
+## Pensión de Alemania — ES / EN
+- [Pensión de Alemania si vives en España](https://grupoavanzaconsultores.es/pension-alemana-residente-en-espana.html): Convenio España-Alemania (artículos 17, 18 y 22 y Protocolo VI-VII): regla general de tributación en España, pensión de la seguridad social alemana desde 2015 con límite alemán del 5 % (10 % desde 2030), pensiones de funcionarios, deducción por doble imposición y obligación de declarar.
+- [German pension and living in Spain](https://grupoavanzaconsultores.es/german-pension-tax-spain-resident.html): English guide for Spanish tax residents with a German statutory, occupational, private or civil service pension: where it is taxed, the German 5% cap and how it is declared in Spain.
