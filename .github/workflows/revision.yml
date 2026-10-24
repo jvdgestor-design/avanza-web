@@ -26,6 +26,7 @@ jobs:
       - name: Revisión adversarial
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AVANZA_LOTE_REVISOR: "1"
         run: python3 .github/motor/revisor.py --base origin/main
       - name: Salud de la rama (solo repositorio)
         if: always()
