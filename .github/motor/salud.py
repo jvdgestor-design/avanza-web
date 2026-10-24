@@ -40,7 +40,8 @@ TEL_BUENO = "614365547"
 TEL_RUSO = "642457458"  # el de Anna: solo en las páginas rusas
 FORM_ACTION = ("https://script.google.com/macros/s/AKfycbyoZqAELFY_A94HTx9YJWfWz2ciYKSTpOVt"
                "-l4uaTbaq355slEA4b8_gP1bRqFfgfsB/exec")
-SIN_INDEXAR = {"404.html", "gracias.html"}
+SIN_INDEXAR = {"404.html", "gracias.html",
+               "yandex_0ee7317e43cf2bdd.html"}  # verificación de Yandex Webmaster: su contenido lo fija Yandex
 LEGALES = {"aviso-legal.html", "cookies.html", "privacidad.html"}  # sin JSON-LD a propósito
 BOTS = ["googlebot", "bingbot", "oai-searchbot", "chatgpt-user", "gptbot", "perplexitybot",
         "perplexity-user", "claude-searchbot", "claude-user", "claudebot", "applebot",
