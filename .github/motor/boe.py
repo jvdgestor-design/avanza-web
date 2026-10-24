@@ -68,6 +68,7 @@ SEMILLA = {
     "Real Decreto Legislativo 1/2010": "BOE-A-2010-10544", "Ley 20/2007": "BOE-A-2007-13409",
     "Real Decreto 1065/2007": "BOE-A-2007-15984", "Real Decreto 939/2005": "BOE-A-2005-14803",
     "Ley 39/2015": "BOE-A-2015-10565",
+    "Ley 5/2022": "BOE-A-2022-3712",
     "Código Civil": "BOE-A-1889-4763", "Código de Comercio": "BOE-A-1885-6627",
 }
 # Emisor que tiene que tener la norma (departamento del BOE).
@@ -85,6 +86,7 @@ TITULO_CONTIENE = {
     "Ley 13/1997": "tramo autonómico",         # Generalitat Valenciana
     "Ley 28/1990": "convenio económico",       # Navarra
     "Ley 22/2009": "financiación",
+    "Ley 5/2022": "asimetrías híbridas",       # de 9 de marzo: su disposición final cuarta da la DA 18.ª LGT vigente (modelo 720)
 }
 # Citas que se sabe que no están en legislación consolidada (no se vigilan, se dice por qué).
 NO_VIGILABLES = {
@@ -95,6 +97,12 @@ NO_VIGILABLES = {
     "Ley 5/2026": "ley valenciana de modificación (BOE-A-2026-19331) sin texto consolidado propio; se vigila en la Ley 13/1997",
     # Ley 5/2025, de 30 de mayo, de la Generalitat (BOE-A-2025-11959): fija el 9 % / 11 % de ITP desde el 1/6/2026 (art. 33).
     "Ley 5/2025": "ley valenciana de modificación (BOE-A-2025-11959) sin texto consolidado propio; se vigila en la Ley 13/1997",
+    # Comprobadas en el BOE el 24/10/2026 (diario_boe/xml.php):
+    "Orden HFP/1338/2023": "orden del modelo 151 (BOE-A-2023-25416, BOE 15/12/2023) sin texto consolidado; su vigencia la mira la pasada",
+    "BOE-A-2026-13573": "Orden HAC/623/2026 (modelos 210, 211 y 213), sin texto consolidado; su vigencia la mira la pasada",
+    "BOE-A-2026-8284": "Real Decreto 316/2026, que modifica el Real Decreto 1155/2024; sin texto consolidado propio: se vigila en el Real Decreto 1155/2024",
+    "BOE-A-2026-19632": "sentencia del Tribunal Supremo de 8/07/2026 sobre el Real Decreto 1155/2024; las sentencias no se consolidan: se vigila el Real Decreto 1155/2024",
+    "BOE-A-2024-18114": "sentencia del Tribunal Supremo de 15/07/2024 sobre el art. 12 del Real Decreto 1004/2015; las sentencias no se consolidan: se vigila el Real Decreto 1004/2015",
 }
 
 TIPOS = r"(Ley Orgánica|Real Decreto-ley|Real Decreto Legislativo|Real Decreto|Decreto Legislativo|Decreto-ley|Decreto|Ley)"
@@ -119,6 +127,8 @@ def normaliza_html(s):
     """Texto plano de la página, con los href conservados (para los enlaces BOE-A)."""
     hrefs = " ".join(re.findall(r'href="([^"]*boe\.es[^"]*)"', s))
     s = re.sub(r"<(script|style)\b.*?</\1>", " ", s, flags=re.S | re.I)
+    # Las etiquetas de bloque separan palabras («…201</li><li>Organic Law…»); las de línea, no.
+    s = re.sub(r"</?(?:p|div|li|ul|ol|h[1-6]|td|th|tr|table|br|dd|dt|dl|section|article|header|footer|nav|aside|figure|figcaption|blockquote|main)\b[^>]*>", " ", s, flags=re.I)
     s = re.sub(r"<[^>]+>", "", s)
     s = htmlmod.unescape(s).replace(" ", " ").replace(" ", " ")
     s = re.sub(r"[‐‑‒–—]", "-", s)
