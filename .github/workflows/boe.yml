@@ -22,6 +22,7 @@ on:
     branches: [main, "motor/**"]
     paths:
       - ".github/motor/boe.py"
+      - ".github/motor/tests/test_boe.py"
       - ".github/workflows/boe.yml"
 permissions:
   contents: read
@@ -31,6 +32,8 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - name: Pruebas del vigilante
+        run: python3 -B -m unittest discover -s .github/motor/tests -p "test_boe.py"
       - name: Estado de la ejecución anterior
         uses: actions/cache/restore@v4
         with:

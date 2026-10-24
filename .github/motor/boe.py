@@ -13,10 +13,13 @@
 
 También sale en rojo si el BOE no contesta, si una cita no se puede identificar o si se ha perdido el estado
 anterior: un verde tiene que significar que todo lo citado está vigilado y sin cambios.
+Los documentos conocidos sin texto consolidado se controlan en el XML del diario: fecha, texto,
+metadatos y referencias posteriores. Un fallo de esa fuente también da error.
 Solo biblioteca estándar de Python.
 """
 import argparse
 import glob
+import hashlib
 import html as htmlmod
 import json
 import os
@@ -26,6 +29,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 
 API = "https://www.boe.es/datosabiertos/api/legislacion-consolidada"
 
@@ -88,22 +92,29 @@ TITULO_CONTIENE = {
     "Ley 22/2009": "financiación",
     "Ley 5/2022": "asimetrías híbridas",       # de 9 de marzo: su disposición final cuarta da la DA 18.ª LGT vigente (modelo 720)
 }
-# Citas que se sabe que no están en legislación consolidada (no se vigilan, se dice por qué).
-NO_VIGILABLES = {
-    "Orden HFP/886/2023": "orden del modelo 721 que la vigilancia no localiza en la legislación consolidada (17/10/2026); su vigencia la mira la pasada",
-    "Orden HAC/623/2026": "orden de modelos sin texto consolidado en el BOE; su vigencia la mira la pasada",
-    # Ley 5/2026, de 31 de julio, de la Generalitat (BOE-A-2026-19331), que modifica la Ley 13/1997; la Ley 5/2026
-    # de la Comunidad de Madrid es otra. No tiene texto consolidado propio: sus cambios se ven en la Ley 13/1997.
-    "Ley 5/2026": "ley valenciana de modificación (BOE-A-2026-19331) sin texto consolidado propio; se vigila en la Ley 13/1997",
-    # Ley 5/2025, de 30 de mayo, de la Generalitat (BOE-A-2025-11959): fija el 9 % / 11 % de ITP desde el 1/6/2026 (art. 33).
-    "Ley 5/2025": "ley valenciana de modificación (BOE-A-2025-11959) sin texto consolidado propio; se vigila en la Ley 13/1997",
-    # Comprobadas en el BOE el 24/10/2026 (diario_boe/xml.php):
-    "Orden HFP/1338/2023": "orden del modelo 151 (BOE-A-2023-25416, BOE 15/12/2023) sin texto consolidado; su vigencia la mira la pasada",
-    "BOE-A-2026-13573": "Orden HAC/623/2026 (modelos 210, 211 y 213), sin texto consolidado; su vigencia la mira la pasada",
-    "BOE-A-2026-8284": "Real Decreto 316/2026, que modifica el Real Decreto 1155/2024; sin texto consolidado propio: se vigila en el Real Decreto 1155/2024",
-    "BOE-A-2026-19632": "sentencia del Tribunal Supremo de 8/07/2026 sobre el Real Decreto 1155/2024; las sentencias no se consolidan: se vigila el Real Decreto 1155/2024",
-    "BOE-A-2024-18114": "sentencia del Tribunal Supremo de 15/07/2024 sobre el art. 12 del Real Decreto 1004/2015; las sentencias no se consolidan: se vigila el Real Decreto 1004/2015",
+# Documentos sin texto consolidado propio: se vigilan en el XML oficial del diario.
+# Identidad y emisor comprobados el 24/10/2026. Se incluyen texto, metadatos y
+# analisis (correcciones, modificaciones y referencias posteriores) en la huella.
+# No se usa esta via como alternativa silenciosa para una cita desconocida.
+DOCUMENTOS_XML = {
+    "BOE-A-2024-18114": ("Sentencia de 15 de julio de 2024,", "1004/2015", "tribunal supremo"),
+    "BOE-A-2026-13573": ("Orden HAC/623/2026,", "3316/2010", "hacienda"),
+    "BOE-A-2026-19632": ("Sentencia de 8 de julio de 2026,", "1155/2024", "tribunal supremo"),
+    "BOE-A-2026-8284": ("Real Decreto 316/2026,", "1155/2024", "presidencia"),
+    "BOE-A-2023-25416": ("Orden HFP/1338/2023,", "modelo 151", "hacienda"),
+    "BOE-A-2023-17429": ("Orden HFP/886/2023,", "modelo 721", "hacienda"),
+    "BOE-A-2025-11959": ("Ley 5/2025, de 30 de mayo,", "generalitat", "valenciana"),
+    "BOE-A-2026-19331": ("Ley 5/2026, de 31 de julio,", "generalitat", "valenciana"),
 }
+CITAS_XML = {
+    "Orden HAC/623/2026": "BOE-A-2026-13573",
+    "Orden HFP/1338/2023": "BOE-A-2023-25416",
+    "Orden HFP/886/2023": "BOE-A-2023-17429",
+    "Ley 5/2025": "BOE-A-2025-11959",
+    "Ley 5/2026": "BOE-A-2026-19331",
+}
+SEMILLA.update(CITAS_XML)
+SEMILLA["Ley Orgánica 4/2000"] = "BOE-A-2000-544"
 
 TIPOS = r"(Ley Orgánica|Real Decreto-ley|Real Decreto Legislativo|Real Decreto|Decreto Legislativo|Decreto-ley|Decreto|Ley)"
 INGLES = {"Organic Law": "Ley Orgánica", "Royal Decree-Law": "Real Decreto-ley",
@@ -142,15 +153,16 @@ class SinRespuesta(Exception):
 FALLOS_RED = [0]
 
 
-def pide(url):
+def pide(url, formato="json"):
     if FALLOS_RED[0] >= 3:
         raise SinRespuesta("el BOE no contesta (tres fallos de red seguidos)")
-    req = urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": "AvanzaVigilanciaBOE/1.0"})
+    req = urllib.request.Request(url, headers={"Accept": "application/json" if formato == "json" else "application/xml", "User-Agent": "AvanzaVigilanciaBOE/1.0"})
     for i in range(3):
         try:
             with urllib.request.urlopen(req, timeout=30) as r:
                 FALLOS_RED[0] = 0
-                return json.loads(r.read().decode("utf-8"))
+                datos = r.read()
+                return json.loads(datos.decode("utf-8")) if formato == "json" else datos
         except urllib.error.HTTPError as e:
             if 400 <= e.code < 500:
                 raise LookupError(f"{e.code}")
@@ -205,7 +217,42 @@ def es_esa_norma(norma, titulo):
     return TITULO_CONTIENE.get(norma, "") in t
 
 
+def ficha_xml(boe_id):
+    """Ficha vigilable del diario BOE: nunca convierte una respuesta incompleta en verde."""
+    url = f"https://www.boe.es/diario_boe/xml.php?id={boe_id}"
+    try:
+        raiz = ET.fromstring(pide(url, formato="xml"))
+    except ET.ParseError as e:
+        raise LookupError(f"XML del diario no valido: {e}") from e
+    meta, texto, analisis = (raiz.find(x) for x in ("metadatos", "texto", "analisis"))
+    if raiz.tag != "documento" or meta is None or texto is None or analisis is None:
+        raise LookupError("XML del diario incompleto: faltan documento/metadatos/texto/analisis")
+    def campo(nombre):
+        nodo = meta.find(nombre)
+        return " ".join("".join(nodo.itertext()).split()) if nodo is not None else ""
+    titulo, departamento = campo("titulo"), campo("departamento")
+    comienzo, contiene, emisor = DOCUMENTOS_XML[boe_id]
+    if (campo("identificador") != boe_id or not titulo.startswith(comienzo)
+            or contiene not in titulo.lower() or emisor not in departamento.lower()):
+        raise LookupError(f"identidad del XML no coincide con {boe_id}: {titulo[:100]} / {departamento}")
+    fecha = raiz.get("fecha_actualizacion", "")
+    if not re.fullmatch(r"[0-9]{14}", fecha) or not "".join(texto.itertext()).strip():
+        raise LookupError("XML sin fecha de actualizacion valida o sin texto")
+    flags = {k: campo(k).upper() for k in ("estatus_derogacion", "vigencia_agotada", "judicialmente_anulada")}
+    if any(v not in ("S", "N") for v in flags.values()):
+        raise LookupError("XML sin indicadores completos de vigencia/derogacion/anulacion")
+    contenido = "\n".join(ET.canonicalize(ET.tostring(n, encoding="unicode"), strip_text=True)
+                          for n in (meta, texto, analisis))
+    return {"titulo": titulo, "actualizacion": fecha, "departamento": departamento,
+            "derogada": flags["estatus_derogacion"] == "S", "agotada": flags["vigencia_agotada"] == "S",
+            "anulada": flags["judicialmente_anulada"] == "S",
+            "huella": hashlib.sha256(contenido.encode("utf-8")).hexdigest(),
+            "fuente": url, "crudo": {"identificador": boe_id, "fecha_actualizacion": fecha}}
+
+
 def ficha(boe_id):
+    if boe_id in DOCUMENTOS_XML:
+        return ficha_xml(boe_id)
     datos = pide(f"{API}/id/{boe_id}/metadatos")
     return {
         "titulo": busca(datos, ["titulo"]) or "",
@@ -287,9 +334,6 @@ def main():
     previo_por_id = {v.get("id"): v for v in previo.values() if isinstance(v, dict) and v.get("id")}
 
     for clave, paginas in sorted(citas.items()):
-        if clave in NO_VIGILABLES:
-            avisos.append(f"{clave}: no se vigila ({NO_VIGILABLES[clave]})")
-            continue
         candidatos = [clave] if RX_ID.fullmatch(clave) else [SEMILLA.get(clave), "BUSCAR"]
         guardado = None if RX_ID.fullmatch(clave) else (previo.get(clave) or {}).get("id")
         hallado, motivo = None, ""
@@ -305,13 +349,10 @@ def main():
                         avisos.append(f"{clave}: buscador del BOE caído; se usa el identificador guardado {guardado}")
                     if not cand:
                         break
-                if cand in por_id:
-                    hallado = cand
-                    break
                 try:
-                    fi = ficha(cand)
+                    fi = por_id[cand]["ficha"] if cand in por_id else ficha(cand)
                 except LookupError as e:
-                    motivo = f"{cand} no está en la legislación consolidada ({e})"
+                    motivo = f"{cand} no se puede vigilar ({e})"
                     continue
                 if not fi["titulo"]:
                     motivo = f"la ficha {cand} no trae título. Muestra: {json.dumps(fi['crudo'])[:300]}"
@@ -325,7 +366,7 @@ def main():
                 if not fi["actualizacion"]:
                     motivo = f"la ficha {cand} no trae fecha de actualización"
                     continue
-                por_id[cand] = {"claves": set(), "paginas": set(), "ficha": fi}
+                por_id.setdefault(cand, {"claves": set(), "paginas": set(), "ficha": fi})
                 hallado = cand
                 break
         except SinRespuesta as e:
@@ -342,30 +383,43 @@ def main():
         fi = info["ficha"]
         nombres = " = ".join(sorted(info["claves"], key=lambda c: (c.startswith("BOE-A-"), c)))
         paginas = ", ".join(sorted(info["paginas"]))
-        antes = (previo_por_id.get(boe_id) or {}).get("actualizacion")
+        anterior = previo_por_id.get(boe_id) or {}
+        antes = anterior.get("actualizacion")
         guardar = fi["actualizacion"]
+        guardar_huella = fi.get("huella")
+        if guardar_huella and not anterior.get("huella"):
+            avisos.append(f"{nombres} ({boe_id}): comienza la vigilancia del XML oficial; se guarda su primera huella")
+        if fi.get("anulada"):
+            errores.append(f"{nombres} ({boe_id}): el BOE la da por judicialmente anulada. Revisar: {paginas}")
         if fi["derogada"] or fi["agotada"]:
             errores.append(f"{nombres} ({boe_id}): el BOE la da por {'derogada' if fi['derogada'] else 'con vigencia agotada'}. Revisar: {paginas}")
         if a.pendientes_desde and fi["actualizacion"][:8] >= a.pendientes_desde and not (
                 "todo" in revisado or boe_id in revisado or info["claves"] & revisado):
             antes = "pendiente de revisión"
-        if antes and fi["actualizacion"] != antes:
+        contenido_cambiado = bool(guardar_huella and anterior.get("huella") and guardar_huella != anterior["huella"])
+        if antes and (fi["actualizacion"] != antes or contenido_cambiado):
             if "todo" in revisado or boe_id in revisado or info["claves"] & revisado:
                 avisos.append(f"{nombres} ({boe_id}): actualizada ({fi['actualizacion']}), marcada como revisada")
             else:
+                guardar_huella = anterior.get("huella", guardar_huella)
                 guardar = antes  # sigue en rojo cada día hasta que se marque como revisada
-                cambios.append(f"{nombres} ({boe_id}): actualizada el {fi['actualizacion'][:8]} (antes: {antes[:20]}). "
+                detalle = "contenido o referencias del XML modificados" if contenido_cambiado else "fecha actualizada"
+                cambios.append(f"{nombres} ({boe_id}): {detalle}, {fi['actualizacion'][:8]} (antes: {antes[:20]}). "
                                f"Revisar contra el BOE: {paginas}")
         for c in info["claves"]:
             nuevo[c] = {"id": boe_id, "actualizacion": guardar, "titulo": fi["titulo"][:160]}
+            if guardar_huella:
+                nuevo[c].update(huella=guardar_huella, fuente=fi["fuente"])
         vigiladas.append(f"{nombres} ({boe_id}) · {fi['actualizacion'][:8]} · {fi['departamento'][:40]} · «{fi['titulo'][:80]}»")
 
     sin_estado = not previo
     if sin_estado and not a.inicial:
         errores.append("ESTADO PERDIDO: no hay estado de la ejecución anterior (caché caducada o rama nueva). "
                        "Si es la primera ejecución, lanzar `gh workflow run boe.yml -f inicial=true`.")
-    with open(a.estado, "w", encoding="utf-8") as f:
-        json.dump({**{k: v for k, v in previo.items() if k not in nuevo}, **nuevo}, f, ensure_ascii=False, indent=1)
+    # Una cache perdida no puede inicializarse sola y ponerse verde al dia siguiente.
+    if not sin_estado or a.inicial:
+        with open(a.estado, "w", encoding="utf-8") as f:
+            json.dump({**{k: v for k, v in previo.items() if k not in nuevo}, **nuevo}, f, ensure_ascii=False, indent=1)
 
     cab = ["# Vigilancia del BOE", "",
            f"{len(vigiladas)} normas vigiladas · {len(cambios)} cambiadas sin revisar · {len(errores)} errores"
