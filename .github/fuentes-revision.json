@@ -2,6 +2,68 @@
   "fecha_consulta": "2026-10-26",
   "fuentes": [
     {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20843#da",
+      "articulos": "Ley 36/2006, disposición adicional décima.1 y 3",
+      "fecha_consulta": "2026-10-26",
+      "texto": "1. Las referencias efectuadas en la normativa a paraísos fiscales, a países o territorios con los que no exista efectivo intercambio de información, o de nula o baja tributación se entenderán efectuadas a la definición de jurisdicción no cooperativa de la disposición adicional primera de esta Ley.\n3. Las referencias normativas efectuadas a Estados con los que exista un efectivo intercambio de información tributaria o en materia tributaria, se entenderán efectuadas a Estados con los que exista normativa sobre asistencia mutua en materia de intercambio de información tributaria en los términos previstos en la Ley 58/2003, de 17 de diciembre, General Tributaria, que sea de aplicación.",
+      "alcance": "DA10.1 obliga a interpretar el supuesto negativo de representación del art.10 IRNR como jurisdicción no cooperativa. No es sustitución textual en el consolidado del art.10. No sustituir globalmente las referencias positivas a intercambio/EEE: DA10.3 regula ese supuesto distinto.",
+      "ultima_actualizacion_publicada": "2021-07-10"
+    },
+    {
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2021-11473",
+      "articulos": "Ley 11/2021, artículo decimosexto.Dos: incorporación DA10 Ley36/2006",
+      "fecha_consulta": "2026-10-26",
+      "texto": "Dos. Se añade una disposición adicional décima, con la siguiente redacción:\n«Disposición adicional décima. Referencias normativas.\n1. Las referencias efectuadas en la normativa a paraísos fiscales, a países o territorios con los que no exista efectivo intercambio de información, o de nula o baja tributación se entenderán efectuadas a la definición de jurisdicción no cooperativa de la disposición adicional primera de esta Ley.",
+      "alcance": "Publicación oficial de la modificación que introduce la regla interpretativa. Espacios y saltos de línea normalizados; extracto parcial, sin completar apartados omitidos."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a10",
+      "articulos": "TRLIRNR, artículo10.1, tercer párrafo",
+      "fecha_consulta": "2026-10-26",
+      "texto": "Esta obligación será, asimismo, exigible a las personas o entidades residentes en países o territorios con los que no exista un efectivo intercambio de información tributaria de acuerdo con lo dispuesto en el apartado 3 de la disposición adicional primera de la Ley 36/2006, de 29 de noviembre, de medidas para la prevención del fraude fiscal, que sean titulares de bienes situados o de derechos que se cumplan o ejerciten en territorio español, excluidos los valores negociados en mercados secundarios oficiales.",
+      "alcance": "Literal histórico que debe leerse con DA10 Ley36/2006. La corrección no cambia requisitos del resto del art.10, plazo, aceptación, valores excluidos ni sanciones.",
+      "ultima_actualizacion_publicada": "2023-05-25"
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1998-8202#a13",
+      "articulos": "Ley13/1997 Generalitat, artículo13.Uno",
+      "fecha_consulta": "2026-10-26",
+      "texto": "Uno. El 9 % en las adquisiciones de inmuebles, así como en la constitución o cesión de derechos reales que recaigan sobre los mismos, salvo los derechos reales de garantía, excepto que sea aplicable alguno de los tipos previstos en los apartados siguientes.\nNo obstante, cuando el valor de los bienes inmuebles transmitidos o del derecho que se constituya o ceda sobre los mismos sea superior a un millón de euros, el tipo aplicable será el 11 %.",
+      "alcance": "Confirma 9% general y11% si valor>1M. No se cambia ningún tipo del candidato. Espacios tipográficos normalizados.",
+      "ultima_actualizacion_publicada": "2026-08-10"
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1998-8202#a14",
+      "articulos": "Ley13/1997 Generalitat, artículo14.Uno y Cuatro",
+      "fecha_consulta": "2026-10-26",
+      "texto": "Uno. El 0,1 por 100 en los siguientes casos:\na) Las primeras copias de las escrituras públicas que documenten adquisiciones de vivienda habitual.\nA estos efectos, se estará al concepto de vivienda habitual contemplado en la normativa estatal reguladora del Impuesto sobre la Renta de las Personas Físicas.\nCuatro. En los demás casos, el 1,4 por 100.",
+      "alcance": "Extractos no contiguos: se omite14.Uno.b y14.Dos/Tres. Confirma0,1% para vivienda habitual según concepto IRPF y1,4% residual. No es0,1% automático por nacionalidad ni1,4% universal para todos los documentos.",
+      "ultima_actualizacion_publicada": "2026-08-10"
+    },
+    {
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-11959",
+      "articulos": "Ley5/2025 Generalitat, artículos33 y34",
+      "fecha_consulta": "2026-10-26",
+      "texto": "Artículo 33.\nCon efectos para los hechos imponibles devengados desde el 1 de junio de 2026 inclusive, se modifica el apartado uno del artículo 13 de la Ley 13/1997, de 23 de diciembre, por la que se regula el tramo autonómico del impuesto sobre la renta de las personas físicas y restantes tributos cedidos, que pasará a tener la siguiente redacción:\nUno. El 9 % en las adquisiciones de inmuebles, así como en la constitución o cesión de derechos reales que recaigan sobre los mismos, salvo los derechos reales de garantía, excepto que sea aplicable alguno de los tipos previstos en los apartados siguientes.\nNo obstante, cuando el valor de los bienes inmuebles transmitidos o del derecho que se constituya o ceda sobre los mismos sea superior a un millón de euros, el tipo aplicable será el 11 %.\nArtículo 34.\nCon efectos para los hechos imponibles devengados desde el 1 de junio de 2026 inclusive, se modifica el apartado cuatro del artículo 14 de la Ley 13/1997, de 23 de diciembre, por la que se regula el tramo autonómico del impuesto sobre la renta de las personas físicas y restantes tributos cedidos, que pasará a tener la siguiente redacción:\n«Cuatro. En los demás casos, el 1,4 por 100.»",
+      "alcance": "Publicación oficial origen del9% y1,4%, ambos con efecto para hechos imponibles devengados desde1/6/2026. Se omiten rótulos internos y comillas de apertura/cierre del primer extracto; texto sustantivo literal con espacios normalizados."
+    },
+    {
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-20823",
+      "articulos": "RDL29/2026, artículo6.Primero; artículo6.Tercero.Dos; DF11.1",
+      "fecha_consulta": "2026-10-26",
+      "texto": "Primero. Con efectos desde 1 de enero de 2026, se modifica la disposición adicional quincuagésima quinta de la Ley 35/2006, de 28 de noviembre, del Impuesto sobre la Renta de las Personas Físicas y de modificación parcial de las leyes de los Impuestos sobre Sociedades, sobre la Renta de no Residentes y sobre el Patrimonio, que queda redactada de la siguiente forma:\n«Disposición adicional quincuagésima quinta. Imputación de rentas inmobiliarias durante los períodos impositivos 2023, 2024, 2025 y 2026.\nEl porcentaje de imputación del 1,1 por ciento previsto en el artículo 85 de esta ley resultará de aplicación en el caso de inmuebles localizados en municipios en los que los valores catastrales hayan sido revisados, modificados o determinados mediante un procedimiento de valoración colectiva de carácter general, de conformidad con la normativa catastral, siempre que hubieran entrado en vigor a partir de 1 de enero de 2012.»\nTercero. Con efectos desde 1 de enero de 2027, se introducen las siguientes modificaciones en la Ley 35/2006, de 28 de noviembre, del Impuesto sobre la Renta de las Personas Físicas y de modificación parcial de las leyes de los Impuestos sobre Sociedades, sobre la Renta de no Residentes y sobre el Patrimonio, en los siguientes términos:\nDos. Se modifica el apartado 1 del artículo 85, que queda redactado de la siguiente forma:\n1. En el supuesto de los bienes inmuebles urbanos, calificados como tales en el artículo 7 del texto refundido de la Ley del Catastro Inmobiliario, aprobado por el Real Decreto Legislativo 1/2004, de 5 de marzo, así como en el caso de los inmuebles rústicos con construcciones que no resulten indispensables para el desarrollo de explotaciones agrícolas, ganaderas o forestales, no afectos en ambos casos a actividades económicas, ni generadores de rendimientos del capital, excluida la vivienda habitual y el suelo no edificado, tendrá la consideración de renta imputada la cantidad que resulte de aplicar a la suma de los valores catastrales de los inmuebles a los que se refiere este apartado, los porcentajes que se indican en la siguiente escala:\nDisposición final decimoprimera. Entrada en vigor.\n1. Este real decreto-ley entrará en vigor el día siguiente al de su publicación en el «Boletín Oficial del Estado», salvo que alguna de sus disposiciones establezca otra cosa.",
+      "alcance": "Extractos no contiguos. Verificada tabla progresiva desde2027 a continuación de art85.1:0/0/100000/1,1;100000/1100/400000/1,5;500000/7100/500000/2;1000000/17100/enadelante/3. Se conserva la formulación condicional del HTML. Publicado7/10/2026, entrada8/10/2026 con excepciones: pendiente de convalidación no equivale a pendiente de entrada en vigor. No se añaden tablas ni asesoramiento nuevo al HTML.",
+      "fecha_publicacion": "2026-10-07"
+    },
+    {
+      "url": "https://www.congreso.es/es/busqueda-de-iniciativas?p_p_id=iniciativas&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_iniciativas_mode=mostrarDetalle&_iniciativas_legislatura=XV&_iniciativas_id=130%2F000060",
+      "articulos": "Iniciativa130/000060, XV Legislatura; estado y tramitación",
+      "fecha_consulta": "2026-10-26",
+      "texto": "Real Decreto-ley 29/2026, de 6 de octubre, por el que se adoptan medidas urgentes para la protección de la función social de la vivienda y la ampliación de la oferta de vivienda asequible. (130/000060)\nPresentado el 08/10/2026 , calificado el 13/10/2026\nSituación actual\nDiputación Permanente Convalidación\nTramitación seguida por la iniciativa\nDiputación Permanente Convalidación desde 13/10/2026",
+      "alcance": "Lectura de la captura oficial obtenida hoy por el coordinador y guardada en2026-10-26_Grupo-Avanza_RDL29-Congreso_CONTROL.txt; no se afirma extracción propia del navegador. GET propio al Congreso devolvió403. El estado descrito se limita a la consulta26/10/2026. No acreditar por ausencia una resolución posterior.",
+      "evidencia_local": "2026-10-26_Grupo-Avanza_RDL29-Congreso_CONTROL.txt"
+    },
+    {
       "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a9",
       "articulos": "9",
       "fecha_consulta": "2026-10-24",
