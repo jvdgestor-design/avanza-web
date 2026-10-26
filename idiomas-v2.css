@@ -1,0 +1,11 @@
+/* Grupo Avanza Consultores: enlaces de idioma existentes, ampliados a FR/DE (26/10/2026). Diseño aprobado intacto; cabecera en una línea. */
+.langsw:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.langnote{font-size:.85em;font-weight:400}
+@media(min-width:1001px) and (max-width:1680px){.langsw__full{display:none}.langsw__short{display:inline!important}}
+@media(min-width:1161px) and (max-width:1340px){.topnav{gap:9px}.topnav a{font-size:12.5px}.topbar__acc{gap:6px}.langsw{padding-inline:7px}}
+@media(min-width:1161px) and (max-width:1240px){.topnav{gap:7px}.topnav a{font-size:12px}}
+@media(max-width:1000px){.topbar__acc{gap:6px}.langsw{padding-inline:7px}}
+@media(min-width:641px) and (max-width:780px){.topbar .btn.topbar__cta{display:none}}
+@media(min-width:901px) and (max-width:1000px){.topbar__in{position:relative}.brand{flex-shrink:0}.js-nav .navtoggle{display:inline-flex}.js-nav .topnav{position:absolute;left:0;right:0;top:100%;width:auto;flex-direction:column;gap:0;align-items:stretch;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -30px rgba(20,30,55,.6);padding:8px 0;display:none}.js-nav .topnav.is-open{display:flex}.js-nav .topnav a{padding:13px 20px;font-size:16px;border-bottom:1px solid var(--line-soft)}.js-nav .topnav a:last-child{border-bottom:0}}
+@media(max-width:460px){.topbar__in{gap:8px}.brand{gap:8px;flex-shrink:0}.topbar__acc{gap:4px}.langsw{padding-inline:5px}.navtoggle{padding-inline:10px}.navtoggle__txt{display:none}}
+@media(max-width:380px){.topbar__in{flex-wrap:nowrap}.brand span{max-width:70px}}
