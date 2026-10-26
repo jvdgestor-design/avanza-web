@@ -1,5 +1,5 @@
 {
-  "fecha_consulta": "2026-10-24",
+  "fecha_consulta": "2026-10-26",
   "fuentes": [
     {
       "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a9",
@@ -356,7 +356,7 @@
       "alcance": "Texto literal del bloque leído hoy; actualizacion_bloque no equivale a actualización global de la norma."
     }
   ],
-  "alcance_fecha_consulta": "Montaje del paquete el 24/10/2026. Cada fuente conserva su fecha_consulta: no se atribuye lectura nueva a entradas históricas del 20/10. Las fuentes de pensiones y las añadidas de residencia/certificado fueron leídas hoy. lecturas_control_2026_10_24 identifica otras lecturas íntegras de hoy por artículo y actualización de bloque; evidencia literal íntegra conservada en los controles internos, distinta del extracto aportado al revisor.",
+  "alcance_fecha_consulta": "La fecha general corresponde a la incorporación de las lecturas de licencias del 26-10-2026. Las fuentes históricas conservan sus fechas originales; no se afirma una nueva comprobación de las demás normas.",
   "lecturas_control_2026_10_24": [
     {
       "norma": "LIRPF",
@@ -1029,6 +1029,51 @@
       "fecha_consulta": "2026-10-24",
       "ultima_actualizacion_bloque": "07/10/2026",
       "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2026-20823#df-11"
+    }
+  ],
+  "lecturas_licencias_2026_10_26": [
+    {
+      "fecha_consulta": "2026-10-26",
+      "organismo": "BOE",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-9626#a16",
+      "norma": "Ley 6/2014, artículos 16, 5.e y 18",
+      "metodo": "Texto consolidado leído en BOE; última actualización general publicada 10-08-2026",
+      "literal_art16_1": "El cambio de titularidad de la actividad deberá ser comunicado por el nuevo titular al órgano sustantivo ambiental competente en función del instrumento de intervención a que se sujete la actividad, debiendo efectuarse por escrito en el plazo máximo de un mes desde que se hubiera formalizado la transmisión, acompañando título o documento admisible en derecho que la acredite.",
+      "literal_art16_3": "La comunicación regulada en el presente artículo es independiente de la contemplada como obligación del anterior titular en el artículo 5.e de la presente ley.",
+      "sintesis_no_literal": "Art.16.1: el nuevo titular acepta obligaciones, responsabilidades y derechos. Art.16.2: acuse y, en AAI/licencia ambiental, resolución expresa previa acreditación de garantías cuando proceda. Art.18: el ayuntamiento es competente para licencia ambiental, declaración responsable ambiental y comunicación inocua."
+    },
+    {
+      "fecha_consulta": "2026-10-26",
+      "organismo": "BOE",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-20014#a12",
+      "norma": "Ley 14/2010, artículos 11 y 12",
+      "metodo": "Texto consolidado leído en BOE; última actualización general publicada 10-08-2026",
+      "literal_art12_1": "Cualquier cambio en la titularidad de un establecimiento público precisará de declaración formal ante el ayuntamiento de la localidad en el que aquél se ubique, sin que sea necesario el otorgamiento de nueva licencia municipal. Dicho cambio de titularidad deberá comunicarse en el plazo de un mes desde que se hubiera formalizado por cualquier medio de los admitidos en derecho.",
+      "literal_art12_2": "La notificación del cambio de titularidad deberá estar suscrita por el transmitente y por el adquirente del establecimiento. Caso contrario, dicha comunicación no tendrá validez para el ayuntamiento, respondiendo ambos solidariamente por el incumplimiento de esta obligación.",
+      "literal_art11": "Será necesaria una nueva licencia para modificar la clase de actividad, proceder a un cambio de emplazamiento o para realizar una reforma sustancial de los locales, establecimientos e instalaciones."
+    },
+    {
+      "fecha_consulta": "2026-10-26",
+      "organismo": "Ayuntamiento de Paterna, Sede Electrónica",
+      "url": "https://sede.paterna.es/opensiac/informacionpublica/tramitesinfo?tramitesInfoForm.id=251",
+      "metodo": "Lectura directa en Chrome de sesión conectada; el acceso del extractor web dio timeout. Captura textual conservada en control interno.",
+      "procedimiento": "CAMBIOS TITULARIDAD DE ACTIVIDADES",
+      "referencia": "PRO_EYU_CTITA",
+      "version_ficha": "2.1",
+      "fecha_actualizacion_ficha": "20/02/2018",
+      "literal_plazo_presentacion": "Máximo de un mes desde la formalización de la transmisión.",
+      "literal_sujetos": "a) Trasmitente de la licencia. b) Adquirente de la licencia.",
+      "literal_plazo_resolucion": "3 meses (art. 21.3 ley 39/2015).",
+      "literal_silencio": "Desestimatorio en el caso de las licencias ambientales.",
+      "limite": "No se extiende el silencio desestimatorio a todos los títulos ni se confunde el plazo de presentación con el de resolución."
+    },
+    {
+      "fecha_consulta": "2026-10-26",
+      "organismo": "Portal del Emprendedor de Paterna",
+      "url": "https://www.portalemprendedorpaterna.com/es/info/ver/tramites-ayuntamiento",
+      "metodo": "Lectura directa mediante navegador y extractor web",
+      "literal": "Si el local en el que se va a desarrollar la actividad ya dispone de licencia y la actividad va a ser la misma",
+      "sintesis_no_literal": "Su apartado CAMBIO DE TITULARIDAD DE LA ACTIVIDAD enlaza al trámite 251 de sede.paterna.es y explica que evita pedir licencia inicial. La página muestra servicio de asesoramiento a emprendedores en Plaza Ingeniero Castells,1, Paterna, e identidad municipal; no se usa como fuente normativa."
     }
   ]
 }
