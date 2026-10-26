@@ -1101,6 +1101,49 @@
       "procedimiento": "Comunicación de cambio de titularidad de actividades sujetas a comunicación de actividades inocuas",
       "literal_plazo": "Como mínimo un mes antes de pasar a ejercer la actividad la nueva persona titular.",
       "sintesis_no_literal": "Documento de cesión suscrito por anterior y nuevo titular; licencia/copia toma en consideración o expediente; silencio No procede; plazo resolución3meses. Lectura directa y resultado indexado coinciden."
+    },
+    {
+      "consulta": "2026-10-26",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565#a21",
+      "apartados_leidos": [
+        "21.1",
+        "21.3",
+        "24.2",
+        "24.3.b"
+      ],
+      "resultado": "Art21.1 obliga a resolver y notificar salvo sus excepciones (incluye derechos sujetos solo a declaración responsable o comunicación). Art21.3 plazo subsidiario3meses y diesaquo según iniciación. Art24.2 negativo habilita recurso procedente;24.3.b resoluciónposterior sin vinculación al silencio."
+    },
+    {
+      "consulta": "2026-10-26",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-9626",
+      "apartados_leidos": [
+        "5.e",
+        "16.1",
+        "16.2",
+        "16.3",
+        "18.1.a",
+        "18.1.b"
+      ],
+      "resultado": "Art5.e obligación comunicar transmisión. Art16.2 recibo y resolución expresa en AAI/licencia ambiental previa garantías cuando proceda. Art18.1.a Dirección General conselleria medioambiente tramita/resuelve AAI;18.1.b ayuntamientos tramitan resuelven licencia ambiental y reciben DRA/comunicación inocuas."
+    },
+    {
+      "consulta": "2026-10-26",
+      "url": "https://sede.valencia.es/sede/registro/procedimiento/LA.AI.20?lang=1",
+      "apartados_leidos": [
+        "Documentación",
+        "plazos"
+      ],
+      "resultado": "DNI nuevo titular y cedente; representación según persona jurídica/comunidad; copia documento notarial o privado transmisión. Un mes desde transmisión. Silencio No Procede;resolución No Aplica."
+    },
+    {
+      "consulta": "2026-10-26",
+      "url": "https://sede.valencia.es/sede/registro/procedimiento/LA.AI.10?lang=1",
+      "canal": "Chrome sede original",
+      "apartados_leidos": [
+        "Documentación",
+        "plazos"
+      ],
+      "resultado": "Documento cesión derechos actividad suscrito por anterior y nuevo titular. Mínimo un mes antes inicio. Resolución3meses;Silencio No Procede. Comprobación actual26Oct."
     }
   ]
 }
