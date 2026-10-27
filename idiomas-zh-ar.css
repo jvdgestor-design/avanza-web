@@ -1,0 +1,50 @@
+/* Grupo Avanza Consultores · escritura CJK, árabe y selector ampliado. */
+:root:lang(zh){
+  --sans:'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Segoe UI',sans-serif;
+  --serif:'Songti SC','SimSun','Noto Serif CJK SC',serif;
+}
+:root:lang(ar){
+  --sans:Tahoma,'Segoe UI','Noto Sans Arabic',Arial,sans-serif;
+  --serif:'Noto Naskh Arabic','Traditional Arabic',Tahoma,serif;
+}
+html:lang(zh) body,html:lang(ar) body{font-weight:400}
+html:lang(zh) :is(h1,h2,h3){line-height:1.5;letter-spacing:0}
+html:lang(ar) :is(h1,h2,h3){line-height:1.55;letter-spacing:0}
+html:lang(zh) :is(.eyebrow,.brand i),html:lang(ar) :is(.eyebrow,.brand i){letter-spacing:0}
+html:lang(zh) main p{text-justify:inter-character;word-break:normal;line-break:strict}
+html:lang(ar) main p{text-align-last:right;hyphens:none!important;-webkit-hyphens:none!important}
+html:lang(ar) :is(.eyebrow,.hero__note,.ops__fuente,figcaption){text-align:right}
+html:lang(ar) :is(.form-wrap .form__nota,#contacto .form-wrap .form__nota){text-align:right!important;text-align-last:right}
+html:lang(ar) .prose ul{padding-left:0;padding-right:22px}
+html:lang(ar) :is(th,td){text-align:right}
+html:lang(ar) summary{padding:22px 0 22px 48px}
+html:lang(ar) summary::after{right:auto;left:10px}
+html:lang(ar) .card__more a::after{content:' ←'}
+html:lang(ar) .skip{left:auto;right:-9999px}
+html:lang(ar) .skip:focus{right:auto}
+html:lang(ar) :is(input[type='email'],input[type='tel'],input[type='url']),
+html:lang(ar) a[href^='mailto:'],html:lang(ar) bdi[dir='ltr']{direction:ltr;unicode-bidi:isolate}
+html:lang(ar) :is(main,.prose,.contact,.form-wrap,.card){min-width:0}
+html:lang(ar) :is(main p,main li,main dd,main a),html:lang(zh) :is(main p,main li,main dd,main a){overflow-wrap:anywhere}
+html:lang(ar) .hero__grid>div:first-child{padding-left:80px!important;padding-right:var(--gutter)!important}
+@media(max-width:980px){html:lang(ar) .hero__grid>div:first-child{padding-inline:var(--gutter)!important}}
+@media(max-width:640px){html:lang(ar) summary{padding-left:38px}}
+
+/* Dos filas en móvil: todos los idiomas siguen accesibles sin recortar la marca. */
+.topbar__acc{min-width:0}
+@media(max-width:1680px){.langsw__full{display:none}.langsw__short{display:inline!important}}
+@media(max-width:640px){
+  .topbar__in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;flex-wrap:wrap}
+  .brand{grid-column:1/-1;justify-self:start}
+  .brand span{max-width:none}
+  .topbar__acc{grid-column:1/-1;display:flex;justify-content:space-between;width:100%;gap:4px;margin:0}
+  .langsw{font-size:12px;min-height:30px;display:inline-flex;align-items:center;padding-inline:7px;letter-spacing:0}
+  .navtoggle{min-height:36px;padding-inline:10px;margin-inline-start:auto}
+  .topnav{grid-column:1/-1}
+}
+/* Keep the contact form's spam trap outside the visible layout in RTL. */
+html:lang(ar) .form__hp {
+  position:absolute; left:auto; right:0; top:0; width:1px; height:1px;
+  margin:-1px; padding:0; overflow:hidden; clip:rect(0,0,0,0);
+  clip-path:inset(50%); white-space:nowrap;
+}
