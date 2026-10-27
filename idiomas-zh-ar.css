@@ -55,3 +55,23 @@ html:lang(ar) .form__hp {
 @media(max-width:980px){[dir="rtl"] .hero__logo{margin-left:calc(var(--gutter)*-1);margin-right:calc(var(--gutter)*-1);padding:56px var(--gutter)}}
 .hero .eyebrow{hyphens:none;-webkit-hyphens:none}
 [dir="rtl"] .hero__note{text-align:right;text-align-last:right}
+
+/* 27/10/2026: cabecera española con 6 idiomas (RU, EN, FR, DE, 中文, عربي). Mismo diseño, huecos más ajustados. */
+@media(min-width:1001px) and (max-width:1560px){
+  html[lang="es"] .topnav{gap:12px}
+  html[lang="es"] .topbar__acc{gap:5px}
+  html[lang="es"] .langsw{padding-inline:6px}
+  html[lang="es"] .topbar__cta{padding-inline:16px;letter-spacing:.04em}
+}
+@media(min-width:1001px) and (max-width:1300px){
+  html[lang="es"] .topnav{gap:9px}
+  html[lang="es"] .topnav a{font-size:12.5px}
+  html[lang="es"] .brand span i{letter-spacing:.1em}
+}
+@media(min-width:1001px) and (max-width:1260px){
+  html[lang="es"] .topnav{gap:7px}
+  html[lang="es"] .topnav a{font-size:12px}
+  html[lang="es"] .langsw{padding-inline:4px;font-size:11px}
+  html[lang="es"] .topbar__cta{padding-inline:12px;font-size:11.5px}
+}
+html[lang="es"] .brand,html[lang="es"] .brand span b{white-space:nowrap;flex-shrink:0}
