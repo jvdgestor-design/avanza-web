@@ -2,26 +2,40 @@
   "fecha_consulta": "2026-10-28",
   "fuentes": [
     {
-      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186#a65",
-      "articulos": "65.2,65.5 y82 (alcance garantías)",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214#a104",
+      "articulos": "104.5 y 106",
       "fecha_consulta": "2026-10-28",
-      "ultima_actualizacion_bloque65": "03/12/2016, vigente desde01/01/2017",
-      "texto": [
-        "Artículo 65. Aplazamiento y fraccionamiento del pago.",
-        "2. No podrán ser objeto de aplazamiento o fraccionamiento las siguientes deudas tributarias:",
-        "a) Aquellas cuya exacción se realice por medio de efectos timbrados.",
-        "b) Las correspondientes a obligaciones tributarias que deban cumplir el retenedor o el obligado a realizar ingresos a cuenta.",
-        "c) En caso de concurso del obligado tributario, las que, de acuerdo con la legislación concursal, tengan la consideración de créditos contra la masa.",
-        "d) Las resultantes de la ejecución de decisiones de recuperación de ayudas de Estado reguladas en el título VII de esta Ley.",
-        "e) Las resultantes de la ejecución de resoluciones firmes total o parcialmente desestimatorias dictadas en un recurso o reclamación económico-administrativa o en un recurso contencioso-administrativo que previamente hayan sido objeto de suspensión durante la tramitación de dichos recursos o reclamaciones.",
-        "f) Las derivadas de tributos que deban ser legalmente repercutidos salvo que se justifique debidamente que las cuotas repercutidas no han sido efectivamente pagadas.",
-        "g) Las correspondientes a obligaciones tributarias que deba cumplir el obligado a realizar pagos fraccionados del Impuesto sobre Sociedades.",
-        "Las solicitudes de aplazamiento o fraccionamiento a que se refieren los distintos párrafos de este apartado serán objeto de inadmisión.",
-        "5. La presentación de una solicitud de aplazamiento o fraccionamiento en período voluntario impedirá el inicio del período ejecutivo, pero no el devengo del interés de demora.",
-        "Las solicitudes en período ejecutivo podrán presentarse hasta el momento en que se notifique al obligado el acuerdo de enajenación de los bienes embargados. La Administración tributaria podrá iniciar o, en su caso, continuar el procedimiento de apremio durante la tramitación del aplazamiento o fraccionamiento. No obstante, deberán suspenderse las actuaciones de enajenación de los bienes embargados hasta la notificación de la resolución denegatoria del aplazamiento o fraccionamiento.",
-        "Artículo 82. Garantías para el aplazamiento y fraccionamiento del pago de la deuda tributaria."
-      ],
-      "alcance": "Pasajes oficiales leídos hoy. Solo sostienen aplazabilidad, inadmisión y efecto en voluntaria; no verifican el resto de normas de la página. No se incorporan como vigentes fuentes de días anteriores. No es un veredicto previo."
+      "texto": "No sujeción cuando no exista incremento acreditado; declaración y títulos de adquisición y transmisión. Transmisiones onerosas: transmitente; lucrativas: adquirente; vendedor persona física no residente: adquirente sustituto.",
+      "alcance": "Resumen de pasajes oficiales leídos hoy. No es un veredicto ni una transcripción literal. Cambio propuesto limitado a título, metadescripción, OG y Service.description; además se aclara «ruso solo por escrito» por orden vigente de Jose. Ningún otro texto del cuerpo cambia."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a33",
+      "articulos": "33.4.b y 38.1",
+      "fecha_consulta": "2026-10-28",
+      "texto": "Ganancia de transmisión de vivienda habitual exenta para mayores de 65 años o dependencia severa/gran dependencia. Reinversión de importe obtenido en nueva vivienda habitual; exención proporcional cuando sea parcial.",
+      "alcance": "Resumen de pasajes oficiales leídos hoy. No es un veredicto ni una transcripción literal. Cambio propuesto limitado a título, metadescripción, OG y Service.description; además se aclara «ruso solo por escrito» por orden vigente de Jose. Ningún otro texto del cuerpo cambia."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-6820#a41",
+      "articulos": "41 y 41 bis",
+      "fecha_consulta": "2026-10-28",
+      "texto": "Reinversión en dos años posteriores o compra en los dos anteriores; importe obtenido minorado en principal pendiente del préstamo de la transmitida. Reinversión parcial proporcional; intención declarada si distinto año; incumplimiento: complementaria e intereses. Vivienda habitual: tres años con excepciones justificadas y ocupación en doce meses con excepciones. Artículo 41 bis.3: vivienda habitual al transmitir o en los dos años previos; especialidad para traslado por edad/dependencia a centro especializado o familiar hasta tercer grado; especialidad cónyuge que abandona por separación/divorcio/nulidad.",
+      "alcance": "Resumen de pasajes oficiales leídos hoy. No es un veredicto ni una transcripción literal. Cambio propuesto limitado a título, metadescripción, OG y Service.description; además se aclara «ruso solo por escrito» por orden vigente de Jose. Ningún otro texto del cuerpo cambia."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2026-20823&p=20261007&tn=6",
+      "articulos": "Análisis y referencias posteriores, entrada en vigor y modificación 41 bis",
+      "fecha_consulta": "2026-10-28",
+      "texto": "BOE indica entrada en vigor 08/10/2026 y modificación del artículo 41 bis del Reglamento. La pestaña Análisis consultada hoy no muestra resolución de convalidación ni derogación; no se presume una votación no documentada.",
+      "alcance": "Resumen de pasajes oficiales leídos hoy. No es un veredicto ni una transcripción literal. Cambio propuesto limitado a título, metadescripción, OG y Service.description; además se aclara «ruso solo por escrito» por orden vigente de Jose. Ningún otro texto del cuerpo cambia."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a25",
+      "articulos": "25.2 y disposición adicional séptima",
+      "fecha_consulta": "2026-10-28",
+      "texto": "Retención/ingreso 3 % a cuenta por adquirente de inmueble transmitido por no residente sin establecimiento permanente. DA7: residentes UE o EEE con intercambio efectivo pueden aplicar exención por reinversión de anterior vivienda habitual española, proporcional si parcial; no elimina retención.",
+      "alcance": "Resumen de pasajes oficiales leídos hoy. No es un veredicto ni una transcripción literal. Cambio propuesto limitado a título, metadescripción, OG y Service.description; además se aclara «ruso solo por escrito» por orden vigente de Jose. Ningún otro texto del cuerpo cambia."
     }
-  ]
+  ],
+  "limites": "No se ha cotejado aún la ordenanza municipal de l’Eliana. No se acredita con este paquete la vigencia de sus tipos, coeficientes ni bonificaciones. La Puerta 5 debe evaluar la página completa y detener si falta fuente o hay reparos; ningún cambio normativo se incorpora por esta tanda."
 }
