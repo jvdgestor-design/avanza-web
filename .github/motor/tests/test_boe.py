@@ -142,6 +142,25 @@ class FlujoVigilancia(unittest.TestCase):
         self.assertIn("Ley 5/2022", salida)
 
 
+    def test_licencia_identifica_las_tres_leyes_sin_ocultar_emisor_incorrecto(self):
+        casos = (
+            ("Ley 14/2010", "BOE-A-2010-20014", "Ley 14/2010, de 3 de diciembre, de espectáculos públicos, actividades recreativas y establecimientos públicos.", "Comunitat Valenciana"),
+            ("Ley 6/2014", "BOE-A-2014-9626", "Ley 6/2014, de 25 de julio, de Prevención, Calidad y Control ambiental de Actividades en la Comunitat Valenciana.", "Comunitat Valenciana"),
+            ("Ley 7/1985", "BOE-A-1985-5392", "Ley 7/1985, de 2 de abril, Reguladora de las Bases del Régimen Local.", "Jefatura del Estado"),
+        )
+        for norma, ident, titulo, departamento in casos:
+            for emisor, esperado in ((departamento, 0), ("Otro emisor", 1)):
+                with self.subTest(norma=norma, emisor=emisor):
+                    ficha = {"titulo": titulo, "fecha_actualizacion": "20261028T080000Z",
+                             "departamento": emisor, "estatus_derogacion": "N", "vigencia_agotada": "N"}
+                    codigo, salida = self.ejecutar(xml=ficha, extra=("--inicial",),
+                                                  citas={norma: {"licencia-de-actividad-cambio-de-titularidad.html"}})
+                    self.assertEqual(codigo, esperado)
+                    self.assertEqual(boe.SEMILLA[norma], ident)
+                    if esperado:
+                        self.assertIn("1 errores", salida)
+
+
 class Transporte(unittest.TestCase):
     def setUp(self):
         self.anterior = boe.FALLOS_RED[0]
@@ -168,6 +187,15 @@ class IdentificacionNormas(unittest.TestCase):
         buena = "Ley 5/2022, de 9 de marzo, en relacion con las asimetr\u00edas h\u00edbridas."
         self.assertTrue(boe.es_esa_norma("Ley 5/2022", buena))
         self.assertFalse(boe.es_esa_norma("Ley 5/2022", "Ley 5/2022, de la Comunidad de Madrid, de tributos cedidos."))
+
+    def test_licencia_rechaza_leyes_homonimas_de_otra_materia(self):
+        for norma, titulo in (
+            ("Ley 14/2010", "Ley 14/2010, de 5 de julio, sobre las infraestructuras y los servicios de información geográfica en España."),
+            ("Ley 6/2014", "Ley 6/2014, de 7 de abril, por la que se modifica el texto articulado de la Ley sobre Tráfico, Circulación de Vehículos a Motor y Seguridad Vial."),
+            ("Ley 7/1985", "Ley 7/1985, de 14 de mayo, de ordenación de la función pública."),
+        ):
+            with self.subTest(norma=norma):
+                self.assertFalse(boe.es_esa_norma(norma, titulo))
 
     def test_extranjeria_es_organica_y_no_ley_ordinaria(self):
         titulo = "Ley Org\u00e1nica 4/2000, de 11 de enero, sobre extranjeros."

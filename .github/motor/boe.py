@@ -73,10 +73,16 @@ SEMILLA = {
     "Real Decreto 1065/2007": "BOE-A-2007-15984", "Real Decreto 939/2005": "BOE-A-2005-14803",
     "Ley 39/2015": "BOE-A-2015-10565",
     "Ley 5/2022": "BOE-A-2022-3712",
+    "Ley 14/2010": "BOE-A-2010-20014", "Ley 6/2014": "BOE-A-2014-9626",
+    "Ley 7/1985": "BOE-A-1985-5392",
     "Código Civil": "BOE-A-1889-4763", "Código de Comercio": "BOE-A-1885-6627",
 }
 # Emisor que tiene que tener la norma (departamento del BOE).
-DEPARTAMENTO_ESPERADO = {"Ley 5/2026": "valenciana", "Ley 13/1997": "valenciana"}
+DEPARTAMENTO_ESPERADO = {
+    "Ley 5/2026": "valenciana", "Ley 13/1997": "valenciana",
+    "Ley 14/2010": "valenciana", "Ley 6/2014": "valenciana",
+    "Ley 7/1985": "jefatura del estado",
+}
 # Normas cuyo título del BOE no empieza por su nombre corto: se comprueba este comienzo.
 TITULO_ESPERADO = {
     "Código Civil": "Real Decreto de 24 de julio de 1889",
@@ -85,6 +91,10 @@ TITULO_ESPERADO = {
 # Normas con el mismo número que otra (estatal y autonómica, por ejemplo): lo que tiene que decir su título
 # para ser la que citan las páginas (comprobado en el contexto de cada cita).
 TITULO_CONTIENE = {
+    # Contexto de licencia-de-actividad-cambio-de-titularidad.html; BOE leído el 28/10/2026.
+    "Ley 14/2010": "espectáculos públicos",
+    "Ley 6/2014": "control ambiental de actividades",
+    "Ley 7/1985": "bases del régimen local",
     "Ley 12/2002": "concierto económico",      # art. 25: Concierto con el País Vasco (no la del transporte por cable)
     "Ley 14/2013": "emprendedores",            # art. 18: legalización de libros (no la valenciana de 26/12/2013)
     "Ley 13/1997": "tramo autonómico",         # Generalitat Valenciana
