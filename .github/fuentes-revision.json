@@ -269,6 +269,69 @@
       ],
       "alcance": "Plazo de presentación para depósito desde la aprobación y documentación; redacción vigente del bloque desde el 30/12/2018, aplicable a ejercicios iniciados desde el 01/01/2018.",
       "sha256_texto_utf8": "6bffc7c58bba3074ec61bf830de33663e8262e91127ee91833266fe8bd9a665b"
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a3",
+      "articulos": "3.1",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. Los derechos y obligaciones concernientes a la relación laboral se regulan:",
+        "a) Por las disposiciones legales y reglamentarias del Estado.",
+        "b) Por los convenios colectivos.",
+        "c) Por la voluntad de las partes, manifestada en el contrato de trabajo, siendo su objeto lícito y sin que en ningún caso puedan establecerse en perjuicio del trabajador condiciones menos favorables o contrarias a las disposiciones legales y convenios colectivos antes expresados.",
+        "d) Por los usos y costumbres locales y profesionales."
+      ],
+      "alcance": "Fuentes de la relación laboral y límites de las condiciones contractuales."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a34",
+      "articulos": "34.1",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. La duración de la jornada de trabajo será la pactada en los convenios colectivos o contratos de trabajo.",
+        "La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual."
+      ],
+      "alcance": "Jornada pactada en convenio o contrato, dentro de los límites legales."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a84",
+      "articulos": "84.2",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "2. La regulación de las condiciones establecidas en un convenio de empresa, que podrá negociarse en cualquier momento de la vigencia de convenios colectivos de ámbito superior, tendrá prioridad aplicativa respecto del convenio sectorial estatal, autonómico o de ámbito inferior en las siguientes materias:",
+        "a) El abono o la compensación de las horas extraordinarias y la retribución específica del trabajo a turnos.",
+        "b) El horario y la distribución del tiempo de trabajo, el régimen de trabajo a turnos y la planificación anual de las vacaciones.",
+        "c) La adaptación al ámbito de la empresa del sistema de clasificación profesional de las personas trabajadoras.",
+        "d) La adaptación de los aspectos de las modalidades de contratación que se atribuyen por esta ley a los convenios de empresa.",
+        "e) Las medidas para favorecer la corresponsabilidad y la conciliación entre la vida laboral, familiar y personal.",
+        "f) Aquellas otras que dispongan los acuerdos y convenios colectivos a que se refiere el artículo 83.2.",
+        "Igual prioridad aplicativa tendrán en estas materias los convenios colectivos para un grupo de empresas o una pluralidad de empresas vinculadas por razones organizativas o productivas y nominativamente identificadas a que se refiere el artículo 87.1.",
+        "Los acuerdos y convenios colectivos a que se refiere el artículo 83.2 no podrán disponer de la prioridad aplicativa prevista en este apartado."
+      ],
+      "alcance": "Prioridad del convenio de empresa limitada a las materias enumeradas."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a86",
+      "articulos": "86.2, 86.3 y 86.4",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "2. Salvo pacto en contrario, los convenios colectivos se prorrogarán de año en año si no mediara denuncia expresa de las partes.",
+        "3. La vigencia de un convenio colectivo, una vez denunciado y concluida la duración pactada, se producirá en los términos que se hubiesen establecido en el propio convenio.",
+        "Durante las negociaciones para la renovación de un convenio colectivo, en defecto de pacto, se mantendrá su vigencia, si bien las cláusulas convencionales por las que se hubiera renunciado a la huelga durante la vigencia de un convenio decaerán a partir de su denuncia. Las partes podrán adoptar acuerdos parciales para la modificación de alguno o algunos de sus contenidos prorrogados con el fin de adaptarlos a las condiciones en las que, tras la terminación de la vigencia pactada, se desarrolle la actividad en el sector o en la empresa. Estos acuerdos tendrán la vigencia que las partes determinen.",
+        "4. Transcurrido un año desde la denuncia del convenio colectivo sin que se haya acordado un nuevo convenio, las partes deberán someterse a los procedimientos de mediación regulados en los acuerdos interprofesionales de ámbito estatal o autonómico previstos en el artículo 83, para solventar de manera efectiva las discrepancias existentes.",
+        "Asimismo, siempre que exista pacto expreso, previo o coetáneo, las partes se someterán a los procedimientos de arbitraje regulados por dichos acuerdos interprofesionales, en cuyo caso el laudo arbitral tendrá la misma eficacia jurídica que los convenios colectivos y solo será recurrible conforme al procedimiento y en base a los motivos establecidos en el artículo 91.",
+        "Sin perjuicio del desarrollo y solución final de los citados procedimientos de mediación y arbitraje, en defecto de pacto, cuando hubiere transcurrido el proceso de negociación sin alcanzarse un acuerdo, se mantendrá la vigencia del convenio colectivo."
+      ],
+      "alcance": "Prórroga, vigencia tras la denuncia y mantenimiento en defecto de pacto."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430#a90",
+      "articulos": "90.3",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "3. En el plazo máximo de veinte días desde la presentación del convenio en el registro se dispondrá por la autoridad laboral su publicación obligatoria y gratuita en el «Boletín Oficial del Estado» o en el correspondiente boletín oficial de la comunidad autónoma o de la provincia, en función del ámbito territorial del convenio."
+      ],
+      "alcance": "Publicación oficial del convenio según su ámbito territorial."
     }
   ]
 }
