@@ -1,27 +1,119 @@
 {
-  "fecha_consulta": "2026-10-28",
+  "fecha_consulta": "2026-10-29",
   "fuentes": [
     {
-      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186#a65",
-      "articulos": "65.2,65.5 y82 (alcance garantías)",
-      "fecha_consulta": "2026-10-28",
-      "ultima_actualizacion_bloque65": "03/12/2016, vigente desde01/01/2017",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186#a111",
+      "articulos": "111.1 y 111.2",
+      "fecha_consulta": "2026-10-29",
       "texto": [
-        "Artículo 65. Aplazamiento y fraccionamiento del pago.",
-        "2. No podrán ser objeto de aplazamiento o fraccionamiento las siguientes deudas tributarias:",
-        "a) Aquellas cuya exacción se realice por medio de efectos timbrados.",
-        "b) Las correspondientes a obligaciones tributarias que deban cumplir el retenedor o el obligado a realizar ingresos a cuenta.",
-        "c) En caso de concurso del obligado tributario, las que, de acuerdo con la legislación concursal, tengan la consideración de créditos contra la masa.",
-        "d) Las resultantes de la ejecución de decisiones de recuperación de ayudas de Estado reguladas en el título VII de esta Ley.",
-        "e) Las resultantes de la ejecución de resoluciones firmes total o parcialmente desestimatorias dictadas en un recurso o reclamación económico-administrativa o en un recurso contencioso-administrativo que previamente hayan sido objeto de suspensión durante la tramitación de dichos recursos o reclamaciones.",
-        "f) Las derivadas de tributos que deban ser legalmente repercutidos salvo que se justifique debidamente que las cuotas repercutidas no han sido efectivamente pagadas.",
-        "g) Las correspondientes a obligaciones tributarias que deba cumplir el obligado a realizar pagos fraccionados del Impuesto sobre Sociedades.",
-        "Las solicitudes de aplazamiento o fraccionamiento a que se refieren los distintos párrafos de este apartado serán objeto de inadmisión.",
-        "5. La presentación de una solicitud de aplazamiento o fraccionamiento en período voluntario impedirá el inicio del período ejecutivo, pero no el devengo del interés de demora.",
-        "Las solicitudes en período ejecutivo podrán presentarse hasta el momento en que se notifique al obligado el acuerdo de enajenación de los bienes embargados. La Administración tributaria podrá iniciar o, en su caso, continuar el procedimiento de apremio durante la tramitación del aplazamiento o fraccionamiento. No obstante, deberán suspenderse las actuaciones de enajenación de los bienes embargados hasta la notificación de la resolución denegatoria del aplazamiento o fraccionamiento.",
-        "Artículo 82. Garantías para el aplazamiento y fraccionamiento del pago de la deuda tributaria."
+        "1. Cuando la notificación se practique en el lugar señalado al efecto por el obligado tributario o por su representante, o en el domicilio fiscal de uno u otro, de no hallarse presentes en el momento de la entrega, podrá hacerse cargo de la misma cualquier persona que se encuentre en dicho lugar o domicilio y haga constar su identidad, así como los empleados de la comunidad de vecinos o de propietarios donde radique el lugar señalado a efectos de notificaciones o el domicilio fiscal del obligado o su representante.",
+        "2. El rechazo de la notificación realizado por el interesado o su representante implicará que se tenga por efectuada la misma."
       ],
-      "alcance": "Pasajes oficiales leídos hoy. Solo sostienen aplazabilidad, inadmisión y efecto en voluntaria; no verifican el resto de normas de la página. No se incorporan como vigentes fuentes de días anteriores. No es un veredicto previo."
+      "alcance": "Personas legitimadas para recibir notificaciones tributarias en los lugares y con las condiciones del artículo; efecto del rechazo por interesado o representante."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186#a62",
+      "articulos": "62.1 y 62.2",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. Las deudas tributarias resultantes de una autoliquidación deberán pagarse en los plazos que establezca la normativa de cada tributo.",
+        "2. En el caso de deudas tributarias resultantes de liquidaciones practicadas por la Administración, el pago en período voluntario deberá hacerse en los siguientes plazos:",
+        "a) Si la notificación de la liquidación se realiza entre los días uno y 15 de cada mes, desde la fecha de recepción de la notificación hasta el día 20 del mes posterior o, si éste no fuera hábil, hasta el inmediato hábil siguiente.",
+        "b) Si la notificación de la liquidación se realiza entre los días 16 y último de cada mes, desde la fecha de recepción de la notificación hasta el día cinco del segundo mes posterior o, si éste no fuera hábil, hasta el inmediato hábil siguiente."
+      ],
+      "alcance": "Plazos específicos de pago: no equivalen al cómputo general de un plazo expresado en días."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565#a30",
+      "articulos": "30.2,30.3,30.4 y 30.5",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "2. Siempre que por Ley o en el Derecho de la Unión Europea no se exprese otro cómputo, cuando los plazos se señalen por días, se entiende que éstos son hábiles, excluyéndose del cómputo los sábados, los domingos y los declarados festivos.",
+        "Cuando los plazos se hayan señalado por días naturales por declararlo así una ley o por el Derecho de la Unión Europea, se hará constar esta circunstancia en las correspondientes notificaciones.",
+        "3. Los plazos expresados en días se contarán a partir del día siguiente a aquel en que tenga lugar la notificación o publicación del acto de que se trate, o desde el siguiente a aquel en que se produzca la estimación o la desestimación por silencio administrativo.",
+        "4. Si el plazo se fija en meses o años, éstos se computarán a partir del día siguiente a aquel en que tenga lugar la notificación o publicación del acto de que se trate, o desde el siguiente a aquel en que se produzca la estimación o desestimación por silencio administrativo.",
+        "El plazo concluirá el mismo día en que se produjo la notificación, publicación o silencio administrativo en el mes o el año de vencimiento. Si en el mes de vencimiento no hubiera día equivalente a aquel en que comienza el cómputo, se entenderá que el plazo expira el último día del mes.",
+        "5. Cuando el último día del plazo sea inhábil, se entenderá prorrogado al primer día hábil siguiente."
+      ],
+      "alcance": "Reglas generales administrativas de cómputo, con sus excepciones expresas."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565#a43",
+      "articulos": "43.2",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "2. Las notificaciones por medios electrónicos se entenderán practicadas en el momento en que se produzca el acceso a su contenido.",
+        "Cuando la notificación por medios electrónicos sea de carácter obligatorio, o haya sido expresamente elegida por el interesado, se entenderá rechazada cuando hayan transcurrido diez días naturales desde la puesta a disposición de la notificación sin que se acceda a su contenido."
+      ],
+      "alcance": "Notificación al acceder; rechazo por falta de acceso en diez días naturales en los supuestos expresos."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a9",
+      "articulos": "9.1.a primer párrafo",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "a) Que permanezca más de 183 días, durante el año natural, en territorio español. Para determinar este período de permanencia en territorio español se computarán las ausencias esporádicas, salvo que el contribuyente acredite su residencia fiscal en otro país. En el supuesto de países o territorios considerados como paraíso fiscal, la Administración tributaria podrá exigir que se pruebe la permanencia en éste durante 183 días en el año natural."
+      ],
+      "alcance": "Regla de permanencia y facultad de exigir prueba; leer junto con adaptación de referencias de Ley36/2006 DA10.1."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20843#daprimera",
+      "articulos": "Disposición adicional primera.1",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. Tendrán la consideración de jurisdicciones no cooperativas los países y territorios, así como los regímenes fiscales perjudiciales, que se determinen por la Ministra de Hacienda mediante Orden Ministerial conforme a los criterios que se establecen en los apartados siguientes de este artículo."
+      ],
+      "alcance": "Definición de jurisdicciones no cooperativas."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20843#da",
+      "articulos": "Disposición adicional décima.1 y .3",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. Las referencias efectuadas en la normativa a paraísos fiscales, a países o territorios con los que no exista efectivo intercambio de información, o de nula o baja tributación se entenderán efectuadas a la definición de jurisdicción no cooperativa de la disposición adicional primera de esta Ley.",
+        "3. Las referencias normativas efectuadas a Estados con los que exista un efectivo intercambio de información tributaria o en materia tributaria, se entenderán efectuadas a Estados con los que exista normativa sobre asistencia mutua en materia de intercambio de información tributaria en los términos previstos en la Ley 58/2003, de 17 de diciembre, General Tributaria, que sea de aplicación."
+      ],
+      "alcance": "El apartado1 adapta referencias antiguas a la definición de jurisdicción no cooperativa; el3 trata otra adaptación de referencias. Redacción incorporada por Ley11/2021 art16.Dos, BOE-A-2021-11473."
+    },
+    {
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-13573",
+      "articulos": "Artículo primero.Dos: artículo5.b y 5.c.1.º",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "b) Rentas imputadas de los bienes inmuebles situados en territorio español a que se refiere el artículo 24.5 del texto refundido de la Ley del Impuesto sobre la Renta de no Residentes, aprobado por el Real Decreto Legislativo 5/2004, de 5 de marzo: el plazo de presentación e ingreso será del 1 de abril al 31 de diciembre del año natural siguiente a la fecha de devengo.",
+        "1.º Autoliquidaciones con resultado a ingresar: el plazo de presentación e ingreso será los veinte primeros días naturales de los meses de abril, julio, octubre y enero, en relación con las rentas cuya fecha de devengo esté comprendida en el trimestre natural anterior. No obstante, tratándose de autoliquidaciones con resultado a ingresar correspondientes a rendimientos de inmuebles arrendados o subarrendados, el plazo de presentación e ingreso será los veinte primeros días naturales del mes de abril del año siguiente al de devengo, tanto para declarar de forma separada como agrupada."
+      ],
+      "alcance": "Publicación oficial de los nuevos plazos de imputadas y alquiler con cuota a ingresar, con regla trimestral general para las restantes rentas."
+    },
+    {
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-13573",
+      "articulos": "Disposición final única.2.b",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "b) Por lo que respecta a la modificación de los plazos de presentación relativos a los modelos 210 del Impuesto sobre la Renta de no Residentes en los que se autoliquiden tanto rentas imputadas de los bienes inmuebles urbanos como rendimientos de inmuebles arrendados o subarrendados con resultado a ingresar, prevista en el apartado dos del artículo primero de esta orden:",
+        "– En el caso de rentas imputadas de bienes inmuebles urbanos y de rendimientos derivados del arrendamiento o subarrendamiento de inmuebles y se opte por declarar los rendimientos devengados en el año natural de forma agrupada, respecto de los devengos correspondientes a 2026.",
+        "– Tratándose de rentas derivadas del arrendamiento o subarrendamiento de inmuebles y se opte por declarar los rendimientos de forma separada, respecto de los devengos cuya fecha esté comprendida en el último trimestre natural de 2026."
+      ],
+      "alcance": "Primera aplicación diferenciada para devengos2026 agrupados/imputadas y último trimestre2026 separado."
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-19707#a5",
+      "articulos": "5.c.2.º y 5.c.3.º",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "2.º Autoliquidaciones de cuota cero: el plazo de presentación será del 1 al 20 de enero del año siguiente al de devengo de las rentas declaradas.",
+        "3.º Autoliquidaciones con resultado a devolver: podrán presentarse a partir del 1 de febrero del año siguiente al de devengo de las rentas declaradas y dentro del plazo de cuatro años contados desde el término del período de declaración e ingreso de la retención. Este plazo resultará aplicable a todas las autoliquidaciones, con independencia de si la devolución deriva de la norma interna o de un convenio para evitar la doble imposición, incluso en aquellos supuestos en los que una orden de desarrollo del convenio fije un plazo inferior. Se entenderá concluido el plazo para la presentación de la autoliquidación en la fecha de su presentación."
+      ],
+      "alcance": "Versión vigente desde24-06-2026, pasajes cotejados también con artículo primero.Dos de BOE-A-2026-13573. Cuota cero, apertura de devolución y comienzo del plazo de cuatro años."
+    },
+    {
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2026-14499",
+      "articulos": "Corrección de errores: artículo segundo.Uno de OrdenHAC/623/2026",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "En la página número 86873, en el apartado Uno del artículo segundo, en la posición correspondiente al campo «CÓDIGO» del Registro de tipo 2 «Registro de perceptor», de los diseños de registro del modelo 296, contenidos en el anexo III de la Orden EHA/3290/2008, de 6 de noviembre, donde dice:"
+      ],
+      "alcance": "Corrige posición de campo CÓDIGO del modelo296 (13 a135) y comilla de descripción. No modifica plazos del modelo210."
     }
   ]
 }
