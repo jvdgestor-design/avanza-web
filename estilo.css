@@ -82,6 +82,11 @@ h3{font-size:22px;font-weight:600}
 .topnav a[aria-current]{color:var(--ink)}
 @media(max-width:1000px){
   .topnav{order:3;width:100%;overflow-x:auto;gap:20px;padding-bottom:2px;font-size:13.5px;scrollbar-width:none}
+  .js-nav .topnav{
+    max-height:calc(100vh - 100% - 1px);
+    max-height:calc(100dvh - 100% - 1px);
+    overflow-y:auto;overscroll-behavior-y:contain;
+  }
   .topnav::-webkit-scrollbar{display:none}
   .topnav a{white-space:nowrap}
 }

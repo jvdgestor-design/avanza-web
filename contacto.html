@@ -194,17 +194,19 @@
   var bt=document.querySelector('.navtoggle'), nv=document.getElementById('topnav');
   if(bt&&nv){
     d.classList.add('js-nav');
+    function setMenuOpen(open){
+      bt.setAttribute('aria-expanded', String(open));
+      nv.classList.toggle('is-open', open);
+      bt.setAttribute('aria-label', open ? 'Cerrar el menú' : 'Abrir el menú');
+    }
     bt.addEventListener('click',function(){
-      var open=bt.getAttribute('aria-expanded')==='true';
-      bt.setAttribute('aria-expanded', String(!open));
-      nv.classList.toggle('is-open', !open);
-      bt.setAttribute('aria-label', open ? 'Abrir el menú' : 'Cerrar el menú');
+      setMenuOpen(bt.getAttribute('aria-expanded')!=='true');
     });
     nv.addEventListener('click',function(e){
-      if(e.target.tagName==='A'){ bt.setAttribute('aria-expanded','false'); nv.classList.remove('is-open'); }
+      if(e.target.closest('a')) setMenuOpen(false);
     });
     document.addEventListener('keydown',function(e){
-      if(e.key==='Escape'&&nv.classList.contains('is-open')){ bt.setAttribute('aria-expanded','false'); nv.classList.remove('is-open'); bt.focus(); }
+      if(e.key==='Escape'&&nv.classList.contains('is-open')){ setMenuOpen(false); bt.focus(); }
     });
   }
   if(mq.matches || !('IntersectionObserver' in window)) return;
