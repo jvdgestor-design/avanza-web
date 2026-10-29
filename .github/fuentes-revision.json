@@ -226,6 +226,49 @@
       ],
       "alcance": "Informacion administrativa del servicio de solicitud de prorroga; pasajes seleccionados, sin botones ni navegacion.",
       "sha256_texto_utf8": "77f8e1a37370835a049355ea1adbf82fe9be9e7c103f84f410077177c1473bea"
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-10544#a253",
+      "articulos": "Ley de Sociedades de Capital, artículo 253.1 y 253.2",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. Los administradores de la sociedad están obligados a formular, en el plazo máximo de tres meses contados a partir del cierre del ejercicio social, las cuentas anuales, el informe de gestión, que incluirá, cuando proceda, el estado de información no financiera, y la propuesta de aplicación del resultado, así como, en su caso, las cuentas y el informe de gestión consolidados.",
+        "2. Las cuentas anuales y el informe de gestión, incluido cuando proceda, el estado de información no financiera, deberán ser firmados por todos los administradores. Si faltare la firma de alguno de ellos se señalará en cada uno de los documentos en que falte, con expresa indicación de la causa."
+      ],
+      "alcance": "Plazo de formulación y firmas; redacción vigente del bloque desde el 30/12/2018, aplicable a ejercicios iniciados desde el 01/01/2018.",
+      "sha256_texto_utf8": "fbd71b5efa1f8ccf5a757f84dec83f10fef2492ebbba3cf423f64c1304cbf635"
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2013-10074#a18",
+      "articulos": "Ley 14/2013, artículo 18.1",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. Todos los libros que obligatoriamente deban llevar los empresarios con arreglo a las disposiciones legales aplicables, incluidos los libros de actas de juntas y demás órganos colegiados, o los libros registros de socios y de acciones nominativas, se legalizarán telemáticamente en el Registro Mercantil después de su cumplimentación en soporte electrónico y antes de que trascurran cuatro meses siguientes a la fecha del cierre del ejercicio."
+      ],
+      "alcance": "Soporte electrónico, presentación telemática y plazo general de legalización de libros obligatorios.",
+      "sha256_texto_utf8": "417febfe63cc753f8a3d53ffd6f740ba94d7f3d54a5eaf0c4b218a92cf2fde6f"
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-10544#a164",
+      "articulos": "Ley de Sociedades de Capital, artículo 164 completo",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. La junta general ordinaria, previamente convocada al efecto, se reunirá necesariamente dentro de los seis primeros meses de cada ejercicio, para, en su caso, aprobar la gestión social, las cuentas del ejercicio anterior y resolver sobre la aplicación del resultado.",
+        "2. La junta general ordinaria será válida aunque haya sido convocada o se celebre fuera de plazo."
+      ],
+      "alcance": "Plazo y objeto de la junta ordinaria; validez de su celebración fuera de plazo.",
+      "sha256_texto_utf8": "44725f15f6546b4bd8b4fc0811313ce1d0be6dcc247e86d114d6ef298f818a22"
+    },
+    {
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-10544#a279",
+      "articulos": "Ley de Sociedades de Capital, artículo 279.1 completo",
+      "fecha_consulta": "2026-10-29",
+      "texto": [
+        "1. Dentro del mes siguiente a la aprobación de las cuentas anuales, los administradores de la sociedad presentarán, para su depósito en el Registro Mercantil del domicilio social, certificación de los acuerdos de la junta de socios de aprobación de dichas cuentas, debidamente firmadas, y de aplicación del resultado, así como, en su caso, de las cuentas consolidadas, a la que se adjuntará un ejemplar de cada una de ellas.",
+        "Los administradores presentarán también el informe de gestión, que incluirá, cuando proceda, el estado de información no financiera, y el informe del auditor, cuando la sociedad esté obligada a auditoría por una disposición legal o esta se hubiera acordado a petición de la minoría o de forma voluntaria y se hubiese inscrito el nombramiento de auditor en el Registro Mercantil."
+      ],
+      "alcance": "Plazo de presentación para depósito desde la aprobación y documentación; redacción vigente del bloque desde el 30/12/2018, aplicable a ejercicios iniciados desde el 01/01/2018.",
+      "sha256_texto_utf8": "6bffc7c58bba3074ec61bf830de33663e8262e91127ee91833266fe8bd9a665b"
     }
   ]
 }
