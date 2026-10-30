@@ -31,11 +31,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Pruebas del vigilante
         run: python3 -B -m unittest discover -s .github/motor/tests -p "test_boe.py"
       - name: Estado de la ejecución anterior
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: boe-estado.json
           key: boe-estado-${{ github.run_id }}-${{ github.run_attempt }}
@@ -52,7 +52,7 @@ jobs:
           python3 .github/motor/boe.py --estado boe-estado.json --revisado "$REVISADO" $EXTRA
       - name: Guardar estado
         if: always()
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: boe-estado.json
           key: boe-estado-${{ github.run_id }}-${{ github.run_attempt }}
