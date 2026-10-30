@@ -57,7 +57,7 @@ def _tel(digitos):
 
 # --- datos buenos y malos (NAP-ENTIDAD.md) ---
 MALOS = [
-    ("Castell 4", re.compile(r"castell,?\s*(?:n[º.o]\s*)?4(?![\d/])", re.I)),
+    ("Castell 4", re.compile(r"castell[\s,.:\-(]{0,4}(?:n[º.o]{1,2}\s*)?0?4\b(?![\d/])", re.I)),
     ("961 58 56 56", _tel("961585656")),
     ("grupoavanzaconsultores.com", re.compile(r"grupoavanzaconsultores\.com\b", re.I)),
     ("«Cerrado permanentemente»", re.compile(r"cerrado\s+permanentemente|permanently\s+closed|"
@@ -150,9 +150,12 @@ class Cola:
                 continue
             if v.get("fuente") in self.fuentes_revisadas:
                 tipo = clave.split("|")[0]
-                if not tipo.startswith(("WEB-", "PRESENCIA")) and not tipo.endswith("-ENVIO"):
+                misma_fecha = tipo == "CADUCADO" and any(k.rsplit("|", 1)[0] == clave.rsplit("|", 1)[0]
+                                                         for k in self.vistos)   # pasa de «vence» a VENCIDO
+                if not tipo.startswith(("WEB-", "PRESENCIA")) and not tipo.endswith("-ENVIO") and not misma_fecha:
+                    fuente = re.sub(r"^(pagina|ilegible|mencion|pieza|indexa):", "", str(v.get("fuente", "")))
                     self.nuevas.append(f"- RESUELTO · ya no aparece ({tipo}): {v.get('que', '')} · "
-                                       f"{limpia(str(v.get('fuente', '')).split(':', 1)[-1], 200)} · {hoy}")
+                                       f"{limpia(fuente, 200)} · {hoy}")
                 del avisos[clave]
             elif (self.hoy - dt.date.fromisoformat(v["visto"])).days > 60:
                 del avisos[clave]  # hechos puntuales viejos (cambios de presencia, envíos…)
@@ -280,8 +283,7 @@ def plan_del_dia(cola, datos):
         if any(rondas.get(u) == hoy for u in lista):
             continue
         lista.sort(key=lambda u: (rondas.get(u, ""), urls.index(u)))
-        plan.add(lista[0])
-        rondas[lista[0]] = hoy
+        plan.add(lista[0])              # se marca como mirada en lee_tercero, al pedirla de verdad
     cola.plan = plan
     return plan
 
@@ -290,15 +292,17 @@ def lee_tercero(cola, url, tipo_ilegible, abre=None):
     """(estado, texto) de una página de un tercero, con robots y los avisos de ilegible.
     Marca la URL como revisada solo si la lectura vale (200, 404 o 410)."""
     cola.revisada(f"ilegible:{url}")
+    cola.pieza("rondas").setdefault("ultima_mirada", {})[url] = cola.hoy.isoformat()
     if not robots_permite(url, abre):
-        cola.aviso(tipo_ilegible, "robots.txt no deja leerla: comprobar a mano", url, fuente=f"ilegible:{url}")
+        cola.aviso(tipo_ilegible, "robots.txt no deja leerla: comprobar a mano", url, fuente=f"ilegible:{url}",
+                   clave=f"{tipo_ilegible}|{url}")
         return None, ""
     st, txt, err = descarga(url, abre=abre)
     if st in (200, 404, 410):
         cola.revisada(url)
         return st, txt
     cola.aviso(tipo_ilegible, f"no se pudo leer desde GitHub ({err or st}): comprobar a mano si se repite", url,
-               fuente=f"ilegible:{url}")
+               fuente=f"ilegible:{url}", clave=f"{tipo_ilegible}|{url}")
     return None, ""
 
 
@@ -379,20 +383,20 @@ FECHA = re.compile(
     rf"|(?P<m2>{_MES})\s+(?P<d2>\d{{1,2}}){_ORD},?\s+(?P<a2>20\d\d)"
     r"|(?P<d3>\d{1,2})[/.\-](?P<m3>\d{1,2})[/.\-](?P<a3>20\d\d)"
     r"|(?P<a4>20\d\d)-(?P<m4>\d\d)-(?P<d4>\d\d)", re.I)
-# Palabras de plazo (en cualquier punto de los 90 caracteres anteriores a la fecha).
+# Palabras de plazo (en la misma frase que la fecha, como palabra entera).
 PLAZO = re.compile(
-    r"(hasta|antes\s+del?|plazos?|venc\w*|finaliza\w*|termina\w*|último\s+día|ultimo\s+dia|a\s+más\s+tardar|"
-    r"fecha\s+límite|caduca\w*|until|deadlines?|expires?|no\s+later\s+than|ends?\s+on|before|"
-    r"jusqu['’]au|avant\s+le|date\s+limite|au\s+plus\s+tard|spätestens|frist\w*|bis\s+zum|"
-    r"не\s+позднее|срок\w*)", re.I)
-# Palabras cortas que solo cuentan pegadas a la fecha («by 30 June», «al 15 de…», «до 30 июня», «по 1…»).
-PEGADA = re.compile(r"(?:\bby|\bbis|\bal|\bto|[-–]|(?<!\w)до|(?<!\w)по)\s+$", re.I)
+    r"\b(hasta|antes\s+del?|plazos?|vence|vencen|vencerá|vencimiento|finaliza|finalizan|finalizará|termina|"
+    r"terminan|terminará|último\s+día|ultimo\s+dia|a\s+más\s+tardar|fecha\s+límite|caduca|caducan|caducará|"
+    r"until|deadlines?|expires?|no\s+later\s+than|ends?(?:\s+on)?|before|jusqu['’]au|avant\s+le|date\s+limite|"
+    r"au\s+plus\s+tard|spätestens|frist|bis\s+zum|не\s+позднее|срок\w*)\b", re.I)
+# Palabras cortas que solo cuentan pegadas a la fecha («by 30 June», «до 30 июня», «по 1…», «bis 30. Juni»).
+PEGADA = re.compile(r"(?:\bby|\bbis|(?<!\w)до|(?<!\w)по)\s+$", re.I)
 # Fecha que no es un plazo: de consulta o actualización, de entrada en vigor, o ya contada en pasado.
 NO_PLAZO = re.compile(
     r"(consultad\w*|consulted|checked|comprobad\w*|revisad\w*|actualizad\w*|updated|проверен\w*|leíd\w*|"
     r"\bfrom\b|desde|since|a\s+partir|\bab\b|depuis|introduced|boletín|\bboe\b|\bwas\b|\bera\b|\bfue\b|"
     r"истёк|истек|\bwar\b|était|expired|venció|terminó|finalizó|vencía\w*|terminaba\w*|finalizaba\w*|"
-    r"registro|registrad\w*|publicad\w*)", re.I)
+    r"registro|registrad\w*|publicad\w*|(?:published|posted|issued)(?:\s+before)?|aprobó|aprobad\w*|abrió|abierto)", re.I)
 INICIO_RANGO = re.compile(r"^\s*(?:al|hasta(?:\s+el)?|to|until|[-–]|au|bis|по|до)\s+\d", re.I)
 HISTORICO = re.compile(r"(antes\s+del?|before|avant\s+le)\s*$", re.I)
 RENTA = re.compile(r"(?:campaña\s+de\s+(?:la\s+)?renta|renta)\s+(20\d\d)\b", re.I)
@@ -419,7 +423,10 @@ def texto_visible(h):
 
 
 def _es_plazo(antes):
-    """La palabra de plazo más cercana a la fecha manda sobre la de «consultado/desde/fue…»."""
+    """Dentro de la misma frase, la palabra de plazo más cercana a la fecha manda sobre «consultado/desde/fue…»."""
+    cortes = [antes.rfind(x) for x in (". ", "; ", "? ", "! ")]
+    if max(cortes) >= 0:
+        antes = antes[max(cortes) + 2:]
     k = [m.end() for m in PLAZO.finditer(antes)]
     if PEGADA.search(antes):
         k.append(len(antes))
@@ -568,6 +575,8 @@ def pieza_boe(cola, gh=None):
     if not runs:
         raise RuntimeError("la Vigilancia del BOE no tiene ejecuciones terminadas")
     run = runs[0]
+    if run.get("conclusion") not in ("success", "failure", None):
+        raise RuntimeError(f"la última Vigilancia del BOE terminó como «{run.get('conclusion')}»: no vale para cerrar normas")
     for job in gh(f"repos/{repo}/actions/runs/{run['id']}/jobs").get("jobs", []):
         for an in gh(f"repos/{repo}/check-runs/{job['id']}/annotations?per_page=100"):
             msg = an.get("message") or ""
@@ -584,14 +593,11 @@ def pieza_menciones(cola, abre=None):
         return
     st, txt, err = descarga(rss, abre=abre)
     if st != 200:
-        cola.aviso("MOTOR", f"el RSS de Google Alerts no responde ({err or st})", "ALERTA_RSS",
-                   clave="MOTOR|menciones-rss")
-        return
+        raise RuntimeError(f"el RSS de Google Alerts no responde ({err or st})")
     try:
         raiz = ET.fromstring(txt)
     except ET.ParseError:
-        cola.aviso("MOTOR", "el RSS de Google Alerts no es XML", "ALERTA_RSS", clave="MOTOR|menciones-rss")
-        return
+        raise RuntimeError("el RSS de Google Alerts no es XML")
     pieza = cola.pieza("menciones")
     vistas = pieza.setdefault("vistas", [])     # en orden de llegada
     atom = "{http://www.w3.org/2005/Atom}"
@@ -621,8 +627,9 @@ def pieza_menciones(cola, abre=None):
             else:
                 estado = f"no se pudo leer ({st})"
         # Solo dominio y estado: el título de un tercero no entra en la cola.
-        tipo = "MENCION" if (malos or enlaza is False) else "MENCION-OK"
-        cola.aviso(tipo, f"mención nueva en {sitio} — {estado}", destino[:200], clave=f"MENCION|{destino}",
+        tipo = "MENCION" if (malos or enlaza is False) else ("MENCION-OK" if enlaza else "MENCION-SIN-LEER")
+        corto = sitio + re.sub(r"[^\w/.\-]", "", p.path)[:60]
+        cola.aviso(tipo, f"mención nueva en {sitio} — {estado}", corto, clave=f"MENCION|{destino}",
                    fuente=f"mencion:{destino}")
     pieza["vistas"] = vistas[-500:]
 
@@ -724,7 +731,7 @@ def main(argv=None):
         ejecuta_piezas(cola, lista, a.raiz, a.datos)
         nuevas = cola.cierra()
         for l in nuevas:
-            anota("error" if "URGENTE" in l or "MOTOR" in l else "notice", l[2:])
+            anota("error" if l.startswith(("- WEB-URGENTE", "- MOTOR")) else "notice", l[2:])
         print(f"{fichero}: {len(nuevas)} línea(s) nuevas")
         salida = salida or (1 if cola.urgente else 0)
     return salida

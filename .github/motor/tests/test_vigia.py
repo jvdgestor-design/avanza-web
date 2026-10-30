@@ -542,3 +542,83 @@ class Indexacion(Base):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SegundaVuelta(Base):
+    """Casos de la segunda revisión: cada uno falla con el código anterior."""
+
+    def test_falsos_positivos_de_caducados(self):
+        for t in ("Valor de los bienes al 31 de diciembre de 2025.", "Saldo al 31/12/2025.",
+                  "Del 3 al 5 de noviembre de 2026 hay jornadas.", "Ejercicio 2025 - 31 de diciembre de 2025.",
+                  "Puede deducir hasta 1.500 euros. La reforma se aprobó el 12 de junio de 2026.",
+                  "Meet friends on 15 March 2026.", "La terminal abrió el 3 de marzo de 2026.",
+                  "Article published before 15 March 2026."):
+            self.assertEqual(vigia.caducados_en(t, HOY), [], t)
+        self.assertEqual(len(vigia.caducados_en("Offer ends 2026-11-02.", HOY)), 1)
+
+    def test_castell_en_sus_formas(self):
+        for f in ("Castell. 4", "Castell: 4", "Castell - 4", "Castell n.º 4", "Castell (4)", "Castell 04"):
+            self.assertIn("dato falso: Castell 4", vigia.problemas_ficha(FICHA_BUENA + f), f)
+
+    def test_ficha_arreglada_se_resuelve_y_solo_fichas_no_marca_listados(self):
+        escribe(os.path.join(self.dir, "fichas.txt"), "https://dir.example/f\n")
+        escribe(os.path.join(self.dir, "listados.txt"), "https://otro.example/lista\n")
+        c = self.cola()
+        vigia.pieza_fichas(c, self.dir, abre=red({"https://dir.example/f": (200, FICHA_MALA)}))
+        c.cierra()
+        self.assertNotIn("https://otro.example/lista", c.pieza("rondas").get("ultima_mirada", {}))
+        vigia._robots.clear()
+        c = self.cola(HOY + dt.timedelta(days=1))
+        vigia.pieza_fichas(c, self.dir, abre=red({"https://dir.example/f": (200, FICHA_BUENA)}))
+        self.assertTrue([l for l in c.cierra() if l.startswith("- RESUELTO") and "Castell 4" in l])
+
+    def test_ilegible_con_codigos_distintos_es_un_solo_aviso(self):
+        escribe(os.path.join(self.dir, "fichas.txt"), "https://dir.example/f\n")
+        for dia, st in enumerate((503, 429, 503)):
+            vigia._robots.clear()
+            c = self.cola(HOY + dt.timedelta(days=dia))
+            vigia.pieza_fichas(c, self.dir, abre=red({"https://dir.example/f": (st, "")}))
+            self.assertEqual(len(c.cierra()), 1 if dia == 0 else 0, dia)
+
+    def test_boe_cancelado_no_cierra_normas(self):
+        c = self.cola()
+        with mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "a/b", "GH_TOKEN": "t"}):
+            with self.assertRaises(RuntimeError):
+                vigia.pieza_boe(c, gh=lambda r: {"workflow_runs": [{"id": 1, "conclusion": "cancelled"}]})
+
+
+class SegundaVueltaIndexacion(Indexacion):
+    def test_gsc_regresion_no_se_resuelve_sola(self):
+        raiz = self.web()
+        r = {indexa.GSC_INSPECT: (200, json.dumps({"inspectionResult": {"indexStatusResult": {"verdict": "NEUTRAL"}}})),
+             "https://www.googleapis.com/webmasters/v3/sites/": (200, json.dumps({"rows": []}))}
+        c = self.cola()
+        c.pieza("indexacion").setdefault("gsc", {})["indexacion"] = {indexa.BASE + "b.html": {"verdict": "PASS"}}
+        indexa.ejecuta(c, raiz, entorno={"GSC_KEY": "{}"}, abre=red(r), token_gsc="T")
+        self.assertTrue([l for l in c.cierra() if "GSC-NOINDEX" in l])
+        c = self.cola(HOY + dt.timedelta(days=1))
+        indexa.ejecuta(c, raiz, entorno={"GSC_KEY": "{}"}, abre=red(r), token_gsc="T")
+        self.assertFalse([l for l in c.cierra() if "RESUELTO" in l and "GSC-NOINDEX" in l])
+
+    def test_yandex_404_no_vacia_la_cola(self):
+        raiz = self.web()
+        c = self.cola()
+        c.pieza("indexacion")["urls"] = [indexa.BASE]
+        y = self.yandex_red(404)
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=y)
+        self.assertEqual(len(fallos), 1)
+        self.assertEqual(len(c.pieza("indexacion")["yandex"]["pendientes"]), 2)
+
+    def test_una_url_que_bing_no_conoce_no_para_la_medicion(self):
+        raiz = self.web()
+        b = indexa.BING
+        abre = self.bing_red()
+        mapa_extra = {b + "GetUrlInfo?url=" + urllib.parse.quote(indexa.BASE + "a.html", safe=""): (400, "{}")}
+        def abre2(req, timeout=None):
+            if req.full_url.startswith(next(iter(mapa_extra))):
+                raise urllib.error.HTTPError(req.full_url, 400, "x", {}, io.BytesIO(b"{}"))
+            return abre(req, timeout)
+        c = self.cola()
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"BING_API_KEY": "K"}, abre=abre2)
+        self.assertEqual(fallos, [])
+        self.assertIn("bing_en_indice", metr)

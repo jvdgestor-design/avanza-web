@@ -28,7 +28,7 @@ permissions:
   checks: read
 concurrency:
   # La horaria y la diaria no se esperan ni se cancelan entre sí: escriben ficheros distintos.
-  group: motor-sin-consumo-${{ github.event.schedule == '7 * * * *' && 'web' || 'diario' }}
+  group: motor-sin-consumo-${{ (github.event.schedule == '7 * * * *' || github.event.inputs.piezas == 'web') && 'web' || 'diario' }}
   cancel-in-progress: false
 jobs:
   vigia:
@@ -50,11 +50,12 @@ jobs:
           elif [ "$EVENTO" = "workflow_dispatch" ]; then P="${PEDIDAS:-$DIARIAS}"
           elif [ "$CRON" = "7 * * * *" ]; then P="web"
           else P="$DIARIAS"; fi
-          if ! printf '%s' "$P" | grep -Eq '^[a-z,]*$'; then echo "::error::piezas no válidas"; exit 1; fi
+          if [[ ! "$P" =~ ^[a-z,]*$ ]]; then echo "::error::piezas no válidas"; exit 1; fi
           echo "piezas=$P" >> "$GITHUB_OUTPUT"
           echo "Piezas: ${P:-ninguna (solo pruebas)}"
       - name: Pruebas del motor
         if: github.event_name != 'schedule'
+        continue-on-error: ${{ github.event_name == 'workflow_dispatch' }}   # a mano, que no bloquee una ejecución de emergencia
         run: python3 -B -m unittest discover -s .github/motor/tests -p "test_vigia.py"
       - name: Rama datos-motor
         if: steps.piezas.outputs.piezas != ''
@@ -113,7 +114,7 @@ jobs:
         run: |
           [ -d datos/motor ] || exit 0
           cd datos
-          git add -A motor
+          git add -A motor ':!motor/*.corrupto'
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -qm "motor: $(date -u +%Y-%m-%dT%H:%MZ) $PIEZAS"
           for i in 1 2 3; do

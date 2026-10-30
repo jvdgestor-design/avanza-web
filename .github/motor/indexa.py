@@ -169,10 +169,18 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
                    fuente="bing-envio")
     # 2) Medir. Rastreo: GetUrlInfo de una tanda que rota por el sitemap.
     orden = sorted(urls, key=lambda u: rastreo.get(u, {}).get("mirada", ""))
+    errores_info = 0
     for u in orden[:BING_REVISA_DIA]:
-        info = get("GetUrlInfo", url=u) or {}
+        try:
+            info = get("GetUrlInfo", url=u) or {}
+        except ErrorApi:
+            errores_info += 1          # una URL que Bing no conoce no para la medición del resto
+            rastreo[u] = {"mirada": hoy_iso, "rastreo": "", "http": None, "error": True}
+            continue
         ult = fecha_ms(info.get("LastCrawledDate"))
         rastreo[u] = {"mirada": hoy_iso, "rastreo": ult.isoformat() if ult else "", "http": info.get("HttpStatus")}
+    if errores_info == min(len(orden), BING_REVISA_DIA) and errores_info:
+        raise ErrorApi("Bing GetUrlInfo falla en todas las URL")
     if all(u in rastreo for u in urls):   # el dato solo vale cuando la rotación ha pasado por todo el sitemap
         metr["bing_sin_rastrear"] = sum(1 for u in urls if not rastreo[u]["rastreo"])
     stats = get("GetCrawlStats") or []
@@ -202,10 +210,12 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
                     dominios.add(dom)
             tot = det.get("TotalPages") or 1
             pg += 1
-        origen[p] = {"mirada": hoy_iso, "dominios": sorted(dominios)}
-    for p in list(origen):
-        if p not in paginas:
-            del origen[p]
+        if pg >= tot:                     # solo se guarda una página leída entera
+            origen[p] = {"mirada": hoy_iso, "dominios": sorted(dominios)}
+    if paginas:                       # una respuesta vacía no borra lo que ya sabíamos
+        for p in list(origen):
+            if p not in paginas:
+                del origen[p]
     todos = sorted({d for v in origen.values() for d in v["dominios"]})
     metr["bing_dominios"] = len(todos)
     antes = est.get("dominios")
@@ -276,14 +286,14 @@ def gsc(cola, raiz, urls, est, metr, clave_json, titulos, abre=None, token=None)
             raise ErrorApi(f"Search Console inspect: HTTP {st} {codigo(r)}".strip())
         res = (r or {}).get("inspectionResult", {}).get("indexStatusResult", {})
         verdicto, cobertura = res.get("verdict", ""), res.get("coverageState", "")
-        antes = estados.get(u, {}).get("verdict")
-        estados[u] = {"verdict": verdicto, "cobertura": cobertura, "mirada": hoy.isoformat()}
+        previo = estados.get(u, {})
+        regresion = verdicto != "PASS" and (previo.get("verdict") == "PASS" or previo.get("regresion", False))
+        estados[u] = {"verdict": verdicto, "cobertura": cobertura, "mirada": hoy.isoformat(), "regresion": regresion}
         if verdicto != "PASS":
             no_index.append(u)
-            if antes == "PASS":
+            if regresion:                 # sigue avisada hasta que vuelva a estar indexada
                 caidas.append(u)
-                cola.aviso("GSC-NOINDEX", f"Google la ha sacado del índice: {cobertura or verdicto}", u,
-                           fuente="gsc", clave=f"GSC-NOINDEX|{u}")
+                cola.aviso("GSC-NOINDEX", "Google la ha sacado del índice", u, fuente="gsc", clave=f"GSC-NOINDEX|{u}")
     est["sitio"] = sitio
     metr["gsc_indexadas"] = len(urls) - len(no_index)
     metr["gsc_sin_indexar"] = len(no_index)
@@ -360,11 +370,12 @@ def yandex(cola, urls, cambios, est, metr, token, abre=None):
             hechas.append(u)
         elif st == 429:                    # QUOTA_EXCEEDED: se sigue mañana
             break
-        elif st in (400, 404):             # INVALID_URL / HOST_NOT_VERIFIED: esa URL no, las demás sí
+        elif st == 400:                    # INVALID_URL: esa URL no, las demás sí
             malas.append(f"{fichero_de(u)} ({codigo(r) or st})")
             hechas.append(u)
-        else:
+        else:                              # 404 HOST_NOT_VERIFIED u otro: fallo del host, no se pierde nada
             raise ErrorApi(f"Yandex recrawl: HTTP {st} {codigo(r)}".strip())
+        est["pendientes"] = [x for x in pendientes if x not in hechas]
     est["pendientes"] = [u for u in pendientes if u not in hechas]
     if hechas:
         cola.aviso("YANDEX-ENVIO", f"{len(hechas) - len(malas)} URL en la cola de recrawl; quedan "
