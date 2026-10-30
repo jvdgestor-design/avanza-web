@@ -1,0 +1,1381 @@
+{
+ "avisos": {
+  "CADUCADO|ayudas-contratacion-paterna.html|2026-10-31|proximo": {
+   "avisado": "2026-10-30",
+   "fuente": "pagina:ayudas-contratacion-paterna.html",
+   "primera": "2026-10-30",
+   "que": "vence en 1 días (31/10/2026): «se presenta como máximo un mes después de la contratación y, en todo caso, hasta el 31 de",
+   "visto": "2026-10-30"
+  },
+  "FICHA-ILEGIBLE|https://ad.maptons.com/p/3878266030": {
+   "avisado": "2026-10-30",
+   "fuente": "ilegible:https://ad.maptons.com/p/3878266030",
+   "primera": "2026-10-30",
+   "que": "robots.txt no deja leerla: comprobar a mano",
+   "visto": "2026-10-30"
+  },
+  "FICHA-ILEGIBLE|https://www.cylex.es/paterna/grupo-avanza-consultores-14669606.html": {
+   "avisado": "2026-10-30",
+   "fuente": "ilegible:https://www.cylex.es/paterna/grupo-avanza-consultores-14669606.html",
+   "primera": "2026-10-30",
+   "que": "robots.txt no deja leerla: comprobar a mano",
+   "visto": "2026-10-30"
+  },
+  "FICHA-ILEGIBLE|https://www.paginasamarillas.es/f/paterna/grupo-avanza-consultores_236166997_000000001.html": {
+   "avisado": "2026-10-30",
+   "fuente": "ilegible:https://www.paginasamarillas.es/f/paterna/grupo-avanza-consultores_236166997_000000001.html",
+   "primera": "2026-10-30",
+   "que": "robots.txt no deja leerla: comprobar a mano",
+   "visto": "2026-10-30"
+  },
+  "FICHA|https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/|dato falso: Castell 4": {
+   "avisado": "2026-10-30",
+   "fuente": "https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/",
+   "primera": "2026-10-30",
+   "que": "dato falso: Castell 4",
+   "visto": "2026-10-30"
+  },
+  "MOTOR|indexa-gsc": {
+   "avisado": "2026-10-30",
+   "fuente": "indexa:gsc",
+   "primera": "2026-10-30",
+   "que": "gsc ha fallado: Search Console inspect: HTTP 403 PERMISSION_DENIED",
+   "visto": "2026-10-30"
+  },
+  "PRESENCIA-ILEGIBLE|https://www.guiagestoria.com/mejores-gestorias/paterna-valencia": {
+   "avisado": "2026-10-30",
+   "fuente": "ilegible:https://www.guiagestoria.com/mejores-gestorias/paterna-valencia",
+   "primera": "2026-10-30",
+   "que": "no se pudo leer desde GitHub (HTTP 403): comprobar a mano si se repite",
+   "visto": "2026-10-30"
+  },
+  "PRESENCIA-ILEGIBLE|https://www.lasmejoresasesorias.es/valencia/paterna": {
+   "avisado": "2026-10-30",
+   "fuente": "ilegible:https://www.lasmejoresasesorias.es/valencia/paterna",
+   "primera": "2026-10-30",
+   "que": "robots.txt no deja leerla: comprobar a mano",
+   "visto": "2026-10-30"
+  },
+  "SITEMAP|lastmod": {
+   "avisado": "2026-10-30",
+   "fuente": "sitemap.xml",
+   "primera": "2026-10-30",
+   "que": "139 URL con lastmod anterior al último commit: index.html (2026-10-27→2026-10-30), calendario-fiscal.html (2026-10-27→20",
+   "visto": "2026-10-30"
+  }
+ },
+ "cola": {
+  "2026-10-30": [
+   "- FICHA-ILEGIBLE · robots.txt no deja leerla: comprobar a mano · https://www.paginasamarillas.es/f/paterna/grupo-avanza-consultores_236166997_000000001.html · 2026-10-30",
+   "- FICHA · dato falso: Castell 4 · https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/ · 2026-10-30",
+   "- FICHA-ILEGIBLE · robots.txt no deja leerla: comprobar a mano · https://www.cylex.es/paterna/grupo-avanza-consultores-14669606.html · 2026-10-30",
+   "- FICHA-ILEGIBLE · robots.txt no deja leerla: comprobar a mano · https://ad.maptons.com/p/3878266030 · 2026-10-30",
+   "- PRESENCIA-ILEGIBLE · no se pudo leer desde GitHub (HTTP 403): comprobar a mano si se repite · https://www.guiagestoria.com/mejores-gestorias/paterna-valencia · 2026-10-30",
+   "- PRESENCIA-ILEGIBLE · robots.txt no deja leerla: comprobar a mano · https://www.lasmejoresasesorias.es/valencia/paterna · 2026-10-30",
+   "- CADUCADO · vence en 1 días (31/10/2026): «se presenta como máximo un mes después de la contratación y, en todo caso, hasta el 31 de octubre de 2026 inclusive.» (y 2 frase(s) más con la misma fecha) · ayudas-contratacion-paterna.html · 2026-10-30",
+   "- SITEMAP · 139 URL con lastmod anterior al último commit: index.html (2026-10-27→2026-10-30), calendario-fiscal.html (2026-10-27→2026-10-30), impuestos-todo-el-ano-online.html (2026-10-27→2026-10-30), asesoria-y-gestoria-en-valencia.html (2026-10-27→2026-10-30), asesoria-y-gestoria-en-paterna.html (2026-10-27→ · sitemap.xml · 2026-10-30",
+   "- MOTOR · gsc ha fallado: Search Console inspect: HTTP 403 PERMISSION_DENIED · indexa.py · 2026-10-30"
+  ]
+ },
+ "piezas": {
+  "indexacion": {
+   "bing": {
+    "dominios": [],
+    "enviadas": {},
+    "origen_enlaces": {},
+    "pendientes": [],
+    "rastreo": {
+     "https://grupoavanzaconsultores.es/": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": "2026-10-30"
+     },
+     "https://grupoavanzaconsultores.es/amazon-kdp-impuestos-espana.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/asesoria-contable-valencia.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/asesoria-fiscal-en-ruso-valencia.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/asesoria-fiscal-valencia.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/asesoria-fiscal-y-contable.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": "2026-10-06"
+     },
+     "https://grupoavanzaconsultores.es/asesoria-laboral-valencia.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-burjassot.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-leliana.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-paterna.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-valencia.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/autonomo-extranjero-en-espana.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/calendario-fiscal.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": "2026-10-08"
+     },
+     "https://grupoavanzaconsultores.es/constitucion-de-sociedades-y-tramites.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/contacto.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/cuando-prescribe-deuda-hacienda.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/donacion-de-dinero-desde-el-extranjero.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/donacion-de-padres-a-hijos-comunitat-valenciana.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/en.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/gestion-de-sociedades-valencia.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/gestoria-autonomos-valencia.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/gift-of-money-from-abroad-spain.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/herencia-en-espana-heredero-no-residente.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/impuestos-todo-el-ano-online.html": {
+      "http": 0,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/nominas-y-gestion-laboral.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/retribucion-del-administrador-de-una-sl.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/ru-darenie-deneg-iz-za-rubezha.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/sl-con-perdidas-causa-de-disolucion.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-10-30",
+      "rastreo": ""
+     }
+    }
+   },
+   "gsc": {
+    "indexacion": {}
+   },
+   "sha": "c0d594dce822f3b66a8bb5d08f63bfdf77e6f605",
+   "urls": [
+    "https://grupoavanzaconsultores.es/",
+    "https://grupoavanzaconsultores.es/calendario-fiscal.html",
+    "https://grupoavanzaconsultores.es/impuestos-todo-el-ano-online.html",
+    "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-valencia.html",
+    "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-paterna.html",
+    "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-burjassot.html",
+    "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-leliana.html",
+    "https://grupoavanzaconsultores.es/gestoria-autonomos-valencia.html",
+    "https://grupoavanzaconsultores.es/asesoria-fiscal-y-contable.html",
+    "https://grupoavanzaconsultores.es/asesoria-fiscal-valencia.html",
+    "https://grupoavanzaconsultores.es/nominas-y-gestion-laboral.html",
+    "https://grupoavanzaconsultores.es/asesoria-laboral-valencia.html",
+    "https://grupoavanzaconsultores.es/asesoria-contable-valencia.html",
+    "https://grupoavanzaconsultores.es/gestion-de-sociedades-valencia.html",
+    "https://grupoavanzaconsultores.es/retribucion-del-administrador-de-una-sl.html",
+    "https://grupoavanzaconsultores.es/sl-con-perdidas-causa-de-disolucion.html",
+    "https://grupoavanzaconsultores.es/herencia-en-espana-heredero-no-residente.html",
+    "https://grupoavanzaconsultores.es/donacion-de-dinero-desde-el-extranjero.html",
+    "https://grupoavanzaconsultores.es/gift-of-money-from-abroad-spain.html",
+    "https://grupoavanzaconsultores.es/ru-darenie-deneg-iz-za-rubezha.html",
+    "https://grupoavanzaconsultores.es/donacion-de-padres-a-hijos-comunitat-valenciana.html",
+    "https://grupoavanzaconsultores.es/constitucion-de-sociedades-y-tramites.html",
+    "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html",
+    "https://grupoavanzaconsultores.es/autonomo-extranjero-en-espana.html",
+    "https://grupoavanzaconsultores.es/amazon-kdp-impuestos-espana.html",
+    "https://grupoavanzaconsultores.es/cuando-prescribe-deuda-hacienda.html",
+    "https://grupoavanzaconsultores.es/asesoria-fiscal-en-ruso-valencia.html",
+    "https://grupoavanzaconsultores.es/contacto.html",
+    "https://grupoavanzaconsultores.es/en.html",
+    "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html",
+    "https://grupoavanzaconsultores.es/letter-from-spanish-tax-agency.html",
+    "https://grupoavanzaconsultores.es/inheritance-spain-non-resident-heir.html",
+    "https://grupoavanzaconsultores.es/ru.html",
+    "https://grupoavanzaconsultores.es/tramites.html",
+    "https://grupoavanzaconsultores.es/ru-tramites.html",
+    "https://grupoavanzaconsultores.es/ru-impuestos-todo-el-ano-online.html",
+    "https://grupoavanzaconsultores.es/carta-de-hacienda-requerimiento.html",
+    "https://grupoavanzaconsultores.es/aplazar-una-deuda-con-hacienda.html",
+    "https://grupoavanzaconsultores.es/modelo-347-operaciones-con-terceros.html",
+    "https://grupoavanzaconsultores.es/alta-de-autonomo-en-valencia.html",
+    "https://grupoavanzaconsultores.es/capitalizar-el-paro-pago-unico.html",
+    "https://grupoavanzaconsultores.es/residencia-fiscal-al-llegar-a-espana.html",
+    "https://grupoavanzaconsultores.es/tax-residence-moving-to-spain.html",
+    "https://grupoavanzaconsultores.es/ru-nalogovoe-rezidentstvo-pri-pereezde.html",
+    "https://grupoavanzaconsultores.es/regularizar-situacion-fiscal-extranjero.html",
+    "https://grupoavanzaconsultores.es/ru-uregulirovanie-nalogov-inostranec.html",
+    "https://grupoavanzaconsultores.es/regularising-taxes-spain-foreigner.html",
+    "https://grupoavanzaconsultores.es/comprar-vivienda-en-espana-extranjero.html",
+    "https://grupoavanzaconsultores.es/vender-inmueble-en-espana-no-residente.html",
+    "https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html",
+    "https://grupoavanzaconsultores.es/ru-prodazha-nedvizhimosti-nerezident.html",
+    "https://grupoavanzaconsultores.es/buying-property-spain-foreigner.html",
+    "https://grupoavanzaconsultores.es/ru-pokupka-nedvizhimosti-inostranec.html",
+    "https://grupoavanzaconsultores.es/ru-nasledstvo-v-ispanii-nerezident.html",
+    "https://grupoavanzaconsultores.es/ru-model-210-nerezidenty.html",
+    "https://grupoavanzaconsultores.es/ru-pismo-iz-nalogovoj-ispanii.html",
+    "https://grupoavanzaconsultores.es/modelo-210-no-residentes.html",
+    "https://grupoavanzaconsultores.es/cambiar-de-asesoria.html",
+    "https://grupoavanzaconsultores.es/licencia-de-actividad-cambio-de-titularidad.html",
+    "https://grupoavanzaconsultores.es/ayudas-contratacion-paterna.html",
+    "https://grupoavanzaconsultores.es/aviso-legal.html",
+    "https://grupoavanzaconsultores.es/privacidad.html",
+    "https://grupoavanzaconsultores.es/cookies.html",
+    "https://grupoavanzaconsultores.es/en-tramites.html",
+    "https://grupoavanzaconsultores.es/nie-tie-certificado-ue-espana.html",
+    "https://grupoavanzaconsultores.es/nie-tie-eu-registration-spain.html",
+    "https://grupoavanzaconsultores.es/ru-nie-tie-registraciya-ispaniya.html",
+    "https://grupoavanzaconsultores.es/renovar-residencia-trabajo-cuenta-ajena.html",
+    "https://grupoavanzaconsultores.es/renew-employed-residence-work-permit-spain.html",
+    "https://grupoavanzaconsultores.es/reagrupacion-familiar-espana.html",
+    "https://grupoavanzaconsultores.es/family-reunification-spain.html",
+    "https://grupoavanzaconsultores.es/residencia-larga-duracion-espana.html",
+    "https://grupoavanzaconsultores.es/long-term-residence-spain.html",
+    "https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html",
+    "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html",
+    "https://grupoavanzaconsultores.es/arraigo-residence-spain.html",
+    "https://grupoavanzaconsultores.es/residence-family-spanish-citizen.html",
+    "https://grupoavanzaconsultores.es/regimen-impatriados-ley-beckham.html",
+    "https://grupoavanzaconsultores.es/beckham-law-spain-special-tax-regime.html",
+    "https://grupoavanzaconsultores.es/certificado-residencia-fiscal-espana.html",
+    "https://grupoavanzaconsultores.es/spanish-tax-residence-certificate.html",
+    "https://grupoavanzaconsultores.es/irse-de-espana-impuestos-cambio-residencia.html",
+    "https://grupoavanzaconsultores.es/leaving-spain-tax-residence.html",
+    "https://grupoavanzaconsultores.es/ru-rezhim-bekhema-ispaniya.html",
+    "https://grupoavanzaconsultores.es/ru-spravka-o-nalogovom-rezidentstve.html",
+    "https://grupoavanzaconsultores.es/ru-otezd-iz-ispanii-nalogi.html",
+    "https://grupoavanzaconsultores.es/modelo-720-bienes-en-el-extranjero.html",
+    "https://grupoavanzaconsultores.es/form-720-spain-assets-abroad.html",
+    "https://grupoavanzaconsultores.es/ru-model-720-imushchestvo-za-rubezhom.html",
+    "https://grupoavanzaconsultores.es/pension-reino-unido-residente-en-espana.html",
+    "https://grupoavanzaconsultores.es/uk-pension-tax-spain-resident.html",
+    "https://grupoavanzaconsultores.es/pension-alemana-residente-en-espana.html",
+    "https://grupoavanzaconsultores.es/german-pension-tax-spain-resident.html",
+    "https://grupoavanzaconsultores.es/pension-francesa-residente-en-espana.html",
+    "https://grupoavanzaconsultores.es/french-pension-tax-spain-resident.html",
+    "https://grupoavanzaconsultores.es/pension-italiana-residente-en-espana.html",
+    "https://grupoavanzaconsultores.es/italian-pension-tax-spain-resident.html",
+    "https://grupoavanzaconsultores.es/de-ansaessigkeitsbescheinigung-spanien.html",
+    "https://grupoavanzaconsultores.es/de-beckham-regelung-spanien.html",
+    "https://grupoavanzaconsultores.es/de-britische-rente-wohnsitz-spanien.html",
+    "https://grupoavanzaconsultores.es/de-cookies.html",
+    "https://grupoavanzaconsultores.es/de-datenschutz.html",
+    "https://grupoavanzaconsultores.es/de-deutsche-rente-wohnsitz-spanien.html",
+    "https://grupoavanzaconsultores.es/de-erbschaft-spanien-erben-ausland.html",
+    "https://grupoavanzaconsultores.es/de-franzoesische-rente-wohnsitz-spanien.html",
+    "https://grupoavanzaconsultores.es/de-geldschenkung-ausland-spanien.html",
+    "https://grupoavanzaconsultores.es/de-immobilie-spanien-kaufen.html",
+    "https://grupoavanzaconsultores.es/de-immobilie-spanien-verkaufen-ausland.html",
+    "https://grupoavanzaconsultores.es/de-impressum.html",
+    "https://grupoavanzaconsultores.es/de-italienische-rente-wohnsitz-spanien.html",
+    "https://grupoavanzaconsultores.es/de-kontakt.html",
+    "https://grupoavanzaconsultores.es/de-modelo-210-nichtansaessige.html",
+    "https://grupoavanzaconsultores.es/de-modelo-720-auslandsvermoegen.html",
+    "https://grupoavanzaconsultores.es/de-schreiben-spanisches-finanzamt.html",
+    "https://grupoavanzaconsultores.es/de-steueransaessigkeit-umzug-spanien.html",
+    "https://grupoavanzaconsultores.es/de-steuern-spanien-nacherklaeren.html",
+    "https://grupoavanzaconsultores.es/de-wegzug-spanien-steuern.html",
+    "https://grupoavanzaconsultores.es/de.html",
+    "https://grupoavanzaconsultores.es/fr-acheter-bien-immobilier-espagne.html",
+    "https://grupoavanzaconsultores.es/fr-certificat-residence-fiscale.html",
+    "https://grupoavanzaconsultores.es/fr-confidentialite.html",
+    "https://grupoavanzaconsultores.es/fr-contact.html",
+    "https://grupoavanzaconsultores.es/fr-cookies.html",
+    "https://grupoavanzaconsultores.es/fr-courrier-agence-fiscale.html",
+    "https://grupoavanzaconsultores.es/fr-donation-argent-etranger.html",
+    "https://grupoavanzaconsultores.es/fr-mentions-legales.html",
+    "https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html",
+    "https://grupoavanzaconsultores.es/fr-modele-720-avoirs-etranger.html",
+    "https://grupoavanzaconsultores.es/fr-quitter-espagne-fiscalite.html",
+    "https://grupoavanzaconsultores.es/fr-regime-impatries-loi-beckham.html",
+    "https://grupoavanzaconsultores.es/fr-regulariser-impots-espagne.html",
+    "https://grupoavanzaconsultores.es/fr-residence-fiscale-espagne.html",
+    "https://grupoavanzaconsultores.es/fr-retraite-allemande-espagne.html",
+    "https://grupoavanzaconsultores.es/fr-retraite-britannique-espagne.html",
+    "https://grupoavanzaconsultores.es/fr-retraite-francaise-espagne.html",
+    "https://grupoavanzaconsultores.es/fr-retraite-italienne-espagne.html",
+    "https://grupoavanzaconsultores.es/fr-succession-heritier-non-resident.html",
+    "https://grupoavanzaconsultores.es/fr-vendre-bien-immobilier-non-resident.html",
+    "https://grupoavanzaconsultores.es/fr.html"
+   ],
+   "yandex": {
+    "host_id": "https:grupoavanzaconsultores.es:443",
+    "pendientes": [],
+    "user_id": 2456666644
+   }
+  },
+  "menciones": {
+   "vistas": []
+  },
+  "presencia": {
+   "salimos": {
+    "https://asesoriasgestorias.com/valencia/paterna/": false,
+    "https://buscador.asesorexcelente.com/valencia/paterna": true,
+    "https://paterna.comercioscomunitatvalenciana.com/es/mapa/index": true
+   }
+  },
+  "rondas": {
+   "ultima_mirada": {
+    "https://ad.maptons.com/p/3878266030": "2026-10-30",
+    "https://asesoriasgestorias.com/valencia/paterna/": "2026-10-30",
+    "https://buscador.asesorexcelente.com/valencia/paterna": "2026-10-30",
+    "https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/": "2026-10-30",
+    "https://expato.eu/ru/directory/gestoria/c101": "2026-10-30",
+    "https://paterna.comercioscomunitatvalenciana.com/es/mapa/index": "2026-10-30",
+    "https://valencia.comercioscomunitatvalenciana.com/es/comercios/view/grupo-avanza-consultores": "2026-10-30",
+    "https://www.cylex.es/paterna/grupo-avanza-consultores-14669606.html": "2026-10-30",
+    "https://www.emprenemjunts.es/?op=36&id=45578": "2026-10-30",
+    "https://www.gestorias.es/valencia/valencia/grupo-avanza-consultores-20012": "2026-10-30",
+    "https://www.guiagestoria.com/mejores-gestorias/paterna-valencia": "2026-10-30",
+    "https://www.lasmejoresasesorias.es/valencia/paterna": "2026-10-30",
+    "https://www.paginasamarillas.es/f/paterna/grupo-avanza-consultores_236166997_000000001.html": "2026-10-30"
+   }
+  },
+  "titulos": {
+   "404.html": {
+    "desde": "2026-10-30",
+    "huella": "fffa820453b3",
+    "titulo": "Página no encontrada | Grupo Avanza Consultores"
+   },
+   "alta-de-autonomo-en-valencia.html": {
+    "desde": "2026-10-30",
+    "huella": "252620a22e08",
+    "titulo": "Alta de autónomo en Valencia | Hacienda y Seguridad Social"
+   },
+   "amazon-kdp-impuestos-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "1240bb0a3d38",
+    "titulo": "Amazon KDP e impuestos en España: IRPF, IVA y autónomo"
+   },
+   "aplazar-una-deuda-con-hacienda.html": {
+    "desde": "2026-10-30",
+    "huella": "74be7b2e51b5",
+    "titulo": "Aplazar o fraccionar una deuda con Hacienda | Grupo Avanza"
+   },
+   "ar-buy-property-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-contact.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-cookies.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-gift-money-abroad.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-impatriate-regime.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-inheritance-non-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-leave-spain-tax.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-legal.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-modelo-210-non-residents.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-modelo-720-assets-abroad.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-privacy.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-regularize-taxes-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-sell-property-non-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-tax-office-letter.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-tax-residence-certificate.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-tax-residence-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar-thanks.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "ar.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "arraigo-espana.html": {
+    "desde": "2026-10-27",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "arraigo-residence-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "b2985b9dd609",
+    "titulo": "Arraigo in Spain: tax residence and Renta | Grupo Avanza"
+   },
+   "asesoria-contable-valencia.html": {
+    "desde": "2026-10-30",
+    "huella": "0d6f795691ec",
+    "titulo": "Asesoría contable en Valencia | Grupo Avanza Consultores"
+   },
+   "asesoria-fiscal-en-ruso-valencia.html": {
+    "desde": "2026-10-30",
+    "huella": "9db573b7c9c3",
+    "titulo": "Asesoría fiscal en ruso en Valencia | Grupo Avanza"
+   },
+   "asesoria-fiscal-valencia.html": {
+    "desde": "2026-10-30",
+    "huella": "a1cccbe291d3",
+    "titulo": "Asesoría fiscal en Valencia | Grupo Avanza Consultores"
+   },
+   "asesoria-fiscal-y-contable.html": {
+    "desde": "2026-10-30",
+    "huella": "9770eda952ea",
+    "titulo": "Asesoría fiscal y contable online | Autónomos y pymes"
+   },
+   "asesoria-laboral-valencia.html": {
+    "desde": "2026-10-30",
+    "huella": "475160cd6370",
+    "titulo": "Asesoría laboral en Valencia | Grupo Avanza Consultores"
+   },
+   "asesoria-y-gestoria-en-burjassot.html": {
+    "desde": "2026-10-30",
+    "huella": "8447e55b9b10",
+    "titulo": "Asesoría y gestoría en Burjassot: fiscal, contable y laboral"
+   },
+   "asesoria-y-gestoria-en-leliana.html": {
+    "desde": "2026-10-30",
+    "huella": "e1c3c5154478",
+    "titulo": "Asesoría y gestoría en l'Eliana: fiscal, contable y laboral"
+   },
+   "asesoria-y-gestoria-en-paterna.html": {
+    "desde": "2026-10-30",
+    "huella": "38b98d13ab72",
+    "titulo": "Asesoría y gestoría en Paterna | Grupo Avanza"
+   },
+   "asesoria-y-gestoria-en-valencia.html": {
+    "desde": "2026-10-30",
+    "huella": "915be68772a2",
+    "titulo": "Asesoría y gestoría en Valencia | Grupo Avanza Consultores"
+   },
+   "autonomo-extranjero-en-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "ceebf5d9cf66",
+    "titulo": "Autónomo en dos países de la UE: A1 y residencia fiscal"
+   },
+   "aviso-legal.html": {
+    "desde": "2026-10-30",
+    "huella": "9d97e0af236f",
+    "titulo": "Aviso legal | Grupo Avanza Consultores"
+   },
+   "ayudas-contratacion-paterna.html": {
+    "desde": "2026-10-30",
+    "huella": "a3573f9658cb",
+    "titulo": "Cheque Empleo y ayudas a contratar en Paterna | Grupo Avanza"
+   },
+   "beckham-law-spain-special-tax-regime.html": {
+    "desde": "2026-10-30",
+    "huella": "43b27032fb39",
+    "titulo": "Beckham Law Spain: requirements and Modelo 149 application"
+   },
+   "buying-property-spain-foreigner.html": {
+    "desde": "2026-10-30",
+    "huella": "1369c6110fb3",
+    "titulo": "Buying property in Spain as a foreigner: taxes"
+   },
+   "calendario-fiscal.html": {
+    "desde": "2026-10-30",
+    "huella": "47241e7fcbdb",
+    "titulo": "Calendario fiscal de autónomos y empresas | Grupo Avanza"
+   },
+   "cambiar-de-asesoria.html": {
+    "desde": "2026-10-30",
+    "huella": "7ab042ded1d0",
+    "titulo": "Cambiar de gestoría o asesoría | Autónomos y pymes"
+   },
+   "capitalizar-el-paro-pago-unico.html": {
+    "desde": "2026-10-30",
+    "huella": "7e426945a6c8",
+    "titulo": "Capitalizar el paro: pago único al emprender | Grupo Avanza"
+   },
+   "carta-de-hacienda-requerimiento.html": {
+    "desde": "2026-10-30",
+    "huella": "721310c0a71f",
+    "titulo": "Carta de Hacienda y requerimientos | Asesoría fiscal"
+   },
+   "certificado-residencia-fiscal-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "ef48dc162770",
+    "titulo": "Certificado de residencia fiscal en España para otro país"
+   },
+   "comprar-vivienda-en-espana-extranjero.html": {
+    "desde": "2026-10-30",
+    "huella": "eec532b502d3",
+    "titulo": "Comprar vivienda en España siendo extranjero: impuestos"
+   },
+   "constitucion-de-sociedades-y-tramites.html": {
+    "desde": "2026-10-30",
+    "huella": "33fc6fb6873f",
+    "titulo": "Constituir y llevar tu SL online y en Paterna | Grupo Avanza"
+   },
+   "contacto.html": {
+    "desde": "2026-10-30",
+    "huella": "b08894b8d89c",
+    "titulo": "Contacto | Asesoría online y en Paterna con cita"
+   },
+   "cookies.html": {
+    "desde": "2026-10-30",
+    "huella": "eafb842702fa",
+    "titulo": "Política de cookies | Grupo Avanza Consultores"
+   },
+   "cuando-prescribe-deuda-hacienda.html": {
+    "desde": "2026-10-30",
+    "huella": "bbce735db2ef",
+    "titulo": "Deuda con Hacienda: cuándo prescribe y qué la interrumpe"
+   },
+   "de-ansaessigkeitsbescheinigung-spanien.html": {
+    "desde": "2026-10-30",
+    "huella": "af096a58311e",
+    "titulo": "Ansässigkeitsbescheinigung für Spanien"
+   },
+   "de-beckham-regelung-spanien.html": {
+    "desde": "2026-10-30",
+    "huella": "86a1f80abf42",
+    "titulo": "Beckham-Regelung in Spanien: Voraussetzungen und Frist"
+   },
+   "de-britische-rente-wohnsitz-spanien.html": {
+    "desde": "2026-10-30",
+    "huella": "3fb67fa680ac",
+    "titulo": "Britische Rente bei Wohnsitz in Spanien"
+   },
+   "de-cookies.html": {
+    "desde": "2026-10-30",
+    "huella": "5c5ee78457d0",
+    "titulo": "Cookie-Hinweise"
+   },
+   "de-danke.html": {
+    "desde": "2026-10-30",
+    "huella": "da8c50c49165",
+    "titulo": "Vielen Dank | Grupo Avanza Consultores"
+   },
+   "de-datenschutz.html": {
+    "desde": "2026-10-30",
+    "huella": "d0abef3c4c10",
+    "titulo": "Datenschutzerklärung"
+   },
+   "de-deutsche-rente-wohnsitz-spanien.html": {
+    "desde": "2026-10-30",
+    "huella": "e0a40151334b",
+    "titulo": "Deutsche Rente bei Wohnsitz in Spanien"
+   },
+   "de-erbschaft-spanien-erben-ausland.html": {
+    "desde": "2026-10-30",
+    "huella": "498ea33f08dd",
+    "titulo": "Erbschaft in Spanien bei Wohnsitz im Ausland"
+   },
+   "de-franzoesische-rente-wohnsitz-spanien.html": {
+    "desde": "2026-10-30",
+    "huella": "15d73f63908c",
+    "titulo": "Französische Rente bei Wohnsitz in Spanien"
+   },
+   "de-geldschenkung-ausland-spanien.html": {
+    "desde": "2026-10-30",
+    "huella": "f2307c7f3012",
+    "titulo": "Geldschenkung aus dem Ausland: Steuern in Spanien"
+   },
+   "de-immobilie-spanien-kaufen.html": {
+    "desde": "2026-10-30",
+    "huella": "2849cd7e494e",
+    "titulo": "Immobilie in Spanien kaufen: Steuern und Pflichten danach"
+   },
+   "de-immobilie-spanien-verkaufen-ausland.html": {
+    "desde": "2026-10-30",
+    "huella": "2f1122d9e29c",
+    "titulo": "Immobilie in Spanien verkaufen bei Wohnsitz im Ausland"
+   },
+   "de-impressum.html": {
+    "desde": "2026-10-30",
+    "huella": "9216253c92f6",
+    "titulo": "Impressum"
+   },
+   "de-italienische-rente-wohnsitz-spanien.html": {
+    "desde": "2026-10-30",
+    "huella": "c692f17ff100",
+    "titulo": "Italienische Rente bei Wohnsitz in Spanien"
+   },
+   "de-kontakt.html": {
+    "desde": "2026-10-30",
+    "huella": "0b4d789ae89f",
+    "titulo": "Kontakt | Grupo Avanza Consultores"
+   },
+   "de-modelo-210-nichtansaessige.html": {
+    "desde": "2026-10-30",
+    "huella": "a7fb479aaa47",
+    "titulo": "Modelo 210: spanische Steuern für Nichtansässige"
+   },
+   "de-modelo-720-auslandsvermoegen.html": {
+    "desde": "2026-10-30",
+    "huella": "93f60cda9fc6",
+    "titulo": "Modelo 720: Auslandsvermögen in Spanien melden"
+   },
+   "de-schreiben-spanisches-finanzamt.html": {
+    "desde": "2026-10-30",
+    "huella": "8c12369167ad",
+    "titulo": "Schreiben vom spanischen Finanzamt: Frist und Antwort prüfen"
+   },
+   "de-steueransaessigkeit-umzug-spanien.html": {
+    "desde": "2026-10-30",
+    "huella": "3f34632fb3e8",
+    "titulo": "Steuerliche Ansässigkeit beim Umzug nach Spanien"
+   },
+   "de-steuern-spanien-nacherklaeren.html": {
+    "desde": "2026-10-30",
+    "huella": "2a9976d9ba56",
+    "titulo": "Versäumte Steuererklärungen in Spanien nachholen"
+   },
+   "de-wegzug-spanien-steuern.html": {
+    "desde": "2026-10-30",
+    "huella": "595bac3cd572",
+    "titulo": "Wegzug aus Spanien: Steuererklärung und weitere Pflichten"
+   },
+   "de.html": {
+    "desde": "2026-10-30",
+    "huella": "b1e4f016b1d8",
+    "titulo": "Spanische Steuern für internationale Kunden | Grupo Avanza"
+   },
+   "donacion-de-dinero-desde-el-extranjero.html": {
+    "desde": "2026-10-30",
+    "huella": "8a13ea45c49f",
+    "titulo": "Donación de dinero desde el extranjero en Valencia"
+   },
+   "donacion-de-padres-a-hijos-comunitat-valenciana.html": {
+    "desde": "2026-10-30",
+    "huella": "b3ec761263c2",
+    "titulo": "Donación de padres a hijos en la Comunitat Valenciana (2026)"
+   },
+   "en-tramites.html": {
+    "desde": "2026-10-30",
+    "huella": "271931592479",
+    "titulo": "Tax matters in Spain for foreigners | Grupo Avanza"
+   },
+   "en.html": {
+    "desde": "2026-10-30",
+    "huella": "8bdb9947ca83",
+    "titulo": "Tax adviser in Spain for foreigners | Grupo Avanza"
+   },
+   "family-reunification-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "01e6af71b74f",
+    "titulo": "Family reunification: taxes in Spain | Grupo Avanza"
+   },
+   "fiscalidad-no-residentes-y-extranjeros.html": {
+    "desde": "2026-10-30",
+    "huella": "c3f151e029da",
+    "titulo": "Fiscalidad de no residentes y extranjeros | Grupo Avanza"
+   },
+   "form-720-spain-assets-abroad.html": {
+    "desde": "2026-10-30",
+    "huella": "592bc79d0dc4",
+    "titulo": "Form 720 Spain: declaring assets abroad as a resident"
+   },
+   "fr-acheter-bien-immobilier-espagne.html": {
+    "desde": "2026-10-30",
+    "huella": "1ddd4b8e1632",
+    "titulo": "Acheter un logement en Espagne : impôts et démarches"
+   },
+   "fr-certificat-residence-fiscale.html": {
+    "desde": "2026-10-30",
+    "huella": "7cb91029c378",
+    "titulo": "Certificat de résidence fiscale en Espagne"
+   },
+   "fr-confidentialite.html": {
+    "desde": "2026-10-30",
+    "huella": "79ef00bccba1",
+    "titulo": "Confidentialité | Grupo Avanza Consultores"
+   },
+   "fr-contact.html": {
+    "desde": "2026-10-30",
+    "huella": "1fce186751b4",
+    "titulo": "Contact | Grupo Avanza Consultores"
+   },
+   "fr-cookies.html": {
+    "desde": "2026-10-30",
+    "huella": "47004089b558",
+    "titulo": "Cookies | Grupo Avanza Consultores"
+   },
+   "fr-courrier-agence-fiscale.html": {
+    "desde": "2026-10-30",
+    "huella": "eea8bd307d2f",
+    "titulo": "Courrier de l’AEAT : comprendre et répondre"
+   },
+   "fr-donation-argent-etranger.html": {
+    "desde": "2026-10-30",
+    "huella": "8fc0711a4f08",
+    "titulo": "Donation d’argent depuis l’étranger vers l’Espagne"
+   },
+   "fr-mentions-legales.html": {
+    "desde": "2026-10-30",
+    "huella": "cef4a9f71eb2",
+    "titulo": "Mentions légales | Grupo Avanza Consultores"
+   },
+   "fr-merci.html": {
+    "desde": "2026-10-30",
+    "huella": "b6c6fcf53b8a",
+    "titulo": "Votre demande | Grupo Avanza Consultores"
+   },
+   "fr-modele-210-non-residents.html": {
+    "desde": "2026-10-30",
+    "huella": "2bf2f6800b42",
+    "titulo": "Modelo 210 : revenus des non-résidents en Espagne"
+   },
+   "fr-modele-720-avoirs-etranger.html": {
+    "desde": "2026-10-30",
+    "huella": "0ebe83f9309f",
+    "titulo": "Modelo 720 : déclarer ses avoirs à l’étranger"
+   },
+   "fr-quitter-espagne-fiscalite.html": {
+    "desde": "2026-10-30",
+    "huella": "d6b944da4029",
+    "titulo": "Quitter l’Espagne : votre situation fiscale"
+   },
+   "fr-regime-impatries-loi-beckham.html": {
+    "desde": "2026-10-30",
+    "huella": "47b117bddd57",
+    "titulo": "Loi Beckham : le régime espagnol des impatriés"
+   },
+   "fr-regulariser-impots-espagne.html": {
+    "desde": "2026-10-30",
+    "huella": "d970e774630a",
+    "titulo": "Régulariser sa situation fiscale en Espagne"
+   },
+   "fr-residence-fiscale-espagne.html": {
+    "desde": "2026-10-30",
+    "huella": "02b1151dbee3",
+    "titulo": "Résidence fiscale en Espagne : l’année d’arrivée"
+   },
+   "fr-retraite-allemande-espagne.html": {
+    "desde": "2026-10-30",
+    "huella": "848b68539933",
+    "titulo": "Retraite allemande et résidence en Espagne"
+   },
+   "fr-retraite-britannique-espagne.html": {
+    "desde": "2026-10-30",
+    "huella": "8d768bd41c8c",
+    "titulo": "Retraite britannique et résidence en Espagne"
+   },
+   "fr-retraite-francaise-espagne.html": {
+    "desde": "2026-10-30",
+    "huella": "dd2791912b62",
+    "titulo": "Retraite française et résidence en Espagne"
+   },
+   "fr-retraite-italienne-espagne.html": {
+    "desde": "2026-10-30",
+    "huella": "33b9166b870f",
+    "titulo": "Retraite italienne et résidence en Espagne"
+   },
+   "fr-succession-heritier-non-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "eb31f1906a88",
+    "titulo": "Succession en Espagne : héritier non-résident"
+   },
+   "fr-vendre-bien-immobilier-non-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "710a301acc07",
+    "titulo": "Vendre un bien en Espagne en tant que non-résident"
+   },
+   "fr.html": {
+    "desde": "2026-10-30",
+    "huella": "af16e416638b",
+    "titulo": "Fiscalité espagnole : résidents et non-résidents"
+   },
+   "french-pension-tax-spain-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "fda534b35e63",
+    "titulo": "French pension and living in Spain: where it is taxed"
+   },
+   "german-pension-tax-spain-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "defcf6f6cc85",
+    "titulo": "German pension and living in Spain: where it is taxed"
+   },
+   "gestion-de-sociedades-valencia.html": {
+    "desde": "2026-10-30",
+    "huella": "34f7b5f37516",
+    "titulo": "Gestión de sociedades en Valencia | Grupo Avanza Consultores"
+   },
+   "gestoria-autonomos-valencia.html": {
+    "desde": "2026-10-30",
+    "huella": "c888d2738fe0",
+    "titulo": "Gestoría para autónomos en Valencia | Grupo Avanza"
+   },
+   "gift-of-money-from-abroad-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "d26cba111d65",
+    "titulo": "Gift tax in Spain on money from family abroad | Valencia"
+   },
+   "gracias.html": {
+    "desde": "2026-10-30",
+    "huella": "971a8542bad2",
+    "titulo": "Consulta | Grupo Avanza Consultores"
+   },
+   "herencia-en-espana-heredero-no-residente.html": {
+    "desde": "2026-10-30",
+    "huella": "6c36672eb7b8",
+    "titulo": "Herencia de no residentes: Valencia y España | Grupo Avanza"
+   },
+   "impuestos-todo-el-ano-online.html": {
+    "desde": "2026-10-30",
+    "huella": "5868022fe44c",
+    "titulo": "Gestoría online con asesor fijo | Grupo Avanza Consultores"
+   },
+   "index.html": {
+    "desde": "2026-10-30",
+    "huella": "22911de8233c",
+    "titulo": "Grupo Avanza Consultores: asesoría fiscal y laboral, Paterna"
+   },
+   "inheritance-spain-non-resident-heir.html": {
+    "desde": "2026-10-30",
+    "huella": "c64081d05f67",
+    "titulo": "Inheritance tax in Spain for non-residents | Grupo Avanza"
+   },
+   "irse-de-espana-impuestos-cambio-residencia.html": {
+    "desde": "2026-10-30",
+    "huella": "3f4f9c8ac244",
+    "titulo": "Irse de España: impuestos al dejar de ser residente fiscal"
+   },
+   "italian-pension-tax-spain-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "13eba90ced46",
+    "titulo": "Italian pension and living in Spain: where it is taxed"
+   },
+   "leaving-spain-tax-residence.html": {
+    "desde": "2026-10-30",
+    "huella": "48db0cd9e20b",
+    "titulo": "Leaving Spain: taxes when you stop being tax resident"
+   },
+   "letter-from-spanish-tax-agency.html": {
+    "desde": "2026-10-30",
+    "huella": "e5950b4b81d7",
+    "titulo": "Spanish Tax Agency letter: help replying | Grupo Avanza"
+   },
+   "licencia-de-actividad-cambio-de-titularidad.html": {
+    "desde": "2026-10-30",
+    "huella": "40f50b4f68dd",
+    "titulo": "Traspaso de licencia de actividad en Paterna | Grupo Avanza"
+   },
+   "long-term-residence-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "e406bb8a5ae6",
+    "titulo": "Long-term residence in Spain: your taxes | Grupo Avanza"
+   },
+   "modelo-210-no-residentes.html": {
+    "desde": "2026-10-30",
+    "huella": "b6e7eb6a9da5",
+    "titulo": "Modelo 210 para no residentes: gestión y plazos 2026"
+   },
+   "modelo-210-non-resident-tax-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "a3e4e3a7e938",
+    "titulo": "Form 210 (Modelo 210) for Non-Residents | Grupo Avanza"
+   },
+   "modelo-347-operaciones-con-terceros.html": {
+    "desde": "2026-10-30",
+    "huella": "f5dfca39d55d",
+    "titulo": "Modelo 347 de operaciones con terceros | Grupo Avanza"
+   },
+   "modelo-720-bienes-en-el-extranjero.html": {
+    "desde": "2026-10-30",
+    "huella": "ef18b9e0a859",
+    "titulo": "Modelo 720: bienes en el extranjero si vives en España"
+   },
+   "nacionalidad-espanola-por-residencia.html": {
+    "desde": "2026-10-30",
+    "huella": "1d64a90049ce",
+    "titulo": "Nacionalidad española e impuestos | Grupo Avanza"
+   },
+   "nie-tie-certificado-ue-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "25379244e6e8",
+    "titulo": "NIE, TIE y certificado UE: tus impuestos | Grupo Avanza"
+   },
+   "nie-tie-eu-registration-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "e7cb00e511e6",
+    "titulo": "NIE, TIE and EU registration: your taxes | Grupo Avanza"
+   },
+   "nominas-y-gestion-laboral.html": {
+    "desde": "2026-10-30",
+    "huella": "9d97ef66812b",
+    "titulo": "Nóminas y asesoría laboral en Paterna | Grupo Avanza"
+   },
+   "pension-alemana-residente-en-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "18357f0b7770",
+    "titulo": "Pensión alemana si vives en España: dónde tributa"
+   },
+   "pension-francesa-residente-en-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "4f47e9edddc6",
+    "titulo": "Pensión francesa si vives en España: dónde tributa"
+   },
+   "pension-italiana-residente-en-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "094cf6c0a2be",
+    "titulo": "Pensión italiana si vives en España: dónde tributa"
+   },
+   "pension-reino-unido-residente-en-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "03de43e17756",
+    "titulo": "Pensión del Reino Unido si vives en España: dónde tributa"
+   },
+   "privacidad.html": {
+    "desde": "2026-10-30",
+    "huella": "3420e7086074",
+    "titulo": "Política de privacidad | Grupo Avanza Consultores"
+   },
+   "reagrupacion-familiar-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "c3e6cd995022",
+    "titulo": "Reagrupación familiar: impuestos en España | Grupo Avanza"
+   },
+   "regimen-impatriados-ley-beckham.html": {
+    "desde": "2026-10-30",
+    "huella": "da96beb057f1",
+    "titulo": "Ley Beckham en España: régimen de impatriados y modelo 149"
+   },
+   "regularising-taxes-spain-foreigner.html": {
+    "desde": "2026-10-30",
+    "huella": "392163e7bcb5",
+    "titulo": "Overdue tax returns in Spain | Grupo Avanza"
+   },
+   "regularizar-situacion-fiscal-extranjero.html": {
+    "desde": "2026-10-30",
+    "huella": "de03fde87416",
+    "titulo": "Declaraciones pendientes en España | Grupo Avanza"
+   },
+   "renew-employed-residence-work-permit-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "632488fcbc8b",
+    "titulo": "Renewing an employed permit in Spain: tax | Grupo Avanza"
+   },
+   "renovar-residencia-trabajo-cuenta-ajena.html": {
+    "desde": "2026-10-30",
+    "huella": "a0e7db281dc3",
+    "titulo": "Renovar residencia por cuenta ajena: la Renta | Grupo Avanza"
+   },
+   "residence-family-spanish-citizen.html": {
+    "desde": "2026-10-30",
+    "huella": "7f5d7e74374a",
+    "titulo": "Family of a Spanish citizen: taxes in Spain | Grupo Avanza"
+   },
+   "residencia-familiares-espanoles-espana.html": {
+    "desde": "2026-10-27",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "residencia-fiscal-al-llegar-a-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "32e1285089fe",
+    "titulo": "Residencia fiscal en España e ingresos del extranjero"
+   },
+   "residencia-larga-duracion-espana.html": {
+    "desde": "2026-10-30",
+    "huella": "f2462349ed38",
+    "titulo": "Larga duración en España: tus impuestos | Grupo Avanza"
+   },
+   "retribucion-del-administrador-de-una-sl.html": {
+    "desde": "2026-10-30",
+    "huella": "8c00343667ae",
+    "titulo": "Retribución del administrador de una SL | Grupo Avanza"
+   },
+   "ru-arraigo-ispaniya.html": {
+    "desde": "2026-10-27",
+    "huella": "6b2c44335180",
+    "titulo": "Страница перенесена | Grupo Avanza"
+   },
+   "ru-darenie-deneg-iz-za-rubezha.html": {
+    "desde": "2026-10-30",
+    "huella": "f99018a3e62a",
+    "titulo": "Налог на дарение денег из-за границы в Испании (Валенсия)"
+   },
+   "ru-dolgosrochnyy-vnzh-ispaniya.html": {
+    "desde": "2026-10-27",
+    "huella": "6b2c44335180",
+    "titulo": "Страница перенесена | Grupo Avanza"
+   },
+   "ru-grazhdanstvo-ispanii-po-prozhivaniyu.html": {
+    "desde": "2026-10-27",
+    "huella": "6b2c44335180",
+    "titulo": "Страница перенесена | Grupo Avanza"
+   },
+   "ru-impuestos-todo-el-ano-online.html": {
+    "desde": "2026-10-30",
+    "huella": "d70ac6d90127",
+    "titulo": "Ведём ваши налоги круглый год, онлайн | Grupo Avanza"
+   },
+   "ru-model-210-nerezidenty.html": {
+    "desde": "2026-10-30",
+    "huella": "84af0ca22fa7",
+    "titulo": "Форма 210 для нерезидентов: подача из-за границы"
+   },
+   "ru-model-720-imushchestvo-za-rubezhom.html": {
+    "desde": "2026-10-30",
+    "huella": "95d9fad9f351",
+    "titulo": "Форма 720: имущество за рубежом у резидента Испании"
+   },
+   "ru-nalogovoe-rezidentstvo-pri-pereezde.html": {
+    "desde": "2026-10-30",
+    "huella": "dad1b99c327f",
+    "titulo": "Налоговое резидентство в Испании: проверка при переезде"
+   },
+   "ru-nasledstvo-v-ispanii-nerezident.html": {
+    "desde": "2026-10-30",
+    "huella": "ca3bf12d80ab",
+    "titulo": "Налог на наследство в Испании для нерезидента | Grupo Avanza"
+   },
+   "ru-nie-tie-registraciya-ispaniya.html": {
+    "desde": "2026-10-30",
+    "huella": "ee179c615e41",
+    "titulo": "NIE, TIE и сертификат ЕС: налоги в Испании | Grupo Avanza"
+   },
+   "ru-otezd-iz-ispanii-nalogi.html": {
+    "desde": "2026-10-30",
+    "huella": "6452512c8c14",
+    "titulo": "Отъезд из Испании: налоги при утрате резидентства"
+   },
+   "ru-pismo-iz-nalogovoj-ispanii.html": {
+    "desde": "2026-10-30",
+    "huella": "42c588494d9d",
+    "titulo": "Письмо из налоговой Испании: помощь с ответом"
+   },
+   "ru-pokupka-nedvizhimosti-inostranec.html": {
+    "desde": "2026-10-30",
+    "huella": "6b48992ab787",
+    "titulo": "Покупка жилья в Испании иностранцем: налоги"
+   },
+   "ru-prodazha-nedvizhimosti-nerezident.html": {
+    "desde": "2026-10-30",
+    "huella": "5756f16d239a",
+    "titulo": "Продажа квартиры в Испании нерезидентом: 3 % и форма 210"
+   },
+   "ru-prodlenie-vnzh-rabota-po-naymu.html": {
+    "desde": "2026-10-27",
+    "huella": "6b2c44335180",
+    "titulo": "Страница перенесена | Grupo Avanza"
+   },
+   "ru-rezhim-bekhema-ispaniya.html": {
+    "desde": "2026-10-30",
+    "huella": "769681e80971",
+    "titulo": "Закон Бекхэма в Испании: особый режим и форма 149"
+   },
+   "ru-spravka-o-nalogovom-rezidentstve.html": {
+    "desde": "2026-10-30",
+    "huella": "b537f28f64d2",
+    "titulo": "Справка о налоговом резидентстве Испании для другой страны"
+   },
+   "ru-tramites.html": {
+    "desde": "2026-10-30",
+    "huella": "42b923f9363d",
+    "titulo": "Налоги в Испании для иностранцев на русском | Grupo Avanza"
+   },
+   "ru-uregulirovanie-nalogov-inostranec.html": {
+    "desde": "2026-10-30",
+    "huella": "71db3437c4a7",
+    "titulo": "Привести налоги в порядок в Испании | Grupo Avanza"
+   },
+   "ru-vnzh-semya-grazhdanina-ispanii.html": {
+    "desde": "2026-10-27",
+    "huella": "6b2c44335180",
+    "titulo": "Страница перенесена | Grupo Avanza"
+   },
+   "ru-vossoedinenie-semi-ispaniya.html": {
+    "desde": "2026-10-27",
+    "huella": "6b2c44335180",
+    "titulo": "Страница перенесена | Grupo Avanza"
+   },
+   "ru.html": {
+    "desde": "2026-10-30",
+    "huella": "77dd693877e0",
+    "titulo": "Налоговый консультант в Испании на русском | Grupo Avanza"
+   },
+   "selling-property-spain-non-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "fb6872f7b2c3",
+    "titulo": "Selling property in Spain as a non-resident: 3% and form 210"
+   },
+   "sl-con-perdidas-causa-de-disolucion.html": {
+    "desde": "2026-10-30",
+    "huella": "d33c93203399",
+    "titulo": "SL con pérdidas: causa de disolución y plazo | Grupo Avanza"
+   },
+   "spanish-nationality-by-residence.html": {
+    "desde": "2026-10-30",
+    "huella": "47b0825656ed",
+    "titulo": "Spanish nationality by residence and tax | Grupo Avanza"
+   },
+   "spanish-tax-residence-certificate.html": {
+    "desde": "2026-10-30",
+    "huella": "d10a60ebbea7",
+    "titulo": "Spanish tax residence certificate for a foreign country"
+   },
+   "tax-residence-moving-to-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "e45a95af5047",
+    "titulo": "Tax residence in Spain: foreign income and tax returns"
+   },
+   "tramites.html": {
+    "desde": "2026-10-30",
+    "huella": "5d271b47ddb8",
+    "titulo": "Trámites fiscales para extranjeros en España | Grupo Avanza"
+   },
+   "uk-pension-tax-spain-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "ba6d4a125126",
+    "titulo": "UK pension and living in Spain: where it is taxed"
+   },
+   "vender-inmueble-en-espana-no-residente.html": {
+    "desde": "2026-10-30",
+    "huella": "6903cf2a1656",
+    "titulo": "Vender un piso en España si vives fuera: el 3 % y el 210"
+   },
+   "yandex_0ee7317e43cf2bdd.html": {
+    "desde": "2026-10-24",
+    "huella": "3eb416223e9e",
+    "titulo": ""
+   },
+   "zh-buy-property-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-contact.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-cookies.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-gift-money-abroad.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-impatriate-regime.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-inheritance-non-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-leave-spain-tax.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-legal.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-modelo-210-non-residents.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-modelo-720-assets-abroad.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-privacy.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-regularize-taxes-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-sell-property-non-resident.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-tax-office-letter.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-tax-residence-certificate.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-tax-residence-spain.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh-thanks.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   },
+   "zh.html": {
+    "desde": "2026-10-30",
+    "huella": "20777216bb0a",
+    "titulo": "Página trasladada | Grupo Avanza"
+   }
+  }
+ }
+}
