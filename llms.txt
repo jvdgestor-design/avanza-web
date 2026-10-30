@@ -1,11 +1,11 @@
 # Grupo Avanza Consultores
 
-> Asesoría fiscal, contable y laboral online para autónomos, sociedades y particulares. Atiende a extranjeros que viven en España y a españoles y extranjeros que residen fuera y necesitan trámites fiscales aquí. Contabilidad y gestión continuada, Renta, declaraciones pendientes, cartas de Hacienda y fiscalidad internacional. Atención en español y ruso; por escrito, también en inglés, francés, alemán, chino y árabe. Domicilio en Paterna (Valencia).
+> Asesoría fiscal, contable y laboral online para autónomos, sociedades y particulares. Atiende a extranjeros que viven en España y a españoles y extranjeros que residen fuera y necesitan trámites fiscales aquí. Contabilidad y gestión continuada, Renta, declaraciones pendientes, cartas de Hacienda y fiscalidad internacional. Atención en español y ruso; por escrito, también en inglés, francés y alemán. Domicilio en Paterna (Valencia).
 
 - Titular: Jose Vicente Díaz Madrid, Diplomado en Ciencias Empresariales, asesor fiscal, contable y laboral con despacho propio desde 2011.
 - Forma de trabajo: a distancia con clientes de toda España, por correo, teléfono, WhatsApp y videollamada; en persona, con cita, en Paterna y el área de Valencia.
 - Servicio continuo: contabilidad, declaraciones trimestrales y anuales, nóminas y gestión laboral, sociedades y no residentes. Presupuesto según el caso.
-- Idiomas: español y ruso; por escrito (correo y WhatsApp), también en inglés, francés, alemán, chino y árabe. Portadas por idioma: https://grupoavanzaconsultores.es/en.html · https://grupoavanzaconsultores.es/ru.html · https://grupoavanzaconsultores.es/fr.html · https://grupoavanzaconsultores.es/de.html · https://grupoavanzaconsultores.es/zh.html · https://grupoavanzaconsultores.es/ar.html
+- Idiomas: español y ruso; por escrito (correo y WhatsApp), también en inglés, francés y alemán. Portadas por idioma: https://grupoavanzaconsultores.es/en.html · https://grupoavanzaconsultores.es/ru.html · https://grupoavanzaconsultores.es/fr.html · https://grupoavanzaconsultores.es/de.html
 - Contacto: teléfono 614 365 547 · avanza@grupoavanzaconsultores.es · https://grupoavanzaconsultores.es/contacto.html
 
 ## Servicios
@@ -189,40 +189,4 @@
 - [Confidentialité | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-confidentialite.html)
 - [Cookies | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-cookies.html)
 
-## 中文
-- [西班牙居民与非居民税务咨询｜Grupo Avanza](https://grupoavanzaconsultores.es/zh.html)
-- [在西班牙买房：购房税费与非居民年度申报](https://grupoavanzaconsultores.es/zh-buy-property-spain.html)
-- [联系Grupo Avanza：西班牙税务中文书面咨询](https://grupoavanzaconsultores.es/zh-contact.html)
-- [Cookie政策｜Grupo Avanza Consultores](https://grupoavanzaconsultores.es/zh-cookies.html)
-- [境外赠款：西班牙赠与税、优惠与申报](https://grupoavanzaconsultores.es/zh-gift-money-abroad.html)
-- [贝克汉姆法：西班牙迁入人员特殊税制](https://grupoavanzaconsultores.es/zh-impatriate-regime.html)
-- [非居民继承西班牙遗产：税务机关、期限与文件](https://grupoavanzaconsultores.es/zh-inheritance-non-resident.html)
-- [离开西班牙：税务居民变更与离境税](https://grupoavanzaconsultores.es/zh-leave-spain-tax.html)
-- [法律声明｜Grupo Avanza Consultores](https://grupoavanzaconsultores.es/zh-legal.html)
-- [Modelo 210：西班牙非居民所得税与申报期限](https://grupoavanzaconsultores.es/zh-modelo-210-non-residents.html)
-- [Modelo 720：西班牙居民申报境外资产](https://grupoavanzaconsultores.es/zh-modelo-720-assets-abroad.html)
-- [隐私政策｜Grupo Avanza Consultores](https://grupoavanzaconsultores.es/zh-privacy.html)
-- [在西班牙补报税务：漏报年度、附加费与核对顺序](https://grupoavanzaconsultores.es/zh-regularize-taxes-spain.html)
-- [非居民出售西班牙房产：3%预扣、19%税率与退税](https://grupoavanzaconsultores.es/zh-sell-property-non-resident.html)
-- [收到西班牙税局来函：先核对通知与期限](https://grupoavanzaconsultores.es/zh-tax-office-letter.html)
-- [西班牙税务居民身份证明：申请、用途与补充材料](https://grupoavanzaconsultores.es/zh-tax-residence-certificate.html)
-- [抵达西班牙当年：如何判断税务居民身份](https://grupoavanzaconsultores.es/zh-tax-residence-spain.html)
 
-## العربية
-- [ضرائب غير المقيمين والأجانب في إسبانيا | Grupo Avanza](https://grupoavanzaconsultores.es/ar.html)
-- [شراء مسكن في إسبانيا للأجانب | Grupo Avanza](https://grupoavanzaconsultores.es/ar-buy-property-spain.html)
-- [تواصل معنا | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/ar-contact.html)
-- [ملفات تعريف الارتباط | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/ar-cookies.html)
-- [هبة مال من الخارج إلى إسبانيا | Grupo Avanza](https://grupoavanzaconsultores.es/ar-gift-money-abroad.html)
-- [نظام المنتقلين إلى إسبانيا وقانون بيكهام | Grupo Avanza](https://grupoavanzaconsultores.es/ar-impatriate-regime.html)
-- [ميراث في إسبانيا لوارث غير مقيم | Grupo Avanza](https://grupoavanzaconsultores.es/ar-inheritance-non-resident.html)
-- [مغادرة إسبانيا وتغيير الإقامة الضريبية | Grupo Avanza](https://grupoavanzaconsultores.es/ar-leave-spain-tax.html)
-- [الإشعار القانوني | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/ar-legal.html)
-- [النموذج 210 لغير المقيمين | Grupo Avanza](https://grupoavanzaconsultores.es/ar-modelo-210-non-residents.html)
-- [النموذج 720 للأموال في الخارج | Grupo Avanza](https://grupoavanzaconsultores.es/ar-modelo-720-assets-abroad.html)
-- [سياسة الخصوصية | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/ar-privacy.html)
-- [تسوية الوضع الضريبي في إسبانيا | Grupo Avanza](https://grupoavanzaconsultores.es/ar-regularize-taxes-spain.html)
-- [بيع عقار في إسبانيا لغير المقيم | Grupo Avanza](https://grupoavanzaconsultores.es/ar-sell-property-non-resident.html)
-- [خطاب من الضرائب الإسبانية | Grupo Avanza](https://grupoavanzaconsultores.es/ar-tax-office-letter.html)
-- [شهادة الإقامة الضريبية بإسبانيا | Grupo Avanza](https://grupoavanzaconsultores.es/ar-tax-residence-certificate.html)
-- [الإقامة الضريبية عند الوصول لإسبانيا | Grupo Avanza](https://grupoavanzaconsultores.es/ar-tax-residence-spain.html)
