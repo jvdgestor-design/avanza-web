@@ -623,6 +623,21 @@ class SegundaVueltaIndexacion(Indexacion):
         self.assertEqual(fallos, [])
         self.assertIn("bing_en_indice", metr)
 
+    def test_sin_paginas_con_enlaces_la_cifra_no_vale(self):
+        raiz = self.web()
+        b = indexa.BING
+        base = self.bing_red()
+        def abre(req, timeout=None):
+            if req.full_url.startswith(b + "GetLinkCounts"):
+                return Resp(json.dumps({"d": {"Links": [], "TotalPages": 0}}))
+            if req.full_url.startswith(b + "GetCrawlStats"):
+                return Resp(json.dumps({"d": [{"Date": "/Date(1761800000000)/", "InIndex": 1}]}))
+            return base(req, timeout)
+        c = self.cola()
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"BING_API_KEY": "K"}, abre=abre)
+        self.assertNotIn("bing_dominios", metr)
+        self.assertFalse([l for l in c.cierra() if "CONGELADO" in l])
+
 
 if __name__ == "__main__":
     unittest.main()

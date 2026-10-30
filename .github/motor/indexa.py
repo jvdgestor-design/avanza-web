@@ -195,7 +195,6 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
         paginas += [l.get("Url") for l in lc.get("Links") or [] if l.get("Url")]
         total = lc.get("TotalPages") or 1
         pagina += 1
-    print(f"::notice::diag Bing GetLinkCounts: {len(paginas)} páginas con enlaces entrantes en {pagina} página(s)")
     origen = est.setdefault("origen_enlaces", {})
     llamadas = 0
     for p in sorted(paginas, key=lambda u: origen.get(u, {}).get("mirada", "")):
@@ -218,8 +217,10 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
             if p not in paginas:
                 del origen[p]
     todos = sorted({d for v in origen.values() for d in v["dominios"]})
-    print(f"::notice::diag Bing GetUrlLinks: {llamadas} llamada(s), {len(origen)} página(s) leídas, {len(todos)} dominio(s)")
-    metr["bing_dominios"] = len(todos)
+    # 30/10/2026: GetLinkCounts devolvió 0 páginas mientras el panel de Bing mostraba 4 dominios: con 0 páginas
+    # la cifra de la API no vale (NO CALCULABLE) y no se usa para el congelado; se sigue leyendo en el panel.
+    if paginas:
+        metr["bing_dominios"] = len(todos)
     antes = est.get("dominios")
     nuevos = [d for d in todos if antes is not None and d not in antes]
     if nuevos:
@@ -227,7 +228,7 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
                    "Bing Webmaster", clave=f"BING-ENLACE|{','.join(nuevos)}", fuente="bing-enlace")
     est["dominios"] = todos
     en_ind = metr.get("bing_en_indice") or 0
-    if len(todos) >= 6 or en_ind > len(urls) / 2:
+    if (paginas and len(todos) >= 6) or en_ind > len(urls) / 2:
         cola.aviso("CONGELADO", f"se cumple la condición para levantar el congelado de páginas nuevas "
                    f"(dominios enlazantes {len(todos)}, en índice {en_ind} de {len(urls)}): decide Jose",
                    "Bing Webmaster", clave="CONGELADO|bing", fuente="bing")
