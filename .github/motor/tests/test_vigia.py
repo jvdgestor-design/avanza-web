@@ -72,6 +72,9 @@ class Base(unittest.TestCase):
         p = mock.patch.object(vigia.time, "sleep", lambda s: None)
         p.start()
         self.addCleanup(p.stop)
+        q = mock.patch.object(vigia, "anota", lambda *a: None)   # las pruebas no ensucian las anotaciones del run
+        q.start()
+        self.addCleanup(q.stop)
 
     def tearDown(self):
         shutil.rmtree(self.dir, ignore_errors=True)
