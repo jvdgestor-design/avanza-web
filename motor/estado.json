@@ -28,6 +28,20 @@
    "que": "robots.txt no deja leerla: comprobar a mano",
    "visto": "2026-10-30"
   },
+  "FICHA|https://accountanty.com/spain/paterna/grupo-avanza-consultores/|falta el teléfono bueno 614 365 547": {
+   "avisado": "2026-10-30",
+   "fuente": "https://accountanty.com/spain/paterna/grupo-avanza-consultores/",
+   "primera": "2026-10-30",
+   "que": "falta el teléfono bueno 614 365 547",
+   "visto": "2026-10-30"
+  },
+  "FICHA|https://accountanty.com/spain/paterna/grupo-avanza-consultores/|no enlaza a grupoavanzaconsultores.es": {
+   "avisado": "2026-10-30",
+   "fuente": "https://accountanty.com/spain/paterna/grupo-avanza-consultores/",
+   "primera": "2026-10-30",
+   "que": "no enlaza a grupoavanzaconsultores.es",
+   "visto": "2026-10-30"
+  },
   "FICHA|https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/|dato falso: Castell 4": {
    "avisado": "2026-10-30",
    "fuente": "https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/",
@@ -68,7 +82,9 @@
    "- CADUCADO · vence en 1 días (31/10/2026): «se presenta como máximo un mes después de la contratación y, en todo caso, hasta el 31 de octubre de 2026 inclusive.» (y 2 frase(s) más con la misma fecha) · ayudas-contratacion-paterna.html · 2026-10-30",
    "- SITEMAP · 139 URL con lastmod anterior al último commit: index.html (2026-10-27→2026-10-30), calendario-fiscal.html (2026-10-27→2026-10-30), impuestos-todo-el-ano-online.html (2026-10-27→2026-10-30), asesoria-y-gestoria-en-valencia.html (2026-10-27→2026-10-30), asesoria-y-gestoria-en-paterna.html (2026-10-27→ · sitemap.xml · 2026-10-30",
    "- MOTOR · gsc ha fallado: Search Console inspect: HTTP 403 PERMISSION_DENIED · indexa.py · 2026-10-30",
-   "- RESUELTO · ya no aparece (MOTOR): gsc ha fallado: Search Console inspect: HTTP 403 PERMISSION_DENIED · gsc · 2026-10-30"
+   "- RESUELTO · ya no aparece (MOTOR): gsc ha fallado: Search Console inspect: HTTP 403 PERMISSION_DENIED · gsc · 2026-10-30",
+   "- FICHA · falta el teléfono bueno 614 365 547 · https://accountanty.com/spain/paterna/grupo-avanza-consultores/ · 2026-10-30",
+   "- FICHA · no enlaza a grupoavanzaconsultores.es · https://accountanty.com/spain/paterna/grupo-avanza-consultores/ · 2026-10-30"
   ]
  },
  "piezas": {
@@ -1420,11 +1436,14 @@
   },
   "rondas": {
    "ultima_mirada": {
+    "https://accountanty.com/spain/paterna/grupo-avanza-consultores/": "2026-10-30",
     "https://ad.maptons.com/p/3878266030": "2026-10-30",
     "https://asesoriasgestorias.com/valencia/paterna/": "2026-10-30",
     "https://buscador.asesorexcelente.com/valencia/paterna": "2026-10-30",
     "https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/": "2026-10-30",
+    "https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia": "2026-10-30",
     "https://expato.eu/ru/directory/gestoria/c101": "2026-10-30",
+    "https://negocioscerca.es/empresa/grupo-avanza-consultores-paterna": "2026-10-30",
     "https://paterna.comercioscomunitatvalenciana.com/es/mapa/index": "2026-10-30",
     "https://valencia.comercioscomunitatvalenciana.com/es/comercios/view/grupo-avanza-consultores": "2026-10-30",
     "https://www.cylex.es/paterna/grupo-avanza-consultores-14669606.html": "2026-10-30",
