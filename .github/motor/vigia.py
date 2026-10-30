@@ -571,12 +571,11 @@ def pieza_boe(cola, gh=None):
         return json.loads(r.stdout)
 
     gh = gh or _gh
-    runs = gh(f"repos/{repo}/actions/workflows/boe.yml/runs?status=completed&per_page=1").get("workflow_runs")
-    if not runs:
-        raise RuntimeError("la Vigilancia del BOE no tiene ejecuciones terminadas")
-    run = runs[0]
-    if run.get("conclusion") not in ("success", "failure", None):
-        raise RuntimeError(f"la última Vigilancia del BOE terminó como «{run.get('conclusion')}»: no vale para cerrar normas")
+    runs = gh(f"repos/{repo}/actions/workflows/boe.yml/runs?status=completed&per_page=10").get("workflow_runs")
+    validos = [r for r in runs or [] if r.get("conclusion") in ("success", "failure")]
+    if not validos:        # canceladas u omitidas no valen para cerrar normas
+        raise RuntimeError("la Vigilancia del BOE no tiene ejecuciones válidas recientes")
+    run = validos[0]
     for job in gh(f"repos/{repo}/actions/runs/{run['id']}/jobs").get("jobs", []):
         for an in gh(f"repos/{repo}/check-runs/{job['id']}/annotations?per_page=100"):
             msg = an.get("message") or ""

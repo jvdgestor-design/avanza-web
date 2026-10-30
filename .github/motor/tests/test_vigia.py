@@ -342,7 +342,7 @@ class Main(Base):
 
             def gh(ruta):
                 if "/workflows/" in ruta:
-                    return {"workflow_runs": [{"id": 9}]}
+                    return {"workflow_runs": [{"id": 8, "conclusion": "cancelled"}, {"id": 9, "conclusion": "failure"}]}
                 if "/jobs" in ruta:
                     return {"jobs": [{"id": 5}]}
                 return [{"annotation_level": "failure",
@@ -540,9 +540,6 @@ class Indexacion(Base):
         self.assertIsNone(indexa.fecha_ms("0001-01-01T00:00:00"))
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 
 class SegundaVuelta(Base):
     """Casos de la segunda revisión: cada uno falla con el código anterior."""
@@ -584,7 +581,7 @@ class SegundaVuelta(Base):
         c = self.cola()
         with mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "a/b", "GH_TOKEN": "t"}):
             with self.assertRaises(RuntimeError):
-                vigia.pieza_boe(c, gh=lambda r: {"workflow_runs": [{"id": 1, "conclusion": "cancelled"}]})
+                vigia.pieza_boe(c, gh=lambda r: {"workflow_runs": [{"id": 1, "conclusion": "cancelled"}, {"id": 2, "conclusion": "skipped"}]})
 
 
 class SegundaVueltaIndexacion(Indexacion):
@@ -622,3 +619,7 @@ class SegundaVueltaIndexacion(Indexacion):
         metr, fallos = indexa.ejecuta(c, raiz, entorno={"BING_API_KEY": "K"}, abre=abre2)
         self.assertEqual(fallos, [])
         self.assertIn("bing_en_indice", metr)
+
+
+if __name__ == "__main__":
+    unittest.main()

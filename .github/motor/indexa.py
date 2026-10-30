@@ -146,7 +146,7 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
     rastreo = est.setdefault("rastreo", {})
     lote = pendientes[:disponible]
     sobra = disponible - len(lote)
-    for u in [u for u in urls if u in rastreo and not rastreo[u]["rastreo"]]:
+    for u in [u for u in urls if u in rastreo and not rastreo[u]["rastreo"] and not rastreo[u].get("error")]:
         if sobra <= 0:
             break
         ult = enviadas.get(u)
@@ -182,7 +182,7 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
     if errores_info == min(len(orden), BING_REVISA_DIA) and errores_info:
         raise ErrorApi("Bing GetUrlInfo falla en todas las URL")
     if all(u in rastreo for u in urls):   # el dato solo vale cuando la rotación ha pasado por todo el sitemap
-        metr["bing_sin_rastrear"] = sum(1 for u in urls if not rastreo[u]["rastreo"])
+        metr["bing_sin_rastrear"] = sum(1 for u in urls if not rastreo[u]["rastreo"] and not rastreo[u].get("error"))
     stats = get("GetCrawlStats") or []
     if stats:
         ultimo = max(stats, key=lambda s: fecha_ms(s.get("Date")) or dt.date.min)
