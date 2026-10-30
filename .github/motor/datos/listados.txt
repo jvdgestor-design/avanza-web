@@ -1,0 +1,10 @@
+# Listados donde queremos salir. vigia.py avisa solo cuando pasamos a salir o dejamos de salir.
+# Una URL por línea; se edita en la rama datos-motor. Si una URL da 404, sale «PRESENCIA-ILEGIBLE»: corregirla.
+https://www.gestorias.es/valencia/paterna  # fila 1: 11 fichas sin nosotros (30/10)
+https://www.guiagestoria.com/mejores-gestorias/paterna-valencia  # fila 25: 16 despachos sin nosotros (30/10)
+https://ccasesoria.com/valencia/paterna/  # fila 23
+https://www.lasmejoresasesorias.es/valencia/paterna  # fila 28: ordena por Google
+https://asesoriasgestorias.com/valencia/paterna/  # fila 2
+https://buscador.asesorexcelente.com/valencia/paterna  # fila 8: salimos (03/10)
+https://paterna.comercioscomunitatvalenciana.com/es/mapa/index  # fila 14: ficha no pública (08/10)
+# mejorasesoriafiscal.com: su robots.txt prohíbe la lectura automática (30/10): se mira a mano.
