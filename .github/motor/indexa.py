@@ -195,6 +195,7 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
         paginas += [l.get("Url") for l in lc.get("Links") or [] if l.get("Url")]
         total = lc.get("TotalPages") or 1
         pagina += 1
+    print(f"::notice::diag Bing GetLinkCounts: {len(paginas)} páginas con enlaces entrantes en {pagina} página(s)")
     origen = est.setdefault("origen_enlaces", {})
     llamadas = 0
     for p in sorted(paginas, key=lambda u: origen.get(u, {}).get("mirada", "")):
@@ -217,6 +218,7 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
             if p not in paginas:
                 del origen[p]
     todos = sorted({d for v in origen.values() for d in v["dominios"]})
+    print(f"::notice::diag Bing GetUrlLinks: {llamadas} llamada(s), {len(origen)} página(s) leídas, {len(todos)} dominio(s)")
     metr["bing_dominios"] = len(todos)
     antes = est.get("dominios")
     nuevos = [d for d in todos if antes is not None and d not in antes]
