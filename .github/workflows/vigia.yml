@@ -1,17 +1,18 @@
-# Motor sin consumo (capa 0): vigila, mide, indexa y avisa sin IA. Escribe la cola en la rama datos-motor
-# (motor/cola-trabajo.md). Cada hora: web viva. Cada día: fichas, presencia, caducados, sitemap, BOE,
-# menciones e indexación por API (Bing, Search Console, Yandex: solo con sus secretos).
-# A mano: gh workflow run vigia.yml -f piezas="fichas,presencia"   (vacío = las diarias)
-# Si sale en rojo es que hay algo URGENTE (web caída) o una pieza rota: GitHub manda el correo.
+# Motor sin consumo (capa 0): vigila, mide, indexa y avisa sin IA. Escribe en la rama datos-motor:
+#   motor/cola-trabajo.md  (diario: fichas, presencia, caducados, sitemap, BOE, menciones e indexación por API)
+#   motor/urgente.md       (cada hora: web viva; estado aparte en web.json para no chocar con el diario)
+# Las API (Bing, Search Console, Yandex) y el RSS de Google Alerts se saltan solos sin su secreto.
+# A mano: gh workflow run vigia.yml -f piezas="fichas,presencia"   (vacío = las diarias; «web» = la horaria)
+# En rojo = algo URGENTE (web caída), una pieza rota o una API que falla: GitHub manda el correo.
 name: Motor sin consumo
 on:
   schedule:
-    - cron: "23 4 * * *"   # diario: 05:23 en Madrid en invierno, 06:23 en verano (antes de la pasada de las 9:08)
+    - cron: "23 5 * * *"   # diario: 06:23 en Madrid en invierno, 07:23 en verano (después de la Vigilancia del BOE)
     - cron: "7 * * * *"    # cada hora: web viva
   workflow_dispatch:
     inputs:
       piezas:
-        description: "Piezas separadas por comas (fichas,presencia,caducados,sitemap,boe,menciones,indexacion,web). Vacío = las diarias"
+        description: "Piezas separadas por comas (fichas,presencia,caducados,sitemap,boe,menciones,indexacion o web). Vacío = las diarias"
         required: false
         default: ""
   push:
@@ -26,18 +27,17 @@ permissions:
   actions: read
   checks: read
 concurrency:
-  group: motor-sin-consumo
+  # La horaria y la diaria no se esperan ni se cancelan entre sí: escriben ficheros distintos.
+  group: motor-sin-consumo-${{ github.event.schedule == '7 * * * *' && 'web' || 'diario' }}
   cancel-in-progress: false
 jobs:
   vigia:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Pruebas del motor
-        run: python3 -B -m unittest discover -s .github/motor/tests -p "test_vigia.py"
       - name: Qué piezas tocan
         id: piezas
         env:
@@ -45,50 +45,79 @@ jobs:
           CRON: ${{ github.event.schedule }}
           PEDIDAS: ${{ github.event.inputs.piezas }}
         run: |
+          DIARIAS="fichas,presencia,caducados,sitemap,boe,menciones,indexacion"
           if [ "$EVENTO" = "push" ]; then P=""
-          elif [ "$EVENTO" = "workflow_dispatch" ]; then P="${PEDIDAS:-fichas,presencia,caducados,sitemap,boe,menciones,indexacion,web}"
+          elif [ "$EVENTO" = "workflow_dispatch" ]; then P="${PEDIDAS:-$DIARIAS}"
           elif [ "$CRON" = "7 * * * *" ]; then P="web"
-          else P="fichas,presencia,caducados,sitemap,boe,menciones,indexacion,web"; fi
+          else P="$DIARIAS"; fi
+          if ! printf '%s' "$P" | grep -Eq '^[a-z,]*$'; then echo "::error::piezas no válidas"; exit 1; fi
           echo "piezas=$P" >> "$GITHUB_OUTPUT"
           echo "Piezas: ${P:-ninguna (solo pruebas)}"
+      - name: Pruebas del motor
+        if: github.event_name != 'schedule'
+        run: python3 -B -m unittest discover -s .github/motor/tests -p "test_vigia.py"
       - name: Rama datos-motor
         if: steps.piezas.outputs.piezas != ''
         run: |
           git config --global user.name "motor-sin-consumo"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git fetch origin datos-motor:datos-motor 2>/dev/null; then
+          set +e
+          git ls-remote --exit-code --heads origin datos-motor >/dev/null
+          CODIGO=$?
+          set -e
+          if [ "$CODIGO" = "0" ]; then
+            git fetch origin datos-motor:datos-motor
             git worktree add datos datos-motor
-          else
+          elif [ "$CODIGO" = "2" ]; then
+            echo "La rama datos-motor no existe: se crea vacía"
             git worktree add --detach datos
             cd datos && git checkout --orphan datos-motor && git rm -rfq . && cd ..
+          else
+            echo "::error::No se puede consultar la rama datos-motor (código $CODIGO): no se sigue para no perder el estado"
+            exit 1
           fi
           mkdir -p datos/motor
           for f in fichas.txt listados.txt ignorar.txt; do
             [ -f "datos/motor/$f" ] || cp ".github/motor/datos/$f" "datos/motor/$f"
           done
       - name: Dependencias de Search Console
-        if: steps.piezas.outputs.piezas != '' && contains(steps.piezas.outputs.piezas, 'indexacion')
+        id: deps
+        if: contains(steps.piezas.outputs.piezas, 'indexacion')
+        continue-on-error: true
         env:
           GSC_KEY: ${{ secrets.GSC_KEY }}
         run: |
-          if [ -n "$GSC_KEY" ]; then pip install --quiet google-auth requests; else echo "Sin GSC_KEY"; fi
+          if [ -n "$GSC_KEY" ]; then
+            python3 -m venv /tmp/venv
+            /tmp/venv/bin/pip install --quiet "google-auth==2.35.0" "requests==2.32.3"
+            echo "python=/tmp/venv/bin/python" >> "$GITHUB_OUTPUT"
+          else
+            echo "Sin GSC_KEY: Search Console se salta"
+          fi
       - name: Vigía
-        id: vigia
         if: steps.piezas.outputs.piezas != ''
         env:
           GH_TOKEN: ${{ github.token }}
           BING_API_KEY: ${{ secrets.BING_API_KEY }}
           GSC_KEY: ${{ secrets.GSC_KEY }}
           YANDEX_TOKEN: ${{ secrets.YANDEX_TOKEN }}
-          ALERTA_RSS: ${{ vars.ALERTA_RSS }}
+          ALERTA_RSS: ${{ secrets.ALERTA_RSS }}
           GSC_SITE: ${{ vars.GSC_SITE }}
-        run: python3 .github/motor/vigia.py --raiz . --datos datos/motor --piezas "${{ steps.piezas.outputs.piezas }}"
+          PIEZAS: ${{ steps.piezas.outputs.piezas }}
+          PY: ${{ steps.deps.outputs.python || 'python3' }}
+        run: $PY .github/motor/vigia.py --raiz . --datos datos/motor --piezas "$PIEZAS"
       - name: Guardar cola y estado
         if: always() && steps.piezas.outputs.piezas != ''
+        env:
+          PIEZAS: ${{ steps.piezas.outputs.piezas }}
         run: |
+          [ -d datos/motor ] || exit 0
           cd datos
           git add -A motor
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
-          git commit -qm "motor: $(date -u +%Y-%m-%dT%H:%MZ) ${{ steps.piezas.outputs.piezas }}"
-          for i in 1 2 3; do git push -q origin datos-motor && exit 0; git pull -q --rebase origin datos-motor; done
+          git commit -qm "motor: $(date -u +%Y-%m-%dT%H:%MZ) $PIEZAS"
+          for i in 1 2 3; do
+            git push -q origin datos-motor && exit 0
+            git pull -q --rebase origin datos-motor || { git rebase --abort; exit 1; }
+          done
           exit 1
