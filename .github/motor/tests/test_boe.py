@@ -1,4 +1,5 @@
 """Pruebas de la vigilancia: un cambio o una fuente incompleta nunca producen verde."""
+import json
 import contextlib
 import importlib.util
 import io
@@ -106,11 +107,42 @@ class FlujoVigilancia(unittest.TestCase):
     def test_red_o_xml_incompleto_dan_error_con_estado_anterior_intacto(self):
         self.ejecutar(extra=("--inicial",))
         anterior = Path(self.estado).read_text(encoding="utf-8")
-        for opciones in ({"error": boe.SinRespuesta("fallo de red")}, {"xml": b"<html>Error</html>"}):
-            codigo, salida = self.ejecutar(**opciones)
-            self.assertEqual(codigo, 1)
-            self.assertIn("1 errores", salida)
-            self.assertEqual(Path(self.estado).read_text(encoding="utf-8"), anterior)
+        codigo, salida = self.ejecutar(xml=b"<html>Error</html>")
+        self.assertEqual(codigo, 1)
+        self.assertIn("1 errores", salida)
+        self.assertEqual(Path(self.estado).read_text(encoding="utf-8"), anterior)
+        # BOE caído con vigilancia completa reciente: aviso, no rojo, y el estado no se toca.
+        codigo, salida = self.ejecutar(error=boe.SinRespuesta("fallo de red"))
+        self.assertEqual(codigo, 0)
+        self.assertIn("BOE caído hoy", salida)
+        self.assertEqual(Path(self.estado).read_text(encoding="utf-8"), anterior)
+
+    def test_boe_caido_varios_dias_sale_en_rojo(self):
+        self.ejecutar(extra=("--inicial",))
+        datos = json.loads(Path(self.estado).read_text(encoding="utf-8"))
+        datos["_meta"]["ultima_completa"] = "2000-01-01"
+        Path(self.estado).write_text(json.dumps(datos), encoding="utf-8")
+        codigo, salida = self.ejecutar(error=boe.SinRespuesta("fallo de red"))
+        self.assertEqual(codigo, 1)
+        self.assertIn("El BOE no contesta", salida)
+
+    def test_boe_caido_limite_de_dias(self):
+        from datetime import date, timedelta
+        for dias, esperado in ((2, 0), (3, 1)):
+            self.ejecutar(extra=("--inicial",))
+            datos = json.loads(Path(self.estado).read_text(encoding="utf-8"))
+            datos["_meta"]["ultima_completa"] = (date.today() - timedelta(days=dias)).isoformat()
+            Path(self.estado).write_text(json.dumps(datos), encoding="utf-8")
+            codigo, _ = self.ejecutar(error=boe.SinRespuesta("fallo de red"))
+            self.assertEqual(codigo, esperado, dias)
+
+    def test_boe_caido_sin_vigilancia_previa_conocida_sale_en_rojo(self):
+        self.ejecutar(extra=("--inicial",))
+        datos = json.loads(Path(self.estado).read_text(encoding="utf-8"))
+        datos.pop("_meta")
+        Path(self.estado).write_text(json.dumps(datos), encoding="utf-8")
+        codigo, _ = self.ejecutar(error=boe.SinRespuesta("fallo de red"))
+        self.assertEqual(codigo, 1)
 
     def test_derogacion_agotamiento_o_anulacion_siempre_dan_error(self):
         self.ejecutar(extra=("--inicial",))

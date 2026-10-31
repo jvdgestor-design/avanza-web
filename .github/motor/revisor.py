@@ -36,10 +36,12 @@ NORMAS = """Normas de la web (proyecto AVANZA WEB de Grupo Avanza Consultores, a
 
 ENCARGO = """Eres el revisor adversarial (puerta 5). No has escrito este cambio: tu trabajo es intentar tumbarlo antes de que se publique con el nombre de un asesor fiscal que firma lo que publica.
 
-Revisa el diff y el texto de las páginas. Para cada problema da: gravedad (BLOQUEA / CONVIENE / MENOR), la página y la frase literal afectada, por qué está mal y el arreglo concreto.
+Revisa el diff y el texto de las páginas. Para cada problema da: gravedad (BLOQUEA / COMPROBAR / CONVIENE / MENOR), la página y la frase literal afectada, por qué está mal y el arreglo concreto.
+
+BLOQUEA solo lo que puedes demostrar con lo que tienes delante: contradicción con un texto oficial aportado, contradicción interna o con la pareja de idioma, incumplimiento de las normas de la web, dato de contacto erróneo, FAQ distinta de su FAQPage. Una sospecha sobre una norma, un artículo, una letra o un apartado que no puedes contrastar con un texto oficial aportado NO es BLOQUEA: es COMPROBAR, en UNA sola línea que empiece por «COMPROBAR:» con la página, la cita exacta y la duda, y se comprueba después en el BOE. Un revisor que bloquea por lo que recuerda tumba citas correctas.
 
 Busca sobre todo:
-1. Afirmaciones de derecho, plazos, porcentajes, umbrales o artículos que puedan ser falsos, estar desfasados o tener excepciones omitidas. No tienes acceso al BOE: no afirmes que algo es correcto; lista cada afirmación jurídica que haya que comprobar en la fuente oficial, con el artículo que la sostendría y la duda concreta.
+1. Afirmaciones de derecho, plazos, porcentajes, umbrales o artículos que puedan ser falsos, estar desfasados o tener excepciones omitidas. No tienes acceso al BOE: no afirmes que algo es correcto; contrasta con los textos oficiales aportados, si los hay, y lo que no esté en ellos márcalo COMPROBAR con el artículo que lo sostendría y la duda concreta.
 2. Contradicciones entre la página cambiada y su pareja de idioma u otra página incluida.
 3. Incumplimientos de las normas de la web que se te dan.
 4. FAQ visible distinta de su FAQPage, datos de contacto distintos, enlaces que apunten a otro sitio.
@@ -273,6 +275,17 @@ def main():
         total = len(trozos)
         for n, t in enumerate(trozos[:8], 1):
             anota("notice", f"{cabecera} — parte {n}/{total}" + (" (recortado: el resto, en el resumen del trabajo)" if total > 8 and n == 8 else "") + f"\n\n{t}")
+    pendientes = [l.strip() for l in informe.splitlines() if re.search(r"\bcomprobar\b", l, re.I)]
+    if not bloquea and pendientes:
+        aviso = ("Puerta 5: sin bloqueos, pero quedan citas por contrastar en el BOE (norma_leer) ANTES de publicar:\n"
+                 + "\n".join(f"- {l}" for l in pendientes))
+        print(limpio(aviso))
+        if os.environ.get("GITHUB_STEP_SUMMARY"):
+            with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+                f.write(f"\n## Pendiente de contrastar en el BOE\n\n" + "\n".join(f"- {l}" for l in pendientes) + "\n")
+        if os.environ.get("GITHUB_ACTIONS"):
+            for i in range(0, len(aviso), 3500):
+                anota("warning", aviso[i:i + 3500])
     if bloquea and os.environ.get("GITHUB_ACTIONS"):
         anota("error", "Puerta 5: el revisor BLOQUEA. Ver los reparos en las anotaciones; cada uno se contrasta en la fuente.")
     return 1 if (bloquea or fallo) else 0

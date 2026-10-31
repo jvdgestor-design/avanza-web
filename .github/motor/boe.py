@@ -22,6 +22,7 @@ import glob
 import hashlib
 import html as htmlmod
 import json
+from datetime import date
 import os
 import re
 import sys
@@ -161,6 +162,7 @@ class SinRespuesta(Exception):
 
 
 FALLOS_RED = [0]
+DIAS_SIN_BOE = 3
 
 
 def pide(url, formato="json"):
@@ -339,7 +341,7 @@ def main():
             previo = json.load(f)
     revisado = {x.strip() for x in a.revisado.split(";") if x.strip()}
 
-    errores, cambios, avisos = [], [], []
+    errores, cambios, avisos, sin_red = [], [], [], []
     por_id = {}  # BOE-A -> {"claves": set, "paginas": set, "ficha": dict}
     previo_por_id = {v.get("id"): v for v in previo.values() if isinstance(v, dict) and v.get("id")}
 
@@ -380,7 +382,7 @@ def main():
                 hallado = cand
                 break
         except SinRespuesta as e:
-            errores.append(f"{clave}: {e}")
+            sin_red.append(f"{clave}: {e}")
             continue
         if not hallado:
             errores.append(f"{clave} ({', '.join(sorted(paginas))}): {motivo or 'sin identificar'}")
@@ -422,12 +424,32 @@ def main():
                 nuevo[c].update(huella=guardar_huella, fuente=fi["fuente"])
         vigiladas.append(f"{nombres} ({boe_id}) · {fi['actualizacion'][:8]} · {fi['departamento'][:40]} · «{fi['titulo'][:80]}»")
 
-    sin_estado = not previo
+    # BOE caído (errores 5xx o de red): no es un cambio de norma. Se avisa sin poner en rojo mientras la última
+    # vigilancia completa tenga menos de DIAS_SIN_BOE días; pasado ese plazo, rojo (nunca silencio indefinido).
+    hoy = time.strftime("%Y-%m-%d")
+    meta = previo.get("_meta") if isinstance(previo.get("_meta"), dict) else {}
+    ultima = meta.get("ultima_completa", "")
+    if not sin_red and not errores:
+        meta = {**meta, "ultima_completa": hoy}
+    try:
+        dias = (date.fromisoformat(hoy) - date.fromisoformat(ultima)).days if ultima else None
+    except ValueError:
+        dias = None
+    if sin_red:
+        if dias is None or dias >= DIAS_SIN_BOE:
+            errores.append(f"El BOE no contesta y la última vigilancia completa es {'desconocida' if dias is None else 'del ' + ultima}: "
+                           f"{len(sin_red)} normas sin comprobar. Primera: {sin_red[0]}")
+        else:
+            avisos.append(f"BOE caído hoy ({len(sin_red)} normas sin comprobar; última vigilancia completa: {ultima}). "
+                          f"Se vuelve a intentar mañana; si sigue así {DIAS_SIN_BOE} días, sale en rojo. Primera: {sin_red[0]}")
+    if meta:
+        nuevo["_meta"] = meta
+    sin_estado = not {k: v for k, v in previo.items() if k != "_meta"}
     if sin_estado and not a.inicial:
         errores.append("ESTADO PERDIDO: no hay estado de la ejecución anterior (caché caducada o rama nueva). "
                        "Si es la primera ejecución, lanzar `gh workflow run boe.yml -f inicial=true`.")
     # Una cache perdida no puede inicializarse sola y ponerse verde al dia siguiente.
-    if not sin_estado or a.inicial:
+    if not sin_estado or (a.inicial and not sin_red):
         with open(a.estado, "w", encoding="utf-8") as f:
             json.dump({**{k: v for k, v in previo.items() if k not in nuevo}, **nuevo}, f, ensure_ascii=False, indent=1)
 
@@ -458,6 +480,8 @@ def main():
             anota("notice", f"Vigiladas ({n}/{len(trozos)}):\n{t}")
         for e in (cambios + errores)[:9]:
             anota("error", e)
+        if sin_red and not errores:
+            anota("warning", avisos[-1] if avisos else f"BOE caído: {len(sin_red)} normas sin comprobar")
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(salida + "\n")
