@@ -639,5 +639,138 @@ class SegundaVueltaIndexacion(Indexacion):
         self.assertFalse([l for l in c.cierra() if "CONGELADO" in l])
 
 
+
+import informe  # noqa: E402
+import subprocess  # noqa: E402
+
+
+class InformeSemanal(Base):
+    """Lunes 02/11/2026: semana 24/10-30/10 frente a 17/10-23/10."""
+    LUNES = dt.date(2026, 11, 2)
+
+    def red_gsc(self, falla=False):
+        llamadas = []
+        esta = {"": [{"clicks": 3, "impressions": 900, "ctr": 0.0033, "position": 20.0}],
+                "query": [{"keys": ["gestoria paterna"], "clicks": 1, "impressions": 40, "position": 8.0},
+                          {"keys": ["Modelo 210 no residente"], "clicks": 0, "impressions": 30, "position": 15.0},
+                          {"keys": ["consulta nueva"], "clicks": 0, "impressions": 12, "position": 30.0}],
+                "page": [{"keys": [indexa.BASE + "a.html"], "clicks": 1, "impressions": 70, "position": 9.0}]}
+        antes = {"": [{"clicks": 1, "impressions": 500, "ctr": 0.002, "position": 25.0}],
+                 "query": [{"keys": ["gestoria paterna"], "clicks": 0, "impressions": 30, "position": 12.0},
+                           {"keys": ["Modelo 210 no residente"], "clicks": 0, "impressions": 20, "position": 11.0},
+                           {"keys": ["perdida"], "clicks": 0, "impressions": 9, "position": 40.0}],
+                 "page": [{"keys": [indexa.BASE + "b.html"], "clicks": 0, "impressions": 20, "position": 30.0}]}
+
+        def abre(req, timeout=None):
+            url = req.full_url
+            llamadas.append((url, req.data, {k.lower(): v for k, v in req.header_items()}))
+            if url.startswith(indexa.BING):
+                d = [{"Query": "busqueda rara de una persona", "Impressions": 1, "Clicks": 0,
+                      "Date": "/Date(1793516400000)/"},
+                     {"Query": "asesoria paterna", "Impressions": 7, "Clicks": 0, "AvgImpressionPosition": 9,
+                      "Date": "/Date(1793516400000)/"},
+                     {"Query": "gestoria paterna", "Impressions": 3, "Clicks": 0, "AvgImpressionPosition": 12,
+                      "Date": "/Date(1792911600000)/"}]
+                return Resp(json.dumps({"d": d}))
+            if falla:
+                raise urllib.error.HTTPError(url, 500, "x", {}, io.BytesIO(b'{"error":{"status":"INTERNAL"}}'))
+            c = json.loads(req.data)
+            dims = (c["dimensions"] or [""])[0]
+            filas = esta if c["startDate"] == "2026-10-24" else antes
+            self.assertIn(c["startDate"], ("2026-10-24", "2026-10-17"))
+            return Resp(json.dumps({"rows": filas[dims]}))
+        abre.llamadas = llamadas
+        return abre
+
+    def test_informe_compara_semanas_y_avisa(self):
+        escribe(os.path.join(self.dir, "consultas.txt"), "# x\ngestoria paterna\nmodelo 210\nbeckham\n")
+        escribe(os.path.join(self.dir, "metricas.csv"),
+                ",".join(indexa.CAMPOS) + "\n2026-10-26,0,20,,,0,139,0,9,3000,150\n2026-11-02,0,26,,,0,139,0,12,4500,150\n")
+        c = vigia.Cola(self.dir, self.LUNES)
+        abre = self.red_gsc()
+        texto, fallos = informe.ejecuta(c, self.dir, entorno={"GSC_KEY": "{}", "BING_API_KEY": "K"}, abre=abre,
+                                        token_gsc="T")
+        self.assertEqual(fallos, [])
+        self.assertIn("24/10 a 30/10 frente a 17/10 a 23/10", texto)
+        self.assertIn("| Clics | 3 | 1 | +2 |", texto)
+        self.assertIn("−5,0 (mejor)", texto)                                   # posición 25 → 20
+        self.assertIn("«consulta nueva» — 12 impr.", texto)
+        self.assertIn("«gestoria paterna» — pos. 12,0 → 8,0", texto)          # sube
+        self.assertIn("«Modelo 210 no residente» — pos. 11,0 → 15,0", texto)   # baja
+        self.assertIn("«perdida» — tenía 9 impr.", texto)
+        self.assertIn("| modelo 210 | 30 | 0 | 15,0 | 20 | 1 |", texto)        # sin mayúsculas
+        self.assertIn("| beckham | 0 | 0 | no sale | 0 | 0 |", texto)
+        self.assertIn("| a.html | 70 | 0 |", texto)
+        self.assertIn("Páginas que tenían impresiones y esta semana no: 1 — b.html", texto)
+        self.assertIn("fecha 01/11/2026; la API no dice", texto)                  # último cubo de Bing
+        self.assertIn("2 consultas, 8 impresiones, 0 clics; cubo de 7 días antes: 1 consultas, 3 impresiones", texto)
+        self.assertIn("| asesoria paterna | 7 | 0 | 9 | sí |", texto)
+        self.assertNotIn("busqueda rara", texto)                              # menos de 5 impr.: no se publica
+        self.assertIn("| Bing: páginas en índice | 26 | 20 |", texto)
+        self.assertIn("| Bing: dominios enlazantes (API) | NO CALCULABLE | — |", texto)
+        self.assertTrue(all(cab.get("authorization") == "Bearer T" for u, _, cab in abre.llamadas
+                            if "googleapis" in u))
+        with open(os.path.join(self.dir, "informes", "2026-11-02.md"), encoding="utf-8") as f:
+            self.assertEqual(f.read(), texto)
+        lineas = c.cierra()
+        self.assertTrue([l for l in lineas if l.startswith("- INFORME · informe de la semana listo")])
+        self.assertFalse(c.urgente)
+
+    def test_informe_api_rota_no_calculable_y_en_rojo(self):
+        c = vigia.Cola(self.dir, self.LUNES)
+        with mock.patch.object(informe, "indexa", indexa):
+            vigia_abre = self.red_gsc(falla=True)
+            with mock.patch.dict(os.environ, {"GSC_KEY": "{}", "BING_API_KEY": ""}, clear=False):
+                with mock.patch.object(indexa, "token_google", lambda k: "T"), \
+                        mock.patch.object(indexa.urllib.request, "urlopen", vigia_abre):
+                    vigia.ejecuta_piezas(c, ["semanal"], self.dir, self.dir)
+        with open(os.path.join(self.dir, "informe-semanal.md"), encoding="utf-8") as f:
+            texto = f.read()
+        self.assertIn("NO CALCULABLE: ErrorApi: Search Console query: HTTP 500 INTERNAL", texto)
+        self.assertIn("Sin BING_API_KEY", texto)
+        self.assertTrue(c.urgente)
+        self.assertIn("NO CALCULABLE: gsc", "\n".join(c.cierra()))
+
+    def test_sin_secretos_no_llama_y_lo_dice(self):
+        abre = red({})
+        texto, fallos = informe.ejecuta(vigia.Cola(self.dir, self.LUNES), self.dir, entorno={}, abre=abre)
+        self.assertEqual((fallos, abre.llamadas), ([], []))
+        self.assertIn("Sin GSC_KEY", texto)
+
+
+class SitemapFechas(Base):
+    def git(self, *a, fecha=None):
+        env = dict(os.environ, GIT_AUTHOR_DATE=fecha or "", GIT_COMMITTER_DATE=fecha or "")
+        if not fecha:
+            env.pop("GIT_AUTHOR_DATE"); env.pop("GIT_COMMITTER_DATE")
+        subprocess.run(["git", "-C", self.dir, "-c", "user.name=t", "-c", "user.email=t@t", *a],
+                       check=True, capture_output=True, env=env)
+
+    def test_lastmod_es_el_dia_de_la_fusion_no_el_del_commit_de_la_rama(self):
+        self.git("init", "-q", "-b", "main")
+        escribe(os.path.join(self.dir, "sitemap.xml"), SITEMAP.replace(
+            "<loc>https://grupoavanzaconsultores.es/a.html</loc>",
+            "<loc>https://grupoavanzaconsultores.es/a.html</loc><lastmod>2026-01-01</lastmod>"))
+        for n in ("index.html", "a.html", "b.html"):
+            escribe(os.path.join(self.dir, n), "v1")
+        self.git("add", "-A")
+        self.git("commit", "-qm", "base", fecha="2026-10-01T10:00:00+00:00")
+        self.git("checkout", "-qb", "rama")
+        escribe(os.path.join(self.dir, "a.html"), "v2")
+        self.git("commit", "-qam", "cambio en rama", fecha="2026-10-20T10:00:00+00:00")
+        self.git("checkout", "-q", "main")
+        escribe(os.path.join(self.dir, "b.html"), "v2")
+        self.git("commit", "-qam", "otro en main", fecha="2026-10-25T10:00:00+00:00")
+        self.git("merge", "-q", "--no-ff", "rama", "-m", "fusión", fecha="2026-10-31T10:00:00+00:00")
+        self.assertTrue(vigia.reescribe_sitemap(self.dir))
+        with open(os.path.join(self.dir, "sitemap.xml"), encoding="utf-8") as f:
+            xml = f.read()
+        self.assertIn("a.html</loc><lastmod>2026-10-31</lastmod>", xml)    # fusión, no 2026-10-20
+        self.assertIn("b.html</loc><lastmod>2026-10-25</lastmod>", xml)
+        self.assertIn("es/</loc><lastmod>2026-10-01</lastmod>", xml)
+        self.assertNotIn("2026-01-01", xml)
+        self.assertFalse(vigia.reescribe_sitemap(self.dir))                 # segunda vez: nada que cambiar
+
+
 if __name__ == "__main__":
     unittest.main()
