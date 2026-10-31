@@ -16,6 +16,8 @@ Piezas (--piezas):
   boe        normas actualizadas según la última «Vigilancia del BOE» → páginas a revisar
   menciones  RSS de Google Alerts (secreto ALERTA_RSS): menciones nuevas, con datos malos o sin enlace
   indexacion Bing Webmaster, Search Console y Yandex (indexa.py), solo con sus secretos
+  semanal    informe de la semana (informe.py): Search Console 7 días frente a 7, consultas de Bing,
+             índices y enlaces; lo añade el flujo los lunes a la ejecución diaria
   web        portada, formulario y sitemap en vivo (cada hora, aparte); caída = URGENTE
 
 Respeta robots.txt (RFC 9309: si no se puede leer por error del servidor, no se entra) y pide como mucho
@@ -486,7 +488,9 @@ def pieza_caducados(cola, raiz):
 
 
 def git_fecha(raiz, fichero):
-    r = subprocess.run(["git", "-C", raiz, "log", "-1", "--format=%cs", "--", fichero],
+    """Día en que el cambio llegó a main: con --first-parent, la fusión de un PR cuenta con su fecha,
+    no con la del commit de la rama (que puede ser de días antes)."""
+    r = subprocess.run(["git", "-C", raiz, "log", "-1", "--first-parent", "--format=%cs", "--", fichero],
                        capture_output=True, text=True)
     return r.stdout.strip() if r.returncode == 0 else ""
 
@@ -688,6 +692,12 @@ def ejecuta_piezas(cola, piezas, raiz, datos):
                 pieza_menciones(cola)
             elif p == "web":
                 pieza_web(cola, raiz)
+            elif p == "semanal":
+                import informe
+                _, fallos = informe.ejecuta(cola, raiz)
+                if fallos:
+                    cola.urgente = True
+                    continue
             elif p == "indexacion":
                 import indexa
                 _, fallos = indexa.ejecuta(cola, raiz)
