@@ -639,9 +639,6 @@ class SegundaVueltaIndexacion(Indexacion):
         self.assertFalse([l for l in c.cierra() if "CONGELADO" in l])
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 
 import informe  # noqa: E402
 import subprocess  # noqa: E402
@@ -668,7 +665,9 @@ class InformeSemanal(Base):
             url = req.full_url
             llamadas.append((url, req.data, {k.lower(): v for k, v in req.header_items()}))
             if url.startswith(indexa.BING):
-                d = [{"Query": "asesoria paterna", "Impressions": 7, "Clicks": 0, "AvgImpressionPosition": 9,
+                d = [{"Query": "busqueda rara de una persona", "Impressions": 1, "Clicks": 0,
+                      "Date": "/Date(1793516400000)/"},
+                     {"Query": "asesoria paterna", "Impressions": 7, "Clicks": 0, "AvgImpressionPosition": 9,
                       "Date": "/Date(1793516400000)/"},
                      {"Query": "gestoria paterna", "Impressions": 3, "Clicks": 0, "AvgImpressionPosition": 12,
                       "Date": "/Date(1792911600000)/"}]
@@ -703,8 +702,10 @@ class InformeSemanal(Base):
         self.assertIn("| beckham | 0 | 0 | no sale | 0 | 0 |", texto)
         self.assertIn("| a.html | 70 | 0 |", texto)
         self.assertIn("Páginas que tenían impresiones y esta semana no: 1 — b.html", texto)
-        self.assertIn("termina el 01/11/2026: 1 consultas, 7 impresiones", texto)   # último cubo de Bing
+        self.assertIn("fecha 01/11/2026; la API no dice", texto)                  # último cubo de Bing
+        self.assertIn("2 consultas, 8 impresiones, 0 clics; cubo de 7 días antes: 1 consultas, 3 impresiones", texto)
         self.assertIn("| asesoria paterna | 7 | 0 | 9 | sí |", texto)
+        self.assertNotIn("busqueda rara", texto)                              # menos de 5 impr.: no se publica
         self.assertIn("| Bing: páginas en índice | 26 | 20 |", texto)
         self.assertIn("| Bing: dominios enlazantes (API) | NO CALCULABLE | — |", texto)
         self.assertTrue(all(cab.get("authorization") == "Bearer T" for u, _, cab in abre.llamadas
@@ -769,3 +770,7 @@ class SitemapFechas(Base):
         self.assertIn("es/</loc><lastmod>2026-10-01</lastmod>", xml)
         self.assertNotIn("2026-01-01", xml)
         self.assertFalse(vigia.reescribe_sitemap(self.dir))                 # segunda vez: nada que cambiar
+
+
+if __name__ == "__main__":
+    unittest.main()

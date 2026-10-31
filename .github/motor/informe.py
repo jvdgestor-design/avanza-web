@@ -13,8 +13,9 @@ Fuentes, cada una se salta sola si falta su secreto, y lo dice en el informe:
   metricas.csv  páginas en índice (Bing, Google), dominios enlazantes: hoy frente a hace 7 días.
   consultas.txt consultas objetivo (una por línea; # comenta): se buscan dentro de las consultas de Search
                 Console, sin acentos ni mayúsculas, y se dan sus impresiones, clics y posición de la semana.
-Nada de terceros se copia salvo las consultas de búsqueda y nuestras URL. La rama es pública: no van cifras
-que no estén ya en el panel de Search Console o Bing de la propia web.
+La rama datos-motor es PÚBLICA: el informe enseña cifras de Search Console y Bing que el panel guarda en privado.
+Para no publicar búsquedas sueltas que puedan llevar datos de una persona, solo salen consultas con al menos
+MIN_IMPR impresiones (Google ya oculta las raras; Bing no). Nada más de terceros se copia.
 """
 import datetime as dt
 import json
@@ -39,13 +40,19 @@ def periodos(hoy):
     return (ini, fin), (ini - dt.timedelta(days=7), ini - dt.timedelta(days=1))
 
 
-def _gsc_consulta(sitio, cab, ini, fin, dims, abre, limite=1000):
+def _gsc_consulta(sitio, cab, ini, fin, dims, abre, limite=5000):
     cuerpo = {"startDate": ini.isoformat(), "endDate": fin.isoformat(), "dimensions": dims,
               "rowLimit": limite, "searchType": "web"}
     st, r = indexa.pide(indexa.GSC_QUERY.format(urllib.parse.quote(sitio, safe="")), "POST", cuerpo, cab, abre)
     if st != 200:
         raise indexa.ErrorApi(f"Search Console query: HTTP {st} {indexa.codigo(r)}".strip())
-    return (r or {}).get("rows", [])
+    filas = (r or {}).get("rows", [])
+    if len(filas) >= limite:
+        TRUNCADAS.append(f"{'+'.join(dims) or 'total'} {ini:%d/%m}")
+    return filas
+
+
+TRUNCADAS = []
 
 
 def _num(v, dec=0):
@@ -80,13 +87,16 @@ def seccion_gsc(sitio, cab, hoy, consultas_obj, abre):
     tot1 = _filas(_gsc_consulta(sitio, cab, i1, f1, [], abre)).get("(total)", {})
     tot0 = _filas(_gsc_consulta(sitio, cab, i0, f0, [], abre)).get("(total)", {})
     g = lambda d, k: d.get(k) if d else None
-    lineas += [
-        "| | Esta semana | Anterior | Cambio |", "|---|---|---|---|",
-        f"| Clics | {_num(g(tot1,'clics') or 0)} | {_num(g(tot0,'clics') or 0)} | {_delta(g(tot1,'clics') or 0, g(tot0,'clics') or 0)} |",
-        f"| Impresiones | {_num(g(tot1,'impr') or 0)} | {_num(g(tot0,'impr') or 0)} | {_delta(g(tot1,'impr') or 0, g(tot0,'impr') or 0)} |",
-        f"| CTR | {_num(100 * (g(tot1,'ctr') or 0), 1)} % | {_num(100 * (g(tot0,'ctr') or 0), 1)} % | |",
-        f"| Posición media | {_num(g(tot1,'pos') or 0, 1)} | {_num(g(tot0,'pos') or 0, 1)} | "
-        f"{_delta(g(tot1,'pos'), g(tot0,'pos'), 1, menos_es_mejor=True) if tot1 and tot0 else '—'} |", ""]
+    if not tot1 or not tot0:
+        lineas += [f"- Totales NO CALCULABLE: Search Console no da datos de {'esta semana' if not tot1 else 'la anterior'}.", ""]
+    else:
+        lineas += [
+            "| | Esta semana | Anterior | Cambio |", "|---|---|---|---|",
+            f"| Clics | {_num(g(tot1,'clics') or 0)} | {_num(g(tot0,'clics') or 0)} | {_delta(g(tot1,'clics') or 0, g(tot0,'clics') or 0)} |",
+            f"| Impresiones | {_num(g(tot1,'impr') or 0)} | {_num(g(tot0,'impr') or 0)} | {_delta(g(tot1,'impr') or 0, g(tot0,'impr') or 0)} |",
+            f"| CTR | {_num(100 * (g(tot1,'ctr') or 0), 1)} % | {_num(100 * (g(tot0,'ctr') or 0), 1)} % | |",
+            f"| Posición media | {_num(g(tot1,'pos') or 0, 1)} | {_num(g(tot0,'pos') or 0, 1)} | "
+            f"{_delta(g(tot1,'pos'), g(tot0,'pos'), 1, menos_es_mejor=True)} |", ""]
     q1 = _filas(_gsc_consulta(sitio, cab, i1, f1, ["query"], abre))
     q0 = _filas(_gsc_consulta(sitio, cab, i0, f0, ["query"], abre))
     p1 = _filas(_gsc_consulta(sitio, cab, i1, f1, ["page"], abre))
@@ -154,15 +164,22 @@ def seccion_bing(clave, abre):
         return lineas + ["- Bing no devuelve consultas todavía (sin impresiones registradas).", ""], {"bing_consultas": 0}
     fechas = sorted(cubos)
     ult = cubos[fechas[-1]]
-    ant = {f.get("Query"): f for f in cubos[fechas[-2]]} if len(fechas) > 1 else {}
+    # Solo se compara con el cubo anterior si está a 7 días: si una semana no tuvo impresiones, no hay «anterior».
+    ant = ({f.get("Query"): f for f in cubos[fechas[-2]]}
+           if len(fechas) > 1 and (fechas[-1] - fechas[-2]).days == 7 else {})
     imp = sum(f.get("Impressions", 0) for f in ult)
     cli = sum(f.get("Clicks", 0) for f in ult)
     imp0 = sum(f.get("Impressions", 0) for f in ant.values()) if ant else None
-    lineas.append(f"Semana de Bing que termina el {fechas[-1]:%d/%m/%Y}: {len(ult)} consultas, {_num(imp)} impresiones, "
-                  f"{_num(cli)} clics" + (f" (semana anterior: {len(ant)} consultas, {_num(imp0)} impresiones)" if ant else "")
+    lineas.append(f"Último cubo de Bing (fecha {fechas[-1]:%d/%m/%Y}; la API no dice si es el inicio o el fin de la "
+                  f"semana, y puede estar incompleto): {len(ult)} consultas, {_num(imp)} impresiones, {_num(cli)} clics"
+                  + (f"; cubo de 7 días antes: {len(ant)} consultas, {_num(imp0)} impresiones" if ant else
+                     "; sin cubo de 7 días antes para comparar")
                   + ". Posición tal como la da la API (sin comprobar su escala frente al panel).")
-    lineas += ["", "| Consulta | Impr. | Clics | Posición (API) | Nueva |", "|---|---|---|---|---|"]
-    for f in sorted(ult, key=lambda f: -f.get("Impressions", 0))[:TOP]:
+    visibles = [f for f in ult if f.get("Impressions", 0) >= MIN_IMPR]
+    lineas += ["", f"Consultas con {MIN_IMPR} impresiones o más: {len(visibles)} (las demás no se publican).", ""]
+    if visibles:
+        lineas += ["| Consulta | Impr. | Clics | Posición (API) | Nueva |", "|---|---|---|---|---|"]
+    for f in sorted(visibles, key=lambda f: -f.get("Impressions", 0))[:TOP]:
         lineas.append(f"| {f.get('Query', '')} | {_num(f.get('Impressions', 0))} | {_num(f.get('Clicks', 0))} | "
                       f"{f.get('AvgImpressionPosition', '')} | {'sí' if ant and f.get('Query') not in ant else ''} |")
     return lineas + [""], {"bing_consultas": len(ult)}
@@ -179,6 +196,7 @@ def seccion_metricas(datos, hoy):
     actual = por.get(max((k for k in por if k <= hoy.isoformat()), default=""), {})
     hace = max((k for k in por if k <= (hoy - dt.timedelta(days=7)).isoformat()), default=None)
     previo = por.get(hace, {}) if hace else {}
+    vieja = actual and (hoy - dt.date.fromisoformat(actual["fecha"])).days > 1
     nombres = [("bing_en_indice", "Bing: páginas en índice"), ("bing_dominios", "Bing: dominios enlazantes (API)"),
                ("gsc_indexadas", "Google: URL del sitemap indexadas"), ("gsc_sin_indexar", "Google: sin indexar")]
     lineas = ["## Índices y enlaces (metricas.csv)", "",
@@ -186,6 +204,8 @@ def seccion_metricas(datos, hoy):
     for k, n in nombres:
         v = actual.get(k) or "NO CALCULABLE"
         lineas.append(f"| {n} | {v} | {previo.get(k) or '—'} |")
+    if vieja:
+        lineas += ["", f"- La última fila es del {actual['fecha']}: la medición diaria no ha corrido desde entonces."]
     return lineas + ["", "Dominios enlazantes de Bing: la API da 0 o vacío cuando el panel muestra otra cifra "
                      "(30/10): vale la del panel.", ""]
 
@@ -205,6 +225,7 @@ def ejecuta(cola, raiz, entorno=None, abre=None, token_gsc=None):
               "Lo genera GitHub Actions sin IA. Cifras de las API de Search Console y Bing: FIRMES como lectura de "
               "la API en la fecha de arriba; las de consultas y páginas no incluyen las anonimizadas.", ""]
     fallos, resumen = [], {}
+    TRUNCADAS.clear()
     est = cola.pieza("indexacion").get("gsc", {})
     clave = (env.get("GSC_KEY") or "").strip()
     if clave:
@@ -230,6 +251,9 @@ def ejecuta(cola, raiz, entorno=None, abre=None, token_gsc=None):
             partes += ["## Bing", "", f"- NO CALCULABLE: {type(e).__name__}: {str(e)[:150]}", ""]
     else:
         partes += ["## Bing", "", "- Sin BING_API_KEY: no se mide.", ""]
+    if TRUNCADAS:
+        partes += [f"- Search Console devolvió el máximo de filas en: {', '.join(TRUNCADAS)}. Las listas de nuevas y "
+                   "perdidas pueden estar incompletas.", ""]
     partes += seccion_metricas(cola.datos, hoy)
     partes += ["## Lo que no da ninguna API (sigue a mano o por ChatGPT)", "",
                "- Bing AI Performance (Copilot), posición real en google.es desde Valencia, Brave site:, LinkedIn y la "
