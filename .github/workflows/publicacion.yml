@@ -1,5 +1,7 @@
-# Tras cada publicación en main: espera a que la web sirva lo publicado (misma huella SHA-256),
-# avisa a IndexNow con las páginas cambiadas o nuevas y repasa la salud en vivo. Sin usos de Claude.
+# Tras cada publicación en main: pone en el sitemap la fecha real de cada página (lastmod = día en que su
+# último cambio llegó a main) y, si cambia, la sube a main; espera a que la web sirva lo publicado (misma huella
+# SHA-256), avisa a IndexNow con las páginas cambiadas o nuevas y repasa la salud en vivo. Sin usos de Claude.
+# La subida del sitemap la hace el GITHUB_TOKEN: no vuelve a lanzar este flujo (GitHub no encadena flujos con él).
 name: Después de publicar
 on:
   push:
@@ -11,15 +13,34 @@ on:
       - "robots.txt"
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write   # solo para subir el sitemap con sus fechas
 jobs:
   publicacion:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+      - name: Fechas reales en el sitemap
+        # Si falla (carrera con otra publicación, main protegida), no impide la huella ni IndexNow; la diaria del
+        # motor avisa de los lastmod desfasados y la siguiente publicación los corrige.
+        continue-on-error: true
+        run: |
+          git config user.name "motor-sin-consumo"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3; do
+            if [ "$i" != "1" ]; then
+              git fetch -q origin main && git reset -q --hard origin/main   # otra publicación ha llegado antes
+            fi
+            python3 .github/motor/vigia.py --raiz . --reescribe-sitemap
+            if git diff --quiet -- sitemap.xml; then echo "sitemap ya al día"; exit 0; fi
+            git diff --stat -- sitemap.xml
+            git commit -qm "sitemap: lastmod con la fecha real de cada página" -- sitemap.xml
+            git push -q origin HEAD:main && exit 0
+          done
+          echo "::warning::No se ha podido subir el sitemap con sus fechas tras 3 intentos"
+          exit 1
       - name: Huella en vivo e IndexNow
         env:
           ANTES: ${{ github.event.before }}

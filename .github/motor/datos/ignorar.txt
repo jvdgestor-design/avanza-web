@@ -1,0 +1,2 @@
+# Claves de aviso silenciadas a mano (falsos positivos). Una por línea, tal como salen en estado.json.
+# Ejemplo: CADUCADO|pagina.html|1a2b3c4d5e  # motivo y fecha

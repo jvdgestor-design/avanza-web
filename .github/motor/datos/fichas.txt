@@ -1,0 +1,12 @@
+# Fichas de Grupo Avanza Consultores que vigila vigia.py (una URL por línea; se edita en la rama datos-motor).
+# Opciones tras «|»: tel=<otro teléfono admitido> · sin-tel · sin-nombre · sin-enlace. Datos buenos: NAP-ENTIDAD.
+# Fuera del motor porque su robots.txt prohíbe la lectura automática (se miran a mano o por ChatGPT, 30/10/2026):
+#   Páginas Amarillas (…_236166997_000000001.html), Cylex (…-14669606.html), maptons (p/3878266030).
+https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/
+https://www.gestorias.es/valencia/valencia/grupo-avanza-consultores-20012
+https://valencia.comercioscomunitatvalenciana.com/es/comercios/view/grupo-avanza-consultores
+https://www.emprenemjunts.es/?op=36&id=45578
+https://expato.eu/ru/directory/gestoria/c101 | sin-tel
+https://accountanty.com/spain/paterna/grupo-avanza-consultores/
+https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia
+https://negocioscerca.es/empresa/grupo-avanza-consultores-paterna | sin-enlace

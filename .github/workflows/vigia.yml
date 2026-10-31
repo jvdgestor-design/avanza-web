@@ -1,0 +1,127 @@
+# Motor sin consumo (capa 0): vigila, mide, indexa y avisa sin IA. Escribe en la rama datos-motor:
+#   motor/cola-trabajo.md  (diario: fichas, presencia, caducados, sitemap, BOE, menciones e indexación por API)
+#   motor/urgente.md       (cada hora: web viva; estado aparte en web.json para no chocar con el diario)
+# Las API (Bing, Search Console, Yandex) y el RSS de Google Alerts se saltan solos sin su secreto.
+# A mano: gh workflow run vigia.yml -f piezas="fichas,presencia"   (vacío = las diarias; «web» = la horaria)
+# En rojo = algo URGENTE (web caída), una pieza rota o una API que falla: GitHub manda el correo.
+name: Motor sin consumo
+on:
+  schedule:
+    - cron: "23 5 * * *"   # diario: 06:23 en Madrid en invierno, 07:23 en verano (después de la Vigilancia del BOE)
+    - cron: "7 * * * *"    # cada hora: web viva
+  workflow_dispatch:
+    inputs:
+      piezas:
+        description: "Piezas separadas por comas (fichas,presencia,caducados,sitemap,boe,menciones,indexacion,semanal o web). Vacío = las diarias (y el lunes, también semanal)"
+        required: false
+        default: ""
+  push:
+    branches: [main]
+    paths:
+      - ".github/motor/vigia.py"
+      - ".github/motor/indexa.py"
+      - ".github/motor/informe.py"
+      - ".github/motor/tests/test_vigia.py"
+      - ".github/workflows/vigia.yml"
+permissions:
+  contents: write   # solo para escribir en la rama datos-motor
+  actions: read
+  checks: read
+concurrency:
+  # La horaria y la diaria no se esperan ni se cancelan entre sí: escriben ficheros distintos.
+  group: motor-sin-consumo-${{ (github.event.schedule == '7 * * * *' || github.event.inputs.piezas == 'web') && 'web' || 'diario' }}
+  cancel-in-progress: false
+jobs:
+  vigia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Qué piezas tocan
+        id: piezas
+        env:
+          EVENTO: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+          PEDIDAS: ${{ github.event.inputs.piezas }}
+        run: |
+          DIARIAS="fichas,presencia,caducados,sitemap,boe,menciones,indexacion"
+          if [ "$EVENTO" = "push" ]; then P=""
+          elif [ "$EVENTO" = "workflow_dispatch" ]; then P="${PEDIDAS:-$DIARIAS}"
+          elif [ "$CRON" = "7 * * * *" ]; then P="web"
+          else P="$DIARIAS"; fi
+          # Lunes (hora de Madrid), la diaria lleva además el informe semanal
+          if [ "$P" = "$DIARIAS" ] && [ "$(TZ=Europe/Madrid date +%u)" = "1" ]; then P="$P,semanal"; fi
+          if [[ ! "$P" =~ ^[a-z,]*$ ]]; then echo "::error::piezas no válidas"; exit 1; fi
+          echo "piezas=$P" >> "$GITHUB_OUTPUT"
+          echo "Piezas: ${P:-ninguna (solo pruebas)}"
+      - name: Pruebas del motor
+        if: github.event_name != 'schedule'
+        continue-on-error: ${{ github.event_name == 'workflow_dispatch' }}   # a mano, que no bloquee una ejecución de emergencia
+        run: python3 -B -m unittest discover -s .github/motor/tests -p "test_vigia.py"
+      - name: Rama datos-motor
+        if: steps.piezas.outputs.piezas != ''
+        run: |
+          git config --global user.name "motor-sin-consumo"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          set +e
+          git ls-remote --exit-code --heads origin datos-motor >/dev/null
+          CODIGO=$?
+          set -e
+          if [ "$CODIGO" = "0" ]; then
+            git fetch origin datos-motor:datos-motor
+            git worktree add datos datos-motor
+          elif [ "$CODIGO" = "2" ]; then
+            echo "La rama datos-motor no existe: se crea vacía"
+            git worktree add --detach datos
+            cd datos && git checkout --orphan datos-motor && git rm -rfq . && cd ..
+          else
+            echo "::error::No se puede consultar la rama datos-motor (código $CODIGO): no se sigue para no perder el estado"
+            exit 1
+          fi
+          mkdir -p datos/motor
+          for f in fichas.txt listados.txt ignorar.txt consultas.txt; do
+            [ -f "datos/motor/$f" ] || cp ".github/motor/datos/$f" "datos/motor/$f"
+          done
+      - name: Dependencias de Search Console
+        id: deps
+        if: contains(steps.piezas.outputs.piezas, 'indexacion') || contains(steps.piezas.outputs.piezas, 'semanal')
+        continue-on-error: true
+        env:
+          GSC_KEY: ${{ secrets.GSC_KEY }}
+        run: |
+          if [ -n "$GSC_KEY" ]; then
+            python3 -m venv /tmp/venv
+            /tmp/venv/bin/pip install --quiet "google-auth==2.35.0" "requests==2.32.3"
+            echo "python=/tmp/venv/bin/python" >> "$GITHUB_OUTPUT"
+          else
+            echo "Sin GSC_KEY: Search Console se salta"
+          fi
+      - name: Vigía
+        if: steps.piezas.outputs.piezas != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          GSC_KEY: ${{ secrets.GSC_KEY }}
+          YANDEX_TOKEN: ${{ secrets.YANDEX_TOKEN }}
+          ALERTA_RSS: ${{ secrets.ALERTA_RSS }}
+          GSC_SITE: ${{ vars.GSC_SITE }}
+          PIEZAS: ${{ steps.piezas.outputs.piezas }}
+          PY: ${{ steps.deps.outputs.python || 'python3' }}
+        run: $PY .github/motor/vigia.py --raiz . --datos datos/motor --piezas "$PIEZAS"
+      - name: Guardar cola y estado
+        if: always() && steps.piezas.outputs.piezas != ''
+        env:
+          PIEZAS: ${{ steps.piezas.outputs.piezas }}
+        run: |
+          [ -d datos/motor ] || exit 0
+          cd datos
+          git add -A motor ':!motor/*.corrupto'
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -qm "motor: $(date -u +%Y-%m-%dT%H:%MZ) $PIEZAS"
+          for i in 1 2 3; do
+            git push -q origin datos-motor && exit 0
+            git pull -q --rebase origin datos-motor || { git rebase --abort; exit 1; }
+          done
+          exit 1

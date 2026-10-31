@@ -1,0 +1,9 @@
+# Listados donde queremos salir: vigia.py avisa solo cuando pasamos a salir o dejamos de salir.
+# Una URL por línea; se edita en la rama datos-motor. Si una URL da 404, sale PRESENCIA-ILEGIBLE: corregirla.
+# Fuera del motor (robots.txt lo prohíbe, 30/10/2026): lasmejoresasesorias.es/valencia/paterna. Se mira a mano.
+https://www.gestorias.es/valencia/paterna
+https://www.guiagestoria.com/mejores-gestorias/paterna-valencia
+https://ccasesoria.com/valencia/paterna/
+https://asesoriasgestorias.com/valencia/paterna/
+https://buscador.asesorexcelente.com/valencia/paterna
+https://paterna.comercioscomunitatvalenciana.com/es/mapa/index
