@@ -1,0 +1,30 @@
+# Consultas objetivo para el informe semanal (informe.py): una por línea; # comenta.
+# Se buscan DENTRO de las consultas reales de Search Console, sin acentos ni mayúsculas:
+# «gestoria paterna» suma «gestoria paterna», «mejor gestoria paterna», etc.
+# Sale de la lista del apartado 1 de las instrucciones del proyecto (31/10/2026). Se edita en la rama datos-motor.
+# Locales
+asesoria paterna
+gestoria paterna
+asesoria valencia
+gestoria valencia
+asesoria fiscal valencia
+la cañada
+burjassot
+eliana
+# Extranjeros y especialidad
+no residente
+modelo 210
+non resident
+beckham
+residencia fiscal
+pension extranjera
+modelo 720
+herencia
+donacion
+alta autonomo
+constituir sociedad
+cambiar de asesoria
+carta de hacienda
+requerimiento hacienda
+regularizacion
+nominas

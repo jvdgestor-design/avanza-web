@@ -6,6 +6,7 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 ## 2026-10-31
 
 - BING-ENVIO · 9 URL enviadas por API (cuota del día 100; quedan 0 pendientes) · Bing Webmaster · 2026-10-31
+- INFORME · informe de la semana listo en motor/informe-semanal.md: 3.011 impr. y 31 clics en Google, 15 consultas nuevas, 15 suben y 15 bajan · motor/informe-semanal.md · 2026-10-31
 
 ## 2026-10-30
 
