@@ -71,7 +71,7 @@ jobs:
       matrix:
         norma: ${{ fromJson(needs.prepara.outputs.normas) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Páginas contra el texto vigente
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
