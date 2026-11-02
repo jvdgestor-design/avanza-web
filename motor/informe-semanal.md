@@ -1,40 +1,40 @@
-# Informe semanal del motor — 31/10/2026
+# Informe semanal del motor — 02/11/2026
 
 Lo genera GitHub Actions sin IA. Cifras de las API de Search Console y Bing: FIRMES como lectura de la API en la fecha de arriba; las de consultas y páginas no incluyen las anonimizadas.
 
-## Google (Search Console) — 22/10 a 28/10 frente a 15/10 a 21/10
+## Google (Search Console) — 24/10 a 30/10 frente a 17/10 a 23/10
 
 | | Esta semana | Anterior | Cambio |
 |---|---|---|---|
-| Clics | 31 | 19 | +12 |
-| Impresiones | 3.011 | 1.480 | +1.531 |
-| CTR | 1,0 % | 1,3 % | |
-| Posición media | 32,5 | 33,7 | −1,2 (mejor) |
+| Clics | 26 | 21 | +5 |
+| Impresiones | 2.769 | 1.590 | +1.179 |
+| CTR | 0,9 % | 1,3 % | |
+| Posición media | 32,3 | 32,2 | = |
 
 ### Consultas objetivo (suma de las consultas que las contienen)
 
 | Consulta objetivo | Impr. | Clics | Posición | Impr. anterior | Variantes |
 |---|---|---|---|---|---|
-| asesoria paterna | 22 | 0 | 23,3 | 22 | 2 |
-| gestoria paterna | 0 | 0 | no sale | 7 | 0 |
+| asesoria paterna | 20 | 0 | 29,4 | 22 | 1 |
+| gestoria paterna | 0 | 0 | no sale | 4 | 0 |
 | asesoria valencia | 0 | 0 | no sale | 0 | 0 |
 | gestoria valencia | 0 | 0 | no sale | 0 | 0 |
 | asesoria fiscal valencia | 0 | 0 | no sale | 0 | 0 |
 | la cañada | 0 | 0 | no sale | 0 | 0 |
-| burjassot | 19 | 0 | 16,3 | 24 | 3 |
-| eliana | 0 | 0 | no sale | 5 | 0 |
-| no residente | 139 | 0 | 42,6 | 141 | 12 |
-| modelo 210 | 54 | 0 | 42,2 | 12 | 11 |
-| non resident | 312 | 0 | 61,0 | 281 | 22 |
-| beckham | 114 | 0 | 44,0 | 0 | 21 |
-| residencia fiscal | 6 | 0 | 55,2 | 0 | 2 |
+| burjassot | 12 | 0 | 16,6 | 25 | 3 |
+| eliana | 0 | 0 | no sale | 3 | 0 |
+| no residente | 116 | 0 | 39,3 | 135 | 12 |
+| modelo 210 | 56 | 0 | 40,8 | 15 | 10 |
+| non resident | 240 | 0 | 60,9 | 286 | 23 |
+| beckham | 126 | 0 | 46,6 | 0 | 21 |
+| residencia fiscal | 7 | 0 | 56,1 | 0 | 2 |
 | pension extranjera | 0 | 0 | no sale | 0 | 0 |
 | modelo 720 | 0 | 0 | no sale | 0 | 0 |
-| herencia | 123 | 0 | 39,6 | 124 | 10 |
-| donacion | 22 | 0 | 9,6 | 14 | 2 |
-| alta autonomo | 4 | 0 | 12,8 | 2 | 1 |
+| herencia | 102 | 0 | 36,0 | 121 | 10 |
+| donacion | 22 | 0 | 10,6 | 13 | 3 |
+| alta autonomo | 4 | 0 | 12,8 | 1 | 1 |
 | constituir sociedad | 0 | 0 | no sale | 0 | 0 |
-| cambiar de asesoria | 28 | 0 | 52,2 | 40 | 6 |
+| cambiar de asesoria | 17 | 0 | 52,3 | 39 | 6 |
 | carta de hacienda | 0 | 0 | no sale | 0 | 0 |
 | requerimiento hacienda | 0 | 0 | no sale | 0 | 0 |
 | regularizacion | 0 | 0 | no sale | 0 | 0 |
@@ -43,96 +43,94 @@ Lo genera GitHub Actions sin IA. Cifras de las API de Search Console y Bing: FIR
 ### Consultas nuevas (no salían la semana anterior)
 
 - «beckham law spain» — 24 impr., pos. 40,7
-- «form 720 spain» — 21 impr., pos. 58,9
-- «pensión francesa en españa» — 20 impr., pos. 9,5
-- «reagrupación familiar en españa» — 17 impr., pos. 37,7
+- «form 720 spain» — 23 impr., pos. 59,0
+- «modelo 210 in english» — 18 impr., pos. 40,7
+- «beckham law spain requirements» — 15 impr., pos. 52,9
 - «family reunification visa spain» — 15 impr., pos. 52,6
-- «beckham law spain requirements» — 14 impr., pos. 52,1
-- «reagrupación familiar» — 14 impr., pos. 35,9
-- «reagrupación familiar españa» — 14 impr., pos. 35,9
-- «work permit renewal» — 14 impr., pos. 20,9
+- «modelo 210 online» — 15 impr., pos. 42,5
+- «spanish tax form 210» — 15 impr., pos. 52,9
+- «spain uk tax treaty» — 14 impr., pos. 54,8
 - «family reunification in spain» — 13 impr., pos. 35,8
-- «modelo 210 in english» — 13 impr., pos. 40,8
-- «modelo 210 online» — 13 impr., pos. 43,2
-- «spanish tax form 210» — 13 impr., pos. 51,8
-- «larga duracion ue españa» — 12 impr., pos. 41,7
-- «spain uk tax treaty» — 12 impr., pos. 55,8
+- «modelo 149 ley beckham» — 13 impr., pos. 66,7
+- «exit tax spain» — 12 impr., pos. 56,5
+- «spanish exit tax» — 12 impr., pos. 60,3
+- «modelo 149 spain» — 11 impr., pos. 28,6
+- «spanish tax on uk pension» — 11 impr., pos. 47,2
+- «tax certificate spain» — 11 impr., pos. 29,9
 
 ### Consultas que suben de posición
 
-- «modelo 210» — pos. 84,0 → 40,1; 1 → 13 impr.
-- «selling property spain non resident» — pos. 56,1 → 40,3; 43 → 41 impr.
-- «selling property in spain as a non resident» — pos. 49,6 → 36,9; 17 → 23 impr.
-- «real estate tax consulting valencia» — pos. 86,7 → 75,0; 6 → 2 impr.
-- «cambiar de gestoría madrid» — pos. 49,7 → 38,6; 7 → 8 impr.
-- «cambiar de asesoria» — pos. 71,2 → 62,4; 10 → 5 impr.
-- «form 210 non resident tax» — pos. 61,9 → 53,2; 10 → 11 impr.
-- «selling property in spain as a non-resident» — pos. 51,6 → 43,3; 14 → 12 impr.
-- «vender propiedad españa no residente» — pos. 82,2 → 74,9; 16 → 12 impr.
-- «inheritance spain non resident» — pos. 72,4 → 65,9; 14 → 13 impr.
-- «asesoría laboral para pymes en paterna» — pos. 7,7 → 1,5; 7 → 8 impr.
-- «plazo presentacion modelo 210» — pos. 57,8 → 51,8; 8 → 4 impr.
-- «selling property in spain non resident» — pos. 41,6 → 35,7; 17 → 19 impr.
-- «obtaining non-resident annual tax valencia» — pos. 84,3 → 78,7; 7 → 3 impr.
-- «spain inheritance tax non residents» — pos. 76,0 → 70,5; 7 → 13 impr.
+- «form 210 spain» — pos. 62,0 → 40,6; 2 → 15 impr.
+- «modelo 210» — pos. 57,2 → 37,6; 4 → 10 impr.
+- «selling property spain non resident» — pos. 52,8 → 35,7; 43 → 29 impr.
+- «cambiar de gestoría madrid» — pos. 50,3 → 34,5; 7 → 6 impr.
+- «selling property in spain as a non-resident» — pos. 49,7 → 37,4; 15 → 7 impr.
+- «como traer a tus padres a españa valencia» — pos. 51,5 → 39,6; 2 → 7 impr.
+- «work permit renewal» — pos. 32,0 → 20,1; 1 → 13 impr.
+- «concesión de la nacionalidad española» — pos. 71,0 → 59,1; 1 → 7 impr.
+- «obtaining non-resident annual tax valencia» — pos. 83,1 → 72,0; 7 → 1 impr.
+- «selling property in spain as a non resident» — pos. 45,3 → 35,2; 14 → 19 impr.
+- «cambiar de asesoria» — pos. 70,9 → 61,0; 10 → 3 impr.
+- «herencias no residentes valencia» — pos. 25,2 → 16,2; 16 → 18 impr.
+- «reagrupación de familiar comunitario en españa» — pos. 43,5 → 34,8; 2 → 5 impr.
+- «herencia no residente» — pos. 51,4 → 43,9; 15 → 13 impr.
+- «form 210 non resident tax» — pos. 60,7 → 53,9; 11 → 11 impr.
 
 ### Consultas que bajan de posición
 
-- «tax advisory services in valencia» — pos. 48,9 → 64,0; 7 → 2 impr.
-- «prescriben las deudas con hacienda» — pos. 61,0 → 71,5; 10 → 11 impr.
-- «model 210 spanish tax» — pos. 47,0 → 55,7; 1 → 31 impr.
-- «herencia no residente valencia» — pos. 20,6 → 29,0; 14 → 13 impr.
-- «asesoría paterna» — pos. 15,4 → 23,5; 21 → 21 impr.
-- «tax consultancy valencia» — pos. 30,5 → 36,1; 14 → 15 impr.
-- «asesoría contable en paterna» — pos. 16,7 → 22,1; 7 → 9 impr.
-- «inheritance valencia» — pos. 71,9 → 77,0; 7 → 3 impr.
-- «income tax return services in valencia» — pos. 28,1 → 32,8; 7 → 6 impr.
-- «asesoría laboral en paterna» — pos. 29,8 → 33,5; 8 → 6 impr.
-- «deudas con hacienda prescriben» — pos. 56,0 → 59,5; 6 → 6 impr.
-- «herencias no residentes alicante» — pos. 36,1 → 39,5; 14 → 13 impr.
-- «asesoría contable en burjassot» — pos. 10,9 → 14,1; 7 → 8 impr.
-- «herencias no residentes» — pos. 52,1 → 54,8; 15 → 14 impr.
-- «herencias no residentes valencia» — pos. 19,5 → 22,1; 16 → 20 impr.
+- «tax consultancy valencia» — pos. 31,2 → 46,9; 13 → 15 impr.
+- «income tax return services in valencia» — pos. 29,4 → 45,0; 7 → 5 impr.
+- «tax advisory services for non-residents in valencia» — pos. 38,8 → 53,6; 6 → 7 impr.
+- «larga duracion ue españa» — pos. 32,0 → 44,9; 3 → 9 impr.
+- «asesoría paterna» — pos. 17,9 → 29,4; 20 → 20 impr.
+- «prescriben las deudas con hacienda» — pos. 63,8 → 73,7; 11 → 7 impr.
+- «reagrupación familiar» — pos. 27,0 → 36,6; 1 → 13 impr.
+- «model 210 spanish tax» — pos. 47,0 → 56,3; 2 → 32 impr.
+- «asesoría laboral en paterna» — pos. 29,6 → 38,2; 8 → 4 impr.
+- «asesoría contable en paterna» — pos. 15,9 → 24,4; 7 → 7 impr.
+- «long term residence spain» — pos. 45,0 → 53,0; 1 → 8 impr.
+- «herencias no residentes alicante» — pos. 35,2 → 41,8; 14 → 9 impr.
+- «gift tax spain» — pos. 70,4 → 76,8; 7 → 6 impr.
+- «deudas con hacienda prescriben» — pos. 56,7 → 62,8; 7 → 4 impr.
+- «asesoría contable en burjassot» — pos. 10,3 → 15,2; 7 → 6 impr.
 
 ### Consultas que dejan de salir
 
-- «calendario fiscal autonomos» — tenía 21 impr., pos. 29,2
-- «se puede pagar a plazos una sentencia judicial» — tenía 19 impr., pos. 64,3
-- «gestoria paterna» — tenía 7 impr., pos. 14,1
-- «asesoría fiscal en l'eliana» — tenía 5 impr., pos. 22,2
+- «calendario fiscal autonomos» — tenía 15 impr., pos. 29,1
+- «se puede pagar a plazos una sentencia judicial» — tenía 10 impr., pos. 66,4
 
 ### Páginas con más impresiones (top 15)
 
 | Página | Impr. | Antes | Clics | Posición | Antes |
 |---|---|---|---|---|---|
-| inheritance-spain-non-resident-heir.html | 243 | 207 | 0 | 67,5 | 72,4 |
-| reagrupacion-familiar-espana.html | 160 | 2 | 0 | 40,3 | 36,5 |
-| modelo-210-non-resident-tax-spain.html | 148 | 22 | 0 | 44,1 | 43,1 |
-| herencia-en-espana-heredero-no-residente.html | 139 | 136 | 0 | 36,8 | 35,7 |
-| donacion-de-padres-a-hijos-comunitat-valenciana.html | 129 | 38 | 0 | 8,5 | 10,3 |
-| beckham-law-spain-special-tax-regime.html | 124 | 0 | 0 | 40,3 | — |
-| en.html | 118 | 137 | 1 | 48,2 | 50,0 |
-| selling-property-spain-non-resident.html | 105 | 91 | 0 | 37,7 | 51,5 |
-| amazon-kdp-impuestos-espana.html | 101 | 83 | 4 | 7,8 | 7,8 |
-| spanish-tax-residence-certificate.html | 81 | 0 | 0 | 49,4 | — |
-| pension-francesa-residente-en-espana.html | 80 | 0 | 1 | 8,2 | — |
-| donacion-de-dinero-desde-el-extranjero.html | 75 | 50 | 2 | 5,8 | 6,2 |
-| asesoria-y-gestoria-en-paterna.html | 75 | 78 | 1 | 20,8 | 32,2 |
-| cambiar-de-asesoria.html | 75 | 87 | 0 | 31,0 | 39,3 |
-| / | 74 | 68 | 6 | 22,2 | 31,0 |
+| inheritance-spain-non-resident-heir.html | 189 | 219 | 0 | 69,4 | 69,5 |
+| modelo-210-non-resident-tax-spain.html | 166 | 30 | 0 | 44,5 | 42,5 |
+| beckham-law-spain-special-tax-regime.html | 137 | 1 | 0 | 41,1 | 8,0 |
+| reagrupacion-familiar-espana.html | 120 | 43 | 0 | 40,1 | 41,2 |
+| herencia-en-espana-heredero-no-residente.html | 114 | 132 | 0 | 34,3 | 38,6 |
+| donacion-de-padres-a-hijos-comunitat-valenciana.html | 107 | 62 | 0 | 8,2 | 10,1 |
+| spanish-tax-residence-certificate.html | 94 | 0 | 0 | 47,7 | — |
+| pension-francesa-residente-en-espana.html | 89 | 1 | 1 | 8,1 | 10,0 |
+| en.html | 85 | 124 | 1 | 46,5 | 50,2 |
+| amazon-kdp-impuestos-espana.html | 84 | 107 | 4 | 7,5 | 7,8 |
+| uk-pension-tax-spain-resident.html | 81 | 0 | 0 | 34,3 | — |
+| selling-property-spain-non-resident.html | 77 | 90 | 0 | 35,2 | 47,4 |
+| family-reunification-spain.html | 67 | 0 | 0 | 50,7 | — |
+| / | 66 | 66 | 4 | 22,8 | 29,8 |
+| certificado-residencia-fiscal-espana.html | 62 | 0 | 0 | 12,5 | — |
 
-Páginas que tenían impresiones y esta semana no: 3 — cookies.html, fiscalidad-no-residentes-y-extranjeros.html, tramites.html
+Páginas que tenían impresiones y esta semana no: 5 — fiscalidad-no-residentes-y-extranjeros.html, gestion-de-sociedades-valencia.html, gestoria-autonomos-valencia.html, residence-family-spanish-citizen.html, tramites.html
 
 ## Bing (consultas por las que nos enseña)
 
-Último cubo de Bing (fecha 23/10/2026; la API no dice si es el inicio o el fin de la semana, y puede estar incompleto): 4 consultas, 4 impresiones, 0 clics; cubo de 7 días antes: 1 consultas, 1 impresiones. Posición tal como la da la API (sin comprobar su escala frente al panel).
+Último cubo de Bing (fecha 30/10/2026; la API no dice si es el inicio o el fin de la semana, y puede estar incompleto): 7 consultas, 9 impresiones, 0 clics; cubo de 7 días antes: 4 consultas, 4 impresiones. Posición tal como la da la API (sin comprobar su escala frente al panel).
 
 Consultas con 5 impresiones o más: 0 (las demás no se publican).
 
 
 ## Índices y enlaces (metricas.csv)
 
-| | 2026-10-31 | sin dato de hace 7 días |
+| | 2026-11-02 | sin dato de hace 7 días |
 |---|---|---|
 | Bing: páginas en índice | 24 | — |
 | Bing: dominios enlazantes (API) | NO CALCULABLE | — |
