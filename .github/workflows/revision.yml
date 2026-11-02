@@ -1,6 +1,9 @@
 # Puerta 5 automática: cuando una rama (que no sea main) cambia páginas, Sonnet intenta tumbar el cambio
 # por la API de Claude (créditos de API del plan). El informe sale como anotaciones del trabajo.
 # Sin el secreto ANTHROPIC_API_KEY no hace nada y lo dice.
+# Ahorro (02/11/2026): cada subida revisa solo las páginas que cambian en ella; la rama entera se revisa
+# una vez al abrir el PR o a mano (workflow_dispatch). Sin cancelar ejecuciones a medias: cada subida
+# es pequeña y, si se cancelara, sus páginas se quedarían sin revisar.
 name: Revisión puerta 5
 on:
   push:
@@ -9,12 +12,15 @@ on:
       - "**.html"
       - "llms.txt"
       - "sitemap.xml"
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+    paths:
+      - "**.html"
+      - "llms.txt"
+      - "sitemap.xml"
   workflow_dispatch:
 permissions:
   contents: read
-concurrency:
-  group: revision-${{ github.ref }}
-  cancel-in-progress: true
 jobs:
   revision:
     runs-on: ubuntu-latest
@@ -23,11 +29,29 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+      - name: Desde dónde revisar
+        id: desde
+        env:
+          EVENTO: ${{ github.event_name }}
+          ANTES: ${{ github.event.before }}
+          FORZADO: ${{ github.event.forced }}
+        run: |
+          desde=""
+          if [ "$EVENTO" = push ] && [ "$FORZADO" != true ] && [ -n "$ANTES" ] \
+             && [ "$ANTES" != 0000000000000000000000000000000000000000 ] \
+             && git cat-file -e "$ANTES^{commit}" 2>/dev/null \
+             && git merge-base --is-ancestor "$ANTES" HEAD \
+             && ! git merge-base --is-ancestor "$ANTES" origin/main; then
+            desde="$ANTES"
+          fi
+          echo "desde=$desde" >> "$GITHUB_OUTPUT"
+          if [ -n "$desde" ]; then echo "Solo esta subida (desde $desde)"; else echo "Rama entera contra main"; fi
       - name: Revisión adversarial
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           AVANZA_LOTE_REVISOR: "1"
-        run: python3 .github/motor/revisor.py --base origin/main
+          DESDE: ${{ steps.desde.outputs.desde }}
+        run: python3 .github/motor/revisor.py --base origin/main ${DESDE:+--desde "$DESDE"}
       - name: Salud de la rama (solo repositorio)
         if: always()
         run: python3 .github/motor/salud.py
