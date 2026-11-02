@@ -132,7 +132,7 @@ Consultas con 5 impresiones o más: 0 (las demás no se publican).
 
 | | 2026-11-02 | sin dato de hace 7 días |
 |---|---|---|
-| Bing: páginas en índice | 24 | — |
+| Bing: páginas en índice | 27 | — |
 | Bing: dominios enlazantes (API) | NO CALCULABLE | — |
 | Google: URL del sitemap indexadas | 139 | — |
 | Google: sin indexar | 0 | — |
