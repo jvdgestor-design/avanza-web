@@ -8,6 +8,9 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 - PRESENCIA · DEJAMOS DE SALIR del listado · https://buscador.asesorexcelente.com/valencia/paterna · 2026-11-03
 - CADUCADO · VENCIDO (02/11/2026): «consultada el 02/10/2026 y, para el cierre del plazo, el 02/11/2026).» · ayudas-contratacion-paterna.html · 2026-11-03
 - BING-ENVIO · 14 URL enviadas por API (cuota del día 100; quedan 0 pendientes) · Bing Webmaster · 2026-11-03
+- GSC-NOINDEX · Google la ha sacado del índice · https://grupoavanzaconsultores.es/fr-acheter-bien-immobilier-espagne.html · 2026-11-03
+- GSC-NOINDEX · Google la ha sacado del índice · https://grupoavanzaconsultores.es/fr-quitter-espagne-fiscalite.html · 2026-11-03
+- GSC-SIN-INDEXAR · 2 de 139 URL del sitemap sin indexar en Google: fr-acheter-bien-immobilier-espagne.html, fr-quitter-espagne-fiscalite.html · Search Console · 2026-11-03
 
 ## 2026-11-02
 
