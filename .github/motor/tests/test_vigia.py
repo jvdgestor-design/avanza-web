@@ -546,20 +546,88 @@ class Indexacion(Base):
         c.estado["avisos"]["MOTOR|indexa-yandex"] = {"avisado": "2026-11-01", "primera": "2026-11-01",
                                                      "fuente": "indexa:yandex", "que": "x", "visto": "2026-11-01"}
         metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(504))
+        y = c.pieza("indexacion")["yandex"]
         self.assertEqual(fallos, [])
-        self.assertEqual(len(c.pieza("indexacion")["yandex"]["pendientes"]), 2)    # no se pierde nada
-        self.assertEqual(c.pieza("indexacion")["yandex"]["host_id"], "https:grupoavanzaconsultores.es:443")
+        self.assertEqual(len(y["pendientes"]), 2)                                   # no se pierde nada
+        self.assertEqual(y["host_id"], "https:grupoavanzaconsultores.es:443")
+        self.assertEqual(y["caida_desde"], c.hoy.isoformat())
         lineas = "\n".join(c.cierra())
         self.assertIn("INDEXA-ESPERA", lineas)
         self.assertIn("RESUELTO · ya no aparece (MOTOR)", lineas)
         self.assertFalse(c.urgente)
-        c.pieza("indexacion")["yandex"]["caida_desde"] = (c.hoy - dt.timedelta(days=indexa.CAIDA_DIAS)).isoformat()
+        # séptimo día seguido: rojo
+        c = self.cola(HOY + dt.timedelta(days=indexa.CAIDA_DIAS))
+        c.pieza("indexacion").update(urls=[indexa.BASE], yandex=dict(y, caida_ultimo=(
+            HOY + dt.timedelta(days=indexa.CAIDA_DIAS - 1)).isoformat()))
         metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(504))
         self.assertEqual(len(fallos), 1)
-        c.pieza("indexacion")["yandex"].pop("caida_desde")
+        self.assertIn("MOTOR · yandex sin servicio desde", "\n".join(c.cierra()))
+        # vuelve el servicio: el motor limpia la cuenta
         metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(202))
         self.assertEqual(fallos, [])
         self.assertNotIn("caida_desde", c.pieza("indexacion")["yandex"])
+
+    def test_yandex_caida_con_hueco_empieza_de_nuevo(self):
+        raiz = self.web()
+        c = self.cola()
+        c.pieza("indexacion").update(urls=[indexa.BASE], yandex={
+            "caida_desde": (HOY - dt.timedelta(days=20)).isoformat(),
+            "caida_ultimo": (HOY - dt.timedelta(days=5)).isoformat()})
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(504))
+        self.assertEqual(fallos, [])
+        self.assertEqual(c.pieza("indexacion")["yandex"]["caida_desde"], HOY.isoformat())
+
+    def test_yandex_quota_5xx_y_red_son_transitorios(self):
+        y = indexa.YANDEX
+        h = "https%3Agrupoavanzaconsultores.es%3A443"
+        for caso in ("quota", "red"):
+            shutil.rmtree(self.dir)
+            os.makedirs(self.dir)
+            raiz = self.web()
+            c = self.cola()
+            c.pieza("indexacion")["urls"] = [indexa.BASE]
+            base = self.yandex_red()
+
+            def abre(req, timeout=None, caso=caso):
+                if req.full_url.endswith("/recrawl/quota"):
+                    if caso == "red":
+                        raise urllib.error.URLError("caído")
+                    raise urllib.error.HTTPError(req.full_url, 503, "x", {}, io.BytesIO(b"{}"))
+                return base(req, timeout)
+            metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=abre)
+            self.assertEqual(fallos, [], caso)
+            self.assertIn("INDEXA-ESPERA", "\n".join(c.cierra()), caso)
+            self.assertEqual(len(c.pieza("indexacion")["yandex"]["pendientes"]), 2, caso)
+
+    def test_yandex_400_y_luego_5xx_avisa_de_las_dos(self):
+        raiz = self.web()
+        c = self.cola()
+        c.pieza("indexacion")["urls"] = [indexa.BASE]
+        base = self.yandex_red()
+        n = []
+
+        def abre(req, timeout=None):
+            if req.full_url.endswith("/recrawl/quota"):
+                return red({req.full_url: (200, json.dumps({"quota_remainder": 5}))})(req, timeout)
+            if req.full_url.endswith("/recrawl/queue"):
+                n.append(1)
+                st = 400 if len(n) == 1 else 504
+                raise urllib.error.HTTPError(req.full_url, st, "x", {}, io.BytesIO(b'{"error_code":"INVALID_URL"}'))
+            return base(req, timeout)
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=abre)
+        self.assertEqual(fallos, [])
+        lineas = "\n".join(c.cierra())
+        self.assertIn("Yandex rechaza", lineas)
+        self.assertIn("INDEXA-ESPERA", lineas)
+        self.assertEqual(len(c.pieza("indexacion")["yandex"]["pendientes"]), 1)
+
+    def test_yandex_404_conserva_lo_avanzado(self):
+        raiz = self.web()
+        c = self.cola()
+        c.pieza("indexacion")["urls"] = [indexa.BASE]
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(404))
+        self.assertEqual(len(fallos), 1)
+        self.assertEqual(c.pieza("indexacion")["yandex"]["host_id"], "https:grupoavanzaconsultores.es:443")
 
     def test_yandex_que_no_contesta_se_corta_y_no_toca_el_estado(self):
         raiz = self.web()

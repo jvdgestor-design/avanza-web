@@ -18,6 +18,7 @@ En la cola pública solo van códigos de error, nunca el cuerpo de una respuesta
 Escribe métricas diarias en motor/metricas.csv (una fila por día).
 """
 import datetime as dt
+import http.client
 import hashlib
 import html
 import json
@@ -374,14 +375,14 @@ def yandex(cola, urls, cambios, est, metr, token, abre=None):
         raise ErrorApi(f"Yandex quota: HTTP {st} {codigo(q)}".strip())
     resto = q.get("quota_remainder", 0)
     metr["yandex_cuota"] = resto
-    hechas, malas = [], []
+    hechas, malas, caido = [], [], None
     for u in list(pendientes):
         if len(hechas) >= resto:
             break
         st, r = pide(f"{base}/recrawl/queue", "POST", {"url": u}, cab, abre, timeout=YANDEX_ESPERA)
         if 500 <= st < 600:                # caída de Yandex (504 desde el 01/11/2026): lo que queda, mañana
-            est["pendientes"] = [x for x in pendientes if x not in hechas]
-            raise ErrorTransitorio(f"Yandex recrawl: HTTP {st}")
+            caido = ErrorTransitorio(f"Yandex recrawl: HTTP {st}")
+            break
         if st in (200, 202, 409):          # 409 URL_ALREADY_ADDED: ya está en cola
             hechas.append(u)
         elif st == 429:                    # QUOTA_EXCEEDED: se sigue mañana
@@ -399,6 +400,8 @@ def yandex(cola, urls, cambios, est, metr, token, abre=None):
                    fuente="yandex-envio")
     if malas:
         cola.aviso("MOTOR", f"Yandex rechaza: {', '.join(malas[:5])}", "Yandex Webmaster", clave="MOTOR|yandex-urls")
+    if caido:                              # después de los avisos: lo enviado y lo rechazado se cuentan igual
+        raise caido
 
 
 class _Buzon:
@@ -418,9 +421,11 @@ def yandex_con_tope(cola, urls, cambios, est, metr, token, abre=None, tope=None)
     def trabajo():
         try:
             yandex(buzon, urls, cambios, copia, mcopia, token, abre)
-        except (ErrorApi, urllib.error.URLError, TimeoutError, OSError) as e:
-            salida["error"] = e if isinstance(e, ErrorApi) else \
-                ErrorTransitorio(f"Yandex: sin respuesta ({type(e).__name__})")   # red: también transitorio
+        except ErrorApi as e:
+            salida["error"] = e
+        except (urllib.error.URLError, TimeoutError, OSError, http.client.HTTPException, ValueError) as e:
+            # red, respuesta cortada o JSON roto: también transitorio
+            salida["error"] = ErrorTransitorio(f"Yandex: sin respuesta válida ({type(e).__name__})")
         except Exception as e:  # noqa: BLE001 — se devuelve al hilo principal tal cual
             salida["error"] = e
     hilo = threading.Thread(target=trabajo, daemon=True)
@@ -429,20 +434,28 @@ def yandex_con_tope(cola, urls, cambios, est, metr, token, abre=None, tope=None)
     if hilo.is_alive():                    # el hilo sigue, pero ya no toca nada de lo que se guarda
         raise ErrorTransitorio(f"Yandex: sin respuesta en {tope} s")
     error = salida.get("error")
-    if error is None or isinstance(error, ErrorTransitorio):   # vale lo que avanzó
-        est.clear()
-        est.update(copia)
-        metr.update(mcopia)
-        for a, k in buzon.avisos:
-            cola.aviso(*a, **k)
+    est.clear()                            # terminado a tiempo, con o sin error: vale lo que avanzó (como antes)
+    est.update(copia)
+    metr.update(mcopia)
+    for a, k in buzon.avisos:
+        cola.aviso(*a, **k)
     if error is not None:
         raise error
 
 
 def caida(cola, nombre, est, e, fallos):
     """5xx o silencio de una API: aviso normal; si dura CAIDA_DIAS seguidos, fallo (rojo)."""
-    desde = est.setdefault("caida_desde", cola.hoy.isoformat())
-    dias = (cola.hoy - dt.date.fromisoformat(desde)).days
+    hoy = cola.hoy.isoformat()
+    try:
+        desde = dt.date.fromisoformat(est.get("caida_desde", hoy))
+        ultimo = dt.date.fromisoformat(est.get("caida_ultimo", hoy))
+    except (TypeError, ValueError):
+        desde = ultimo = cola.hoy
+    if (cola.hoy - ultimo).days > 2:       # hubo días sin caída o sin ejecutar: la cuenta empieza de nuevo
+        desde = cola.hoy
+    est.update(caida_desde=desde.isoformat(), caida_ultimo=hoy)
+    dias = (cola.hoy - desde).days
+    desde = desde.isoformat()
     cola.revisada(f"indexa:{nombre}")      # leído: resuelve el MOTOR de días anteriores
     if dias >= CAIDA_DIAS:
         fallos.append(f"{nombre}: {type(e).__name__}")
@@ -497,10 +510,14 @@ def ejecuta(cola, raiz, entorno=None, abre=None, token_gsc=None):
         try:
             fn(k)
             cola.revisada(f"indexa:{nombre}")
-            est.get(nombre, {}).pop("caida_desde", None)
+            for campo in ("caida_desde", "caida_ultimo"):
+                est.get(nombre, {}).pop(campo, None)
         except ErrorTransitorio as e:
             caida(cola, nombre, est.setdefault(nombre, {}), e, fallos)
+            continue
         except Exception as e:
+            for campo in ("caida_desde", "caida_ultimo"):
+                est.get(nombre, {}).pop(campo, None)
             fallos.append(f"{nombre}: {type(e).__name__}")
             cola.aviso("MOTOR", f"{nombre} ha fallado: {str(e)[:150]}", "indexa.py",
                        clave=f"MOTOR|indexa-{nombre}", fuente=f"indexa:{nombre}")
