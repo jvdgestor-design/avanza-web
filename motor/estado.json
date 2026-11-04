@@ -84,19 +84,19 @@
    "que": "no enlaza a grupoavanzaconsultores.es",
    "visto": "2026-11-03"
   },
+  "INDEXA-ESPERA|yandex": {
+   "avisado": "2026-11-04",
+   "fuente": "indexa:yandex",
+   "primera": "2026-11-04",
+   "que": "yandex no responde (Yandex recrawl: HTTP 504); lo pendiente sigue en cola",
+   "visto": "2026-11-04"
+  },
   "INFORME|2026-11-02": {
    "avisado": "2026-11-02",
    "fuente": "informe",
    "primera": "2026-11-02",
    "que": "informe de la semana listo en motor/informe-semanal.md: 2.769 impr. y 26 clics en Google, 15 consultas nuevas, 15 suben ",
    "visto": "2026-11-02"
-  },
-  "MOTOR|indexa-yandex": {
-   "avisado": "2026-11-01",
-   "fuente": "indexa:yandex",
-   "primera": "2026-11-01",
-   "que": "yandex ha fallado: Yandex recrawl: HTTP 504",
-   "visto": "2026-11-04"
   },
   "PRESENCIA-ILEGIBLE|https://www.guiagestoria.com/mejores-gestorias/paterna-valencia": {
    "avisado": "2026-10-30",
@@ -147,7 +147,9 @@
    "- RESUELTO · ya no aparece (CADUCADO): VENCIDO (02/11/2026): «consultada el 02/10/2026 y, para el cierre del plazo, el 02/11/2026).» · ayudas-contratacion-paterna.html · 2026-11-04",
    "- RESUELTO · ya no aparece (GSC-NOINDEX): Google la ha sacado del índice · gsc · 2026-11-04",
    "- RESUELTO · ya no aparece (GSC-NOINDEX): Google la ha sacado del índice · gsc · 2026-11-04",
-   "- RESUELTO · ya no aparece (GSC-SIN-INDEXAR): 2 de 139 URL del sitemap sin indexar en Google: fr-acheter-bien-immobilier-espagne.html, fr-quitter-espagne-fiscalite.ht · gsc · 2026-11-04"
+   "- RESUELTO · ya no aparece (GSC-SIN-INDEXAR): 2 de 139 URL del sitemap sin indexar en Google: fr-acheter-bien-immobilier-espagne.html, fr-quitter-espagne-fiscalite.ht · gsc · 2026-11-04",
+   "- INDEXA-ESPERA · yandex no responde (Yandex recrawl: HTTP 504); lo pendiente sigue en cola · indexa.py · 2026-11-04",
+   "- RESUELTO · ya no aparece (MOTOR): yandex ha fallado: Yandex recrawl: HTTP 504 · yandex · 2026-11-04"
   ]
  },
  "piezas": {
@@ -275,8 +277,9 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/arraigo-residence-spain.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/asesoria-contable-valencia.html": {
@@ -338,20 +341,19 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/aviso-legal.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
-      "rastreo": ""
+      "http": 0,
+      "mirada": "2026-11-04",
+      "rastreo": "2026-10-19"
      },
      "https://grupoavanzaconsultores.es/ayudas-contratacion-paterna.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
-      "rastreo": ""
+      "http": 0,
+      "mirada": "2026-11-04",
+      "rastreo": "2026-10-04"
      },
      "https://grupoavanzaconsultores.es/beckham-law-spain-special-tax-regime.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/buying-property-spain-foreigner.html": {
@@ -367,10 +369,9 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/cambiar-de-asesoria.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
-      "rastreo": ""
+      "http": 0,
+      "mirada": "2026-11-04",
+      "rastreo": "2026-10-28"
      },
      "https://grupoavanzaconsultores.es/capitalizar-el-paro-pago-unico.html": {
       "error": true,
@@ -385,8 +386,9 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/certificado-residencia-fiscal-espana.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/comprar-vivienda-en-espana-extranjero.html": {
@@ -410,7 +412,7 @@
      "https://grupoavanzaconsultores.es/cookies.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/cuando-prescribe-deuda-hacienda.html": {
@@ -545,7 +547,7 @@
      "https://grupoavanzaconsultores.es/en-tramites.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/en.html": {
@@ -557,7 +559,7 @@
      "https://grupoavanzaconsultores.es/family-reunification-spain.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html": {
@@ -736,7 +738,7 @@
      "https://grupoavanzaconsultores.es/irse-de-espana-impuestos-cambio-residencia.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/italian-pension-tax-spain-resident.html": {
@@ -758,21 +760,20 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/licencia-de-actividad-cambio-de-titularidad.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
-      "rastreo": ""
+      "http": 0,
+      "mirada": "2026-11-04",
+      "rastreo": "2026-11-01"
      },
      "https://grupoavanzaconsultores.es/long-term-residence-spain.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/modelo-210-no-residentes.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
-      "rastreo": ""
+      "http": 0,
+      "mirada": "2026-11-04",
+      "rastreo": "2026-10-19"
      },
      "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html": {
       "error": true,
@@ -793,20 +794,21 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/nie-tie-certificado-ue-espana.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/nie-tie-eu-registration-spain.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/nominas-y-gestion-laboral.html": {
@@ -840,20 +842,20 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/privacidad.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
-      "rastreo": ""
+      "http": 0,
+      "mirada": "2026-11-04",
+      "rastreo": "2026-11-01"
      },
      "https://grupoavanzaconsultores.es/reagrupacion-familiar-espana.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/regimen-impatriados-ley-beckham.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/regularising-taxes-spain-foreigner.html": {
@@ -871,18 +873,19 @@
      "https://grupoavanzaconsultores.es/renew-employed-residence-work-permit-spain.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/renovar-residencia-trabajo-cuenta-ajena.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/residence-family-spanish-citizen.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/residencia-fiscal-al-llegar-a-espana.html": {
@@ -892,8 +895,9 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/residencia-larga-duracion-espana.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/retribucion-del-administrador-de-una-sl.html": {
@@ -913,9 +917,8 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-model-210-nerezidenty.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
+      "http": 0,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-model-720-imushchestvo-za-rubezhom.html": {
@@ -931,15 +934,14 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-nasledstvo-v-ispanii-nerezident.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
+      "http": 0,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-nie-tie-registraciya-ispaniya.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-02",
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-otezd-iz-ispanii-nalogi.html": {
@@ -949,15 +951,13 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-pismo-iz-nalogovoj-ispanii.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
+      "http": 0,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-pokupka-nedvizhimosti-inostranec.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-02",
+      "http": 0,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-prodazha-nedvizhimosti-nerezident.html": {
@@ -1008,13 +1008,15 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/spanish-tax-residence-certificate.html": {
-      "http": 0,
-      "mirada": "2026-11-02",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-04",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/tax-residence-moving-to-spain.html": {
@@ -1882,7 +1884,7 @@
     },
     "sitio": "sc-domain:grupoavanzaconsultores.es"
    },
-   "sha": "e850a6f29658b647e168a8c2fa356b3e1f664ac8",
+   "sha": "ce27923283d75d09f5367e37ea8b2ae09eef7365",
    "urls": [
     "https://grupoavanzaconsultores.es/",
     "https://grupoavanzaconsultores.es/calendario-fiscal.html",
@@ -2025,6 +2027,8 @@
     "https://grupoavanzaconsultores.es/fr.html"
    ],
    "yandex": {
+    "caida_desde": "2026-11-04",
+    "caida_ultimo": "2026-11-04",
     "host_id": "https:grupoavanzaconsultores.es:443",
     "pendientes": [
      "https://grupoavanzaconsultores.es/",

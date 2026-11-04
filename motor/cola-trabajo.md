@@ -11,6 +11,8 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 - RESUELTO · ya no aparece (GSC-NOINDEX): Google la ha sacado del índice · gsc · 2026-11-04
 - RESUELTO · ya no aparece (GSC-NOINDEX): Google la ha sacado del índice · gsc · 2026-11-04
 - RESUELTO · ya no aparece (GSC-SIN-INDEXAR): 2 de 139 URL del sitemap sin indexar en Google: fr-acheter-bien-immobilier-espagne.html, fr-quitter-espagne-fiscalite.ht · gsc · 2026-11-04
+- INDEXA-ESPERA · yandex no responde (Yandex recrawl: HTTP 504); lo pendiente sigue en cola · indexa.py · 2026-11-04
+- RESUELTO · ya no aparece (MOTOR): yandex ha fallado: Yandex recrawl: HTTP 504 · yandex · 2026-11-04
 
 ## 2026-11-03
 
