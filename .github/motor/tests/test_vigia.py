@@ -3,6 +3,8 @@ python3 -B -m unittest discover -s .github/motor/tests -p "test_vigia.py"
 """
 import datetime as dt
 import io
+import threading
+import time
 import json
 import os
 import shutil
@@ -536,6 +538,53 @@ class Indexacion(Base):
             c.pieza("indexacion")["urls"] = [indexa.BASE]
             indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(st))
             self.assertEqual(len(c.pieza("indexacion")["yandex"]["pendientes"]), quedan, st)
+
+    def test_yandex_504_es_aviso_normal_y_a_los_7_dias_rojo(self):
+        raiz = self.web()
+        c = self.cola()
+        c.pieza("indexacion")["urls"] = [indexa.BASE]
+        c.estado["avisos"]["MOTOR|indexa-yandex"] = {"avisado": "2026-11-01", "primera": "2026-11-01",
+                                                     "fuente": "indexa:yandex", "que": "x", "visto": "2026-11-01"}
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(504))
+        self.assertEqual(fallos, [])
+        self.assertEqual(len(c.pieza("indexacion")["yandex"]["pendientes"]), 2)    # no se pierde nada
+        self.assertEqual(c.pieza("indexacion")["yandex"]["host_id"], "https:grupoavanzaconsultores.es:443")
+        lineas = "\n".join(c.cierra())
+        self.assertIn("INDEXA-ESPERA", lineas)
+        self.assertIn("RESUELTO · ya no aparece (MOTOR)", lineas)
+        self.assertFalse(c.urgente)
+        c.pieza("indexacion")["yandex"]["caida_desde"] = (c.hoy - dt.timedelta(days=indexa.CAIDA_DIAS)).isoformat()
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(504))
+        self.assertEqual(len(fallos), 1)
+        c.pieza("indexacion")["yandex"].pop("caida_desde")
+        metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=self.yandex_red(202))
+        self.assertEqual(fallos, [])
+        self.assertNotIn("caida_desde", c.pieza("indexacion")["yandex"])
+
+    def test_yandex_que_no_contesta_se_corta_y_no_toca_el_estado(self):
+        raiz = self.web()
+        c = self.cola()
+        c.pieza("indexacion")["urls"] = [indexa.BASE]
+        suelta = threading.Event()
+        base = self.yandex_red()
+
+        def abre(req, timeout=None):
+            if req.full_url.endswith("/recrawl/queue"):
+                suelta.wait(5)
+            return base(req, timeout)
+        tope = indexa.YANDEX_TOPE
+        indexa.YANDEX_TOPE = 0.3
+        try:
+            t0 = time.monotonic()
+            metr, fallos = indexa.ejecuta(c, raiz, entorno={"YANDEX_TOKEN": "T"}, abre=abre)
+        finally:
+            indexa.YANDEX_TOPE = tope
+            suelta.set()
+        self.assertLess(time.monotonic() - t0, 3)
+        self.assertEqual(fallos, [])
+        self.assertNotIn("host_id", c.pieza("indexacion")["yandex"])       # la copia del hilo no se mezcla
+        self.assertEqual(len(c.pieza("indexacion")["yandex"]["pendientes"]), 2)
+        self.assertIn("INDEXA-ESPERA", "\n".join(c.cierra()))
 
     def test_fecha_bing(self):
         self.assertEqual(indexa.fecha_ms("/Date(1761800000000-0700)/"), dt.date(2025, 10, 30))

@@ -24,6 +24,7 @@ import json
 import os
 import re
 import subprocess
+import threading
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -41,13 +42,20 @@ BING_ENLACES_DIA = 30         # llamadas a GetUrlLinks por día
 REENVIO_DIAS = 7              # una URL no rastreada no se reenvía a Bing antes de 7 días
 TITULO_ESPERA = 28            # cuatro semanas desde el último cambio de título o descripción
 GSC_MIN_IMPR = 20
+YANDEX_ESPERA = 20            # segundos por petición a Yandex
+YANDEX_TOPE = 120             # segundos para todo el bloque de Yandex: si no ha acabado, se deja para mañana
+CAIDA_DIAS = 7                # un 5xx o un silencio de la API es aviso normal; a los 7 días seguidos, rojo
 
 
 class ErrorApi(Exception):
     pass
 
 
-def pide(url, metodo="GET", cuerpo=None, cabeceras=None, abre=None):
+class ErrorTransitorio(ErrorApi):
+    """La API no contesta o da 5xx: no es fallo nuestro ni se pierde nada (lo pendiente sigue en cola)."""
+
+
+def pide(url, metodo="GET", cuerpo=None, cabeceras=None, abre=None, timeout=40):
     abre = abre or urllib.request.urlopen
     datos = json.dumps(cuerpo).encode() if cuerpo is not None else None
     h = {"User-Agent": "AvanzaVigia/1.0", "Accept": "application/json"}
@@ -56,7 +64,7 @@ def pide(url, metodo="GET", cuerpo=None, cabeceras=None, abre=None):
     h.update(cabeceras or {})
     req = urllib.request.Request(url, data=datos, method=metodo, headers=h)
     try:
-        with abre(req, timeout=40) as r:
+        with abre(req, timeout=timeout) as r:
             txt = r.read().decode("utf-8", "replace")
             return getattr(r, "status", 200), (json.loads(txt) if txt.strip() else None)
     except urllib.error.HTTPError as e:
@@ -359,7 +367,9 @@ def yandex(cola, urls, cambios, est, metr, token, abre=None):
     est.update(user_id=user, host_id=host)
     pendientes = encola(est, "pendientes", cambios, set(urls))
     base = f"{YANDEX}/user/{user}/hosts/{urllib.parse.quote(host, safe='')}"
-    st, q = pide(f"{base}/recrawl/quota", cabeceras=cab, abre=abre)
+    st, q = pide(f"{base}/recrawl/quota", cabeceras=cab, abre=abre, timeout=YANDEX_ESPERA)
+    if 500 <= st < 600:
+        raise ErrorTransitorio(f"Yandex quota: HTTP {st}")
     if st != 200:
         raise ErrorApi(f"Yandex quota: HTTP {st} {codigo(q)}".strip())
     resto = q.get("quota_remainder", 0)
@@ -368,7 +378,10 @@ def yandex(cola, urls, cambios, est, metr, token, abre=None):
     for u in list(pendientes):
         if len(hechas) >= resto:
             break
-        st, r = pide(f"{base}/recrawl/queue", "POST", {"url": u}, cab, abre)
+        st, r = pide(f"{base}/recrawl/queue", "POST", {"url": u}, cab, abre, timeout=YANDEX_ESPERA)
+        if 500 <= st < 600:                # caída de Yandex (504 desde el 01/11/2026): lo que queda, mañana
+            est["pendientes"] = [x for x in pendientes if x not in hechas]
+            raise ErrorTransitorio(f"Yandex recrawl: HTTP {st}")
         if st in (200, 202, 409):          # 409 URL_ALREADY_ADDED: ya está en cola
             hechas.append(u)
         elif st == 429:                    # QUOTA_EXCEEDED: se sigue mañana
@@ -386,6 +399,58 @@ def yandex(cola, urls, cambios, est, metr, token, abre=None):
                    fuente="yandex-envio")
     if malas:
         cola.aviso("MOTOR", f"Yandex rechaza: {', '.join(malas[:5])}", "Yandex Webmaster", clave="MOTOR|yandex-urls")
+
+
+class _Buzon:
+    """Recoge los avisos del hilo de Yandex; solo llegan a la cola si el bloque termina a tiempo."""
+    def __init__(self, cola):
+        self.hoy, self.avisos = cola.hoy, []
+
+    def aviso(self, *a, **k):
+        self.avisos.append((a, k))
+
+
+def yandex_con_tope(cola, urls, cambios, est, metr, token, abre=None, tope=None):
+    """Yandex sobre una copia del estado, con tope de tiempo: si no acaba, no se toca nada y queda para mañana."""
+    tope = YANDEX_TOPE if tope is None else tope
+    copia, mcopia, salida, buzon = json.loads(json.dumps(est)), {}, {}, _Buzon(cola)
+
+    def trabajo():
+        try:
+            yandex(buzon, urls, cambios, copia, mcopia, token, abre)
+        except (ErrorApi, urllib.error.URLError, TimeoutError, OSError) as e:
+            salida["error"] = e if isinstance(e, ErrorApi) else \
+                ErrorTransitorio(f"Yandex: sin respuesta ({type(e).__name__})")   # red: también transitorio
+        except Exception as e:  # noqa: BLE001 — se devuelve al hilo principal tal cual
+            salida["error"] = e
+    hilo = threading.Thread(target=trabajo, daemon=True)
+    hilo.start()
+    hilo.join(tope)
+    if hilo.is_alive():                    # el hilo sigue, pero ya no toca nada de lo que se guarda
+        raise ErrorTransitorio(f"Yandex: sin respuesta en {tope} s")
+    error = salida.get("error")
+    if error is None or isinstance(error, ErrorTransitorio):   # vale lo que avanzó
+        est.clear()
+        est.update(copia)
+        metr.update(mcopia)
+        for a, k in buzon.avisos:
+            cola.aviso(*a, **k)
+    if error is not None:
+        raise error
+
+
+def caida(cola, nombre, est, e, fallos):
+    """5xx o silencio de una API: aviso normal; si dura CAIDA_DIAS seguidos, fallo (rojo)."""
+    desde = est.setdefault("caida_desde", cola.hoy.isoformat())
+    dias = (cola.hoy - dt.date.fromisoformat(desde)).days
+    cola.revisada(f"indexa:{nombre}")      # leído: resuelve el MOTOR de días anteriores
+    if dias >= CAIDA_DIAS:
+        fallos.append(f"{nombre}: {type(e).__name__}")
+        cola.aviso("MOTOR", f"{nombre} sin servicio desde {desde}: {str(e)[:120]}", "indexa.py",
+                   clave=f"MOTOR|indexa-{nombre}-caida", fuente=f"indexa:{nombre}")
+    else:
+        cola.aviso("INDEXA-ESPERA", f"{nombre} no responde ({str(e)[:100]}); lo pendiente sigue en cola",
+                   "indexa.py", clave=f"INDEXA-ESPERA|{nombre}", fuente=f"indexa:{nombre}")
 
 
 # ------------------------------------------------------------------ principal
@@ -419,7 +484,8 @@ def ejecuta(cola, raiz, entorno=None, abre=None, token_gsc=None):
         ("bing", "BING_API_KEY", lambda k: bing(cola, urls, cambios, est.setdefault("bing", {}), metr, k, abre)),
         ("gsc", "GSC_KEY", lambda k: gsc(cola, raiz, urls, est.setdefault("gsc", {}), metr, k, titulos, abre,
                                          token_gsc)),
-        ("yandex", "YANDEX_TOKEN", lambda k: yandex(cola, urls, cambios, est.setdefault("yandex", {}), metr, k, abre)))
+        ("yandex", "YANDEX_TOKEN", lambda k: yandex_con_tope(cola, urls, cambios, est.setdefault("yandex", {}), metr, k,
+                                                             abre)))
     for nombre in ("bing", "yandex"):        # lo cambiado queda en pendientes antes de llamar a nada
         if (env.get({"bing": "BING_API_KEY", "yandex": "YANDEX_TOKEN"}[nombre]) or "").strip():
             encola(est.setdefault(nombre, {}), "pendientes", cambios, set(urls))
@@ -431,6 +497,9 @@ def ejecuta(cola, raiz, entorno=None, abre=None, token_gsc=None):
         try:
             fn(k)
             cola.revisada(f"indexa:{nombre}")
+            est.get(nombre, {}).pop("caida_desde", None)
+        except ErrorTransitorio as e:
+            caida(cola, nombre, est.setdefault(nombre, {}), e, fallos)
         except Exception as e:
             fallos.append(f"{nombre}: {type(e).__name__}")
             cola.aviso("MOTOR", f"{nombre} ha fallado: {str(e)[:150]}", "indexa.py",
