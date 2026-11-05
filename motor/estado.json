@@ -306,7 +306,8 @@
               "MonthlyQuota": 2552,
               "consultada_utc": "2026-11-05T18:54:18.243069+00:00"
             },
-            "estado": "reservado",
+            "estado": "intento_registrado",
+            "intento_utc": "2026-11-05T18:54:20.548487+00:00",
             "propietario": "42088686481.1",
             "revision": "8c113b092d2cdf0f7e0cf005d816e634164c62de",
             "sha256": {
