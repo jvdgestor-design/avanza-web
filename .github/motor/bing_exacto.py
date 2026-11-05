@@ -13,6 +13,7 @@ import re
 import subprocess
 import urllib.request
 import urllib.error
+import xml.etree.ElementTree as ET
 
 import indexa
 
@@ -23,6 +24,20 @@ URLS_AUTORIZADAS = tuple(indexa.BASE + n for n in (
     "de-kauf-nichtansaessiger-verkaeufer-modelo-211.html",
     "fr-acheter-vendeur-non-resident-modele-211.html",
     "fr-louer-bien-espagne-non-resident.html",
+))
+
+
+# Segundo lote cerrado; el anterior y sus huellas se conservan íntegros.
+LOTE_SEIS_AUTORIZADO = "2026-11-05-frde-721-seis.json"
+MANIFIESTO_SEIS_AUTORIZADO = "93ca41199dd523626e9102485b2b5918d2ccd3b603604dd7d60ff25d105a5908"
+FUENTE_SEIS_AUTORIZADA = "32e613ae0d475cf891dac44def65f5faab399849"
+URLS_SEIS_AUTORIZADAS = tuple(indexa.BASE + n for n in (
+    "de-erste-steuererklaerung-spanien.html",
+    "de-homeoffice-spanien-auslaendischer-arbeitgeber.html",
+    "fr-premiere-declaration-revenus-espagne.html",
+    "fr-teletravail-espagne-employeur-etranger.html",
+    "modelo-721-criptomonedas-extranjero.html",
+    "form-721-spain-crypto-abroad.html",
 ))
 
 
@@ -80,19 +95,26 @@ def nombre_lote(nombre):
 
 
 def carga_lote(raiz, nombre):
-    if nombre != LOTE_AUTORIZADO:
-        raise Bloqueado("Solo está habilitado el lote FR/DE de cuatro URL revisado")
+    if nombre == LOTE_AUTORIZADO:
+        manifiesto, autorizadas, version = MANIFIESTO_AUTORIZADO, URLS_AUTORIZADAS, 1
+    elif nombre == LOTE_SEIS_AUTORIZADO:
+        manifiesto, autorizadas, version = MANIFIESTO_SEIS_AUTORIZADO, URLS_SEIS_AUTORIZADAS, 2
+    else:
+        raise Bloqueado("Solo están habilitados los dos lotes cerrados revisados")
     raw = git_bytes(raiz, "HEAD:" + nombre_lote(nombre))
-    if digest(raw) != MANIFIESTO_AUTORIZADO:
+    if digest(raw) != manifiesto:
         raise Bloqueado("Ha cambiado el manifiesto autorizado; requiere otra revisión")
     lote = lee_json(raw, "lote")
-    if not isinstance(lote, dict) or set(lote) != {"version", "siteUrl", "urlList", "sha256", "historial"}:
+    campos = {"version", "siteUrl", "urlList", "sha256", "historial"}
+    if version == 2:
+        campos.add("fuente_commit")
+    if not isinstance(lote, dict) or set(lote) != campos:
         raise Bloqueado("Estructura de lote no válida")
     urls, huellas = lote["urlList"], lote["sha256"]
-    if type(lote["version"]) is not int or lote["version"] != 1 or lote["siteUrl"] != indexa.BASE:
+    if type(lote["version"]) is not int or lote["version"] != version or lote["siteUrl"] != indexa.BASE:
         raise Bloqueado("Versión o propiedad incorrectas")
-    if not isinstance(urls, list) or tuple(urls) != URLS_AUTORIZADAS:
-        raise Bloqueado("La lista no es exactamente la de cuatro URL autorizadas")
+    if not isinstance(urls, list) or tuple(urls) != autorizadas:
+        raise Bloqueado("La lista no es exactamente la del lote autorizado")
     if len(set(urls)) != len(urls) or not isinstance(huellas, dict) or set(huellas) != set(urls):
         raise Bloqueado("URL repetida o huellas incompletas")
     sitemap = set(indexa.urls_sitemap(raiz))
@@ -103,6 +125,8 @@ def carga_lote(raiz, nombre):
             raise Bloqueado("Huella no válida")
         if digest(git_bytes(raiz, "HEAD:" + indexa.fichero_de(u))) != huellas[u]:
             raise Bloqueado("El contenido Git ya no coincide con el lote revisado")
+    if version == 2:
+        verifica_fuente(raiz, lote)
     h = lote["historial"]
     if not isinstance(h, dict) or set(h) != {"archivo", "sha256"}:
         raise Bloqueado("Falta el historial de deduplicación")
@@ -115,6 +139,28 @@ def carga_lote(raiz, nombre):
     if any(u in historial["urls"] for u in urls):
         raise Bloqueado("El lote incluye URL ya enviadas en el historial acreditado")
     return lote, digest(raw)
+
+
+def verifica_fuente(raiz, lote):
+    """El lote de seis conserva los bytes y los sitemaps de su commit fuente revisado."""
+    fuente = lote["fuente_commit"]
+    if fuente != FUENTE_SEIS_AUTORIZADA:
+        raise Bloqueado("El commit fuente no es el autorizado para las seis URL")
+    p = subprocess.run(["git", "-C", str(raiz), "merge-base", "--is-ancestor", fuente, "HEAD"],
+                       capture_output=True)
+    if p.returncode:
+        raise Bloqueado("El commit fuente no pertenece al historial de esta versión")
+    for revision in (fuente, "HEAD"):
+        try:
+            arbol = ET.fromstring(git_bytes(raiz, revision + ":sitemap.xml"))
+        except ET.ParseError:
+            raise Bloqueado("Sitemap Git no válido") from None
+        sitemap = {(x.text or "").strip() for x in arbol.findall("s:url/s:loc", indexa.NS)}
+        if not set(lote["urlList"]) <= sitemap:
+            raise Bloqueado("Falta una URL del lote en el sitemap Git de origen o actual")
+    for u in lote["urlList"]:
+        if digest(git_bytes(raiz, fuente + ":" + indexa.fichero_de(u))) != lote["sha256"][u]:
+            raise Bloqueado("La huella HTML no coincide con el commit fuente revisado")
 
 
 def carga_estado(datos):
@@ -258,6 +304,8 @@ def ejecuta(fase, raiz, datos, nombre, salida, env=None, abre=None, confirma_rem
         lote, huella = carga_lote(raiz, nombre)
         estado, bing = carga_estado(datos)
         recibo.update(manifiesto_sha256=huella, urlList=lote["urlList"], sha256=lote["sha256"])
+        if "fuente_commit" in lote:
+            recibo["fuente_commit"] = lote["fuente_commit"]
         sin_duplicados(bing, lote["urlList"], huella if fase in ("armar", "enviar") else None)
         reservas = bing.get("lotes_exactos", {})
         if fase not in ("armar", "enviar") and huella in reservas:

@@ -166,7 +166,10 @@ jobs:
         run: |
           [ "$REF" = "refs/heads/main" ] || { echo "::error::Bing exacto solo desde main revisado"; exit 1; }
           [ -z "$PIEZAS" ] || { echo "::error::No mezclar lote exacto con otras piezas"; exit 1; }
-          [ "$LOTE" = "2026-11-05-frde-nuevas.json" ] || { echo "::error::Solo lote FR/DE de cuatro URL"; exit 1; }
+          case "$LOTE" in
+            2026-11-05-frde-nuevas.json|2026-11-05-frde-721-seis.json) ;;
+            *) echo "::error::Solo los dos lotes cerrados revisados"; exit 1 ;;
+          esac
       - name: Pruebas obligatorias sin red
         run: python3 -B -m unittest discover -s .github/motor/tests -p "test_*.py"
       - name: Leer datos-motor existente
