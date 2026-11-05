@@ -394,6 +394,11 @@
   "huella": "01e6af71b74f",
   "titulo": "Family reunification: taxes in Spain | Grupo Avanza"
  },
+ "first-tax-return-spain-new-resident.html": {
+  "desde": "2026-11-05",
+  "huella": "ed8172c8db12",
+  "titulo": "First Spanish tax return with foreign income | Avanza"
+ },
  "fiscalidad-no-residentes-y-extranjeros.html": {
   "desde": "2026-10-30",
   "huella": "c3f151e029da",
@@ -659,6 +664,11 @@
   "huella": "03de43e17756",
   "titulo": "Pensión del Reino Unido si vives en España: dónde tributa"
  },
+ "primera-renta-extranjero-espana.html": {
+  "desde": "2026-11-05",
+  "huella": "534ff18a9e27",
+  "titulo": "Primera Renta en España con ingresos extranjeros | Avanza"
+ },
  "privacidad.html": {
   "desde": "2026-10-30",
   "huella": "3420e7086074",
@@ -683,6 +693,11 @@
   "desde": "2026-10-30",
   "huella": "de03fde87416",
   "titulo": "Declaraciones pendientes en España | Grupo Avanza"
+ },
+ "remote-work-spain-foreign-employer.html": {
+  "desde": "2026-11-05",
+  "huella": "3769c84e5bb2",
+  "titulo": "Remote work in Spain for a foreign employer | Avanza"
  },
  "renew-employed-residence-work-permit-spain.html": {
   "desde": "2026-10-30",
@@ -873,6 +888,11 @@
   "desde": "2026-10-30",
   "huella": "e45a95af5047",
   "titulo": "Tax residence in Spain: foreign income and tax returns"
+ },
+ "trabajar-remoto-espana-empresa-extranjera.html": {
+  "desde": "2026-11-05",
+  "huella": "767710e9f9eb",
+  "titulo": "Teletrabajo en España para empresa extranjera | Avanza"
  },
  "tramites.html": {
   "desde": "2026-10-30",

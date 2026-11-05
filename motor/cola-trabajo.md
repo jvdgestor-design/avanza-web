@@ -7,6 +7,7 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 
 - BING-ENVIO · 42 URL enviadas por API (cuota del día 100; quedan 0 pendientes) · Bing Webmaster · 2026-11-05
 - GSC-SIN-INDEXAR · 10 de 149 URL del sitemap sin indexar en Google: alquiler-vivienda-espana-no-residente.html, renting-out-property-spain-non-resident.html, comprar-inmueble-a-no-residente-modelo-211.html, buying-property-from-non-resident-spain.html, patrimonio-solidaridad-no-residentes-valencia.html … · Search Console · 2026-11-05
+- GSC-NOINDEX · Google la ha sacado del índice · https://grupoavanzaconsultores.es/ru-impuestos-todo-el-ano-online.html · 2026-11-05
 
 ## 2026-11-04
 
