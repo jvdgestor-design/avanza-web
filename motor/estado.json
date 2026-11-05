@@ -35,12 +35,19 @@
    "que": "7 URL enviadas por API (cuota del día 99; quedan 0 pendientes)",
    "visto": "2026-11-04"
   },
+  "BING-ENVIO|2026-11-05": {
+   "avisado": "2026-11-05",
+   "fuente": "bing-envio",
+   "primera": "2026-11-05",
+   "que": "42 URL enviadas por API (cuota del día 100; quedan 0 pendientes)",
+   "visto": "2026-11-05"
+  },
   "CADUCADO|ayudas-contratacion-paterna.html|2026-10-31|vencido": {
    "avisado": "2026-11-01",
    "fuente": "pagina:ayudas-contratacion-paterna.html",
    "primera": "2026-11-01",
    "que": "VENCIDO (31/10/2026): «En todo caso, hasta el 31 de octubre de 2026 inclusive (apartados décimo primero y décimo segundo",
-   "visto": "2026-11-04"
+   "visto": "2026-11-05"
   },
   "FICHA-ILEGIBLE|https://ad.maptons.com/p/3878266030": {
    "avisado": "2026-10-30",
@@ -84,12 +91,19 @@
    "que": "no enlaza a grupoavanzaconsultores.es",
    "visto": "2026-11-03"
   },
+  "GSC-SIN-INDEXAR|resumen": {
+   "avisado": "2026-11-05",
+   "fuente": "gsc",
+   "primera": "2026-11-05",
+   "que": "10 de 149 URL del sitemap sin indexar en Google: alquiler-vivienda-espana-no-residente.html, renting-out-property-spain-",
+   "visto": "2026-11-05"
+  },
   "INDEXA-ESPERA|yandex": {
    "avisado": "2026-11-04",
    "fuente": "indexa:yandex",
    "primera": "2026-11-04",
    "que": "yandex no responde (Yandex recrawl: HTTP 504); lo pendiente sigue en cola",
-   "visto": "2026-11-04"
+   "visto": "2026-11-05"
   },
   "INFORME|2026-11-02": {
    "avisado": "2026-11-02",
@@ -103,7 +117,7 @@
    "fuente": "ilegible:https://www.guiagestoria.com/mejores-gestorias/paterna-valencia",
    "primera": "2026-10-30",
    "que": "no se pudo leer desde GitHub (HTTP 403): comprobar a mano si se repite",
-   "visto": "2026-11-04"
+   "visto": "2026-11-05"
   },
   "PRESENCIA-ILEGIBLE|https://www.lasmejoresasesorias.es/valencia/paterna": {
    "avisado": "2026-10-30",
@@ -128,11 +142,6 @@
   }
  },
  "cola": {
-  "2026-11-02": [
-   "- BING-ENVIO · 5 URL enviadas por API (cuota del día 100; quedan 0 pendientes) · Bing Webmaster · 2026-11-02",
-   "- INFORME · informe de la semana listo en motor/informe-semanal.md: 2.769 impr. y 26 clics en Google, 15 consultas nuevas, 15 suben y 15 bajan · motor/informe-semanal.md · 2026-11-02",
-   "- RESUELTO · ya no aparece (INFORME): informe de la semana listo en motor/informe-semanal.md: 3.011 impr. y 31 clics en Google, 15 consultas nuevas, 15 suben  · informe · 2026-11-02"
-  ],
   "2026-11-03": [
    "- PRESENCIA · DEJAMOS DE SALIR del listado · https://buscador.asesorexcelente.com/valencia/paterna · 2026-11-03",
    "- CADUCADO · VENCIDO (02/11/2026): «consultada el 02/10/2026 y, para el cierre del plazo, el 02/11/2026).» · ayudas-contratacion-paterna.html · 2026-11-03",
@@ -150,6 +159,10 @@
    "- RESUELTO · ya no aparece (GSC-SIN-INDEXAR): 2 de 139 URL del sitemap sin indexar en Google: fr-acheter-bien-immobilier-espagne.html, fr-quitter-espagne-fiscalite.ht · gsc · 2026-11-04",
    "- INDEXA-ESPERA · yandex no responde (Yandex recrawl: HTTP 504); lo pendiente sigue en cola · indexa.py · 2026-11-04",
    "- RESUELTO · ya no aparece (MOTOR): yandex ha fallado: Yandex recrawl: HTTP 504 · yandex · 2026-11-04"
+  ],
+  "2026-11-05": [
+   "- BING-ENVIO · 42 URL enviadas por API (cuota del día 100; quedan 0 pendientes) · Bing Webmaster · 2026-11-05",
+   "- GSC-SIN-INDEXAR · 10 de 149 URL del sitemap sin indexar en Google: alquiler-vivienda-espana-no-residente.html, renting-out-property-spain-non-resident.html, comprar-inmueble-a-no-residente-modelo-211.html, buying-property-from-non-resident-spain.html, patrimonio-solidaridad-no-residentes-valencia.html … · Search Console · 2026-11-05"
   ]
  },
  "piezas": {
@@ -158,7 +171,8 @@
     "dominios": [],
     "enviadas": {
      "https://grupoavanzaconsultores.es/": "2026-11-03",
-     "https://grupoavanzaconsultores.es/arraigo-residence-spain.html": "2026-11-01",
+     "https://grupoavanzaconsultores.es/alquiler-vivienda-espana-no-residente.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/arraigo-residence-spain.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/asesoria-contable-valencia.html": "2026-11-02",
      "https://grupoavanzaconsultores.es/asesoria-fiscal-valencia.html": "2026-10-31",
      "https://grupoavanzaconsultores.es/asesoria-laboral-valencia.html": "2026-11-02",
@@ -168,8 +182,13 @@
      "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-valencia.html": "2026-10-31",
      "https://grupoavanzaconsultores.es/ayudas-contratacion-paterna.html": "2026-11-04",
      "https://grupoavanzaconsultores.es/beckham-law-spain-special-tax-regime.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/certificado-residencia-fiscal-espana.html": "2026-11-01",
-     "https://grupoavanzaconsultores.es/comprar-vivienda-en-espana-extranjero.html": "2026-11-03",
+     "https://grupoavanzaconsultores.es/buying-property-from-non-resident-spain.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/buying-property-spain-foreigner.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/certificado-residencia-fiscal-espana.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/comprar-inmueble-a-no-residente-modelo-211.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/comprar-vivienda-en-espana-extranjero.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/constitucion-de-sociedades-y-tramites.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/constitucion-sociedad-limitada-extranjero-espana.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/contacto.html": "2026-11-03",
      "https://grupoavanzaconsultores.es/de-ansaessigkeitsbescheinigung-spanien.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/de-beckham-regelung-spanien.html": "2026-11-01",
@@ -187,10 +206,12 @@
      "https://grupoavanzaconsultores.es/de-modelo-720-auslandsvermoegen.html": "2026-11-03",
      "https://grupoavanzaconsultores.es/de-schreiben-spanisches-finanzamt.html": "2026-11-03",
      "https://grupoavanzaconsultores.es/de-steueransaessigkeit-umzug-spanien.html": "2026-11-03",
-     "https://grupoavanzaconsultores.es/donacion-de-dinero-desde-el-extranjero.html": "2026-11-03",
+     "https://grupoavanzaconsultores.es/donacion-de-dinero-desde-el-extranjero.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/donacion-de-padres-a-hijos-comunitat-valenciana.html": "2026-11-03",
-     "https://grupoavanzaconsultores.es/en-tramites.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/family-reunification-spain.html": "2026-11-01",
+     "https://grupoavanzaconsultores.es/en-tramites.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/en.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/family-reunification-spain.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/form-720-spain-assets-abroad.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/fr-confidentialite.html": "2026-11-03",
      "https://grupoavanzaconsultores.es/fr-contact.html": "2026-11-03",
@@ -205,53 +226,65 @@
      "https://grupoavanzaconsultores.es/french-pension-tax-spain-resident.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/german-pension-tax-spain-resident.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/gestion-de-sociedades-valencia.html": "2026-11-02",
-     "https://grupoavanzaconsultores.es/gestoria-autonomos-valencia.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/gift-of-money-from-abroad-spain.html": "2026-11-02",
+     "https://grupoavanzaconsultores.es/gestoria-autonomos-valencia.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/gift-of-money-from-abroad-spain.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/herencia-en-espana-heredero-no-residente.html": "2026-11-03",
      "https://grupoavanzaconsultores.es/impuestos-todo-el-ano-online.html": "2026-10-31",
      "https://grupoavanzaconsultores.es/inheritance-spain-non-resident-heir.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/irse-de-espana-impuestos-cambio-residencia.html": "2026-10-31",
      "https://grupoavanzaconsultores.es/italian-pension-tax-spain-resident.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/leaving-spain-tax-residence.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/long-term-residence-spain.html": "2026-11-01",
-     "https://grupoavanzaconsultores.es/modelo-210-no-residentes.html": "2026-11-04",
-     "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html": "2026-11-04",
+     "https://grupoavanzaconsultores.es/long-term-residence-spain.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/modelo-210-no-residentes.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/modelo-347-operaciones-con-terceros.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/nie-tie-certificado-ue-espana.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/nie-tie-eu-registration-spain.html": "2026-11-01",
+     "https://grupoavanzaconsultores.es/modelo-720-bienes-en-el-extranjero.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/nie-tie-certificado-ue-espana.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/nie-tie-eu-registration-spain.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/patrimonio-solidaridad-no-residentes-valencia.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/pension-alemana-residente-en-espana.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/pension-francesa-residente-en-espana.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/pension-italiana-residente-en-espana.html": "2026-11-01",
+     "https://grupoavanzaconsultores.es/pension-reino-unido-residente-en-espana.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/privacidad.html": "2026-11-03",
-     "https://grupoavanzaconsultores.es/reagrupacion-familiar-espana.html": "2026-10-31",
+     "https://grupoavanzaconsultores.es/reagrupacion-familiar-espana.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/regimen-impatriados-ley-beckham.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/regularizar-situacion-fiscal-extranjero.html": "2026-11-02",
-     "https://grupoavanzaconsultores.es/renew-employed-residence-work-permit-spain.html": "2026-11-01",
-     "https://grupoavanzaconsultores.es/renovar-residencia-trabajo-cuenta-ajena.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/residence-family-spanish-citizen.html": "2026-11-01",
+     "https://grupoavanzaconsultores.es/renew-employed-residence-work-permit-spain.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/renovar-residencia-trabajo-cuenta-ajena.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/renting-out-property-spain-non-resident.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/representante-fiscal-no-residentes-espana.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/residence-family-spanish-citizen.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/residencia-fiscal-al-llegar-a-espana.html": "2026-11-02",
-     "https://grupoavanzaconsultores.es/residencia-larga-duracion-espana.html": "2026-11-03",
+     "https://grupoavanzaconsultores.es/residencia-larga-duracion-espana.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/ru-darenie-deneg-iz-za-rubezha.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/ru-model-210-nerezidenty.html": "2026-11-04",
+     "https://grupoavanzaconsultores.es/ru-model-720-imushchestvo-za-rubezhom.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/ru-nalogovoe-rezidentstvo-pri-pereezde.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/ru-nasledstvo-v-ispanii-nerezident.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/ru-nie-tie-registraciya-ispaniya.html": "2026-11-01",
+     "https://grupoavanzaconsultores.es/ru-otezd-iz-ispanii-nalogi.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/ru-pismo-iz-nalogovoj-ispanii.html": "2026-11-04",
      "https://grupoavanzaconsultores.es/ru-pokupka-nedvizhimosti-inostranec.html": "2026-11-04",
      "https://grupoavanzaconsultores.es/ru-prodazha-nedvizhimosti-nerezident.html": "2026-11-02",
+     "https://grupoavanzaconsultores.es/ru-rezhim-bekhema-ispaniya.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/ru-spravka-o-nalogovom-rezidentstve.html": "2026-11-01",
      "https://grupoavanzaconsultores.es/ru-uregulirovanie-nalogov-inostranec.html": "2026-11-01",
+     "https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/setting-up-limited-company-spain-foreigner.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/sl-con-perdidas-causa-de-disolucion.html": "2026-11-02",
-     "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html": "2026-10-31",
-     "https://grupoavanzaconsultores.es/spanish-tax-residence-certificate.html": "2026-10-31",
+     "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/spanish-tax-residence-certificate.html": "2026-11-05",
+     "https://grupoavanzaconsultores.es/tax-representative-spain-non-resident.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/tax-residence-moving-to-spain.html": "2026-11-02",
-     "https://grupoavanzaconsultores.es/tramites.html": "2026-11-01",
+     "https://grupoavanzaconsultores.es/tramites.html": "2026-11-05",
      "https://grupoavanzaconsultores.es/uk-pension-tax-spain-resident.html": "2026-11-01",
-     "https://grupoavanzaconsultores.es/vender-inmueble-en-espana-no-residente.html": "2026-11-02"
+     "https://grupoavanzaconsultores.es/vender-inmueble-en-espana-no-residente.html": "2026-11-02",
+     "https://grupoavanzaconsultores.es/wealth-solidarity-tax-valencia-spain.html": "2026-11-05"
     },
     "enviadas_hoy": {
-     "2026-11-04": 8
+     "2026-11-05": 42
     },
     "origen_enlaces": {},
     "pendientes": [],
@@ -260,6 +293,11 @@
       "error": true,
       "http": null,
       "mirada": "2026-11-04",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/alquiler-vivienda-espana-no-residente.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/alta-de-autonomo-en-valencia.html": {
@@ -271,7 +309,7 @@
      "https://grupoavanzaconsultores.es/amazon-kdp-impuestos-espana.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/aplazar-una-deuda-con-hacienda.html": {
@@ -287,14 +325,15 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/asesoria-contable-valencia.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/asesoria-fiscal-en-ruso-valencia.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/asesoria-fiscal-valencia.html": {
@@ -310,8 +349,9 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/asesoria-laboral-valencia.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-burjassot.html": {
@@ -341,7 +381,7 @@
      "https://grupoavanzaconsultores.es/autonomo-extranjero-en-espana.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/aviso-legal.html": {
@@ -358,6 +398,11 @@
       "error": true,
       "http": null,
       "mirada": "2026-11-04",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/buying-property-from-non-resident-spain.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/buying-property-spain-foreigner.html": {
@@ -395,6 +440,11 @@
       "mirada": "2026-11-04",
       "rastreo": ""
      },
+     "https://grupoavanzaconsultores.es/comprar-inmueble-a-no-residente-modelo-211.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
+      "rastreo": ""
+     },
      "https://grupoavanzaconsultores.es/comprar-vivienda-en-espana-extranjero.html": {
       "error": true,
       "http": null,
@@ -404,13 +454,18 @@
      "https://grupoavanzaconsultores.es/constitucion-de-sociedades-y-tramites.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/constitucion-sociedad-limitada-extranjero-espana.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/contacto.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/cookies.html": {
@@ -422,7 +477,7 @@
      "https://grupoavanzaconsultores.es/cuando-prescribe-deuda-hacienda.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/de-ansaessigkeitsbescheinigung-spanien.html": {
@@ -539,13 +594,15 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/donacion-de-dinero-desde-el-extranjero.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/donacion-de-padres-a-hijos-comunitat-valenciana.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/en-tramites.html": {
@@ -557,7 +614,7 @@
      "https://grupoavanzaconsultores.es/en.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/family-reunification-spain.html": {
@@ -569,7 +626,7 @@
      "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/form-720-spain-assets-abroad.html": {
@@ -706,8 +763,9 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/gestion-de-sociedades-valencia.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/gestoria-autonomos-valencia.html": {
@@ -717,14 +775,16 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/gift-of-money-from-abroad-spain.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/herencia-en-espana-heredero-no-residente.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
-      "rastreo": "2026-10-30"
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
+      "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/impuestos-todo-el-ano-online.html": {
       "error": true,
@@ -758,7 +818,7 @@
      "https://grupoavanzaconsultores.es/letter-from-spanish-tax-agency.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/licencia-de-actividad-cambio-de-titularidad.html": {
@@ -780,7 +840,7 @@
      "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/modelo-347-operaciones-con-terceros.html": {
@@ -816,6 +876,11 @@
       "error": true,
       "http": null,
       "mirada": "2026-11-04",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/patrimonio-solidaridad-no-residentes-valencia.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/pension-alemana-residente-en-espana.html": {
@@ -881,6 +946,16 @@
       "mirada": "2026-11-04",
       "rastreo": ""
      },
+     "https://grupoavanzaconsultores.es/renting-out-property-spain-non-resident.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/representante-fiscal-no-residentes-espana.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
+      "rastreo": ""
+     },
      "https://grupoavanzaconsultores.es/residence-family-spanish-citizen.html": {
       "error": true,
       "http": null,
@@ -900,14 +975,16 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/retribucion-del-administrador-de-una-sl.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
-      "rastreo": "2026-11-01"
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
+      "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-darenie-deneg-iz-za-rubezha.html": {
-      "http": 0,
-      "mirada": "2026-11-03",
-      "rastreo": "2026-10-29"
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
+      "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/ru-impuestos-todo-el-ano-online.html": {
       "error": true,
@@ -997,9 +1074,15 @@
       "mirada": "2026-11-04",
       "rastreo": ""
      },
-     "https://grupoavanzaconsultores.es/sl-con-perdidas-causa-de-disolucion.html": {
+     "https://grupoavanzaconsultores.es/setting-up-limited-company-spain-foreigner.html": {
       "http": 0,
-      "mirada": "2026-11-03",
+      "mirada": "2026-11-05",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/sl-con-perdidas-causa-de-disolucion.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html": {
@@ -1012,6 +1095,11 @@
       "error": true,
       "http": null,
       "mirada": "2026-11-04",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/tax-representative-spain-non-resident.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/tax-residence-moving-to-spain.html": {
@@ -1035,6 +1123,11 @@
       "error": true,
       "http": null,
       "mirada": "2026-11-04",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/wealth-solidarity-tax-valencia-spain.html": {
+      "http": 0,
+      "mirada": "2026-11-05",
       "rastreo": ""
      }
     }
@@ -1043,842 +1136,902 @@
     "indexacion": {
      "https://grupoavanzaconsultores.es/": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/alquiler-vivienda-espana-no-residente.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/alta-de-autonomo-en-valencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/amazon-kdp-impuestos-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/aplazar-una-deuda-con-hacienda.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/arraigo-residence-spain.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-contable-valencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-fiscal-en-ruso-valencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-fiscal-valencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-fiscal-y-contable.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-laboral-valencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-burjassot.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-leliana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-paterna.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-valencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/autonomo-extranjero-en-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/aviso-legal.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ayudas-contratacion-paterna.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/beckham-law-spain-special-tax-regime.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/buying-property-from-non-resident-spain.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/buying-property-spain-foreigner.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/calendario-fiscal.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/cambiar-de-asesoria.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/capitalizar-el-paro-pago-unico.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/carta-de-hacienda-requerimiento.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/certificado-residencia-fiscal-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/comprar-inmueble-a-no-residente-modelo-211.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/comprar-vivienda-en-espana-extranjero.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/constitucion-de-sociedades-y-tramites.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/constitucion-sociedad-limitada-extranjero-espana.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/contacto.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/cookies.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/cuando-prescribe-deuda-hacienda.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-ansaessigkeitsbescheinigung-spanien.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-beckham-regelung-spanien.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-britische-rente-wohnsitz-spanien.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-cookies.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-datenschutz.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-deutsche-rente-wohnsitz-spanien.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-erbschaft-spanien-erben-ausland.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-franzoesische-rente-wohnsitz-spanien.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-geldschenkung-ausland-spanien.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-immobilie-spanien-kaufen.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-immobilie-spanien-verkaufen-ausland.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-impressum.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-italienische-rente-wohnsitz-spanien.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-kontakt.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-modelo-210-nichtansaessige.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-modelo-720-auslandsvermoegen.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-schreiben-spanisches-finanzamt.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-steueransaessigkeit-umzug-spanien.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-steuern-spanien-nacherklaeren.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de-wegzug-spanien-steuern.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/de.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/donacion-de-dinero-desde-el-extranjero.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/donacion-de-padres-a-hijos-comunitat-valenciana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/en-tramites.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/en.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/family-reunification-spain.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/form-720-spain-assets-abroad.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-acheter-bien-immobilier-espagne.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-certificat-residence-fiscale.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-confidentialite.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-contact.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-cookies.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-courrier-agence-fiscale.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-donation-argent-etranger.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-mentions-legales.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-modele-720-avoirs-etranger.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-quitter-espagne-fiscalite.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-regime-impatries-loi-beckham.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-regulariser-impots-espagne.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-residence-fiscale-espagne.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-retraite-allemande-espagne.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-retraite-britannique-espagne.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-retraite-francaise-espagne.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-retraite-italienne-espagne.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-succession-heritier-non-resident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr-vendre-bien-immobilier-non-resident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/fr.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/french-pension-tax-spain-resident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/german-pension-tax-spain-resident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/gestion-de-sociedades-valencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/gestoria-autonomos-valencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/gift-of-money-from-abroad-spain.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/herencia-en-espana-heredero-no-residente.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/impuestos-todo-el-ano-online.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/inheritance-spain-non-resident-heir.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/irse-de-espana-impuestos-cambio-residencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/italian-pension-tax-spain-resident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/leaving-spain-tax-residence.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/letter-from-spanish-tax-agency.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/licencia-de-actividad-cambio-de-titularidad.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/long-term-residence-spain.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/modelo-210-no-residentes.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/modelo-347-operaciones-con-terceros.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/modelo-720-bienes-en-el-extranjero.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/nie-tie-certificado-ue-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/nie-tie-eu-registration-spain.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/nominas-y-gestion-laboral.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/patrimonio-solidaridad-no-residentes-valencia.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/pension-alemana-residente-en-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/pension-francesa-residente-en-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/pension-italiana-residente-en-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/pension-reino-unido-residente-en-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/privacidad.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/reagrupacion-familiar-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/regimen-impatriados-ley-beckham.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/regularising-taxes-spain-foreigner.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/regularizar-situacion-fiscal-extranjero.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/renew-employed-residence-work-permit-spain.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/renovar-residencia-trabajo-cuenta-ajena.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/renting-out-property-spain-non-resident.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
+     "https://grupoavanzaconsultores.es/representante-fiscal-no-residentes-espana.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/residence-family-spanish-citizen.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/residencia-fiscal-al-llegar-a-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/residencia-larga-duracion-espana.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/retribucion-del-administrador-de-una-sl.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-darenie-deneg-iz-za-rubezha.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-impuestos-todo-el-ano-online.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-model-210-nerezidenty.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-model-720-imushchestvo-za-rubezhom.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-nalogovoe-rezidentstvo-pri-pereezde.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-nasledstvo-v-ispanii-nerezident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-nie-tie-registraciya-ispaniya.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-otezd-iz-ispanii-nalogi.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-pismo-iz-nalogovoj-ispanii.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-pokupka-nedvizhimosti-inostranec.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-prodazha-nedvizhimosti-nerezident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-rezhim-bekhema-ispaniya.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-spravka-o-nalogovom-rezidentstve.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-tramites.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru-uregulirovanie-nalogov-inostranec.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/ru.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/setting-up-limited-company-spain-foreigner.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/sl-con-perdidas-causa-de-disolucion.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/spanish-tax-residence-certificate.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/tax-representative-spain-non-resident.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/tax-residence-moving-to-spain.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/tramites.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/uk-pension-tax-spain-resident.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/vender-inmueble-en-espana-no-residente.html": {
       "cobertura": "Enviada e indexada",
-      "mirada": "2026-11-04",
+      "mirada": "2026-11-05",
       "regresion": false,
       "verdict": "PASS"
+     },
+     "https://grupoavanzaconsultores.es/wealth-solidarity-tax-valencia-spain.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-05",
+      "regresion": false,
+      "verdict": "NEUTRAL"
      }
     },
     "sitio": "sc-domain:grupoavanzaconsultores.es"
    },
-   "sha": "cfec17dfc6b40b267d957e0b5e5cd50e0b657571",
+   "sha": "9a4c50cde549b5c2675070a850326c6e02ce793a",
    "urls": [
     "https://grupoavanzaconsultores.es/",
     "https://grupoavanzaconsultores.es/calendario-fiscal.html",
@@ -2018,11 +2171,21 @@
     "https://grupoavanzaconsultores.es/fr-retraite-italienne-espagne.html",
     "https://grupoavanzaconsultores.es/fr-succession-heritier-non-resident.html",
     "https://grupoavanzaconsultores.es/fr-vendre-bien-immobilier-non-resident.html",
-    "https://grupoavanzaconsultores.es/fr.html"
+    "https://grupoavanzaconsultores.es/fr.html",
+    "https://grupoavanzaconsultores.es/alquiler-vivienda-espana-no-residente.html",
+    "https://grupoavanzaconsultores.es/renting-out-property-spain-non-resident.html",
+    "https://grupoavanzaconsultores.es/comprar-inmueble-a-no-residente-modelo-211.html",
+    "https://grupoavanzaconsultores.es/buying-property-from-non-resident-spain.html",
+    "https://grupoavanzaconsultores.es/patrimonio-solidaridad-no-residentes-valencia.html",
+    "https://grupoavanzaconsultores.es/wealth-solidarity-tax-valencia-spain.html",
+    "https://grupoavanzaconsultores.es/constitucion-sociedad-limitada-extranjero-espana.html",
+    "https://grupoavanzaconsultores.es/setting-up-limited-company-spain-foreigner.html",
+    "https://grupoavanzaconsultores.es/representante-fiscal-no-residentes-espana.html",
+    "https://grupoavanzaconsultores.es/tax-representative-spain-non-resident.html"
    ],
    "yandex": {
     "caida_desde": "2026-11-04",
-    "caida_ultimo": "2026-11-04",
+    "caida_ultimo": "2026-11-05",
     "host_id": "https:grupoavanzaconsultores.es:443",
     "pendientes": [
      "https://grupoavanzaconsultores.es/",
@@ -2059,7 +2222,32 @@
      "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html",
      "https://grupoavanzaconsultores.es/ru-model-210-nerezidenty.html",
      "https://grupoavanzaconsultores.es/de-modelo-210-nichtansaessige.html",
-     "https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html"
+     "https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html",
+     "https://grupoavanzaconsultores.es/alquiler-vivienda-espana-no-residente.html",
+     "https://grupoavanzaconsultores.es/renting-out-property-spain-non-resident.html",
+     "https://grupoavanzaconsultores.es/comprar-inmueble-a-no-residente-modelo-211.html",
+     "https://grupoavanzaconsultores.es/buying-property-from-non-resident-spain.html",
+     "https://grupoavanzaconsultores.es/patrimonio-solidaridad-no-residentes-valencia.html",
+     "https://grupoavanzaconsultores.es/wealth-solidarity-tax-valencia-spain.html",
+     "https://grupoavanzaconsultores.es/constitucion-sociedad-limitada-extranjero-espana.html",
+     "https://grupoavanzaconsultores.es/setting-up-limited-company-spain-foreigner.html",
+     "https://grupoavanzaconsultores.es/representante-fiscal-no-residentes-espana.html",
+     "https://grupoavanzaconsultores.es/tax-representative-spain-non-resident.html",
+     "https://grupoavanzaconsultores.es/gestoria-autonomos-valencia.html",
+     "https://grupoavanzaconsultores.es/gift-of-money-from-abroad-spain.html",
+     "https://grupoavanzaconsultores.es/constitucion-de-sociedades-y-tramites.html",
+     "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html",
+     "https://grupoavanzaconsultores.es/en.html",
+     "https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html",
+     "https://grupoavanzaconsultores.es/buying-property-spain-foreigner.html",
+     "https://grupoavanzaconsultores.es/en-tramites.html",
+     "https://grupoavanzaconsultores.es/nie-tie-certificado-ue-espana.html",
+     "https://grupoavanzaconsultores.es/renovar-residencia-trabajo-cuenta-ajena.html",
+     "https://grupoavanzaconsultores.es/reagrupacion-familiar-espana.html",
+     "https://grupoavanzaconsultores.es/residencia-larga-duracion-espana.html",
+     "https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html",
+     "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html",
+     "https://grupoavanzaconsultores.es/spanish-tax-residence-certificate.html"
     ],
     "user_id": 2456666644
    }
@@ -2078,22 +2266,23 @@
   },
   "rondas": {
    "ultima_mirada": {
-    "https://accountanty.com/spain/paterna/grupo-avanza-consultores/": "2026-11-04",
+    "https://accountanty.com/spain/paterna/grupo-avanza-consultores/": "2026-11-05",
     "https://ad.maptons.com/p/3878266030": "2026-10-30",
-    "https://asesoriasgestorias.com/valencia/paterna/": "2026-11-04",
-    "https://buscador.asesorexcelente.com/valencia/paterna": "2026-11-04",
-    "https://ccasesoria.com/valencia/paterna/": "2026-11-04",
+    "https://asesoriasgestorias.com/valencia/paterna/": "2026-11-05",
+    "https://buscador.asesorexcelente.com/valencia/paterna": "2026-11-05",
+    "https://ccasesoria.com/valencia/paterna/": "2026-11-05",
     "https://ccasesoria.com/valencia/paterna/grupo-avanza-consultores-254/": "2026-11-03",
-    "https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia": "2026-11-04",
-    "https://expato.eu/ru/directory/gestoria/c101": "2026-11-04",
-    "https://negocioscerca.es/empresa/grupo-avanza-consultores-paterna": "2026-11-04",
-    "https://paterna.comercioscomunitatvalenciana.com/es/mapa/index": "2026-11-04",
-    "https://valencia.comercioscomunitatvalenciana.com/es/comercios/view/grupo-avanza-consultores": "2026-11-04",
+    "https://costabridge.co.uk/directory/grupo-avanza-consultores-begy": "2026-11-05",
+    "https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia": "2026-11-05",
+    "https://expato.eu/ru/directory/gestoria/c101": "2026-11-05",
+    "https://negocioscerca.es/empresa/grupo-avanza-consultores-paterna": "2026-11-05",
+    "https://paterna.comercioscomunitatvalenciana.com/es/mapa/index": "2026-11-05",
+    "https://valencia.comercioscomunitatvalenciana.com/es/comercios/view/grupo-avanza-consultores": "2026-11-05",
     "https://www.cylex.es/paterna/grupo-avanza-consultores-14669606.html": "2026-10-30",
-    "https://www.emprenemjunts.es/?op=36&id=45578": "2026-11-04",
+    "https://www.emprenemjunts.es/?op=36&id=45578": "2026-11-05",
     "https://www.gestorias.es/valencia/paterna": "2026-11-04",
-    "https://www.gestorias.es/valencia/valencia/grupo-avanza-consultores-20012": "2026-11-03",
-    "https://www.guiagestoria.com/mejores-gestorias/paterna-valencia": "2026-11-04",
+    "https://www.gestorias.es/valencia/valencia/grupo-avanza-consultores-20012": "2026-11-05",
+    "https://www.guiagestoria.com/mejores-gestorias/paterna-valencia": "2026-11-05",
     "https://www.lasmejoresasesorias.es/valencia/paterna": "2026-10-30",
     "https://www.paginasamarillas.es/f/paterna/grupo-avanza-consultores_236166997_000000001.html": "2026-10-30"
    }
@@ -2103,6 +2292,11 @@
     "desde": "2026-10-30",
     "huella": "fffa820453b3",
     "titulo": "Página no encontrada | Grupo Avanza Consultores"
+   },
+   "alquiler-vivienda-espana-no-residente.html": {
+    "desde": "2026-11-04",
+    "huella": "77ea0a22e2fa",
+    "titulo": "Alquilar en España siendo no residente: modelo 210"
    },
    "alta-de-autonomo-en-valencia.html": {
     "desde": "2026-10-30",
@@ -2284,6 +2478,11 @@
     "huella": "43b27032fb39",
     "titulo": "Beckham Law Spain: requirements and Modelo 149 application"
    },
+   "buying-property-from-non-resident-spain.html": {
+    "desde": "2026-11-04",
+    "huella": "e930d0e709ea",
+    "titulo": "Buying from a non-resident in Spain: 3% and form 211"
+   },
    "buying-property-spain-foreigner.html": {
     "desde": "2026-10-30",
     "huella": "1369c6110fb3",
@@ -2310,9 +2509,14 @@
     "titulo": "Carta de Hacienda y requerimientos | Asesoría fiscal"
    },
    "certificado-residencia-fiscal-espana.html": {
-    "desde": "2026-10-30",
-    "huella": "ef48dc162770",
-    "titulo": "Certificado de residencia fiscal en España para otro país"
+    "desde": "2026-11-05",
+    "huella": "3470d472b45e",
+    "titulo": "Certificado de residencia fiscal en España: cómo pedirlo"
+   },
+   "comprar-inmueble-a-no-residente-modelo-211.html": {
+    "desde": "2026-11-04",
+    "huella": "35a1f8330da2",
+    "titulo": "Comprar a un no residente: retención 3 % y modelo 211"
    },
    "comprar-vivienda-en-espana-extranjero.html": {
     "desde": "2026-10-30",
@@ -2323,6 +2527,11 @@
     "desde": "2026-10-30",
     "huella": "33fc6fb6873f",
     "titulo": "Constituir y llevar tu SL online y en Paterna | Grupo Avanza"
+   },
+   "constitucion-sociedad-limitada-extranjero-espana.html": {
+    "desde": "2026-11-04",
+    "huella": "e32469b94c94",
+    "titulo": "Constituir una SL en España siendo extranjero"
    },
    "contacto.html": {
     "desde": "2026-10-30",
@@ -2450,9 +2659,9 @@
     "titulo": "Spanische Steuern für internationale Kunden | Grupo Avanza"
    },
    "donacion-de-dinero-desde-el-extranjero.html": {
-    "desde": "2026-10-30",
-    "huella": "8a13ea45c49f",
-    "titulo": "Donación de dinero desde el extranjero en Valencia"
+    "desde": "2026-11-05",
+    "huella": "5f70e77f493c",
+    "titulo": "Recibir donaciones del extranjero: impuestos y trámites"
    },
    "donacion-de-padres-a-hijos-comunitat-valenciana.html": {
     "desde": "2026-10-30",
@@ -2615,9 +2824,9 @@
     "titulo": "Gestoría para autónomos en Valencia | Grupo Avanza"
    },
    "gift-of-money-from-abroad-spain.html": {
-    "desde": "2026-10-30",
-    "huella": "d26cba111d65",
-    "titulo": "Gift tax in Spain on money from family abroad | Valencia"
+    "desde": "2026-11-05",
+    "huella": "79824d9e334a",
+    "titulo": "Receiving money from abroad in Spain: gift tax and limits"
    },
    "gracias.html": {
     "desde": "2026-10-30",
@@ -2714,6 +2923,11 @@
     "huella": "9d97ef66812b",
     "titulo": "Nóminas y asesoría laboral en Paterna | Grupo Avanza"
    },
+   "patrimonio-solidaridad-no-residentes-valencia.html": {
+    "desde": "2026-11-04",
+    "huella": "564a602a10b6",
+    "titulo": "Patrimonio y Solidaridad: no residentes y Valencia"
+   },
    "pension-alemana-residente-en-espana.html": {
     "desde": "2026-10-30",
     "huella": "18357f0b7770",
@@ -2768,6 +2982,16 @@
     "desde": "2026-10-30",
     "huella": "a0e7db281dc3",
     "titulo": "Renovar residencia por cuenta ajena: la Renta | Grupo Avanza"
+   },
+   "renting-out-property-spain-non-resident.html": {
+    "desde": "2026-11-04",
+    "huella": "1487d73d0086",
+    "titulo": "Renting out property in Spain: non-resident tax"
+   },
+   "representante-fiscal-no-residentes-espana.html": {
+    "desde": "2026-11-04",
+    "huella": "3e2ab14a0c74",
+    "titulo": "Representante fiscal para no residentes en España"
    },
    "residence-family-spanish-citizen.html": {
     "desde": "2026-10-30",
@@ -2905,9 +3129,14 @@
     "titulo": "Налоговый консультант в Испании на русском | Grupo Avanza"
    },
    "selling-property-spain-non-resident.html": {
-    "desde": "2026-10-30",
-    "huella": "fb6872f7b2c3",
-    "titulo": "Selling property in Spain as a non-resident: 3% and form 210"
+    "desde": "2026-11-05",
+    "huella": "200efb7d1711",
+    "titulo": "Selling Property in Spain as a Non-Resident: Tax & 3%"
+   },
+   "setting-up-limited-company-spain-foreigner.html": {
+    "desde": "2026-11-04",
+    "huella": "bd19d364d60e",
+    "titulo": "Setting Up a Limited Company in Spain as a Foreigner"
    },
    "sl-con-perdidas-causa-de-disolucion.html": {
     "desde": "2026-10-30",
@@ -2920,9 +3149,14 @@
     "titulo": "Spanish nationality by residence and tax | Grupo Avanza"
    },
    "spanish-tax-residence-certificate.html": {
-    "desde": "2026-10-30",
-    "huella": "d10a60ebbea7",
-    "titulo": "Spanish tax residence certificate for a foreign country"
+    "desde": "2026-11-05",
+    "huella": "d31e13444a71",
+    "titulo": "Tax certificate in Spain: tax residence and foreign forms"
+   },
+   "tax-representative-spain-non-resident.html": {
+    "desde": "2026-11-04",
+    "huella": "947284234da7",
+    "titulo": "Tax representative in Spain for non-residents"
    },
    "tax-residence-moving-to-spain.html": {
     "desde": "2026-10-30",
@@ -2943,6 +3177,11 @@
     "desde": "2026-10-30",
     "huella": "6903cf2a1656",
     "titulo": "Vender un piso en España si vives fuera: el 3 % y el 210"
+   },
+   "wealth-solidarity-tax-valencia-spain.html": {
+    "desde": "2026-11-04",
+    "huella": "a9d326a54fa6",
+    "titulo": "Wealth and Solidarity Tax in Valencia, Spain"
    },
    "yandex_0ee7317e43cf2bdd.html": {
     "desde": "2026-10-24",

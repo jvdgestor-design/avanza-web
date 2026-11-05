@@ -4,6 +4,11 @@
   "huella": "fffa820453b3",
   "titulo": "Página no encontrada | Grupo Avanza Consultores"
  },
+ "alquiler-vivienda-espana-no-residente.html": {
+  "desde": "2026-11-04",
+  "huella": "77ea0a22e2fa",
+  "titulo": "Alquilar en España siendo no residente: modelo 210"
+ },
  "alta-de-autonomo-en-valencia.html": {
   "desde": "2026-10-30",
   "huella": "252620a22e08",
@@ -184,6 +189,11 @@
   "huella": "43b27032fb39",
   "titulo": "Beckham Law Spain: requirements and Modelo 149 application"
  },
+ "buying-property-from-non-resident-spain.html": {
+  "desde": "2026-11-04",
+  "huella": "e930d0e709ea",
+  "titulo": "Buying from a non-resident in Spain: 3% and form 211"
+ },
  "buying-property-spain-foreigner.html": {
   "desde": "2026-10-30",
   "huella": "1369c6110fb3",
@@ -210,9 +220,14 @@
   "titulo": "Carta de Hacienda y requerimientos | Asesoría fiscal"
  },
  "certificado-residencia-fiscal-espana.html": {
-  "desde": "2026-10-30",
-  "huella": "ef48dc162770",
-  "titulo": "Certificado de residencia fiscal en España para otro país"
+  "desde": "2026-11-05",
+  "huella": "3470d472b45e",
+  "titulo": "Certificado de residencia fiscal en España: cómo pedirlo"
+ },
+ "comprar-inmueble-a-no-residente-modelo-211.html": {
+  "desde": "2026-11-04",
+  "huella": "35a1f8330da2",
+  "titulo": "Comprar a un no residente: retención 3 % y modelo 211"
  },
  "comprar-vivienda-en-espana-extranjero.html": {
   "desde": "2026-10-30",
@@ -223,6 +238,11 @@
   "desde": "2026-10-30",
   "huella": "33fc6fb6873f",
   "titulo": "Constituir y llevar tu SL online y en Paterna | Grupo Avanza"
+ },
+ "constitucion-sociedad-limitada-extranjero-espana.html": {
+  "desde": "2026-11-04",
+  "huella": "e32469b94c94",
+  "titulo": "Constituir una SL en España siendo extranjero"
  },
  "contacto.html": {
   "desde": "2026-10-30",
@@ -350,9 +370,9 @@
   "titulo": "Spanische Steuern für internationale Kunden | Grupo Avanza"
  },
  "donacion-de-dinero-desde-el-extranjero.html": {
-  "desde": "2026-10-30",
-  "huella": "8a13ea45c49f",
-  "titulo": "Donación de dinero desde el extranjero en Valencia"
+  "desde": "2026-11-05",
+  "huella": "5f70e77f493c",
+  "titulo": "Recibir donaciones del extranjero: impuestos y trámites"
  },
  "donacion-de-padres-a-hijos-comunitat-valenciana.html": {
   "desde": "2026-10-30",
@@ -515,9 +535,9 @@
   "titulo": "Gestoría para autónomos en Valencia | Grupo Avanza"
  },
  "gift-of-money-from-abroad-spain.html": {
-  "desde": "2026-10-30",
-  "huella": "d26cba111d65",
-  "titulo": "Gift tax in Spain on money from family abroad | Valencia"
+  "desde": "2026-11-05",
+  "huella": "79824d9e334a",
+  "titulo": "Receiving money from abroad in Spain: gift tax and limits"
  },
  "gracias.html": {
   "desde": "2026-10-30",
@@ -614,6 +634,11 @@
   "huella": "9d97ef66812b",
   "titulo": "Nóminas y asesoría laboral en Paterna | Grupo Avanza"
  },
+ "patrimonio-solidaridad-no-residentes-valencia.html": {
+  "desde": "2026-11-04",
+  "huella": "564a602a10b6",
+  "titulo": "Patrimonio y Solidaridad: no residentes y Valencia"
+ },
  "pension-alemana-residente-en-espana.html": {
   "desde": "2026-10-30",
   "huella": "18357f0b7770",
@@ -668,6 +693,16 @@
   "desde": "2026-10-30",
   "huella": "a0e7db281dc3",
   "titulo": "Renovar residencia por cuenta ajena: la Renta | Grupo Avanza"
+ },
+ "renting-out-property-spain-non-resident.html": {
+  "desde": "2026-11-04",
+  "huella": "1487d73d0086",
+  "titulo": "Renting out property in Spain: non-resident tax"
+ },
+ "representante-fiscal-no-residentes-espana.html": {
+  "desde": "2026-11-04",
+  "huella": "3e2ab14a0c74",
+  "titulo": "Representante fiscal para no residentes en España"
  },
  "residence-family-spanish-citizen.html": {
   "desde": "2026-10-30",
@@ -805,9 +840,14 @@
   "titulo": "Налоговый консультант в Испании на русском | Grupo Avanza"
  },
  "selling-property-spain-non-resident.html": {
-  "desde": "2026-10-30",
-  "huella": "fb6872f7b2c3",
-  "titulo": "Selling property in Spain as a non-resident: 3% and form 210"
+  "desde": "2026-11-05",
+  "huella": "200efb7d1711",
+  "titulo": "Selling Property in Spain as a Non-Resident: Tax & 3%"
+ },
+ "setting-up-limited-company-spain-foreigner.html": {
+  "desde": "2026-11-04",
+  "huella": "bd19d364d60e",
+  "titulo": "Setting Up a Limited Company in Spain as a Foreigner"
  },
  "sl-con-perdidas-causa-de-disolucion.html": {
   "desde": "2026-10-30",
@@ -820,9 +860,14 @@
   "titulo": "Spanish nationality by residence and tax | Grupo Avanza"
  },
  "spanish-tax-residence-certificate.html": {
-  "desde": "2026-10-30",
-  "huella": "d10a60ebbea7",
-  "titulo": "Spanish tax residence certificate for a foreign country"
+  "desde": "2026-11-05",
+  "huella": "d31e13444a71",
+  "titulo": "Tax certificate in Spain: tax residence and foreign forms"
+ },
+ "tax-representative-spain-non-resident.html": {
+  "desde": "2026-11-04",
+  "huella": "947284234da7",
+  "titulo": "Tax representative in Spain for non-residents"
  },
  "tax-residence-moving-to-spain.html": {
   "desde": "2026-10-30",
@@ -843,6 +888,11 @@
   "desde": "2026-10-30",
   "huella": "6903cf2a1656",
   "titulo": "Vender un piso en España si vives fuera: el 3 % y el 210"
+ },
+ "wealth-solidarity-tax-valencia-spain.html": {
+  "desde": "2026-11-04",
+  "huella": "a9d326a54fa6",
+  "titulo": "Wealth and Solidarity Tax in Valencia, Spain"
  },
  "yandex_0ee7317e43cf2bdd.html": {
   "desde": "2026-10-24",
