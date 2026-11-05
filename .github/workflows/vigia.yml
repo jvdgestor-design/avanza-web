@@ -15,11 +15,24 @@ on:
         description: "Piezas separadas por comas (fichas,presencia,caducados,sitemap,boe,menciones,indexacion,semanal o web). Vacío = las diarias (y el lunes, también semanal)"
         required: false
         default: ""
+      bing_lote:
+        description: "Lote Bing exacto: nombre JSON revisado en .github/motor/lotes/. Vacío = motor habitual."
+        type: string
+        required: false
+        default: ""
+      bing_enviar:
+        description: "Solo con lote revisado: reservar y enviar una vez. False consulta web y cuota sin enviar."
+        type: boolean
+        required: false
+        default: false
   push:
     branches: [main]
     paths:
       - ".github/motor/vigia.py"
       - ".github/motor/indexa.py"
+      - ".github/motor/bing_exacto.py"
+      - ".github/motor/lotes/**"
+      - ".github/motor/tests/test_bing_exacto.py"
       - ".github/motor/informe.py"
       - ".github/motor/tests/test_vigia.py"
       - ".github/workflows/vigia.yml"
@@ -29,10 +42,11 @@ permissions:
   checks: read
 concurrency:
   # La horaria y la diaria no se esperan ni se cancelan entre sí: escriben ficheros distintos.
-  group: motor-sin-consumo-${{ (github.event.schedule == '7 * * * *' || github.event.inputs.piezas == 'web') && 'web' || 'diario' }}
+  group: motor-sin-consumo-${{ (!github.event.inputs.bing_lote && github.event.inputs.bing_enviar != 'true' && (github.event.schedule == '7 * * * *' || github.event.inputs.piezas == 'web')) && 'web' || 'diario' }}
   cancel-in-progress: false
 jobs:
   vigia:
+    if: ${{ !github.event.inputs.bing_lote && github.event.inputs.bing_enviar != 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -59,7 +73,7 @@ jobs:
       - name: Pruebas del motor
         if: github.event_name != 'schedule'
         continue-on-error: ${{ github.event_name == 'workflow_dispatch' }}   # a mano, que no bloquee una ejecución de emergencia
-        run: python3 -B -m unittest discover -s .github/motor/tests -p "test_vigia.py"
+        run: python3 -B -m unittest discover -s .github/motor/tests -p "test_*.py"
       - name: Rama datos-motor
         if: steps.piezas.outputs.piezas != ''
         run: |
@@ -125,3 +139,69 @@ jobs:
             git pull -q --rebase origin datos-motor || { git rebase --abort; exit 1; }
           done
           exit 1
+
+  bing-exacto:
+    if: github.event_name == 'workflow_dispatch' && (github.event.inputs.bing_lote != '' || github.event.inputs.bing_enviar == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Solo versión publicada y sin piezas adicionales
+        env:
+          REF: ${{ github.ref }}
+          PIEZAS: ${{ github.event.inputs.piezas }}
+          LOTE: ${{ github.event.inputs.bing_lote }}
+        run: |
+          [ "$REF" = "refs/heads/main" ] || { echo "::error::Bing exacto solo desde main revisado"; exit 1; }
+          [ -z "$PIEZAS" ] || { echo "::error::No mezclar lote exacto con otras piezas"; exit 1; }
+          [ -n "$LOTE" ] || { echo "::error::Falta el manifiesto exacto"; exit 1; }
+      - name: Pruebas obligatorias sin red
+        run: python3 -B -m unittest discover -s .github/motor/tests -p "test_*.py"
+      - name: Leer datos-motor existente
+        run: |
+          git config user.name "motor-sin-consumo"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin datos-motor:datos-motor
+          git worktree add datos datos-motor
+          test -f datos/motor/estado.json
+      - name: Comprobar o reservar lista exacta
+        id: preparacion
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          LOTE: ${{ github.event.inputs.bing_lote }}
+          ENVIAR: ${{ github.event.inputs.bing_enviar }}
+        run: |
+          FASE=comprobar
+          if [ "$ENVIAR" = "true" ]; then FASE=reservar; fi
+          python3 -B .github/motor/bing_exacto.py --fase "$FASE" --lote "$LOTE" --salida bing-exacto-preparacion.json
+      - name: Publicar bloqueo antes de POST
+        id: bloqueo
+        if: github.event.inputs.bing_enviar == 'true'
+        run: |
+          git -C datos add motor/estado.json
+          git -C datos commit -qm "motor: reserva Bing exacta $GITHUB_RUN_ID.$GITHUB_RUN_ATTEMPT"
+          # Si hay conflicto se detiene: no rebase ciego ni POST.
+          git -C datos push -q origin HEAD:datos-motor
+      - name: Un único POST del lote reservado
+        if: github.event.inputs.bing_enviar == 'true' && steps.bloqueo.outcome == 'success'
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          LOTE: ${{ github.event.inputs.bing_lote }}
+        run: python3 -B .github/motor/bing_exacto.py --fase enviar --lote "$LOTE" --salida bing-exacto-recibo.json
+      - name: Guardar resultado sin repetir POST
+        if: always() && steps.bloqueo.outcome == 'success'
+        run: |
+          git -C datos add motor/estado.json
+          if git -C datos diff --cached --quiet; then echo "Reserva conservada; sin cambios"; exit 0; fi
+          git -C datos commit -qm "motor: resultado Bing exacto $GITHUB_RUN_ID.$GITHUB_RUN_ATTEMPT"
+          # Fallar aquí conserva la reserva remota y el recibo; reconciliar, nunca reenviar.
+          git -C datos push -q origin HEAD:datos-motor
+      - name: Conservar pruebas y respuesta permitida
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bing-exacto-${{ github.run_id }}-${{ github.run_attempt }}
+          path: bing-exacto-*.json
+          if-no-files-found: warn

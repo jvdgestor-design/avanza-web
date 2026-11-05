@@ -1,0 +1,20 @@
+{
+  "historial": {
+    "archivo": "2026-11-05-bing-historial.json",
+    "sha256": "ca5e74ec02a3bd9fdb79aa7d325901d382cd6d06e93ba7d670ef9b91ca2139ca"
+  },
+  "sha256": {
+    "https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html": "ba231ab4966fea9a2dbace6f2866a38540409188b80189d24c89383967ec9a1e",
+    "https://grupoavanzaconsultores.es/de-kauf-nichtansaessiger-verkaeufer-modelo-211.html": "cfc3b3d27ea5e742fed0cdb1e7fdac498e97554e82d56ca21ffdd56589c5dd5d",
+    "https://grupoavanzaconsultores.es/fr-acheter-vendeur-non-resident-modele-211.html": "0ec0b574f8785bb3671b59319ce8d1443e2daaa463587f1092c2168665e9e328",
+    "https://grupoavanzaconsultores.es/fr-louer-bien-espagne-non-resident.html": "4a7454ae3c0cff5ccf6062e8193852a900b36994de7b07beb652ca7af28aefca"
+  },
+  "siteUrl": "https://grupoavanzaconsultores.es/",
+  "urlList": [
+    "https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html",
+    "https://grupoavanzaconsultores.es/de-kauf-nichtansaessiger-verkaeufer-modelo-211.html",
+    "https://grupoavanzaconsultores.es/fr-acheter-vendeur-non-resident-modele-211.html",
+    "https://grupoavanzaconsultores.es/fr-louer-bien-espagne-non-resident.html"
+  ],
+  "version": 1
+}

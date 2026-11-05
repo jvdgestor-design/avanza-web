@@ -134,7 +134,26 @@ def encola(est, clave, urls, vigentes):
 
 
 # ------------------------------------------------------------------ Bing
-def bing(cola, urls, cambios, est, metr, clave, abre=None):
+def bing_protegidas(est, raiz=None):
+    """Reserva sin resolver: nunca reenviar; contenido aceptado exacto: no recolar el mismo cambio."""
+    bloqueadas = set()
+    for reserva in est.get("lotes_exactos", {}).values():
+        if not isinstance(reserva, dict) or not isinstance(reserva.get("urlList"), list):
+            raise ErrorApi("Reserva Bing exacta mal formada; no se envía")
+        if reserva.get("estado") != "aceptado":
+            bloqueadas.update(reserva["urlList"])
+    identicas = set()
+    for url, huella in est.get("huellas_aceptadas", {}).items():
+        if raiz is None:
+            identicas.add(url)  # sin Git verificable, se cierra por seguridad
+            continue
+        p = subprocess.run(["git", "-C", raiz, "show", "HEAD:" + fichero_de(url)], capture_output=True)
+        if p.returncode or hashlib.sha256(p.stdout).hexdigest() == huella:
+            identicas.add(url)
+    return bloqueadas, identicas
+
+
+def bing(cola, urls, cambios, est, metr, clave, abre=None, raiz=None):
     def get(metodo, **q):
         q.update(siteUrl=BASE, apikey=clave)
         st, r = pide(BING + metodo + "?" + urllib.parse.urlencode(q), abre=abre)
@@ -144,7 +163,9 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
 
     hoy = cola.hoy
     vigentes = set(urls)
+    bloqueadas, identicas = bing_protegidas(est, raiz)
     pendientes = encola(est, "pendientes", cambios, vigentes)
+    est["pendientes"] = pendientes = [u for u in pendientes if u not in bloqueadas | identicas]
     # 1) Enviar: cuota del día menos lo que ya enviamos hoy (la doc no dice si DailyQuota es total o resto).
     cuota = (get("GetUrlSubmissionQuota") or {}).get("DailyQuota", 0) or 0
     hoy_iso = hoy.isoformat()
@@ -159,7 +180,7 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None):
         if sobra <= 0:
             break
         ult = enviadas.get(u)
-        if u not in lote and (not ult or (hoy - dt.date.fromisoformat(ult)).days >= REENVIO_DIAS):
+        if u not in bloqueadas and u not in lote and (not ult or (hoy - dt.date.fromisoformat(ult)).days >= REENVIO_DIAS):
             lote.append(u)
             sobra -= 1
     for i in range(0, len(lote), 500):
@@ -494,7 +515,7 @@ def ejecuta(cola, raiz, entorno=None, abre=None, token_gsc=None):
     with open(os.path.join(cola.datos, "titulos.json"), "w", encoding="utf-8") as f:
         json.dump(titulos, f, ensure_ascii=False, indent=1, sort_keys=True)
     bloques = (
-        ("bing", "BING_API_KEY", lambda k: bing(cola, urls, cambios, est.setdefault("bing", {}), metr, k, abre)),
+        ("bing", "BING_API_KEY", lambda k: bing(cola, urls, cambios, est.setdefault("bing", {}), metr, k, abre, raiz)),
         ("gsc", "GSC_KEY", lambda k: gsc(cola, raiz, urls, est.setdefault("gsc", {}), metr, k, titulos, abre,
                                          token_gsc)),
         ("yandex", "YANDEX_TOKEN", lambda k: yandex_con_tope(cola, urls, cambios, est.setdefault("yandex", {}), metr, k,
