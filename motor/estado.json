@@ -207,8 +207,10 @@
           "https://grupoavanzaconsultores.es/de-geldschenkung-ausland-spanien.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/de-immobilie-spanien-kaufen.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/de-immobilie-spanien-verkaufen-ausland.html": "2026-11-03",
+          "https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/de-impressum.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/de-italienische-rente-wohnsitz-spanien.html": "2026-11-03",
+          "https://grupoavanzaconsultores.es/de-kauf-nichtansaessiger-verkaeufer-modelo-211.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/de-kontakt.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/de-modelo-210-nichtansaessige.html": "2026-11-04",
           "https://grupoavanzaconsultores.es/de-modelo-720-auslandsvermoegen.html": "2026-11-03",
@@ -222,11 +224,13 @@
           "https://grupoavanzaconsultores.es/first-tax-return-spain-new-resident.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/form-720-spain-assets-abroad.html": "2026-11-01",
+          "https://grupoavanzaconsultores.es/fr-acheter-vendeur-non-resident-modele-211.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/fr-confidentialite.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/fr-contact.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/fr-cookies.html": "2026-11-01",
           "https://grupoavanzaconsultores.es/fr-courrier-agence-fiscale.html": "2026-11-01",
           "https://grupoavanzaconsultores.es/fr-donation-argent-etranger.html": "2026-11-01",
+          "https://grupoavanzaconsultores.es/fr-louer-bien-espagne-non-resident.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/fr-mentions-legales.html": "2026-11-01",
           "https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html": "2026-11-04",
           "https://grupoavanzaconsultores.es/fr-modele-720-avoirs-etranger.html": "2026-11-01",
@@ -296,19 +300,34 @@
           "https://grupoavanzaconsultores.es/wealth-solidarity-tax-valencia-spain.html": "2026-11-05"
         },
         "enviadas_hoy": {
-          "2026-11-05": 48
+          "2026-11-05": 52
+        },
+        "huellas_aceptadas": {
+          "https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html": "ba231ab4966fea9a2dbace6f2866a38540409188b80189d24c89383967ec9a1e",
+          "https://grupoavanzaconsultores.es/de-kauf-nichtansaessiger-verkaeufer-modelo-211.html": "cfc3b3d27ea5e742fed0cdb1e7fdac498e97554e82d56ca21ffdd56589c5dd5d",
+          "https://grupoavanzaconsultores.es/fr-acheter-vendeur-non-resident-modele-211.html": "0ec0b574f8785bb3671b59319ce8d1443e2daaa463587f1092c2168665e9e328",
+          "https://grupoavanzaconsultores.es/fr-louer-bien-espagne-non-resident.html": "4a7454ae3c0cff5ccf6062e8193852a900b36994de7b07beb652ca7af28aefca"
         },
         "lotes_exactos": {
           "a6153cf516b6919fc27115f757ed291622fca7f40411bf5e25b7218af595b6bd": {
+            "aceptada_utc": "2026-11-05T18:54:25.573096+00:00",
             "creada_utc": "2026-11-05T18:54:18.448041+00:00",
             "cuota": {
               "DailyQuota": 52,
               "MonthlyQuota": 2552,
               "consultada_utc": "2026-11-05T18:54:18.243069+00:00"
             },
-            "estado": "intento_registrado",
+            "estado": "aceptado",
             "intento_utc": "2026-11-05T18:54:20.548487+00:00",
             "propietario": "42088686481.1",
+            "respuesta": {
+              "aceptacion_inequivoca": true,
+              "cuerpo": {
+                "d": null
+              },
+              "endpoint": "SubmitUrlBatch",
+              "http": 200
+            },
             "revision": "8c113b092d2cdf0f7e0cf005d816e634164c62de",
             "sha256": {
               "https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html": "ba231ab4966fea9a2dbace6f2866a38540409188b80189d24c89383967ec9a1e",
