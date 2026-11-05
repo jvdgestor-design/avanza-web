@@ -204,7 +204,9 @@
           "https://grupoavanzaconsultores.es/de-datenschutz.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/de-deutsche-rente-wohnsitz-spanien.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/de-erbschaft-spanien-erben-ausland.html": "2026-11-03",
+          "https://grupoavanzaconsultores.es/de-erste-steuererklaerung-spanien.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/de-geldschenkung-ausland-spanien.html": "2026-11-03",
+          "https://grupoavanzaconsultores.es/de-homeoffice-spanien-auslaendischer-arbeitgeber.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/de-immobilie-spanien-kaufen.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/de-immobilie-spanien-verkaufen-ausland.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html": "2026-11-05",
@@ -224,6 +226,7 @@
           "https://grupoavanzaconsultores.es/first-tax-return-spain-new-resident.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/form-720-spain-assets-abroad.html": "2026-11-01",
+          "https://grupoavanzaconsultores.es/form-721-spain-crypto-abroad.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/fr-acheter-vendeur-non-resident-modele-211.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/fr-confidentialite.html": "2026-11-03",
           "https://grupoavanzaconsultores.es/fr-contact.html": "2026-11-03",
@@ -234,8 +237,10 @@
           "https://grupoavanzaconsultores.es/fr-mentions-legales.html": "2026-11-01",
           "https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html": "2026-11-04",
           "https://grupoavanzaconsultores.es/fr-modele-720-avoirs-etranger.html": "2026-11-01",
+          "https://grupoavanzaconsultores.es/fr-premiere-declaration-revenus-espagne.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/fr-quitter-espagne-fiscalite.html": "2026-11-01",
           "https://grupoavanzaconsultores.es/fr-regime-impatries-loi-beckham.html": "2026-11-01",
+          "https://grupoavanzaconsultores.es/fr-teletravail-espagne-employeur-etranger.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/french-pension-tax-spain-resident.html": "2026-11-01",
           "https://grupoavanzaconsultores.es/german-pension-tax-spain-resident.html": "2026-11-01",
           "https://grupoavanzaconsultores.es/gestion-de-sociedades-valencia.html": "2026-11-02",
@@ -252,6 +257,7 @@
           "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/modelo-347-operaciones-con-terceros.html": "2026-10-31",
           "https://grupoavanzaconsultores.es/modelo-720-bienes-en-el-extranjero.html": "2026-11-05",
+          "https://grupoavanzaconsultores.es/modelo-721-criptomonedas-extranjero.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/nie-tie-certificado-ue-espana.html": "2026-11-05",
           "https://grupoavanzaconsultores.es/nie-tie-eu-registration-spain.html": "2026-11-05",
@@ -300,25 +306,40 @@
           "https://grupoavanzaconsultores.es/wealth-solidarity-tax-valencia-spain.html": "2026-11-05"
         },
         "enviadas_hoy": {
-          "2026-11-05": 52
+          "2026-11-05": 58
         },
         "huellas_aceptadas": {
+          "https://grupoavanzaconsultores.es/de-erste-steuererklaerung-spanien.html": "6e3fb9ad055e30b18d72756c23480b17ddd7bc7a0f0bb4832245f610aa179a9a",
+          "https://grupoavanzaconsultores.es/de-homeoffice-spanien-auslaendischer-arbeitgeber.html": "b2ffd04903472bd6a27f6d1438c04d30781c34267a50f8fc4293169b4698fdcb",
           "https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html": "ba231ab4966fea9a2dbace6f2866a38540409188b80189d24c89383967ec9a1e",
           "https://grupoavanzaconsultores.es/de-kauf-nichtansaessiger-verkaeufer-modelo-211.html": "cfc3b3d27ea5e742fed0cdb1e7fdac498e97554e82d56ca21ffdd56589c5dd5d",
+          "https://grupoavanzaconsultores.es/form-721-spain-crypto-abroad.html": "e86b48cb179ab03c0a25ceba2843d86ffb051af4ca4cc9f248278c77ad03c3b1",
           "https://grupoavanzaconsultores.es/fr-acheter-vendeur-non-resident-modele-211.html": "0ec0b574f8785bb3671b59319ce8d1443e2daaa463587f1092c2168665e9e328",
-          "https://grupoavanzaconsultores.es/fr-louer-bien-espagne-non-resident.html": "4a7454ae3c0cff5ccf6062e8193852a900b36994de7b07beb652ca7af28aefca"
+          "https://grupoavanzaconsultores.es/fr-louer-bien-espagne-non-resident.html": "4a7454ae3c0cff5ccf6062e8193852a900b36994de7b07beb652ca7af28aefca",
+          "https://grupoavanzaconsultores.es/fr-premiere-declaration-revenus-espagne.html": "8b47d2c28873721d9dd536c78a23b8c96f59da00e4062b65901a4222df57fae6",
+          "https://grupoavanzaconsultores.es/fr-teletravail-espagne-employeur-etranger.html": "b687a3dd890fd8ad50e6151616203f0367ce7bf21ea787ee295379fbbcfbfbac",
+          "https://grupoavanzaconsultores.es/modelo-721-criptomonedas-extranjero.html": "69b73f11e75892f57b2026a4e237d9505f67342424574bc6eff5466a5074d6bc"
         },
         "lotes_exactos": {
           "7d1858112b91bb530b3e0bec60a20c1b9af2dfc48bf466249f291cba318654b4": {
+            "aceptada_utc": "2026-11-05T22:46:18.164464+00:00",
             "creada_utc": "2026-11-05T22:46:10.947771+00:00",
             "cuota": {
               "DailyQuota": 48,
               "MonthlyQuota": 2548,
               "consultada_utc": "2026-11-05T22:46:10.701290+00:00"
             },
-            "estado": "intento_registrado",
+            "estado": "aceptado",
             "intento_utc": "2026-11-05T22:46:13.010612+00:00",
             "propietario": "42124243432.1",
+            "respuesta": {
+              "aceptacion_inequivoca": true,
+              "cuerpo": {
+                "d": null
+              },
+              "endpoint": "SubmitUrlBatch",
+              "http": 200
+            },
             "revision": "b12dc0b23f1297029d950e559a46b608a05ef3ac",
             "sha256": {
               "https://grupoavanzaconsultores.es/de-erste-steuererklaerung-spanien.html": "6e3fb9ad055e30b18d72756c23480b17ddd7bc7a0f0bb4832245f610aa179a9a",
