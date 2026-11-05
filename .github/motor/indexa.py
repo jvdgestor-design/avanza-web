@@ -1,9 +1,9 @@
 """Indexación y medición por API, sin IA (pieza «indexacion» de vigia.py).
 
 Cada bloque se salta solo si falta su secreto, y lo dice en el registro:
-  BING_API_KEY  Bing Webmaster API: SubmitUrlBatch de lo nuevo o cambiado (cola de pendientes que no se pierde)
-                y, con la cuota que sobre, de lo que Bing no ha rastreado; cuota, páginas en índice, dominios
-                enlazantes (GetLinkCounts → GetUrlLinks), errores de rastreo.
+  BING_API_KEY  Bing Webmaster API: solo consultas de cuota, páginas en índice, dominios enlazantes
+                (GetLinkCounts → GetUrlLinks) y errores de rastreo. Conserva los cambios pendientes.
+                Los envíos se hacen exclusivamente mediante el lote manual revisado de bing_exacto.py.
                 Doc: learn.microsoft.com/en-us/bingwebmaster/getting-access y
                 learn.microsoft.com/en-us/dotnet/api/microsoft.bing.webmaster.api.interfaces.iwebmasterapi
   GSC_KEY       Search Console API (JSON de cuenta de servicio): inspección de cada URL del sitemap
@@ -13,7 +13,7 @@ Cada bloque se salta solo si falta su secreto, y lo dice en el registro:
                 La Indexing API de Google NO se usa: es solo para JobPosting y BroadcastEvent.
   YANDEX_TOKEN  Yandex Webmaster API v4: cola de recrawl con lo nuevo o cambiado, hasta la cuota del día.
                 Doc: yandex.com/dev/webmaster/doc/en/reference/host-recrawl-post y …/host-recrawl-quota-get
-Primero se envía y después se mide: un fallo al medir no deja nada sin enviar.
+Los pendientes se conservan antes de medir; Bing no envía ni reenvía desde esta pieza.
 En la cola pública solo van códigos de error, nunca el cuerpo de una respuesta.
 Escribe métricas diarias en motor/metricas.csv (una fila por día).
 """
@@ -40,7 +40,6 @@ GSC_INSPECT = "https://searchconsole.googleapis.com/v1/urlInspection/index:inspe
 GSC_QUERY = "https://www.googleapis.com/webmasters/v3/sites/{}/searchAnalytics/query"
 BING_REVISA_DIA = 30          # GetUrlInfo por día (rota por el sitemap)
 BING_ENLACES_DIA = 30         # llamadas a GetUrlLinks por día
-REENVIO_DIAS = 7              # una URL no rastreada no se reenvía a Bing antes de 7 días
 TITULO_ESPERA = 28            # cuatro semanas desde el último cambio de título o descripción
 GSC_MIN_IMPR = 20
 YANDEX_ESPERA = 20            # segundos por petición a Yandex
@@ -165,42 +164,17 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None, raiz=None):
 
     hoy = cola.hoy
     vigentes = set(urls)
-    bloqueadas, identicas = bing_protegidas(est, raiz)
+    _, identicas = bing_protegidas(est, raiz)
     pendientes = encola(est, "pendientes", cambios, vigentes)
     # Una reserva aplaza el cambio, nunca lo borra. Solo un SHA aceptado idéntico lo resuelve.
     est["pendientes"] = pendientes = [u for u in pendientes if u not in identicas]
-    # 1) Enviar: cuota del día menos lo que ya enviamos hoy (la doc no dice si DailyQuota es total o resto).
+    # El motor habitual solo consulta Bing, también si se ejecuta a mano.
+    # SubmitUrlBatch queda en bing_exacto.py: lote cerrado, repaso y reserva publicada.
     cuota = (get("GetUrlSubmissionQuota") or {}).get("DailyQuota", 0) or 0
     hoy_iso = hoy.isoformat()
-    ya_hoy = est.get("enviadas_hoy", {}).get(hoy_iso, 0)
-    disponible = max(0, cuota - ya_hoy)
     metr["bing_cuota"] = cuota
-    enviadas = est.setdefault("enviadas", {})
     rastreo = est.setdefault("rastreo", {})
-    lote = [u for u in pendientes if u not in bloqueadas][:disponible]
-    sobra = disponible - len(lote)
-    for u in [u for u in urls if u in rastreo and not rastreo[u]["rastreo"] and not rastreo[u].get("error")]:
-        if sobra <= 0:
-            break
-        ult = enviadas.get(u)
-        if u not in bloqueadas | identicas and u not in lote and (not ult or (hoy - dt.date.fromisoformat(ult)).days >= REENVIO_DIAS):
-            lote.append(u)
-            sobra -= 1
-    for i in range(0, len(lote), 500):
-        trozo = lote[i:i + 500]
-        st, r = pide(BING + "SubmitUrlBatch?" + urllib.parse.urlencode({"apikey": clave}), "POST",
-                     {"siteUrl": BASE, "urlList": trozo}, abre=abre)
-        if st != 200:
-            raise ErrorApi(f"Bing SubmitUrlBatch: HTTP {st} {codigo(r)}".strip())
-        for u in trozo:
-            enviadas[u] = hoy_iso
-        est["pendientes"] = [u for u in est["pendientes"] if u not in trozo]
-        est["enviadas_hoy"] = {hoy_iso: ya_hoy + i + len(trozo)}
-    if lote:
-        cola.aviso("BING-ENVIO", f"{len(lote)} URL enviadas por API (cuota del día {cuota}; quedan "
-                   f"{len(est['pendientes'])} pendientes)", "Bing Webmaster", clave=f"BING-ENVIO|{hoy}",
-                   fuente="bing-envio")
-    # 2) Medir. Rastreo: GetUrlInfo de una tanda que rota por el sitemap.
+    # Rastreo: GetUrlInfo de una tanda que rota por el sitemap.
     orden = sorted(urls, key=lambda u: rastreo.get(u, {}).get("mirada", ""))
     errores_info = 0
     for u in orden[:BING_REVISA_DIA]:

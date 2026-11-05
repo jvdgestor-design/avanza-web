@@ -424,7 +424,7 @@ class Indexacion(Base):
         metr, fallos = indexa.ejecuta(self.cola(), raiz, entorno={}, abre=abre)
         self.assertEqual((metr, fallos, abre.llamadas), ({}, [], []))
 
-    def test_bing_envia_mide_y_lleva_la_clave(self):
+    def test_bing_solo_mide_y_lleva_la_clave(self):
         raiz = self.web()
         c = self.cola()
         c.pieza("indexacion").setdefault("bing", {})["rastreo"] = {
@@ -435,35 +435,36 @@ class Indexacion(Base):
         self.assertEqual(fallos, [])
         for metodo, url, cuerpo, cab in abre.llamadas:
             self.assertEqual(q(url).get("apikey"), "K", url)
-            self.assertEqual(metodo, "POST" if "SubmitUrlBatch" in url else "GET", url)
+            self.assertEqual(metodo, "GET", url)
         envio = [json.loads(d) for m, u, d, _ in abre.llamadas if "SubmitUrlBatch" in u]
-        self.assertEqual(envio, [{"siteUrl": indexa.BASE, "urlList": [indexa.BASE + "a.html"]}])
+        self.assertEqual(envio, [])
         self.assertEqual((metr["bing_cuota"], metr["bing_en_indice"], metr["bing_dominios"]), (2, 2, 2))
         self.assertEqual(metr["bing_sin_rastrear"], 1)
         texto = "\n".join(c.cierra())
         self.assertIn("BING-RASTREO · 1 URL con errores de rastreo: b.html (404)", texto)
         self.assertIn("CONGELADO", texto)   # 2 de 3 URL en índice: más de la mitad
-        abre = self.bing_red()              # mañana: la URL enviada no se reenvía antes de 7 días
+        abre = self.bing_red()              # mañana sigue consultando sin reenviar
         c = self.cola(HOY + dt.timedelta(days=1))
         indexa.ejecuta(c, raiz, entorno={"BING_API_KEY": "K"}, abre=abre)
         self.assertFalse([u for _, u, _, _ in abre.llamadas if "SubmitUrlBatch" in u])
 
-    def test_bing_no_pierde_lo_que_no_cabe_en_la_cuota(self):
+    def test_bing_conserva_pendientes_para_lote_manual_con_cualquier_cuota(self):
         raiz = self.web()
         c = self.cola()
         est = c.pieza("indexacion")
         est["urls"] = [indexa.BASE]          # a y b son nuevas
         indexa.ejecuta(c, raiz, entorno={"BING_API_KEY": "K"}, abre=self.bing_red(cuota=1, sin_rastrear=()))
         c.cierra()
-        self.assertEqual(len(est["bing"]["pendientes"]), 1)
+        self.assertEqual(len(est["bing"]["pendientes"]), 2)
         abre = self.bing_red(cuota=1, sin_rastrear=())
         c = self.cola(HOY + dt.timedelta(days=1))
         indexa.ejecuta(c, raiz, entorno={"BING_API_KEY": "K"}, abre=abre)
         envio = [json.loads(d)["urlList"] for m, u, d, _ in abre.llamadas if "SubmitUrlBatch" in u]
-        self.assertEqual(len(envio), 1)
-        self.assertEqual(c.pieza("indexacion")["bing"]["pendientes"], [])
+        self.assertEqual(envio, [])
+        self.assertEqual(c.pieza("indexacion")["bing"]["pendientes"],
+                         [indexa.BASE + "a.html", indexa.BASE + "b.html"])
 
-    def test_bing_error_al_medir_no_impide_enviar_ni_filtra_el_cuerpo(self):
+    def test_bing_error_al_medir_conserva_pendientes_sin_enviar_ni_filtrar_el_cuerpo(self):
         raiz = self.web()
         c = self.cola()
         c.pieza("indexacion")["urls"] = [indexa.BASE]
@@ -473,8 +474,53 @@ class Indexacion(Base):
                     b + "GetUrlInfo": (500, '{"ErrorCode": 1, "Message": "secreto interno"}')})
         metr, fallos = indexa.ejecuta(c, raiz, entorno={"BING_API_KEY": "K"}, abre=abre)
         self.assertEqual(len(fallos), 1)
-        self.assertTrue([u for _, u, _, _ in abre.llamadas if "SubmitUrlBatch" in u])
+        self.assertFalse([u for _, u, _, _ in abre.llamadas if "SubmitUrlBatch" in u])
+        self.assertEqual(c.pieza("indexacion")["bing"]["pendientes"],
+                         [indexa.BASE + "a.html", indexa.BASE + "b.html"])
         self.assertNotIn("secreto interno", "\n".join(c.cierra()))
+
+    def test_bing_habitual_nunca_envia_cambios_pendientes_ni_recrawl(self):
+        raiz = self.web()
+        antigua, cambiada, nueva = indexa.urls_sitemap(raiz)
+        for evento in (None, "schedule", "push", "workflow_dispatch"):
+            with self.subTest(evento=evento):
+                datos = os.path.join(self.dir, evento or "sin_evento")
+                os.makedirs(datos)
+                c = vigia.Cola(datos, HOY)
+                est = c.pieza("indexacion")
+                anterior = (HOY - dt.timedelta(days=8)).isoformat()
+                historico = {
+                    "enviadas": {cambiada: anterior}, "enviadas_hoy": {anterior: 5},
+                    "lotes_exactos": {"reserva": {"estado": "incierto", "urlList": [nueva]}},
+                    "huellas_aceptadas": {antigua: "f" * 64}}
+                est.update(sha="sha-anterior", urls=[antigua, cambiada],
+                           bing=dict(json.loads(json.dumps(historico)), pendientes=[antigua],
+                                     rastreo={cambiada: {"rastreo": "", "mirada": anterior}}))
+                entorno = {"BING_API_KEY": "K"}
+                if evento is not None:
+                    entorno["GITHUB_EVENT_NAME"] = evento
+                with mock.patch.object(indexa, "cambiadas", side_effect=[[cambiada, nueva], []]), \
+                        mock.patch.object(indexa, "git", return_value="sha-siguiente"), \
+                        mock.patch.object(indexa.subprocess, "run", return_value=mock.Mock(
+                            returncode=0, stdout=b"contenido cambiado")):
+                    for dia in (HOY, HOY + dt.timedelta(days=1)):
+                        abre = self.bing_red(cuota=100)
+                        metr, fallos = indexa.ejecuta(c, raiz, entorno=entorno, abre=abre)
+                        self.assertEqual(fallos, [])
+                        self.assertTrue(abre.llamadas)
+                        self.assertTrue(all(m == "GET" for m, _, _, _ in abre.llamadas))
+                        for consulta in ("GetUrlSubmissionQuota", "GetUrlInfo", "GetCrawlStats",
+                                         "GetLinkCounts", "GetUrlLinks", "GetCrawlIssues"):
+                            self.assertTrue(any(consulta in u for _, u, _, _ in abre.llamadas), consulta)
+                        self.assertEqual((metr["bing_cuota"], metr["bing_en_indice"]), (100, 2))
+                        self.assertNotIn("BING-ENVIO", "\n".join(c.cierra()))
+                        # Comprobar lo guardado, incluso cuando el SHA ya avanzó y no hay cambios nuevos.
+                        c = vigia.Cola(datos, dia + dt.timedelta(days=1))
+                        guardado = c.pieza("indexacion")
+                        self.assertEqual(guardado["sha"], "sha-siguiente")
+                        self.assertEqual(guardado["bing"]["pendientes"], [antigua, cambiada, nueva])
+                        for campo, valor in historico.items():
+                            self.assertEqual(guardado["bing"][campo], valor)
 
     def test_gsc_resumen_regresion_y_candidata(self):
         raiz = self.web()

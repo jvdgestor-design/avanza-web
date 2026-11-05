@@ -491,8 +491,8 @@ class Diario(unittest.TestCase):
                 c = SimpleNamespace(hoy=hoy, aviso=lambda *args, **kwargs: None, revisada=lambda *a: None)
                 with mock.patch.object(indexa.subprocess, "run", return_value=SimpleNamespace(returncode=0, stdout=contenido)):
                     indexa.bing(c, [u, otra], [u, otra], b, {}, "K", abre, "raiz")
-                self.assertEqual(posts, [{"siteUrl": indexa.BASE, "urlList": [otra]}])
-                self.assertEqual(b["pendientes"], [] if modo == "aceptado" else [u])
+                self.assertEqual(posts, [])
+                self.assertEqual(b["pendientes"], [otra] if modo == "aceptado" else [u, otra])
 
     def test_cambio_real_posterior_no_se_oculta_por_huella_antigua(self):
         u = indexa.BASE + "a.html"
@@ -542,8 +542,7 @@ class Diario(unittest.TestCase):
                             if reserva:
                                 b["lotes_exactos"] = {"r": {"estado": reserva, "urlList": [u]}}
                             posts = self.simula(b, contenido=b"igual" if igual else b"cambiado")
-                            debe = not igual and dias >= 7 and rastreo == "sin_rastrear" and reserva in (None,"aceptado")
-                            self.assertEqual(bool(posts), debe)
+                            self.assertEqual(posts, [])
 
     def test_pendiente_sobrevive_reserva_cuota_cero_y_conciliacion(self):
         u = indexa.BASE + "a.html"
@@ -558,14 +557,16 @@ class Diario(unittest.TestCase):
                     self.assertEqual(b["pendientes"], [u])
                     b["lotes_exactos"]["r"]["estado"] = "aceptado"
                     b["huellas_aceptadas"] = {u: be.digest(b"anterior" if cambiado else b"igual")}
-                    self.assertEqual(bool(self.simula(b, cambios=[])), cambiado)
-                    self.assertEqual(b["pendientes"], [])
+                    self.assertEqual(self.simula(b, cambios=[]), [])
+                    self.assertEqual(b["pendientes"], [u] if cambiado else [])
 
 
 class Workflow(unittest.TestCase):
     def test_exacto_exige_pruebas_reserva_remota_y_no_reintenta_post(self):
         workflow = (Path(__file__).resolve().parents[2] / "workflows/vigia.yml").read_text(encoding="utf-8")
         exacto = workflow.split("  bing-exacto:\n", 1)[1]
+        self.assertIn("if: github.event_name == 'workflow_dispatch' &&", exacto)
+        self.assertIn("if: github.event.inputs.bing_enviar == 'true' && steps.intento.outcome == 'success'", exacto)
         self.assertNotIn("continue-on-error", exacto)
         self.assertNotIn("git pull", exacto)
         self.assertNotIn("GSC_KEY", exacto)

@@ -2,6 +2,7 @@
 #   motor/cola-trabajo.md  (diario: fichas, presencia, caducados, sitemap, BOE, menciones e indexación por API)
 #   motor/urgente.md       (cada hora: web viva; estado aparte en web.json para no chocar con el diario)
 # Las API (Bing, Search Console, Yandex) y el RSS de Google Alerts se saltan solos sin su secreto.
+# Bing habitual solo consulta; los envíos quedan en bing-exacto, manual y con lote cerrado revisado.
 # A mano: gh workflow run vigia.yml -f piezas="fichas,presencia"   (vacío = las diarias; «web» = la horaria)
 # En rojo = algo URGENTE (web caída), una pieza rota o una API que falla: GitHub manda el correo.
 name: Motor sin consumo
