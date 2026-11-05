@@ -145,10 +145,12 @@ def bing_protegidas(est, raiz=None):
     identicas = set()
     for url, huella in est.get("huellas_aceptadas", {}).items():
         if raiz is None:
-            identicas.add(url)  # sin Git verificable, se cierra por seguridad
+            bloqueadas.add(url)  # no enviar ni borrar un cambio que no se ha podido comparar
             continue
         p = subprocess.run(["git", "-C", raiz, "show", "HEAD:" + fichero_de(url)], capture_output=True)
-        if p.returncode or hashlib.sha256(p.stdout).hexdigest() == huella:
+        if p.returncode:
+            bloqueadas.add(url)
+        elif hashlib.sha256(p.stdout).hexdigest() == huella:
             identicas.add(url)
     return bloqueadas, identicas
 
@@ -165,7 +167,8 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None, raiz=None):
     vigentes = set(urls)
     bloqueadas, identicas = bing_protegidas(est, raiz)
     pendientes = encola(est, "pendientes", cambios, vigentes)
-    est["pendientes"] = pendientes = [u for u in pendientes if u not in bloqueadas | identicas]
+    # Una reserva aplaza el cambio, nunca lo borra. Solo un SHA aceptado idéntico lo resuelve.
+    est["pendientes"] = pendientes = [u for u in pendientes if u not in identicas]
     # 1) Enviar: cuota del día menos lo que ya enviamos hoy (la doc no dice si DailyQuota es total o resto).
     cuota = (get("GetUrlSubmissionQuota") or {}).get("DailyQuota", 0) or 0
     hoy_iso = hoy.isoformat()
@@ -174,13 +177,13 @@ def bing(cola, urls, cambios, est, metr, clave, abre=None, raiz=None):
     metr["bing_cuota"] = cuota
     enviadas = est.setdefault("enviadas", {})
     rastreo = est.setdefault("rastreo", {})
-    lote = pendientes[:disponible]
+    lote = [u for u in pendientes if u not in bloqueadas][:disponible]
     sobra = disponible - len(lote)
     for u in [u for u in urls if u in rastreo and not rastreo[u]["rastreo"] and not rastreo[u].get("error")]:
         if sobra <= 0:
             break
         ult = enviadas.get(u)
-        if u not in bloqueadas and u not in lote and (not ult or (hoy - dt.date.fromisoformat(ult)).days >= REENVIO_DIAS):
+        if u not in bloqueadas | identicas and u not in lote and (not ult or (hoy - dt.date.fromisoformat(ult)).days >= REENVIO_DIAS):
             lote.append(u)
             sobra -= 1
     for i in range(0, len(lote), 500):

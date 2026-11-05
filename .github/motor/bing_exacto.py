@@ -1,6 +1,6 @@
 """Lote Bing exacto: comprobar, reservar y enviar una sola vez por Actions.
 
-La reserva debe estar publicada en datos-motor ANTES de llamar a enviar.
+La reserva y la marca de intento deben publicarse en datos-motor ANTES de enviar.
 No reintenta POST ni libera reservas: un resultado incierto exige conciliación.
 """
 import argparse
@@ -12,8 +12,18 @@ from pathlib import Path
 import re
 import subprocess
 import urllib.request
+import urllib.error
 
 import indexa
+
+LOTE_AUTORIZADO = "2026-11-05-frde-nuevas.json"
+MANIFIESTO_AUTORIZADO = "a6153cf516b6919fc27115f757ed291622fca7f40411bf5e25b7218af595b6bd"
+URLS_AUTORIZADAS = tuple(indexa.BASE + n for n in (
+    "de-immobilie-spanien-vermieten-nichtansaessig.html",
+    "de-kauf-nichtansaessiger-verkaeufer-modelo-211.html",
+    "fr-acheter-vendeur-non-resident-modele-211.html",
+    "fr-louer-bien-espagne-non-resident.html",
+))
 
 
 class Bloqueado(Exception):
@@ -70,15 +80,19 @@ def nombre_lote(nombre):
 
 
 def carga_lote(raiz, nombre):
+    if nombre != LOTE_AUTORIZADO:
+        raise Bloqueado("Solo está habilitado el lote FR/DE de cuatro URL revisado")
     raw = git_bytes(raiz, "HEAD:" + nombre_lote(nombre))
+    if digest(raw) != MANIFIESTO_AUTORIZADO:
+        raise Bloqueado("Ha cambiado el manifiesto autorizado; requiere otra revisión")
     lote = lee_json(raw, "lote")
     if not isinstance(lote, dict) or set(lote) != {"version", "siteUrl", "urlList", "sha256", "historial"}:
         raise Bloqueado("Estructura de lote no válida")
     urls, huellas = lote["urlList"], lote["sha256"]
     if type(lote["version"]) is not int or lote["version"] != 1 or lote["siteUrl"] != indexa.BASE:
         raise Bloqueado("Versión o propiedad incorrectas")
-    if not isinstance(urls, list) or not 1 <= len(urls) <= 500 or not all(isinstance(u, str) for u in urls):
-        raise Bloqueado("La lista exacta debe contener entre 1 y 500 URL")
+    if not isinstance(urls, list) or tuple(urls) != URLS_AUTORIZADAS:
+        raise Bloqueado("La lista no es exactamente la de cuatro URL autorizadas")
     if len(set(urls)) != len(urls) or not isinstance(huellas, dict) or set(huellas) != set(urls):
         raise Bloqueado("URL repetida o huellas incompletas")
     sitemap = set(indexa.urls_sitemap(raiz))
@@ -142,10 +156,28 @@ def red_segura():
     return urllib.request.build_opener(SinRedireccion()).open
 
 
+def pide_estricto(url, abre, cuerpo=None):
+    """Solo JSON UTF-8 inequívoco, también en cuota; nunca registrar cuerpo de error."""
+    req = urllib.request.Request(url, data=serializa(cuerpo) if cuerpo is not None else None,
+                                 headers={"Accept": "application/json", "Content-Type": "application/json",
+                                          "User-Agent": "AvanzaVigia/1.0"})
+    try:
+        with abre(req, timeout=40) as r:
+            status, raw = r.status, r.read()
+    except urllib.error.HTTPError as e:
+        return e.code, None
+    # Decodificar explícitamente: json.loads(bytes) también admite UTF-16/32.
+    try:
+        respuesta = lee_json(raw.decode("utf-8", "strict"), "respuesta Bing")
+    except UnicodeError:
+        raise Bloqueado("Respuesta Bing no es UTF-8 válido") from None
+    return status, respuesta
+
+
 def cuota(clave, abre):
     import urllib.parse
-    st, respuesta = indexa.pide(indexa.BING + "GetUrlSubmissionQuota?" + urllib.parse.urlencode(
-        {"siteUrl": indexa.BASE, "apikey": clave}), abre=abre)
+    st, respuesta = pide_estricto(indexa.BING + "GetUrlSubmissionQuota?" + urllib.parse.urlencode(
+        {"siteUrl": indexa.BASE, "apikey": clave}), abre)
     d = respuesta.get("d") if isinstance(respuesta, dict) else None
     if st != 200 or not isinstance(d, dict):
         raise Bloqueado(f"Cuota Bing no verificable (HTTP {st})")
@@ -196,7 +228,23 @@ def verifica_remoto(datos, estado):
         raise Bloqueado("La reserva publicada difiere del estado local; cero POST")
 
 
-def ejecuta(fase, raiz, datos, nombre, salida, env=None, abre=None, confirma_remoto=verifica_remoto):
+def verifica_main(raiz, env):
+    propietario(env)
+    revision = env.get("BING_REVISION", "")
+    if not re.fullmatch(r"[0-9a-f]{40}", revision) or env.get("GITHUB_SHA") != revision:
+        raise Bloqueado("Falta el commit completo revisado o no coincide con la ejecución")
+    p = subprocess.run(["git", "-C", str(raiz), "rev-parse", "HEAD"], capture_output=True, text=True)
+    if p.returncode or p.stdout.strip() != revision:
+        raise Bloqueado("El checkout difiere del commit revisado")
+    p = subprocess.run(["git", "-C", str(raiz), "ls-remote", "--exit-code", "origin", "refs/heads/main"],
+                       capture_output=True, text=True)
+    if p.returncode or p.stdout.strip() != revision + "\trefs/heads/main":
+        raise Bloqueado("main ya no coincide con la versión revisada; cero POST")
+    return revision
+
+
+def ejecuta(fase, raiz, datos, nombre, salida, env=None, abre=None, confirma_remoto=verifica_remoto,
+            confirma_main=verifica_main):
     env = os.environ if env is None else env
     recibo = {"entidad": "Grupo Avanza Consultores", "fase": fase, "inicio_utc": ahora(),
               "resultado": "bloqueado", "post_intentados": 0, "aceptadas": []}
@@ -205,43 +253,63 @@ def ejecuta(fase, raiz, datos, nombre, salida, env=None, abre=None, confirma_rem
         clave = (env.get("BING_API_KEY") or "").strip()
         if not clave:
             raise Bloqueado("Falta la credencial existente BING_API_KEY")
+        recibo["revision"] = confirma_main(raiz, env)
         abre = abre or red_segura()
         lote, huella = carga_lote(raiz, nombre)
         estado, bing = carga_estado(datos)
         recibo.update(manifiesto_sha256=huella, urlList=lote["urlList"], sha256=lote["sha256"])
-        sin_duplicados(bing, lote["urlList"], huella if fase == "enviar" else None)
+        sin_duplicados(bing, lote["urlList"], huella if fase in ("armar", "enviar") else None)
         reservas = bing.get("lotes_exactos", {})
-        if fase != "enviar" and huella in reservas:
+        if fase not in ("armar", "enviar") and huella in reservas:
             raise Bloqueado("Este lote ya tiene reserva; no se reejecuta")
-        if fase == "enviar":
+        if fase in ("armar", "enviar"):
             reserva = reservas.get(huella)
-            esperado = {"propietario": propietario(env), "estado": "reservado", "urlList": lote["urlList"],
-                        "sha256": lote["sha256"]}
+            esperado = {"propietario": propietario(env), "estado": "reservado" if fase == "armar" else "intento_registrado",
+                        "urlList": lote["urlList"], "sha256": lote["sha256"], "revision": recibo["revision"]}
             if not isinstance(reserva, dict) or any(reserva.get(k) != v for k, v in esperado.items()):
                 raise Bloqueado("Reserva ajena, alterada o ya utilizada; conciliar sin reenviar")
             confirma_remoto(datos, estado)
+        if fase == "armar":
+            confirma_main(raiz, env)
+            reserva.update(estado="intento_registrado", intento_utc=ahora())
+            guarda(Path(datos) / "estado.json", estado)
+            recibo["resultado"] = "intento_local_pendiente_de_publicar_sin_post"
+            guarda(salida, recibo)
+            return 0
         recibo["web"] = publica(lote, abre)
+        confirma_main(raiz, env)
+        if fase == "enviar":
+            confirma_remoto(datos, estado)
         recibo["cuota"] = cuota(clave, abre)
         comprueba_cuota(recibo["cuota"], len(lote["urlList"]))
+        confirma_main(raiz, env)
+        if fase == "enviar":
+            confirma_remoto(datos, estado)
         payload = {"siteUrl": lote["siteUrl"], "urlList": lote["urlList"]}
         recibo["payload"] = payload
         if fase == "comprobar":
             recibo["resultado"] = "comprobado_sin_envio"
         elif fase == "reservar":
             reserva = {"propietario": propietario(env), "estado": "reservado", "urlList": lote["urlList"],
-                       "sha256": lote["sha256"], "creada_utc": ahora(), "cuota": recibo["cuota"]}
+                       "sha256": lote["sha256"], "revision": recibo["revision"],
+                       "creada_utc": ahora(), "cuota": recibo["cuota"]}
             bing.setdefault("lotes_exactos", {})[huella] = reserva
             guarda(Path(datos) / "estado.json", estado)
             recibo["resultado"] = "reservado_sin_envio"
         elif fase == "enviar":
             import urllib.parse
-            # Se deja huella local antes de POST: nunca se relanza automáticamente.
+            # La marca remota ya existe. El recibo local se escribe antes del último control.
+            recibo["resultado"] = "preparado_para_post"
+            guarda(salida, recibo)
+            confirma_main(raiz, env)
+            confirma_remoto(datos, estado)
+            # Consumir localmente impide una segunda llamada en este ejecutor. No hay reintentos.
             reserva["estado"] = "enviando"
             guarda(Path(datos) / "estado.json", estado)
             recibo.update(resultado="incierto", post_intentados=1)
             guarda(salida, recibo)
-            st, respuesta = indexa.pide(indexa.BING + "SubmitUrlBatch?" + urllib.parse.urlencode({"apikey": clave}),
-                                       "POST", payload, abre=abre)
+            st, respuesta = pide_estricto(indexa.BING + "SubmitUrlBatch?" + urllib.parse.urlencode({"apikey": clave}),
+                                          abre, payload)
             recibo["respuesta"] = {"endpoint": "SubmitUrlBatch", "http": st,
                                     "aceptacion_inequivoca": st == 200 and respuesta == {"d": None}}
             if st != 200 or respuesta != {"d": None}:
@@ -256,7 +324,7 @@ def ejecuta(fase, raiz, datos, nombre, salida, env=None, abre=None, confirma_rem
             bing["pendientes"] = [u for u in bing.get("pendientes", []) if u not in lote["urlList"]]
             contador = bing.get("enviadas_hoy", {}).get(fecha, 0)
             bing.setdefault("enviadas_hoy", {})[fecha] = contador + len(lote["urlList"])
-            reserva.update(estado="aceptado", aceptada_utc=recibo["fin_utc"])
+            reserva.update(estado="aceptado", aceptada_utc=recibo["fin_utc"], respuesta=recibo["respuesta"])
             guarda(Path(datos) / "estado.json", estado)
         else:
             raise Bloqueado("Fase desconocida")
@@ -279,7 +347,7 @@ def ejecuta(fase, raiz, datos, nombre, salida, env=None, abre=None, confirma_rem
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--fase", choices=("comprobar", "reservar", "enviar"), required=True)
+    ap.add_argument("--fase", choices=("comprobar", "reservar", "armar", "enviar"), required=True)
     ap.add_argument("--raiz", default=".")
     ap.add_argument("--datos", default="datos/motor")
     ap.add_argument("--lote", required=True, help="Nombre del manifiesto ya publicado bajo .github/motor/lotes/")

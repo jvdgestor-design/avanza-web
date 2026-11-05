@@ -20,6 +20,11 @@ on:
         type: string
         required: false
         default: ""
+      bing_revision:
+        description: "SHA completo de main aprobado en el repaso independiente para este lote."
+        type: string
+        required: false
+        default: ""
       bing_enviar:
         description: "Solo con lote revisado: reservar y enviar una vez. False consulta web y cuota sin enviar."
         type: boolean
@@ -44,6 +49,9 @@ concurrency:
   # La horaria y la diaria no se esperan ni se cancelan entre sí: escriben ficheros distintos.
   group: motor-sin-consumo-${{ (!github.event.inputs.bing_lote && github.event.inputs.bing_enviar != 'true' && (github.event.schedule == '7 * * * *' || github.event.inputs.piezas == 'web')) && 'web' || 'diario' }}
   cancel-in-progress: false
+  # GitHub 07-05-2026: conserva hasta 100 pendientes; las adicionales se cancelan.
+  # https://github.blog/changelog/2026-05-07-github-actions-concurrency-groups-now-allow-larger-queues/
+  queue: max
 jobs:
   vigia:
     if: ${{ !github.event.inputs.bing_lote && github.event.inputs.bing_enviar != 'true' }}
@@ -141,6 +149,8 @@ jobs:
           exit 1
 
   bing-exacto:
+    env:
+      BING_REVISION: ${{ github.event.inputs.bing_revision }}
     if: github.event_name == 'workflow_dispatch' && (github.event.inputs.bing_lote != '' || github.event.inputs.bing_enviar == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -156,7 +166,7 @@ jobs:
         run: |
           [ "$REF" = "refs/heads/main" ] || { echo "::error::Bing exacto solo desde main revisado"; exit 1; }
           [ -z "$PIEZAS" ] || { echo "::error::No mezclar lote exacto con otras piezas"; exit 1; }
-          [ -n "$LOTE" ] || { echo "::error::Falta el manifiesto exacto"; exit 1; }
+          [ "$LOTE" = "2026-11-05-frde-nuevas.json" ] || { echo "::error::Solo lote FR/DE de cuatro URL"; exit 1; }
       - name: Pruebas obligatorias sin red
         run: python3 -B -m unittest discover -s .github/motor/tests -p "test_*.py"
       - name: Leer datos-motor existente
@@ -184,8 +194,21 @@ jobs:
           git -C datos commit -qm "motor: reserva Bing exacta $GITHUB_RUN_ID.$GITHUB_RUN_ATTEMPT"
           # Si hay conflicto se detiene: no rebase ciego ni POST.
           git -C datos push -q origin HEAD:datos-motor
-      - name: Un único POST del lote reservado
+      - name: Registrar intento antes del POST
         if: github.event.inputs.bing_enviar == 'true' && steps.bloqueo.outcome == 'success'
+        env:
+          BING_API_KEY: ${{ secrets.BING_API_KEY }}
+          LOTE: ${{ github.event.inputs.bing_lote }}
+        run: python3 -B .github/motor/bing_exacto.py --fase armar --lote "$LOTE" --salida bing-exacto-intento.json
+      - name: Publicar marca durable de intento
+        id: intento
+        if: github.event.inputs.bing_enviar == 'true' && steps.bloqueo.outcome == 'success'
+        run: |
+          git -C datos add motor/estado.json
+          git -C datos commit -qm "motor: intento Bing exacto $GITHUB_RUN_ID.$GITHUB_RUN_ATTEMPT"
+          git -C datos push -q origin HEAD:datos-motor
+      - name: Un único POST del lote reservado
+        if: github.event.inputs.bing_enviar == 'true' && steps.intento.outcome == 'success'
         env:
           BING_API_KEY: ${{ secrets.BING_API_KEY }}
           LOTE: ${{ github.event.inputs.bing_lote }}
@@ -196,7 +219,8 @@ jobs:
           git -C datos add motor/estado.json
           if git -C datos diff --cached --quiet; then echo "Reserva conservada; sin cambios"; exit 0; fi
           git -C datos commit -qm "motor: resultado Bing exacto $GITHUB_RUN_ID.$GITHUB_RUN_ATTEMPT"
-          # Fallar aquí conserva la reserva remota y el recibo; reconciliar, nunca reenviar.
+          # Fallar aquí conserva la reserva/marca remota; el recibo puede perderse si muere el ejecutor.
+          # Conciliar con historial Bing y evidencia conservada; nunca repetir automáticamente.
           git -C datos push -q origin HEAD:datos-motor
       - name: Conservar pruebas y respuesta permitida
         if: always()

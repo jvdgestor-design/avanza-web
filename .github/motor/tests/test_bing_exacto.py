@@ -34,13 +34,14 @@ class Exacto(unittest.TestCase):
         self.datos = self.raiz / "motor"
         self.datos.mkdir()
         self.recibo = self.raiz / "recibo.json"
-        self.urls = [indexa.BASE + n + ".html" for n in "abcd"]
+        self.urls = list(be.URLS_AUTORIZADAS)
+        self.nombre = be.LOTE_AUTORIZADO
         self.html = {u: ("<html>" + u + "</html>\n").encode() for u in self.urls}
         self.huellas = {u: be.digest(b) for u, b in self.html.items()}
         self.hist = be.serializa({"urls": [indexa.BASE + "antigua.html"]})
         self.lote = {"version": 1, "siteUrl": indexa.BASE, "urlList": self.urls, "sha256": self.huellas,
                      "historial": {"archivo": "historial.json", "sha256": be.digest(self.hist)}}
-        self.git = {"HEAD:.github/motor/lotes/lote.json": be.serializa(self.lote),
+        self.git = {"HEAD:.github/motor/lotes/" + self.nombre: be.serializa(self.lote),
                     "HEAD:.github/motor/lotes/historial.json": self.hist}
         self.git.update({"HEAD:" + indexa.fichero_de(u): b for u, b in self.html.items()})
         self.estado = {"otro": {"preservar": True}, "piezas": {"indexacion": {
@@ -50,12 +51,18 @@ class Exacto(unittest.TestCase):
             "pendientes": [self.urls[0], indexa.BASE + "otra.html"]}}}}
         self.escribe_estado(self.estado)
         self.env = {"BING_API_KEY": "CLAVE-NO-PUBLICAR", "GITHUB_ACTIONS": "true",
-                    "GITHUB_REF": "refs/heads/main", "GITHUB_RUN_ID": "123", "GITHUB_RUN_ATTEMPT": "1"}
+                    "GITHUB_REF": "refs/heads/main", "GITHUB_RUN_ID": "123", "GITHUB_RUN_ATTEMPT": "1",
+                    "GITHUB_SHA": "a" * 40, "BING_REVISION": "a" * 40}
         self.peticiones = []
         self.cuota = {"DailyQuota": 4, "MonthlyQuota": 10}
         self.post = (200, {"d": None})
         self.remoto = None
+        self.controles_main = 0
+        self.controles_remoto = 0
+        self.falla_main = self.falla_remoto = None
+        # Bytes de fixture deliberadamente distintos de producción; la política real se contrasta aparte.
         for p in (mock.patch.object(be, "git_bytes", side_effect=lambda raiz, ref: self.git[ref]),
+                  mock.patch.object(be, "MANIFIESTO_AUTORIZADO", be.digest(be.serializa(self.lote))),
                   mock.patch.object(indexa, "urls_sitemap", return_value=self.urls),
                   mock.patch.object(socket.socket, "connect", side_effect=AssertionError("Red prohibida"))):
             p.start()
@@ -87,17 +94,28 @@ class Exacto(unittest.TestCase):
         raise AssertionError("Petición no prevista")
 
     def confirma(self, datos, estado):
-        if self.remoto != estado:
+        self.controles_remoto += 1
+        if self.controles_remoto == self.falla_remoto or self.remoto != estado:
             raise be.Bloqueado("Reserva remota diferente")
 
+    def main_vigente(self, raiz, env):
+        self.controles_main += 1
+        be.propietario(env)
+        if self.controles_main == self.falla_main or env.get("GITHUB_SHA") != env.get("BING_REVISION"):
+            raise be.Bloqueado("main diferente")
+        return env["GITHUB_SHA"]
+
     def fase(self, fase, env=None):
-        return be.ejecuta(fase, self.raiz, self.datos, "lote.json", self.recibo,
-                          self.env if env is None else env, self.abre, self.confirma)
+        return be.ejecuta(fase, self.raiz, self.datos, self.nombre, self.recibo,
+                          self.env if env is None else env, self.abre, self.confirma, self.main_vigente)
 
     def reserva(self):
         self.assertEqual(self.fase("reservar"), 0)
         self.remoto = copy.deepcopy(self.lee_estado())  # push confirmado simulado
+        self.assertEqual(self.fase("armar"), 0)
+        self.remoto = copy.deepcopy(self.lee_estado())  # segunda publicación confirmada, antes de POST
         self.peticiones.clear()
+        self.controles_main = self.controles_remoto = 0
 
     def posts(self):
         return [p for p in self.peticiones if p[0] == "POST"]
@@ -144,7 +162,7 @@ class Exacto(unittest.TestCase):
         self.cuota["MonthlyQuota"] = 0
         self.assertEqual(self.fase("enviar"), 1)
         self.assertEqual(self.posts(), [])
-        self.assertEqual(next(iter(self.lee_bing()["lotes_exactos"].values()))["estado"], "reservado")
+        self.assertEqual(next(iter(self.lee_bing()["lotes_exactos"].values()))["estado"], "intento_registrado")
 
     def test_cuota_ausente_o_mal_formada_no_se_inventa(self):
         for cuota in ({}, {"DailyQuota": True}, {"DailyQuota": -1}, {"DailyQuota": "10"},
@@ -199,11 +217,11 @@ class Exacto(unittest.TestCase):
 
     def test_manifiesto_o_html_alterado_tras_reserva_no_envia(self):
         self.reserva()
-        ref = "HEAD:.github/motor/lotes/lote.json"
+        ref = "HEAD:.github/motor/lotes/" + self.nombre
         self.git[ref] += b" "
         self.assertEqual(self.fase("enviar"), 1)
         self.git[ref] = be.serializa(self.lote)
-        self.git["HEAD:a.html"] += b"cambio"
+        self.git["HEAD:" + indexa.fichero_de(self.urls[0])] += b"cambio"
         self.assertEqual(self.fase("enviar"), 1)
         self.assertEqual(self.posts(), [])
 
@@ -217,6 +235,8 @@ class Exacto(unittest.TestCase):
     def test_respuesta_ambigua_error_y_corte_nunca_se_reintentan(self):
         original = copy.deepcopy(self.estado)
         for respuesta in ((200, {}), (200, {"d": None, "error": "privado"}), (200, b""),
+                          (200, b'{"d":"error","d":null}'), (200, b'{"d":null,"d":null}'),
+                          (200, b'{"d":null}\xff'), (200, '{"d":null}'.encode('utf-16')),
                           (200, b"no JSON"), (302, {"d": None}), (400, {"ErrorCode": 1}),
                           (500, {"Message": "privado"}),
                           urllib.error.URLError("https://api/?apikey=CLAVE-NO-PUBLICAR")):
@@ -248,12 +268,12 @@ class Exacto(unittest.TestCase):
             self.assertEqual(self.fase("enviar"), 1)
         r = json.loads(self.recibo.read_bytes())
         self.assertEqual((r["resultado"], r["aceptadas"]), ("aceptado", self.urls))
-        self.assertEqual(next(iter(self.remoto["piezas"]["indexacion"]["bing"]["lotes_exactos"].values()))["estado"], "reservado")
+        self.assertEqual(next(iter(self.remoto["piezas"]["indexacion"]["bing"]["lotes_exactos"].values()))["estado"], "intento_registrado")
         self.assertEqual(self.fase("enviar", dict(self.env, GITHUB_RUN_ATTEMPT="2")), 1)
         self.assertEqual(len(self.posts()), 1)
 
     def test_manifiesto_rechaza_duplicados_ajenos_huellas_historial_y_rutas(self):
-        ref = "HEAD:.github/motor/lotes/lote.json"
+        ref = "HEAD:.github/motor/lotes/" + self.nombre
         for modo in ("duplicada", "otro", "hash", "historial", "historial_hash"):
             lote = copy.deepcopy(self.lote)
             if modo == "duplicada":
@@ -268,8 +288,8 @@ class Exacto(unittest.TestCase):
             else:
                 lote["historial"]["sha256"] = "0" * 64
             self.git[ref] = be.serializa(lote)
-            with self.subTest(modo=modo), self.assertRaises(be.Bloqueado):
-                be.carga_lote(self.raiz, "lote.json")
+            with self.subTest(modo=modo), mock.patch.object(be, "MANIFIESTO_AUTORIZADO", be.digest(self.git[ref])), self.assertRaises(be.Bloqueado):
+                be.carga_lote(self.raiz, self.nombre)
             self.git["HEAD:.github/motor/lotes/historial.json"] = self.hist
         for nombre in ("../lote.json", "/tmp/lote.json", "lote.json;echo", "$(pwd).json"):
             with self.assertRaises(be.Bloqueado):
@@ -283,6 +303,77 @@ class Exacto(unittest.TestCase):
         with mock.patch.object(be.subprocess, "run", return_value=SimpleNamespace(returncode=0)):
             with self.assertRaises(be.Bloqueado):
                 be.verifica_remoto(self.datos, self.estado)
+
+    def test_main_y_datos_cambiados_en_cada_frontera_impiden_post(self):
+        for fuente, fronteras in (("main", 4), ("remoto", 4)):
+            for frontera in range(1, fronteras + 1):
+                with self.subTest(fuente=fuente, frontera=frontera):
+                    self.escribe_estado(self.estado)
+                    self.falla_main = self.falla_remoto = None
+                    self.reserva()
+                    setattr(self, "falla_" + fuente, frontera)
+                    self.assertEqual(self.fase("enviar"), 1)
+                    self.assertEqual(self.posts(), [])
+                    self.assertEqual(json.loads(self.recibo.read_bytes())["post_intentados"], 0)
+
+    def test_marca_no_publicada_y_corte_de_ejecutor_dejan_cuarentena(self):
+        self.assertEqual(self.fase("reservar"), 0)
+        self.remoto = copy.deepcopy(self.lee_estado())
+        self.assertEqual(self.fase("enviar"), 1)  # falta armar
+        self.assertEqual(self.fase("armar"), 0)
+        self.assertEqual(self.fase("enviar"), 1)  # marca solo local
+        self.assertEqual(self.posts(), [])
+        self.remoto = copy.deepcopy(self.lee_estado())
+        original = self.abre
+        def corte(req, timeout):
+            if req.get_method() == "POST":
+                self.peticiones.append(("POST", req.full_url, req.data))
+                raise SystemExit("ejecutor destruido después de iniciar POST")
+            return original(req, timeout)
+        with mock.patch.object(self, "abre", side_effect=corte), self.assertRaises(SystemExit):
+            self.fase("enviar")
+        self.assertEqual(len(self.posts()), 1)
+        # Solo sobreviven los bytes remotos, sin recibo ni estado local de resultado.
+        self.escribe_estado(self.remoto)
+        self.assertEqual(self.fase("enviar", dict(self.env, GITHUB_RUN_ATTEMPT="2")), 1)
+        self.assertEqual(self.fase("reservar", dict(self.env, GITHUB_RUN_ID="124")), 1)
+        self.assertEqual(len(self.posts()), 1)
+        self.assertEqual(next(iter(self.lee_bing()["lotes_exactos"].values()))["estado"], "intento_registrado")
+
+    def test_verifica_main_exige_revision_checkout_y_remoto_coincidentes(self):
+        ok = SimpleNamespace(returncode=0, stdout="a" * 40 + "\n")
+        remoto = SimpleNamespace(returncode=0, stdout="a" * 40 + "\trefs/heads/main\n")
+        mal = SimpleNamespace(returncode=0, stdout="b" * 40 + "\n")
+        for env, respuestas in ((dict(self.env, BING_REVISION=""), []),
+                                 (dict(self.env, GITHUB_SHA="b" * 40), []),
+                                 (self.env, [mal]), (self.env, [ok, mal])):
+            with mock.patch.object(be.subprocess, "run", side_effect=respuestas), self.assertRaises(be.Bloqueado):
+                be.verifica_main(self.raiz, env)
+        with mock.patch.object(be.subprocess, "run", side_effect=[ok, remoto]):
+            self.assertEqual(be.verifica_main(self.raiz, self.env), "a" * 40)
+
+    def test_otro_manifiesto_y_lista_ampliada_no_tienen_via_ejecutable(self):
+        with self.assertRaises(be.Bloqueado):
+            be.carga_lote(self.raiz, "otro-lote.json")
+        lote = copy.deepcopy(self.lote)
+        lote["urlList"].append(indexa.BASE + "quinta.html")
+        self.git["HEAD:.github/motor/lotes/" + self.nombre] = be.serializa(lote)
+        # Aun si se actualizara solo la huella, sigue fijada la lista exacta de cuatro.
+        with mock.patch.object(be, "MANIFIESTO_AUTORIZADO", be.digest(be.serializa(lote))), self.assertRaises(be.Bloqueado):
+            be.carga_lote(self.raiz, self.nombre)
+
+    def test_cuota_json_duplicada_o_utf8_invalido_impide_reservar(self):
+        for raw in (b'{"d":{"DailyQuota":4,"DailyQuota":4}}', b'{"d":{"DailyQuota":4}}\xff'):
+            def abre(req, timeout):
+                if "GetUrlSubmissionQuota?" in req.full_url:
+                    return Respuesta(raw, 200, req.full_url)
+                return self.abre(req, timeout)
+            with mock.patch.object(be, "red_segura", return_value=abre):
+                rc = be.ejecuta("reservar", self.raiz, self.datos, self.nombre, self.recibo, self.env,
+                                confirma_main=self.main_vigente)
+            self.assertEqual(rc, 1)
+            self.assertNotIn("lotes_exactos", self.lee_bing())
+            self.assertEqual(self.posts(), [])
 
 
 class Diario(unittest.TestCase):
@@ -312,13 +403,74 @@ class Diario(unittest.TestCase):
                 with mock.patch.object(indexa.subprocess, "run", return_value=SimpleNamespace(returncode=0, stdout=contenido)):
                     indexa.bing(c, [u, otra], [u, otra], b, {}, "K", abre, "raiz")
                 self.assertEqual(posts, [{"siteUrl": indexa.BASE, "urlList": [otra]}])
-                self.assertEqual(b["pendientes"], [])
+                self.assertEqual(b["pendientes"], [] if modo == "aceptado" else [u])
 
     def test_cambio_real_posterior_no_se_oculta_por_huella_antigua(self):
         u = indexa.BASE + "a.html"
         b = {"huellas_aceptadas": {u: be.digest(b"anterior")}}
         with mock.patch.object(indexa.subprocess, "run", return_value=SimpleNamespace(returncode=0, stdout=b"cambiado")):
             self.assertEqual(indexa.bing_protegidas(b, "raiz"), (set(), set()))
+
+    def test_git_no_verificable_aplaza_y_conserva_pendiente_sin_declarar_identidad(self):
+        u = indexa.BASE + "a.html"
+        b = {"huellas_aceptadas": {u: be.digest(b"anterior")}, "pendientes": [u], "enviadas": {}}
+        self.assertEqual(indexa.bing_protegidas(b), ({u}, set()))
+        with mock.patch.object(indexa.subprocess, "run", return_value=SimpleNamespace(returncode=1, stdout=b"")):
+            self.assertEqual(indexa.bing_protegidas(b, "raiz"), ({u}, set()))
+            self.assertEqual(self.simula(b, git_codigo=1), [])
+        self.assertEqual(b["pendientes"], [u])
+
+    def simula(self, b, dias=8, contenido=b"igual", cuota=100, cambios=(), git_codigo=0):
+        u = indexa.BASE + "a.html"
+        posts = []
+        def abre(req, timeout):
+            if req.get_method() == "POST":
+                posts.append(json.loads(req.data)); d = None
+            elif "GetUrlSubmissionQuota" in req.full_url:
+                d = {"DailyQuota": cuota}
+            elif "GetUrlInfo" in req.full_url:
+                d = {}
+            else:
+                d = []
+            return Respuesta(be.serializa({"d": d}), 200, req.full_url)
+        hoy = dt.date(2026, 11, 5)
+        c = SimpleNamespace(hoy=hoy, aviso=lambda *a, **k: None, revisada=lambda *a: None)
+        with mock.patch.object(indexa.subprocess, "run", return_value=SimpleNamespace(returncode=git_codigo, stdout=contenido)):
+            indexa.bing(c, [u], list(cambios), b, {}, "SIMULADA", abre, "raiz")
+        return posts
+
+    def test_recrawl_6_7_8_dias_huella_rastreo_y_reservas(self):
+        u = indexa.BASE + "a.html"
+        for dias in (6, 7, 8):
+            for igual in (True, False):
+                for rastreo in ("sin_rastrear", "rastreada", "error"):
+                    for reserva in (None, "reservado", "intento_registrado", "incierto", "aceptado"):
+                        with self.subTest(dias=dias, igual=igual, rastreo=rastreo, reserva=reserva):
+                            b = {"enviadas": {u: (dt.date(2026,11,5)-dt.timedelta(days=dias)).isoformat()},
+                                 "huellas_aceptadas": {u: be.digest(b"igual")},
+                                 "rastreo": {u: {"rastreo": "2026-01-01" if rastreo == "rastreada" else "",
+                                                 "error": rastreo == "error"}}}
+                            if reserva:
+                                b["lotes_exactos"] = {"r": {"estado": reserva, "urlList": [u]}}
+                            posts = self.simula(b, contenido=b"igual" if igual else b"cambiado")
+                            debe = not igual and dias >= 7 and rastreo == "sin_rastrear" and reserva in (None,"aceptado")
+                            self.assertEqual(bool(posts), debe)
+
+    def test_pendiente_sobrevive_reserva_cuota_cero_y_conciliacion(self):
+        u = indexa.BASE + "a.html"
+        for cambiado in (True, False):
+            for modo in ("reservado", "intento_registrado", "incierto"):
+                with self.subTest(cambiado=cambiado, modo=modo):
+                    b = {"enviadas": {}, "lotes_exactos": {"r": {"estado": modo,"urlList": [u]}}}
+                    self.assertEqual(self.simula(b, cuota=0, cambios=[u]), [])
+                    self.assertEqual(b["pendientes"], [u])
+                    # El SHA global ya puede avanzar: la siguiente ejecución no trae cambios nuevos.
+                    self.assertEqual(self.simula(b, cuota=100, cambios=[]), [])
+                    self.assertEqual(b["pendientes"], [u])
+                    b["lotes_exactos"]["r"]["estado"] = "aceptado"
+                    b["huellas_aceptadas"] = {u: be.digest(b"anterior" if cambiado else b"igual")}
+                    self.assertEqual(bool(self.simula(b, cambios=[])), cambiado)
+                    self.assertEqual(b["pendientes"], [])
 
 
 class Workflow(unittest.TestCase):
@@ -333,6 +485,19 @@ class Workflow(unittest.TestCase):
         self.assertLess(exacto.index("git -C datos push"), exacto.index("--fase enviar"))
         self.assertIn("steps.bloqueo.outcome == 'success'", exacto)
         self.assertIn("if: always()", exacto)
+        self.assertIn("queue: max", workflow)
+        self.assertIn("cancel-in-progress: false", workflow)
+        self.assertIn("BING_REVISION: ${{ github.event.inputs.bing_revision }}", exacto)
+        self.assertIn("steps.intento.outcome == 'success'", exacto)
+        self.assertLess(exacto.index("--fase armar"), exacto.index("id: intento"))
+        self.assertLess(exacto.index("id: intento"), exacto.index("--fase enviar"))
+
+    def test_politica_de_produccion_fija_las_cuatro_url_y_manifiesto(self):
+        ruta = Path(__file__).resolve().parents[1] / "lotes" / be.LOTE_AUTORIZADO
+        raw = ruta.read_bytes().replace(b"\r\n", b"\n")
+        self.assertEqual(be.digest(raw), be.MANIFIESTO_AUTORIZADO)
+        self.assertEqual(tuple(json.loads(raw)["urlList"]), be.URLS_AUTORIZADAS)
+        self.assertEqual(len(be.URLS_AUTORIZADAS), 4)
 
 
 if __name__ == "__main__":
