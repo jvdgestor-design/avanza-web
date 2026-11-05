@@ -1,5 +1,5 @@
 {
-  "fuente_commit": "32e613ae0d475cf891dac44def65f5faab399849",
+  "fuente_commit": "f7401c3d20ebde1f085db3b5f141b80561d8d6a9",
   "historial": {
     "archivo": "2026-11-05-bing-historial.json",
     "sha256": "ca5e74ec02a3bd9fdb79aa7d325901d382cd6d06e93ba7d670ef9b91ca2139ca"
@@ -7,10 +7,10 @@
   "sha256": {
     "https://grupoavanzaconsultores.es/de-erste-steuererklaerung-spanien.html": "6e3fb9ad055e30b18d72756c23480b17ddd7bc7a0f0bb4832245f610aa179a9a",
     "https://grupoavanzaconsultores.es/de-homeoffice-spanien-auslaendischer-arbeitgeber.html": "b2ffd04903472bd6a27f6d1438c04d30781c34267a50f8fc4293169b4698fdcb",
-    "https://grupoavanzaconsultores.es/form-721-spain-crypto-abroad.html": "3d9a497210b53a813435a14b96e987eadf8ad07d744b008de67ec2c4ee79a5df",
+    "https://grupoavanzaconsultores.es/form-721-spain-crypto-abroad.html": "e86b48cb179ab03c0a25ceba2843d86ffb051af4ca4cc9f248278c77ad03c3b1",
     "https://grupoavanzaconsultores.es/fr-premiere-declaration-revenus-espagne.html": "8b47d2c28873721d9dd536c78a23b8c96f59da00e4062b65901a4222df57fae6",
     "https://grupoavanzaconsultores.es/fr-teletravail-espagne-employeur-etranger.html": "b687a3dd890fd8ad50e6151616203f0367ce7bf21ea787ee295379fbbcfbfbac",
-    "https://grupoavanzaconsultores.es/modelo-721-criptomonedas-extranjero.html": "08b888eafcc885cc3ec1c25f81976a63e5ff3f82115c64fb7b82bb1239d15a7e"
+    "https://grupoavanzaconsultores.es/modelo-721-criptomonedas-extranjero.html": "69b73f11e75892f57b2026a4e237d9505f67342424574bc6eff5466a5074d6bc"
   },
   "siteUrl": "https://grupoavanzaconsultores.es/",
   "urlList": [

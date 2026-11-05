@@ -29,8 +29,8 @@ URLS_AUTORIZADAS = tuple(indexa.BASE + n for n in (
 
 # Segundo lote cerrado; el anterior y sus huellas se conservan íntegros.
 LOTE_SEIS_AUTORIZADO = "2026-11-05-frde-721-seis.json"
-MANIFIESTO_SEIS_AUTORIZADO = "93ca41199dd523626e9102485b2b5918d2ccd3b603604dd7d60ff25d105a5908"
-FUENTE_SEIS_AUTORIZADA = "32e613ae0d475cf891dac44def65f5faab399849"
+MANIFIESTO_SEIS_AUTORIZADO = "7d1858112b91bb530b3e0bec60a20c1b9af2dfc48bf466249f291cba318654b4"
+FUENTE_SEIS_AUTORIZADA = "f7401c3d20ebde1f085db3b5f141b80561d8d6a9"
 URLS_SEIS_AUTORIZADAS = tuple(indexa.BASE + n for n in (
     "de-erste-steuererklaerung-spanien.html",
     "de-homeoffice-spanien-auslaendischer-arbeitgeber.html",

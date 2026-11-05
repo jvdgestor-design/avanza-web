@@ -600,7 +600,7 @@ class Workflow(unittest.TestCase):
         self.assertFalse(set(be.URLS_AUTORIZADAS) & set(be.URLS_SEIS_AUTORIZADAS))
         self.assertEqual(lote["version"], 2)
         self.assertEqual(lote["fuente_commit"], be.FUENTE_SEIS_AUTORIZADA)
-        self.assertEqual(be.FUENTE_SEIS_AUTORIZADA, "32e613ae0d475cf891dac44def65f5faab399849")
+        self.assertEqual(be.FUENTE_SEIS_AUTORIZADA, "f7401c3d20ebde1f085db3b5f141b80561d8d6a9")
         workflow = (Path(__file__).resolve().parents[2] / "workflows/vigia.yml").read_text(encoding="utf-8")
         guard = workflow.split('case "$LOTE" in\n', 1)[1].split('          esac', 1)[0]
         self.assertEqual(guard.splitlines(), [
