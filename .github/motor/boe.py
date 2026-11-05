@@ -76,6 +76,7 @@ SEMILLA = {
     "Ley 5/2022": "BOE-A-2022-3712",
     "Ley 14/2010": "BOE-A-2010-20014", "Ley 6/2014": "BOE-A-2014-9626",
     "Ley 7/1985": "BOE-A-1985-5392",
+    "Ley 10/2010": "BOE-A-2010-6737", "Ley 19/2003": "BOE-A-2003-13471",
     "Código Civil": "BOE-A-1889-4763", "Código de Comercio": "BOE-A-1885-6627",
 }
 # Emisor que tiene que tener la norma (departamento del BOE).
@@ -101,6 +102,8 @@ TITULO_CONTIENE = {
     "Ley 13/1997": "tramo autonómico",         # Generalitat Valenciana
     "Ley 28/1990": "convenio económico",       # Navarra
     "Ley 22/2009": "financiación",
+    "Ley 10/2010": "blanqueo de capitales",    # de 28 de abril (titularidad real; guías de SL con socios extranjeros)
+    "Ley 19/2003": "movimientos de capitales", # de 4 de julio (inversiones exteriores; mismas guías)
     "Ley 5/2022": "asimetrías híbridas",       # de 9 de marzo: su disposición final cuarta da la DA 18.ª LGT vigente (modelo 720)
 }
 # Documentos sin texto consolidado propio: se vigilan en el XML oficial del diario.
