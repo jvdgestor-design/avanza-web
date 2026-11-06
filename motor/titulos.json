@@ -299,6 +299,11 @@
   "huella": "498ea33f08dd",
   "titulo": "Erbschaft in Spanien bei Wohnsitz im Ausland"
  },
+ "de-erste-steuererklaerung-spanien.html": {
+  "desde": "2026-11-05",
+  "huella": "d097f8303399",
+  "titulo": "Erste Steuererklärung in Spanien | Avanza"
+ },
  "de-franzoesische-rente-wohnsitz-spanien.html": {
   "desde": "2026-10-30",
   "huella": "15d73f63908c",
@@ -308,6 +313,11 @@
   "desde": "2026-10-30",
   "huella": "f2307c7f3012",
   "titulo": "Geldschenkung aus dem Ausland: Steuern in Spanien"
+ },
+ "de-homeoffice-spanien-auslaendischer-arbeitgeber.html": {
+  "desde": "2026-11-05",
+  "huella": "9b5da183d3ea",
+  "titulo": "Homeoffice in Spanien: ausländischer Arbeitgeber | Avanza"
  },
  "de-immobilie-spanien-kaufen.html": {
   "desde": "2026-10-30",
@@ -319,6 +329,11 @@
   "huella": "2f1122d9e29c",
   "titulo": "Immobilie in Spanien verkaufen bei Wohnsitz im Ausland"
  },
+ "de-immobilie-spanien-vermieten-nichtansaessig.html": {
+  "desde": "2026-11-05",
+  "huella": "c031d62dae7b",
+  "titulo": "Spanien vermieten als Nichtansässiger: Modelo 210"
+ },
  "de-impressum.html": {
   "desde": "2026-10-30",
   "huella": "9216253c92f6",
@@ -328,6 +343,11 @@
   "desde": "2026-10-30",
   "huella": "c692f17ff100",
   "titulo": "Italienische Rente bei Wohnsitz in Spanien"
+ },
+ "de-kauf-nichtansaessiger-verkaeufer-modelo-211.html": {
+  "desde": "2026-11-05",
+  "huella": "de827dea33c8",
+  "titulo": "Kauf vom Nichtansässigen: 3 % und Modelo 211"
  },
  "de-kontakt.html": {
   "desde": "2026-10-30",
@@ -409,10 +429,20 @@
   "huella": "592bc79d0dc4",
   "titulo": "Form 720 Spain: declaring assets abroad as a resident"
  },
+ "form-721-spain-crypto-abroad.html": {
+  "desde": "2026-11-05",
+  "huella": "7fd5e7d105bf",
+  "titulo": "Form 721 Spain: crypto abroad, threshold and deadline"
+ },
  "fr-acheter-bien-immobilier-espagne.html": {
   "desde": "2026-10-30",
   "huella": "1ddd4b8e1632",
   "titulo": "Acheter un logement en Espagne : impôts et démarches"
+ },
+ "fr-acheter-vendeur-non-resident-modele-211.html": {
+  "desde": "2026-11-05",
+  "huella": "05320bb2739b",
+  "titulo": "Acheter à un non-résident : 3 % et modèle 211"
  },
  "fr-certificat-residence-fiscale.html": {
   "desde": "2026-10-30",
@@ -444,6 +474,11 @@
   "huella": "8fc0711a4f08",
   "titulo": "Donation d’argent depuis l’étranger vers l’Espagne"
  },
+ "fr-louer-bien-espagne-non-resident.html": {
+  "desde": "2026-11-05",
+  "huella": "2c6a94fb5535",
+  "titulo": "Louer en Espagne comme non-résident : modèle 210"
+ },
  "fr-mentions-legales.html": {
   "desde": "2026-10-30",
   "huella": "cef4a9f71eb2",
@@ -463,6 +498,11 @@
   "desde": "2026-10-30",
   "huella": "0ebe83f9309f",
   "titulo": "Modelo 720 : déclarer ses avoirs à l’étranger"
+ },
+ "fr-premiere-declaration-revenus-espagne.html": {
+  "desde": "2026-11-05",
+  "huella": "5f4d7af7a9e0",
+  "titulo": "Première déclaration de revenus en Espagne | Avanza"
  },
  "fr-quitter-espagne-fiscalite.html": {
   "desde": "2026-10-30",
@@ -509,14 +549,19 @@
   "huella": "eb31f1906a88",
   "titulo": "Succession en Espagne : héritier non-résident"
  },
+ "fr-teletravail-espagne-employeur-etranger.html": {
+  "desde": "2026-11-05",
+  "huella": "85cae14b4214",
+  "titulo": "Télétravail en Espagne : employeur étranger | Avanza"
+ },
  "fr-vendre-bien-immobilier-non-resident.html": {
   "desde": "2026-10-30",
   "huella": "710a301acc07",
   "titulo": "Vendre un bien en Espagne en tant que non-résident"
  },
  "fr.html": {
-  "desde": "2026-10-30",
-  "huella": "af16e416638b",
+  "desde": "2026-11-06",
+  "huella": "1f086f214beb",
   "titulo": "Fiscalité espagnole : résidents et non-résidents"
  },
  "french-pension-tax-spain-resident.html": {
@@ -618,6 +663,11 @@
   "desde": "2026-10-30",
   "huella": "ef18b9e0a859",
   "titulo": "Modelo 720: bienes en el extranjero si vives en España"
+ },
+ "modelo-721-criptomonedas-extranjero.html": {
+  "desde": "2026-11-05",
+  "huella": "3ccc022201af",
+  "titulo": "Modelo 721: criptomonedas en el extranjero y plazo"
  },
  "nacionalidad-espanola-por-residencia.html": {
   "desde": "2026-10-30",
@@ -740,9 +790,9 @@
   "titulo": "Larga duración en España: tus impuestos | Grupo Avanza"
  },
  "retribucion-del-administrador-de-una-sl.html": {
-  "desde": "2026-10-30",
-  "huella": "8c00343667ae",
-  "titulo": "Retribución del administrador de una SL | Grupo Avanza"
+  "desde": "2026-11-06",
+  "huella": "7442558782bc",
+  "titulo": "Cómo cobra el administrador de una SL: IRPF y autónomos"
  },
  "ru-arraigo-ispaniya.html": {
   "desde": "2026-10-27",
@@ -865,9 +915,9 @@
   "titulo": "Setting Up a Limited Company in Spain as a Foreigner"
  },
  "sl-con-perdidas-causa-de-disolucion.html": {
-  "desde": "2026-10-30",
-  "huella": "d33c93203399",
-  "titulo": "SL con pérdidas: causa de disolución y plazo | Grupo Avanza"
+  "desde": "2026-11-06",
+  "huella": "775fd8bf8b19",
+  "titulo": "SL en causa de disolución por pérdidas: plazo y cómo salir"
  },
  "spanish-nationality-by-residence.html": {
   "desde": "2026-10-30",
@@ -895,14 +945,14 @@
   "titulo": "Teletrabajo en España para empresa extranjera | Avanza"
  },
  "tramites.html": {
-  "desde": "2026-10-30",
-  "huella": "5d271b47ddb8",
+  "desde": "2026-11-06",
+  "huella": "7b892b4b7437",
   "titulo": "Trámites fiscales para extranjeros en España | Grupo Avanza"
  },
  "uk-pension-tax-spain-resident.html": {
-  "desde": "2026-10-30",
-  "huella": "ba6d4a125126",
-  "titulo": "UK pension and living in Spain: where it is taxed"
+  "desde": "2026-11-06",
+  "huella": "7d85aba96328",
+  "titulo": "UK Pension in Spain: State Pension, Tax and HMRC Relief"
  },
  "vender-inmueble-en-espana-no-residente.html": {
   "desde": "2026-10-30",
