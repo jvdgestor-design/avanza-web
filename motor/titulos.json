@@ -699,6 +699,11 @@
   "huella": "18357f0b7770",
   "titulo": "Pensión alemana si vives en España: dónde tributa"
  },
+ "pension-estados-unidos-residente-en-espana.html": {
+  "desde": "2026-11-07",
+  "huella": "d9ebdae0886e",
+  "titulo": "Pensión de Estados Unidos si vives en España: dónde tributa"
+ },
  "pension-francesa-residente-en-espana.html": {
   "desde": "2026-10-30",
   "huella": "4f47e9edddc6",
@@ -953,6 +958,11 @@
   "desde": "2026-11-06",
   "huella": "7d85aba96328",
   "titulo": "UK Pension in Spain: State Pension, Tax and HMRC Relief"
+ },
+ "us-social-security-pension-tax-spain-resident.html": {
+  "desde": "2026-11-07",
+  "huella": "2f0de5d2ce6b",
+  "titulo": "US Social Security in Spain: How US Pensions Are Taxed"
  },
  "vender-inmueble-en-espana-no-residente.html": {
   "desde": "2026-10-30",

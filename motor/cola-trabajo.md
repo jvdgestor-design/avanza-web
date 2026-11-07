@@ -5,7 +5,7 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 
 ## 2026-11-07
 
-(nada nuevo)
+- MOTOR · gsc ha fallado: Search Console inspect: HTTP 500 INTERNAL · indexa.py · 2026-11-07
 
 ## 2026-11-06
 
