@@ -81,6 +81,7 @@
 - [Selling property in Spain as a non-resident](https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html): English guide for non-residents selling a flat, commercial unit or land in Spain: the buyer withholds 3% of the price (form 211), the tax is 19% of the gain, form 210 within three months with a refund of any excess, the buyer pays the municipal plusvalía as a substitute for a non-resident seller, and the reinvestment exemption for EU/EEA residents. Guía en inglés de la venta de un inmueble por un no residente.
 - [Buying property in Spain as a foreigner](https://grupoavanzaconsultores.es/buying-property-spain-foreigner.html): English guide for foreigners and non-residents buying a home in Spain: transfer tax (9% in the Valencian Community) or 10% VAT and stamp duty, NIE, tax representative, deemed income and form 210; handled remotely, in writing in English.
 - [Tax residence in Spain: foreign income and tax returns](https://grupoavanzaconsultores.es/tax-residence-moving-to-spain.html): English guide for people moving to Spain: resident for the whole year (Personal Income Tax Act, arts. 2, 9.1 and 12.1), more than 183 days counting sporadic absences, centre of interests and the family presumption, credit for tax paid abroad (art. 80.1), the digital nomad visa and the special regime for relocated workers (art. 93: 24% up to 600,000 euros, option within six months under art. 116.1 of the Regulation), forms 720 and 721. Guía en inglés de la residencia fiscal al llegar a España.
+- [Self-employed in Spain as a UK or EU national](https://grupoavanzaconsultores.es/self-employed-autonomo-spain-foreigner.html): English guide for UK and EU freelancers living in Spain: tax residence (Personal Income Tax Act, art. 9) and the Spain–UK treaty tie-breaker (art. 4.2), one Social Security legislation only under Regulation 883/2004 (arts. 11–13, 25% substantial-part indicator in art. 14.8 of Regulation 987/2009), the EU–UK Trade and Cooperation Agreement Social Security Protocol (arts. SSC.10–SSC.12) and the Withdrawal Agreement for situations before 2021 (arts. 30–31), census and RETA registration. Guía en inglés del autónomo extranjero (UE y Reino Unido).
 
 
 ## NIE, TIE and EU registration — ES / EN / RU
@@ -160,6 +161,7 @@
 - [Geldschenkung aus dem Ausland: Steuern in Spanien](https://grupoavanzaconsultores.es/de-geldschenkung-ausland-spanien.html)
 - [Versäumte Steuererklärungen in Spanien nachholen](https://grupoavanzaconsultores.es/de-steuern-spanien-nacherklaeren.html)
 - [Steuerliche Ansässigkeit beim Umzug nach Spanien](https://grupoavanzaconsultores.es/de-steueransaessigkeit-umzug-spanien.html)
+- [SL in Spanien gründen als Ausländer](https://grupoavanzaconsultores.es/de-sl-gruenden-spanien-auslaender.html)
 - [Beckham-Regelung in Spanien: Voraussetzungen und Frist](https://grupoavanzaconsultores.es/de-beckham-regelung-spanien.html)
 - [Ansässigkeitsbescheinigung für Spanien](https://grupoavanzaconsultores.es/de-ansaessigkeitsbescheinigung-spanien.html)
 - [Wegzug aus Spanien: Steuererklärung und weitere Pflichten](https://grupoavanzaconsultores.es/de-wegzug-spanien-steuern.html)
@@ -214,6 +216,7 @@
 
 - [Constituir una SL en España siendo extranjero](https://grupoavanzaconsultores.es/constitucion-sociedad-limitada-extranjero-espana.html): socios y administradores extranjeros, NIE/NIF, capital, documentación e inversión exterior.
 - [Setting up a limited company in Spain as a foreigner](https://grupoavanzaconsultores.es/setting-up-limited-company-spain-foreigner.html): foreign shareholders and directors, identification, capital and company documents, with written English support.
+- [Eine spanische SL als Ausländer gründen](https://grupoavanzaconsultores.es/de-sl-gruenden-spanien-auslaender.html): deutscher Ratgeber zur Gründung einer spanischen SL mit ausländischen Gesellschaftern oder Geschäftsführern: NIE/NIF (RD 1065/2007, Art. 20), 1 Euro Mindestkapital mit 20-%-Rücklage und Haftung für die Differenz bis 3.000 Euro (LSC Art. 4), Meldungen von Auslandsinvestitionen (RD 571/2023 Art. 5), wirtschaftlich Berechtigte über 25 % (Ley 10/2010 Art. 4); Beratung auf Deutsch ausschließlich schriftlich.
 
 - [Representante fiscal para no residentes en España](https://grupoavanzaconsultores.es/representante-fiscal-no-residentes-espana.html): Revisamos si tu impuesto exige representante, cómo nombrarlo y qué facultades necesita para declaraciones o notificaciones.
 - [Tax representative in Spain for non-residents](https://grupoavanzaconsultores.es/tax-representative-spain-non-resident.html): We check whether your tax requires a representative, how to appoint one and which powers cover returns or notifications.
