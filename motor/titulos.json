@@ -369,6 +369,16 @@
   "huella": "8c12369167ad",
   "titulo": "Schreiben vom spanischen Finanzamt: Frist und Antwort prüfen"
  },
+ "de-selbststaendig-autonomo-spanien.html": {
+  "desde": "2026-11-07",
+  "huella": "2d8da8bab936",
+  "titulo": "Selbständig in Spanien als Autónomo | Grupo Avanza"
+ },
+ "de-sl-gruenden-spanien-auslaender.html": {
+  "desde": "2026-11-07",
+  "huella": "09b3aff4312b",
+  "titulo": "SL in Spanien gründen als Ausländer | Grupo Avanza"
+ },
  "de-steueransaessigkeit-umzug-spanien.html": {
   "desde": "2026-10-30",
   "huella": "3f34632fb3e8",
@@ -468,6 +478,11 @@
   "desde": "2026-10-30",
   "huella": "eea8bd307d2f",
   "titulo": "Courrier de l’AEAT : comprendre et répondre"
+ },
+ "fr-creer-sl-espagne-etranger.html": {
+  "desde": "2026-11-07",
+  "huella": "11bdeeac4bb9",
+  "titulo": "Créer une SL en Espagne en tant qu’étranger | Avanza"
  },
  "fr-donation-argent-etranger.html": {
   "desde": "2026-10-30",
@@ -908,6 +923,11 @@
   "desde": "2026-10-30",
   "huella": "77dd693877e0",
   "titulo": "Налоговый консультант в Испании на русском | Grupo Avanza"
+ },
+ "self-employed-autonomo-spain-foreigner.html": {
+  "desde": "2026-11-07",
+  "huella": "ec5a59849bdc",
+  "titulo": "Autónomo in Spain as a UK or EU freelancer | Grupo Avanza"
  },
  "selling-property-spain-non-resident.html": {
   "desde": "2026-11-05",
