@@ -935,5 +935,46 @@ class SitemapFechas(Base):
         self.assertFalse(vigia.reescribe_sitemap(self.dir))                 # segunda vez: nada que cambiar
 
 
+
+class TestFechaYaCerrada(unittest.TestCase):
+    def test_plazo_declarado_cerrado_en_otra_frase(self):
+        hoy = vigia.dt.date(2026, 11, 10)
+        t = ("Su plazo de solicitud terminó el 31 de octubre de 2026. "
+             "En todo caso, hasta el 31 de octubre de 2026 inclusive.")
+        self.assertEqual(vigia.caducados_en(t, hoy), [])
+
+    def test_plazo_vencido_sin_aviso_de_cierre_sigue_saliendo(self):
+        hoy = vigia.dt.date(2026, 11, 10)
+        t = "Puede pedirse hasta el 31 de octubre de 2026 inclusive."
+        self.assertEqual(len(vigia.caducados_en(t, hoy)), 1)
+
+    def test_otra_fecha_cerrada_no_tapa_esta(self):
+        hoy = vigia.dt.date(2026, 11, 10)
+        t = ("La convocatoria anterior terminó el 30 de septiembre de 2026. "
+             "La nueva admite solicitudes hasta el 5 de noviembre de 2026.")
+        self.assertEqual(len(vigia.caducados_en(t, hoy)), 1)
+
+    def test_cierres_casuales_o_dentro_de_otra_palabra_no_tapan(self):
+        hoy = vigia.dt.date(2026, 11, 10)
+        for t in ("The deadline was extended until 31 October 2026.",
+                  "Applications are recommended before 31 October 2026.",
+                  "Terms disclosed: you may apply until 31 October 2026.",
+                  "Plazo hasta el 31 de octubre de 2026 (encerrado en el calendario).",
+                  "Puede pedirse hasta el 31 de octubre de 2026, oficina cerrada los domingos.",
+                  "El plazo termina el 31 de octubre de 2026 y el registro está cerrado los domingos.",
+                  "El plazo, cerrado a fecha de hoy, es hasta el 31 de octubre de 2026 y se amplía."):
+            self.assertEqual(len(vigia.caducados_en(t, hoy)), 1, t)
+
+    def test_reapertura_anula_el_cierre(self):
+        hoy = vigia.dt.date(2026, 11, 10)
+        t = ("El plazo terminó el 31 de octubre de 2026. Se reabre: "
+             "puede pedirse hasta el 31 de octubre de 2026.")
+        self.assertEqual(len(vigia.caducados_en(t, hoy)), 1)
+
+    def test_fecha_en_que_termino(self):
+        hoy = vigia.dt.date(2026, 11, 10)
+        t = "Como mucho hasta el 31 de octubre de 2026, fecha en que terminó el plazo."
+        self.assertEqual(vigia.caducados_en(t, hoy), [])
+
 if __name__ == "__main__":
     unittest.main()

@@ -438,13 +438,45 @@ def _es_plazo(antes):
     return max(k) > (max(n) if n else -1)
 
 
+# La propia página ya da la fecha por pasada, con el cierre pegado a la fecha:
+# «terminó el 31 de octubre», «plazo cerrado el 31/10», «closed on 31 October», «…, fecha en que terminó».
+CERRADO_ANTES = re.compile(
+    r"\b(?:terminó|venció|finalizó|concluyó|se\s+cerró|cerrad[oa]|expired|closed|ended|clôturée?|"
+    r"abgelaufen|истёк|истек|закрыт[ао]?)(?:\s+(?:el|on|le|am))?\s*$", re.I)
+CERRADO_DESPUES = re.compile(
+    r"^\s*(?:inclusive\s*)?,\s*(?:fecha\s+en\s+(?:la\s+)?que\s+(?:terminó|venció|finalizó|se\s+cerró)\b|"
+    r"ya\s+cerrad[oa]\b|when\s+(?:it|the\s+\w+)\s+(?:closed|ended|expired)\b)", re.I)
+# Si la página habla de ampliar o reabrir un plazo, no se confía en ningún cierre.
+REAPERTURA = re.compile(
+    r"\b(?:reabr\w*|se\s+reabre|ampl[ií]\w*\s+(?:el\s+)?plazo|prorrog\w*|prórroga|extended|extension|"
+    r"reopen\w*|verlängert|prolong\w*|продл\w*)\b", re.I)
+
+
+def _fechas_cerradas(texto, hoy):
+    """Fechas ya vencidas que la página declara cerradas, con el cierre pegado a la fecha."""
+    if REAPERTURA.search(texto):
+        return set()
+    cerradas = set()
+    for m in FECHA.finditer(texto):
+        f = fecha_de(m)
+        if not f or f >= hoy:
+            continue
+        if (CERRADO_ANTES.search(texto[max(0, m.start() - 40):m.start()])
+                or CERRADO_DESPUES.search(texto[m.end():m.end() + 60])):
+            cerradas.add(f)
+    return cerradas
+
+
 def caducados_en(texto, hoy, margen=30):
     """[(fecha, frase, estado)] de plazos vencidos o que vencen en `margen` días."""
     hallados = []
+    cerradas = _fechas_cerradas(texto, hoy)
     for m in FECHA.finditer(texto):
         f = fecha_de(m)
         if not f or f > hoy + dt.timedelta(days=margen) or f < hoy - dt.timedelta(days=3 * 365):
             continue
+        if f in cerradas:
+            continue                         # la página ya dice que ese plazo terminó
         if INICIO_RANGO.match(texto[m.end():m.end() + 25]):
             continue                         # «del 1 de septiembre al 15 de noviembre»: solo cuenta el final
         antes = texto[max(0, m.start() - 90):m.start()]
