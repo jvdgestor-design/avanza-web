@@ -5,7 +5,7 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 
 ## 2026-11-10
 
-(nada nuevo)
+- MOTOR · gsc ha fallado: The read operation timed out · indexa.py · 2026-11-10
 
 ## 2026-11-09
 
