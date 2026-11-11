@@ -1,0 +1,43 @@
+# Revisión del motor (11/11/2026, decisión de Jose): cuando un PR de una rama claude/* cambia algo bajo .github/,
+# otro modelo (Sonnet, por la API de Claude) intenta tumbarlo. La fusión automática solo deja entrar un cambio
+# del motor si este trabajo ha salido bien sobre ese mismo commit, a la primera y sin fallos anteriores en él.
+# Seguridad: corre con pull_request_target, así que el flujo y el programa que revisa son SIEMPRE los de main;
+# de la rama solo se lee el diff como dato y nunca se ejecuta nada suyo. Sin workflow_dispatch a propósito:
+# que nadie pueda lanzar una revisión a mano hasta que salga bien.
+name: Revisión del motor
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+    paths:
+      - ".github/**"
+permissions:
+  contents: read
+concurrency:
+  group: revision-motor-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  revision:
+    if: >-
+      startsWith(github.event.pull_request.head.ref, 'claude/') &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Main (quien revisa)
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: main
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Traer la rama como dato
+        env:
+          PR: ${{ github.event.pull_request.number }}
+        run: git -C main fetch -q origin "pull/$PR/head"
+      - name: Revisión adversarial del motor
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CABEZA: ${{ github.event.pull_request.head.sha }}
+        run: python3 -I main/.github/motor/revisor_motor.py --repo main --base origin/main --cabeza "$CABEZA"

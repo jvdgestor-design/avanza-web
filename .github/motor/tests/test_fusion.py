@@ -72,8 +72,10 @@ class Cambios(unittest.TestCase):
         self.assertTrue(fusion.evaluar_cambios(["index.html", "en/x.html", "llms.txt", "sitemap.xml"])[0])
 
     def test_a_mano_no(self):
-        for f in [".github/workflows/fusion.yml", ".GITHUB/WORKFLOWS/x.yml", ".GitHub/motor/x.py", "a/.github/b.html",
-                  "CNAME", "cname", "docs_fusion.py"]:
+        for f in [".github/workflows/fusion.yml", ".github/workflows/revision-motor.yml", ".GITHUB/WORKFLOWS/x.yml",
+                  ".github/Workflows/x.yml", ".GitHub/motor/x.py", ".github/actions/x/action.yml", ".github/CODEOWNERS",
+                  ".github/dependabot.yml", "a/.github/b.html", "a/.github/motor/x.py", "CNAME", "cname", "docs_fusion.py",
+                  ".github/motor/a\nb.py", ".github/motor/@jose.py", ".github/motor/a`b.py", "x`y.html"]:
             self.assertFalse(fusion.evaluar_cambios(["index.html", f])[0], f)
 
     def test_motor_pasa_y_se_avisa(self):
@@ -82,6 +84,7 @@ class Cambios(unittest.TestCase):
         self.assertIn("2 del motor", texto)
         self.assertTrue(fusion.es_motor(".github/motor/salud.py"))
         self.assertFalse(fusion.es_motor(".github/workflows/fusion.yml"))
+        self.assertFalse(fusion.es_motor(".github/CODEOWNERS"))
 
     def test_vacio_no(self):
         self.assertFalse(fusion.evaluar_cambios([])[0])
@@ -129,7 +132,7 @@ class Repositorio(unittest.TestCase):
     def test_motor_pasa_con_aviso(self):
         r = self.preparar(lambda: open(os.path.join(self.d, ".github/motor/f.py"), "a").write("y\n"))
         self.assertEqual(r.returncode, 0, r.stdout)
-        self.assertIn("MOTOR: .github/motor/f.py", r.stdout)
+        self.assertIn("MOTOR: 1 ficheros: .github/motor/f.py", r.stdout)
 
     def test_pagina_sin_aviso(self):
         r = self.preparar(lambda: open(os.path.join(self.d, "index.html"), "a").write("<p>b</p>\n"))
@@ -175,7 +178,8 @@ class Barrido(unittest.TestCase):
         g(origen, "init", "-q", "-b", "main")
         motor = os.path.join(os.path.dirname(__file__), "..")
         os.makedirs(os.path.join(origen, ".github/motor"))
-        subprocess.run(["cp", os.path.join(motor, "fusion.py"), os.path.join(origen, ".github/motor")], check=True)
+        for f in ("fusion.py", "fusion_barrido.sh"):
+            subprocess.run(["cp", os.path.join(motor, f), os.path.join(origen, ".github/motor")], check=True)
         open(os.path.join(origen, ".github/motor/salud.py"), "w").write("print('Errores: 0')\n")  # la salud real se prueba aparte
         open(os.path.join(origen, "index.html"), "w").write(
             '<!doctype html><html lang="es"><head><title>a</title></head><body><main><h1>a</h1></main></body></html>\n')
@@ -209,9 +213,10 @@ class Barrido(unittest.TestCase):
 
 
 class AvisoMotor(unittest.TestCase):
-    """Al fusionar un PR que toca el motor, el barrido deja el aviso para Jose en el PR; si es solo web, no."""
+    """Cambios del motor: solo se fusionan con «Revisión del motor» bien en GitHub sobre ese commit, uno por vuelta,
+    y dejan aviso para Jose; los de la web no necesitan esa revisión ni dejan aviso."""
 
-    def barrer(self, fichero):
+    def barrer(self, ficheros, runs="", prs=1, borra=False):
         raiz = tempfile.mkdtemp()
         g = lambda d, *a: subprocess.run(["git", "-C", d, "-c", "user.name=t", "-c", "user.email=t@t", *a],
                                          check=True, capture_output=True, text=True).stdout.strip()
@@ -219,47 +224,120 @@ class AvisoMotor(unittest.TestCase):
         os.makedirs(os.path.join(origen, ".github/motor"))
         g(origen, "init", "-q", "-b", "main")
         motor = os.path.join(os.path.dirname(__file__), "..")
-        subprocess.run(["cp", os.path.join(motor, "fusion.py"), os.path.join(origen, ".github/motor")], check=True)
+        for f in ("fusion.py", "fusion_barrido.sh"):
+            subprocess.run(["cp", os.path.join(motor, f), os.path.join(origen, ".github/motor")], check=True)
         open(os.path.join(origen, ".github/motor/salud.py"), "w").write("print('Errores: 0')\n")
         open(os.path.join(origen, "index.html"), "w").write("<p>a</p>\n")
         g(origen, "add", "-A")
         g(origen, "commit", "-qm", "base")
         base = g(origen, "rev-parse", "HEAD")
-        g(origen, "checkout", "-q", "-b", "claude/m", "main")
-        open(os.path.join(origen, fichero), "a").write("# cambio\n")
-        g(origen, "add", "-A")
-        g(origen, "commit", "-qm", "Cambio de regla")
-        padre = g(origen, "rev-parse", "HEAD")
-        g(origen, "commit", "-q", "--allow-empty", "-m",
-          sello("Repaso: regla v1 · 0 reparos · revisor Sonnet · limpio", revisado=padre))
-        sha = g(origen, "rev-parse", "HEAD")
-        g(origen, "update-ref", "refs/pull/7/head", "HEAD")
-        g(origen, "checkout", "-q", "main")
+        lista = []
+        for n in range(1, prs + 1):
+            g(origen, "checkout", "-q", "-b", f"claude/m{n}", "main")
+            for fichero in ficheros:
+                open(os.path.join(origen, fichero), "a").write(f"# cambio {n}\n")
+            g(origen, "add", "-A")
+            g(origen, "commit", "-qm", f"Cambio de regla {n}")
+            padre = g(origen, "rev-parse", "HEAD")
+            g(origen, "commit", "-q", "--allow-empty", "-m",
+              sello("Repaso: regla v1 · 0 reparos · revisor Sonnet · limpio", revisado=padre))
+            sha = g(origen, "rev-parse", "HEAD")
+            g(origen, "update-ref", f"refs/pull/{n}/head", "HEAD")
+            g(origen, "checkout", "-q", "main")
+            lista.append(f"{n} {sha}")
         subprocess.run(["git", "clone", "-q", origen, os.path.join(raiz, "main")], check=True)
         binario = os.path.join(raiz, "bin")
         os.makedirs(binario)
         aviso = os.path.join(raiz, "aviso_enviado.txt")
+        open(os.path.join(raiz, "runs.txt"), "w").write(runs)
         open(os.path.join(binario, "gh"), "w").write(
             "#!/bin/bash\n"
-            f"case \"$1 $2\" in\n"
-            f"  'pr list') echo '7 {sha}';;\n"
+            "case \"$1 $2\" in\n"
+            "  'pr list') printf '" + "\\n".join(lista) + "\\n';;\n"
             f"  'api repos/x/y/git/ref/heads/main') echo '{base}';;\n"
+            f"  'api repos/x/y/actions/'*) cat {os.path.join(raiz, 'runs.txt')};;\n"
+            "  'api -X') [ -n \"${BORRA_TRAS_FUSIONAR:-}\" ] && rm -f main/.github/motor/fusion.py main/.github/motor/salud.py;;\n"
             "  'pr comment') while [ $# -gt 0 ]; do [ \"$1\" = --body-file ] && cp \"$2\" " + aviso + "; shift; done;;\n"
             "esac\nexit 0\n")
         os.chmod(os.path.join(binario, "gh"), 0o755)
         env = dict(os.environ, PATH=binario + os.pathsep + os.environ["PATH"], REPO="x/y", ACTIVA="si", GH_TOKEN="x")
         env.pop("SOLO_PR", None)
+        env.pop("FUSION_COPIA", None)
+        if borra:
+            env["BORRA_TRAS_FUSIONAR"] = "1"
         r = subprocess.run(["bash", os.path.join(motor, "fusion_barrido.sh")], cwd=raiz, env=env,
                            capture_output=True, text=True)
-        self.assertIn("PR #7 fusionado en main", r.stdout, r.stdout + r.stderr)
-        return open(aviso).read() if os.path.exists(aviso) else None
+        texto = open(aviso).read() if os.path.exists(aviso) else None
+        return r.stdout + r.stderr, texto
 
-    def test_motor_deja_aviso(self):
-        texto = self.barrer(".github/motor/fusion.py")
-        self.assertIsNotNone(texto)
-        self.assertIn("Cambio de regla", texto)
-        self.assertIn("revisor Sonnet", texto)
+    OK = "completed success 1 https://x/run/1\n"
+
+    def test_motor_revisado_se_fusiona_y_avisa(self):
+        salida, texto = self.barrer([".github/motor/fusion.py"], self.OK)
+        self.assertIn("PR #1 fusionado en main", salida, salida)
+        self.assertIn("Cambio de regla 1", texto)
+        self.assertIn("https://x/run/1", texto)
         self.assertIn(".github/motor/fusion.py", texto)
 
-    def test_web_sin_aviso(self):
-        self.assertIsNone(self.barrer("index.html"))
+    def test_motor_sin_revision_no(self):
+        salida, texto = self.barrer([".github/motor/fusion.py"], "")
+        self.assertNotIn("fusionado en main", salida)
+        self.assertIn("no hay revisión del motor", salida)
+        self.assertIsNone(texto)
+
+    def test_motor_con_un_fallo_previo_no(self):
+        salida, _ = self.barrer([".github/motor/fusion.py"], "completed failure 1 https://x/run/1\n" + self.OK)
+        self.assertNotIn("fusionado en main", salida)
+
+    def test_motor_reejecutado_no(self):
+        salida, _ = self.barrer([".github/motor/fusion.py"], "completed success 2 https://x/run/1\n")
+        self.assertNotIn("fusionado en main", salida)
+
+    def test_motor_en_marcha_no(self):
+        salida, _ = self.barrer([".github/motor/fusion.py"], "in_progress null 1 https://x/run/2\n" + self.OK)
+        self.assertNotIn("fusionado en main", salida)
+
+    def test_cancelada_no_cuenta(self):
+        salida, _ = self.barrer([".github/motor/fusion.py"], "completed cancelled 1 https://x/run/0\n" + self.OK)
+        self.assertIn("PR #1 fusionado en main", salida, salida)
+
+    def test_un_motor_por_vuelta(self):
+        salida, _ = self.barrer([".github/motor/fusion.py"], self.OK, prs=2)
+        self.assertIn("PR #1 fusionado en main", salida, salida)
+        self.assertNotIn("PR #2", salida)
+
+    def test_web_sin_revision_ni_aviso(self):
+        salida, texto = self.barrer(["index.html"], "")
+        self.assertIn("PR #1 fusionado en main", salida, salida)
+        self.assertIsNone(texto)
+
+    def test_barrido_corre_desde_copia(self):
+        """Lo que cambia en main tras fusionar no cambia lo que ejecuta la vuelta en curso (reparo 2 del repaso v1):
+        si tras el primer PR desaparecen los programas de main, el segundo se sigue juzgando con la copia."""
+        salida, _ = self.barrer(["index.html"], "", prs=2, borra=True)
+        self.assertIn("PR #1 fusionado en main", salida, salida)
+        self.assertIn("PR #2 fusionado en main", salida, salida)
+
+
+class RevisorMotor(unittest.TestCase):
+    """El revisor del motor solo da por buena una revisión con «VEREDICTO: LIMPIO» en la primera línea."""
+
+    def setUp(self):
+        import revisor_motor
+        self.rm = revisor_motor
+
+    def test_limpio_pasa(self):
+        self.assertTrue(self.rm.veredicto("VEREDICTO: LIMPIO\n")[0])
+        self.assertTrue(self.rm.veredicto("**VEREDICTO: LIMPIO**")[0])
+
+    def test_lo_demas_no(self):
+        for r in ["", None, "VEREDICTO: REPAROS\n1. x", "Todo bien.\nVEREDICTO: LIMPIO", "VEREDICTO: LIMPIO salvo x",
+                  "veredicto: limpio", "VEREDICTO: LIMPIO?"]:
+            self.assertFalse(self.rm.veredicto(r)[0], r)
+
+    def test_sin_clave_no(self):
+        env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+        r = subprocess.run([sys.executable, self.rm.__file__, "--repo", ".", "--base", "x", "--cabeza", "y"],
+                           capture_output=True, text=True, env=env)
+        self.assertEqual(r.returncode, 1)
+        self.assertIn("ANTHROPIC_API_KEY", r.stdout)

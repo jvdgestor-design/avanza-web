@@ -9,10 +9,12 @@ El repaso cubre el diff completo de la rama contra main en el commit «Revisado�
 contenido concreto: si algo cambia después, el sello deja de valer.
 
 Además: la rama contiene el main actual y solo cambia ficheros de la web (html, txt, xml, css, js, imágenes, pdf)
-o del motor bajo .github/ (11/11/2026, decisión de Jose: el guardián del motor es el revisor de otro modelo, no su clic).
-Quedan fuera y se fusionan a mano: .github/workflows/ (el GITHUB_TOKEN no puede tocar flujos) y CNAME (dominio).
-Las reglas que deciden son siempre las de main, nunca las que trae la rama. Si la rama toca el motor, el barrido
-deja un aviso en el PR al fusionarlo. La salud del sitio la comprueba el flujo con el salud.py de main.
+o del motor en .github/motor/ (11/11/2026, decisión de Jose: el guardián del motor es otro modelo, no su clic).
+Un cambio del motor necesita además que «Revisión del motor» (revision-motor.yml, Sonnet por la API desde el propio
+GitHub) haya salido bien sobre ese commit: eso lo comprueba fusion_barrido.sh por la API de GitHub, porque el sello
+lo escribe quien hace el cambio y la ejecución de GitHub no. Quedan fuera y se fusionan a mano: el resto de .github/
+(workflows: el GITHUB_TOKEN no puede tocarlos) y CNAME (dominio). Las reglas que deciden son siempre las de main.
+La salud del sitio la comprueba el flujo con el salud.py de main.
 
 Uso: fusion.py --rama <dir del clon de la rama> --base <sha de main>     (sale 0 si se fusiona, 1 si no)
 """
@@ -68,8 +70,8 @@ def evaluar_mensaje(mensaje, padre=None):
 
 
 def es_motor(f):
-    """True si el fichero es del motor que se puede fusionar solo: bajo .github/ (minúsculas, en la raíz), fuera de workflows."""
-    return f.startswith(".github/") and not f.startswith(".github/workflows/")
+    """True si el fichero es del motor que se puede fusionar solo (con la revisión del motor): bajo .github/motor/."""
+    return f.startswith(".github/motor/")
 
 
 def evaluar_cambios(ficheros):
@@ -78,7 +80,7 @@ def evaluar_cambios(ficheros):
     malos, motor = [], []
     for f in ficheros:
         partes = f.lower().split("/")
-        if f.upper() == "CNAME" or f.lower().startswith(".github/workflows/"):
+        if f.upper() == "CNAME" or any(c in f for c in "\n\r`@"):
             malos.append(f)
         elif ".github" in partes:
             (motor if es_motor(f) else malos).append(f)
@@ -128,7 +130,8 @@ def main():
     if not fallos:
         print(f"OK: {motivo}; {motivo2}")
         if any(es_motor(f) for f in ficheros):
-            print("MOTOR: " + ", ".join(f for f in ficheros if es_motor(f))[:900])
+            m = [f for f in ficheros if es_motor(f)]
+            print(f"MOTOR: {len(m)} ficheros: " + ", ".join(m[:20]) + (f" y {len(m) - 20} más" if len(m) > 20 else ""))
     sys.exit(1 if fallos else 0)
 
 
