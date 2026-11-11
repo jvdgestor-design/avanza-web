@@ -12,6 +12,11 @@ on:
       - "llms.txt"
       - "robots.txt"
   workflow_dispatch:
+    inputs:
+      antes:
+        description: "main antes de la publicación (lo pasa la fusión automática)"
+        required: false
+        default: ""
 permissions:
   contents: write   # solo para subir el sitemap con sus fechas
 jobs:
@@ -43,7 +48,7 @@ jobs:
           exit 1
       - name: Huella en vivo e IndexNow
         env:
-          ANTES: ${{ github.event.before }}
+          ANTES: ${{ github.event.before || inputs.antes }}
         run: python3 .github/motor/publicacion.py --antes "$ANTES"
       - name: Salud en vivo después de publicar
         if: always()
