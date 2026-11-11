@@ -20,6 +20,7 @@ on:
   workflow_run:  # en cuanto acaba una «Revisión del motor», sin esperar al barrido de la hora
     workflows: ["Revisión del motor"]
     types: [completed]
+    branches: [main]  # pull_request_target corre en main; un flujo de rama con el mismo nombre no despierta la fusión
   schedule:
     - cron: "41 * * * *"
   workflow_dispatch:

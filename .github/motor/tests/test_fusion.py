@@ -235,9 +235,14 @@ elif a[0] == "api":
     ruta = [x for x in a[1:] if not x.startswith("-") and (a[a.index(x) - 1] != "--jq")][0]
     if ruta.endswith("git/ref/heads/main"):
         jq({"object": {"sha": open(os.path.join(d, "base.txt")).read().strip()}})
+    elif "/commits/" in ruta and ruta.split("?")[0].endswith("/pulls"):
+        sha = ruta.split("/commits/")[1].split("/")[0]
+        jq([{"base": {"ref": b}} for b in json.load(open(os.path.join(d, "bases.json"))).get(sha, ["main"])])
     elif "/commits/" in ruta:
         sha = ruta.split("/commits/")[1].split("/")[0]
         jq(json.load(open(os.path.join(d, "estados.json"))).get(sha, []))
+    elif "/actions/workflows/" in ruta:
+        jq({"workflow_runs": list(json.load(open(os.path.join(d, "runs.json"))).values())})
     elif "/actions/runs/" in ruta:
         jq(json.load(open(os.path.join(d, "runs.json")))[ruta.rsplit("/", 1)[1]])
 """
@@ -263,7 +268,7 @@ class AvisoMotor(unittest.TestCase):
     """Cambios del motor: solo se fusionan con la «Revisión del motor» de GitHub bien sobre ese commit (estados
     «revision-motor» que no se pueden borrar), uno por vuelta, y dejan aviso; los de la web, sin nada de eso."""
 
-    def barrer(self, ficheros, revision=lambda sha: ([], {}), prs=1, borra=False):
+    def barrer(self, ficheros, revision=lambda sha: ([], {}), prs=1, borra=False, bases=None):
         raiz = tempfile.mkdtemp()
         g = lambda d, *a: subprocess.run(["git", "-C", d, "-c", "user.name=t", "-c", "user.email=t@t", *a],
                                          check=True, capture_output=True, text=True).stdout.strip()
@@ -309,6 +314,8 @@ class AvisoMotor(unittest.TestCase):
             json.dump(estados, f)
         with open(os.path.join(datos, "runs.json"), "w") as f:
             json.dump(runs, f)
+        with open(os.path.join(datos, "bases.json"), "w") as f:
+            json.dump({sha_: bases for sha_ in estados} if bases else {}, f)
         subprocess.run(["git", "clone", "-q", origen, os.path.join(raiz, "main")], check=True)
         binario = os.path.join(raiz, "bin")
         os.makedirs(binario)
@@ -367,7 +374,7 @@ class AvisoMotor(unittest.TestCase):
                 "no es una revisión del motor buena")
 
     def test_reejecutada_no(self):
-        self.no(lambda sha: ([estado("success", 1)], {"1": ejecucion(sha, intento=2)}), "no es una revisión del motor buena")
+        self.no(lambda sha: ([estado("success", 1)], {"1": ejecucion(sha, intento=2)}), "repetidas")
 
     def test_exito_que_apunta_fuera_no(self):
         self.no(lambda sha: ([estado("success", 1, url="https://ejemplo.com/actions/runs/1")], {"1": ejecucion(sha)}),
@@ -381,6 +388,22 @@ class AvisoMotor(unittest.TestCase):
             self.assertFalse(fusion.es_motor(f), f)
         salida, texto = self.barrer([".github/motor/salud.py"], BIEN)
         self.assertNotIn("fusionado en main", salida, salida)
+
+    def test_exito_sin_enlace_no(self):
+        self.no(lambda sha: ([{"state": "success", "context": "revision-motor", "target_url": None}], {}),
+                "sin enlace")
+
+    def test_revision_cancelada_bloquea(self):
+        self.no(lambda sha: (BIEN(sha)[0], dict(BIEN(sha)[1], **{"7": ejecucion(sha, "cancelled")})),
+                "canceladas, fallidas")
+
+    def test_revision_en_marcha_bloquea(self):
+        self.no(lambda sha: (BIEN(sha)[0], dict(BIEN(sha)[1], **{"7": ejecucion(sha, None)})), "canceladas, fallidas")
+
+    def test_pr_con_otra_base_no(self):
+        salida, texto = self.barrer(self.MOTOR, BIEN, bases=["main", "claude/otra"])
+        self.assertNotIn("fusionado en main", salida, salida)
+        self.assertIn("otra base", salida, salida)
 
     def test_py_nuevo_va_a_mano(self):
         salida, _ = self.barrer([".github/motor/nuevo.py"], BIEN)

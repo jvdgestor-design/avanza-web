@@ -42,13 +42,26 @@ revision_motor() {
   local pendientes="" exitos="" vista=""
   while read -r st url; do
     [ -z "$st" ] && continue
+    [ -z "$url" ] && { echo "estado de revisión del motor sin enlace a su ejecución"; return 1; }
     case "$st" in
       pending) pendientes="$pendientes $url" ;;
       success) exitos="$exitos $url" ;;
       *) echo "la revisión del motor puso reparos o falló ($url)"; return 1 ;;
     esac
   done <<< "$estados"
-  [ -z "$exitos" ] && { echo "no hay revisión del motor terminada bien sobre este commit"; return 1; }
+  [ -z "${exitos// /}" ] && { echo "no hay revisión del motor terminada bien sobre este commit"; return 1; }
+  # Todas las ejecuciones de revision-motor.yml sobre este commit tienen que haber acabado bien: una cancelada,
+  # fallida o en marcha bloquea (la revisión no tiene grupo de concurrencia, así que nada legítimo la cancela).
+  local otras
+  otras=$(gh api --paginate "repos/$REPO/actions/workflows/revision-motor.yml/runs?head_sha=$sha&per_page=100" \
+    --jq '.workflow_runs[] | select(.head_sha == "'"$sha"'") | select(.event == "pull_request_target") | select(.conclusion != "success" or .run_attempt != 1) | .id' </dev/null) \
+    || { echo "no se pudo consultar las ejecuciones de la revisión del motor"; return 1; }
+  [ -n "$otras" ] && { echo "hay revisiones del motor sobre este commit canceladas, fallidas, en marcha o repetidas"; return 1; }
+  # Ningún PR con este commit puede apuntar a otra rama que main: el flujo de revisión de otra base sería otro.
+  local bases
+  bases=$(gh api "repos/$REPO/commits/$sha/pulls?per_page=100" --jq '[.[] | .base.ref] | unique | join(",")' </dev/null) \
+    || { echo "no se pudo consultar los PR de este commit"; return 1; }
+  [ "$bases" != main ] && { echo "este commit está en PR con otra base ($bases)"; return 1; }
   for url in $pendientes; do
     case " $exitos " in *" $url "*) ;; *) echo "una revisión del motor empezó y no terminó bien ($url)"; return 1 ;; esac
   done
