@@ -18,6 +18,7 @@ if [ -z "${FUSION_COPIA:-}" ]; then
   export FUSION_COPIA
   exec bash "$FUSION_COPIA/fusion_barrido.sh"
 fi
+set -f  # sin comodines: nada de lo que llega de la API o de la rama se expande como ruta
 FILTRO='select(.isDraft|not) | select(.isCrossRepository|not) | select(.headRefName|startswith("claude/")) | "\(.number) \(.headRefOid)"'
 CAMPOS=number,headRefName,headRefOid,isDraft,isCrossRepository
 if [ -n "${SOLO_PR:-}" ]; then
@@ -36,7 +37,7 @@ fi
 revision_motor() {
   local sha=$1 estados st url
   estados=$(gh api --paginate "repos/$REPO/commits/$sha/statuses?per_page=100" \
-    --jq '.[] | select(.context == "revision-motor") | "\(.state) \(.target_url)"' </dev/null) \
+    --jq '.[] | select(.context == "revision-motor") | "\(.state) \((.target_url // "") | gsub("[\\r\\n\\t ]"; "_") | gsub("::"; "_"))"' </dev/null) \
     || { echo "no se pudo consultar la revisión del motor"; return 1; }
   local pendientes="" exitos="" vista=""
   while read -r st url; do
@@ -56,7 +57,7 @@ revision_motor() {
       || { echo "estado de revisión que no apunta a una ejecución de este repositorio ($url)"; return 1; }
     local datos
     datos=$(gh api "repos/$REPO/actions/runs/${BASH_REMATCH[1]}" \
-      --jq '"\(.path) \(.event) \(.head_sha) \(.conclusion) \(.run_attempt)"' </dev/null) \
+      --jq '"\(.path) \(.event) \(.head_sha) \(.conclusion) \(.run_attempt)" | gsub("[\\r\\n]|::"; "_")' </dev/null) \
       || { echo "no se pudo consultar la ejecución $url"; return 1; }
     [ "$datos" = ".github/workflows/revision-motor.yml pull_request_target $sha success 1" ] \
       || { echo "la ejecución $url no es una revisión del motor buena y a la primera sobre este commit ($datos)"; return 1; }
@@ -78,10 +79,10 @@ while read -r pr sha; do
   fi
   tok=$(openssl rand -hex 16)
   echo "::stop-commands::$tok"
-  env -u GH_TOKEN python3 "$FUSION_COPIA/fusion.py" --rama rama --base "$base" </dev/null | tee puerta.txt; puerta=${PIPESTATUS[0]}
+  env -u GH_TOKEN python3 -I "$FUSION_COPIA/fusion.py" --rama rama --base "$base" </dev/null | tee puerta.txt; puerta=${PIPESTATUS[0]}
   motor=$(sed -n 's/^MOTOR: //p' puerta.txt | head -1)
   salud=9
-  if [ $puerta -eq 0 ]; then env -u GH_TOKEN python3 "$FUSION_COPIA/salud.py" --raiz rama </dev/null; salud=$?; fi
+  if [ $puerta -eq 0 ]; then env -u GH_TOKEN python3 -I "$FUSION_COPIA/salud.py" --raiz rama </dev/null; salud=$?; fi
   echo "::$tok::"
   git -C "$MAIN" worktree remove --force ../rama
   if [ $puerta -ne 0 ] || [ $salud -ne 0 ]; then

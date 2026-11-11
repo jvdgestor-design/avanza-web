@@ -75,16 +75,27 @@ GUARDIAN = {".github/motor/fusion.py", ".github/motor/fusion_barrido.sh", ".gith
 EXT_MOTOR = (".py", ".sh", ".json", ".txt", ".md", ".csv", ".yml", ".yaml")
 
 
-def es_motor(f):
+# Nombres que Python cargaría antes que los suyos si aparecen junto a un programa del motor.
+SUPLANTA = set(getattr(sys, "stdlib_module_names", ())) | {"sitecustomize", "usercustomize", "conftest", "google",
+                                                          "__init__", "__main__"}
+
+
+def es_motor(f, estado="M"):
     """True si el fichero es del motor que se puede fusionar solo (con la revisión del motor): texto bajo
-    .github/motor/, sin carpetas ni ficheros ocultos ni __pycache__, y fuera de la lista del guardián."""
+    .github/motor/, sin carpetas ni ficheros ocultos ni __pycache__, fuera de la lista del guardián, sin nombres que
+    suplanten un módulo de Python y sin programas .py nuevos (un .py nuevo se importaría por su nombre: va a mano)."""
     if not f.startswith(".github/motor/") or f in GUARDIAN or not f.endswith(EXT_MOTOR):
         return False
     partes = f.split("/")[2:]
-    return not any(p.startswith(".") or p == "__pycache__" for p in partes)
+    if any(p.startswith(".") or p == "__pycache__" for p in partes):
+        return False
+    nombres = [p.rsplit(".", 1)[0] if i == len(partes) - 1 else p for i, p in enumerate(partes)]
+    if any(n in SUPLANTA for n in nombres):
+        return False
+    return not (f.endswith(".py") and estado == "A")
 
 
-def evaluar_cambios(ficheros):
+def evaluar_cambios(ficheros, estados=None):
     if not ficheros:
         return False, "la rama no cambia nada respecto a main"
     malos, motor = [], []
@@ -93,7 +104,7 @@ def evaluar_cambios(ficheros):
         if f.upper() == "CNAME" or any(c in f for c in "\n\r`@"):
             malos.append(f)
         elif ".github" in partes:
-            (motor if es_motor(f) else malos).append(f)
+            (motor if es_motor(f, (estados or {}).get(f, "M")) else malos).append(f)
         elif not f.lower().endswith(EXTENSIONES):
             malos.append(f)
     if malos:
@@ -125,12 +136,13 @@ def main():
     if not ok:
         fallos.append(motivo)
     crudo = _git(a.rama, "diff", "--raw", "-z", "--no-renames", "--no-abbrev", a.base, "HEAD").split("\0")
-    ficheros, modos_malos = [], []
+    ficheros, modos_malos, estados = [], [], {}
     for cab, ruta in zip(crudo[0::2], crudo[1::2]):
         ficheros.append(ruta)
+        estados[ruta] = cab.split()[-1][:1] if cab.split() else "?"
         if cab.split()[1:2] and cab.split()[1] in ("120000", "160000"):
             modos_malos.append(ruta)
-    ok2, motivo2 = evaluar_cambios(ficheros)
+    ok2, motivo2 = evaluar_cambios(ficheros, estados)
     if modos_malos:
         ok2, motivo2 = False, "enlaces simbólicos o submódulos: " + ", ".join(repr(m) for m in modos_malos[:5])
     if not ok2:
@@ -139,8 +151,8 @@ def main():
         print("NO: " + f.replace("::", ": :"))
     if not fallos:
         print(f"OK: {motivo}; {motivo2}")
-        if any(es_motor(f) for f in ficheros):
-            m = [f for f in ficheros if es_motor(f)]
+        if any(es_motor(f, estados.get(f, "M")) for f in ficheros):
+            m = [f for f in ficheros if es_motor(f, estados.get(f, "M"))]
             print(f"MOTOR: {len(m)} ficheros: " + ", ".join(m[:20]) + (f" y {len(m) - 20} más" if len(m) > 20 else ""))
     sys.exit(1 if fallos else 0)
 

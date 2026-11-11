@@ -84,6 +84,8 @@ class Cambios(unittest.TestCase):
         self.assertTrue(ok)
         self.assertIn("2 del motor", texto)
         self.assertTrue(fusion.es_motor(".github/motor/vigia.py"))
+        self.assertFalse(fusion.es_motor(".github/motor/vigia_nuevo.py", "A"))
+        self.assertTrue(fusion.es_motor(".github/motor/datos/nuevo.json", "A"))
         self.assertFalse(fusion.es_motor(".github/motor/salud.py"))
         self.assertFalse(fusion.es_motor(".github/workflows/fusion.yml"))
         self.assertFalse(fusion.es_motor(".github/CODEOWNERS"))
@@ -380,6 +382,16 @@ class AvisoMotor(unittest.TestCase):
         salida, texto = self.barrer([".github/motor/salud.py"], BIEN)
         self.assertNotIn("fusionado en main", salida, salida)
 
+    def test_py_nuevo_va_a_mano(self):
+        salida, _ = self.barrer([".github/motor/nuevo.py"], BIEN)
+        self.assertNotIn("fusionado en main", salida, salida)
+        self.assertIn("a mano", salida, salida)
+
+    def test_url_con_salto_no_inyecta(self):
+        salida, _ = self.barrer(self.MOTOR, lambda sha: ([estado("failure", 1, url="x\n::error::inyectado")], {}))
+        self.assertNotIn("\n::error::inyectado", salida)
+        self.assertNotIn("fusionado en main", salida)
+
     def test_un_motor_por_vuelta(self):
         salida, _ = self.barrer(self.MOTOR, BIEN, prs=2)
         self.assertIn("PR #1 fusionado en main", salida, salida)
@@ -416,7 +428,9 @@ class RevisorMotor(unittest.TestCase):
         self.assertFalse(self.rm.veredicto("VEREDICTO: LIMPIO", "max_tokens")[0])
 
     def test_motor_raro_va_a_mano(self):
-        for f in [".github/motor/__pycache__/json.cpython-312.pyc", ".github/motor/_json.so", ".github/motor/.gitattributes",
+        for f in [".github/motor/json.py", ".github/motor/re.py", ".github/motor/xml/__init__.py",
+                  ".github/motor/sitecustomize.py", ".github/motor/tests/conftest.py", ".github/motor/google/auth.py",
+                  ".github/motor/subprocess.py", ".github/motor/__init__.py",".github/motor/__pycache__/json.cpython-312.pyc", ".github/motor/_json.so", ".github/motor/.gitattributes",
                   ".github/motor/.oculto/x.py", ".github/motor/x.bin"]:
             self.assertFalse(fusion.es_motor(f), f)
             self.assertFalse(fusion.evaluar_cambios([f])[0], f)
