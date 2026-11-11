@@ -1,7 +1,8 @@
 # Fusión automática (11/11/2026, encargo de Jose): un PR de una rama claude/* a main se fusiona solo cuando
 #   - la rama acaba en un commit «sello» vacío con «Redactor:», «Revisado: <sha anterior>» y
 #     «Repaso: … · 0 reparos · revisor <otro modelo> · limpio» (reglas en .github/motor/fusion.py, la versión de main);
-#   - solo cambia ficheros de la web (nada de .github/ ni CNAME) y contiene el main actual;
+#   - solo cambia ficheros de la web o de .github/motor/ (nunca workflows ni CNAME) y contiene el main actual;
+#   - si toca .github/motor/, «Revisión del motor» (revision-motor.yml) ha salido bien sobre ese commit (11/11/2026);
 #   - la salud del sitio (salud.py de main sobre el árbol de la rama) da 0 errores;
 #   - main no se ha movido desde la comprobación.
 # Corre con pull_request_target y cada hora (barrido de PRs abiertos, por si una ejecución se perdió): el flujo y
@@ -16,6 +17,9 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
     branches: [main]
+  workflow_run:  # en cuanto acaba una «Revisión del motor», sin esperar al barrido de la hora
+    workflows: ["Revisión del motor"]
+    types: [completed]  # sin filtro de rama: la ejecución lleva la rama del PR; la fusión siempre corre lo de main
   schedule:
     - cron: "41 * * * *"
   workflow_dispatch:
@@ -42,6 +46,7 @@ jobs:
           ref: main
           path: main
           fetch-depth: 0
+          persist-credentials: false
       - name: Evaluar y fusionar
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

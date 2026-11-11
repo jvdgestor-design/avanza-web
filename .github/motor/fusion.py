@@ -8,8 +8,13 @@ La rama termina SIEMPRE en un commit «sello» vacío (git commit --allow-empty)
 El repaso cubre el diff completo de la rama contra main en el commit «Revisado». Así el repaso queda atado a un
 contenido concreto: si algo cambia después, el sello deja de valer.
 
-Además: la rama no toca .github/ ni CNAME, solo cambia ficheros de la web (html, txt, xml, css, js, imágenes, pdf),
-y contiene el main actual. La salud del sitio la comprueba el flujo con el salud.py de main.
+Además: la rama contiene el main actual y solo cambia ficheros de la web (html, txt, xml, css, js, imágenes, pdf)
+o del motor en .github/motor/ (11/11/2026, decisión de Jose: el guardián del motor es otro modelo, no su clic).
+Un cambio del motor necesita además que «Revisión del motor» (revision-motor.yml, Sonnet por la API desde el propio
+GitHub) haya salido bien sobre ese commit: eso lo comprueba fusion_barrido.sh por la API de GitHub, porque el sello
+lo escribe quien hace el cambio y la ejecución de GitHub no. Quedan fuera y se fusionan a mano: el resto de .github/
+(workflows: el GITHUB_TOKEN no puede tocarlos) y CNAME (dominio). Las reglas que deciden son siempre las de main.
+La salud del sitio la comprueba el flujo con el salud.py de main.
 
 Uso: fusion.py --rama <dir del clon de la rama> --base <sha de main>     (sale 0 si se fusiona, 1 si no)
 """
@@ -64,17 +69,51 @@ def evaluar_mensaje(mensaje, padre=None):
     return True, f"repaso limpio de {nombre} sobre texto de {', '.join(sorted(redactores))}"
 
 
-def evaluar_cambios(ficheros):
+# Ficheros que deciden qué se publica: nunca se fusionan solos, para que la puerta no pueda cambiarse a sí misma.
+GUARDIAN = {".github/motor/fusion.py", ".github/motor/fusion_barrido.sh", ".github/motor/revisor_motor.py",
+            ".github/motor/revisor.py", ".github/motor/salud.py", ".github/motor/tests/test_fusion.py"}
+EXT_MOTOR = (".py", ".sh", ".json", ".txt", ".md", ".csv", ".yml", ".yaml")
+
+
+# Nombres que Python cargaría antes que los suyos si aparecen junto a un programa del motor.
+SUPLANTA = set(getattr(sys, "stdlib_module_names", ())) | {"sitecustomize", "usercustomize", "conftest", "google",
+                                                          "__init__", "__main__"}
+
+
+def es_motor(f, estado="M"):
+    """True si el fichero es del motor que se puede fusionar solo (con la revisión del motor): texto bajo
+    .github/motor/, sin carpetas ni ficheros ocultos ni __pycache__, fuera de la lista del guardián, sin nombres que
+    suplanten un módulo de Python y sin programas .py nuevos (un .py nuevo se importaría por su nombre: va a mano)."""
+    if not f.startswith(".github/motor/") or f in GUARDIAN or not f.endswith(EXT_MOTOR):
+        return False
+    partes = f.split("/")[2:]
+    if any(p.startswith(".") or p == "__pycache__" for p in partes):
+        return False
+    nombres = [p.rsplit(".", 1)[0] if i == len(partes) - 1 else p for i, p in enumerate(partes)]
+    if any(n in SUPLANTA for n in nombres):
+        return False
+    return not (f.endswith(".py") and estado == "A")
+
+
+def evaluar_cambios(ficheros, estados=None):
     if not ficheros:
         return False, "la rama no cambia nada respecto a main"
-    malos = []
+    malos, motor = [], []
     for f in ficheros:
         partes = f.lower().split("/")
-        if ".github" in partes or f.upper() == "CNAME" or not f.lower().endswith(EXTENSIONES):
+        if f.upper() == "CNAME" or any(c in f for c in "\n\r`@"):
+            malos.append(f)
+        elif ".github" in partes:
+            (motor if es_motor(f, (estados or {}).get(f, "M")) else malos).append(f)
+        elif not f.lower().endswith(EXTENSIONES):
             malos.append(f)
     if malos:
         return False, "ficheros que se fusionan a mano: " + ", ".join(repr(m) for m in malos[:5])
-    return True, f"{len(ficheros)} ficheros de la web"
+    web = len(ficheros) - len(motor)
+    texto = f"{web} ficheros de la web"
+    if motor:
+        texto += f" y {len(motor)} del motor ({', '.join(motor[:5])})"
+    return True, texto
 
 
 def _git(rama, *args):
@@ -97,12 +136,13 @@ def main():
     if not ok:
         fallos.append(motivo)
     crudo = _git(a.rama, "diff", "--raw", "-z", "--no-renames", "--no-abbrev", a.base, "HEAD").split("\0")
-    ficheros, modos_malos = [], []
+    ficheros, modos_malos, estados = [], [], {}
     for cab, ruta in zip(crudo[0::2], crudo[1::2]):
         ficheros.append(ruta)
+        estados[ruta] = cab.split()[-1][:1] if cab.split() else "?"
         if cab.split()[1:2] and cab.split()[1] in ("120000", "160000"):
             modos_malos.append(ruta)
-    ok2, motivo2 = evaluar_cambios(ficheros)
+    ok2, motivo2 = evaluar_cambios(ficheros, estados)
     if modos_malos:
         ok2, motivo2 = False, "enlaces simbólicos o submódulos: " + ", ".join(repr(m) for m in modos_malos[:5])
     if not ok2:
@@ -111,6 +151,9 @@ def main():
         print("NO: " + f.replace("::", ": :"))
     if not fallos:
         print(f"OK: {motivo}; {motivo2}")
+        if any(es_motor(f, estados.get(f, "M")) for f in ficheros):
+            m = [f for f in ficheros if es_motor(f, estados.get(f, "M"))]
+            print(f"MOTOR: {len(m)} ficheros: " + ", ".join(m[:20]) + (f" y {len(m) - 20} más" if len(m) > 20 else ""))
     sys.exit(1 if fallos else 0)
 
 

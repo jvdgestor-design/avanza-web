@@ -1,0 +1,69 @@
+# Revisión del motor (11/11/2026, decisión de Jose): en cada PR de una rama claude/* a main, si cambia algo bajo
+# .github/, otro modelo (Sonnet, por la API de Claude) intenta tumbarlo; si no, sale bien sin llamar al modelo. El veredicto queda como estado del commit
+# «revision-motor», que no se puede borrar: primero «pending» y luego «success» o «failure», con el enlace a esta
+# ejecución. La fusión automática solo deja entrar un cambio del motor si todos los estados «revision-motor» de ese
+# commit acaban en «success», cada uno apuntando a una ejecución de ESTE flujo (pull_request_target, a la primera)
+# sobre ese mismo commit; un «failure», o un «pending» que no terminó, lo bloquean para siempre.
+# Seguridad: con pull_request_target el flujo y el programa que revisa son SIEMPRE los de main; de la rama solo se
+# lee el diff como dato y nunca se ejecuta nada suyo. Sin workflow_dispatch ni cancelaciones, a propósito.
+# «edited» solo cuenta cuando cambia la base: reapuntar un PR a main también lanza la revisión.
+name: Revisión del motor
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+    branches: [main]
+    # Sin filtro de rutas a propósito: GitHub solo mira los 300 primeros ficheros del diff. Toda cabeza de PR a main
+    # tiene así su revisión real; si no toca .github/, el programa sale bien sin llamar al modelo.
+permissions:
+  contents: read
+  statuses: write
+# Sin grupo de concurrencia a propósito: nada legítimo cancela ni descarta una revisión, y así la fusión puede tratar
+# cualquier revisión cancelada como bloqueo.
+jobs:
+  revision:
+    if: >-
+      startsWith(github.event.pull_request.head.ref, 'claude/') &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft &&
+      (github.event.action != 'edited' || github.event.changes.base != null)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CABEZA: ${{ github.event.pull_request.head.sha }}
+      EJECUCION: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - name: Estado «en revisión»
+        run: >-
+          gh api -X POST "repos/${{ github.repository }}/statuses/$CABEZA" -f state=pending -f context=revision-motor
+          -f target_url="$EJECUCION" -f description="Sonnet revisando el motor" >/dev/null
+      - name: Main (quien revisa)
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: main
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Traer la rama como dato
+        env:
+          PR: ${{ github.event.pull_request.number }}
+        run: git -C main fetch -q origin "pull/$PR/head"
+      - name: Revisión adversarial del motor
+        id: revision
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ""
+        run: |
+          set +e
+          tok=$(openssl rand -hex 16); echo "::stop-commands::$tok"
+          python3 -I main/.github/motor/revisor_motor.py --repo main --base origin/main --cabeza "$CABEZA"; r=$?
+          echo "::$tok::"; exit $r
+      - name: Estado final
+        if: always()
+        env:
+          RESULTADO: ${{ steps.revision.outcome }}
+        run: |
+          if [ "$RESULTADO" = success ]; then estado=success; texto="Revisión del motor limpia"; else estado=failure; texto="Revisión del motor con reparos o fallida"; fi
+          gh api -X POST "repos/${{ github.repository }}/statuses/$CABEZA" -f state="$estado" -f context=revision-motor \
+            -f target_url="$EJECUCION" -f description="$texto" >/dev/null
+          [ "$estado" = success ]
