@@ -1,0 +1,51 @@
+# Fusión automática (11/11/2026, encargo de Jose): un PR de una rama claude/* a main se fusiona solo cuando
+#   - la rama acaba en un commit «sello» vacío con «Redactor:», «Revisado: <sha anterior>» y
+#     «Repaso: … · 0 reparos · revisor <otro modelo> · limpio» (reglas en .github/motor/fusion.py, la versión de main);
+#   - solo cambia ficheros de la web (nada de .github/ ni CNAME) y contiene el main actual;
+#   - la salud del sitio (salud.py de main sobre el árbol de la rama) da 0 errores;
+#   - main no se ha movido desde la comprobación.
+# Corre con pull_request_target y cada hora (barrido de PRs abiertos, por si una ejecución se perdió): el flujo y
+# los programas que deciden son los de main; de la rama solo se leen ficheros, nunca se ejecuta su código.
+# Interruptor: variable del repositorio FUSION_AUTOMATICA. Con «si», fusiona y lanza «Después de publicar»;
+# con cualquier otro valor o sin ella, solo simula y dice si se fusionaría.
+# Desactivar: Settings > Secrets and variables > Actions > Variables > FUSION_AUTOMATICA = no
+#   (o `gh variable set FUSION_AUTOMATICA --body no -R jvdgestor-design/avanza-web`,
+#    o Actions > Fusión automática > Disable workflow).
+name: Fusión automática
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+  schedule:
+    - cron: "41 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: fusion-main
+  cancel-in-progress: false
+jobs:
+  fusion:
+    if: >-
+      github.event_name != 'pull_request_target' || (
+      startsWith(github.event.pull_request.head.ref, 'claude/') &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Main (quien decide)
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: main
+          fetch-depth: 0
+      - name: Evaluar y fusionar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTIVA: ${{ vars.FUSION_AUTOMATICA }}
+          SOLO_PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: bash main/.github/motor/fusion_barrido.sh
