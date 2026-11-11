@@ -98,10 +98,6 @@ def main():
     ap.add_argument("--base", required=True)
     ap.add_argument("--cabeza", required=True)
     a = ap.parse_args()
-    clave = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not clave:
-        print("NO: falta el secreto ANTHROPIC_API_KEY; sin revisión no se fusiona nada del motor.")
-        return 1
     diff = git(a.repo, "diff", "--no-color", "--no-renames", "--text", "--no-ext-diff", "--no-textconv",
                f"{a.base}...{a.cabeza}", "--", ".github")
     numstat = git(a.repo, "diff", "--numstat", "--no-renames", f"{a.base}...{a.cabeza}", "--", ".github")
@@ -111,6 +107,10 @@ def main():
     if not diff.strip():
         print("OK: el PR no cambia nada bajo .github/.")
         return 0
+    clave = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not clave:
+        print("NO: falta el secreto ANTHROPIC_API_KEY; sin revisión no se fusiona nada del motor.")
+        return 1
     if len(diff) > MAX_DIFF:
         print(f"NO: el diff del motor tiene {len(diff)} caracteres (más de {MAX_DIFF}); se revisa y fusiona a mano.")
         return 1

@@ -1,5 +1,5 @@
-# Revisión del motor (11/11/2026, decisión de Jose): cuando un PR de una rama claude/* cambia algo bajo .github/,
-# otro modelo (Sonnet, por la API de Claude) intenta tumbarlo. El veredicto queda como estado del commit
+# Revisión del motor (11/11/2026, decisión de Jose): en cada PR de una rama claude/* a main, si cambia algo bajo
+# .github/, otro modelo (Sonnet, por la API de Claude) intenta tumbarlo; si no, sale bien sin llamar al modelo. El veredicto queda como estado del commit
 # «revision-motor», que no se puede borrar: primero «pending» y luego «success» o «failure», con el enlace a esta
 # ejecución. La fusión automática solo deja entrar un cambio del motor si todos los estados «revision-motor» de ese
 # commit acaban en «success», cada uno apuntando a una ejecución de ESTE flujo (pull_request_target, a la primera)

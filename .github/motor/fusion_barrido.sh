@@ -51,10 +51,11 @@ revision_motor() {
   done <<< "$estados"
   [ -z "${exitos// /}" ] && { echo "no hay revisión del motor terminada bien sobre este commit"; return 1; }
   # Todas las ejecuciones de revision-motor.yml sobre este commit tienen que haber acabado bien: una cancelada,
-  # fallida o en marcha bloquea (la revisión no tiene grupo de concurrencia, así que nada legítimo la cancela).
+  # fallida o en marcha bloquea (la revisión no tiene grupo de concurrencia, así que nada legítimo la cancela). Las
+# omitidas (PR en borrador) no revisaron nada ni pusieron estado: no cuentan.
   local otras
   otras=$(gh api --paginate "repos/$REPO/actions/workflows/revision-motor.yml/runs?head_sha=$sha&per_page=100" \
-    --jq '.workflow_runs[] | select(.head_sha == "'"$sha"'") | select(.event == "pull_request_target") | select(.conclusion != "success" or .run_attempt != 1) | .id' </dev/null) \
+    --jq '.workflow_runs[] | select(.head_sha == "'"$sha"'") | select(.event == "pull_request_target") | select(.conclusion != "skipped") | select(.conclusion != "success" or .run_attempt != 1) | .id' </dev/null) \
     || { echo "no se pudo consultar las ejecuciones de la revisión del motor"; return 1; }
   [ -n "$otras" ] && { echo "hay revisiones del motor sobre este commit canceladas, fallidas, en marcha o repetidas"; return 1; }
   # Ningún PR con este commit puede apuntar a otra rama que main: el flujo de revisión de otra base sería otro.

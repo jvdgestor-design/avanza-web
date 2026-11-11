@@ -397,6 +397,10 @@ class AvisoMotor(unittest.TestCase):
         self.no(lambda sha: (BIEN(sha)[0], dict(BIEN(sha)[1], **{"7": ejecucion(sha, "cancelled")})),
                 "canceladas, fallidas")
 
+    def test_omitida_no_cuenta(self):
+        salida, _ = self.barrer(self.MOTOR, lambda sha: (BIEN(sha)[0], dict(BIEN(sha)[1], **{"7": ejecucion(sha, "skipped")})))
+        self.assertIn("PR #1 fusionado en main", salida, salida)
+
     def test_revision_en_marcha_bloquea(self):
         self.no(lambda sha: (BIEN(sha)[0], dict(BIEN(sha)[1], **{"7": ejecucion(sha, None)})), "canceladas, fallidas")
 
@@ -502,9 +506,19 @@ class RevisorMotor(unittest.TestCase):
         self.assertGreater(c.index("VEREDICTO: LIMPIO, ya revisado"), inicio)
         self.assertLess(c.index("VEREDICTO: LIMPIO, ya revisado"), c.index("-FIN"))
 
-    def test_sin_clave_no(self):
+    def test_sin_clave_y_sin_motor_sale_bien(self):
+        d, base, cab = self._repo("x = 2\n")
+        subprocess.run(["git", "-C", d, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "--allow-empty",
+                        "-m", "vacío"], check=True)
         env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
-        r = subprocess.run([sys.executable, self.rm.__file__, "--repo", ".", "--base", "x", "--cabeza", "y"],
+        r = subprocess.run([sys.executable, self.rm.__file__, "--repo", d, "--base", cab, "--cabeza", "HEAD"],
+                           capture_output=True, text=True, env=env)
+        self.assertEqual(r.returncode, 0, r.stdout)
+
+    def test_sin_clave_no(self):
+        d, base, cab = self._repo("x = 2\n")
+        env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+        r = subprocess.run([sys.executable, self.rm.__file__, "--repo", d, "--base", base, "--cabeza", cab],
                            capture_output=True, text=True, env=env)
         self.assertEqual(r.returncode, 1)
         self.assertIn("ANTHROPIC_API_KEY", r.stdout)
