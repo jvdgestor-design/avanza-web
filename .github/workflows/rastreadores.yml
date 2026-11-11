@@ -1,0 +1,19 @@
+# Comprobación de rastreadores (buscadores e IA): 200 y mismo HTML que un navegador.
+# Sin programación horaria: se lanza a mano o al cambiar estos dos ficheros. Resultado en las anotaciones del run.
+name: Rastreadores
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/motor/rastreadores.py"
+      - ".github/workflows/rastreadores.yml"
+permissions:
+  contents: read
+jobs:
+  rastreadores:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 .github/motor/rastreadores.py
