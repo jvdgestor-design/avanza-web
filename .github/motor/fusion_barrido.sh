@@ -4,7 +4,7 @@
 # Un PR que no pasa deja un aviso y no pone el flujo en rojo; solo un fallo de la API al fusionar lo pone en rojo.
 # Variables: GH_TOKEN, ACTIVA («si» para fusionar), SOLO_PR (opcional), REPO.
 # Cambios del motor (.github/motor/, 11/11/2026): además del sello, «Revisión del motor» tiene que haber salido bien
-# sobre ese commit en GitHub, a la primera y sin fallos anteriores; se fusiona como mucho uno por vuelta y se deja
+# sobre ese commit en GitHub (estados «revision-motor», ver revision_motor); se fusiona como mucho uno por vuelta y se deja
 # un aviso para Jose en el PR.
 set +e
 set -u
@@ -21,49 +21,67 @@ fi
 FILTRO='select(.isDraft|not) | select(.isCrossRepository|not) | select(.headRefName|startswith("claude/")) | "\(.number) \(.headRefOid)"'
 CAMPOS=number,headRefName,headRefOid,isDraft,isCrossRepository
 if [ -n "${SOLO_PR:-}" ]; then
-  prs=$(gh pr view "$SOLO_PR" -R "$REPO" --json "$CAMPOS" --jq "$FILTRO") || { echo "::warning::No se pudo leer el PR #$SOLO_PR."; exit 0; }
+  prs=$(gh pr view "$SOLO_PR" -R "$REPO" --json "$CAMPOS,baseRefName" --jq "select(.baseRefName == \"main\") | $FILTRO" </dev/null) || { echo "::warning::No se pudo leer el PR #$SOLO_PR."; exit 0; }
 else
-  prs=$(gh pr list -R "$REPO" --base main --state open --json "$CAMPOS" --jq ".[] | $FILTRO") || { echo "::warning::No se pudo listar los PR."; exit 0; }
+  prs=$(gh pr list -R "$REPO" --base main --state open -L 200 --json "$CAMPOS" --jq ".[] | $FILTRO" </dev/null) || { echo "::warning::No se pudo listar los PR."; exit 0; }
 fi
 [ -z "$prs" ] && { echo "Ningún PR claude/* abierto."; exit 0; }
 
-# Revisión del motor sobre un commit: sale bien solo si hay al menos una ejecución terminada con éxito y ninguna
-# terminada de otra forma (salvo canceladas), todas a la primera (sin «volver a ejecutar» hasta que salga).
+# Revisión del motor sobre un commit, por los estados «revision-motor» (no se pueden borrar). Sale bien solo si:
+#  - ninguno es «failure» ni «error»;
+#  - cada ejecución que puso «pending» puso también «success» (una cancelada a medias bloquea);
+#  - cada «success» apunta a una ejecución de revision-motor.yml (de main, pull_request_target) sobre este mismo
+#    commit, terminada bien y a la primera. Un estado puesto por otro flujo u otra persona no cuenta, y si es un
+#    fallo, bloquea igual.
 revision_motor() {
-  local sha=$1 runs
-  runs=$(gh api "repos/$REPO/actions/workflows/revision-motor.yml/runs?head_sha=$sha&per_page=50" \
-    --jq '.workflow_runs[] | select(.head_sha == "'"$sha"'") | select(.event == "pull_request_target") | select(.path == ".github/workflows/revision-motor.yml") | "\(.status) \(.conclusion) \(.run_attempt) \(.html_url)"') \
+  local sha=$1 estados st url
+  estados=$(gh api --paginate "repos/$REPO/commits/$sha/statuses?per_page=100" \
+    --jq '.[] | select(.context == "revision-motor") | "\(.state) \(.target_url)"' </dev/null) \
     || { echo "no se pudo consultar la revisión del motor"; return 1; }
-  local exito="" linea st co at url
-  while read -r st co at url; do
+  local pendientes="" exitos="" vista=""
+  while read -r st url; do
     [ -z "$st" ] && continue
-    [ "$st" != completed ] && { echo "la revisión del motor aún está en marcha"; return 1; }
-    [ "$co" = cancelled ] && continue
-    [ "$at" != 1 ] && { echo "la revisión del motor se volvió a ejecutar ($url)"; return 1; }
-    [ "$co" != success ] && { echo "la revisión del motor puso reparos o falló ($url)"; return 1; }
-    exito=$url
-  done <<< "$runs"
-  [ -z "$exito" ] && { echo "no hay revisión del motor terminada sobre este commit"; return 1; }
-  echo "$exito"
+    case "$st" in
+      pending) pendientes="$pendientes $url" ;;
+      success) exitos="$exitos $url" ;;
+      *) echo "la revisión del motor puso reparos o falló ($url)"; return 1 ;;
+    esac
+  done <<< "$estados"
+  [ -z "$exitos" ] && { echo "no hay revisión del motor terminada bien sobre este commit"; return 1; }
+  for url in $pendientes; do
+    case " $exitos " in *" $url "*) ;; *) echo "una revisión del motor empezó y no terminó bien ($url)"; return 1 ;; esac
+  done
+  for url in $exitos; do
+    [[ "$url" =~ ^https://github\.com/${REPO}/actions/runs/([0-9]+)$ ]] \
+      || { echo "estado de revisión que no apunta a una ejecución de este repositorio ($url)"; return 1; }
+    local datos
+    datos=$(gh api "repos/$REPO/actions/runs/${BASH_REMATCH[1]}" \
+      --jq '"\(.path) \(.event) \(.head_sha) \(.conclusion) \(.run_attempt)"' </dev/null) \
+      || { echo "no se pudo consultar la ejecución $url"; return 1; }
+    [ "$datos" = ".github/workflows/revision-motor.yml pull_request_target $sha success 1" ] \
+      || { echo "la ejecución $url no es una revisión del motor buena y a la primera sobre este commit ($datos)"; return 1; }
+    vista=$url
+  done
+  echo "$vista"
 }
 
 fallos=0
 while read -r pr sha; do
   [ -z "$pr" ] && continue
   echo "== PR #$pr ($sha)"
-  git -C "$MAIN" fetch -q origin main || { echo "::warning::No se pudo traer main."; continue; }
+  git -C "$MAIN" fetch -q origin main </dev/null || { echo "::warning::No se pudo traer main."; continue; }
   base=$(git -C "$MAIN" rev-parse origin/main)
   git -C "$MAIN" checkout -q "$base"
   git -C "$MAIN" worktree remove --force ../rama 2>/dev/null; rm -rf rama
-  if ! git -C "$MAIN" fetch -q origin "pull/$pr/head" || ! git -C "$MAIN" -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false worktree add -q --detach ../rama "$sha"; then
+  if ! git -C "$MAIN" fetch -q origin "pull/$pr/head" </dev/null || ! git -C "$MAIN" -c filter.lfs.smudge= -c filter.lfs.process= -c filter.lfs.required=false worktree add -q --detach ../rama "$sha"; then
     echo "::warning::PR #$pr: no se pudo montar $sha (¿ha avanzado la rama?); queda para el siguiente barrido."; continue
   fi
   tok=$(openssl rand -hex 16)
   echo "::stop-commands::$tok"
-  python3 "$FUSION_COPIA/fusion.py" --rama rama --base "$base" | tee puerta.txt; puerta=${PIPESTATUS[0]}
+  env -u GH_TOKEN python3 "$FUSION_COPIA/fusion.py" --rama rama --base "$base" </dev/null | tee puerta.txt; puerta=${PIPESTATUS[0]}
   motor=$(sed -n 's/^MOTOR: //p' puerta.txt | head -1)
   salud=9
-  if [ $puerta -eq 0 ]; then python3 "$FUSION_COPIA/salud.py" --raiz rama; salud=$?; fi
+  if [ $puerta -eq 0 ]; then env -u GH_TOKEN python3 "$FUSION_COPIA/salud.py" --raiz rama </dev/null; salud=$?; fi
   echo "::$tok::"
   git -C "$MAIN" worktree remove --force ../rama
   if [ $puerta -ne 0 ] || [ $salud -ne 0 ]; then
@@ -76,7 +94,7 @@ while read -r pr sha; do
   if [ "${ACTIVA:-}" != "si" ]; then
     echo "::notice::SIMULACIÓN: el PR #$pr se fusionaría (FUSION_AUTOMATICA no es «si»)."; continue
   fi
-  ahora=$(gh api "repos/$REPO/git/ref/heads/main" --jq .object.sha)
+  ahora=$(gh api "repos/$REPO/git/ref/heads/main" --jq .object.sha </dev/null)
   if [ "$ahora" != "$base" ]; then
     echo "::warning::main se ha movido durante la comprobación; el PR #$pr queda para el siguiente barrido."; continue
   fi
@@ -84,7 +102,7 @@ while read -r pr sha; do
   titulo=$(git -C "$MAIN" log -1 --format=%s "$sha^")
   jq -n --arg sha "$sha" --arg t "$titulo (#$pr)" --arg m "$mensaje" \
     '{sha:$sha, merge_method:"squash", commit_title:$t, commit_message:$m}' > cuerpo.json
-  if gh api -X PUT "repos/$REPO/pulls/$pr/merge" --input cuerpo.json >/dev/null; then
+  if gh api -X PUT "repos/$REPO/pulls/$pr/merge" --input cuerpo.json </dev/null >/dev/null; then
     echo "::notice::PR #$pr fusionado en main."
     if [ -n "$motor" ]; then
       # Todo lo que viene de la rama va dentro de un bloque de código y sin acentos graves: ni menciones ni enlaces.
@@ -92,11 +110,11 @@ while read -r pr sha; do
         printf 'Revisión: %s\n\n```\n' "$revision"
         printf 'Qué cambia: %s\nFicheros: %s\n' "$titulo" "$motor" | tr -d '`'
         printf '```\n'; } > aviso.txt
-      gh pr comment "$pr" -R "$REPO" --body-file aviso.txt >/dev/null \
+      gh pr comment "$pr" -R "$REPO" --body-file aviso.txt </dev/null >/dev/null \
         || echo "::warning::PR #$pr fusionado, pero no se pudo dejar el aviso del motor."
     fi
     # Lo que empuja el GITHUB_TOKEN no lanza flujos; «Después de publicar» se lanza a mano con el main anterior.
-    gh workflow run publicacion.yml -R "$REPO" --ref main -f antes="$base" \
+    gh workflow run publicacion.yml -R "$REPO" --ref main -f antes="$base" </dev/null \
       || echo "::warning::PR #$pr fusionado, pero no se pudo lanzar «Después de publicar»: lanzarlo a mano."
     if [ -n "$motor" ]; then
       echo "::notice::Se ha fusionado un cambio del motor: el resto de PR queda para el siguiente barrido, con el motor nuevo."

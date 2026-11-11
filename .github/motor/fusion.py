@@ -69,9 +69,19 @@ def evaluar_mensaje(mensaje, padre=None):
     return True, f"repaso limpio de {nombre} sobre texto de {', '.join(sorted(redactores))}"
 
 
+# Ficheros que deciden qué se publica: nunca se fusionan solos, para que la puerta no pueda cambiarse a sí misma.
+GUARDIAN = {".github/motor/fusion.py", ".github/motor/fusion_barrido.sh", ".github/motor/revisor_motor.py",
+            ".github/motor/revisor.py", ".github/motor/salud.py", ".github/motor/tests/test_fusion.py"}
+EXT_MOTOR = (".py", ".sh", ".json", ".txt", ".md", ".csv", ".yml", ".yaml")
+
+
 def es_motor(f):
-    """True si el fichero es del motor que se puede fusionar solo (con la revisión del motor): bajo .github/motor/."""
-    return f.startswith(".github/motor/")
+    """True si el fichero es del motor que se puede fusionar solo (con la revisión del motor): texto bajo
+    .github/motor/, sin carpetas ni ficheros ocultos ni __pycache__, y fuera de la lista del guardián."""
+    if not f.startswith(".github/motor/") or f in GUARDIAN or not f.endswith(EXT_MOTOR):
+        return False
+    partes = f.split("/")[2:]
+    return not any(p.startswith(".") or p == "__pycache__" for p in partes)
 
 
 def evaluar_cambios(ficheros):

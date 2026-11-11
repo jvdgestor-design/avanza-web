@@ -46,6 +46,7 @@ jobs:
           ref: main
           path: main
           fetch-depth: 0
+          persist-credentials: false
       - name: Evaluar y fusionar
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
