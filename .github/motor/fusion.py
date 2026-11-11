@@ -8,8 +8,11 @@ La rama termina SIEMPRE en un commit «sello» vacío (git commit --allow-empty)
 El repaso cubre el diff completo de la rama contra main en el commit «Revisado». Así el repaso queda atado a un
 contenido concreto: si algo cambia después, el sello deja de valer.
 
-Además: la rama no toca .github/ ni CNAME, solo cambia ficheros de la web (html, txt, xml, css, js, imágenes, pdf),
-y contiene el main actual. La salud del sitio la comprueba el flujo con el salud.py de main.
+Además: la rama contiene el main actual y solo cambia ficheros de la web (html, txt, xml, css, js, imágenes, pdf)
+o del motor bajo .github/ (11/11/2026, decisión de Jose: el guardián del motor es el revisor de otro modelo, no su clic).
+Quedan fuera y se fusionan a mano: .github/workflows/ (el GITHUB_TOKEN no puede tocar flujos) y CNAME (dominio).
+Las reglas que deciden son siempre las de main, nunca las que trae la rama. Si la rama toca el motor, el barrido
+deja un aviso en el PR al fusionarlo. La salud del sitio la comprueba el flujo con el salud.py de main.
 
 Uso: fusion.py --rama <dir del clon de la rama> --base <sha de main>     (sale 0 si se fusiona, 1 si no)
 """
@@ -64,17 +67,30 @@ def evaluar_mensaje(mensaje, padre=None):
     return True, f"repaso limpio de {nombre} sobre texto de {', '.join(sorted(redactores))}"
 
 
+def es_motor(f):
+    """True si el fichero es del motor que se puede fusionar solo: bajo .github/ (minúsculas, en la raíz), fuera de workflows."""
+    return f.startswith(".github/") and not f.startswith(".github/workflows/")
+
+
 def evaluar_cambios(ficheros):
     if not ficheros:
         return False, "la rama no cambia nada respecto a main"
-    malos = []
+    malos, motor = [], []
     for f in ficheros:
         partes = f.lower().split("/")
-        if ".github" in partes or f.upper() == "CNAME" or not f.lower().endswith(EXTENSIONES):
+        if f.upper() == "CNAME" or f.lower().startswith(".github/workflows/"):
+            malos.append(f)
+        elif ".github" in partes:
+            (motor if es_motor(f) else malos).append(f)
+        elif not f.lower().endswith(EXTENSIONES):
             malos.append(f)
     if malos:
         return False, "ficheros que se fusionan a mano: " + ", ".join(repr(m) for m in malos[:5])
-    return True, f"{len(ficheros)} ficheros de la web"
+    web = len(ficheros) - len(motor)
+    texto = f"{web} ficheros de la web"
+    if motor:
+        texto += f" y {len(motor)} del motor ({', '.join(motor[:5])})"
+    return True, texto
 
 
 def _git(rama, *args):
@@ -111,6 +127,8 @@ def main():
         print("NO: " + f.replace("::", ": :"))
     if not fallos:
         print(f"OK: {motivo}; {motivo2}")
+        if any(es_motor(f) for f in ficheros):
+            print("MOTOR: " + ", ".join(f for f in ficheros if es_motor(f))[:900])
     sys.exit(1 if fallos else 0)
 
 

@@ -28,7 +28,8 @@ while read -r pr sha; do
   fi
   tok=$(openssl rand -hex 16)
   echo "::stop-commands::$tok"
-  python3 "$MAIN/.github/motor/fusion.py" --rama rama --base "$base"; puerta=$?
+  python3 "$MAIN/.github/motor/fusion.py" --rama rama --base "$base" | tee puerta.txt; puerta=${PIPESTATUS[0]}
+  motor=$(sed -n 's/^MOTOR: //p' puerta.txt)
   salud=9
   if [ $puerta -eq 0 ]; then python3 "$MAIN/.github/motor/salud.py" --raiz rama; salud=$?; fi
   echo "::$tok::"
@@ -49,6 +50,13 @@ while read -r pr sha; do
     '{sha:$sha, merge_method:"squash", commit_title:$t, commit_message:$m}' > cuerpo.json
   if gh api -X PUT "repos/$REPO/pulls/$pr/merge" --input cuerpo.json >/dev/null; then
     echo "::notice::PR #$pr fusionado en main."
+    if [ -n "$motor" ]; then
+      repaso=$(printf '%s\n' "$mensaje" | grep -i 'repaso *:' | head -1)
+      printf 'Aviso para Jose: este cambio toca el motor de la web, no las páginas, y se ha publicado solo porque lo revisó otro modelo.\n\nQué cambia: %s\n\n%s\n\nFicheros del motor: %s\n' \
+        "$titulo" "$repaso" "$motor" > aviso.txt
+      gh pr comment "$pr" -R "$REPO" --body-file aviso.txt >/dev/null \
+        || echo "::warning::PR #$pr fusionado, pero no se pudo dejar el aviso del motor."
+    fi
     # Lo que empuja el GITHUB_TOKEN no lanza flujos; «Después de publicar» se lanza a mano con el main anterior.
     gh workflow run publicacion.yml -R "$REPO" --ref main -f antes="$base" \
       || echo "::warning::PR #$pr fusionado, pero no se pudo lanzar «Después de publicar»: lanzarlo a mano."
