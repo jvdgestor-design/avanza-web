@@ -12,8 +12,8 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review, edited]
     branches: [main]
-    paths:
-      - ".github/**"
+    # Sin filtro de rutas a propósito: GitHub solo mira los 300 primeros ficheros del diff. Toda cabeza de PR a main
+    # tiene así su revisión real; si no toca .github/, el programa sale bien sin llamar al modelo.
 permissions:
   contents: read
   statuses: write

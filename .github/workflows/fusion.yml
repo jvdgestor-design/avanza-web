@@ -19,8 +19,7 @@ on:
     branches: [main]
   workflow_run:  # en cuanto acaba una «Revisión del motor», sin esperar al barrido de la hora
     workflows: ["Revisión del motor"]
-    types: [completed]
-    branches: [main]  # pull_request_target corre en main; un flujo de rama con el mismo nombre no despierta la fusión
+    types: [completed]  # sin filtro de rama: la ejecución lleva la rama del PR; la fusión siempre corre lo de main
   schedule:
     - cron: "41 * * * *"
   workflow_dispatch:
