@@ -54,8 +54,8 @@
 - [Amazon KDP e impuestos en España](https://grupoavanzaconsultores.es/amazon-kdp-impuestos-espana.html): cómo clasificar las regalías del propio autor en IRPF, cuándo puede existir actividad económica y RETA, por qué el SMI no es una exclusión automática, IVA de los servicios de autor y retenciones extranjeras.
 - [Cuándo prescribe una deuda con Hacienda](https://grupoavanzaconsultores.es/cuando-prescribe-deuda-hacienda.html): plazo general de cuatro años, fecha de inicio, interrupciones, actuaciones recaudatorias, diferencia entre caducidad y prescripción, sanciones, herederos y sociedades disueltas.
 - [Capitalizar el paro](https://grupoavanzaconsultores.es/capitalizar-el-paro-pago-unico.html): pago único para emprender.
-- [Licencia de actividad y cambio de titularidad](https://grupoavanzaconsultores.es/licencia-de-actividad-cambio-de-titularidad.html)
-- [Ayudas a la contratación en Paterna](https://grupoavanzaconsultores.es/ayudas-contratacion-paterna.html)
+- [Licencia de actividad y cambio de titularidad](https://grupoavanzaconsultores.es/licencia-de-actividad-cambio-de-titularidad.html): Traspaso de licencia de actividad: por qué firmar el contrato no cambia la licencia, qué comprobar antes y cómo se tramita el cambio en Paterna.
+- [Ayudas a la contratación en Paterna](https://grupoavanzaconsultores.es/ayudas-contratacion-paterna.html): Cheque Empleo 2026 de Paterna: requisitos, cuantías, plazo cerrado el 31/10/2026 e incompatibilidad con otras ayudas. Y el Cheque Emprendedor/a.
 - [Calendario fiscal](https://grupoavanzaconsultores.es/calendario-fiscal.html): vencimientos del autónomo y la pyme.
 
 ## En ruso (на русском)
@@ -105,9 +105,9 @@
 
 ## Optional
 
-- [Aviso legal](https://grupoavanzaconsultores.es/aviso-legal.html)
-- [Política de privacidad](https://grupoavanzaconsultores.es/privacidad.html)
-- [Política de cookies](https://grupoavanzaconsultores.es/cookies.html)
+- [Aviso legal](https://grupoavanzaconsultores.es/aviso-legal.html): Aviso legal de grupoavanzaconsultores.es, titularidad de Jose Vicente Díaz Madrid, Grupo Avanza Consultores.
+- [Política de privacidad](https://grupoavanzaconsultores.es/privacidad.html): Política de privacidad de Grupo Avanza Consultores: responsable, finalidad, legitimación, conservación, destinatarios y derechos.
+- [Política de cookies](https://grupoavanzaconsultores.es/cookies.html): Este sitio no instala cookies propias ni de terceros y no utiliza analítica ni publicidad.
 
 ## Ley Beckham — ES / EN / RU
 - [Ley Beckham: régimen de impatriados](https://grupoavanzaconsultores.es/regimen-impatriados-ley-beckham.html): régimen especial del artículo 93 de la Ley del IRPF; quién puede acogerse, plazo de seis meses del modelo 149, tipos del 24 % y 47 %, familia y modelo 151.
@@ -153,52 +153,52 @@
 
 
 ## Français et Deutsch
-- [Spanische Steuern für internationale Kunden | Grupo Avanza](https://grupoavanzaconsultores.es/de.html)
-- [Modelo 210: spanische Steuern für Nichtansässige](https://grupoavanzaconsultores.es/de-modelo-210-nichtansaessige.html)
-- [Immobilie in Spanien verkaufen bei Wohnsitz im Ausland](https://grupoavanzaconsultores.es/de-immobilie-spanien-verkaufen-ausland.html)
-- [Immobilie in Spanien kaufen: Steuern und Pflichten danach](https://grupoavanzaconsultores.es/de-immobilie-spanien-kaufen.html)
-- [Erbschaft in Spanien bei Wohnsitz im Ausland](https://grupoavanzaconsultores.es/de-erbschaft-spanien-erben-ausland.html)
-- [Geldschenkung aus dem Ausland: Steuern in Spanien](https://grupoavanzaconsultores.es/de-geldschenkung-ausland-spanien.html)
-- [Versäumte Steuererklärungen in Spanien nachholen](https://grupoavanzaconsultores.es/de-steuern-spanien-nacherklaeren.html)
-- [Steuerliche Ansässigkeit beim Umzug nach Spanien](https://grupoavanzaconsultores.es/de-steueransaessigkeit-umzug-spanien.html)
-- [SL in Spanien gründen als Ausländer](https://grupoavanzaconsultores.es/de-sl-gruenden-spanien-auslaender.html)
-- [Créer une SL en Espagne en tant qu’étranger](https://grupoavanzaconsultores.es/fr-creer-sl-espagne-etranger.html)
-- [Selbständig in Spanien: Autónomo und Sozialversicherung](https://grupoavanzaconsultores.es/de-selbststaendig-autonomo-spanien.html)
-- [Indépendant en Espagne : statut d’autónomo](https://grupoavanzaconsultores.es/fr-independant-autonomo-espagne.html)
-- [Beckham-Regelung in Spanien: Voraussetzungen und Frist](https://grupoavanzaconsultores.es/de-beckham-regelung-spanien.html)
-- [Ansässigkeitsbescheinigung für Spanien](https://grupoavanzaconsultores.es/de-ansaessigkeitsbescheinigung-spanien.html)
-- [Wegzug aus Spanien: Steuererklärung und weitere Pflichten](https://grupoavanzaconsultores.es/de-wegzug-spanien-steuern.html)
-- [Modelo 720: Auslandsvermögen in Spanien melden](https://grupoavanzaconsultores.es/de-modelo-720-auslandsvermoegen.html)
-- [Britische Rente bei Wohnsitz in Spanien](https://grupoavanzaconsultores.es/de-britische-rente-wohnsitz-spanien.html)
-- [Deutsche Rente bei Wohnsitz in Spanien](https://grupoavanzaconsultores.es/de-deutsche-rente-wohnsitz-spanien.html)
-- [Französische Rente bei Wohnsitz in Spanien](https://grupoavanzaconsultores.es/de-franzoesische-rente-wohnsitz-spanien.html)
-- [Italienische Rente bei Wohnsitz in Spanien](https://grupoavanzaconsultores.es/de-italienische-rente-wohnsitz-spanien.html)
-- [Schreiben vom spanischen Finanzamt: Frist und Antwort prüfen](https://grupoavanzaconsultores.es/de-schreiben-spanisches-finanzamt.html)
-- [Kontakt | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/de-kontakt.html)
-- [Impressum](https://grupoavanzaconsultores.es/de-impressum.html)
-- [Datenschutzerklärung](https://grupoavanzaconsultores.es/de-datenschutz.html)
-- [Cookie-Hinweise](https://grupoavanzaconsultores.es/de-cookies.html)
-- [Fiscalité espagnole : résidents et non-résidents](https://grupoavanzaconsultores.es/fr.html)
-- [Résidence fiscale en Espagne : l’année d’arrivée](https://grupoavanzaconsultores.es/fr-residence-fiscale-espagne.html)
-- [Loi Beckham : le régime espagnol des impatriés](https://grupoavanzaconsultores.es/fr-regime-impatries-loi-beckham.html)
-- [Certificat de résidence fiscale en Espagne](https://grupoavanzaconsultores.es/fr-certificat-residence-fiscale.html)
-- [Quitter l’Espagne : votre situation fiscale](https://grupoavanzaconsultores.es/fr-quitter-espagne-fiscalite.html)
-- [Modelo 720 : déclarer ses avoirs à l’étranger](https://grupoavanzaconsultores.es/fr-modele-720-avoirs-etranger.html)
-- [Modelo 210 : revenus des non-résidents en Espagne](https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html)
-- [Donation d’argent depuis l’étranger vers l’Espagne](https://grupoavanzaconsultores.es/fr-donation-argent-etranger.html)
-- [Succession en Espagne : héritier non-résident](https://grupoavanzaconsultores.es/fr-succession-heritier-non-resident.html)
-- [Vendre un bien en Espagne en tant que non-résident](https://grupoavanzaconsultores.es/fr-vendre-bien-immobilier-non-resident.html)
-- [Acheter un logement en Espagne : impôts et démarches](https://grupoavanzaconsultores.es/fr-acheter-bien-immobilier-espagne.html)
-- [Régulariser sa situation fiscale en Espagne](https://grupoavanzaconsultores.es/fr-regulariser-impots-espagne.html)
-- [Courrier de l’AEAT : comprendre et répondre](https://grupoavanzaconsultores.es/fr-courrier-agence-fiscale.html)
-- [Retraite britannique et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-britannique-espagne.html)
-- [Retraite allemande et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-allemande-espagne.html)
-- [Retraite française et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-francaise-espagne.html)
-- [Retraite italienne et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-italienne-espagne.html)
-- [Contact | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-contact.html)
-- [Mentions légales | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-mentions-legales.html)
-- [Confidentialité | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-confidentialite.html)
-- [Cookies | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-cookies.html)
+- [Spanische Steuern für internationale Kunden | Grupo Avanza](https://grupoavanzaconsultores.es/de.html): Beratung zu Steuern, Buchhaltung und Personalverwaltung in Spanien. Für Zugezogene, Nichtansässige und Unternehmen. Paterna, Valencia; auch online.
+- [Modelo 210: spanische Steuern für Nichtansässige](https://grupoavanzaconsultores.es/de-modelo-210-nichtansaessige.html): Modelo 210 für Immobilien in Spanien: Mieteinnahmen, Eigennutzung und Verkauf. Fristen und Prüfung aus dem Ausland.
+- [Immobilie in Spanien verkaufen bei Wohnsitz im Ausland](https://grupoavanzaconsultores.es/de-immobilie-spanien-verkaufen-ausland.html): Verkauf als Nichtansässiger: 3 % Kaufpreiseinbehalt, 19 % auf den Gewinn, Modelo 210, Erstattung und kommunale plusvalía.
+- [Immobilie in Spanien kaufen: Steuern und Pflichten danach](https://grupoavanzaconsultores.es/de-immobilie-spanien-kaufen.html): Immobilienkauf als Ausländer oder Nichtansässiger: ITP, IVA, AJD, Regeln in Valencia sowie laufendes Modelo 210.
+- [Erbschaft in Spanien bei Wohnsitz im Ausland](https://grupoavanzaconsultores.es/de-erbschaft-spanien-erben-ausland.html): Spanische Erbschaftsteuer für nichtansässige Erben: Zuständigkeit, regionale Vergünstigungen, Sechsmonatsfrist, Unterlagen und Immobilie danach.
+- [Geldschenkung aus dem Ausland: Steuern in Spanien](https://grupoavanzaconsultores.es/de-geldschenkung-ausland-spanien.html): Geld oder Immobilie von Angehörigen im Ausland: spanische Schenkungsteuer, valencianische Vergünstigungen, Dokumentation und Fristen.
+- [Versäumte Steuererklärungen in Spanien nachholen](https://grupoavanzaconsultores.es/de-steuern-spanien-nacherklaeren.html): Spanische Steuererklärungen nachreichen: Ansässigkeit, offene Jahre, Zuschläge, Fristen und Vertretung aus dem Ausland.
+- [Steuerliche Ansässigkeit beim Umzug nach Spanien](https://grupoavanzaconsultores.es/de-steueransaessigkeit-umzug-spanien.html): Umzug nach Spanien: steuerliche Ansässigkeit, 183-Tage-Regel, Welteinkommen, Doppelbesteuerung und Sonderregelung für Zuziehende.
+- [SL in Spanien gründen als Ausländer](https://grupoavanzaconsultores.es/de-sl-gruenden-spanien-auslaender.html): Spanische SL mit ausländischen Gesellschaftern gründen: NIE/NIF, Kapital, Auslandsinvestition und wirtschaftlich Berechtigte. Schriftlich auf Deutsch.
+- [Créer une SL en Espagne en tant qu’étranger](https://grupoavanzaconsultores.es/fr-creer-sl-espagne-etranger.html): Créer une SL espagnole avec des associés étrangers : NIE/NIF, capital, investissement étranger et bénéficiaires effectifs. Échanges en français par écrit.
+- [Selbständig in Spanien: Autónomo und Sozialversicherung](https://grupoavanzaconsultores.es/de-selbststaendig-autonomo-spanien.html): Selbständig in Spanien als EU-Bürger: steuerliche Ansässigkeit, Anmeldung als Autónomo und zuständige Sozialversicherung. Schriftlich auf Deutsch.
+- [Indépendant en Espagne : statut d’autónomo](https://grupoavanzaconsultores.es/fr-independant-autonomo-espagne.html): Indépendant de l’UE en Espagne : résidence fiscale, inscription comme autónomo et sécurité sociale applicable. Échanges en français par écrit.
+- [Beckham-Regelung in Spanien: Voraussetzungen und Frist](https://grupoavanzaconsultores.es/de-beckham-regelung-spanien.html): Beckham-Regelung prüfen: Voraussetzungen, Sechsmonatsfrist, Modelo 149, jährliches Modelo 151 und Familienangehörige.
+- [Ansässigkeitsbescheinigung für Spanien](https://grupoavanzaconsultores.es/de-ansaessigkeitsbescheinigung-spanien.html): Spanische Ansässigkeitsbescheinigung für ausländische Behörden und Zahler: Antrag, ausländische Formulare, Ablehnung und Frist.
+- [Wegzug aus Spanien: Steuererklärung und weitere Pflichten](https://grupoavanzaconsultores.es/de-wegzug-spanien-steuern.html): Spanien verlassen: Ansässigkeit im Wegzugsjahr, noch zuzurechnende Einkünfte, Wegzugsbesteuerung von Beteiligungen und Modelo 210.
+- [Modelo 720: Auslandsvermögen in Spanien melden](https://grupoavanzaconsultores.es/de-modelo-720-auslandsvermoegen.html): Modelo 720 für spanische Steueransässige: Vermögensgruppen, 50.000-Euro-Schwellen, Folgejahre, Frist und verspätete Abgabe.
+- [Britische Rente bei Wohnsitz in Spanien](https://grupoavanzaconsultores.es/de-britische-rente-wohnsitz-spanien.html): UK-Renten bei steuerlicher Ansässigkeit in Spanien: State Pension, öffentlicher Dienst, IRPF und Formular DT-Individual Spain.
+- [Deutsche Rente bei Wohnsitz in Spanien](https://grupoavanzaconsultores.es/de-deutsche-rente-wohnsitz-spanien.html): Deutsche Rente in Spanien: gesetzliche Rente, erste Auszahlung, 5-/10-Prozent-Grenze, öffentlicher Dienst und Anrechnung deutscher Steuer.
+- [Französische Rente bei Wohnsitz in Spanien](https://grupoavanzaconsultores.es/de-franzoesische-rente-wohnsitz-spanien.html): Französische Rente in Spanien: frühere Beschäftigung, öffentlicher Dienst, doppelte Staatsangehörigkeit, IRPF und Erklärungspflicht.
+- [Italienische Rente bei Wohnsitz in Spanien](https://grupoavanzaconsultores.es/de-italienische-rente-wohnsitz-spanien.html): Italienische Rente in Spanien: frühere Beschäftigung, öffentlicher Dienst, spanische Staatsangehörigkeit, IRPF und Erklärungspflicht.
+- [Schreiben vom spanischen Finanzamt: Frist und Antwort prüfen](https://grupoavanzaconsultores.es/de-schreiben-spanisches-finanzamt.html): Post von Hacienda oder eine elektronische AEAT-Mitteilung: Zustellung, Antwortfristen, Zahlungsfristen und mögliche Rechtsbehelfe.
+- [Kontakt | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/de-kontakt.html): Schildern Sie uns Ihr Anliegen zu spanischen Steuern oder Behördengängen. Wir klären Leistungsumfang, Fristen und die Sprache der Zusammenarbeit.
+- [Impressum](https://grupoavanzaconsultores.es/de-impressum.html): Angaben zum Betreiber der Website Grupo Avanza Consultores und rechtliche Hinweise nach spanischem Recht.
+- [Datenschutzerklärung](https://grupoavanzaconsultores.es/de-datenschutz.html): Informationen zur Verarbeitung Ihrer Kontaktdaten und Formularanfragen durch Grupo Avanza Consultores.
+- [Cookie-Hinweise](https://grupoavanzaconsultores.es/de-cookies.html): Informationen zu Cookies, externen Ressourcen und lokaler Verarbeitung auf der Website von Grupo Avanza Consultores.
+- [Fiscalité espagnole : résidents et non-résidents](https://grupoavanzaconsultores.es/fr.html): Conseil en fiscalité espagnole à Paterna : résidence fiscale, revenus étrangers, immobilier, donations et successions. Informations en français.
+- [Résidence fiscale en Espagne : l’année d’arrivée](https://grupoavanzaconsultores.es/fr-residence-fiscale-espagne.html): Résidence fiscale en Espagne : règle des 183 jours, intérêts économiques, revenus étrangers et régime des impatriés. Préparer votre première déclaration.
+- [Loi Beckham : le régime espagnol des impatriés](https://grupoavanzaconsultores.es/fr-regime-impatries-loi-beckham.html): Régime des impatriés en Espagne : conditions, délai du Modelo 149, taux, famille et déclaration annuelle Modelo 151.
+- [Certificat de résidence fiscale en Espagne](https://grupoavanzaconsultores.es/fr-certificat-residence-fiscale.html): Obtenir un certificat de résidence fiscale auprès de l’AEAT : justificatifs, conventions fiscales et différences avec le NIE ou le padrón.
+- [Quitter l’Espagne : votre situation fiscale](https://grupoavanzaconsultores.es/fr-quitter-espagne-fiscalite.html): Départ d’Espagne : résidence fiscale, revenus à intégrer à la dernière déclaration, impôt de sortie sur les titres et revenus espagnols conservés.
+- [Modelo 720 : déclarer ses avoirs à l’étranger](https://grupoavanzaconsultores.es/fr-modele-720-avoirs-etranger.html): Comptes, titres, assurances et biens immobiliers à l’étranger : seuils du Modelo 720, déclaration initiale, évolutions et délais.
+- [Modelo 210 : revenus des non-résidents en Espagne](https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html): Immobilier espagnol détenu par un non-résident : location, revenu imputé, vente, taux et délais du Modelo 210.
+- [Donation d’argent depuis l’étranger vers l’Espagne](https://grupoavanzaconsultores.es/fr-donation-argent-etranger.html): Donation internationale : résidence du bénéficiaire, localisation de l’argent, règles régionales, justificatifs et délai de déclaration en Espagne.
+- [Succession en Espagne : héritier non-résident](https://grupoavanzaconsultores.es/fr-succession-heritier-non-resident.html): Succession en Espagne pour un héritier non-résident : impôt, Modelo 650, délai de six mois, règles régionales et plus-value municipale.
+- [Vendre un bien en Espagne en tant que non-résident](https://grupoavanzaconsultores.es/fr-vendre-bien-immobilier-non-resident.html): Vente immobilière par un non-résident : retenue de 3 %, Modelos 211 et 210, calcul de la plus-value et impôt municipal.
+- [Acheter un logement en Espagne : impôts et démarches](https://grupoavanzaconsultores.es/fr-acheter-bien-immobilier-espagne.html): Achat immobilier en Espagne : NIE, impôts à l’acquisition, contrôles préalables et fiscalité annuelle selon votre résidence.
+- [Régulariser sa situation fiscale en Espagne](https://grupoavanzaconsultores.es/fr-regulariser-impots-espagne.html): Revenus étrangers et déclarations manquantes en Espagne : résidence, années à revoir, délais de prescription et régularisation.
+- [Courrier de l’AEAT : comprendre et répondre](https://grupoavanzaconsultores.es/fr-courrier-agence-fiscale.html): Notification de l’administration fiscale espagnole : identifier l’acte, vérifier la date, calculer le délai et préparer une réponse documentée.
+- [Retraite britannique et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-britannique-espagne.html): Fiscalité des retraites britanniques en Espagne : pension privée, State Pension, fonction publique et convention fiscale.
+- [Retraite allemande et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-allemande-espagne.html): Retraite allemande perçue en Espagne : pension légale, pension privée, fonction publique et élimination de la double imposition.
+- [Retraite française et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-francaise-espagne.html): Retraite française perçue en Espagne : pensions privées ou publiques, convention franco-espagnole et double imposition.
+- [Retraite italienne et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-italienne-espagne.html): Retraite italienne perçue en Espagne : pensions privées ou publiques, convention fiscale et double imposition.
+- [Contact | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-contact.html): Présentez votre demande concernant la fiscalité ou les démarches en Espagne. Nous échangeons avec vous en français uniquement par écrit.
+- [Mentions légales | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-mentions-legales.html): Identité de l’éditeur, activité et informations légales du site Grupo Avanza Consultores, régi par le droit espagnol.
+- [Confidentialité | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-confidentialite.html): Traitement des coordonnées et demandes adressées à Grupo Avanza Consultores : finalités, destinataires, conservation et droits.
+- [Cookies | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-cookies.html): Informations sur les cookies, les ressources externes et le traitement local des données sur le site Grupo Avanza Consultores.
 
 
 
@@ -231,18 +231,18 @@
 
 ## Teletrabajo y primera Renta — ES / EN
 
-- [Trabajar desde España para una empresa extranjera](https://grupoavanzaconsultores.es/trabajar-remoto-espana-empresa-extranjera.html)
-- [Working remotely in Spain for a foreign employer](https://grupoavanzaconsultores.es/remote-work-spain-foreign-employer.html)
-- [Primera declaración de la Renta al llegar a España](https://grupoavanzaconsultores.es/primera-renta-extranjero-espana.html)
-- [Your first Spanish income tax return](https://grupoavanzaconsultores.es/first-tax-return-spain-new-resident.html)
-- [Télétravailler en Espagne pour un employeur étranger](https://grupoavanzaconsultores.es/fr-teletravail-espagne-employeur-etranger.html)
-- [Homeoffice in Spanien für einen ausländischen Arbeitgeber](https://grupoavanzaconsultores.es/de-homeoffice-spanien-auslaendischer-arbeitgeber.html)
-- [Votre première déclaration de revenus en Espagne](https://grupoavanzaconsultores.es/fr-premiere-declaration-revenus-espagne.html)
-- [Ihre erste spanische Steuererklärung nach dem Umzug](https://grupoavanzaconsultores.es/de-erste-steuererklaerung-spanien.html)
+- [Trabajar desde España para una empresa extranjera](https://grupoavanzaconsultores.es/trabajar-remoto-espana-empresa-extranjera.html): ¿Trabajas desde España para una empresa extranjera? Revisamos residencia, IRPF, retenciones y doble imposición. Atención online con presupuesto previo.
+- [Working remotely in Spain for a foreign employer](https://grupoavanzaconsultores.es/remote-work-spain-foreign-employer.html): Working in Spain for a foreign employer? Review tax residence, salary withholding, double taxation and special regimes. Online advice in written English.
+- [Primera declaración de la Renta al llegar a España](https://grupoavanzaconsultores.es/primera-renta-extranjero-espana.html): Prepara tu primera Renta en España: residencia, ingresos extranjeros, borrador y doble imposición. Revisión online de documentos con presupuesto previo.
+- [Your first Spanish income tax return](https://grupoavanzaconsultores.es/first-tax-return-spain-new-resident.html): Your first Spanish tax return: review residence, foreign income, the draft return and double-tax relief. Online document review with written English service.
+- [Télétravailler en Espagne pour un employeur étranger](https://grupoavanzaconsultores.es/fr-teletravail-espagne-employeur-etranger.html): Télétravail en Espagne pour un employeur étranger : résidence fiscale, salaire, retenues et régime des impatriés. Conseil en français par écrit.
+- [Homeoffice in Spanien für einen ausländischen Arbeitgeber](https://grupoavanzaconsultores.es/de-homeoffice-spanien-auslaendischer-arbeitgeber.html): Homeoffice in Spanien für einen ausländischen Arbeitgeber: Steueransässigkeit, Gehalt, Steuerabzug und Beckham-Regelung. Schriftliche Beratung auf Deutsch.
+- [Votre première déclaration de revenus en Espagne](https://grupoavanzaconsultores.es/fr-premiere-declaration-revenus-espagne.html): Première déclaration en Espagne : résidence, revenus étrangers, projet de déclaration et double imposition. Examen en ligne, échanges en français par écrit.
+- [Ihre erste spanische Steuererklärung nach dem Umzug](https://grupoavanzaconsultores.es/de-erste-steuererklaerung-spanien.html): Erste Steuererklärung in Spanien: Ansässigkeit, ausländische Einkünfte, Erklärungsentwurf und Doppelbesteuerung. Online-Beratung schriftlich auf Deutsch.
 
 ## Alquiler y compra a no residentes — FR / DE
 
-- [Louer un bien en Espagne en tant que non-résident](https://grupoavanzaconsultores.es/fr-louer-bien-espagne-non-resident.html)
-- [Acheter à un vendeur non-résident : Modelo 211](https://grupoavanzaconsultores.es/fr-acheter-vendeur-non-resident-modele-211.html)
-- [Immobilie in Spanien als Nichtansässiger vermieten](https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html)
-- [Kauf von einem nichtansässigen Verkäufer: Modelo 211](https://grupoavanzaconsultores.es/de-kauf-nichtansaessiger-verkaeufer-modelo-211.html)
+- [Louer un bien en Espagne en tant que non-résident](https://grupoavanzaconsultores.es/fr-louer-bien-espagne-non-resident.html): Loyers espagnols et modèle 210 pour propriétaires non-résidents. Grupo Avanza, à Paterna (Valence), vérifie revenus, frais et délais à distance.
+- [Acheter à un vendeur non-résident : Modelo 211](https://grupoavanzaconsultores.es/fr-acheter-vendeur-non-resident-modele-211.html): Achat immobilier à un vendeur non-résident en Espagne : retenue de 3 % et modèle 211. Grupo Avanza, Paterna (Valence), vous accompagne à distance.
+- [Immobilie in Spanien als Nichtansässiger vermieten](https://grupoavanzaconsultores.es/de-immobilie-spanien-vermieten-nichtansaessig.html): Mieteinkünfte in Spanien und Modelo 210 für Nichtansässige. Grupo Avanza in Paterna, Valencia, prüft Einnahmen, Kosten und Fristen online.
+- [Kauf von einem nichtansässigen Verkäufer: Modelo 211](https://grupoavanzaconsultores.es/de-kauf-nichtansaessiger-verkaeufer-modelo-211.html): Immobilienkauf vom nichtansässigen Verkäufer in Spanien: 3 % Einbehalt und Modelo 211. Grupo Avanza in Paterna, Valencia, prüft den Vorgang online.
