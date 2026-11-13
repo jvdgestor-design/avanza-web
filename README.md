@@ -10,6 +10,8 @@
 
 ## Servicios
 
+- [Accounting and tax services in Spain](https://grupoavanzaconsultores.es/accounting-tax-service-spain.html): ongoing bookkeeping, tax returns and payroll for autónomos and small companies; changing advisers, online service and written English. Scope and quote agreed before starting.
+
 - [Asesoría y gestoría en Valencia](https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-valencia.html): asesoría fiscal, contable y laboral y gestoría para autónomos y pymes de Valencia ciudad, Paterna, La Cañada, Burjassot y el área metropolitana; online para toda España y en persona con cita.
 - [Asesoría y gestoría en Paterna](https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-paterna.html): asesoría y gestoría con domicilio en Paterna para autónomos y pymes de Paterna, La Cañada, Burjassot, l'Eliana y el área de Valencia; online para toda España y en persona solo con cita.
 - [Asesoría y gestoría en Burjassot](https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-burjassot.html): fiscal, contable, laboral y trámites para autónomos y pymes de Burjassot; impuestos municipales y exención del IAE; a distancia y en persona solo con cita en Paterna.
