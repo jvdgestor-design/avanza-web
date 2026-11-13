@@ -347,7 +347,7 @@ def boe_literal(boe_id, articulo):
 
 def radar(claude, estado, consultas, carpeta):
     n = len(consultas)
-    hechas = []
+    hechas, fallidas = [], 0
     for _ in range(min(RADAR_N, n)):
         c = consultas[estado.d["radar_idx"] % n]
         if estado.d["tokens"] > TOPE_TOKENS * 0.5 or not estado.queda(60000, 4):
@@ -364,6 +364,7 @@ def radar(claude, estado, consultas, carpeta):
             raise
         except Exception as e:
             anota("warning", f"Radar {c['id']}: {type(e).__name__}: {una_linea(e, 200)}")
+            fallidas += 1
             continue
         txt, urls = texto_de(bloques), urls_de(bloques)
         citada = DOMINIO in " ".join(urls) or "grupo avanza" in txt.lower()
@@ -377,6 +378,8 @@ def radar(claude, estado, consultas, carpeta):
             w.writerow([ahora().strftime("%Y-%m-%d %H:%M"), c["id"], c["idioma"], "sí" if citada else "no",
                         len(urls), " ".join(dict.fromkeys(doms))])
         _investigar(carpeta, c, urls)
+    if fallidas and not hechas:
+        raise RuntimeError(f"fallaron las {fallidas} consultas del radar (¿búsqueda web deshabilitada o clave?)")
     for i, cit, doms in hechas:
         resumen(f"- Radar {i}: {'CITADA' if cit else 'no citada'} · {len(doms)} fuentes · "
                 f"{', '.join(list(dict.fromkeys(doms))[:6])}")
@@ -521,6 +524,7 @@ def foro(claude, estado, carpeta):
             anota("warning", f"Foro t={tema['t']} (fallo {fallos[tema['t']]}): {type(e).__name__}: {una_linea(e, 200)}")
             if fallos[tema["t"]] >= 2:
                 vistos[tema["t"]] = tema["respuestas"]
+                fallos.pop(tema["t"], None)
             continue
         fallos.pop(tema["t"], None)
         vistos[tema["t"]] = tema["respuestas"]
@@ -610,7 +614,7 @@ def refuerzo(claude, estado, consultas, carpeta):
     actual = (prop.get("actual") or "").strip()
     pag_norm = re.sub(r"\s+", " ", pagina)
     pos = pag_norm.find(re.sub(r"\s+", " ", actual)) if actual else -1
-    if pos < 0 or pos > 4000:
+    if pos < 0 or pos > 4000 or len(re.sub(r"\s+", " ", actual)) < 60:
         anota("warning", f"Refuerzo {c['id']}: la entradilla «actual» no está literal al principio de la página; se descarta")
         return None
     nueva = prop.get("nueva", "").strip()
