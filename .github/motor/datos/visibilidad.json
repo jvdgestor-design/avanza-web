@@ -1,0 +1,281 @@
+{
+ "fuente": "claude/CONSULTAS-OBJETIVO.md (11/11/2026); texto literal, no se cambia sin anotarlo allí",
+ "consultas": [
+  {
+   "id": "X01",
+   "idioma": "es",
+   "pregunta": "¿Cómo presento el modelo 210 si soy no residente y tengo un piso en España?",
+   "pagina": "modelo-210-no-residentes.html"
+  },
+  {
+   "id": "X02",
+   "idioma": "en",
+   "pregunta": "how to file modelo 210 non resident Spain",
+   "pagina": "modelo-210-non-resident-tax-spain.html"
+  },
+  {
+   "id": "X03",
+   "idioma": "de",
+   "pregunta": "Modelo 210 Spanien Nichtresidente Steuererklärung Wohnung",
+   "pagina": "de-modelo-210-nichtansaessige.html"
+  },
+  {
+   "id": "X04",
+   "idioma": "fr",
+   "pregunta": "impôt non-résident Espagne modèle 210 location",
+   "pagina": "fr-modele-210-non-residents.html"
+  },
+  {
+   "id": "X05",
+   "idioma": "ru",
+   "pregunta": "как подать модель 210 в Испании",
+   "pagina": "ru-model-210-nerezidenty.html"
+  },
+  {
+   "id": "X06",
+   "idioma": "es",
+   "pregunta": "Me mudo a España, ¿desde cuándo soy residente fiscal y qué declaro el primer año?",
+   "pagina": "residencia-fiscal-al-llegar-a-espana.html"
+  },
+  {
+   "id": "X07",
+   "idioma": "en",
+   "pregunta": "moving to Spain when do I become tax resident and what do I declare the first year",
+   "pagina": "tax-residence-moving-to-spain.html"
+  },
+  {
+   "id": "X08",
+   "idioma": "de",
+   "pregunta": "Umzug nach Spanien ab wann steuerlich ansässig erstes Jahr",
+   "pagina": "de-steueransaessigkeit-umzug-spanien.html"
+  },
+  {
+   "id": "X09",
+   "idioma": "fr",
+   "pregunta": "déménager en Espagne à partir de quand résident fiscal première année",
+   "pagina": "fr-residence-fiscale-espagne.html"
+  },
+  {
+   "id": "X10",
+   "idioma": "ru",
+   "pregunta": "налоговое резидентство Испания при переезде первый год",
+   "pagina": "ru-nalogovoe-rezidentstvo-pri-pereezde.html"
+  },
+  {
+   "id": "X11",
+   "idioma": "es",
+   "pregunta": "Me voy de España, ¿cómo dejo de ser residente fiscal y qué tengo que presentar?",
+   "pagina": "irse-de-espana-impuestos-cambio-residencia.html"
+  },
+  {
+   "id": "X12",
+   "idioma": "en",
+   "pregunta": "leaving Spain how to stop being tax resident",
+   "pagina": "leaving-spain-tax-residence.html"
+  },
+  {
+   "id": "X13",
+   "idioma": "de",
+   "pregunta": "Wegzug aus Spanien Steuern abmelden steuerliche Ansässigkeit beenden",
+   "pagina": "de-wegzug-spanien-steuern.html"
+  },
+  {
+   "id": "X14",
+   "idioma": "fr",
+   "pregunta": "quitter l'Espagne fiscalité fin de résidence fiscale",
+   "pagina": "fr-quitter-espagne-fiscalite.html"
+  },
+  {
+   "id": "X15",
+   "idioma": "ru",
+   "pregunta": "отъезд из Испании налоги как перестать быть налоговым резидентом",
+   "pagina": "ru-otezd-iz-ispanii-nalogi.html"
+  },
+  {
+   "id": "X16",
+   "idioma": "es",
+   "pregunta": "Herencia en España con herederos que viven fuera, ¿qué impuestos y plazos hay?",
+   "pagina": "herencia-en-espana-heredero-no-residente.html"
+  },
+  {
+   "id": "X17",
+   "idioma": "en",
+   "pregunta": "inheritance tax Spain non resident heir",
+   "pagina": "inheritance-spain-non-resident-heir.html"
+  },
+  {
+   "id": "X18",
+   "idioma": "de",
+   "pregunta": "Erbschaft in Spanien Erben im Ausland Steuern",
+   "pagina": "de-erbschaft-spanien-erben-ausland.html"
+  },
+  {
+   "id": "X19",
+   "idioma": "fr",
+   "pregunta": "succession en Espagne héritier non résident impôts",
+   "pagina": "fr-succession-heritier-non-resident.html"
+  },
+  {
+   "id": "X20",
+   "idioma": "ru",
+   "pregunta": "наследство в Испании нерезидент налог",
+   "pagina": "ru-nasledstvo-v-ispanii-nerezident.html"
+  },
+  {
+   "id": "X21",
+   "idioma": "en",
+   "pregunta": "gift of money from parents abroad to child living in Spain tax",
+   "pagina": "gift-of-money-from-abroad-spain.html"
+  },
+  {
+   "id": "X22",
+   "idioma": "de",
+   "pregunta": "Geldschenkung aus dem Ausland an Kind in Spanien Steuer",
+   "pagina": "de-geldschenkung-ausland-spanien.html"
+  },
+  {
+   "id": "X23",
+   "idioma": "es",
+   "pregunta": "Vendo un piso en España y no soy residente, ¿qué impuestos pago y qué es la retención del 3 %?",
+   "pagina": "vender-inmueble-en-espana-no-residente.html"
+  },
+  {
+   "id": "X24",
+   "idioma": "en",
+   "pregunta": "selling apartment Spain non resident tax",
+   "pagina": "selling-property-spain-non-resident.html"
+  },
+  {
+   "id": "X25",
+   "idioma": "de",
+   "pregunta": "Immobilie in Spanien verkaufen als Nichtresident Steuern",
+   "pagina": "de-immobilie-spanien-verkaufen-ausland.html"
+  },
+  {
+   "id": "X26",
+   "idioma": "fr",
+   "pregunta": "vendre un bien immobilier en Espagne non-résident impôt retenue 3 %",
+   "pagina": "fr-vendre-bien-immobilier-non-resident.html"
+  },
+  {
+   "id": "X27",
+   "idioma": "ru",
+   "pregunta": "продажа квартиры в Испании нерезидентом налог",
+   "pagina": "ru-prodazha-nedvizhimosti-nerezident.html"
+  },
+  {
+   "id": "X28",
+   "idioma": "es",
+   "pregunta": "Cobro una pensión británica y vivo en Valencia, ¿dónde tributa?",
+   "pagina": "pension-reino-unido-residente-en-espana.html"
+  },
+  {
+   "id": "X29",
+   "idioma": "en",
+   "pregunta": "UK pension taxed in Spain if I move to Valencia",
+   "pagina": "uk-pension-tax-spain-resident.html"
+  },
+  {
+   "id": "X30",
+   "idioma": "de",
+   "pregunta": "deutsche Rente versteuern mit Wohnsitz in Spanien",
+   "pagina": "de-deutsche-rente-wohnsitz-spanien.html"
+  },
+  {
+   "id": "X31",
+   "idioma": "fr",
+   "pregunta": "retraite française imposée en Espagne quand on est résident",
+   "pagina": "fr-retraite-francaise-espagne.html"
+  },
+  {
+   "id": "X33",
+   "idioma": "es",
+   "pregunta": "¿Qué es la ley Beckham y cómo se solicita con el modelo 149?",
+   "pagina": "regimen-impatriados-ley-beckham.html"
+  },
+  {
+   "id": "X34",
+   "idioma": "en",
+   "pregunta": "Beckham law Spain how to apply",
+   "pagina": "beckham-law-spain-special-tax-regime.html"
+  },
+  {
+   "id": "X35",
+   "idioma": "de",
+   "pregunta": "Beckham-Gesetz Spanien beantragen Modelo 149",
+   "pagina": "de-beckham-regelung-spanien.html"
+  },
+  {
+   "id": "X36",
+   "idioma": "fr",
+   "pregunta": "loi Beckham Espagne comment en bénéficier",
+   "pagina": "fr-regime-impatries-loi-beckham.html"
+  },
+  {
+   "id": "X37",
+   "idioma": "ru",
+   "pregunta": "закон Бекхэма Испания как оформить",
+   "pagina": "ru-rezhim-bekhema-ispaniya.html"
+  },
+  {
+   "id": "X38",
+   "idioma": "es",
+   "pregunta": "Soy extranjero, ¿cómo constituyo una SL en España?",
+   "pagina": "constitucion-sociedad-limitada-extranjero-espana.html"
+  },
+  {
+   "id": "X39",
+   "idioma": "en",
+   "pregunta": "how to set up an SL limited company in Spain as a foreigner",
+   "pagina": "setting-up-limited-company-spain-foreigner.html"
+  },
+  {
+   "id": "X40",
+   "idioma": "de",
+   "pregunta": "GmbH (SL) in Spanien gründen als Ausländer",
+   "pagina": "de-sl-gruenden-spanien-auslaender.html"
+  },
+  {
+   "id": "X41",
+   "idioma": "fr",
+   "pregunta": "créer une SL en Espagne quand on est étranger",
+   "pagina": "fr-creer-sl-espagne-etranger.html"
+  },
+  {
+   "id": "X42",
+   "idioma": "ru",
+   "pregunta": "открыть SL в Испании иностранцу",
+   "pagina": "ru-sozdanie-sl-ispaniya-inostranec.html"
+  },
+  {
+   "id": "X43",
+   "idioma": "es",
+   "pregunta": "Soy extranjero, ¿cómo me doy de alta como autónomo en España?",
+   "pagina": "autonomo-extranjero-en-espana.html"
+  },
+  {
+   "id": "X44",
+   "idioma": "en",
+   "pregunta": "how to register as autonomo in Spain as a foreigner",
+   "pagina": "self-employed-autonomo-spain-foreigner.html"
+  },
+  {
+   "id": "X45",
+   "idioma": "de",
+   "pregunta": "als Ausländer in Spanien selbstständig autónomo anmelden",
+   "pagina": "de-selbststaendig-autonomo-spanien.html"
+  },
+  {
+   "id": "X46",
+   "idioma": "fr",
+   "pregunta": "devenir autónomo indépendant en Espagne étranger",
+   "pagina": "fr-independant-autonomo-espagne.html"
+  },
+  {
+   "id": "X47",
+   "idioma": "ru",
+   "pregunta": "как стать автономо в Испании иностранцу",
+   "pagina": "ru-autonomo-dve-strany-es.html"
+  }
+ ]
+}

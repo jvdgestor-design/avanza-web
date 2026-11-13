@@ -1,0 +1,67 @@
+# Motor de visibilidad por API (capa 2): radar de citas en IA + respuestas de foro y refuerzos de página,
+# redactados por Sonnet y revisados por Opus (puerta 5), pagados con los créditos de API del plan.
+# Escribe en la rama datos-motor, carpeta motor/visibilidad/ (INDICE.md, radar.csv, investigar.md, listo/, apartado/).
+# Nada sale a terceros desde aquí: lo de listo/ lo publica la pasada de Claude.
+# Tope diario en el propio script (AVANZA_TOPE_TOKENS / AVANZA_TOPE_BUSQUEDAS).
+# A mano: gh workflow run visibilidad.yml -f tarea=radar|foro|refuerzo|todo
+name: Motor de visibilidad
+on:
+  schedule:
+    - cron: "37 7,9,11,13,15,17,19 * * *"   # 8:37 a 20:37 en Madrid en invierno, cada dos horas
+  workflow_dispatch:
+    inputs:
+      tarea:
+        description: "auto (radar + foro o refuerzo, alternando), radar, foro, refuerzo o todo"
+        required: false
+        default: "auto"
+  push:
+    branches: ["motor/visibilidad"]
+    paths:
+      - ".github/motor/visibilidad.py"
+      - ".github/workflows/visibilidad.yml"
+permissions:
+  contents: write   # solo para escribir en la rama datos-motor
+concurrency:
+  group: motor-visibilidad
+  cancel-in-progress: false
+jobs:
+  visibilidad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+      - name: Rama datos-motor
+        run: |
+          git config --global user.name "motor-visibilidad"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin datos-motor:datos-motor
+          git worktree add datos datos-motor
+          mkdir -p datos/motor/visibilidad
+      - name: Visibilidad
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAREA: ${{ github.event.inputs.tarea || 'auto' }}
+          EVENTO: ${{ github.event_name }}
+        run: |
+          if [ "$EVENTO" = "push" ]; then
+            # prueba al subir el motor: una consulta de radar y un intento de foro, en una carpeta aparte
+            AVANZA_RADAR_N=1 python3 .github/motor/visibilidad.py --datos datos/motor/visibilidad-prueba --tarea todo
+          else
+            case "$TAREA" in auto|radar|foro|refuerzo|todo) ;; *) echo "::error::tarea no válida"; exit 1;; esac
+            python3 .github/motor/visibilidad.py --datos datos/motor/visibilidad --tarea "$TAREA"
+          fi
+      - name: Guardar
+        if: always()
+        run: |
+          cd datos
+          for d in motor/visibilidad motor/visibilidad-prueba; do [ -d "$d" ] && git add -A "$d"; done; true
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -qm "visibilidad: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q origin datos-motor && exit 0
+          for i in 1 2 3 4; do
+            sleep $((i * 5))
+            git pull -q --rebase origin datos-motor || { git rebase --abort; exit 1; }
+            git push -q origin datos-motor && exit 0
+          done
+          echo "::error::No se pudo guardar en datos-motor: el gasto de hoy no queda anotado"
+          exit 1
