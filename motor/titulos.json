@@ -4,6 +4,11 @@
   "huella": "fffa820453b3",
   "titulo": "Página no encontrada | Grupo Avanza Consultores"
  },
+ "accounting-tax-service-spain.html": {
+  "desde": "2026-11-13",
+  "huella": "e9a2b7732017",
+  "titulo": "Accounting and tax services in Spain | Grupo Avanza"
+ },
  "alquiler-vivienda-espana-no-residente.html": {
   "desde": "2026-11-04",
   "huella": "77ea0a22e2fa",
@@ -274,6 +279,11 @@
   "huella": "3fb67fa680ac",
   "titulo": "Britische Rente bei Wohnsitz in Spanien"
  },
+ "de-buchhaltung-steuern-unternehmen-spanien.html": {
+  "desde": "2026-11-13",
+  "huella": "bcf223314e27",
+  "titulo": "Buchhaltung und Steuern in Spanien | Grupo Avanza"
+ },
  "de-cookies.html": {
   "desde": "2026-10-30",
   "huella": "5c5ee78457d0",
@@ -409,6 +419,11 @@
   "huella": "b3ec761263c2",
   "titulo": "Donación de padres a hijos en la Comunitat Valenciana (2026)"
  },
+ "dutch-pension-tax-spain-resident.html": {
+  "desde": "2026-11-13",
+  "huella": "06319d894ac2",
+  "titulo": "Dutch pensions in Spain: AOW and tax residence"
+ },
  "en-tramites.html": {
   "desde": "2026-10-30",
   "huella": "271931592479",
@@ -459,14 +474,19 @@
   "huella": "7cb91029c378",
   "titulo": "Certificat de résidence fiscale en Espagne"
  },
+ "fr-comptabilite-fiscalite-entreprise-espagne.html": {
+  "desde": "2026-11-13",
+  "huella": "1dd942ffd214",
+  "titulo": "Comptabilité et fiscalité en Espagne | Grupo Avanza"
+ },
  "fr-confidentialite.html": {
   "desde": "2026-10-30",
   "huella": "79ef00bccba1",
   "titulo": "Confidentialité | Grupo Avanza Consultores"
  },
  "fr-contact.html": {
-  "desde": "2026-11-12",
-  "huella": "1ea6cb7c871e",
+  "desde": "2026-11-13",
+  "huella": "93da4f26e8b2",
   "titulo": "Contact | Grupo Avanza Consultores"
  },
  "fr-cookies.html": {
@@ -673,6 +693,11 @@
   "desde": "2026-10-30",
   "huella": "a3e4e3a7e938",
   "titulo": "Form 210 (Modelo 210) for Non-Residents | Grupo Avanza"
+ },
+ "modelo-210-woning-spanje-documenten.html": {
+  "desde": "2026-11-13",
+  "huella": "c200e7c843c5",
+  "titulo": "Modelo 210 voor uw woning in Spanje: welke documenten?"
  },
  "modelo-347-operaciones-con-terceros.html": {
   "desde": "2026-10-30",
