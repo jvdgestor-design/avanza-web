@@ -33,3 +33,13 @@ Una línea por dominio la primera vez que aparece. La pasada de Claude o ChatGPT
 - 2026-11-13 · `lazaroamable.com` · X03 (de) · https://lazaroamable.com/blog/irnr-declaracion-modelo-210-espana
 - 2026-11-13 · `igerasolutions.com` · X03 (de) · https://igerasolutions.com/es/blog/modelo-210-irnr-no-residentes
 - 2026-11-13 · `navarra.es` · X03 (de) · https://www.navarra.es/documents/48192/6699257/Ayuda+Modelo+210.pdf/f9c2c250-1c3c-b74b-2268-7b9ae396be5e?t=1726143578280
+- 2026-11-13 · `ineaf.es` · X04 (fr) · https://www.ineaf.es/tribuna/modelo-210/
+- 2026-11-13 · `refcatastral.es` · X04 (fr) · https://refcatastral.es/modelos-inmobiliarios/modelo-210/
+- 2026-11-13 · `fiscaltip.com` · X04 (fr) · https://www.fiscaltip.com/modelo-210-en-2026-guia-clara-y-sencilla-para-no-residentes
+- 2026-11-13 · `mallorca.com` · X04 (fr) · https://www.mallorca.com/en/advice/property/renting/taxing-rental-income-non-resident-spain
+- 2026-11-13 · `nieuwbouwinspanje.com` · X04 (fr) · https://www.nieuwbouwinspanje.com/fr/blog/post/n-oubliez-pas-votre-declaration-modele-210-espagne
+- 2026-11-13 · `adaleta.be` · X04 (fr) · https://www.adaleta.be/fr/conseils/articles/declaration-impots-pour-les-non-residents-espagne-modele-210/
+- 2026-11-13 · `lawyerssolicitorsjavea.com` · X04 (fr) · https://lawyerssolicitorsjavea.com/impot-non-residents-espagne-modelo-210/
+- 2026-11-13 · `asurate.com` · X04 (fr) · https://asurate.com/fr/modele-210-en-espagne-ce-que-tout-non-resident-proprietaire-dun-bien-doit-savoir/
+- 2026-11-13 · `immobilier-en-espagne.com` · X04 (fr) · https://immobilier-en-espagne.com/irnr-impot-espagne.html
+- 2026-11-13 · `taxadora.com` · X04 (fr) · https://taxadora.com/blog/tax-obligations-for-uk-citizens-with-property-in-spain/
