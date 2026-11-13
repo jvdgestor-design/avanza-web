@@ -57,10 +57,11 @@ jobs:
           for d in motor/visibilidad motor/visibilidad-prueba; do [ -d "$d" ] && git add -A "$d"; done; true
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -qm "visibilidad: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q origin datos-motor && exit 0
           for i in 1 2 3 4; do
-            git push -q origin datos-motor && exit 0
             sleep $((i * 5))
             git pull -q --rebase origin datos-motor || { git rebase --abort; exit 1; }
+            git push -q origin datos-motor && exit 0
           done
           echo "::error::No se pudo guardar en datos-motor: el gasto de hoy no queda anotado"
           exit 1

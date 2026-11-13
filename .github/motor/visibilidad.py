@@ -84,8 +84,8 @@ def neutro(s):
     return re.sub(r"(?i)veredicto", "ver-edicto", str(s or "")).replace("<<<", "‹‹‹").replace(">>>", "›››")
 
 
-PROHIBIDAS = ("gestor", "юрист", "адвокат", "steuerberater", "avocat", "expert-comptable", "lawyer", "chartered",
-              "€", "eur ", "http", "www.", "el mejor", "the best")
+PROHIBIDAS = ("юрист", "адвокат", "steuerberater", "avocat", "expert-comptable", "lawyer", "chartered",
+              "€", "http", "www.", "el mejor", "the best", "veredicto", "<<<", ">>>")
 
 
 def filtro(texto, tipo, pagina=""):
@@ -97,9 +97,11 @@ def filtro(texto, tipo, pagina=""):
     for p in PROHIBIDAS:
         if p in bajo and not (p in ("http", "www.") and tipo == "refuerzo" and DOMINIO in bajo and
                               not re.search(r"https?://(?!" + re.escape(DOMINIO) + ")", bajo)):
-            if p == "gestor" and "gestoría" in bajo and "gestor " not in bajo:
-                continue
             return f"contiene «{p}»"
+    if re.search(r"\bgestor(es)?\b|\bгестор\b", bajo):
+        return "contiene «gestor»"
+    if re.search(r"\beur(os?)?\b", bajo) and tipo == "foro":
+        return "habla de importes en euros"
     palabras = len(t.split())
     if tipo == "foro":
         if not t.startswith("Пишу от имени Grupo Avanza Consultores"):
@@ -354,9 +356,15 @@ def radar(claude, estado, consultas, carpeta):
         estado.d["radar_idx"] += 1
         sistema = ("Responde a la pregunta del usuario como lo haría un asistente con búsqueda web: busca, contesta "
                    "en el idioma de la pregunta y recomienda, si procede, a quién acudir. Cita las fuentes.")
-        bloques = claude.pide(REDACTOR, sistema, c["pregunta"], max_tokens=3000,
-                              herramientas=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 4}],
-                              busquedas=4)
+        try:
+            bloques = claude.pide(REDACTOR, sistema, c["pregunta"], max_tokens=8000,
+                                  herramientas=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 4}],
+                                  busquedas=4)
+        except SinSaldo:
+            raise
+        except Exception as e:
+            anota("warning", f"Radar {c['id']}: {type(e).__name__}: {una_linea(e, 200)}")
+            continue
         txt, urls = texto_de(bloques), urls_de(bloques)
         citada = DOMINIO in " ".join(urls) or "grupo avanza" in txt.lower()
         doms = [dominio(u) for u in urls]
@@ -498,14 +506,23 @@ def foro(claude, estado, carpeta):
         return None
     candidatos = [x for x in temas if x["ultimo"] and x["ultimo"] != FORO_USUARIO
                   and vistos.get(x["t"]) != x["respuestas"]]
-    for tema in candidatos[:3]:
+    fallos = estado.d.setdefault("foro_fallos", {})
+    intentos = 0
+    for tema in candidatos:
+        if intentos >= 3:
+            break
+        intentos += 1
         try:
             r = _un_tema(claude, carpeta, tema)
         except SinSaldo:
             raise
         except Exception as e:
-            anota("warning", f"Foro t={tema['t']}: {type(e).__name__}: {una_linea(e, 200)}")
+            fallos[tema["t"]] = fallos.get(tema["t"], 0) + 1
+            anota("warning", f"Foro t={tema['t']} (fallo {fallos[tema['t']]}): {type(e).__name__}: {una_linea(e, 200)}")
+            if fallos[tema["t"]] >= 2:
+                vistos[tema["t"]] = tema["respuestas"]
             continue
+        fallos.pop(tema["t"], None)
         vistos[tema["t"]] = tema["respuestas"]
         if r:
             return r
@@ -591,8 +608,10 @@ def refuerzo(claude, estado, consultas, carpeta):
     contexto = f"CONSULTA ({c['id']}, {c['idioma']}): {c['pregunta']}\n\nPÁGINA {url}, texto visible:\n{pagina[:15000]}"
     prop = json_de(texto_de(claude.pide(REDACTOR, SISTEMA_REFUERZO, contexto, max_tokens=12000)))
     actual = (prop.get("actual") or "").strip()
-    if not actual or re.sub(r"\s+", " ", actual) not in re.sub(r"\s+", " ", pagina):
-        anota("warning", f"Refuerzo {c['id']}: la entradilla «actual» no está literal en la página; se descarta")
+    pag_norm = re.sub(r"\s+", " ", pagina)
+    pos = pag_norm.find(re.sub(r"\s+", " ", actual)) if actual else -1
+    if pos < 0 or pos > 4000:
+        anota("warning", f"Refuerzo {c['id']}: la entradilla «actual» no está literal al principio de la página; se descarta")
         return None
     nueva = prop.get("nueva", "").strip()
     ctx_rev = contexto + "\n\nENTRADILLA ACTUAL:\n" + actual + "\n\nCRITERIO: la nueva no puede añadir ningún hecho, " \
