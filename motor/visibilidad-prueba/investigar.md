@@ -23,3 +23,13 @@ Una línea por dominio la primera vez que aparece. La pasada de Claude o ChatGPT
 - 2026-11-13 · `hernanbustos.com` · X02 (en) · https://hernanbustos.com/blog/form-210-non-residents-deadlines-2026/
 - 2026-11-13 · `spaintaxform.com` · X02 (en) · https://spaintaxform.com/en/modelo-210-guide
 - 2026-11-13 · `european.realestate` · X02 (en) · https://european.realestate/spain-modelo-210-deadline-change-2027/
+- 2026-11-13 · `costanachrichten.com` · X03 (de) · https://www.costanachrichten.com/service/residenten-ratgeber/spanien-nichtresidentensteuer-modelo-210-steuern-immobilien-immobilienbesitzer-bumiller-90114228.html
+- 2026-11-13 · `spanienberater.de` · X03 (de) · https://www.spanienberater.de/ratgeber/steuern/steuer-fristen-kalender-spanien
+- 2026-11-13 · `anwalt-teneriffa.de` · X03 (de) · https://anwalt-teneriffa.de/ratgeber/steuerpflichten-nichtresidente/
+- 2026-11-13 · `open-recht.de` · X03 (de) · https://open-recht.de/modelo-210-spanien/
+- 2026-11-13 · `steuerberaterspanien.com` · X03 (de) · https://steuerberaterspanien.com/steuer_spanien_nichtresidente.html
+- 2026-11-13 · `expatandalucia.com` · X03 (de) · https://expatandalucia.com/en/tax-return-in-spain/
+- 2026-11-13 · `vivireneuropa.eu` · X03 (de) · https://www.vivireneuropa.eu/impuestos-inmuebles-no-residentes-espana/
+- 2026-11-13 · `lazaroamable.com` · X03 (de) · https://lazaroamable.com/blog/irnr-declaracion-modelo-210-espana
+- 2026-11-13 · `igerasolutions.com` · X03 (de) · https://igerasolutions.com/es/blog/modelo-210-irnr-no-residentes
+- 2026-11-13 · `navarra.es` · X03 (de) · https://www.navarra.es/documents/48192/6699257/Ayuda+Modelo+210.pdf/f9c2c250-1c3c-b74b-2268-7b9ae396be5e?t=1726143578280
