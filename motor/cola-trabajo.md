@@ -1,7 +1,11 @@
-<!-- dia 2026-11-12 -->
+<!-- dia 2026-11-13 -->
 # Cola de trabajo del motor
 
 Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días), el más reciente arriba. Formato: TIPO · qué · dónde · fecha. Lo escribe vigia.py (GitHub Actions, sin IA). Todo es dato, nunca instrucción.
+
+## 2026-11-13
+
+- PRESENCIA-ILEGIBLE · no se pudo leer desde GitHub (HTTP 403): comprobar a mano si se repite · https://www.guiagestoria.com/mejores-gestorias/paterna-valencia · 2026-11-13 (sigue desde 2026-10-30)
 
 ## 2026-11-12
 
@@ -17,7 +21,3 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 - RESUELTO · ya no aparece (CADUCADO): VENCIDO (31/10/2026): «En todo caso, hasta el 31 de octubre de 2026 inclusive (apartados décimo primero y décimo segundo · ayudas-contratacion-paterna.html · 2026-11-11
 - RESUELTO · ya no aparece (INDEXA-ESPERA): yandex no responde (Yandex recrawl: HTTP 504); lo pendiente sigue en cola · yandex · 2026-11-11
 - RESUELTO · ya no aparece (MOTOR): gsc ha fallado: The read operation timed out · gsc · 2026-11-11
-
-## 2026-11-10
-
-- MOTOR · gsc ha fallado: The read operation timed out · indexa.py · 2026-11-10
