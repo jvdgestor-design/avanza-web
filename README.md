@@ -1,16 +1,18 @@
 # Grupo Avanza Consultores
 
-> Asesoría fiscal, contable y laboral que lleva de forma continua y a distancia la contabilidad y los impuestos de autónomos, sociedades y no residentes de toda España, con atención en español y en ruso. El cliente trata directamente con el asesor que lleva su caso. Domicilio en Paterna (Valencia).
+> Asesoría fiscal, contable y laboral que lleva de forma continua y a distancia la contabilidad y los impuestos de autónomos, sociedades y no residentes de toda España. El cliente trata directamente con el asesor que lleva su caso. Domicilio en Paterna (Valencia).
 
 - Titular: Jose Vicente Díaz Madrid, Diplomado en Ciencias Empresariales, asesor fiscal, contable y laboral con despacho propio desde 2011.
 - Forma de trabajo: a distancia con clientes de toda España, por correo, teléfono, WhatsApp y videollamada; en persona, con cita, en Paterna y el área de Valencia.
 - Servicio continuo: contabilidad, declaraciones trimestrales y anuales, nóminas y gestión laboral, sociedades y no residentes. Presupuesto según el caso.
-- Idiomas: español y ruso.
+- Idiomas: Atención por escrito en español, ruso, inglés, francés y alemán; en español y en ruso, también por teléfono.
 - Contacto: teléfono 614 365 547 · avanza@grupoavanzaconsultores.es · https://grupoavanzaconsultores.es/contacto.html
 
 ## Servicios
 
 - [Accounting and tax services in Spain](https://grupoavanzaconsultores.es/accounting-tax-service-spain.html): ongoing bookkeeping, tax returns and payroll for autónomos and small companies; changing advisers, online service and written English. Scope and quote agreed before starting.
+- [Comptabilité et fiscalité en Espagne](https://grupoavanzaconsultores.es/fr-comptabilite-fiscalite-entreprise-espagne.html): comptabilité, déclarations fiscales et paie pour les indépendants et les petites sociétés en Espagne. Suivi annuel à distance, changement de cabinet et échanges par écrit en français. Les prestations et les honoraires sont convenus avant de commencer.
+- [Buchhaltung und Steuern in Spanien](https://grupoavanzaconsultores.es/de-buchhaltung-steuern-unternehmen-spanien.html): laufende Buchhaltung, Steuererklärungen und Lohnabrechnung für Selbständige und kleine Unternehmen in Spanien. Onlinebetreuung, Beraterwechsel und schriftliche Kommunikation auf Deutsch. Leistungsumfang und Honorar werden vor Beginn vereinbart.
 
 - [Asesoría y gestoría en Valencia](https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-valencia.html): asesoría fiscal, contable y laboral y gestoría para autónomos y pymes de Valencia ciudad, Paterna, La Cañada, Burjassot y el área metropolitana; online para toda España y en persona con cita.
 - [Asesoría y gestoría en Paterna](https://grupoavanzaconsultores.es/asesoria-y-gestoria-en-paterna.html): asesoría y gestoría con domicilio en Paterna para autónomos y pymes de Paterna, La Cañada, Burjassot, l'Eliana y el área de Valencia; online para toda España y en persona solo con cita.
@@ -36,6 +38,7 @@
 
 ## Guías
 
+- [Dutch pensions and Spanish tax](https://grupoavanzaconsultores.es/dutch-pension-tax-spain-resident.html): English guide for Spanish tax residents receiving a Dutch AOW, workplace or public-service pension. It explains how to identify the pension, what to check for the Spanish tax return and which records to gather.
 - [Cambiar de asesoría](https://grupoavanzaconsultores.es/cambiar-de-asesoria.html): qué documentación debe entregar la anterior y cómo se hace el traspaso.
 - [Modelo 210 de no residentes](https://grupoavanzaconsultores.es/modelo-210-no-residentes.html): quién lo presenta, plazos y el piso vacío.
 - [Carta de Hacienda o requerimiento](https://grupoavanzaconsultores.es/carta-de-hacienda-requerimiento.html): plazos y qué no hacer.
