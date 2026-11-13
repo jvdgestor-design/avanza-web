@@ -7,7 +7,7 @@
 name: Motor de visibilidad
 on:
   schedule:
-    - cron: "37 */2 * * *"   # cada dos horas, día y noche (Jose, 13/11: que trabaje también de noche); el tope diario manda
+    - cron: "37 */4 * * *"   # cada cuatro horas, día y noche; con el tope de abajo, el crédito de 200 US$ llega al 15/12 (13/11)
   workflow_dispatch:
     inputs:
       tarea:
@@ -35,6 +35,7 @@ jobs:
       - name: Visibilidad
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AVANZA_TOPE_TOKENS: "600000"   # ~6 US$ al día (PROVISIONAL: medido el 13/11 en la consola, ~4,8 US$ por ~300.000 tokens)
           TAREA: ${{ github.event.inputs.tarea || 'auto' }}
           EVENTO: ${{ github.event_name }}
         run: |
