@@ -7,18 +7,13 @@
 name: Motor de visibilidad
 on:
   schedule:
-    - cron: "37 7,9,11,13,15,17,19 * * *"   # 8:37 a 20:37 en Madrid en invierno, cada dos horas
+    - cron: "37 */2 * * *"   # cada dos horas, día y noche (Jose, 13/11: que trabaje también de noche); el tope diario manda
   workflow_dispatch:
     inputs:
       tarea:
         description: "auto (radar + foro o refuerzo, alternando), radar, foro, refuerzo o todo"
         required: false
         default: "auto"
-  push:
-    branches: ["motor/visibilidad"]
-    paths:
-      - ".github/motor/visibilidad.py"
-      - ".github/workflows/visibilidad.yml"
 permissions:
   contents: write   # solo para escribir en la rama datos-motor
 concurrency:
