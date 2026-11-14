@@ -38,6 +38,15 @@ REVISOR = os.environ.get("AVANZA_MODELO_REVISOR_VIS", "claude-opus-5-5")
 TOPE_TOKENS = int(os.environ.get("AVANZA_TOPE_TOKENS", "1500000"))      # entrada + salida, por día (Madrid)
 TOPE_BUSQUEDAS = int(os.environ.get("AVANZA_TOPE_BUSQUEDAS", "60"))     # búsquedas web por día
 RADAR_N = int(os.environ.get("AVANZA_RADAR_N", "3"))                    # consultas por ejecución
+# Aviso de gasto: el motor solo conoce sus tokens y búsquedas (historico de estado.json), no el saldo real de la
+# consola; el coste se estima con un precio medio configurable. Si lo gastado desde CREDITO_DESDE más el ritmo
+# actual hasta CREDITO_HASTA pasa del crédito, ese día baja a TOPE_REDUCIDO y se avisa en motor/urgente.md.
+TOPE_REDUCIDO = int(os.environ.get("AVANZA_TOPE_REDUCIDO", "600000"))
+CREDITO_USD = float(os.environ.get("AVANZA_CREDITO_USD", "200"))
+USD_POR_MTOK = float(os.environ.get("AVANZA_USD_POR_MTOK", "16"))        # PROVISIONAL: ~4,8 US$ / ~300.000 tokens (13/11)
+USD_POR_BUSQUEDA = float(os.environ.get("AVANZA_USD_POR_BUSQUEDA", "0.01"))
+CREDITO_DESDE = os.environ.get("AVANZA_CREDITO_DESDE", "2026-11-13")
+CREDITO_HASTA = os.environ.get("AVANZA_CREDITO_HASTA", "2026-12-15")
 DOMINIO = "grupoavanzaconsultores.es"
 UA = "Mozilla/5.0 (compatible; avanza-motor/1.0; +https://grupoavanzaconsultores.es/)"
 FORO = "https://costaspain.net"
@@ -193,6 +202,60 @@ class Estado:
 
 class SinSaldo(Exception):
     pass
+
+
+def _usd(t, b):
+    return t / 1e6 * USD_POR_MTOK + b * USD_POR_BUSQUEDA
+
+
+def vigila_gasto(estado, carpeta):
+    """Proyecta el gasto hasta CREDITO_HASTA; si pasa del crédito, baja el tope de hoy y avisa una vez al día."""
+    global TOPE_TOKENS
+    hoy = estado.d["dia"]
+    if hoy > CREDITO_HASTA:
+        return
+    previos = [h for h in estado.d["historico"] if CREDITO_DESDE <= h.get("dia", "") < hoy]
+    gastado = sum(_usd(h.get("tokens", 0), h.get("busquedas", 0)) for h in previos)
+    ultimos = previos[-7:]
+    ritmo = max(sum(_usd(h.get("tokens", 0), h.get("busquedas", 0)) for h in ultimos) / len(ultimos) if ultimos else 0,
+                _usd(estado.d["tokens"], estado.d["busquedas"]))
+    dias = (datetime.strptime(CREDITO_HASTA, "%Y-%m-%d") - datetime.strptime(hoy, "%Y-%m-%d")).days + 1
+    proyeccion = gastado + ritmo * dias
+    if proyeccion <= CREDITO_USD:
+        return
+    TOPE_TOKENS = min(TOPE_TOKENS, TOPE_REDUCIDO)
+    if estado.d.get("aviso_gasto") == hoy:
+        return
+    estado.d["aviso_gasto"] = hoy
+    linea = (f"- AVISO GASTO MOTOR: proyección {proyeccion:.0f} US$ al {CREDITO_HASTA} (gastado {gastado:.0f} US$ "
+             f"desde {CREDITO_DESDE} + {ritmo:.1f} US$/día × {dias} días) > crédito {CREDITO_USD:.0f} US$; "
+             f"tope de hoy bajado a {TOPE_TOKENS} tokens. Estimación PROVISIONAL a {USD_POR_MTOK} US$/M tokens, "
+             f"solo de este motor · motor/visibilidad/estado.json · {hoy}")
+    anota("warning", linea[2:])
+    motor = os.path.dirname(os.path.normpath(carpeta))
+    try:   # vigia.py rehace urgente.md cada hora desde la cola de web.json: se añade también allí para que dure
+        ruta_web = os.path.join(motor, "web.json")
+        with open(ruta_web, encoding="utf-8") as f:
+            web = json.load(f)
+        cola = web.setdefault("cola", {}).setdefault(hoy, [])
+        if linea not in cola:
+            cola.append(linea)
+        with open(ruta_web, "w", encoding="utf-8") as f:
+            json.dump(web, f, ensure_ascii=False, indent=1, sort_keys=True)
+    except (OSError, ValueError) as e:
+        anota("warning", f"Aviso de gasto no anotado en web.json: {type(e).__name__}")
+    try:
+        ruta = os.path.join(motor, "urgente.md")
+        texto = open(ruta, encoding="utf-8").read() if os.path.exists(ruta) else "# Cola de trabajo del motor\n"
+        cab = f"\n## {hoy}\n\n"
+        if cab in texto:
+            texto = texto.replace(cab, cab + linea + "\n", 1).replace(linea + "\n(nada nuevo)\n", linea + "\n", 1)
+        else:
+            texto = texto.rstrip("\n") + cab + linea + "\n"
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write(texto)
+    except OSError as e:
+        anota("warning", f"Aviso de gasto no anotado en urgente.md: {type(e).__name__}")
 
 
 # ---------------------------------------------------------------- API de Claude
@@ -691,6 +754,8 @@ def main():
     with open(a.consultas, encoding="utf-8") as f:
         consultas = json.load(f)["consultas"]
     estado = Estado(os.path.join(a.datos, "estado.json"))
+    if "prueba" not in a.datos:
+        vigila_gasto(estado, a.datos)
     claude = Claude(clave, estado)
     resumen(f"## Motor de visibilidad · {ahora():%d/%m/%Y %H:%M} · tarea {a.tarea}")
     fallo = False

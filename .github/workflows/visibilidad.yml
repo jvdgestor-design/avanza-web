@@ -7,7 +7,7 @@
 name: Motor de visibilidad
 on:
   schedule:
-    - cron: "37 */4 * * *"   # cada cuatro horas, día y noche; con el tope de abajo, el crédito de 200 US$ llega al 15/12 (13/11)
+    - cron: "37 */2 * * *"   # cada dos horas, día y noche (14/11); el aviso de gasto del script baja el tope si el crédito no llega al 15/12
   workflow_dispatch:
     inputs:
       tarea:
@@ -35,7 +35,10 @@ jobs:
       - name: Visibilidad
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          AVANZA_TOPE_TOKENS: "600000"   # ~6 US$ al día (PROVISIONAL: medido el 13/11 en la consola, ~4,8 US$ por ~300.000 tokens)
+          AVANZA_TOPE_TOKENS: "1500000"   # tope diario (14/11); PROVISIONAL: ~4,8 US$ por ~300.000 tokens (consola, 13/11)
+          AVANZA_TOPE_REDUCIDO: "600000"  # tope del día si la proyección de gasto al 15/12 pasa del crédito
+          AVANZA_CREDITO_USD: "200"
+          AVANZA_USD_POR_MTOK: "16"
           TAREA: ${{ github.event.inputs.tarea || 'auto' }}
           EVENTO: ${{ github.event_name }}
         run: |
@@ -50,7 +53,7 @@ jobs:
         if: always()
         run: |
           cd datos
-          for d in motor/visibilidad motor/visibilidad-prueba; do [ -d "$d" ] && git add -A "$d"; done; true
+          for d in motor/visibilidad motor/visibilidad-prueba motor/urgente.md motor/web.json; do [ -e "$d" ] && git add -A "$d"; done; true
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -qm "visibilidad: $(date -u +%Y-%m-%dT%H:%MZ)"
           git push -q origin datos-motor && exit 0
