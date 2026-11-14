@@ -53,7 +53,8 @@ class AvisoGasto(unittest.TestCase):
     def test_por_encima_baja_tope_y_avisa(self):
         e = self.prepara("2026-11-14", [{"dia": "2026-11-13", "tokens": 1500000, "busquedas": 10}], 100000)
         vis.vigila_gasto(e, self.carpeta)
-        self.assertEqual(vis.TOPE_TOKENS, 600000)
+        # (200 − 24,1 gastados) / 32 días − 10 búsquedas × 0,01 = 5,397 US$/día → a 16 US$/M tokens
+        self.assertEqual(vis.TOPE_TOKENS, int((175.9 / 32 - 0.1) / 16 * 1e6))
         self.assertEqual(self.urgente().count("AVISO GASTO MOTOR"), 1)
         self.assertNotIn("## 2026-11-14\n\n(nada nuevo)", self.urgente())
         self.assertEqual(len(self.cola("2026-11-14")), 1)
@@ -72,25 +73,58 @@ class AvisoGasto(unittest.TestCase):
         self.assertEqual(vis.TOPE_TOKENS, 1500000)
         e = self.prepara("2026-11-14", [], 1000000)   # solo hoy: 16 US$/día × 32 días > 200
         vis.vigila_gasto(e, self.carpeta)
-        self.assertEqual(vis.TOPE_TOKENS, 600000)
+        self.assertEqual(vis.TOPE_TOKENS, int(200 / 32 / 16 * 1e6))
 
     def test_15_12_cuenta_y_16_12_no(self):
         hist = [{"dia": "2026-11-13", "tokens": 12000000, "busquedas": 0}]   # 192 US$ ya gastados
         e = self.prepara("2026-12-15", hist, 1000000)                          # +16 US$ hoy > 200
         vis.vigila_gasto(e, self.carpeta)
-        self.assertEqual(vis.TOPE_TOKENS, 600000)
+        self.assertEqual(vis.TOPE_TOKENS, 500000)                              # quedan 8 US$ para 1 día
         vis.TOPE_TOKENS = 1500000
         e = self.prepara("2026-12-16", hist, 1000000)
         vis.vigila_gasto(e, self.carpeta)
         self.assertEqual(vis.TOPE_TOKENS, 1500000)
         self.assertNotIn("AVISO GASTO MOTOR", self.urgente())
 
+    def test_tope_dinamico_minimo_y_maximo(self):
+        e = self.prepara("2026-11-20", [{"dia": "2026-11-13", "tokens": 12400000, "busquedas": 0}], 50000)
+        vis.vigila_gasto(e, self.carpeta)               # 198,4 US$ gastados: el reparto da menos del mínimo
+        self.assertEqual(vis.TOPE_TOKENS, 100000)
+        vis.TOPE_TOKENS = 1500000
+        e = self.prepara("2026-11-20", [{"dia": "2026-11-13", "tokens": 13000000, "busquedas": 0}], 0)
+        vis.vigila_gasto(e, self.carpeta)               # crédito ya agotado: mínimo, nunca negativo
+        self.assertEqual(vis.TOPE_TOKENS, 100000)
+        vis.TOPE_TOKENS = 200000
+        e = self.prepara("2026-12-15", [{"dia": "2026-11-13", "tokens": 6000000, "busquedas": 0}], 10000000)
+        vis.vigila_gasto(e, self.carpeta)               # el reparto daría 6,5 M: nunca por encima del tope configurado
+        self.assertEqual(vis.TOPE_TOKENS, 200000)
+
+    def test_web_json_con_formato_de_vigia(self):
+        hoy = "2026-11-14"
+        estado = {"avisos": {"WEB|x": {"primera": "2026-11-01", "que": "ñandú «x»", "visto": hoy}},
+                  "cola": {"2026-11-13": ["- WEB · algo · 2026-11-13"], hoy: []}, "piezas": {"web": hoy}}
+        ruta = os.path.join(self.motor, "web.json")
+        with open(ruta, "w", encoding="utf-8") as f:   # igual que Cola.cierra() en vigia.py
+            json.dump(estado, f, ensure_ascii=False, indent=1, sort_keys=True)
+        antes = open(ruta, encoding="utf-8").read()
+        linea = "- AVISO GASTO MOTOR: prueba · " + hoy
+        vis.aplica_aviso(self.motor, hoy, linea)
+        despues = open(ruta, encoding="utf-8").read()
+        estado["cola"][hoy].append(linea)
+        esperado = json.dumps(estado, ensure_ascii=False, indent=1, sort_keys=True)
+        self.assertEqual(despues, esperado)
+        import difflib
+        cambios = [l for l in difflib.ndiff(antes.splitlines(), despues.splitlines()) if l[:2] in ("- ", "+ ")]
+        permitidos = {f'"{hoy}": []', f'"{hoy}": [', "]", "],"}   # solo la lista de hoy pasa de vacía a una línea
+        self.assertTrue(all("AVISO GASTO MOTOR" in l or l[2:].strip() in permitidos for l in cambios), cambios)
+        self.assertEqual(sum(1 for l in cambios if l.startswith("+ ") and "AVISO GASTO MOTOR" in l), 1)
+
     def test_no_duplica_el_mismo_dia(self):
         e = self.prepara("2026-11-14", [{"dia": "2026-11-13", "tokens": 1500000, "busquedas": 10}], 100000)
         vis.vigila_gasto(e, self.carpeta)
         e.d["tokens"] = 500000
         vis.vigila_gasto(e, self.carpeta)
-        self.assertEqual(vis.TOPE_TOKENS, 600000)
+        self.assertLess(vis.TOPE_TOKENS, 1500000)
         self.assertEqual(self.urgente().count("AVISO GASTO MOTOR"), 1)
         self.assertEqual(len(self.cola("2026-11-14")), 1)
 

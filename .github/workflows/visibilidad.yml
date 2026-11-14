@@ -36,7 +36,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           AVANZA_TOPE_TOKENS: "1500000"   # tope diario (14/11); PROVISIONAL: ~4,8 US$ por ~300.000 tokens (consola, 13/11)
-          AVANZA_TOPE_REDUCIDO: "600000"  # tope del día si la proyección de gasto al 15/12 pasa del crédito
+          AVANZA_TOPE_MINIMO: "100000"    # si la proyección (estimada) al 15/12 pasa del crédito: tope = crédito restante / días, con este mínimo
           AVANZA_CREDITO_USD: "200"
           AVANZA_USD_POR_MTOK: "16"
           AVANZA_AVISO_FICHERO: ${{ runner.temp }}/aviso-gasto.txt
@@ -55,7 +55,15 @@ jobs:
         if: always()
         run: |
           cd datos
-          git checkout -q -- motor/urgente.md motor/web.json 2>/dev/null || true   # el paso siguiente reaplica el aviso
+          # urgente.md y web.json los reaplica el paso siguiente sobre la versión remota: aquí se restauran
+          for f in motor/urgente.md motor/web.json; do
+            if git cat-file -e "HEAD:$f" 2>/dev/null; then
+              if ! git diff --quiet -- "$f"; then echo "Se descartan los cambios locales de $f (los reaplica «Aviso de gasto»)"; fi
+              git checkout -q -- "$f"
+            elif [ -e "$f" ]; then
+              echo "Se descarta $f, que no está en la rama"; rm -f -- "$f"
+            fi
+          done
           # Solo lo del motor de visibilidad (estado.json lleva el contador del tope); urgente.md y web.json, en el paso siguiente
           for d in motor/visibilidad motor/visibilidad-prueba; do [ -d "$d" ] && git add -A "$d"; done; true
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi

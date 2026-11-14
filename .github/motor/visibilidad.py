@@ -38,10 +38,12 @@ REVISOR = os.environ.get("AVANZA_MODELO_REVISOR_VIS", "claude-opus-5-5")
 TOPE_TOKENS = int(os.environ.get("AVANZA_TOPE_TOKENS", "1500000"))      # entrada + salida, por día (Madrid)
 TOPE_BUSQUEDAS = int(os.environ.get("AVANZA_TOPE_BUSQUEDAS", "60"))     # búsquedas web por día
 RADAR_N = int(os.environ.get("AVANZA_RADAR_N", "3"))                    # consultas por ejecución
-# Aviso de gasto: el motor solo conoce sus tokens y búsquedas (historico de estado.json), no el saldo real de la
-# consola; el coste se estima con un precio medio configurable. Si lo gastado desde CREDITO_DESDE más el ritmo
-# actual hasta CREDITO_HASTA pasa del crédito, ese día baja a TOPE_REDUCIDO y se avisa en motor/urgente.md.
-TOPE_REDUCIDO = int(os.environ.get("AVANZA_TOPE_REDUCIDO", "600000"))
+# Aviso de gasto. ESTIMACIÓN: el motor no ve el saldo real de la consola; solo cuenta sus propios tokens y búsquedas
+# (historico de estado.json) y los pasa a US$ con un precio medio PROVISIONAL y configurable (no cuenta lo que gasten
+# otros flujos con la misma clave). Si lo gastado desde CREDITO_DESDE más el ritmo actual hasta CREDITO_HASTA pasa del
+# crédito, el tope de ese día pasa a ser lo que queda de crédito repartido entre los días que faltan (descontadas las
+# búsquedas), entre TOPE_MINIMO y AVANZA_TOPE_TOKENS, y se avisa en motor/urgente.md.
+TOPE_MINIMO = int(os.environ.get("AVANZA_TOPE_MINIMO", "100000"))
 CREDITO_USD = float(os.environ.get("AVANZA_CREDITO_USD", "200"))
 USD_POR_MTOK = float(os.environ.get("AVANZA_USD_POR_MTOK", "16"))        # PROVISIONAL: ~4,8 US$ / ~300.000 tokens (13/11)
 USD_POR_BUSQUEDA = float(os.environ.get("AVANZA_USD_POR_BUSQUEDA", "0.01"))
@@ -223,13 +225,16 @@ def vigila_gasto(estado, carpeta):
     proyeccion = gastado + ritmo * dias
     if proyeccion <= CREDITO_USD:
         return
-    TOPE_TOKENS = min(TOPE_TOKENS, TOPE_REDUCIDO)
+    busq_dia = max(sum(h.get("busquedas", 0) for h in ultimos) / len(ultimos) if ultimos else 0, estado.d["busquedas"])
+    usd_dia = (CREDITO_USD - gastado) / dias - busq_dia * USD_POR_BUSQUEDA
+    dinamico = int(max(usd_dia, 0) / USD_POR_MTOK * 1e6) if USD_POR_MTOK > 0 else 0
+    TOPE_TOKENS = min(TOPE_TOKENS, max(TOPE_MINIMO, dinamico))
     if estado.d.get("aviso_gasto") == hoy:
         return
     estado.d["aviso_gasto"] = hoy
     linea = (f"- AVISO GASTO MOTOR: proyección {proyeccion:.0f} US$ al {CREDITO_HASTA} (gastado {gastado:.0f} US$ "
              f"desde {CREDITO_DESDE} + {ritmo:.1f} US$/día × {dias} días) > crédito {CREDITO_USD:.0f} US$; "
-             f"tope de hoy bajado a {TOPE_TOKENS} tokens. Estimación PROVISIONAL a {USD_POR_MTOK} US$/M tokens, "
+             f"tope de hoy {TOPE_TOKENS} tokens (crédito restante / días, mínimo {TOPE_MINIMO}). Estimación PROVISIONAL a {USD_POR_MTOK} US$/M tokens, "
              f"solo de este motor · motor/visibilidad/estado.json · {hoy}")
     anota("warning", linea[2:])
     fichero = os.environ.get("AVANZA_AVISO_FICHERO")
