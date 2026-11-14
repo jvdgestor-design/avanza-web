@@ -1,9 +1,9 @@
 {
  "dia": "2026-11-14",
- "tokens": 188745,
- "busquedas": 8,
- "turno": 3,
- "radar_idx": 9,
+ "tokens": 286218,
+ "busquedas": 13,
+ "turno": 4,
+ "radar_idx": 12,
  "foro_vistos": {
   "12647": 97,
   "9261": 112,
@@ -13,7 +13,8 @@
  },
  "refuerzos": {
   "X01": "2026-11-14",
-  "X02": "2026-11-14"
+  "X02": "2026-11-14",
+  "X04": "2026-11-14"
  },
  "historico": [
   {
@@ -23,8 +24,8 @@
   },
   {
    "dia": "2026-11-14",
-   "tokens": 188745,
-   "busquedas": 8
+   "tokens": 286218,
+   "busquedas": 13
   }
  ],
  "foro_fallos": {}
