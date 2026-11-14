@@ -39,6 +39,7 @@ jobs:
           AVANZA_TOPE_REDUCIDO: "600000"  # tope del día si la proyección de gasto al 15/12 pasa del crédito
           AVANZA_CREDITO_USD: "200"
           AVANZA_USD_POR_MTOK: "16"
+          AVANZA_AVISO_FICHERO: ${{ runner.temp }}/aviso-gasto.txt
           TAREA: ${{ github.event.inputs.tarea || 'auto' }}
           EVENTO: ${{ github.event_name }}
         run: |
@@ -50,10 +51,13 @@ jobs:
             python3 .github/motor/visibilidad.py --datos datos/motor/visibilidad --tarea "$TAREA"
           fi
       - name: Guardar
+        id: guardar
         if: always()
         run: |
           cd datos
-          for d in motor/visibilidad motor/visibilidad-prueba motor/urgente.md motor/web.json; do [ -e "$d" ] && git add -A "$d"; done; true
+          git checkout -q -- motor/urgente.md motor/web.json 2>/dev/null || true   # el paso siguiente reaplica el aviso
+          # Solo lo del motor de visibilidad (estado.json lleva el contador del tope); urgente.md y web.json, en el paso siguiente
+          for d in motor/visibilidad motor/visibilidad-prueba; do [ -d "$d" ] && git add -A "$d"; done; true
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -qm "visibilidad: $(date -u +%Y-%m-%dT%H:%MZ)"
           git push -q origin datos-motor && exit 0
@@ -64,3 +68,24 @@ jobs:
           done
           echo "::error::No se pudo guardar en datos-motor: el gasto de hoy no queda anotado"
           exit 1
+      - name: Aviso de gasto
+        # Mejor esfuerzo: vigia.yml reescribe urgente.md y web.json cada hora; si choca, se parte de la versión remota
+        # y se reaplica solo la línea del aviso. Nunca hace fallar el flujo ni toca lo ya guardado.
+        if: always() && steps.guardar.outcome == 'success'
+        continue-on-error: true
+        env:
+          AVISO: ${{ runner.temp }}/aviso-gasto.txt
+        run: |
+          [ -f "$AVISO" ] || { echo "Sin aviso de gasto"; exit 0; }
+          cd datos
+          for i in 1 2 3 4 5; do
+            git fetch -q origin datos-motor && git reset -q --hard origin/datos-motor || { sleep $((i * 5)); continue; }
+            (cd .. && python3 .github/motor/visibilidad.py --datos datos/motor/visibilidad --aplica-aviso "$AVISO")
+            git add motor/urgente.md motor/web.json 2>/dev/null || true
+            if git diff --cached --quiet; then echo "Aviso ya anotado"; exit 0; fi
+            git commit -qm "visibilidad: aviso de gasto $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push -q origin datos-motor && exit 0
+            sleep $((i * 5))
+          done
+          echo "::warning::Aviso de gasto no guardado en datos-motor (el tope reducido sí se aplicó)"
+          exit 0

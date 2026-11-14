@@ -232,26 +232,44 @@ def vigila_gasto(estado, carpeta):
              f"tope de hoy bajado a {TOPE_TOKENS} tokens. Estimación PROVISIONAL a {USD_POR_MTOK} US$/M tokens, "
              f"solo de este motor · motor/visibilidad/estado.json · {hoy}")
     anota("warning", linea[2:])
-    motor = os.path.dirname(os.path.normpath(carpeta))
-    try:   # vigia.py rehace urgente.md cada hora desde la cola de web.json: se añade también allí para que dure
+    fichero = os.environ.get("AVANZA_AVISO_FICHERO")
+    if fichero:   # el flujo lo vuelve a aplicar sobre la versión remota, en un paso aparte que no pone en riesgo el contador
+        with open(fichero, "w", encoding="utf-8") as f:
+            f.write(hoy + "\n" + linea + "\n")
+    aplica_aviso(os.path.dirname(os.path.normpath(carpeta)), hoy, linea)
+
+
+AVISO_PREFIJO = "- AVISO GASTO MOTOR"
+
+
+def _es_aviso_de(l, hoy):
+    return l.startswith(AVISO_PREFIJO) and l.rstrip().endswith(f"· {hoy}")
+
+
+def aplica_aviso(motor, hoy, linea):
+    """Añade la línea a motor/urgente.md y a la cola de motor/web.json, salvo que ya haya un aviso de gasto de ese día
+    (con esta cifra u otra). vigia.py rehace urgente.md cada hora desde esa cola: por eso va en los dos sitios."""
+    try:
         ruta_web = os.path.join(motor, "web.json")
         with open(ruta_web, encoding="utf-8") as f:
             web = json.load(f)
         cola = web.setdefault("cola", {}).setdefault(hoy, [])
-        if linea not in cola:
+        if not any(_es_aviso_de(l, hoy) for l in cola):
             cola.append(linea)
-        with open(ruta_web, "w", encoding="utf-8") as f:
-            json.dump(web, f, ensure_ascii=False, indent=1, sort_keys=True)
+            with open(ruta_web, "w", encoding="utf-8") as f:
+                json.dump(web, f, ensure_ascii=False, indent=1, sort_keys=True)
     except (OSError, ValueError) as e:
         anota("warning", f"Aviso de gasto no anotado en web.json: {type(e).__name__}")
     try:
         ruta = os.path.join(motor, "urgente.md")
         texto = open(ruta, encoding="utf-8").read() if os.path.exists(ruta) else "# Cola de trabajo del motor\n"
+        if any(_es_aviso_de(l, hoy) for l in texto.splitlines()):
+            return
         cab = f"\n## {hoy}\n\n"
         if cab in texto:
             texto = texto.replace(cab, cab + linea + "\n", 1).replace(linea + "\n(nada nuevo)\n", linea + "\n", 1)
         else:
-            texto = texto.rstrip("\n") + cab + linea + "\n"
+            texto = texto.rstrip("\n") + "\n" + cab + linea + "\n"
         with open(ruta, "w", encoding="utf-8") as f:
             f.write(texto)
     except OSError as e:
@@ -745,7 +763,13 @@ def main():
     ap.add_argument("--datos", required=True, help="carpeta de salida (en la rama datos-motor)")
     ap.add_argument("--consultas", default=".github/motor/datos/visibilidad.json")
     ap.add_argument("--tarea", default="auto", choices=["auto", "radar", "foro", "refuerzo", "todo"])
+    ap.add_argument("--aplica-aviso", help="fichero con el día y la línea del aviso de gasto: solo lo aplica y sale")
     a = ap.parse_args()
+    if a.aplica_aviso:
+        with open(a.aplica_aviso, encoding="utf-8") as f:
+            hoy, linea = f.read().split("\n")[:2]
+        aplica_aviso(os.path.dirname(os.path.normpath(a.datos)), hoy, linea)
+        return 0
     clave = os.environ.get("ANTHROPIC_API_KEY", "")
     if not clave:
         anota("warning", "Sin ANTHROPIC_API_KEY: el motor de visibilidad no hace nada")
