@@ -1,19 +1,26 @@
 {
- "dia": "2026-11-13",
- "tokens": 118930,
- "busquedas": 6,
- "turno": 1,
- "radar_idx": 3,
+ "dia": "2026-11-14",
+ "tokens": 102146,
+ "busquedas": 5,
+ "turno": 2,
+ "radar_idx": 6,
  "foro_vistos": {
   "12647": 97,
   "9261": 112
  },
- "refuerzos": {},
+ "refuerzos": {
+  "X01": "2026-11-14"
+ },
  "historico": [
   {
    "dia": "2026-11-13",
    "tokens": 118930,
    "busquedas": 6
+  },
+  {
+   "dia": "2026-11-14",
+   "tokens": 102146,
+   "busquedas": 5
   }
  ],
  "foro_fallos": {}
