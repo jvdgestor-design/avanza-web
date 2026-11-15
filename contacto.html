@@ -124,7 +124,9 @@
     var datos = new FormData(f);
     var origen = datos.get('origen') || 'sin indicar';
     datos.set('pagina', window.location.pathname);
-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + ' · Nos conoció por: ' + origen + ']');
+    var desde = '';
+    try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
+    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + ' · Nos conoció por: ' + origen + ']');
     var cuerpo = new URLSearchParams(datos);
     var finalizado = false;
     function mostrarAviso(){
