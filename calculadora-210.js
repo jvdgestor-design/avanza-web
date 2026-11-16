@@ -5,7 +5,7 @@
  *   TRLIRNR (RDLeg 5/2004) arts. 24.1, 24.5, 24.6 y 25.1.a
  *   LIRPF (Ley 35/2006) art. 85 (redacción vigente a 16/11/2026), disposición adicional 55.ª
  *     (redacción del RDL 29/2026, convalidado el 12/11/2026; períodos 2023 a 2026) y art. 11.3
- *   Ley 36/2006 DA 1.ª (Liechtenstein, desde el 11/07/2021)
+ *   Ley 36/2006 DA 10.ª.3, añadida por la Ley 11/2021 (Liechtenstein, desde el 11/07/2021)
  *   Orden EHA/3316/2010, art. 5: redacción de la Orden HAC/623/2026 solo para devengos de 2026;
  *     para años anteriores, la redacción entonces vigente (2011 hasta 2023; 01/02/2024 para 2024 y 2025)
  * Aritmética exacta en céntimos con BigInt; redondeo a céntimos, medio céntimo hacia arriba,
