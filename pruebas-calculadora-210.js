@@ -104,15 +104,168 @@ igual('B11 sin aviso de exceso', b11.avisos.length, 0);
 alq('B12 cuota 0,0048 baja', con(ba, { ingresos: '0,02' }), 2n, 0n);
 
 console.log('--- plazos (Orden EHA/3316/2010, art. 5) ---');
-// P01: renta imputada de 2025: 1 abril a 31 diciembre del año siguiente (2026)
+// P01: renta imputada de 2025: año natural siguiente (1 enero a 31 diciembre de 2026), según nota AEAT; el plazo de abril solo rige para devengos de 2026
 var p1 = C.calculaImputada(base).plazo;
-igual('P01 imputada 2025', [p1.desde, p1.hasta], ['2026-04-01', '2026-12-31']);
-// P02: alquiler 2025 con cuota a ingresar: 1 a 20 de abril de 2026
+igual('P01 imputada 2025', [p1.desde, p1.hasta], ['2026-01-01', '2026-12-31']);
+// P02: alquiler 2025 con cuota a ingresar: 1-20 enero de 2026 si se agrupa (art. 5.c).1.º, redacción HAC/56/2024) o trimestral; último día posible 20/01/2026
 var p2 = C.calculaAlquiler(ba).plazo;
-igual('P02 alquiler a ingresar', [p2.desde, p2.hasta], ['2026-04-01', '2026-04-20']);
+igual('P02 alquiler 2025', [p2.hasta, /agrupa/.test(p2.texto), /trimestre/.test(p2.texto)], ['2026-01-20', true, true]);
 // P03: alquiler 2024 con cuota cero: 1 a 20 de enero de 2025
 var p3 = C.calculaAlquiler(con(ba, { anio: 2024, ingresos: '100', gastos: '200', residencia: 'UE' })).plazo;
 igual('P03 alquiler cuota cero', [p3.desde, p3.hasta], ['2025-01-01', '2025-01-20']);
+
+console.log('--- (C) reparo 1: criterio del 1,1 % por año de devengo ---');
+var cuenta = function (anioDev, anioRev) { return C.aplica11(anioDev, anioRev) ? 'revisado' : 'normal'; };
+// C01: devengo 2025, municipio revisado en 2013: DA 55.ª (desde 01/01/2012) -> 1,1 %: 100.000 x 1,1 % = 1.100,00; 24 % = 264,00
+igual('C01 aplica11(2025, 2013)', C.aplica11(2025, 2013), true);
+imp('C01 2025 revisado 2013 -> 1,1 %', con(base, { caso: cuenta(2025, 2013) }), 110000n, 110000n, 26400n);
+// C02: devengo 2025, revisado en 2010: antes de 2012 -> no aplica el 1,1 %: 2 % = 2.000,00; 24 % = 480,00
+igual('C02 aplica11(2025, 2010)', C.aplica11(2025, 2010), false);
+imp('C02 2025 revisado 2010 -> 2 %', con(base, { caso: cuenta(2025, 2010) }), 200000n, 200000n, 48000n);
+// C03: devengo 2020 (366 días), revisado en 2010: art. 85 (devengo y diez anteriores: 2010 a 2020) -> sí 1,1 %: 1.100,00 x 366/366; 24 % = 264,00
+igual('C03 aplica11(2020, 2010)', C.aplica11(2020, 2010), true);
+imp('C03 2020 revisado 2010 -> 1,1 %', con(base, { anio: 2020, dias: 366, caso: cuenta(2020, 2010) }), 110000n, 110000n, 26400n);
+// C04: devengo 2020, revisado en 2009: fuera de los diez anteriores -> 2 %: 2.000,00; 24 % = 480,00
+igual('C04 aplica11(2020, 2009)', C.aplica11(2020, 2009), false);
+imp('C04 2020 revisado 2009 -> 2 %', con(base, { anio: 2020, dias: 366, caso: cuenta(2020, 2009) }), 200000n, 200000n, 48000n);
+// C05: devengo 2022, revisado en 2012: art. 85 (2012 a 2022) -> 1,1 %: 1.100,00; 24 % = 264,00
+igual('C05 aplica11(2022, 2012)', C.aplica11(2022, 2012), true);
+imp('C05 2022 revisado 2012 -> 1,1 %', con(base, { anio: 2022, caso: cuenta(2022, 2012) }), 110000n, 110000n, 26400n);
+// C06: devengo 2022, revisado en 2011: fuera (2011 < 2012) -> 2 %: 2.000,00; 480,00
+igual('C06 aplica11(2022, 2011)', C.aplica11(2022, 2011), false);
+imp('C06 2022 revisado 2011 -> 2 %', con(base, { anio: 2022, caso: cuenta(2022, 2011) }), 200000n, 200000n, 48000n);
+// C07: devengo 2023, revisado en 2012: DA 55.ª (desde 2012; con la regla de diez años sería 2013) -> 1,1 %: 1.100,00; 264,00
+igual('C07 aplica11(2023, 2012)', C.aplica11(2023, 2012), true);
+imp('C07 2023 revisado 2012 -> 1,1 %', con(base, { anio: 2023, caso: cuenta(2023, 2012) }), 110000n, 110000n, 26400n);
+// C08: devengo 2023, revisado en 2011 -> 2 %: 2.000,00; 480,00
+igual('C08 aplica11(2023, 2011)', C.aplica11(2023, 2011), false);
+imp('C08 2023 revisado 2011 -> 2 %', con(base, { anio: 2023, caso: cuenta(2023, 2011) }), 200000n, 200000n, 48000n);
+igual('C08 aplica11(2023, 2011)', C.aplica11(2023, 2011), false);
+// C09: la pregunta cambia con el año
+igual('C09 pregunta 2023-2026 menciona 2012', /1 de enero de 2012/.test(C.preguntaRevision(2024)), true);
+igual('C09 pregunta 2015-2022 menciona diez anteriores', /diez anteriores/.test(C.preguntaRevision(2022)) && !/2012/.test(C.preguntaRevision(2022)), true);
+igual('C09 desde2012 2022/2023/2026/2027', [C.desde2012(2022), C.desde2012(2023), C.desde2012(2026), C.desde2012(2027)], [false, true, true, false]);
+// C10: devengo 2024 bisiesto, 183 días, 1,1 %: 100.000 x 1,1 % = 1.100,00 x 183/366 = 550,00; 24 % = 132,00
+imp('C10 2024 1,1 % 183 días', con(base, { anio: 2024, dias: 183, caso: 'revisado' }), 55000n, 55000n, 13200n);
+
+console.log('--- (D) reparo 3: Liechtenstein ---');
+var li = con(base, { residencia: 'LI' });
+// D01: Liechtenstein 2020 (366 días): 24 %: 100.000 x 2 % = 2.000,00; 24 % = 480,00 (no 19 %)
+var d1 = imp('D01 LI 2020 imputada 24 %', con(li, { anio: 2020, dias: 366 }), 200000n, 200000n, 48000n);
+igual('D01 aviso LI anterior a 11/07/2021', d1.avisos.length === 1 && /11\/07\/2021/.test(d1.avisos[0]), true);
+// D02: Liechtenstein 2022: 19 %: 2.000,00 x 19 % = 380,00
+imp('D02 LI 2022 imputada 19 %', con(li, { anio: 2022 }), 200000n, 200000n, 38000n);
+// D03: Liechtenstein 2021 imputada (devengo 31/12/2021, posterior al 11/07/2021): 19 % = 380,00
+imp('D03 LI 2021 imputada 19 %', con(li, { anio: 2021 }), 200000n, 200000n, 38000n);
+// D04: Islandia/Noruega 2020: 19 % (sin cambio): 380,00
+imp('D04 EEE 2020 imputada 19 %', con(base, { residencia: 'EEE', anio: 2020, dias: 366 }), 200000n, 200000n, 38000n);
+// D05: alquiler Liechtenstein 2020: 12.000 íntegros (gastos 3.000 no se deducen); 24 % = 2.880,00
+var d5 = alq('D05 LI 2020 alquiler sin gastos 24 %', con(ba, { residencia: 'LI', anio: 2020 }), 1200000n, 288000n);
+igual('D05 avisos (gastos no deducidos + LI)', d5.avisos.length, 2);
+// D06: alquiler Liechtenstein 2022: 12.000 - 3.000 = 9.000,00; 19 % = 1.710,00
+alq('D06 LI 2022 alquiler con gastos 19 %', con(ba, { residencia: 'LI', anio: 2022 }), 900000n, 171000n);
+// D07: alquiler Liechtenstein 2021: mezcla de fechas anteriores y posteriores al 11/07/2021: no se calcula
+var d7 = C.calculaAlquiler(con(ba, { residencia: 'LI', anio: 2021 }));
+error('D07 LI 2021 alquiler no da resultado', d7, 'residencia');
+igual('D07 mensaje', /no da resultado/.test(d7.errores[0].mensaje), true);
+// D08: alquiler Islandia/Noruega 2020 sigue deduciendo gastos: 12.000 - 3.000 = 9.000,00; 19 % = 1.710,00
+alq('D08 EEE 2020 alquiler con gastos', con(ba, { residencia: 'EEE', anio: 2020 }), 900000n, 171000n);
+// D09: el aviso del EEE ya no dice que no se comprueba, sino el criterio de la AEAT
+var d9 = C.calculaImputada(con(base, { residencia: 'EEE' }));
+igual('D09 aviso EEE', /criterio publicado por la Agencia Tributaria/.test(d9.avisos[0]), true);
+
+console.log('--- (E) reparo 2 y 5: plazos por año de devengo ---');
+var plz = function (r) { return [r.plazo.desde, r.plazo.hasta]; };
+// E01: imputada 2025 -> 01/01/2026 a 31/12/2026 (AEAT: "no varía"); imputada 2024 -> 2025; imputada 2015 -> 2016
+igual('E01 imputada 2025', plz(C.calculaImputada(con(base, { anio: 2025 }))), ['2026-01-01', '2026-12-31']);
+igual('E01 imputada 2024', plz(C.calculaImputada(con(base, { anio: 2024 }))), ['2025-01-01', '2025-12-31']);
+igual('E01 imputada 2015', plz(C.calculaImputada(con(base, { anio: 2015 }))), ['2016-01-01', '2016-12-31']);
+// E02: imputada 2026 -> 01/04/2027 a 31/12/2027 (HAC/623/2026, DF única 2.b)
+var e2 = C.calculaImputada(con(base, { anio: 2026 }));
+igual('E02 imputada 2026', plz(e2), ['2027-04-01', '2027-12-31']);
+igual('E02 artículo cita HAC/623/2026', /HAC\/623\/2026/.test(e2.plazo.articulo), true);
+// E03: alquiler 2023: trimestral; último día posible 20/01/2024; texto trimestral
+var e3 = C.calculaAlquiler(con(ba, { anio: 2023 }));
+igual('E03 alquiler 2023', [e3.plazo.hasta, /trimestre natural/.test(e3.plazo.texto), /agrupa/.test(e3.plazo.texto)], ['2024-01-20', true, false]);
+// E04: alquiler 2015 trimestral (hasta 20/01/2016); 2019 igual
+igual('E04 alquiler 2015', C.calculaAlquiler(con(ba, { anio: 2015 })).plazo.hasta, '2016-01-20');
+igual('E04 alquiler 2019', C.calculaAlquiler(con(ba, { anio: 2019 })).plazo.hasta, '2020-01-20');
+// E05: alquiler 2024 y 2025: 1-20 enero si agrupa, o trimestral (HAC/56/2024)
+var e5 = C.calculaAlquiler(con(ba, { anio: 2024 }));
+igual('E05 alquiler 2024', [e5.plazo.hasta, /1 al 20 de enero de 2025 si se agrupa/.test(e5.plazo.texto), /HAC\/56\/2024/.test(e5.plazo.articulo)], ['2025-01-20', true, true]);
+// E06: alquiler 2026: 1-20 abril de 2027 (agrupada) con la transición de los trimestres primero a tercero
+var e6 = C.calculaAlquiler(con(ba, { anio: 2026 }));
+igual('E06 alquiler 2026', [plz(e6), /primero a tercero de 2026/.test(e6.plazo.texto), /HAC\/623\/2026/.test(e6.plazo.articulo)], [['2027-04-01', '2027-04-20'], true, true]);
+// E07: cuota cero igual en todos los años: 1-20 enero siguiente
+var cz = con(ba, { residencia: 'UE', ingresos: '100', gastos: '200' });
+igual('E07 cuota cero 2019', plz(C.calculaAlquiler(con(cz, { anio: 2019 }))), ['2020-01-01', '2020-01-20']);
+igual('E07 cuota cero 2026', plz(C.calculaAlquiler(con(cz, { anio: 2026 }))), ['2027-01-01', '2027-01-20']);
+// E08: reparo 5: con plazos trimestrales hasta es el último día posible, para el aviso de "plazo ya terminado" (alquiler 2019: 20/01/2020, pasado)
+igual('E08 hasta alquiler 2019 anterior a hoy', C.calculaAlquiler(con(ba, { anio: 2019 })).plazo.hasta < new Date().toISOString().slice(0, 10), true);
+// E09: año 2027 se rechaza también en alquiler, con el mensaje de devengos
+var e9 = C.calculaAlquiler(con(ba, { anio: 2027 }));
+error('E09 alquiler 2027', e9, 'anio');
+igual('E09 mensaje', e9.errores[0].mensaje, 'Esta calculadora solo recoge devengos hasta 2026.');
+
+console.log('--- (R) casos del revisor independiente (16/11/2026), con su cuenta a mano ---');
+// R01: 2024, 2 %, 100.000, 366/366, 100 %, otro: 2.000,00; 24 % = 480,00
+imp('R01', { anio: '2024', residencia: 'OTRO', caso: 'normal', valor: '100000', dias: '366', titularidad: '100' }, 200000n, 200000n, 48000n);
+// R02: 1 día de 366: 2.000/366 = 5,4645 -> 5,46; 24 % = 1,3104 -> 1,31
+imp('R02', { anio: '2024', residencia: 'OTRO', caso: 'normal', valor: '100000', dias: '1', titularidad: '100' }, 546n, 546n, 131n);
+// R03: 2025, 1,1 %, 87.654,32, 365, 33,33 %, UE: 964,1975 -> 964,20; x 33,33 % = 321,3679 -> 321,37; 19 % = 61,0603 -> 61,06
+var r03 = imp('R03', { anio: '2025', residencia: 'UE', caso: 'revisado', valor: '87654,32', dias: '365', titularidad: '33,33' }, 96420n, 32137n, 6106n);
+igual('R03 plazo 2025', plz(r03), ['2026-01-01', '2026-12-31']);
+// R04: alquiler 2026, otro, 9.600 sin gastos: 9.600,00; 24 % = 2.304,00; abril de 2027
+var r04 = alq('R04', { anio: '2026', residencia: 'OTRO', ingresos: '9600', gastos: '', titularidad: '100' }, 960000n, 230400n);
+igual('R04 plazo', r04.plazo.hasta, '2027-04-20');
+// R05: alquiler 2026, UE, 5.000 - 7.000: base 0, cuota cero, 1-20 enero 2027, con aviso
+var r05 = alq('R05', { anio: '2026', residencia: 'UE', ingresos: '5000', gastos: '7000', titularidad: '100' }, 0n, 0n);
+igual('R05 plazo y aviso', [plz(r05), r05.avisos.length], [['2027-01-01', '2027-01-20'], 1]);
+// R06: alquiler 2026, otro, 1.234,56, gastos 500 ignorados: 1.234,56 x 24 % = 296,2944 -> 296,29, con aviso
+var r06 = alq('R06', { anio: '2026', residencia: 'OTRO', ingresos: '1.234,56', gastos: '500', titularidad: '100' }, 123456n, 29629n);
+igual('R06 aviso', r06.avisos.length, 1);
+// R07: todo vacío: seis errores
+igual('R07 seis errores', C.calculaImputada({}).errores.length, 6);
+// R08: días 0
+error('R08 dias 0', C.calculaImputada({ anio: '2025', residencia: 'UE', caso: 'normal', valor: '100000', dias: '0', titularidad: '100' }), 'dias');
+// R09: 999.999.999.999,99 x 2 % = 19.999.999.999,9998 -> 20.000.000.000,00; 24 % = 4.800.000.000,00
+imp('R09', { anio: '2025', residencia: 'OTRO', caso: 'normal', valor: '999999999999,99', dias: '365', titularidad: '100' }, 2000000000000n, 2000000000000n, 480000000000n);
+// R10: 2023, sin catastral, 200.000, 200 días, 50 %, EEE: 1.100 x 200/365 = 602,7397 -> 602,74; 301,37; 19 % = 57,2603 -> 57,26
+imp('R10', { anio: '2023', residencia: 'EEE', caso: 'sinCatastral', valor: '200000', dias: '200', titularidad: '50' }, 60274n, 30137n, 5726n);
+// R11: titularidad 33,333
+error('R11 titularidad 3 decimales', C.calculaImputada({ anio: '2025', residencia: 'UE', caso: 'normal', valor: '100000', dias: '365', titularidad: '33,333' }), 'titularidad');
+// R12: 2020 con 366 válido; 2021 con 366 error
+imp('R12a 2020 con 366', { anio: '2020', residencia: 'UE', caso: 'normal', valor: '50000', dias: '366', titularidad: '100' }, 100000n, 100000n, 19000n);
+error('R12b 2021 con 366', C.calculaImputada({ anio: '2021', residencia: 'UE', caso: 'normal', valor: '50000', dias: '366', titularidad: '100' }), 'dias');
+// R13: 2018, Liechtenstein: 24 % (AEAT: 19 % solo desde 11/07/2021): 2.000,00 x 24 % = 480,00
+imp('R13', { anio: '2018', residencia: 'LI', caso: 'normal', valor: '100000', dias: '365', titularidad: '100' }, 200000n, 200000n, 48000n);
+// R14: alquiler 2025, UE, 12.000 - 3.000 = 9.000,00; 19 % = 1.710,00; plazo 1-20 enero 2026 (agrupación anual) o trimestral
+var r14 = alq('R14', { anio: '2025', residencia: 'UE', ingresos: '12000', gastos: '3000', titularidad: '100' }, 900000n, 171000n);
+igual('R14 plazo', [r14.plazo.hasta, /1 al 20 de enero de 2026/.test(r14.plazo.texto)], ['2026-01-20', true]);
+// R14b: alquiler 2019, otro: plazo trimestral
+var r14b = alq('R14b', { anio: '2019', residencia: 'OTRO', ingresos: '12000', gastos: '', titularidad: '100' }, 1200000n, 288000n);
+igual('R14b plazo trimestral', /trimestre natural/.test(r14b.plazo.texto), true);
+// R15: imputada 2025: 1 enero - 31 diciembre 2026
+igual('R15 plazo', plz(C.calculaImputada({ anio: '2025', residencia: 'UE', caso: 'normal', valor: '100000', dias: '365', titularidad: '100' })), ['2026-01-01', '2026-12-31']);
+// R16: valor 0,01, 1 día: 0,01 x 2 %/365 = 0,0000005 -> 0,00
+imp('R16', { anio: '2025', residencia: 'UE', caso: 'normal', valor: '0,01', dias: '1', titularidad: '100' }, 0n, 0n, 0n);
+// R17 / R18: "100.000" y "1.000.000" -> error de formato
+error('R17', C.calculaImputada({ anio: '2025', residencia: 'UE', caso: 'normal', valor: '100.000', dias: '365', titularidad: '100' }), 'valor');
+error('R18', C.calculaImputada({ anio: '2025', residencia: 'UE', caso: 'normal', valor: '1.000.000', dias: '365', titularidad: '100' }), 'valor');
+// R19: espacios: 100.000 x 2 % = 2.000,00; 50 %: 1.000,00; 19 % = 190,00
+imp('R19', { anio: '2025', residencia: 'UE', caso: 'normal', valor: '100000', dias: ' 365 ', titularidad: ' 50 ' }, 200000n, 100000n, 19000n);
+// R20: números JS: 100000,5 x 2 % = 2.000,01; 19 % = 380,0019 -> 380,00
+imp('R20', { anio: 2025, residencia: 'UE', caso: 'normal', valor: 100000.5, dias: 365, titularidad: 100 }, 200001n, 200001n, 38000n);
+// R21: "1e5" error; R22: gastos "abc" error; R23: "-0" valor error (valor cero)
+error('R21', C.calculaImputada({ anio: '2025', residencia: 'UE', caso: 'normal', valor: '1e5', dias: '365', titularidad: '100' }), 'valor');
+error('R22', C.calculaAlquiler({ anio: '2025', residencia: 'OTRO', ingresos: '100', gastos: 'abc', titularidad: '100' }), 'gastos');
+error('R23', C.calculaImputada({ anio: '2025', residencia: 'UE', caso: 'normal', valor: '-0', dias: '365', titularidad: '-0' }), 'valor');
+// R24: ",5" = 0,50 x 2 % = 0,01; 19 % = 0,0019 -> 0,00
+imp('R24', { anio: '2025', residencia: 'UE', caso: 'normal', valor: ',5', dias: '365', titularidad: '100' }, 1n, 1n, 0n);
+// R25: alquiler 2026, UE, 0,02: 19 % = 0,0038 -> 0,00; cuota cero
+alq('R25', { anio: '2026', residencia: 'UE', ingresos: '0,02', gastos: '', titularidad: '100' }, 2n, 0n);
+// R26: 2026, 1,1 %, 120.000: 1.320,00; 19 % = 250,80
+imp('R26', { anio: '2026', residencia: 'UE', caso: 'revisado', valor: '120000', dias: '365', titularidad: '100' }, 132000n, 132000n, 25080n);
 
 console.log('--- validacion ---');
 error('V01 valor catastral vacio', C.calculaImputada(con(base, { valor: '' })), 'valor');

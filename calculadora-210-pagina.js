@@ -17,7 +17,9 @@
     $('bloque-A').hidden = !a; $('bloque-B').hidden = a;
     salida.innerHTML = ''; limpiaMarcas();
     $('lbl-valor').textContent = etiquetaValor();
+    actualizaPregunta();
   }
+  function actualizaPregunta() { var a = parseInt($('anio').value, 10); if (a) { $('lbl-caso').textContent = C.preguntaRevision(a); } }
   function etiquetaValor() {
     return $('caso').value === 'sinCatastral'
       ? 'El mayor entre el valor comprobado por la Administración a efectos de otros tributos y el precio o valor de adquisición (euros)'
@@ -42,7 +44,7 @@
     var d = '<dl class="calc-dl">';
     if (r.supuesto === 'imputada') {
       d += fila(r.caso === 'sinCatastral' ? 'Valor tomado (mayor valor indicado)' : 'Valor catastral', C.formatoEuros(r.valorCents));
-      d += fila('Porcentaje aplicado (art. 85.1 Ley 35/2006)', r.porcentaje + ' %' + (r.caso === 'sinCatastral' ? ' sobre el 50 % del valor' : ''));
+      d += fila(r.anio >= 2023 ? 'Porcentaje aplicado (art. 85.1 y disposición adicional 55.ª, Ley 35/2006)' : 'Porcentaje aplicado (art. 85.1 Ley 35/2006)', r.porcentaje + ' %' + (r.caso === 'sinCatastral' ? ' sobre el 50 % del valor' : ''));
       d += fila('Días a disposición', r.dias + ' de ' + r.diasAnio);
       d += fila('Renta imputada del inmueble', C.formatoEuros(r.rentaCents));
     } else {
@@ -81,6 +83,7 @@
   });
   f.addEventListener('reset', function () { setTimeout(muestra, 0); });
   Array.prototype.forEach.call(radios, function (r) { r.addEventListener('change', muestra); });
+  $('anio').addEventListener('change', actualizaPregunta);
   $('caso').addEventListener('change', function () { $('lbl-valor').textContent = etiquetaValor(); });
   muestra();
 })();
