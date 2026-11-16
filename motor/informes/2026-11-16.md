@@ -150,8 +150,8 @@ Consultas con 5 impresiones o más: 1 (las demás no se publican).
 |---|---|---|
 | Bing: páginas en índice | 51 | 34 |
 | Bing: dominios enlazantes (API) | NO CALCULABLE | — |
-| Google: URL del sitemap indexadas | 175 | 147 |
-| Google: sin indexar | 4 | 25 |
+| Google: URL del sitemap indexadas | 177 | 147 |
+| Google: sin indexar | 6 | 25 |
 
 Dominios enlazantes de Bing: la API da 0 o vacío cuando el panel muestra otra cifra (30/10): vale la del panel.
 

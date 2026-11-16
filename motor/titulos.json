@@ -374,6 +374,11 @@
   "huella": "93f60cda9fc6",
   "titulo": "Modelo 720: Auslandsvermögen in Spanien melden"
  },
+ "de-modelo-721-krypto-ausland.html": {
+  "desde": "2026-11-16",
+  "huella": "be33303ca6f9",
+  "titulo": "Modelo 721: Krypto im Ausland in Spanien melden"
+ },
  "de-schreiben-spanisches-finanzamt.html": {
   "desde": "2026-10-30",
   "huella": "8c12369167ad",
@@ -553,6 +558,11 @@
   "desde": "2026-10-30",
   "huella": "0ebe83f9309f",
   "titulo": "Modelo 720 : déclarer ses avoirs à l’étranger"
+ },
+ "fr-modele-721-cryptomonnaies-etranger.html": {
+  "desde": "2026-11-16",
+  "huella": "e4e31334d32f",
+  "titulo": "Modelo 721 : déclarer ses cryptomonnaies à l’étranger"
  },
  "fr-premiere-declaration-revenus-espagne.html": {
   "desde": "2026-11-05",
@@ -778,6 +788,16 @@
   "desde": "2026-10-30",
   "huella": "03de43e17756",
   "titulo": "Pensión del Reino Unido si vives en España: dónde tributa"
+ },
+ "plusvalia-municipal-no-residente.html": {
+  "desde": "2026-11-16",
+  "huella": "215e9a410b35",
+  "titulo": "Plusvalía municipal si vives fuera: venta y herencia"
+ },
+ "plusvalia-tax-spain-non-resident.html": {
+  "desde": "2026-11-16",
+  "huella": "90da387640d9",
+  "titulo": "Plusvalía tax in Spain for non-residents: sale, inheritance"
  },
  "primera-renta-extranjero-espana.html": {
   "desde": "2026-11-05",

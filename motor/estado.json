@@ -109,7 +109,7 @@
    "avisado": "2026-11-12",
    "fuente": "gsc",
    "primera": "2026-11-05",
-   "que": "4 de 179 URL del sitemap sin indexar en Google: en-privacy.html, en-contact.html, buying-property-from-non-resident-spai",
+   "que": "6 de 183 URL del sitemap sin indexar en Google: de-modelo-721-krypto-ausland.html, fr-modele-721-cryptomonnaies-etranger",
    "visto": "2026-11-16"
   },
   "INFORME|2026-11-16": {
@@ -582,7 +582,11 @@
      "https://grupoavanzaconsultores.es/dutch-pension-tax-spain-resident.html",
      "https://grupoavanzaconsultores.es/modelo-210-woning-spanje-documenten.html",
      "https://grupoavanzaconsultores.es/en-privacy.html",
-     "https://grupoavanzaconsultores.es/en-contact.html"
+     "https://grupoavanzaconsultores.es/en-contact.html",
+     "https://grupoavanzaconsultores.es/de-modelo-721-krypto-ausland.html",
+     "https://grupoavanzaconsultores.es/fr-modele-721-cryptomonnaies-etranger.html",
+     "https://grupoavanzaconsultores.es/plusvalia-municipal-no-residente.html",
+     "https://grupoavanzaconsultores.es/plusvalia-tax-spain-non-resident.html"
     ],
     "rastreo": {
      "https://grupoavanzaconsultores.es/": {
@@ -592,8 +596,9 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/accounting-tax-service-spain.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/alquiler-vivienda-espana-no-residente.html": {
@@ -774,19 +779,18 @@
       "rastreo": "2026-11-10"
      },
      "https://grupoavanzaconsultores.es/de-ansaessigkeitsbescheinigung-spanien.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-13",
+      "http": 0,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/de-beckham-regelung-spanien.html": {
       "http": 0,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/de-britische-rente-wohnsitz-spanien.html": {
       "http": 0,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/de-buchhaltung-steuern-unternehmen-spanien.html": {
@@ -796,7 +800,7 @@
      },
      "https://grupoavanzaconsultores.es/de-cookies.html": {
       "http": 0,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/de-datenschutz.html": {
@@ -889,6 +893,11 @@
      "https://grupoavanzaconsultores.es/de-modelo-720-auslandsvermoegen.html": {
       "http": 0,
       "mirada": "2026-11-14",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/de-modelo-721-krypto-ausland.html": {
+      "http": 0,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/de-schreiben-spanisches-finanzamt.html": {
@@ -1012,28 +1021,32 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-comptabilite-fiscalite-entreprise-espagne.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-confidentialite.html": {
       "http": 0,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-contact.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-cookies.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-courrier-agence-fiscale.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-creer-sl-espagne-etranger.html": {
@@ -1043,8 +1056,9 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-donation-argent-etranger.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-independant-autonomo-espagne.html": {
@@ -1060,18 +1074,26 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-mentions-legales.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-modele-720-avoirs-etranger.html": {
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/fr-modele-721-cryptomonnaies-etranger.html": {
       "http": 0,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-premiere-declaration-revenus-espagne.html": {
@@ -1081,55 +1103,57 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-quitter-espagne-fiscalite.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-regime-impatries-loi-beckham.html": {
-      "http": 0,
-      "mirada": "2026-11-13",
+      "error": true,
+      "http": null,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-regulariser-impots-espagne.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-residence-fiscale-espagne.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-retraite-allemande-espagne.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-retraite-britannique-espagne.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-retraite-francaise-espagne.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-retraite-italienne-espagne.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-succession-heritier-non-resident.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr-teletravail-espagne-employeur-etranger.html": {
@@ -1141,13 +1165,13 @@
      "https://grupoavanzaconsultores.es/fr-vendre-bien-immobilier-non-resident.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/fr.html": {
       "error": true,
       "http": null,
-      "mirada": "2026-11-13",
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/french-pension-tax-spain-resident.html": {
@@ -1318,6 +1342,16 @@
      "https://grupoavanzaconsultores.es/pension-reino-unido-residente-en-espana.html": {
       "error": true,
       "http": null,
+      "mirada": "2026-11-16",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/plusvalia-municipal-no-residente.html": {
+      "http": 0,
+      "mirada": "2026-11-16",
+      "rastreo": ""
+     },
+     "https://grupoavanzaconsultores.es/plusvalia-tax-spain-non-resident.html": {
+      "http": 0,
       "mirada": "2026-11-16",
       "rastreo": ""
      },
@@ -1567,9 +1601,8 @@
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/us-social-security-pension-tax-spain-resident.html": {
-      "error": true,
-      "http": null,
-      "mirada": "2026-11-13",
+      "http": 0,
+      "mirada": "2026-11-16",
       "rastreo": ""
      },
      "https://grupoavanzaconsultores.es/vender-inmueble-en-espana-no-residente.html": {
@@ -1594,7 +1627,7 @@
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/accounting-tax-service-spain.html": {
-      "cobertura": "Descubierta: actualmente sin indexar",
+      "cobertura": "Google no reconoce esta URL",
       "mirada": "2026-11-16",
       "regresion": false,
       "verdict": "NEUTRAL"
@@ -1917,6 +1950,12 @@
       "regresion": false,
       "verdict": "PASS"
      },
+     "https://grupoavanzaconsultores.es/de-modelo-721-krypto-ausland.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-16",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
      "https://grupoavanzaconsultores.es/de-schreiben-spanisches-finanzamt.html": {
       "cobertura": "Enviada e indexada",
       "mirada": "2026-11-16",
@@ -1978,16 +2017,16 @@
       "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/en-contact.html": {
-      "cobertura": "Google no reconoce esta URL",
+      "cobertura": "Enviada e indexada",
       "mirada": "2026-11-16",
       "regresion": false,
-      "verdict": "NEUTRAL"
+      "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/en-privacy.html": {
-      "cobertura": "Google no reconoce esta URL",
+      "cobertura": "Enviada e indexada",
       "mirada": "2026-11-16",
       "regresion": false,
-      "verdict": "NEUTRAL"
+      "verdict": "PASS"
      },
      "https://grupoavanzaconsultores.es/en-tramites.html": {
       "cobertura": "Enviada e indexada",
@@ -2120,6 +2159,12 @@
       "mirada": "2026-11-16",
       "regresion": false,
       "verdict": "PASS"
+     },
+     "https://grupoavanzaconsultores.es/fr-modele-721-cryptomonnaies-etranger.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-16",
+      "regresion": false,
+      "verdict": "NEUTRAL"
      },
      "https://grupoavanzaconsultores.es/fr-premiere-declaration-revenus-espagne.html": {
       "cobertura": "Enviada e indexada",
@@ -2378,6 +2423,18 @@
       "mirada": "2026-11-16",
       "regresion": false,
       "verdict": "PASS"
+     },
+     "https://grupoavanzaconsultores.es/plusvalia-municipal-no-residente.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-16",
+      "regresion": false,
+      "verdict": "NEUTRAL"
+     },
+     "https://grupoavanzaconsultores.es/plusvalia-tax-spain-non-resident.html": {
+      "cobertura": "Google no reconoce esta URL",
+      "mirada": "2026-11-16",
+      "regresion": false,
+      "verdict": "NEUTRAL"
      },
      "https://grupoavanzaconsultores.es/primera-renta-extranjero-espana.html": {
       "cobertura": "Enviada e indexada",
@@ -2664,7 +2721,7 @@
     },
     "sitio": "sc-domain:grupoavanzaconsultores.es"
    },
-   "sha": "8a1ef29af345c6bba64723cbd3553c7b0c21130b",
+   "sha": "136e4673e2d8f93a4ee6bb415872aadc4f4e34e8",
    "urls": [
     "https://grupoavanzaconsultores.es/",
     "https://grupoavanzaconsultores.es/calendario-fiscal.html",
@@ -2758,6 +2815,10 @@
     "https://grupoavanzaconsultores.es/ru-model-720-imushchestvo-za-rubezhom.html",
     "https://grupoavanzaconsultores.es/modelo-721-criptomonedas-extranjero.html",
     "https://grupoavanzaconsultores.es/form-721-spain-crypto-abroad.html",
+    "https://grupoavanzaconsultores.es/de-modelo-721-krypto-ausland.html",
+    "https://grupoavanzaconsultores.es/fr-modele-721-cryptomonnaies-etranger.html",
+    "https://grupoavanzaconsultores.es/plusvalia-municipal-no-residente.html",
+    "https://grupoavanzaconsultores.es/plusvalia-tax-spain-non-resident.html",
     "https://grupoavanzaconsultores.es/pension-reino-unido-residente-en-espana.html",
     "https://grupoavanzaconsultores.es/uk-pension-tax-spain-resident.html",
     "https://grupoavanzaconsultores.es/pension-alemana-residente-en-espana.html",
@@ -3029,7 +3090,11 @@
      "https://grupoavanzaconsultores.es/dutch-pension-tax-spain-resident.html",
      "https://grupoavanzaconsultores.es/modelo-210-woning-spanje-documenten.html",
      "https://grupoavanzaconsultores.es/en-privacy.html",
-     "https://grupoavanzaconsultores.es/en-contact.html"
+     "https://grupoavanzaconsultores.es/en-contact.html",
+     "https://grupoavanzaconsultores.es/de-modelo-721-krypto-ausland.html",
+     "https://grupoavanzaconsultores.es/fr-modele-721-cryptomonnaies-etranger.html",
+     "https://grupoavanzaconsultores.es/plusvalia-municipal-no-residente.html",
+     "https://grupoavanzaconsultores.es/plusvalia-tax-spain-non-resident.html"
     ],
     "user_id": 2456666644
    }
@@ -3445,6 +3510,11 @@
     "huella": "93f60cda9fc6",
     "titulo": "Modelo 720: Auslandsvermögen in Spanien melden"
    },
+   "de-modelo-721-krypto-ausland.html": {
+    "desde": "2026-11-16",
+    "huella": "be33303ca6f9",
+    "titulo": "Modelo 721: Krypto im Ausland in Spanien melden"
+   },
    "de-schreiben-spanisches-finanzamt.html": {
     "desde": "2026-10-30",
     "huella": "8c12369167ad",
@@ -3624,6 +3694,11 @@
     "desde": "2026-10-30",
     "huella": "0ebe83f9309f",
     "titulo": "Modelo 720 : déclarer ses avoirs à l’étranger"
+   },
+   "fr-modele-721-cryptomonnaies-etranger.html": {
+    "desde": "2026-11-16",
+    "huella": "e4e31334d32f",
+    "titulo": "Modelo 721 : déclarer ses cryptomonnaies à l’étranger"
    },
    "fr-premiere-declaration-revenus-espagne.html": {
     "desde": "2026-11-05",
@@ -3849,6 +3924,16 @@
     "desde": "2026-10-30",
     "huella": "03de43e17756",
     "titulo": "Pensión del Reino Unido si vives en España: dónde tributa"
+   },
+   "plusvalia-municipal-no-residente.html": {
+    "desde": "2026-11-16",
+    "huella": "215e9a410b35",
+    "titulo": "Plusvalía municipal si vives fuera: venta y herencia"
+   },
+   "plusvalia-tax-spain-non-resident.html": {
+    "desde": "2026-11-16",
+    "huella": "90da387640d9",
+    "titulo": "Plusvalía tax in Spain for non-residents: sale, inheritance"
    },
    "primera-renta-extranjero-espana.html": {
     "desde": "2026-11-05",
