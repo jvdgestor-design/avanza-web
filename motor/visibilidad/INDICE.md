@@ -1,14 +1,14 @@
-# Motor de visibilidad por API · 16/11/2026 03:24
+# Motor de visibilidad por API · 16/11/2026 11:09
 
-Gasto de hoy: 102717 tokens · 5 búsquedas (topes 1500000 / 60).
+Gasto de hoy: 183481 tokens · 9 búsquedas (topes 1500000 / 60).
 
-Radar (indicador, Claude por API con búsqueda; no es la medición de la meta): 2 de 24 consultas citadas en su última tirada.
+Radar (indicador, Claude por API con búsqueda; no es la medición de la meta): 2 de 27 consultas citadas en su última tirada.
 
 Lo de listo/ lo publica la pasada de Claude (foros en el Chrome de Jose; web por PR) y lo mueve a publicado/ con su línea en el parte. apartado/ = no pasó el repaso: no sale.
 ChatGPT: investigar.md tiene las fuentes que citan las IA donde no salimos; lo que sea directorio o foro gratuito de su reparto, a su cola.
 
-- listo/2026-11-16-0324_refuerzo_X07.md
-- listo/2026-11-15-2213_foro_t289.md
+- listo/2026-11-16-1109_foro_t12040.md
+- apartado/2026-11-16-0324_refuerzo_X07.md
 - apartado/2026-11-15-1652_refuerzo_X06.md
 - apartado/2026-11-15-0807_foro_t11497.md
 - apartado/2026-11-14-2344_refuerzo_X04.md
