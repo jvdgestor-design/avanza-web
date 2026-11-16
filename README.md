@@ -41,6 +41,7 @@
 - [Dutch pensions and Spanish tax](https://grupoavanzaconsultores.es/dutch-pension-tax-spain-resident.html): English guide for Spanish tax residents receiving a Dutch AOW, workplace or public-service pension. It explains how to identify the pension, what to check for the Spanish tax return and which records to gather.
 - [Cambiar de asesoría](https://grupoavanzaconsultores.es/cambiar-de-asesoria.html): qué documentación debe entregar la anterior y cómo se hace el traspaso.
 - [Modelo 210 de no residentes](https://grupoavanzaconsultores.es/modelo-210-no-residentes.html): quién lo presenta, plazos y el piso vacío.
+- [Plusvalía municipal si vives fuera](https://grupoavanzaconsultores.es/plusvalia-municipal-no-residente.html): quién la paga en la venta, la herencia y la donación, plazos, cálculo y no sujeción. En inglés: [plusvalia-tax-spain-non-resident.html](https://grupoavanzaconsultores.es/plusvalia-tax-spain-non-resident.html).
 - [Carta de Hacienda o requerimiento](https://grupoavanzaconsultores.es/carta-de-hacienda-requerimiento.html): plazos y qué no hacer.
 - [Aplazar una deuda con Hacienda](https://grupoavanzaconsultores.es/aplazar-una-deuda-con-hacienda.html): aplazamiento, fraccionamiento y garantías.
 - [Modelo 347](https://grupoavanzaconsultores.es/modelo-347-operaciones-con-terceros.html): operaciones con terceros.
