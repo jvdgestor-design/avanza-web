@@ -19,7 +19,7 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  var ANIO_MIN = 2015; // el art. 85 y el art. 24.6 se leen en su redacción vigente desde 01/01/2015
+  var ANIO_MIN = 2016; // 2015 queda fuera: el tipo del 19 % era del 20 % o del 19,5 % según la fecha de devengo (DA 9.ª del TRLIRNR)
   var ANIO_MAX = 2026; // el art. 85 cambia desde 01/01/2027 (escala): fuera de esta calculadora
   var NORMA_LEIDA = '16/11/2026';
   var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
@@ -138,7 +138,7 @@
     }
     if (anio >= 2026) { // art. 5.c).1.º, redacción HAC/623/2026 (DF única 2.b)
       return { desde: s + '-04-01', hasta: s + '-04-20',
-        texto: 'del 1 al 20 de abril de ' + s + ' (presentación e ingreso, si declara agrupadas las rentas del año natural). Si declaró por separado los trimestres primero a tercero de 2026, su plazo era el trimestral (abril, julio y octubre de 2026)',
+        texto: 'del 1 al 20 de abril de ' + s + ' (presentación e ingreso), si declara agrupadas las rentas de 2026 o si declara por separado las del cuarto trimestre de 2026. Las de los trimestres primero a tercero de 2026 declaradas por separado tenían el plazo trimestral (abril, julio y octubre de 2026)',
         articulo: 'artículo 5.c).1.º de la Orden EHA/3316/2010, redacción de la Orden HAC/623/2026 (devengos de 2026)' };
     }
     if (anio >= 2024) { // art. 5.c).1.º, redacción HAC/56/2024
@@ -146,7 +146,7 @@
         texto: 'del 1 al 20 de enero de ' + s + ' si se agrupa el año; si se declara por separado, los veinte primeros días de abril, julio, octubre y enero siguientes a cada trimestre',
         articulo: 'artículo 5.c).1.º de la Orden EHA/3316/2010, redacción de la Orden HAC/56/2024' };
     }
-    return { desde: anio + '-04-01', hasta: s + '-01-20', // 2015-2023: art. 5.c).1.º, redacción original
+    return { desde: anio + '-04-01', hasta: s + '-01-20', // 2016-2023: art. 5.c).1.º, redacción original
       texto: 'por trimestres: los veinte primeros días de abril, julio, octubre y enero siguientes a cada trimestre natural',
       articulo: 'artículo 5.c).1.º de la Orden EHA/3316/2010, redacción original (vigente desde 2011)' };
   }

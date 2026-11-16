@@ -176,10 +176,13 @@ igual('D09 aviso EEE', /criterio publicado por la Agencia Tributaria/.test(d9.av
 
 console.log('--- (E) reparo 2 y 5: plazos por año de devengo ---');
 var plz = function (r) { return [r.plazo.desde, r.plazo.hasta]; };
-// E01: imputada 2025 -> 01/01/2026 a 31/12/2026 (AEAT: "no varía"); imputada 2024 -> 2025; imputada 2015 -> 2016
+// E01: imputada 2025 -> 01/01/2026 a 31/12/2026 (AEAT: "no varía"); imputada 2024 -> 2025; imputada 2015 se rechaza
 igual('E01 imputada 2025', plz(C.calculaImputada(con(base, { anio: 2025 }))), ['2026-01-01', '2026-12-31']);
 igual('E01 imputada 2024', plz(C.calculaImputada(con(base, { anio: 2024 }))), ['2025-01-01', '2025-12-31']);
-igual('E01 imputada 2015', plz(C.calculaImputada(con(base, { anio: 2015 }))), ['2016-01-01', '2016-12-31']);
+var e1r = C.calculaImputada(con(base, { anio: 2015 }));
+error('E01 imputada 2015 se rechaza', e1r, 'anio');
+igual('E01 mensaje 2015', e1r.errores[0].mensaje, 'Esta calculadora solo recoge años de devengo desde 2016 (redacción vigente de las normas leídas).');
+igual('E01 imputada 2016', plz(C.calculaImputada(con(base, { anio: 2016 }))), ['2017-01-01', '2017-12-31']);
 // E02: imputada 2026 -> 01/04/2027 a 31/12/2027 (HAC/623/2026, DF única 2.b)
 var e2 = C.calculaImputada(con(base, { anio: 2026 }));
 igual('E02 imputada 2026', plz(e2), ['2027-04-01', '2027-12-31']);
@@ -187,8 +190,9 @@ igual('E02 artículo cita HAC/623/2026', /HAC\/623\/2026/.test(e2.plazo.articulo
 // E03: alquiler 2023: trimestral; último día posible 20/01/2024; texto trimestral
 var e3 = C.calculaAlquiler(con(ba, { anio: 2023 }));
 igual('E03 alquiler 2023', [e3.plazo.hasta, /trimestre natural/.test(e3.plazo.texto), /agrupa/.test(e3.plazo.texto)], ['2024-01-20', true, false]);
-// E04: alquiler 2015 trimestral (hasta 20/01/2016); 2019 igual
-igual('E04 alquiler 2015', C.calculaAlquiler(con(ba, { anio: 2015 })).plazo.hasta, '2016-01-20');
+// E04: alquiler 2015 se rechaza; 2016 trimestral (hasta 20/01/2017); 2019 igual
+error('E04 alquiler 2015 se rechaza', C.calculaAlquiler(con(ba, { anio: 2015 })), 'anio');
+igual('E04 alquiler 2016', C.calculaAlquiler(con(ba, { anio: 2016 })).plazo.hasta, '2017-01-20');
 igual('E04 alquiler 2019', C.calculaAlquiler(con(ba, { anio: 2019 })).plazo.hasta, '2020-01-20');
 // E05: alquiler 2024 y 2025: 1-20 enero si agrupa, o trimestral (HAC/56/2024)
 var e5 = C.calculaAlquiler(con(ba, { anio: 2024 }));
@@ -196,6 +200,8 @@ igual('E05 alquiler 2024', [e5.plazo.hasta, /1 al 20 de enero de 2025 si se agru
 // E06: alquiler 2026: 1-20 abril de 2027 (agrupada) con la transición de los trimestres primero a tercero
 var e6 = C.calculaAlquiler(con(ba, { anio: 2026 }));
 igual('E06 alquiler 2026', [plz(e6), /primero a tercero de 2026/.test(e6.plazo.texto), /HAC\/623\/2026/.test(e6.plazo.articulo)], [['2027-04-01', '2027-04-20'], true, true]);
+igual('E06 alquiler 2026: cuarto trimestre por separado', /si declara por separado las del cuarto trimestre de 2026/.test(e6.plazo.texto), true);
+igual('E06 2015 y 2027 rechazados', [C.ANIO_MIN, C.ANIO_MAX], [2016, 2026]);
 // E07: cuota cero igual en todos los años: 1-20 enero siguiente
 var cz = con(ba, { residencia: 'UE', ingresos: '100', gastos: '200' });
 igual('E07 cuota cero 2019', plz(C.calculaAlquiler(con(cz, { anio: 2019 }))), ['2020-01-01', '2020-01-20']);
