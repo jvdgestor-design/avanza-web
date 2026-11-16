@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora orientativa del modelo 210 para no residentes</title>
+<meta name="description" content="Calculadora gratuita y orientativa del modelo 210: renta imputada de la vivienda no alquilada y alquiler, con la norma del BOE leída y el plazo de presentación.">
+<link rel="canonical" href="https://grupoavanzaconsultores.es/calculadora-modelo-210-no-residentes.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1F3763">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/icono-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="Grupo Avanza Consultores">
+<meta property="og:title" content="Calculadora orientativa del modelo 210 para no residentes">
+<meta property="og:description" content="Calculadora gratuita y orientativa del modelo 210: renta imputada de la vivienda no alquilada y alquiler, con la norma del BOE leída y el plazo de presentación.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://grupoavanzaconsultores.es/calculadora-modelo-210-no-residentes.html">
+<meta property="og:image" content="https://grupoavanzaconsultores.es/img/imagen-social.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="fuentes.css">
+<link rel="stylesheet" href="estilo.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://grupoavanzaconsultores.es/"}, {"@type": "ListItem", "position": 2, "name": "Modelo 210", "item": "https://grupoavanzaconsultores.es/modelo-210-no-residentes.html"}, {"@type": "ListItem", "position": 3, "name": "Calculadora del modelo 210", "item": "https://grupoavanzaconsultores.es/calculadora-modelo-210-no-residentes.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora orientativa del modelo 210 para no residentes","description":"Calculadora gratuita y orientativa del modelo 210: renta imputada de la vivienda no alquilada y alquiler, con la norma del BOE leída y el plazo de presentación.","url":"https://grupoavanzaconsultores.es/calculadora-modelo-210-no-residentes.html","inLanguage":"es","applicationCategory":"FinanceApplication","operatingSystem":"Cualquiera (navegador web)","browserRequirements":"Requiere JavaScript","author":{"@type":"Organization","@id":"https://grupoavanzaconsultores.es/#despacho","name":"Grupo Avanza Consultores"},"publisher":{"@id":"https://grupoavanzaconsultores.es/#despacho"},"mainEntityOfPage":"https://grupoavanzaconsultores.es/calculadora-modelo-210-no-residentes.html","datePublished":"2026-11-16","dateModified":"2026-11-16"}</script>
+<style>
+.calc-aviso{border:1px solid var(--line);border-top:2px solid var(--gold);background:var(--raised);padding:22px 26px;margin-top:26px;max-width:78ch}
+.calc-aviso p{margin:0;font-size:15.5px;line-height:1.6;text-align:justify;hyphens:auto}
+.calc-aviso p+p{margin-top:12px}
+#calc210{max-width:760px}
+#calc210 fieldset{border:1px solid var(--line);padding:18px 22px 20px;margin:0 0 22px;min-width:0}
+#calc210 legend{font-size:13.5px;font-weight:600;letter-spacing:.02em;padding:0 8px;color:var(--ink)}
+.calc-radio{display:flex;gap:12px;align-items:flex-start;margin-top:10px;font-size:15.5px;line-height:1.5}
+.calc-radio input{margin-top:5px;flex:none}
+#calc210 .field{margin-top:18px}
+#calc210 .field:first-of-type{margin-top:0}
+#calc210 .field select,#calc210 .field input{width:100%;max-width:100%;min-height:46px}
+.calc-ayuda{font-size:13.5px;line-height:1.5;color:var(--ink-soft);text-align:left}
+#calc210 [aria-invalid="true"]{border-color:#B4453C}
+.calc-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+.calc-btns .btn{border:0;cursor:pointer}
+.calc-btns .btn--ghost{border:1px solid var(--line)}
+#calc-resultado{max-width:760px;margin-top:30px;outline:none}
+#calc-resultado:not(:empty){border:1px solid var(--line);border-top:2px solid var(--gold);background:var(--raised);padding:24px 26px}
+.calc-dl{margin:0 0 18px}
+.calc-dl div{display:flex;justify-content:space-between;gap:18px;padding:10px 0;border-bottom:1px solid var(--line-soft)}
+.calc-dl dt{color:var(--ink-soft);font-size:15px;min-width:0}
+.calc-dl dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.calc-dl .calc-total dt{color:var(--ink);font-weight:600}
+.calc-dl .calc-total dd{color:var(--navy);font-size:20px}
+.calc-av{font-size:14.5px;color:var(--ink-soft);line-height:1.55;padding-left:20px}
+p.calc-av{padding-left:0}
+.calc-pe{font-size:13.5px;color:var(--ink-faint)}
+.calc-err ul{margin:10px 0 0;padding-left:20px}
+.calc-err{color:#8E2F28}
+.calc-err a{color:inherit;text-decoration:underline}
+.norma-lista{padding-left:20px;margin-top:14px}
+.norma-lista li{margin-bottom:12px;line-height:1.6;text-align:justify;overflow-wrap:anywhere}
+@media(max-width:560px){.calc-dl div{flex-direction:column;gap:2px}.calc-dl dd{text-align:left;white-space:normal}.calc-aviso{padding:18px}#calc-resultado:not(:empty){padding:18px}#calc210 fieldset{padding:14px 14px 16px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Ir al contenido</a>
+<header class="topbar" id="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="/" aria-label="Grupo Avanza Consultores, inicio">
+      <img src="img/icono-512.png" width="38" height="38" alt="">
+      <span><b>Grupo Avanza</b><i>Consultores</i></span>
+    </a>
+    <nav class="topnav" id="topnav" aria-label="Principal"><a href="/#servicios">Servicios</a><a href="tramites.html">Trámites</a><a href="/#despacho">Sobre el despacho</a><a href="/#opiniones">Opiniones</a><a href="/#guias">Guías</a><a href="calendario-fiscal.html">Calendario fiscal</a><a href="/#preguntas">Preguntas</a><a href="contacto.html">Contacto</a></nav>
+    <div class="topbar__acc">
+
+
+      <a class="btn btn--primary btn--sm topbar__cta" href="contacto.html?pagina=calculadora-modelo-210-no-residentes.html">Consultar mi caso</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Abrir el menú">
+        <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="navtoggle__txt">Menú</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="contenido">
+<section class="pagehead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span>/</span><a href="modelo-210-no-residentes.html">Modelo 210</a><span>/</span>Calculadora</nav>
+    <h1>Calculadora orientativa del modelo 210 para no residentes</h1>
+    <p><small>Por Grupo Avanza Consultores</small></p>
+    <p class="lead"><strong>Calcula de forma orientativa la cuota del Impuesto sobre la Renta de no Residentes de un propietario con un inmueble en España en dos supuestos: la vivienda a disposición del propietario y no alquilada (renta imputada) y la vivienda alquilada.</strong> Funciona en su navegador: no se envía ningún dato, no se guarda nada y no usa cookies.</p>
+    <div class="calc-aviso" role="note" aria-label="Aviso importante">
+      <p><strong>Resultado orientativo.</strong> Esta calculadora no sustituye a la declaración ni a un estudio de su caso. No tiene en cuenta convenios para evitar la doble imposición, usufructos y otros derechos reales, varios periodos, otras rentas del mismo contribuyente, inmuebles en construcción o que no puedan usarse por razones urbanísticas, ni recargos, intereses o sanciones. Los datos que introduzca son los que cuentan: si alguno es erróneo, el resultado también.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:56px">
+  <div class="wrap">
+    <h2>Calcule su caso</h2>
+    <form id="calc210" novalidate autocomplete="off">
+      <fieldset>
+        <legend>Supuesto</legend>
+        <label class="calc-radio"><input type="radio" name="supuesto" value="A" checked><span>La vivienda está a disposición del propietario y no está alquilada (renta imputada)</span></label>
+        <label class="calc-radio"><input type="radio" name="supuesto" value="B"><span>La vivienda está alquilada</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Datos comunes</legend>
+        <div class="field">
+          <label for="anio">Año de devengo</label>
+          <select id="anio" name="anio" aria-describedby="ayuda-anio">
+            <option value="2026">2026</option><option value="2025" selected>2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option>
+          </select>
+          <span class="calc-ayuda" id="ayuda-anio">Solo años hasta 2026: el artículo 85 de la Ley 35/2006 cambia desde el 1 de enero de 2027 (Real Decreto-ley 29/2026, convalidado el 12/11/2026) y esa redacción no está incluida. La pregunta sobre el valor catastral y el plazo de presentación dependen del año que elija.</span>
+        </div>
+        <div class="field">
+          <label for="residencia">País de residencia fiscal del propietario</label>
+          <select id="residencia" name="residencia" aria-describedby="ayuda-residencia">
+            <option value="">Seleccione</option>
+            <option value="UE">Estado miembro de la Unión Europea</option>
+            <option value="EEE">Islandia o Noruega (Espacio Económico Europeo)</option>
+            <option value="LI">Liechtenstein (19 % solo desde el 11/07/2021)</option>
+            <option value="OTRO">Cualquier otro país (por ejemplo, Reino Unido, Suiza o Estados Unidos)</option>
+          </select>
+          <span class="calc-ayuda" id="ayuda-residencia">El tipo es el 19 % para residentes en la Unión Europea y en el Espacio Económico Europeo con efectivo intercambio de información tributaria; el 24 % en los demás casos (artículo 25.1.a del texto refundido de la Ley del Impuesto sobre la Renta de no Residentes). Islandia, Noruega y Liechtenstein (este, desde el 11/07/2021) tributan al 19 % y pueden deducir gastos, según el criterio publicado por la Agencia Tributaria sobre el efectivo intercambio de información del artículo 25.1.a). Para Liechtenstein, antes de esa fecha se aplica el 24 % y no se deducen gastos.</span>
+        </div>
+        <div class="field">
+          <label for="titularidad">Porcentaje de titularidad de este propietario (0 a 100)</label>
+          <input id="titularidad" name="titularidad" type="text" inputmode="decimal" value="100" aria-describedby="ayuda-tit" autocomplete="off">
+          <span class="calc-ayuda" id="ayuda-tit">Se calcula la cuota de un solo titular. Con varios titulares, cada uno declara su parte. Admite coma o punto decimal, con dos decimales como máximo.</span>
+        </div>
+      </fieldset>
+
+      <fieldset id="bloque-A">
+        <legend>Vivienda a disposición del propietario</legend>
+        <div class="field">
+          <label for="caso" id="lbl-caso">¿Se han revisado, modificado o determinado los valores catastrales del municipio mediante un procedimiento de valoración colectiva de carácter general que haya entrado en vigor a partir del 1 de enero de 2012?</label>
+          <select id="caso" name="caso" aria-describedby="ayuda-caso">
+            <option value="">Seleccione</option>
+            <option value="normal">No: se aplica el 2 %</option>
+            <option value="revisado">Sí: se aplica el 1,1 %</option>
+            <option value="sinCatastral">El inmueble no tiene valor catastral o no se me ha notificado: 1,1 % sobre el 50 % del mayor valor</option>
+          </select>
+          <span class="calc-ayuda" id="ayuda-caso">Lo puede ver en el recibo del IBI o en la Sede Electrónica del Catastro. Si duda, compruébelo antes de fiarse del resultado: el porcentaje cambia la cuota casi a la mitad. Para los años 2023 a 2026 el criterio es el de la disposición adicional 55.ª de la Ley 35/2006 (revisiones en vigor desde el 1 de enero de 2012); para los anteriores, el del artículo 85.1 (en vigor en el año de devengo o en los diez anteriores). La pregunta cambia al elegir el año.</span>
+        </div>
+        <div class="field">
+          <label for="valor" id="lbl-valor">Valor catastral del inmueble (euros)</label>
+          <input id="valor" name="valor" type="text" inputmode="decimal" aria-describedby="ayuda-valor" autocomplete="off">
+          <span class="calc-ayuda" id="ayuda-valor">Importe en euros, con coma o punto decimal. Ejemplo: 85.432,10 o 85432,10.</span>
+        </div>
+        <div class="field">
+          <label for="dias">Días del año en que el inmueble estuvo a su disposición</label>
+          <input id="dias" name="dias" type="text" inputmode="numeric" aria-describedby="ayuda-dias" autocomplete="off">
+          <span class="calc-ayuda" id="ayuda-dias">Número entero: hasta 365 días, o 366 en año bisiesto. La renta se determina proporcionalmente al número de días.</span>
+        </div>
+      </fieldset>
+
+      <fieldset id="bloque-B" hidden>
+        <legend>Vivienda alquilada</legend>
+        <div class="field">
+          <label for="ingresos">Ingresos íntegros por el alquiler en el año (euros, el total del inmueble)</label>
+          <input id="ingresos" name="ingresos" type="text" inputmode="decimal" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="gastos">Gastos deducibles del año (euros, el total del inmueble)</label>
+          <input id="gastos" name="gastos" type="text" inputmode="decimal" aria-describedby="ayuda-gastos" autocomplete="off">
+          <span class="calc-ayuda" id="ayuda-gastos">Solo se deducen si reside en la Unión Europea o en el Espacio Económico Europeo (artículo 24.6 del texto refundido); en otro caso la base es el importe íntegro (artículo 24.1) y este campo se ignora. La norma exige que los gastos sean de los previstos en la Ley 35/2006 (artículo 23.1: entre otros, intereses, reparación y conservación, tributos, servicios de terceros y amortización) y que usted acredite que están relacionados directamente con los rendimientos obtenidos en España y que tienen un vínculo económico directo e indisociable con la actividad realizada en España. La calculadora no los calcula ni los comprueba: escriba usted la cifra. Déjelo en blanco si no hay gastos.</span>
+        </div>
+      </fieldset>
+
+      <div class="calc-btns">
+        <button class="btn btn--primary" type="submit">Calcular</button>
+        <button class="btn btn--ghost" type="reset">Borrar datos</button>
+      </div>
+    </form>
+    <div id="calc-resultado" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band band--surface">
+  <div class="wrap--narrow">
+    <hr class="rule">
+    <p class="eyebrow">Norma aplicada</p>
+    <h2>Qué artículos usa la calculadora</h2>
+    <p>Texto consolidado del BOE, <strong>leído el 16/11/2026</strong>. El consolidado es informativo: lo que vale es la publicación oficial.</p>
+    <ul class="norma-lista">
+      <li><strong>Artículo 24.1 del texto refundido de la Ley del Impuesto sobre la Renta de no Residentes (Real Decreto Legislativo 5/2004).</strong> Base imponible: el importe íntegro, sin porcentajes multiplicadores ni reducciones. Actualizado el 28/11/2014. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a24">Ver en el BOE</a>.</li>
+      <li><strong>Artículo 24.5 del mismo texto.</strong> La renta imputada de inmuebles de personas físicas no residentes se determina con arreglo al artículo 87 del texto refundido de la Ley del IRPF de 2004, derogado por la Ley 35/2006. La calculadora aplica el artículo 85 de la Ley 35/2006 (imputación de rentas inmobiliarias). Es también el criterio publicado por la Agencia Tributaria para los no residentes, que determina la renta imputada «con arreglo a la normativa del IRPF» (<a href="https://sede.agenciatributaria.gob.es/Sede/no-residentes/irnr-sin-establecimiento-permanente/cuestiones-especificas-sobre-tributacion-inmuebles/renta-imputada-inmueble-urbano-uso-propio.html">sede.agenciatributaria.gob.es, Renta imputada de inmueble urbano para uso propio</a>, consultada el 16/11/2026). <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a24">Ver en el BOE</a>.</li>
+      <li><strong>Artículo 24.6 del mismo texto.</strong> Residentes en otro Estado de la Unión Europea, y del Espacio Económico Europeo con efectivo intercambio de información: pueden deducir los gastos previstos en la Ley 35/2006 si acreditan que están relacionados directamente con los rendimientos obtenidos en España y que tienen un vínculo económico directo e indisociable con la actividad realizada en España. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a24">Ver en el BOE</a>.</li>
+      <li><strong>Artículo 25.1.a del mismo texto.</strong> Tipo del 24 %; del 19 % para residentes en otro Estado de la Unión Europea o del Espacio Económico Europeo con efectivo intercambio de información tributaria. Actualizado el 28/11/2014. Para Liechtenstein, el 19 % y la deducción de gastos rigen desde el 11/07/2021 (criterio de la Agencia Tributaria; disposición adicional décima.3 de la Ley 36/2006, añadida por la Ley 11/2021); antes se aplica el 24 % sin gastos. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a25">Ver en el BOE</a>.</li>
+      <li><strong>Artículo 85 de la Ley 35/2006 del IRPF.</strong> Renta imputada: el 2 % del valor catastral, proporcional al número de días; el 1,1 % si los valores catastrales del municipio han sido revisados, modificados o determinados por valoración colectiva de carácter general y han entrado en vigor en el período o en los diez anteriores; el 1,1 % sobre el 50 % del mayor de los valores comprobado o de adquisición si el inmueble no tiene valor catastral o no se ha notificado. Redacción vigente a 16/11/2026 (bloque actualizado el 07/10/2026). La escala que aprueba el Real Decreto-ley 29/2026 (convalidado el 12/11/2026) tiene efectos desde el 1 de enero de 2027 y no se aplica. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a85">Ver en el BOE</a>.</li>
+      <li><strong>Disposición adicional quincuagésima quinta de la Ley 35/2006.</strong> En los períodos 2023, 2024, 2025 y 2026 el 1,1 % se aplica si los valores catastrales revisados, modificados o determinados por valoración colectiva de carácter general entraron en vigor a partir del 1 de enero de 2012. Redacción del Real Decreto-ley 29/2026, convalidado el 12/11/2026. Para los años 2015 a 2022 la calculadora aplica el criterio del artículo 85.1 (en vigor en el período o en los diez anteriores). <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764">Ver en el BOE</a>.</li>
+      <li><strong>Artículo 11.3 de la Ley 35/2006.</strong> Atribución de los rendimientos a los titulares de los bienes (de ahí el porcentaje de titularidad). <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a11">Ver en el BOE</a>.</li>
+      <li><strong>Artículo 23.1 de la Ley 35/2006.</strong> Gastos deducibles de los rendimientos del capital inmobiliario, a los que remite el artículo 24.6; solo se usa para el aviso del campo de gastos. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a23">Ver en el BOE</a>.</li>
+      <li><strong>Artículo 5 de la Orden EHA/3316/2010.</strong> La redacción de la Orden HAC/623/2026 (vigente desde el 24/06/2026) rige desde los devengos de 2026; los años anteriores siguen la redacción entonces vigente. Renta imputada (letra b): devengos hasta 2025, el año natural siguiente al devengo (del 1 de enero al 31 de diciembre); devengos de 2026, del 1 de abril al 31 de diciembre del año siguiente. Alquileres con resultado a ingresar (letra c, 1.º): devengos de 2015 a 2023, por trimestres (los veinte primeros días de abril, julio, octubre y enero); 2024 y 2025, del 1 al 20 de enero siguiente si se agrupa el año, o por trimestres si se declara por separado (redacción de la Orden HAC/56/2024); 2026, del 1 al 20 de abril del año siguiente si se agrupan las rentas, con el plazo trimestral para los trimestres primero a tercero de 2026 declarados por separado. Cuota cero (letra c, 2.º): del 1 al 20 de enero del año siguiente. <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2010-19707#a5">Ver en el BOE</a>.</li>
+    </ul>
+    <h3 style="margin-top:44px;font-size:19px">Cómo se redondea</h3>
+    <p>Los importes se calculan en céntimos y se redondean a céntimos, con el medio céntimo hacia arriba, en tres pasos: renta o rendimiento del inmueble, base imponible del titular y cuota.</p>
+    <h3 style="margin-top:44px;font-size:19px">Lo que no calcula</h3>
+    <p>No calcula amortizaciones ni gastos: la cifra de gastos la pone usted. No aplica las reducciones del alquiler de vivienda del artículo 23.2 de la Ley 35/2006, porque el artículo 24.1 excluye las reducciones. No calcula ganancias patrimoniales por venta, pensiones, retenciones ni la cuota de un convenio. Tampoco calcula el alquiler de un residente en Liechtenstein en 2021 (el tipo y los gastos cambian el 11/07/2021 y la calculadora no separa los ingresos por fecha): en ese caso no da resultado. Tampoco decide si una vivienda es o no su vivienda habitual, ni si el inmueble está afecto a una actividad económica.</p>
+    <h3 style="margin-top:44px;font-size:19px">Otras guías</h3>
+    <ul style="margin-top:12px;padding-left:20px;color:var(--ink-soft)"><li><a href="modelo-210-no-residentes.html">Modelo 210 para no residentes: presentación y plazos</a></li><li><a href="alquiler-vivienda-espana-no-residente.html">Alquilar una vivienda en España siendo no residente</a></li></ul>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2>¿Quiere que revisemos su caso?</h2>
+    <p class="lead">Cuéntenos su país de residencia, el uso del inmueble y los años que necesita declarar. Le contestamos por escrito, en el idioma que prefiera, y le decimos qué documentos hacen falta.</p>
+    <div class="ctas">
+      <a class="btn btn--onnavy" href="contacto.html?pagina=calculadora-modelo-210-no-residentes.html">Consultar mi caso</a>
+    </div>
+    <p class="lead" style="margin-top:22px;font-size:15px">Grupo Avanza Consultores · 46980 Paterna (Valencia)</p>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <h4>Grupo Avanza Consultores</h4>
+        <p>Asesoría fiscal, contable y laboral<br>Paterna, Valencia</p>
+        <p style="margin-top:10px"><a href="tel:+34614365547">614 365 547</a><br><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a></p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul><li><a href="asesoria-fiscal-y-contable.html">Asesoría fiscal y contable</a></li><li><a href="nominas-y-gestion-laboral.html">Nóminas y laboral</a></li><li><a href="constitucion-de-sociedades-y-tramites.html">Sociedades y trámites</a></li><li><a href="fiscalidad-no-residentes-y-extranjeros.html">No residentes y extranjeros</a></li><li><a href="herencia-en-espana-heredero-no-residente.html">Herencias con no residentes</a></li><li><a href="donacion-de-dinero-desde-el-extranjero.html">Donaciones desde el extranjero</a></li><li><a href="donacion-de-padres-a-hijos-comunitat-valenciana.html">Donación de padres a hijos</a></li><li><a href="calendario-fiscal.html">Calendario fiscal</a></li></ul>
+        <h4 style="margin-top:22px">Guías</h4>
+        <ul><li><a href="carta-de-hacienda-requerimiento.html">Carta de Hacienda</a></li><li><a href="aplazar-una-deuda-con-hacienda.html">Aplazar una deuda</a></li><li><a href="modelo-347-operaciones-con-terceros.html">Modelo 347</a></li><li><a href="alta-de-autonomo-en-valencia.html">Alta de autónomo</a></li><li><a href="capitalizar-el-paro-pago-unico.html">Capitalizar el paro</a></li><li><a href="amazon-kdp-impuestos-espana.html">Amazon KDP e impuestos</a></li><li><a href="autonomo-extranjero-en-espana.html">Autónomo en dos países</a></li><li><a href="modelo-210-no-residentes.html">Modelo 210</a></li><li><a href="vender-inmueble-en-espana-no-residente.html">Vender si vives fuera</a></li><li><a href="regularizar-situacion-fiscal-extranjero.html">Regularizar si eres extranjero</a></li><li><a href="residencia-fiscal-al-llegar-a-espana.html">Residencia al llegar</a></li><li><a href="regimen-impatriados-ley-beckham.html">Ley Beckham</a></li><li><a href="certificado-residencia-fiscal-espana.html">Certificado de residencia</a></li><li><a href="irse-de-espana-impuestos-cambio-residencia.html">Irse de España</a></li><li><a href="modelo-720-bienes-en-el-extranjero.html">Modelo 720</a></li><li><a href="pension-reino-unido-residente-en-espana.html">Pensión del Reino Unido</a></li><li><a href="pension-alemana-residente-en-espana.html">Pensión de Alemania</a></li><li><a href="pension-francesa-residente-en-espana.html">Pensión de Francia</a></li><li><a href="pension-italiana-residente-en-espana.html">Pensión de Italia</a></li><li><a href="pension-estados-unidos-residente-en-espana.html">Pensión de Estados Unidos</a></li><li><a href="comprar-vivienda-en-espana-extranjero.html">Comprar vivienda siendo extranjero</a></li><li><a href="cambiar-de-asesoria.html">Cambiar de asesoría</a></li><li><a href="licencia-de-actividad-cambio-de-titularidad.html">Licencias y traspasos</a></li><li><a href="ayudas-contratacion-paterna.html">Ayudas en Paterna</a></li><li><a href="constitucion-sociedad-limitada-extranjero-espana.html">Constituir una SL siendo extranjero</a></li><li><a href="primera-renta-extranjero-espana.html">Primera declaración de la Renta</a></li></ul>
+      </div>
+      <div>
+        <h4>Клиентам из-за рубежа</h4>
+        <p><a href="ru.html">Налоговый консультант в Валенсии — на русском</a><br><a href="asesoria-fiscal-en-ruso-valencia.html">Asesoría fiscal en ruso</a><br><a href="en.html" hreflang="en" lang="en">Tax adviser in Valencia — in English</a><br><a href="de.html" hreflang="de" lang="de">Steuerfragen in Spanien — auf Deutsch</a><br><a href="fr.html" hreflang="fr" lang="fr">Fiscalité en Espagne — en français</a></p>
+        <h4 style="margin-top:22px">Zona de trabajo</h4>
+        <p>Paterna, La Cañada, l'Eliana, Burjassot, Valencia capital y área metropolitana. Clientes de fuera de España de forma telemática.</p>
+        <p style="margin-top:10px"><a href="asesoria-y-gestoria-en-paterna.html">Asesoría fiscal, contable, laboral y gestoría en Paterna</a><br><a href="asesoria-y-gestoria-en-burjassot.html">Asesoría y gestoría en Burjassot</a><br><a href="asesoria-y-gestoria-en-leliana.html">Asesoría y gestoría en l'Eliana</a><br><a href="asesoria-y-gestoria-en-valencia.html">Asesoría y gestoría en Valencia</a><br><a href="asesoria-fiscal-valencia.html">Asesoría fiscal en Valencia</a><br><a href="asesoria-laboral-valencia.html">Asesoría laboral en Valencia</a><br><a href="asesoria-contable-valencia.html">Asesoría contable en Valencia</a><br><a href="gestion-de-sociedades-valencia.html">Gestión de sociedades en Valencia</a><br><a href="gestoria-autonomos-valencia.html">Gestoría para autónomos</a></p>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div>
+      <div><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script src="calculadora-210.js"></script>
+<script src="calculadora-210-pagina.js"></script>
+<script>
+(function(){
+  var d=document.documentElement;
+  var mq=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var tb=document.getElementById('topbar');
+  if(tb){
+    var onScroll=function(){ tb.classList.toggle('is-stuck', window.scrollY>8); };
+    onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  }
+  var bt=document.querySelector('.navtoggle'), nv=document.getElementById('topnav');
+  if(bt&&nv){
+    d.classList.add('js-nav');
+    bt.addEventListener('click',function(){
+      var open=bt.getAttribute('aria-expanded')==='true';
+      bt.setAttribute('aria-expanded', String(!open));
+      nv.classList.toggle('is-open', !open);
+      bt.setAttribute('aria-label', open ? 'Abrir el menú' : 'Cerrar el menú');
+    });
+    nv.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){ bt.setAttribute('aria-expanded','false'); nv.classList.remove('is-open'); }
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&nv.classList.contains('is-open')){ bt.setAttribute('aria-expanded','false'); nv.classList.remove('is-open'); bt.focus(); }
+    });
+  }
+  if(mq.matches || !('IntersectionObserver' in window)) return;
+  d.classList.add('js-reveal');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.band, .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+})();
+</script>
+</body>
+</html>
