@@ -58,13 +58,19 @@
   </div>
   <div class="form__pie">
     <button class="btn btn--primary" type="submit">Send enquiry</button>
-    <p class="form__nota">Your enquiry is answered personally. We use your details to deal with your enquiry and, if you tell us, to learn how you found us: <a href="en-privacy.html">privacy notice</a>.</p>
+    <p class="form__nota">Your enquiry is answered personally. We use your details to deal with your enquiry. The page you write from and, if you came from one of our ads, the campaign name are added automatically; together with how you found us, if you tell us, they help us learn which channels bring enquiries: <a href="en-privacy.html">privacy notice</a>.</p>
   </div>
   <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>We could not confirm that your enquiry was received. Your text stays in the form. Before sending it again, please check with us by <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> or <a href="mailto:avanza@grupoavanzaconsultores.es">email</a>.</p>
 </form>
 <script>
 (function(){
   if (window.__avanzaEnvio) return; window.__avanzaEnvio = 1;
+  try {
+    var pg = new URLSearchParams(window.location.search).get('pagina');
+    var temas = {'modelo-210-non-resident-tax-spain.html': 'Modelo 210: '};
+    var ta = document.getElementById('f-caso');
+    if (ta && !ta.value && temas[pg]) ta.value = temas[pg];
+  } catch (err) {}
   document.addEventListener('submit', function(e){
     var f = e.target;
     if (!f || !f.classList || !f.classList.contains('form')) return;
@@ -83,7 +89,9 @@
     datos.set('pagina', window.location.pathname);
     var desde = '';
     try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + ' · Nos conoció por: ' + origen + ']');
+    var campana = '';
+    try { var u = new URLSearchParams(window.location.search); campana = ['utm_source','utm_campaign','utm_content'].map(function(k){ var v = u.get(k) || ''; return /^[A-Za-z0-9_.-]{1,60}$/.test(v) ? v : ''; }).filter(Boolean).join(' / '); } catch (err) {}
+    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + (campana ? ' · Campaña: ' + campana : '') + ' · Nos conoció por: ' + origen + ']');
     var cuerpo = new URLSearchParams(datos);
     var finalizado = false;
     function mostrarAviso(){
