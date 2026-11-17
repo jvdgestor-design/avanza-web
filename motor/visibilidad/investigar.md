@@ -266,3 +266,17 @@ Una línea por dominio la primera vez que aparece. La pasada de Claude o ChatGPT
 - 2026-11-17 · `salaryinspain.com` · X34 (en) · https://salaryinspain.com/guides/beckham-law-requirements-documents-spain-2026.html
 - 2026-11-17 · `lexmovea.us` · X34 (en) · https://lexmovea.us/services/beckham-law/
 - 2026-11-17 · `dpll.eu` · X34 (en) · https://dpll.eu/modelo-149-spain/
+- 2026-11-17 · `gruenden-mallorca.de` · X35 (de) · https://gruenden-mallorca.de/blog/beckham-gesetz-24-prozent-steuer
+- 2026-11-17 · `pcclegal.com` · X35 (de) · https://pcclegal.com/how-to-apply-for-the-beckham-law/
+- 2026-11-17 · `auren.com` · X35 (de) · https://auren.com/es/blog/impatriados-una-ventana-fiscal-para-profesionales-en-espana/
+- 2026-11-17 · `iteradvisors.com` · X36 (fr) · https://www.iteradvisors.com/ressources/fiscalite/beckham-law
+- 2026-11-17 · `delaguialuzon.fr` · X36 (fr) · https://delaguialuzon.fr/impatries-en-espagne/
+- 2026-11-17 · `calculadornomina.es` · X36 (fr) · https://calculadornomina.es/blog/fr/loi-beckham-espagne-2026-simulation-nette/
+- 2026-11-17 · `satyalegal.es` · X36 (fr) · https://www.satyalegal.es/en/blog/ley-beckham-regimen-impatriados/
+- 2026-11-17 · `taxopilot.com` · X36 (fr) · https://taxopilot.com/guides/spain-beckham-law/
+- 2026-11-17 · `godiaasesores.com` · X37 (ru) · https://www.godiaasesores.com/en/beckham-law-spain-application/
+- 2026-11-17 · `immigrationstartguide.com` · X37 (ru) · https://immigrationstartguide.com/blog/best-beckham-law-guide-digital-nomads-spain
+- 2026-11-17 · `valenciarusa.es` · X37 (ru) · https://valenciarusa.es/dokumenty/zakon-bekhema-rezhim-impatriadov-2026
+- 2026-11-17 · `filledblanks.eu` · X37 (ru) · https://filledblanks.eu/nalogovyj-rezhim-bjekhema-v-ispanii-podrobnoe-rukovodstvo/
+- 2026-11-17 · `bravos.estate` · X37 (ru) · https://bravos.estate/ru/guide/beckham-law-spain
+- 2026-11-17 · `startupvisa.barcelona` · X37 (ru) · https://startupvisa.barcelona/blog/beckham-law-tax-regime
