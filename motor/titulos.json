@@ -204,6 +204,11 @@
   "huella": "1369c6110fb3",
   "titulo": "Buying property in Spain as a foreigner: taxes"
  },
+ "calculadora-modelo-210-no-residentes.html": {
+  "desde": "2026-11-16",
+  "huella": "f97c3af416a0",
+  "titulo": "Calculadora orientativa del modelo 210 para no residentes"
+ },
  "calendario-fiscal.html": {
   "desde": "2026-10-30",
   "huella": "47241e7fcbdb",
@@ -378,6 +383,11 @@
   "desde": "2026-11-16",
   "huella": "be33303ca6f9",
   "titulo": "Modelo 721: Krypto im Ausland in Spanien melden"
+ },
+ "de-plusvalia-wertzuwachssteuer-nichtansaessige.html": {
+  "desde": "2026-11-16",
+  "huella": "8cfdc7e36011",
+  "titulo": "Plusvalía in Spanien für Nichtansässige: Verkauf, Erbe"
  },
  "de-schreiben-spanisches-finanzamt.html": {
   "desde": "2026-10-30",
@@ -564,6 +574,11 @@
   "huella": "e4e31334d32f",
   "titulo": "Modelo 721 : déclarer ses cryptomonnaies à l’étranger"
  },
+ "fr-plusvalia-municipale-non-resident.html": {
+  "desde": "2026-11-16",
+  "huella": "a294b1c2ff4b",
+  "titulo": "Plusvalía en Espagne pour non-résidents : vente, héritage"
+ },
  "fr-premiere-declaration-revenus-espagne.html": {
   "desde": "2026-11-05",
   "huella": "5f4d7af7a9e0",
@@ -663,6 +678,11 @@
   "desde": "2026-10-30",
   "huella": "6c36672eb7b8",
   "titulo": "Herencia de no residentes: Valencia y España | Grupo Avanza"
+ },
+ "herencias-no-residentes-por-comunidad-autonoma.html": {
+  "desde": "2026-11-16",
+  "huella": "c3a84b5e5d78",
+  "titulo": "Herencias de no residentes en España por comunidad"
  },
  "impuestos-todo-el-ano-online.html": {
   "desde": "2026-10-30",
@@ -919,6 +939,11 @@
   "huella": "95d9fad9f351",
   "titulo": "Форма 720: имущество за рубежом у резидента Испании"
  },
+ "ru-model-721-kriptovalyuta-za-rubezhom.html": {
+  "desde": "2026-11-16",
+  "huella": "bbe1f675ee4b",
+  "titulo": "Модель 721 в Испании: криптовалюта за рубежом и срок"
+ },
  "ru-nalogovoe-rezidentstvo-pri-pereezde.html": {
   "desde": "2026-10-30",
   "huella": "dad1b99c327f",
@@ -943,6 +968,11 @@
   "desde": "2026-10-30",
   "huella": "42c588494d9d",
   "titulo": "Письмо из налоговой Испании: помощь с ответом"
+ },
+ "ru-plusvalia-municipal-nerezident.html": {
+  "desde": "2026-11-16",
+  "huella": "0537deb53c03",
+  "titulo": "Plusvalía в Испании для нерезидента: продажа, наследство"
  },
  "ru-pokupka-nedvizhimosti-inostranec.html": {
   "desde": "2026-10-30",
