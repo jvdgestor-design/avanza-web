@@ -230,11 +230,13 @@
   try {
     var q = new URLSearchParams(window.location.search), extra = [];
     ['utm_source','utm_campaign','utm_content'].forEach(function(k){
-      var v = q.get(k); if (v && /^[A-Za-z0-9_.-]{1,60}$/.test(v)) extra.push(k + '=' + v);
+      var v = q.get(k); if (v && /^[A-Za-z0-9_.-]{1,60}$/.test(v)) extra.push([k, v]);
     });
     if (!extra.length) return;
     Array.prototype.forEach.call(document.querySelectorAll('a[href^="en-contact.html"]'), function(a){
-      a.setAttribute('href', a.getAttribute('href') + '&' + extra.join('&'));
+      var u = new URL(a.getAttribute('href'), window.location.href);
+      extra.forEach(function(kv){ u.searchParams.set(kv[0], kv[1]); });
+      a.setAttribute('href', u.pathname.split('/').pop() + u.search + u.hash);
     });
   } catch (e) {}
 })();
