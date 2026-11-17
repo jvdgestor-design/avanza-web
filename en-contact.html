@@ -65,6 +65,12 @@
 <script>
 (function(){
   if (window.__avanzaEnvio) return; window.__avanzaEnvio = 1;
+  try {
+    var pg = new URLSearchParams(window.location.search).get('pagina');
+    var temas = {'modelo-210-non-resident-tax-spain.html': 'Modelo 210: '};
+    var ta = document.getElementById('f-caso');
+    if (ta && !ta.value && temas[pg]) ta.value = temas[pg];
+  } catch (err) {}
   document.addEventListener('submit', function(e){
     var f = e.target;
     if (!f || !f.classList || !f.classList.contains('form')) return;
@@ -83,7 +89,9 @@
     datos.set('pagina', window.location.pathname);
     var desde = '';
     try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + ' · Nos conoció por: ' + origen + ']');
+    var campana = '';
+    try { var u = new URLSearchParams(window.location.search); campana = ['utm_source','utm_campaign','utm_content'].map(function(k){ var v = u.get(k) || ''; return /^[A-Za-z0-9_.-]{1,60}$/.test(v) ? v : ''; }).filter(Boolean).join(' / '); } catch (err) {}
+    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + (campana ? ' · Campaña: ' + campana : '') + ' · Nos conoció por: ' + origen + ']');
     var cuerpo = new URLSearchParams(datos);
     var finalizado = false;
     function mostrarAviso(){
