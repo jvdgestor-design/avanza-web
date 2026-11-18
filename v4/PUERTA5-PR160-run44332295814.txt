@@ -1,0 +1,40 @@
+VEREDICTO: BLOQUEA
+
+## lote 1/2 (modelo-210-no-residentes.html)
+VEREDICTO: BLOQUEA
+
+**BLOQUEA** — `modelo-210-no-residentes.html`, sección nueva «Qué declaras según el uso del inmueble», primera viñeta: «el cálculo lo explicamos en el <a href="#piso-vacio">apartado siguiente</a>».
+- El apartado «El piso vacío también declara» no explica ningún cálculo. No da el 2 % ni el 1,1 % del valor catastral, ni la proporción por días, ni el valor catastral como base. Solo explica que la renta se imputa y remite a la calculadora. Los porcentajes están únicamente en la FAQ del final.
+- La promesa es falsa dentro de la propia página. La versión inglesa repite el mismo fallo: «the calculation is explained in the next section».
+- Arreglo: cambiar la frase por «los porcentajes y la proporción por días están en las preguntas frecuentes de más abajo» y enlazar a esa FAQ. O añadir al apartado «El piso vacío» una o dos líneas con la regla (2 % o 1,1 % del valor catastral, en proporción a los días), con su artículo.
+
+**COMPROBAR:** `modelo-210-no-residentes.html`, viñeta «Alquilado solo una parte del año»: la cita entrecomillada «se reducirá proporcionalmente al número de días» se atribuye a la AEAT (página «renta imputada de inmueble urbano uso propio») y no puedo contrastarla con un texto oficial aportado; hay que confirmar que es literal y sigue vigente.
+
+**COMPROBAR:** FAQ «¿Paga impuestos un no residente…?», en las tres versiones con esa FAQ (ES, EN, FR): «1,1 % si … procedimiento de valoración colectiva … que entró en vigor a partir del 1 de enero de 2012 (Ley del IRPF, artículo 85 y disposición adicional quincuagésima quinta)». Hay que verificar en el BOE la fecha de corte (2012) y qué remite a la DA 55ª, porque la redacción de ese 1,1 % del artículo 85.1 se vincula a revisiones catastrales de otros periodos.
+
+**COMPROBAR:** `modelo-210-no-residentes.html`, venta: «artículo 59.2 de la Ley de Haciendas Locales» como base de la plusvalía municipal. Confirmar en el texto refundido de la LRHL que el 59.2 es la cita adecuada, o si conviene citar el artículo 104.
+
+**CONVIENE:** FAQ del IRPF/renta imputada, ES frente a EN. La versión inglesa fundamenta el texto de 2026 en el «Royal Decree-law 29/2026, validated by the Congress of Deputies on 12 November 2026» y dice «have been amended» para 2027. La española dice solo «según el texto vigente a 18 de noviembre de 2026» y «prevé porcentajes distintos», sin citar la norma ni la convalidación. Un lector español no puede verificar de dónde sale el texto. Conviene igualar ambas, citando el RDL y la convalidación también en español (y en las parejas FR y RU).
+
+**CONVIENE:** la viñeta «Venta» de la sección nueva repite casi todo lo que dice «Cuando vendes el inmueble» más abajo (3 %, modelo 211, ganancia o pérdida, plusvalía) y enlaza a las mismas guías. Es relleno y duplica una cita normativa que habrá que mantener en dos sitios. Reducirla a una línea con remisión a la sección de venta.
+
+**MENOR:** «el modelo 210 sirve para rentas distintas» es torpe. Mejor: «el modelo 210 sirve para declarar rentas de distinto tipo».
+
+**MENOR:** el `<title>` dice «gestión y plazos 2026», el H1 «presentación y plazos» y el `headline` del Article «presentación y plazos». Conviene unificar. «Gestión» además suena más comercial.
+
+## lote 2/2 (modelo-210-non-resident-tax-spain.html)
+VEREDICTO: SIGUE
+
+1. **CONVIENE.** Página `modelo-210-non-resident-tax-spain.html`, frase: «the calculation is explained in the <a href="#empty-property">next section</a>». La sección siguiente («An empty property must also be declared») no explica ningún cálculo. Solo dice cómo localizar el *valor catastral* y la *referencia catastral*, y no da porcentajes. Los porcentajes (2 % / 1,1 %) están únicamente en la última pregunta de la FAQ. Lo mismo ocurre en `modelo-210-no-residentes.html`: «el cálculo lo explicamos en el apartado siguiente». Arreglo: en ambas páginas, apuntar a la FAQ («the calculation is explained in the last question below» / «el cálculo está en la última pregunta, más abajo»). Si se quiere mantener la referencia a la sección siguiente, añadir allí los porcentajes.
+
+2. **COMPROBAR:** `modelo-210-non-resident-tax-spain.html`, FAQ «Do non-residents pay property tax…»: «as worded by Royal Decree-law 29/2026, validated by the Congress of Deputies on 12 November 2026». Hay que verificar en el BOE el número del RDL, la fecha de convalidación y que la disposición adicional quincuagésima quinta de la Ley del IRPF tenga esa redacción. Las páginas ES, FR, DE y RU no citan el RDL ni la convalidación y solo dicen «texto vigente a 18 de noviembre de 2026», así que conviene alinearlas.
+
+3. **COMPROBAR:** `modelo-210-non-resident-tax-spain.html` (nueva sección), «the town hall may also charge the municipal plusvalía (article 59.2 of the Local Finances Law)», y su equivalente en la página ES («artículo 59.2 de la Ley de Haciendas Locales»). Habría que contrastar en el texto refundido de la LRHL que el art. 59.2 es el que sostiene que el ayuntamiento puede exigir el impuesto sobre el incremento de valor de los terrenos (arts. 104 a 110).
+
+4. **MENOR:** `modelo-210-non-resident-tax-spain.html`, párrafo «Rules checked on…»: no incluye lo añadido en esta revisión, es decir, las páginas de la Agencia Tributaria consultadas el 18 de noviembre de 2026, el art. 25.2 TRLIRNR y el art. 59.2 LRHL. Añadir esa fecha y esas referencias para que la verificación declarada coincida con el contenido nuevo.
+
+5. **MENOR:** `modelo-210-non-resident-tax-spain.html`, nueva sección: «Own use or empty… except in cases such as buildings under construction or not usable for town-planning reasons» no cita artículo, mientras que la versión ES sí (art. 85.1 LIRPF). Añadir «(Personal Income Tax Act, article 85.1)».
+
+6. **MENOR:** `modelo-210-non-resident-tax-spain.html`, terminología inconsistente en la propia página: «Non-Resident Income Tax Law» y «Local Finances Law» en la sección nueva, frente a «Non-Resident Income Tax Act» y «Local Finance Act» en el resto, y «town hall» frente a «local council». Unificar con «Act», «Local Finance Act» y «local council».
+##[notice]Puerta 5 — revisión de claude-sonnet-5-5 (rama entera) sobre modelo-210-no-residentes.html, modelo-210-non-resident-tax-spain.html (entrada 99340, salida 16136 tokens) — parte 1/2
+El apartado «El piso vacío también declara» no explica ningún cálculo. No da el 2 % ni el 1,1 % del valor catastral, ni la proporción por días, ni el valor catastral como base. Solo explica que la renta se imputa y remite a la calculadora. Los porcentajes están únicamente en la FAQ del final.
