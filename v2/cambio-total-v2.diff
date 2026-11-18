@@ -1,0 +1,169 @@
+diff --git a/accounting-tax-service-spain.html b/accounting-tax-service-spain.html
+index 609440a..0398291 100644
+--- a/accounting-tax-service-spain.html
++++ b/accounting-tax-service-spain.html
+@@ -141,7 +141,7 @@
+     <h2>Tell us about your business</h2>
+     <p class="lead">Email your activity, whether you are an autónomo or a company, where you operate, your approximate number of invoices and employees, and whether you already have an adviser. Mention any pending returns or open deadlines.</p>
+     <p>We will confirm whether we can help and agree the scope and quote before starting. We reply in writing, in English.</p>
+-    <div class="ctas"><a class="btn btn--onnavy" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20accounting%20and%20tax%20support%20in%20Spain">Request a quote by email</a></div>
++    <div class="ctas"><a class="btn btn--onnavy" href="en-contact.html?pagina=accounting-tax-service-spain.html">Request a quote</a></div>
+     <p style="margin-top:18px"><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a></p>
+   </div>
+ </section>
+diff --git a/buying-property-from-non-resident-spain.html b/buying-property-from-non-resident-spain.html
+index 53a232f..59584cd 100644
+--- a/buying-property-from-non-resident-spain.html
++++ b/buying-property-from-non-resident-spain.html
+@@ -58,7 +58,7 @@
+   </div>
+ </header>
+ <main id="contenido">
+-<section class="pagehead"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumbs"><a href="en.html">Home</a><span>/</span>Buying property from a non-resident in Spain: 3% withholding and form 211</nav><h1>Buying property from a non-resident in Spain: 3% withholding and form 211</h1><p class="ru-note"><a href="comprar-inmueble-a-no-residente-modelo-211.html" hreflang="es" lang="es">Leer en español →</a> · <a href="fr-acheter-vendeur-non-resident-modele-211.html" hreflang="fr" lang="fr">Français</a> · <a href="de-kauf-nichtansaessiger-verkaeufer-modelo-211.html" hreflang="de" lang="de">Deutsch</a></p><p class="lead"><strong>Grupo Avanza Consultores reviews and prepares the buyer’s withholding and form 211 when Spanish property is sold by a non-resident without a permanent establishment.</strong> Based in Paterna, Valencia, we work remotely throughout Spain, with in-person appointments by arrangement. We check the seller’s tax residence, price, ownership shares and transfer date. We reply in writing in English. <a href="mailto:avanza@grupoavanzaconsultores.es">Email us before signing</a>.</p><div class="ctas"><a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es">Request a quote by email</a><a class="btn btn--ghost" href="#servicio">What we review</a></div></div></section>
++<section class="pagehead"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumbs"><a href="en.html">Home</a><span>/</span>Buying property from a non-resident in Spain: 3% withholding and form 211</nav><h1>Buying property from a non-resident in Spain: 3% withholding and form 211</h1><p class="ru-note"><a href="comprar-inmueble-a-no-residente-modelo-211.html" hreflang="es" lang="es">Leer en español →</a> · <a href="fr-acheter-vendeur-non-resident-modele-211.html" hreflang="fr" lang="fr">Français</a> · <a href="de-kauf-nichtansaessiger-verkaeufer-modelo-211.html" hreflang="de" lang="de">Deutsch</a></p><p class="lead"><strong>Grupo Avanza Consultores reviews and prepares the buyer’s withholding and form 211 when Spanish property is sold by a non-resident without a permanent establishment.</strong> Based in Paterna, Valencia, we work remotely throughout Spain, with in-person appointments by arrangement. We check the seller’s tax residence, price, ownership shares and transfer date. We reply in writing in English. <a href="mailto:avanza@grupoavanzaconsultores.es">Email us before signing</a>.</p><div class="ctas"><a class="btn btn--primary" href="en-contact.html?pagina=buying-property-from-non-resident-spain.html">Request a quote</a><a class="btn btn--ghost" href="#servicio">What we review</a></div></div></section>
+ <section class="band" id="servicio" style="padding-top:64px"><div class="wrap--narrow prose">
+ <h2>Address the buyer’s obligation before completion</h2><p>When a non-resident income taxpayer transfers Spanish property without a permanent establishment, the buyer must withhold and pay over 3% of the agreed consideration, or make the corresponding payment on account (article 25.2 of the Non-Resident Income Tax Act and article 14.1 of its Regulations). The seller’s tax position determines whether this applies. The Tax Agency confirms that both resident and non-resident buyers can have this obligation.</p><p>The withholding is a payment on account of the seller’s tax, rather than their final liability. It is distinct from purchase taxes and other transaction costs. We therefore review the evidence before the purchase payment is finalised.</p>
+ <h2>The seller’s residence needs evidence</h2><p>Nationality, a Spanish address on the deed or a NIE does not settle the check. Article 14.2.a of the Regulations excludes withholding where the seller proves liability to Spanish Personal Income Tax or Corporation Tax through a certificate from the competent tax authority. We review that certificate and the transaction before concluding that withholding is not required.</p><p>The Regulations also provide an exception for contributions of property on the formation or increase of the capital of companies resident in Spain (article 14.2.b). An ordinary purchase is not treated as a capital contribution.</p>
+diff --git a/dutch-pension-tax-spain-resident.html b/dutch-pension-tax-spain-resident.html
+index 6e48299..929e603 100644
+--- a/dutch-pension-tax-spain-resident.html
++++ b/dutch-pension-tax-spain-resident.html
+@@ -146,7 +146,7 @@
+     <h2>Check your Dutch pensions before filing in Spain</h2>
+     <p class="lead">Tell us the tax year, when you moved to Spain, which pensions you receive and whether Dutch tax is deducted. We will confirm the scope and fee for reviewing your Spanish position. We reply in written English.</p>
+     <div class="ctas">
+-      <a class="btn btn--onnavy" href="mailto:avanza@grupoavanzaconsultores.es?subject=Dutch%20pensions%20in%20Spain">Request a quote by email</a>
++      <a class="btn btn--onnavy" href="en-contact.html?pagina=dutch-pension-tax-spain-resident.html">Request a quote</a>
+       <a class="btn btn--onnavy-ghost" href="en.html#how">How we work</a>
+     </div>
+   </div>
+diff --git a/first-tax-return-spain-new-resident.html b/first-tax-return-spain-new-resident.html
+index 81c86a0..e1bb19a 100644
+--- a/first-tax-return-spain-new-resident.html
++++ b/first-tax-return-spain-new-resident.html
+@@ -63,7 +63,7 @@
+ <h1>Your first Spanish tax return after moving to Spain</h1><p><small>By Grupo Avanza Consultores</small></p>
+ <p class="ru-note"><a href="primera-renta-extranjero-espana.html" lang="es" hreflang="es">Español</a></p>
+ <p class="lead"><strong>Before accepting a draft return, check your tax-residence year and income from every country.</strong> If you have moved to Spain and still receive foreign salary, pensions or investment income, or own property abroad, Grupo Avanza Consultores helps you organise your first return. We work online from Paterna, Valencia, with agreed fees. English service is in writing.</p>
+-<div class="ctas"><a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es?subject=Enquiry%3A%20first%20Spanish%20tax%20return%20after%20moving%20to%20Spain">Request a quote</a><a class="btn btn--ghost" href="#documents">Documents to prepare</a></div>
++<div class="ctas"><a class="btn btn--primary" href="en-contact.html?pagina=first-tax-return-spain-new-resident.html">Request a quote</a><a class="btn btn--ghost" href="#documents">Documents to prepare</a></div>
+ </div></section>
+ <section class="band" style="padding-top:64px"><div class="wrap contact" style="align-items:start">
+ <div class="prose">
+diff --git a/form-720-spain-assets-abroad.html b/form-720-spain-assets-abroad.html
+index 45a78a0..4998584 100644
+--- a/form-720-spain-assets-abroad.html
++++ b/form-720-spain-assets-abroad.html
+@@ -70,7 +70,7 @@
+     <p class="ru-note"><a href="modelo-720-bienes-en-el-extranjero.html" hreflang="es" lang="es">Esta guía en español →</a> · <a href="ru-model-720-imushchestvo-za-rubezhom.html" hreflang="ru" lang="ru">Эта статья на русском →</a></p>
+     <p class="lead"><strong>If you are tax resident in Spain and hold bank accounts, securities, funds, insurance or property in another country, you may have to report them to the Spanish Tax Agency on form 720 (modelo 720), even if they produce no income. Grupo Avanza Consultores, tax and accounting adviser in Paterna (Valencia), checks whether you are obliged and for which blocks, prepares and files the return and, if it was not filed on time, prepares the late filing. We advise online across Spain and reply in written English by email.</strong></p>
+     <div class="ctas">
+-      <a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es?subject=Spanish%20form%20720"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"></path></svg>Email us about form 720</a>
++      <a class="btn btn--primary" href="en-contact.html?pagina=form-720-spain-assets-abroad.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"></path></svg>Write to us about form 720</a>
+       <a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a>
+     </div>
+   </div>
+diff --git a/form-721-spain-crypto-abroad.html b/form-721-spain-crypto-abroad.html
+index e1fd144..16eaf92 100644
+--- a/form-721-spain-crypto-abroad.html
++++ b/form-721-spain-crypto-abroad.html
+@@ -96,7 +96,7 @@
+   <div class="faq"><details><summary>Do I need form 721 if I have not sold anything?</summary><p>Possibly. The initial obligation depends on foreign custody and a combined value above €50,000 at 31 December, not on selling coins or withdrawing money.</p></details><details><summary>Is the €50,000 threshold separate for each platform?</summary><p>No. Add together all foreign-held virtual currencies within the reporting obligation, even if several custodians hold them. If the combined limit is exceeded, all those currencies are reported.</p></details><details><summary>Do coins in my own wallet count?</summary><p>No, if you control the private keys and no third party holds them in custody for you. The Tax Agency says actual custody matters, whether the wallet is hot or cold.</p></details><details><summary>Does selling everything remove the obligation in later years?</summary><p>Not necessarily. If selling means you stop being the holder, authorised person or beneficiary of those coins, you report the balances at the date that status ended and, in that case, the regulation requires the return to be filed in any event (article 42 quater, sections 4 and 6). We check each case.</p></details></div>
+   <h3 style="margin-top:38px;font-size:19px">Related services and guides</h3><ul style="margin-top:12px;padding-left:20px;color:var(--ink-soft)"><li><a href="en.html">Tax and accounting adviser in English</a></li><li><a href="form-720-spain-assets-abroad.html">Form 720: other assets abroad</a></li><li><a href="tax-residence-moving-to-spain.html">Tax residence when moving to Spain</a></li><li><a href="regularising-taxes-spain-foreigner.html">Overdue tax returns in Spain</a></li></ul>
+ </div></section>
+-<section class="cta-final" id="contact"><div class="wrap"><h2>We check custody and balances before preparing form 721</h2><p class="lead">Tell us the reporting year, when you became tax resident in Spain, which entities hold your coins in custody and whether you have filed form 721 before. Tell us which records you have. We reply in written English.</p><div class="ctas"><a class="btn btn--onnavy" href="mailto:avanza@grupoavanzaconsultores.es?subject=Spanish%20form%20721%20enquiry&amp;body=Hello%2C%20I%20would%20like%20to%20enquire%20about%20Spanish%20form%20721.%20Reporting%20year%3A%20__.%20Tax%20resident%20in%20Spain%20since%3A%20__.%20Entities%20holding%20my%20crypto%20in%20custody%3A%20__.%20Have%20I%20filed%20form%20721%20before%3F%3A%20__.%20Dates%20of%20any%20end%20of%20a%20previously%20reportable%20status%3A%20__.%20I%20have%20seen%20your%20English%20guide%20to%20form%20721.%20Please%20reply%20in%20writing.">Email us about form 721</a></div></div></section>
++<section class="cta-final" id="contact"><div class="wrap"><h2>We check custody and balances before preparing form 721</h2><p class="lead">Tell us the reporting year, when you became tax resident in Spain, which entities hold your coins in custody and whether you have filed form 721 before. Tell us which records you have. We reply in written English.</p><div class="ctas"><a class="btn btn--onnavy" href="en-contact.html?pagina=form-721-spain-crypto-abroad.html">Check my form 721</a></div></div></section>
+ </main>
+ <footer class="foot">
+   <div class="wrap">
+diff --git a/remote-work-spain-foreign-employer.html b/remote-work-spain-foreign-employer.html
+index 3108900..0e09b48 100644
+--- a/remote-work-spain-foreign-employer.html
++++ b/remote-work-spain-foreign-employer.html
+@@ -63,7 +63,7 @@
+ <h1>Working remotely in Spain for a foreign employer</h1>
+ <p class="ru-note"><a href="trabajar-remoto-espana-empresa-extranjera.html" lang="es" hreflang="es">Español</a></p>
+ <p class="lead"><strong>A foreign employer does not automatically put your salary outside Spanish tax.</strong> Before moving or preparing a tax return, clarify your tax residence, employment arrangements and the payer’s obligations. Grupo Avanza Consultores reviews your case online from Paterna, Valencia. English service is in writing, with scope and fees agreed before work starts.</p>
+-<div class="ctas"><a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es?subject=Enquiry%3A%20remote%20work%20in%20Spain%20for%20a%20foreign%20employer">Request a quote</a><a class="btn btn--ghost" href="#documents">Documents to prepare</a></div>
++<div class="ctas"><a class="btn btn--primary" href="en-contact.html?pagina=remote-work-spain-foreign-employer.html">Request a quote</a><a class="btn btn--ghost" href="#documents">Documents to prepare</a></div>
+ </div></section>
+ <section class="band" style="padding-top:64px"><div class="wrap contact" style="align-items:start">
+ <div class="prose">
+diff --git a/renting-out-property-spain-non-resident.html b/renting-out-property-spain-non-resident.html
+index 717c154..b933647 100644
+--- a/renting-out-property-spain-non-resident.html
++++ b/renting-out-property-spain-non-resident.html
+@@ -58,7 +58,7 @@
+   </div>
+ </header>
+ <main id="contenido">
+-<section class="pagehead"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumbs"><a href="en.html">Home</a><span>/</span>Renting out a property in Spain as a non-resident</nav><h1>Renting out a property in Spain as a non-resident</h1><p class="ru-note"><a href="alquiler-vivienda-espana-no-residente.html" hreflang="es" lang="es">Leer en español →</a> · <a href="fr-louer-bien-espagne-non-resident.html" hreflang="fr" lang="fr">Français</a> · <a href="de-immobilie-spanien-vermieten-nichtansaessig.html" hreflang="de" lang="de">Deutsch</a></p><p class="lead"><strong>Grupo Avanza Consultores prepares form 210 for non-resident owners receiving Spanish rental income without a permanent establishment.</strong> Based in Paterna, Valencia, we review your tax residence, contract, income and expenses. We work remotely throughout Spain. We reply in writing in English. <a href="mailto:avanza@grupoavanzaconsultores.es">Email us about your property</a>.</p><div class="ctas"><a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es">Request a quote by email</a><a class="btn btn--ghost" href="#servicio">What we review</a></div></div></section>
++<section class="pagehead"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumbs"><a href="en.html">Home</a><span>/</span>Renting out a property in Spain as a non-resident</nav><h1>Renting out a property in Spain as a non-resident</h1><p class="ru-note"><a href="alquiler-vivienda-espana-no-residente.html" hreflang="es" lang="es">Leer en español →</a> · <a href="fr-louer-bien-espagne-non-resident.html" hreflang="fr" lang="fr">Français</a> · <a href="de-immobilie-spanien-vermieten-nichtansaessig.html" hreflang="de" lang="de">Deutsch</a></p><p class="lead"><strong>Grupo Avanza Consultores prepares form 210 for non-resident owners receiving Spanish rental income without a permanent establishment.</strong> Based in Paterna, Valencia, we review your tax residence, contract, income and expenses. We work remotely throughout Spain. We reply in writing in English. <a href="mailto:avanza@grupoavanzaconsultores.es">Email us about your property</a>.</p><div class="ctas"><a class="btn btn--primary" href="en-contact.html?pagina=renting-out-property-spain-non-resident.html">Request a quote</a><a class="btn btn--ghost" href="#servicio">What we review</a></div></div></section>
+ <section class="band" id="servicio" style="padding-top:64px"><div class="wrap--narrow prose">
+ <h2>Your tax residence and use of the property come first</h2><p>Living abroad, holding a NIE or receiving rent into a foreign bank account does not provide all the information needed for the return. We check tax residence for the period, entitlement to rent and any combination of letting and personal use. Income from property located in Spain is Spanish-source income (article 13.1.g of the Non-Resident Income Tax Act). This page covers letting without a permanent establishment; other services or a business organisation need to be assessed first.</p>
+ <h2>Income, expenses and tax rate</h2><p>The general rule in article 24.1 of the Non-Resident Income Tax Act starts with gross income. Under article 24.6, individuals resident in the European Union may deduct expenses allowed under the Personal Income Tax Act when they prove a direct connection with the income and a direct, inseparable economic link with the activity in Spain. This extends to the European Economic Area on that provision’s effective-exchange-of-information terms. An invoice or bank charge alone does not prove an expense meets those requirements.</p><p>The general rate is 24%. It is 19% for residents of another European Union Member State or a European Economic Area state with effective exchange of tax information (article 25.1.a). We establish the appropriate tax base and rate from your evidence. The rate alone is not the final amount due.</p>
+diff --git a/self-employed-autonomo-spain-foreigner.html b/self-employed-autonomo-spain-foreigner.html
+index 313b398..e665ee3 100644
+--- a/self-employed-autonomo-spain-foreigner.html
++++ b/self-employed-autonomo-spain-foreigner.html
+@@ -55,7 +55,7 @@
+ <p class="ru-note"><a href="autonomo-extranjero-en-espana.html" hreflang="es" lang="es">Esta guía en español →</a> · <a href="ru-autonomo-dve-strany-es.html" hreflang="ru" lang="ru">Это руководство на русском →</a></p>
+ <p class="lead">To register as autónomo (self-employed) in Spain as a foreigner you need a Spanish tax identification number, which for a foreign national is the NIE (if you have no NIE, you must ask the Spanish Tax Agency to assign you a tax identification number), and you must file two registrations before you start the activity: the census declaration with the Spanish Tax Agency and registration in the self-employed Social Security scheme (RETA), which is filed online and no earlier than 60 calendar days before the planned start. EU and EEA citizens may work as self-employed on the same terms as Spanish nationals; as a rule, other nationals, except family members of EU or EEA citizens to whom Royal Decree 240/2007 grants the same right and those who already hold an authorisation that allows self-employed work, first need a residence and work authorisation for self-employed activity, an immigration procedure that we do not handle. If you already work in another EU country, which country’s Social Security legislation applies has to be settled first, as explained below.</p><p class="lead"><strong>Grupo Avanza Consultores, a tax and accounting adviser in Paterna, Valencia, reviews the position of UK and EU freelancers living in Spain: where you are tax resident, whether and when you register as autónomo, and which country’s Social Security applies before you file anything. We work online for clients across Spain, in written English by email, with a quote before work starts.</strong></p>
+ <p>We offer written support in English, Spanish, French, German and Russian.</p>
+-<div class="ctas"><a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es?subject=Enquiry%3A%20self-employed%20in%20Spain">Ask about my case</a><a class="btn btn--ghost" href="#faq">Common questions</a></div>
++<div class="ctas"><a class="btn btn--primary" href="en-contact.html?pagina=self-employed-autonomo-spain-foreigner.html">Ask about my case</a><a class="btn btn--ghost" href="#faq">Common questions</a></div>
+ </div></section>
+ <section class="band" style="padding-top:64px"><div class="wrap contact" style="align-items:start">
+ <div class="prose prose--guia"><h2>Three separate questions, in this order</h2>
+diff --git a/setting-up-limited-company-spain-foreigner.html b/setting-up-limited-company-spain-foreigner.html
+index 5350f80..c5791cc 100644
+--- a/setting-up-limited-company-spain-foreigner.html
++++ b/setting-up-limited-company-spain-foreigner.html
+@@ -54,7 +54,7 @@
+ <p class="ru-note"><a href="constitucion-sociedad-limitada-extranjero-espana.html" hreflang="es" lang="es">Esta guía en español →</a> · <a href="fr-creer-sl-espagne-etranger.html" hreflang="fr" lang="fr">Lire ce guide en français →</a> · <a href="ru-sozdanie-sl-ispaniya-inostranec.html" hreflang="ru" lang="ru">Это руководство на русском →</a></p>
+ <p class="lead">A foreigner, whether or not resident in Spain, can set up a Spanish limited company (SL) with one or more shareholders. The company is formed by a public deed signed before a notary and registered at the Commercial Registry, and the tax identification of the founders taking part must be in place: for a foreign individual this is the NIE or, without one, where they will carry out transactions with tax implications, a tax number assigned by the Spanish Tax Agency. The legal minimum share capital is €1, but while capital is below €3,000 at least 20% of profit must go to the legal reserve and, if on liquidation the assets are insufficient to meet the company’s obligations, the shareholders are jointly and severally liable for the difference between €3,000 and the subscribed capital.</p><p class="lead"><strong>Grupo Avanza Consultores helps prepare Spanish limited companies (SLs) with foreign shareholders or directors, whether resident or non-resident. Based in Paterna, Valencia, we review the structure, documents and initial tax obligations and coordinate the formation process, with written English support and a quote before work starts.</strong></p>
+ <p>We work with you in writing, in English, Spanish, French, German and Russian. In-person appointments by arrangement.</p>
+-<div class="ctas"><a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es">Ask about my project</a><a class="btn btn--ghost" href="#faq">Questions before setting up a Spanish SL</a></div>
++<div class="ctas"><a class="btn btn--primary" href="en-contact.html?pagina=setting-up-limited-company-spain-foreigner.html">Ask about my project</a><a class="btn btn--ghost" href="#faq">Questions before setting up a Spanish SL</a></div>
+ </div></section>
+ <section class="band" style="padding-top:64px"><div class="wrap contact" style="align-items:start">
+ <div class="prose prose--guia"><h2>Can a foreign person own a Spanish limited company?</h2>
+diff --git a/uk-pension-tax-spain-resident.html b/uk-pension-tax-spain-resident.html
+index c46aa31..da84bc0 100644
+--- a/uk-pension-tax-spain-resident.html
++++ b/uk-pension-tax-spain-resident.html
+@@ -67,7 +67,7 @@
+     <p class="ru-note"><a href="pension-reino-unido-residente-en-espana.html" hreflang="es" lang="es">Esta guía en español →</a></p>
+     <p class="lead"><strong>If you live in Spain, are tax resident here under the ordinary income tax rules and are resident in Spain for the purposes of the Spain–UK tax treaty, your UK State Pension is taxed only in Spain under the tax treaty. A UK government service pension follows a different treaty rule. Grupo Avanza Consultores in Paterna (Valencia) checks your pension type and residence, prepares your Spanish tax return when required and helps request the AEAT certificate and HMRC relief form. We advise online across Spain, in written English by email.</strong></p>
+     <div class="ctas">
+-      <a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es?subject=UK%20pension%20in%20Spain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"></path></svg>Email us about your pension</a>
++      <a class="btn btn--primary" href="en-contact.html?pagina=uk-pension-tax-spain-resident.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"></path></svg>Request a quote</a>
+       <a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a>
+     </div>
+   </div>
+diff --git a/us-social-security-pension-tax-spain-resident.html b/us-social-security-pension-tax-spain-resident.html
+index fc8f2c2..5037c3f 100644
+--- a/us-social-security-pension-tax-spain-resident.html
++++ b/us-social-security-pension-tax-spain-resident.html
+@@ -61,7 +61,7 @@
+     <p class="ru-note"><a href="pension-estados-unidos-residente-en-espana.html" hreflang="es" lang="es">Esta guía en español →</a></p>
+     <p class="lead"><strong>If you are tax resident in Spain, your US Social Security is taxed in Spain: the treaty allows the United States to tax it, and Spain, as your country of residence, taxes it too and deducts the US tax actually paid on it. A pension from past private employment is taxed only in Spain, and the Directorate General of Taxes (DGT) applies the same rule to payouts from a US pension plan linked to that employment. A pension for service to the US federal, state or local government is taxed only in the United States, unless you are a Spanish national resident in Spain. Where the United States taxes you only because you are a citizen, Spain gives no credit and it falls to the United States to relieve the double tax. Grupo Avanza Consultores in Paterna (Valencia) classifies each US income, prepares your Spanish return and applies the credit for US tax. We advise online across Spain, in written English by email.</strong></p>
+     <div class="ctas">
+-      <a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es?subject=US%20pension%20in%20Spain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"></path></svg>Email us about your pension</a>
++      <a class="btn btn--primary" href="en-contact.html?pagina=us-social-security-pension-tax-spain-resident.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"></path></svg>Request a quote</a>
+       <a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a>
+     </div>
+   </div>
+diff --git a/wealth-solidarity-tax-valencia-spain.html b/wealth-solidarity-tax-valencia-spain.html
+index 35a58c1..d566d36 100644
+--- a/wealth-solidarity-tax-valencia-spain.html
++++ b/wealth-solidarity-tax-valencia-spain.html
+@@ -50,7 +50,7 @@
+ <p class="ru-note"><a href="patrimonio-solidaridad-no-residentes-valencia.html" hreflang="es" lang="es">Esta guía en español →</a></p>
+ <p class="lead"><strong>Grupo Avanza Consultores reviews Spanish Wealth Tax and Solidarity Tax for residents of the Comunitat Valenciana and people living abroad with assets in Spain. Based in Paterna, Valencia, we assess your position and prepare Forms 714 and 718 where required, working online with written English support and a quote before we start.</strong></p>
+ <p>You can email us in English, Spanish, French, German or Russian.</p>
+-<div class="ctas"><a class="btn btn--primary" href="mailto:avanza@grupoavanzaconsultores.es">Ask about my situation</a><a class="btn btn--ghost" href="#faq">Questions about Spanish Wealth and Solidarity Tax</a></div>
++<div class="ctas"><a class="btn btn--primary" href="en-contact.html?pagina=wealth-solidarity-tax-valencia-spain.html">Ask about my situation</a><a class="btn btn--ghost" href="#faq">Questions about Spanish Wealth and Solidarity Tax</a></div>
+ </div></section>
+ <section class="band" style="padding-top:64px"><div class="wrap contact" style="align-items:start">
+ <div class="prose prose--guia"><h2>Start with tax residence and the assets within scope</h2>
