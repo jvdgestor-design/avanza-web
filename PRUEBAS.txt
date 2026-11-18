@@ -1,0 +1,15 @@
+accounting-tax-service-spain.html enlace_formulario True pagina_valida True mailto_restantes 3 wa_restantes 0
+buying-property-from-non-resident-spain.html enlace_formulario True pagina_valida True mailto_restantes 4 wa_restantes 0
+dutch-pension-tax-spain-resident.html enlace_formulario True pagina_valida True mailto_restantes 3 wa_restantes 0
+first-tax-return-spain-new-resident.html enlace_formulario True pagina_valida True mailto_restantes 4 wa_restantes 0
+form-720-spain-assets-abroad.html enlace_formulario True pagina_valida True mailto_restantes 7 wa_restantes 0
+form-721-spain-crypto-abroad.html enlace_formulario True pagina_valida True mailto_restantes 2 wa_restantes 0
+remote-work-spain-foreign-employer.html enlace_formulario True pagina_valida True mailto_restantes 4 wa_restantes 0
+renting-out-property-spain-non-resident.html enlace_formulario True pagina_valida True mailto_restantes 4 wa_restantes 0
+self-employed-autonomo-spain-foreigner.html enlace_formulario True pagina_valida True mailto_restantes 4 wa_restantes 0
+setting-up-limited-company-spain-foreigner.html enlace_formulario True pagina_valida True mailto_restantes 4 wa_restantes 0
+uk-pension-tax-spain-resident.html enlace_formulario True pagina_valida True mailto_restantes 6 wa_restantes 1
+us-social-security-pension-tax-spain-resident.html enlace_formulario True pagina_valida True mailto_restantes 7 wa_restantes 0
+wealth-solidarity-tax-valencia-spain.html enlace_formulario True pagina_valida True mailto_restantes 4 wa_restantes 0
+en-contact.html: un formulario <form name="contacto"> con action a script.google.com (grep, sin enviar nada)
+salud.py: Errores: 0 · Avisos: 0 (repositorio, rama en 9a5dac5fdac2ec1f821908ef1a834f928ebe5816)
