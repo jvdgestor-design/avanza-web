@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selling Property in Spain as a Non-Resident: Tax &amp; 3%</title>
+<meta name="description" content="Selling property in Spain as a non-resident? Check Form 210, the 3% withholding, tax on the gain and plusvalía. Written English support and a prior quote.">
+<link rel="canonical" href="https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html">
+<link rel="alternate" hreflang="es" href="https://grupoavanzaconsultores.es/vender-inmueble-en-espana-no-residente.html">
+<link rel="alternate" hreflang="en" href="https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html">
+<link rel="alternate" hreflang="ru" href="https://grupoavanzaconsultores.es/ru-prodazha-nedvizhimosti-nerezident.html">
+<link rel="alternate" hreflang="fr" href="https://grupoavanzaconsultores.es/fr-vendre-bien-immobilier-non-resident.html">
+<link rel="alternate" hreflang="de" href="https://grupoavanzaconsultores.es/de-immobilie-spanien-verkaufen-ausland.html">
+<link rel="alternate" hreflang="x-default" href="https://grupoavanzaconsultores.es/vender-inmueble-en-espana-no-residente.html">
+
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1F3763">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/icono-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="Grupo Avanza Consultores">
+<meta property="og:title" content="Selling Property in Spain as a Non-Resident: Tax &amp; 3%">
+<meta property="og:description" content="Selling property in Spain as a non-resident? Check Form 210, the 3% withholding, tax on the gain and plusvalía. Written English support and a prior quote.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html">
+<meta property="og:image" content="https://grupoavanzaconsultores.es/img/imagen-social.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="fuentes.css">
+<link rel="stylesheet" href="estilo.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which tax forms do I need after selling my house in Spain?", "acceptedAnswer": {"@type": "Answer", "text": "For a non-resident individual selling without a permanent establishment, the buyer files Form 211 and pays the 3% withholding within one month of the sale. The seller files Form 210 within the following three months, even at a loss. For urban land, also check the municipal plusvalía declaration or self-assessment, due within thirty working days of the sale: the buyer acts as substitute taxpayer when the seller is a non-resident individual (Regulation, article 14.3–4; Order EHA/3316/2010, article 5.a; Local Finance Act, articles 104, 106 and 110)."}}, {"@type": "Question", "name": "Is the 3% the buyer withholds the tax I pay?", "acceptedAnswer": {"@type": "Answer", "text": "No. For a non-resident individual selling without a permanent establishment, the 3% is a payment on account of Non-Resident Income Tax. The general rate is 19% of the taxable gain, after the relevant costs, adjustments and any exemption. Form 210 deducts the withholding from the tax due (Non-Resident Income Tax Act, articles 24.4, 25.1.f and 25.2; Regulation, article 14.4)."}}, {"@type": "Question", "name": "Do I have to file form 210 if I sold at a loss?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. For a non-resident sale without a permanent establishment, Form 210 is filed whatever the result, including a loss. The deadline is three months after the one-month period from the sale has ended. If the withholding exceeds the tax due, you request the excess back on Form 210; the Tax Agency may make checks before refunding it (Order EHA/3316/2010, article 5.a; Regulation, article 14.4)."}}, {"@type": "Question", "name": "Who pays the municipal plusvalía tax if the seller lives abroad?", "acceptedAnswer": {"@type": "Answer", "text": "If the seller is an individual who is not resident in Spain, the buyer acts as substitute taxpayer for the seller and can recover what was paid from the seller unless the law provides otherwise (Local Finance Act, article 106.2; General Tax Act, article 36.3). The municipal declaration or self-assessment is due within thirty working days of the sale; the applicable bylaw determines the procedure (article 110, sections 1, 2 and 4)."}}, {"@type": "Question", "name": "Can you handle the tax side without me travelling to Spain?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The calculation before signing, form 210 and the plusvalía are handled remotely, with a power of attorney in our favour before the Spanish Tax Agency, so your digital certificate stays with you. We work in writing, by WhatsApp or by email at avanza@grupoavanzaconsultores.es."}}, {"@type": "Question", "name": "I live in the UK. Do I pay more tax on the sale since Brexit?", "acceptedAnswer": {"@type": "Answer", "text": "The rate on the gain is the same: Non-Resident Income Tax charges 19% on gains from transfers of assets, whatever the seller’s country of residence (Non-Resident Income Tax Act, article 25.1.f.3.º). The difference is the exemption for reinvesting the proceeds of a former main home in Spain in a new main home, which is reserved for residents of another EU Member State or of an EEA state with an effective exchange of tax information (seventh additional provision). The United Kingdom is neither an EU Member State nor an EEA state. The buyer still withholds 3% and you still file Form 210."}}, {"@type": "Question", "name": "How is capital gains tax in Spain for non-residents calculated?", "acceptedAnswer": {"@type": "Answer", "text": "On the gain, not on the price. For a property that was bought, the acquisition value is the price actually paid plus the cost of investments and improvements and the costs and taxes of the purchase paid by the buyer, excluding interest, reduced by depreciation where the regulations require it. The sale value is the price actually received, or market value if that is higher, less the costs and taxes of the sale paid by the seller (Personal Income Tax Act, article 35, applied through article 24.4 of the Non-Resident Income Tax Act). The rate is 19% of the gain (Non-Resident Income Tax Act, article 25.1.f.3.º). The 3% the buyer withholds is a payment on account, not the final tax (article 25.2)."}}, {"@type": "Question", "name": "How long does the Spanish Tax Agency take to refund the excess 3%?", "acceptedAnswer": {"@type": "Answer", "text": "The Tax Agency refunds the excess claimed on Form 210, where applicable, after the checks that are necessary (Non-Resident Income Tax Regulation, article 14.4). If the refund has not been ordered within six months of the end of the Form 210 filing period, and the delay is attributable to the Tax Agency, it must pay late-payment interest from the end of that period without you having to ask (General Tax Act, articles 31.2 and 125.2). If Form 210 is filed late, the six months run from the date it is filed, and delays not attributable to the Tax Agency do not count towards the interest."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Selling property in Spain as a non-resident", "inLanguage": "en", "url": "https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html", "datePublished": "2026-10-13", "dateModified": "2026-11-17", "author": {"@type": "Organization", "@id": "https://grupoavanzaconsultores.es/#despacho", "name": "Grupo Avanza Consultores"}, "publisher": {"@id": "https://grupoavanzaconsultores.es/#despacho"}, "description": "Selling property in Spain as a non-resident? Check Form 210, the 3% withholding, tax on the gain and plusvalía. Written English support and a prior quote.", "mainEntityOfPage": "https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html"}</script>
+<link rel="stylesheet" href="idiomas-v2.css">
+<link rel="stylesheet" href="idiomas-zh-ar.css?v=20261027-2">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://grupoavanzaconsultores.es/en.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Selling property in Spain as a non-resident",
+      "item": "https://grupoavanzaconsultores.es/selling-property-spain-non-resident.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="topbar" id="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="en.html" aria-label="Grupo Avanza Consultores, English home">
+      <img src="img/icono-512.png" width="38" height="38" alt="">
+      <span><b>Grupo Avanza</b><i>Consultores</i></span>
+    </a>
+    <nav class="topnav" id="topnav" aria-label="Main"><a href="en.html#services">Services</a><a href="en.html#how">How we work</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+    <div class="topbar__acc">
+      <a class="langsw" href="vender-inmueble-en-espana-no-residente.html" hreflang="es" lang="es" aria-label="Esta página en español"><span class="langsw__full">Español</span><span class="langsw__short" aria-hidden="true">ES</span></a>
+      <a class="langsw" href="ru-prodazha-nedvizhimosti-nerezident.html" hreflang="ru" lang="ru" aria-label="Эта страница на русском языке"><span class="langsw__full">Русский</span><span class="langsw__short" aria-hidden="true">РУС</span></a>
+<a class="langsw" href="fr-vendre-bien-immobilier-non-resident.html" hreflang="fr" lang="fr" aria-label="Français"><span class="langsw__full">Français</span><span class="langsw__short" aria-hidden="true">FR</span></a>
+<a class="langsw" href="de-immobilie-spanien-verkaufen-ausland.html" hreflang="de" lang="de" aria-label="Deutsch"><span class="langsw__full">Deutsch</span><span class="langsw__short" aria-hidden="true">DE</span></a>
+
+
+      <a class="btn btn--primary btn--sm topbar__cta" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20tax%20work%20on%20selling%20property%20in%20Spain">Email us</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Open menu">
+        <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="navtoggle__txt">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="contenido">
+<section class="pagehead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumbs"><a href="en.html">Home</a><span>/</span>Selling property in Spain as a non-resident</nav>
+    <h1>Selling property in Spain as a non-resident</h1>
+    <p><small>By Grupo Avanza Consultores</small></p>
+    <p class="ru-note"><a href="vender-inmueble-en-espana-no-residente.html" hreflang="es" lang="es">Esta guía en español →</a> <a href="ru-prodazha-nedvizhimosti-nerezident.html" hreflang="ru" lang="ru">Эта статья на русском →</a></p>
+    <p class="lead"><strong>Selling property in Spain as a non-resident? Grupo Avanza Consultores checks the 3% withholding and prepares Form 210 and the municipal plusvalía, with a quote before you decide.</strong> For a non-resident individual selling without a permanent establishment, capital gains tax in Spain for non-residents is 19% of the taxable gain (Non-Resident Income Tax Act, article 25.1.f.3.º), and the buyer normally withholds 3% of the price as a payment on account (article 25.2). We check exemptions and any refund due. Based in Paterna (Valencia), we handle the tax work remotely across Spain, in written English, by WhatsApp or by email to <a href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20tax%20work%20on%20selling%20property%20in%20Spain">avanza@<wbr>grupoavanzaconsultores.es</a>.</p>
+    <p>Your tax adviser: <a href="en.html#about">Jose Vicente Díaz Madrid</a>.</p>
+    <div class="ctas">
+      <a class="btn btn--primary" href="en-contact.html?pagina=selling-property-spain-non-resident.html">Request a quote</a>
+      <a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20tax%20work%20on%20selling%20property%20in%20Spain">avanza@<wbr>grupoavanzaconsultores.es</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:64px">
+  <div class="wrap--narrow prose">
+    <h2>First, your tax residence</h2>
+    <p>Which tax applies to the sale depends on where you are tax resident. If you are not resident in Spain, the gain does not go into Spanish personal income tax but into Non-Resident Income Tax, because it comes from a property located in Spain (Non-Resident Income Tax Act, article 13.1.i.3.º). If you are in fact still resident in Spain, the buyer does not have to withhold anything once you prove, with a certificate from the Spanish Tax Agency, that you pay Spanish personal income tax or, if the seller is a company, corporate income tax (Non-Resident Income Tax Regulation, article 14.2.a). Residence decides who files, which tax is paid and whether there is a withholding, so it is settled before signing. The rules for working out where you are resident are on our <a href="tax-residence-moving-to-spain.html">guide to tax residence in Spain</a>.</p>
+
+    <h2>The 3% is not the tax</h2>
+    <p>When a non-resident seller acts without a permanent establishment, the buyer must withhold and pay to the Tax Agency 3% of the agreed price, or make the corresponding payment on account, within one month of the sale, on form 211 (Non-Resident Income Tax Act, article 25.2, and Regulation, article 14, sections 1 and 3). If some sellers are Spanish tax residents, the 3% applies only to the non-resident sellers’ share of the sale price. The <a href="https://sede.agenciatributaria.gob.es/Sede/en_gb/todas-gestiones/impuestos-tasas/impuesto-sobre-renta-no-residentes/modelo-211-irnr______es-no-residentes-permanente_/instrucciones.html">Tax Agency’s Form 211 instructions</a> include a worked example. The tax is calculated on the gain, not on the price, and the rate is 19% wherever the seller lives: unlike rental income, a gain on a sale has no higher rate for residents outside the European Union (article 25.1.f.3.º). There is no withholding when the property is contributed to set up or increase the capital of a company resident in Spain (article 25.2).</p>
+
+    <h2>What decides the gain</h2>
+    <p>The gain is the difference between what you obtain from the sale and what the property cost you. The purchase price is increased by investments and improvements and by the costs and taxes of the purchase, excluding loan interest; if the property was let, that value is reduced by the depreciation that applies, and the Personal Income Tax Regulation always counts the minimum depreciation, whether or not it was deducted as an expense (article 40.1). The sale price is reduced by the costs and taxes of the sale paid by the seller, and the price that counts is the one actually paid unless it is below market value, in which case market value counts (Personal Income Tax Act, article 35, part of the rules on gains to which article 24.4 of the Non-Resident Income Tax Act refers). If the property was inherited or received as a gift, the starting value generally follows the inheritance and gift tax rules, capped at market value; special carry-over rules can apply to certain lifetime gifts (Personal Income Tax Act, article 36). That is why, before signing, we rebuild the purchase value from the deed, the invoices for works and what was declared in the inheritance or gift: without that support the gain comes out higher than it really is. There are also rules that, depending on the purchase date or the seller's circumstances, can reduce the gain, and they are checked case by case.</p>
+
+    <h2>Form 210 is filed even when it means a refund</h2>
+    <p>After the sale, the seller files form 210 for the result, gain or loss, within the three months that begin once a month has passed since the sale (Order EHA/3316/2010, article 5.a, as currently worded, which refers to article 14.4 of the Regulation). After paying the withholding, the buyer must give you the seller’s copy of Form 211. Enter its receipt number on Form 210 and claim the withholding attributable to your share of the sale. If it exceeds the tax due, you can request a refund of the difference, subject to the Tax Agency’s checks (Regulation, article 14.4). Without form 210 there is no refund. The other deadlines for the form are in our guide to <a href="modelo-210-non-resident-tax-spain.html">form 210 for non-residents</a>.</p>
+
+    <h3>How the figures work on a €200,000 sale</h3>
+    <p>Suppose you are an individual tax resident outside Spain with no permanent establishment in Spain. You bought a holiday flat in Valencia for €180,000 in 2018 as its sole owner and sell it at its market value of €200,000 in 2026. You have never let it. For this example, leave out all buying and selling costs, including transaction taxes, and assume there were no improvements and no other adjustments or reliefs apply.</p>
+    <ul>
+      <li><strong>Form 211.</strong> The buyer withholds 3% of €200,000 and pays €6,000 to the Tax Agency on your behalf.</li>
+      <li><strong>Form 210.</strong> Your taxable gain is €20,000 (€200,000 minus €180,000). At 19%, the Spanish non-resident income tax on the gain is €3,800.</li>
+      <li><strong>Refund to request.</strong> The buyer has paid €6,000 towards your €3,800 tax bill. You can request the €2,200 difference on Form 210.</li>
+    </ul>
+    <p>Any municipal <em>plusvalía</em> is assessed separately. See the <a href="https://sede.agenciatributaria.gob.es/Sede/en_gb/no-residentes/irnr-sin-establecimiento-permanente/cuestiones-especificas-sobre-tributacion-inmuebles/ganancia-patrimonial-derivada-transmision.html">Spanish Tax Agency’s guide to gains on property sales</a>.</p>
+
+    <h2>If the buyer does not pay the withholding</h2>
+    <p>If the buyer does not pay in the 3%, the property sold is charged with payment of the lower of that withholding and the seller's tax, and the land registrar records this in a marginal note on the registration, stating the amount the property answers for. The note is cancelled on expiry, or with the payment receipt or a certificate showing that the sale is not subject to tax or that the debt is time-barred (Non-Resident Income Tax Act, article 25.2, and Regulation, article 14.5). The charge stays with the property, so a default by the buyer also falls on the property.</p>
+
+    <h2>If it was your main home and you live in the European Union</h2>
+    <p>A resident of another European Union Member State, or of a European Economic Area state with an effective exchange of tax information, can leave untaxed the gain on selling what was their main home in Spain if they reinvest the whole amount obtained in a new main home, under the personal income tax rules; if only part is reinvested, the proportional part is left untaxed (Non-Resident Income Tax Act, seventh additional provision, sections 1, 2 and 4). Under those rules, the reinvestment is made, at once or in instalments, within two years of the sale, or the amount obtained is used to pay for a new main home bought in the two previous years; and if the home sold was bought with a loan, the amount obtained is calculated by deducting the principal outstanding at that time (Personal Income Tax Regulation, article 41, sections 1 and 3). The buyer still withholds 3%, and if the reinvestment has been made before the date on which form 210 must be filed, it is taken into account on that return (section 3 of the same provision).</p>
+
+    <h2>The municipal plusvalía: the buyer files it as substitute taxpayer</h2>
+    <p>Besides the State tax there is the municipal tax on the increase in value of urban land (plusvalía municipal). On a sale it is paid by the seller, but if the seller is an individual who is not resident in Spain, the buyer is the liable party, as substitute taxpayer (Local Finance Act, article 106.2). The substitute pays in the seller's place, but can then claim back from the seller what was paid, unless the law provides otherwise (General Tax Act, article 36.3). The declaration, or the self-assessment where required by the local bylaw, is due within thirty working days of the sale (article 110, sections 1, 2 and 4). If the purchase and sale values of the land show no increase, the sale is not subject to the tax, but it still has to be declared, with the purchase and sale deeds (article 104.5). The rate, coefficients and reliefs depend on the bylaw of the municipality where the property is located. That is why we calculate the plusvalía before signing, together with the 3% withholding.</p>
+
+    <h2>Official sources and filing deadlines</h2>
+    <p>The 3% withholding and sale return follow <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-14532#a14">article 14 of the Non-Resident Income Tax Regulation</a> and <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2010-19707#a5">article 5.a of Order EHA/3316/2010</a>, including its current wording after the June 2026 amendment. The general 19% rate is in <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a25">article 25 of the Non-Resident Income Tax Act</a>. Municipal plusvalía follows <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214#a104">articles 104, 106 and 110 of the Local Finance Act</a> and the municipality's bylaw. Sources checked on 4 November 2026. The refund timing follows <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186#a31">articles 31.2</a> and <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186#a125">125.2 of the General Tax Act</a>, checked on 17 November 2026.</p>
+    <p>If you are buying from a non-resident, see <a href="buying-property-from-non-resident-spain.html">the buyer's Form 211 and 3% withholding duties</a>.</p>
+
+    <h2>How we handle it</h2>
+    <p>Before signing we check whether you are resident or not, calculate the gain, the withholding and the plusvalía, and tell you which documents are needed. Afterwards we prepare form 210, with the refund where there is one, and the plusvalía return if you ask us to. Everything is done remotely: documents arrive by email, and before the Tax Agency we act under your power of attorney, so your digital certificate stays with you. No return is filed until you know its amount and the reasons for it. More on how we work with clients abroad is on our <a href="en.html">page for non-residents</a>.</p>
+  </div>
+</section>
+
+<section class="band band--surface" id="faq">
+  <div class="wrap--narrow">
+    <hr class="rule">
+    <p class="eyebrow">Questions</p>
+    <h2>What people ask us about this</h2>
+    <div class="faq"><details><summary>Which tax forms do I need after selling my house in Spain?</summary><p>For a non-resident individual selling without a permanent establishment, the buyer files Form 211 and pays the 3% withholding within one month of the sale. The seller files Form 210 within the following three months, even at a loss. For urban land, also check the municipal plusvalía declaration or self-assessment, due within thirty working days of the sale: the buyer acts as substitute taxpayer when the seller is a non-resident individual (Regulation, article 14.3–4; Order EHA/3316/2010, article 5.a; Local Finance Act, articles 104, 106 and 110).</p></details><details><summary>Is the 3% the buyer withholds the tax I pay?</summary><p>No. For a non-resident individual selling without a permanent establishment, the 3% is a payment on account of Non-Resident Income Tax. The general rate is 19% of the taxable gain, after the relevant costs, adjustments and any exemption. Form 210 deducts the withholding from the tax due (Non-Resident Income Tax Act, articles 24.4, 25.1.f and 25.2; Regulation, article 14.4).</p></details><details><summary>Do I have to file form 210 if I sold at a loss?</summary><p>Yes. For a non-resident sale without a permanent establishment, Form 210 is filed whatever the result, including a loss. The deadline is three months after the one-month period from the sale has ended. If the withholding exceeds the tax due, you request the excess back on Form 210; the Tax Agency may make checks before refunding it (Order EHA/3316/2010, article 5.a; Regulation, article 14.4).</p></details><details><summary>Who pays the municipal plusvalía tax if the seller lives abroad?</summary><p>If the seller is an individual who is not resident in Spain, the buyer acts as substitute taxpayer for the seller and can recover what was paid from the seller unless the law provides otherwise (Local Finance Act, article 106.2; General Tax Act, article 36.3). The municipal declaration or self-assessment is due within thirty working days of the sale; the applicable bylaw determines the procedure (article 110, sections 1, 2 and 4).</p></details><details><summary>Can you handle the tax side without me travelling to Spain?</summary><p>Yes. The calculation before signing, form 210 and the plusvalía are handled remotely, with a power of attorney in our favour before the Spanish Tax Agency, so your digital certificate stays with you. We work in writing, by WhatsApp or by email at avanza@<wbr>grupoavanzaconsultores.es.</p></details><details><summary>I live in the UK. Do I pay more tax on the sale since Brexit?</summary><p>The rate on the gain is the same: Non-Resident Income Tax charges 19% on gains from transfers of assets, whatever the seller’s country of residence (<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a25">Non-Resident Income Tax Act, article 25.1.f.3.º</a>). The difference is the exemption for reinvesting the proceeds of a former main home in Spain in a new main home, which is reserved for residents of another EU Member State or of an EEA state with an effective exchange of tax information (<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#daseptima">seventh additional provision</a>). The United Kingdom is neither an EU Member State nor an EEA state. The buyer still withholds 3% and you still file Form 210.</p></details><details><summary>How is capital gains tax in Spain for non-residents calculated?</summary><p>On the gain, not on the price. For a property that was bought, the acquisition value is the price actually paid plus the cost of investments and improvements and the costs and taxes of the purchase paid by the buyer, excluding interest, reduced by depreciation where the regulations require it. The sale value is the price actually received, or market value if that is higher, less the costs and taxes of the sale paid by the seller (Personal Income Tax Act, article 35, applied through article 24.4 of the Non-Resident Income Tax Act). The rate is 19% of the gain (Non-Resident Income Tax Act, article 25.1.f.3.º). The 3% the buyer withholds is a payment on account, not the final tax (article 25.2).</p></details><details><summary>How long does the Spanish Tax Agency take to refund the excess 3%?</summary><p>The Tax Agency refunds the excess claimed on Form 210, where applicable, after the checks that are necessary (Non-Resident Income Tax Regulation, article 14.4). If the refund has not been ordered within six months of the end of the Form 210 filing period, and the delay is attributable to the Tax Agency, it must pay late-payment interest from the end of that period without you having to ask (General Tax Act, articles 31.2 and 125.2). If Form 210 is filed late, the six months run from the date it is filed, and delays not attributable to the Tax Agency do not count towards the interest.</p></details></div>
+    <p style="margin-top:28px"><a href="buying-property-spain-foreigner.html">Buying property in Spain as a foreigner →</a></p><p style="margin-top:10px"><a href="regularising-taxes-spain-foreigner.html">Regularising your taxes in Spain →</a></p><p style="margin-top:10px"><a href="en.html">Tax adviser in Valencia for non-residents →</a></p><p style="margin-top:10px"><a href="inheritance-spain-non-resident-heir.html">Inheriting in Spain as a non-resident heir →</a></p><p style="margin-top:10px"><a href="gift-of-money-from-abroad-spain.html">A gift of money from abroad to Spain →</a></p>
+  </div>
+</section>
+
+<section class="cta-final" id="contact">
+  <div class="wrap">
+    <h2>Selling soon?</h2>
+    <p class="lead">For a written quote in English, email us your country of tax residence, the municipality where the property is located and the planned or actual sale date. If you have already sold, tell us whether the buyer has given you your copy of Form 211.</p>
+    <div class="ctas">
+      <a class="btn btn--onnavy" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20tax%20work%20on%20selling%20property%20in%20Spain&amp;body=Country%20of%20tax%20residence%3A%20%0D%0AProperty%20municipality%3A%20%0D%0APlanned%20or%20actual%20sale%20date%3A%20%0D%0AIf%20already%20sold%2C%20have%20you%20received%20your%20copy%20of%20Form%20211%3F%20">Request a quote</a>
+      <a class="btn btn--onnavy-ghost" href="https://wa.me/34614365547?text=Hello%2C%20I%20would%20like%20a%20quote%20for%20Spanish%20tax%20assistance.%20My%20situation%3A%20__.%20Country%20where%20I%20live%3A%20__.%20Year%20or%20date%20concerned%3A%20__.%20Any%20deadline%3A%20__.%20I%20have%20seen%20your%20English%20guide%20to%20selling%20property%20in%20Spain%20as%20a%20non-resident.%20Please%20reply%20in%20writing%20in%20English." target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <h4>Grupo Avanza Consultores</h4>
+        <p>Tax, accounting and employment adviser<br>Paterna, Valencia</p>
+        <p style="margin-top:10px"><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a></p>
+      </div>
+      <div>
+        <h4>In English</h4>
+        <ul><li><a href="en.html">Tax adviser in Valencia</a></li><li><a href="gift-of-money-from-abroad-spain.html">Gifts from family abroad</a></li><li><a href="inheritance-spain-non-resident-heir.html">Inheritance for non-resident heirs</a></li><li><a href="selling-property-spain-non-resident.html">Selling property in Spain</a></li><li><a href="plusvalia-tax-spain-non-resident.html">Plusvalía tax for non-residents</a></li><li><a href="buying-property-spain-foreigner.html">Buying property in Spain</a></li><li><a href="regularising-taxes-spain-foreigner.html">Regularising your taxes</a></li><li><a href="tax-residence-moving-to-spain.html">Tax residence when moving</a></li><li><a href="beckham-law-spain-special-tax-regime.html">Beckham Law</a></li><li><a href="spanish-tax-residence-certificate.html">Tax residence certificate</a></li><li><a href="leaving-spain-tax-residence.html">Leaving Spain</a></li><li><a href="form-720-spain-assets-abroad.html">Form 720</a></li><li><a href="uk-pension-tax-spain-resident.html">UK pension in Spain</a></li><li><a href="german-pension-tax-spain-resident.html">German pension in Spain</a></li><li><a href="french-pension-tax-spain-resident.html">French pension in Spain</a></li><li><a href="italian-pension-tax-spain-resident.html">Italian pension in Spain</a></li><li><a href="dutch-pension-tax-spain-resident.html">Dutch pensions in Spain</a></li><li><a href="us-social-security-pension-tax-spain-resident.html">US Social Security in Spain</a></li><li><a href="modelo-210-non-resident-tax-spain.html">Modelo 210</a></li><li><a href="letter-from-spanish-tax-agency.html">A letter from the Tax Agency</a></li><li><a href="setting-up-limited-company-spain-foreigner.html">Setting up a limited company</a></li><li><a href="self-employed-autonomo-spain-foreigner.html">Self-employed in Spain</a></li><li><a href="first-tax-return-spain-new-resident.html">Your first Spanish tax return</a></li></ul>
+        <h4 style="margin-top:22px">In Spanish</h4>
+        <ul><li><a href="/">Home page</a></li><li><a href="fiscalidad-no-residentes-y-extranjeros.html">Non-residents and foreigners</a></li><li><a href="modelo-210-no-residentes.html">Modelo 210</a></li><li><a href="vender-inmueble-en-espana-no-residente.html">Vender si vives fuera</a></li><li><a href="regularizar-situacion-fiscal-extranjero.html">Regularizar si eres extranjero</a></li><li><a href="residencia-fiscal-al-llegar-a-espana.html">Residencia al llegar</a></li><li><a href="regimen-impatriados-ley-beckham.html">Ley Beckham</a></li><li><a href="certificado-residencia-fiscal-espana.html">Certificado de residencia</a></li><li><a href="irse-de-espana-impuestos-cambio-residencia.html">Irse de España</a></li><li><a href="modelo-720-bienes-en-el-extranjero.html">Modelo 720</a></li><li><a href="pension-reino-unido-residente-en-espana.html">Pensión del Reino Unido</a></li><li><a href="pension-alemana-residente-en-espana.html">Pensión de Alemania</a></li><li><a href="pension-francesa-residente-en-espana.html">Pensión de Francia</a></li><li><a href="pension-italiana-residente-en-espana.html">Pensión de Italia</a></li><li><a href="pension-estados-unidos-residente-en-espana.html">Pensión de Estados Unidos</a></li><li><a href="comprar-vivienda-en-espana-extranjero.html">Comprar vivienda siendo extranjero</a></li><li><a href="herencia-en-espana-heredero-no-residente.html">Inheritance with a non-resident heir</a></li><li><a href="carta-de-hacienda-requerimiento.html">Letters from the Tax Agency</a></li></ul>
+      </div>
+      <div>
+        <h4>Area</h4>
+        <p>Paterna, La Cañada, l'Eliana, Burjassot, Valencia city and the metropolitan area. Clients outside Spain, remotely.</p>
+        <p style="margin-top:10px"><a href="ru.html" lang="ru">Налоговый консультант в Валенсии — на русском</a></p>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div>
+      <div><a href="aviso-legal.html">Aviso legal</a> · <a href="en-privacy.html">Privacy</a> · <a href="cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var d=document.documentElement;
+  var mq=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var tb=document.getElementById('topbar');
+  if(tb){
+    var onScroll=function(){ tb.classList.toggle('is-stuck', window.scrollY>8); };
+    onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  }
+  var bt=document.querySelector('.navtoggle'), nv=document.getElementById('topnav');
+  if(bt&&nv){
+    d.classList.add('js-nav');
+    bt.addEventListener('click',function(){
+      var open=bt.getAttribute('aria-expanded')==='true';
+      bt.setAttribute('aria-expanded', String(!open));
+      nv.classList.toggle('is-open', !open);
+      bt.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    });
+    nv.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){ bt.setAttribute('aria-expanded','false'); bt.setAttribute('aria-label','Open menu'); nv.classList.remove('is-open'); }
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&nv.classList.contains('is-open')){ bt.setAttribute('aria-expanded','false'); bt.setAttribute('aria-label','Open menu'); nv.classList.remove('is-open'); bt.focus(); }
+    });
+  }
+  if(mq.matches || !('IntersectionObserver' in window)) return;
+  d.classList.add('js-reveal');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px', threshold:0});
+  document.querySelectorAll('.band, .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+})();
+</script>
+<script>(function(){var h=document.querySelector(".hero__logo"),t=document.querySelector(".trust");if(h){var d=document.createElement("div");d.className="marca";d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">';h.insertBefore(d,h.firstChild);}if(h&&t)h.appendChild(t);})();</script>
+</body>
+</html>

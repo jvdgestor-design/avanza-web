@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spanish nationality by residence and tax | Grupo Avanza</title>
+<meta name="description" content="Becoming Spanish does not change your tax residence (IRPF Act, Art. 9); one specific rule changes if you move to a tax haven.">
+<link rel="canonical" href="https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html">
+<link rel="alternate" hreflang="es" href="https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html">
+<link rel="alternate" hreflang="en" href="https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html">
+<link rel="alternate" hreflang="x-default" href="https://grupoavanzaconsultores.es/nacionalidad-espanola-por-residencia.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1F3763">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/icono-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="Grupo Avanza Consultores">
+<meta property="og:title" content="Spanish nationality by residence and tax | Grupo Avanza">
+<meta property="og:description" content="Becoming Spanish does not change your tax residence (IRPF Act, Art. 9); one specific rule changes if you move to a tax haven.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html">
+<meta property="og:image" content="https://grupoavanzaconsultores.es/img/imagen-social.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="fuentes.css">
+<link rel="stylesheet" href="estilo.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://grupoavanzaconsultores.es/en.html"}, {"@type": "ListItem", "position": 2, "name": "Tax matters for foreigners", "item": "https://grupoavanzaconsultores.es/en-tramites.html"}, {"@type": "ListItem", "position": 3, "name": "Spanish nationality by residence", "item": "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html#webpage", "url": "https://grupoavanzaconsultores.es/spanish-nationality-by-residence.html", "name": "Spanish nationality by residence and tax | Grupo Avanza", "description": "Becoming Spanish does not change your tax residence (IRPF Act, Art. 9); one specific rule changes if you move to a tax haven.", "inLanguage": "en", "publisher": {"@id": "https://grupoavanzaconsultores.es/#despacho"}, "dateModified": "2026-10-27"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does acquiring Spanish nationality make me tax resident in Spain?", "acceptedAnswer": {"@type": "Answer", "text": "Not because of nationality. Tax residence is decided by Article 9 of the IRPF Act: more than 183 days in Spain in the calendar year, or having your main centre or base of activities or economic interests here. A Spanish national living abroad may not be tax resident in Spain."}}, {"@type": "Question", "name": "I have dual nationality: in which country do I pay tax?", "acceptedAnswer": {"@type": "Answer", "text": "Dual nationality does not decide it. Spain applies Article 9 of the IRPF Act; if the other country also treats you as resident under its law, the double taxation treaty between the two States applies to allocate residence to one of them."}}, {"@type": "Question", "name": "If I am already Spanish and move to a tax haven, do I stop paying tax in Spain?", "acceptedAnswer": {"@type": "Answer", "text": "No. Article 8(2) of the IRPF Act keeps as a taxpayer, in the year of the move and the following four years, a Spanish national who proves new tax residence in a tax haven. The article speaks of a “tax haven”; current rules define non-cooperative jurisdictions (Law 36/2006, First Additional Provision, list set by ministerial order). This rule does not apply to people who are not Spanish nationals."}}, {"@type": "Question", "name": "During my years of residence for nationality, should I have filed Renta and Form 720?", "acceptedAnswer": {"@type": "Answer", "text": "If you were tax resident in those years, you were taxed on your worldwide income and had to file if you exceeded the limits in Article 96 of the IRPF Act; if you held assets or accounts abroad, Form 720 may have applied. Outstanding returns can be regularised."}}]}</script>
+<link rel="stylesheet" href="idiomas-v2.css">
+<link rel="stylesheet" href="idiomas-zh-ar.css?v=20261027-2">
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="topbar" id="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="en.html" aria-label="Grupo Avanza Consultores, English home">
+      <img src="img/icono-512.png" width="38" height="38" alt="">
+      <span><b>Grupo Avanza</b><i>Consultores</i></span>
+    </a>
+    <nav class="topnav" id="topnav" aria-label="Main"><a href="en.html#services">Services</a><a href="en.html#how">How we work</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+    <div class="topbar__acc">
+      <a class="langsw" href="nacionalidad-espanola-por-residencia.html" hreflang="es" lang="es" aria-label="Esta página en español"><span class="langsw__full">Español</span><span class="langsw__short" aria-hidden="true">ES</span></a>
+<a class="langsw" href="fr.html" hreflang="fr" lang="fr" aria-label="Français : accueil international"><span class="langsw__full">Français</span><span class="langsw__short" aria-hidden="true">FR</span></a>
+<a class="langsw" href="de.html" hreflang="de" lang="de" aria-label="Deutsch: internationale Startseite"><span class="langsw__full">Deutsch</span><span class="langsw__short" aria-hidden="true">DE</span></a>
+
+
+      <a class="btn btn--primary btn--sm topbar__cta" href="https://wa.me/34614365547?text=Hello%2C%20I%20have%20or%20will%20soon%20have%20Spanish%20nationality%20and%20would%20like%20to%20ask%20about%20my%20taxes%20in%20Spain." target="_blank" rel="noopener">WhatsApp us</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Open menu">
+        <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="navtoggle__txt">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="contenido">
+<section class="pagehead"><div class="wrap"><nav class="crumbs" aria-label="Home"><a href="en.html">Home</a><span>/</span><a href="en-tramites.html">Tax matters for foreigners</a><span>/</span>Spanish nationality by residence</nav>
+<p class="eyebrow">Tax · Spanish nationality · Updated 27 October 2026</p><h1>Spanish nationality by residence: what changes in your taxes</h1><p class="ru-note"><a href="nacionalidad-espanola-por-residencia.html" hreflang="es" lang="es">Español</a></p><p class="lead"><strong>Becoming a Spanish national does not, by itself, change your tax residence: Article 9 of the Spanish Personal Income Tax Act (IRPF) decides it, before and after the grant. One specific rule does change: Article 8(2) keeps a Spanish national who moves to a tax haven as an IRPF taxpayer in the year of the move and the following four years; current rules define non-cooperative jurisdictions (Law 36/2006, First Additional Provision, list set by ministerial order).</strong></p><p class="lead" style="margin-top:20px">Grupo Avanza Consultores, a tax and accounting adviser based in Paterna (Valencia), deals with the tax side: <a href="tax-residence-moving-to-spain.html">tax residence</a>, the annual income tax return (Renta), Form 720, the special regime for inbound workers (Beckham Law), Form 210 and regularising outstanding returns. We work remotely and reply in writing in English.</p><div class="ctas"><a class="btn btn--primary" href="https://wa.me/34614365547?text=Hello%2C%20I%20have%20or%20will%20soon%20have%20Spanish%20nationality%20and%20would%20like%20to%20ask%20about%20my%20taxes%20in%20Spain." target="_blank" rel="noopener">Write on WhatsApp</a><a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es?subject=Spanish%20nationality%20and%20tax">Email us</a></div></div></section>
+<section class="band"><div class="wrap--narrow prose prose--guia"><h2>The procedure in brief</h2><p>Nationality by residence under the Spanish Civil Code generally requires ten years of lawful, continuous residence immediately before the application. The period is five years for people who have obtained refugee status; two for nationals by origin of Ibero-American countries, Andorra, the Philippines, Equatorial Guinea or Portugal, or for Sephardic Jews; and one in the specific cases in Article 22(2), such as one year of marriage to a Spanish citizen without legal or factual separation.</p><p>Good civic conduct and sufficient integration must also be shown, evidenced by the Spanish-language diploma (DELE) at A2 level or higher and the constitutional and sociocultural test (CCSE), save for the exemptions and dispensations in Order JUS/1625/2016. The maximum period for a decision is one year from receipt of the application by the Directorate-General named in the rules, and administrative silence is negative. Approval does not complete acquisition: it opens a 180-day period from the day after notification for the required declarations and the request for registration in the Civil Registry, which is what completes the acquisition of nationality.</p><p class="tnote"><a href="https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763#art22">Civil Code · Articles 21–23</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2016-9314#a1-2">Order JUS/1625/2016 · Article 10</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-12047#a11">Royal Decree 1004/2015 · Article 11(3)</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a68">Law 20/2011 · Article 68</a> · <a href="https://sede.mjusticia.gob.es/tramites/nacionalidad-espanola">Justice Ministry · Nationality portal</a></p></div></section>
+<section class="band band--surface"><div class="wrap"><h2>Three tax points first</h2><div class="cards" style="margin-top:32px"><article class="card"><h3>Nationality does not decide tax residence</h3><p>Tax residence depends on your days in Spain and on where your economic interests are. Your passport plays no part in that test.</p><p class="tnote">IRPF Act, Article 9(1).</p></article><article class="card"><h3>Two passports do not decide where you pay tax</h3><p>If two States each treat you as resident, the double taxation treaty between them decides, not your nationality.</p><p class="tnote">IRPF Act, Article 9; applicable treaty.</p></article><article class="card"><h3>What does change once you are Spanish</h3><p>If you move to a tax haven, Article 8(2) keeps you in Spanish IRPF for five tax years; current rules define non-cooperative jurisdictions. As a foreign national, this rule did not apply to you.</p><p class="tnote">IRPF Act, Article 8(2); Law 36/2006, First Additional Provision.</p></article></div></div></section>
+<section class="band"><div class="wrap--narrow prose prose--guia"><h2 id="residencia">Your tax residence does not change on the day of the oath</h2><p>The lawful residence the Civil Code requires for nationality and tax residence are different concepts. Tax residence is set by Article 9(1) of the IRPF Act using two tests: spending more than 183 days of the calendar year in Spain, with sporadic absences counted unless you prove tax residence in another country; or having your main centre or base of activities or economic interests in Spain. In addition, you are presumed resident, unless you prove otherwise, if your spouse who is not legally separated and your dependent minor children habitually reside in Spain.</p><p>That is why approval does not alter your position for that year: if you were already tax resident, you remain so under the same tests, and a Spanish national living abroad may not be tax resident in Spain.</p><p>One consequence is worth checking before you apply: the years you build up for nationality usually coincide with years of tax residence. In the years in which you were tax resident, you were taxed in the IRPF on your worldwide income, wherever it arose and wherever the payer was resident, and if you held assets or accounts abroad Form 720 may have applied. If a return is missing, the guide to <a href="regularising-taxes-spain-foreigner.html">regularising your taxes as a foreigner</a> explains what decides the outcome.</p><p class="tnote"><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a9">IRPF Act · Article 9</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a2">Article 2</a> · <a href="tax-residence-moving-to-spain.html">Tax residence when moving to Spain</a></p><h2 id="doble-nacionalidad">Dual nationality: where you pay tax</h2><p>Keeping your previous nationality, where that is possible, has no tax effect in itself: Spain applies Article 9, whether you hold one passport or two. If the other country also treats you as resident under its own law, there is no choice: the double taxation treaty between the two States applies, with its rules for allocating residence to only one of them. To prove to the other country that you are resident in Spain, you use the <a href="spanish-tax-residence-certificate.html">Spanish tax residence certificate</a>.</p><h2 id="jurisdiccion-no-cooperativa">What does change: moving to a tax haven</h2><p>Article 8(2) of the IRPF Act provides that Spanish nationals who prove their new tax residence in a tax haven remain IRPF taxpayers in the tax year of the change and the following four. Article 8(2) speaks of a “tax haven”; current rules define non-cooperative jurisdictions in the First Additional Provision of Law 36/2006 (wording in force since 11 July 2021), with a list set by ministerial order.</p><p>The rule refers to Spanish nationals. While you were a foreign national, a move to a tax haven was judged under Article 9; the Article 8(2) rule did not reach you. Once you have acquired nationality, the same move keeps you in Spanish IRPF for five tax years.</p><p class="tnote"><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a8">IRPF Act · Article 8(2)</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20843#daprimera">Law 36/2006 · First Additional Provision</a></p><h2 id="irse">If you later leave Spain</h2><p>If you stop being a taxpayer because you change residence, income pending allocation is included in the tax base of the last period for which you must file an IRPF return. If the move is to another European Union State, you may opt to allocate it as it is obtained, through supplementary returns. The guide to <a href="leaving-spain-tax-residence.html">leaving Spain and your taxes</a> covers the other effects of the move.</p><p class="tnote"><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a14">IRPF Act · Article 14(3)</a></p><h2 id="residente">While you are resident: Renta, 720, family and the Beckham Law</h2><p>As a resident you are taxed on your worldwide income. Whether you must file a Renta return is decided by Article 96: among other cases, someone whose only income is employment income up to 22,000 euros need not file (15,876 euros if there is more than one payer and the second and subsequent payers exceed 1,500 euros); someone registered as self-employed during the year, or entitled to the international double taxation deduction, must always file.</p><p>Accounts, securities, insurance and property held abroad fall within the information return under the Eighteenth Additional Provision of the General Tax Act, Form 720; virtual currencies held abroad by a custodian are reported separately, on Form 721. Thresholds and deadlines are in the <a href="form-720-spain-assets-abroad.html">Form 720 guide</a>.</p><p>Joint taxation does not depend on nationality either: it is only available if all members of the family unit, on 31 December, are IRPF taxpayers. And the <a href="beckham-law-spain-special-tax-regime.html">Beckham Law regime</a> does not require any particular nationality; it requires not having been resident in the previous five tax periods and a move for one of the reasons in Article 93; if you were tax resident in any of those years, you do not meet that requirement.</p><p class="tnote"><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a96">IRPF Act · Article 96</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a82">Articles 82</a> and <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a83">83</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a93">Article 93</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186#dadecimoctava">General Tax Act · Eighteenth Additional Provision</a></p><h2 id="servicio">What we do on the tax side</h2><p>We determine your tax residence year by year, file your Renta return and Form 720, assess whether the Beckham Law regime fits, file Form 210 if you are a non-resident with income in Spain, and regularise outstanding returns. If you plan to move country, we assess the effects beforehand.</p></div></section>
+<section class="band band--surface" id="faq"><div class="wrap--narrow"><hr class="rule"><h2>Questions about nationality and tax</h2><div class="faq"><details><summary>Does acquiring Spanish nationality make me tax resident in Spain?</summary><p>Not because of nationality. Tax residence is decided by Article 9 of the IRPF Act: more than 183 days in Spain in the calendar year, or having your main centre or base of activities or economic interests here. A Spanish national living abroad may not be tax resident in Spain.</p></details><details><summary>I have dual nationality: in which country do I pay tax?</summary><p>Dual nationality does not decide it. Spain applies Article 9 of the IRPF Act; if the other country also treats you as resident under its law, the double taxation treaty between the two States applies to allocate residence to one of them.</p></details><details><summary>If I am already Spanish and move to a tax haven, do I stop paying tax in Spain?</summary><p>No. Article 8(2) of the IRPF Act keeps as a taxpayer, in the year of the move and the following four years, a Spanish national who proves new tax residence in a tax haven. The article speaks of a “tax haven”; current rules define non-cooperative jurisdictions (Law 36/2006, First Additional Provision, list set by ministerial order). This rule does not apply to people who are not Spanish nationals.</p></details><details><summary>During my years of residence for nationality, should I have filed Renta and Form 720?</summary><p>If you were tax resident in those years, you were taxed on your worldwide income and had to file if you exceeded the limits in Article 96 of the IRPF Act; if you held assets or accounts abroad, Form 720 may have applied. Outstanding returns can be regularised.</p></details></div><h3 style="margin-top:44px">Related guides and services</h3><ul style="margin-top:16px;padding-left:22px"><li><a href="tax-residence-moving-to-spain.html">Tax residence when moving to Spain</a></li><li><a href="regularising-taxes-spain-foreigner.html">Regularising your taxes</a></li><li><a href="leaving-spain-tax-residence.html">Leaving Spain: taxes</a></li><li><a href="spanish-tax-residence-certificate.html">Tax residence certificate</a></li><li><a href="form-720-spain-assets-abroad.html">Form 720</a></li><li><a href="beckham-law-spain-special-tax-regime.html">Beckham Law</a></li><li><a href="modelo-210-non-resident-tax-spain.html">Modelo 210 for non-residents</a></li><li><a href="en-tramites.html">Tax matters for foreigners</a></li></ul></div></section>
+<section class="band" id="fuentes"><div class="wrap--narrow prose prose--guia"><h2>Official sources</h2><p>Tax rules consulted on 27 October 2026 in the BOE (consolidated text): Law 35/2006 on IRPF, Articles 2, 8(2), 9, 14(3), 82, 83, 93 and 96; Law 36/2006, First Additional Provision; Law 58/2003 General Tax Act, Eighteenth Additional Provision. The summary of the nationality procedure is based on the Civil Code, Articles 21–23; Royal Decree 1004/2015, Article 11; Order JUS/1625/2016, Article 10; and Law 20/2011, Article 68, consulted on 21 October 2026. General information: each case is assessed with its own dates and documents. Linked sources are in Spanish.</p><ul><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764">Law 35/2006 on IRPF · Articles 2, 8, 9, 14, 82, 83, 93 and 96</a></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20843#daprimera">Law 36/2006 · First Additional Provision</a></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2003-23186#dadecimoctava">Law 58/2003 General Tax Act · Eighteenth Additional Provision</a></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-1889-4763">Civil Code · Articles 21–23</a></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-12047">Royal Decree 1004/2015 · Article 11</a></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2016-9314">Order JUS/1625/2016 · Article 10</a></li><li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2011-12628#a68">Law 20/2011 · Article 68</a></li></ul></div></section>
+<section class="cta-final" id="contact"><div class="wrap"><h2>Your tax residence, before and after nationality</h2><p class="lead">Tell us which countries you have lived and worked in over these years, where you hold accounts or assets, and whether you plan to change residence. We reply in writing in English by WhatsApp or email, and we work remotely.</p><div class="ctas"><a class="btn btn--onnavy" href="https://wa.me/34614365547?text=Hello%2C%20I%20have%20or%20will%20soon%20have%20Spanish%20nationality%20and%20would%20like%20to%20ask%20about%20my%20taxes%20in%20Spain." target="_blank" rel="noopener">Write on WhatsApp</a><a class="btn btn--onnavy-ghost" href="mailto:avanza@grupoavanzaconsultores.es?subject=Spanish%20nationality%20and%20tax">Email us</a></div></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <h4>Grupo Avanza Consultores</h4>
+        <p>Tax, accounting and employment adviser<br>Paterna, Valencia</p>
+        <p style="margin-top:10px"><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a><br><a href="https://wa.me/34614365547?text=Hello%2C%20I%20have%20or%20will%20soon%20have%20Spanish%20nationality%20and%20would%20like%20to%20ask%20about%20my%20taxes%20in%20Spain." target="_blank" rel="noopener">WhatsApp: messages and voice notes</a></p>
+      </div>
+      <div>
+        <h4>In English</h4>
+        <ul><li><a href="spanish-nationality-by-residence.html">Nationality by residence: tax</a></li><li><a href="long-term-residence-spain.html">Long-term residence: tax</a></li><li><a href="family-reunification-spain.html">Family reunification: tax</a></li><li><a href="renew-employed-residence-work-permit-spain.html">Employed workers: income tax</a></li><li><a href="nie-tie-eu-registration-spain.html">NIE, TIE and tax residence</a></li><li><a href="en.html">Tax adviser in Valencia</a></li><li><a href="gift-of-money-from-abroad-spain.html">Gifts from family abroad</a></li><li><a href="inheritance-spain-non-resident-heir.html">Inheritance for non-resident heirs</a></li><li><a href="selling-property-spain-non-resident.html">Selling property in Spain</a></li><li><a href="buying-property-spain-foreigner.html">Buying property in Spain</a></li><li><a href="regularising-taxes-spain-foreigner.html">Regularising your taxes</a></li><li><a href="tax-residence-moving-to-spain.html">Tax residence when moving</a></li><li><a href="beckham-law-spain-special-tax-regime.html">Beckham Law</a></li><li><a href="spanish-tax-residence-certificate.html">Tax residence certificate</a></li><li><a href="leaving-spain-tax-residence.html">Leaving Spain</a></li><li><a href="form-720-spain-assets-abroad.html">Form 720</a></li><li><a href="uk-pension-tax-spain-resident.html">UK pension in Spain</a></li><li><a href="german-pension-tax-spain-resident.html">German pension in Spain</a></li><li><a href="french-pension-tax-spain-resident.html">French pension in Spain</a></li><li><a href="italian-pension-tax-spain-resident.html">Italian pension in Spain</a></li><li><a href="dutch-pension-tax-spain-resident.html">Dutch pensions in Spain</a></li><li><a href="us-social-security-pension-tax-spain-resident.html">US Social Security in Spain</a></li><li><a href="modelo-210-non-resident-tax-spain.html">Modelo 210</a></li><li><a href="letter-from-spanish-tax-agency.html">A letter from the Tax Agency</a></li><li><a href="setting-up-limited-company-spain-foreigner.html">Setting up a limited company</a></li><li><a href="self-employed-autonomo-spain-foreigner.html">Self-employed in Spain</a></li><li><a href="first-tax-return-spain-new-resident.html">Your first Spanish tax return</a></li></ul>
+        <h4 style="margin-top:22px">In Spanish</h4>
+        <ul><li><a href="/">Home page</a></li><li><a href="fiscalidad-no-residentes-y-extranjeros.html">Non-residents and foreigners</a></li><li><a href="modelo-210-no-residentes.html">Modelo 210</a></li><li><a href="vender-inmueble-en-espana-no-residente.html">Vender si vives fuera</a></li><li><a href="regularizar-situacion-fiscal-extranjero.html">Regularizar si eres extranjero</a></li><li><a href="residencia-fiscal-al-llegar-a-espana.html">Residencia al llegar</a></li><li><a href="regimen-impatriados-ley-beckham.html">Ley Beckham</a></li><li><a href="certificado-residencia-fiscal-espana.html">Certificado de residencia</a></li><li><a href="irse-de-espana-impuestos-cambio-residencia.html">Irse de España</a></li><li><a href="modelo-720-bienes-en-el-extranjero.html">Modelo 720</a></li><li><a href="pension-reino-unido-residente-en-espana.html">Pensión del Reino Unido</a></li><li><a href="pension-alemana-residente-en-espana.html">Pensión de Alemania</a></li><li><a href="pension-francesa-residente-en-espana.html">Pensión de Francia</a></li><li><a href="pension-italiana-residente-en-espana.html">Pensión de Italia</a></li><li><a href="pension-estados-unidos-residente-en-espana.html">Pensión de Estados Unidos</a></li><li><a href="comprar-vivienda-en-espana-extranjero.html">Comprar vivienda siendo extranjero</a></li><li><a href="herencia-en-espana-heredero-no-residente.html">Inheritance with a non-resident heir</a></li><li><a href="carta-de-hacienda-requerimiento.html">Letters from the Tax Agency</a></li></ul>
+      </div>
+      <div>
+        <h4>Area</h4>
+        <p>Paterna, La Cañada, l'Eliana, Burjassot, Valencia city and the metropolitan area. Clients outside Spain, remotely.</p>
+        <p style="margin-top:10px"><a href="ru.html" lang="ru">Налоговый консультант в Валенсии — на русском</a></p>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div>
+      <div><a href="aviso-legal.html">Aviso legal</a> · <a href="en-privacy.html">Privacy</a> · <a href="cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var d=document.documentElement;
+  var mq=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var tb=document.getElementById('topbar');
+  if(tb){
+    var onScroll=function(){ tb.classList.toggle('is-stuck', window.scrollY>8); };
+    onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  }
+  var bt=document.querySelector('.navtoggle'), nv=document.getElementById('topnav');
+  if(bt&&nv){
+    var navOpenLabel=bt.getAttribute('aria-label');
+    var navCloseLabel="Close menu";
+    var navSlot=document.createComment('posición original de la navegación');
+    var navMobile=window.matchMedia('(max-width:900px)');
+    var navLastFocus=null;
+    document.addEventListener('focusin',function(e){
+      navLastFocus=e.target===bt||nv.contains(e.target)?e.target:null;
+    });
+    document.addEventListener('pointerdown',function(e){
+      if(e.target!==bt&&!bt.contains(e.target)&&!nv.contains(e.target)) navLastFocus=null;
+    },true);
+    nv.before(navSlot);
+    d.classList.add('js-nav');
+    function setNavExpanded(open,restoreFocus){
+      bt.setAttribute('aria-expanded',String(open));
+      bt.setAttribute('aria-label',open?navCloseLabel:navOpenLabel);
+      nv.classList.toggle('is-open',open);
+      if(restoreFocus) bt.focus({preventScroll:true});
+    }
+    function syncNavPosition(){
+      var active=document.activeElement;
+      if(active===document.body&&navLastFocus) active=navLastFocus;
+      var activeInNav=nv.contains(active);
+      var activeIsButton=active===bt;
+      if(navMobile.matches){ bt.after(nv); }
+      else { navSlot.after(nv); setNavExpanded(false,false); }
+      if(activeInNav){
+        var target=navMobile.matches&&!nv.classList.contains('is-open')?bt:active;
+        target.focus({preventScroll:true});
+      } else if(activeIsButton&&!navMobile.matches){
+        var firstLink=nv.querySelector('a[href]');
+        if(firstLink) firstLink.focus({preventScroll:true});
+      }
+    }
+    syncNavPosition();
+    if(navMobile.addEventListener) navMobile.addEventListener('change',syncNavPosition);
+    else navMobile.addListener(syncNavPosition);
+    bt.addEventListener('click',function(){
+      setNavExpanded(bt.getAttribute('aria-expanded')!=='true',false);
+    });
+    nv.addEventListener('click',function(e){
+      var link=e.target.closest('a');
+      if(link&&nv.contains(link)){
+        navLastFocus=null;
+        setNavExpanded(false,false);
+      }
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&nv.classList.contains('is-open')){
+        e.preventDefault(); setNavExpanded(false,true);
+      }
+    });
+  }
+  if(mq.matches || !('IntersectionObserver' in window)) return;
+  d.classList.add('js-reveal');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.band, .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+})();
+</script>
+<script>(function(){var h=document.querySelector(".hero__logo"),t=document.querySelector(".trust");if(h){var d=document.createElement("div");d.className="marca";d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">';h.insertBefore(d,h.firstChild);}if(h&&t)h.appendChild(t);})();</script>
+</body>
+</html>

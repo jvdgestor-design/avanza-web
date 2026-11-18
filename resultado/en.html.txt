@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tax adviser in Spain for foreigners | Grupo Avanza</title>
+<meta name="description" content="Tax help for foreigners living in Spain and non-residents abroad: income tax returns, overdue years and letters from Hacienda. Replies in written English.">
+<link rel="canonical" href="https://grupoavanzaconsultores.es/en.html">
+<link rel="alternate" hreflang="es" href="https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html">
+<link rel="alternate" hreflang="en" href="https://grupoavanzaconsultores.es/en.html">
+<link rel="alternate" hreflang="ru" href="https://grupoavanzaconsultores.es/ru.html">
+<link rel="alternate" hreflang="fr" href="https://grupoavanzaconsultores.es/fr.html">
+<link rel="alternate" hreflang="de" href="https://grupoavanzaconsultores.es/de.html">
+<link rel="alternate" hreflang="x-default" href="https://grupoavanzaconsultores.es/fiscalidad-no-residentes-y-extranjeros.html">
+
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1F3763">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/icono-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="Grupo Avanza Consultores">
+<meta property="og:title" content="Tax adviser in Spain for foreigners | Grupo Avanza">
+<meta property="og:description" content="Tax help for foreigners living in Spain and non-residents abroad: income tax returns, overdue years and letters from Hacienda. Replies in written English.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://grupoavanzaconsultores.es/en.html">
+<meta property="og:image" content="https://grupoavanzaconsultores.es/img/imagen-social.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="fuentes.css">
+<link rel="stylesheet" href="estilo.css">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://grupoavanzaconsultores.es/en.html#webpage",
+  "url": "https://grupoavanzaconsultores.es/en.html",
+  "name": "Tax adviser in Spain for foreigners and non-residents",
+  "inLanguage": "en",
+  "about": {
+    "@id": "https://grupoavanzaconsultores.es/#despacho"
+  },
+  "publisher": {
+    "@type": "AccountingService",
+    "@id": "https://grupoavanzaconsultores.es/#despacho",
+    "name": "Grupo Avanza Consultores",
+    "url": "https://grupoavanzaconsultores.es/",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://grupoavanzaconsultores.es/#logo",
+      "url": "https://grupoavanzaconsultores.es/img/logo-avanza.png",
+      "contentUrl": "https://grupoavanzaconsultores.es/img/logo-avanza.png",
+      "width": 376,
+      "height": 419,
+      "caption": "Grupo Avanza Consultores logo (Paterna, Valencia)"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/grupo-avanza-consultores",
+      "https://buscador.asesorexcelente.com/valencia/paterna/grupo-avanza-consultores-46696",
+      "https://www.cylex.es/paterna/grupo-avanza-consultores-14669606.html",
+      "https://valencia.comercioscomunitatvalenciana.com/es/comercios/view/grupo-avanza-consultores",
+      "https://costabridge.co.uk/directory/grupo-avanza-consultores-begy",
+      "https://www.expat.com/en/business/143498_grupo-avanza-consultores.html",
+      "https://holaretire.com/en/providers/grupo-avanza-consultores-valencia-tax-financial-advisors","https://brydgr.com/grupo-avanza-consultores/"
+    ]
+  },
+  "dateModified": "2026-11-16"
+}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can you handle my case if I live outside Spain?","acceptedAnswer":{"@type":"Answer","text":"Yes. We can review the documents remotely. The form of representation before the Spanish Tax Agency is agreed case by case, including any appropriate power of attorney (apoderamiento) and the steps needed to grant it. Before accepting the work, we confirm its scope and whether any step requires your presence."}},{"@type":"Question","name":"I have just moved to Valencia. Where do I start?","acceptedAnswer":{"@type":"Answer","text":"With your NIE and with an assessment of where you are likely to be tax resident this year. That assessment shapes most of the other registrations."}},{"@type":"Question","name":"Do you work in English?","acceptedAnswer":{"@type":"Answer","text":"Yes, in writing: email and documents. Documents for the Spanish authorities are prepared in Spanish, and we explain them to you in English."}},{"@type":"Question","name":"Do you only file the paperwork, or do you also advise?","acceptedAnswer":{"@type":"Answer","text":"Both. We prepare and file the paperwork, and we also advise on what should be filed and how it affects your taxes, so you only explain your situation once, to one person."}},{"@type":"Question","name":"Do I have to come to the office?","acceptedAnswer":{"@type":"Answer","text":"Most tax and accounting work can be handled in writing, by email or WhatsApp. Before accepting the work, we confirm its scope and whether any step requires your presence."}},{"@type":"Question","name":"What do I send you to get started?","acceptedAnswer":{"@type":"Answer","text":"For a Modelo 210: your country of tax residence, your NIE or NIF, the cadastral reference or the latest IBI receipt and how the property was used during the year. For an inheritance: the date of death and where the deceased lived. For a letter from the Tax Agency: the complete letter and the date you received it. We reply in writing, in English, with the scope and the fee before starting."}}]}</script>
+<style id="negocios-mobile-readability">
+@media (max-width: 600px) {
+  #business-in-spain p,
+  #business-in-spain h2,
+  #business-in-spain h3,
+  #business-in-spain a {
+    text-align: left !important;
+    text-align-last: left;
+    text-justify: auto;
+    -webkit-hyphens: none !important;
+    hyphens: none !important;
+  }
+}
+</style>
+<link rel="stylesheet" href="idiomas-v2.css">
+<link rel="stylesheet" href="idiomas-zh-ar.css?v=20261027-2">
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="topbar" id="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="en.html" aria-label="Grupo Avanza Consultores, English home">
+      <img src="img/icono-512.png" width="38" height="38" alt="">
+      <span><b>Grupo Avanza</b><i>Consultores</i></span>
+    </a>
+    <nav class="topnav" id="topnav" aria-label="Main"><a href="#services">Services</a><a href="en-tramites.html">Paperwork in Spain</a><a href="#how">How we work</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+    <div class="topbar__acc">
+      <a class="langsw" href="fiscalidad-no-residentes-y-extranjeros.html" hreflang="es" lang="es" aria-label="Esta página en español"><span class="langsw__full">Español</span><span class="langsw__short" aria-hidden="true">ES</span></a>
+      <a class="langsw" href="ru.html" hreflang="ru" lang="ru" aria-label="Эта страница на русском языке"><span class="langsw__full">Русский</span><span class="langsw__short" aria-hidden="true">РУС</span></a>
+<a class="langsw" href="fr.html" hreflang="fr" lang="fr" aria-label="Français"><span class="langsw__full">Français</span><span class="langsw__short" aria-hidden="true">FR</span></a>
+<a class="langsw" href="de.html" hreflang="de" lang="de" aria-label="Deutsch"><span class="langsw__full">Deutsch</span><span class="langsw__short" aria-hidden="true">DE</span></a>
+
+
+      <a class="btn btn--primary btn--sm topbar__cta" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20Spanish%20tax%20assistance">Email us</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Open menu">
+        <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="navtoggle__txt">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="contenido">
+
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <p class="eyebrow">Grupo Avanza Consultores · Paterna, Valencia</p>
+      <h1>Tax adviser in Spain for foreigners and non-residents</h1>
+      <p class="lead">As a tax and accounting adviser, we help foreigners who live in Spain and people living abroad resolve their Spanish tax affairs: income tax returns, <a href="regularising-taxes-spain-foreigner.html">overdue years</a>, tax residence, Modelo 210, property, <a href="inheritance-spain-non-resident-heir.html">inheritances</a>, gifts and <a href="letter-from-spanish-tax-agency.html">letters from Hacienda</a>. We also handle self-employment paperwork. We work remotely with clients across Spain and abroad from our practice in Paterna (Valencia).</p>
+      <p class="lead">Starting or running a business in Spain? <a href="#business-in-spain">See our tax, accounting and payroll support</a></p>
+    <div class="ctas">
+        <a class="btn btn--primary" href="en-contact.html?pagina=en.html">Request a quote</a>
+        <a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20Spanish%20tax%20assistance">avanza@<wbr>grupoavanzaconsultores.es</a>
+      </div>
+      <nav class="ctas" aria-label="Choose a Spanish tax service">
+        <a class="btn btn--ghost" href="modelo-210-non-resident-tax-spain.html">Modelo 210 for non-residents</a>
+        <a class="btn btn--ghost" href="inheritance-spain-non-resident-heir.html">Inheritance tax for non-resident heirs</a>
+        <a class="btn btn--ghost" href="selling-property-spain-non-resident.html">Selling property as a non-resident</a>
+      </nav>
+      <p class="hero__note">We work with you in writing, in English. Send us an email or a WhatsApp message describing your situation, and we reply in writing, in English.</p>
+    </div>
+    <div class="hero__logo">
+      <img class="lg-l" src="img/logo-avanza.png" width="300" height="334" alt="Grupo Avanza Consultores">
+      <img class="lg-d" src="img/logo-avanza-blanco.png" width="300" height="334" alt="Grupo Avanza Consultores">
+      <p>Tax · Accounting · Employment<br>Paterna, Valencia</p>
+    </div>
+  </div>
+</section>
+
+<section class="trust" aria-label="About the adviser">
+  <div><b>20+</b><span>years in accounting and administration</span></div>
+  <div><b>2011</b><span>own practice since then</span></div>
+  <div><b>1</b><span>adviser: you deal with the same person throughout</span></div>
+  <div><b>EN</b><span>English, in writing</span></div>
+</section>
+<section class="band band--surface" id="three-filings"><div class="wrap--narrow prose"><hr class="rule"><p class="eyebrow">Inheritance · Gifts · Modelo 210</p><h2>Inheritance, gifts and Modelo 210 when family or property is in another country</h2><h3>Inheritance tax when the heirs live abroad</h3><p>We prepare and file the Spanish inheritance tax return for heirs who live outside Spain and inherit a flat, a bank account or other assets here, in Valencia or anywhere else in Spain (the Basque Country and Navarre have their own foral rules). The return is due within six months of the date of death (Royal Decree 1629/1991, article 67.1.a); an extension of a further six months can only be requested within the first five months (article 68). An heir who is not tax resident in Spain is taxed on the assets and rights that are located, can be exercised or must be fulfilled in Spain (Law 29/1987, article 7), and is entitled to apply the rules of the autonomous community where the deceased was resident or, if the deceased was not resident in Spain, of the community where the greater part of the value of the assets in Spain is located (second additional provision of the same Law). We establish that first, because it decides how much is paid. We handle the tax side; disputes between heirs are outside our work. <a href="inheritance-spain-non-resident-heir.html">Inheriting in Spain as a non-resident heir →</a></p><h3>Gift tax when the money comes from family abroad</h3><p>We prepare and file the Spanish gift tax return for people who live in Valencia or elsewhere in Spain (the Basque Country and Navarre have their own foral rules) and receive money from parents or other relatives who live abroad. The tax is paid by the person who receives the gift (Law 29/1987, article 5.b), and someone whose habitual residence is in Spain is taxed wherever the money or assets are (article 6.1). Write to us before the transfer is made: we first check which regional rules apply and how the gift has to be documented. <a href="gift-of-money-from-abroad-spain.html">Gifts from family abroad →</a></p><h3>Modelo 210 for owners who live abroad</h3><p>We prepare and file Modelo 210, the non-resident income tax return, for people who live outside Spain and own a property here: the yearly return for a property that is not let, the return for rental income and the return after a sale. For an individual’s urban property that was neither let nor used in an economic activity in 2025, the return for that year is filed by 31 December 2026 at the latest, or by 23 December if the tax is paid by direct debit (articles 5.b and 13.6.a.2.º of Order EHA/3316/2010, the former as worded before Order HAC/623/2026; according to the Tax Agency’s note, the deadline for 2025 imputed income is unchanged). <a href="modelo-210-non-resident-tax-spain.html">Modelo 210: deadlines and rules →</a></p><p><small>Sources read on 15 November 2026 in the Spanish Official State Gazette (BOE) and on the Tax Agency’s website: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1987-28141">Law 29/1987</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1991-27678">Royal Decree 1629/1991, articles 67 and 68</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2010-19707">Order EHA/3316/2010, articles 5 and 13</a>; <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2026-13573">Order HAC/623/2026</a>; <a href="https://sede.agenciatributaria.gob.es/Sede/en_gb/todas-gestiones/impuestos-tasas/impuesto-sobre-renta-no-residentes/modelo-210-irnr______a-no-residentes-permanente_/nota-modificaciones-plazos-presentacion-modelo-210.html">Tax Agency note on the Modelo 210 deadlines, updated 2 July 2026</a>.</small></p></div></section>
+
+<section class="band" id="to-start"><div class="wrap--narrow prose"><hr class="rule"><p class="eyebrow">To get started</p><h2>What to send us and how to hire us</h2><p>Write to us through the form, by WhatsApp or at avanza@grupoavanzaconsultores.es with the details of your case. We reply in writing, in English, with the scope and the fee before starting; if a document is missing, write anyway and we will ask for it later. The work is done remotely and in writing; before accepting it, we tell you whether any step requires your presence.</p><h3>Modelo 210 for a property in Spain</h3><ul><li>Your country of tax residence and your NIE or NIF.</li><li>The cadastral reference or the latest IBI (property tax) receipt, and your share of the property.</li><li>How it was used during the year: empty or for your own use, let (dates, income and expenses with invoices) or sold.</li><li>If you sold it: the purchase and sale deeds and proof of the 3% withholding the buyer paid to the Tax Agency with Modelo 211 (article 25.2 of the consolidated Non-Resident Income Tax Act).</li></ul><h3>Inheritance in Spain</h3><ul><li>The date of death and where the deceased lived.</li><li>The death certificate, the certificate of last wills (certificado de últimas voluntades) and the will or the declaration of heirs.</li><li>Which assets are in Spain (property, bank accounts) and which country you live in.</li></ul><h3>Tax residence when you move to or leave Spain</h3><ul><li>The date you arrived or left and the days you spent in Spain that year.</li><li>Where your spouse and minor children live, and where your income comes from (employment contract, pension or business).</li></ul><h3>A letter from the Tax Agency</h3><ul><li>The complete letter, every page, and the date you received it.</li></ul><p>We work in writing in Spanish, English, French, German and Russian.</p><p><a href="en-contact.html?pagina=en.html">Send us the details of your case →</a></p><p><small>Laws read on 16 November 2026 in the Spanish Official State Gazette (BOE): <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527#a25">consolidated Non-Resident Income Tax Act (Royal Legislative Decree 5/2004), article 25.2</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2010-19707">Order EHA/3316/2010 (Modelo 211)</a>.</small></p></div></section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <hr class="rule">
+    <p class="eyebrow">Services</p>
+    <h2>What brings people to us</h2>
+    <p class="lead">People moving to or investing in Spain rarely need a single tax return. What they need is to resolve a specific situation. The first question is usually tax residence, because almost everything else depends on it.</p>
+    <div class="cards"><article class="card"><h3>Arriving in Spain</h3><p>Census registration with the Tax Agency (Modelo 036), a tax representative where the law requires one, setting up as self-employed, and the tax treatment of the digital nomad visa, which does not always match what the advertising promises. We look at your contract, your country of tax residence, Spanish tax rules and any applicable tax treaty before giving an answer. <a href="tax-residence-moving-to-spain.html">Tax residence the year you move →</a> <a href="beckham-law-spain-special-tax-regime.html">Beckham Law →</a> <a href="spanish-tax-residence-certificate.html">Tax residence certificate →</a> <a href="leaving-spain-tax-residence.html">Leaving Spain →</a> <a href="form-720-spain-assets-abroad.html">Form 720 →</a> <a href="wealth-solidarity-tax-valencia-spain.html">Wealth and Solidarity Tax →</a> <a href="uk-pension-tax-spain-resident.html">UK pension in Spain →</a> <a href="german-pension-tax-spain-resident.html">German pension in Spain →</a> <a href="french-pension-tax-spain-resident.html">French pension in Spain →</a> <a href="italian-pension-tax-spain-resident.html">Italian pension in Spain →</a> <a href="dutch-pension-tax-spain-resident.html">Dutch pensions in Spain: AOW and workplace pensions →</a> <a href="us-social-security-pension-tax-spain-resident.html">US Social Security in Spain →</a></p></article><article class="card"><h3>Property in Spain</h3><p>Buying, owning, <a href="renting-out-property-spain-non-resident.html">renting out</a> and selling. For a non-resident individual, an urban property in Spain that is not let and not used for an economic activity may give rise to imputed income even if it is empty or kept for personal use (Non-Resident Income Tax Act, articles 13.1.h and 24.5; Personal Income Tax Act (Law 35/2006), article 85). We check whether this applies to your case. In 2026 the filing calendar changed (article 5 of Order EHA/3316/2010, as amended by Order HAC/623/2026, and the latter order's sole final provision): rental income with tax to pay moves to a single annual deadline in April of the following year. For 2026 itself, that deadline covers the whole year only if you file the income grouped; if you file each period separately, it covers only the last quarter, and the earlier quarters keep the old deadlines. Returns with nothing to pay follow their own rules. We check which applies to you. <a href="modelo-210-non-resident-tax-spain.html">Modelo 210: deadlines and rules →</a> <a href="modelo-210-woning-spanje-documenten.html">Modelo 210 document checklist (in Dutch) →</a> <a href="selling-property-spain-non-resident.html">Selling property in Spain →</a> <a href="plusvalia-tax-spain-non-resident.html">Plusvalía tax for non-residents →</a> <a href="buying-property-spain-foreigner.html">Buying property in Spain →</a></p></article><article class="card"><h3>Inheritances and gifts</h3><p>Inheriting in Spain when you live abroad, or receiving money from family outside Spain while living here. Which tax authority handles the case, national or regional, and which regional rules can be applied decide how much is paid, and that is what we look at first. <a href="inheritance-spain-non-resident-heir.html">Inheriting in Spain as a non-resident heir →</a> <a href="gift-of-money-from-abroad-spain.html">Gifts from family abroad →</a></p></article><article class="card"><h3>A letter from the Tax Agency (Hacienda, AEAT)</h3><p>Requests for information, proposed assessments (propuestas de liquidación), debts and payment plans. We read the notice, work out which deadline is running, prepare the reply and, where it makes sense, the appeal to the Tax Agency or an economic-administrative claim before the competent tribunal. <a href="letter-from-spanish-tax-agency.html">A letter from the Tax Agency: deadlines →</a> <a href="regularising-taxes-spain-foreigner.html">Years without filing: regularising →</a></p></article><article class="card"><h3>Double taxation</h3><p>Income earned outside Spain: we review where it is taxed, what must be declared in Spain and whether relief for tax paid abroad is available. This depends on Spanish law and any applicable tax treaty.</p></article><article class="card"><h3>Your business in Spain</h3><p>Starting out, already trading or moving from another adviser? We can handle the ongoing tax and accounting work for your business.</p><p><a hreflang="en" href="#business-in-spain">How we can help with your business</a></p></article></div>
+  </div>
+</section>
+
+<section class="band band--surface" id="business-in-spain">
+  <div class="wrap">
+    <hr class="rule">
+    <p class="eyebrow">Your business in Spain</p>
+    <h2>An adviser to handle your business throughout the year</h2>
+    <p class="lead">If you have moved to Spain to work for yourself or run a small company here, we can handle your bookkeeping, tax returns and, if you have employees, payroll. Based in Paterna, Valencia, we work remotely with clients across Spain. You deal with the adviser who knows your business, and we agree the scope of the work before we start.</p>
+    <div class="cards">
+      <article class="card">
+        <h3>You are getting started</h3>
+        <p>Tell us what you plan to do and whether you will work on your own or employ people. We discuss setting up as self-employed (autónomo) or forming a company and agree which steps we will handle. We can then continue with the day-to-day accounting and tax work.</p>
+        <p><a hreflang="es" href="constitucion-de-sociedades-y-tramites.html">Setting up as autónomo or forming a company (in Spanish)</a></p>
+        <p>If you have questions about your identity or residence documents, see our <a href="nie-tie-eu-registration-spain.html">guide to the differences between NIE, TIE and EU registration</a>.</p>
+              <p><a href="setting-up-limited-company-spain-foreigner.html">Setting up a Spanish limited company as a foreigner</a><br><a href="tax-representative-spain-non-resident.html">Tax representative in Spain for non-residents</a><br><a href="remote-work-spain-foreign-employer.html">Working remotely in Spain for a foreign employer</a><br><a href="self-employed-autonomo-spain-foreigner.html">Self-employed in Spain as a UK or EU national</a><br><a href="first-tax-return-spain-new-resident.html">Your first Spanish income tax return</a></p>
+      </article>
+      <article class="card">
+        <h3>Your business is already trading</h3>
+        <p>We record your business invoices, keep your accounts and prepare the tax returns relevant to your activity. We explain the amount before filing. If you have employees, we can also handle payroll, employment contracts and Social Security paperwork.</p>
+        <p><a href="accounting-tax-service-spain.html#bookkeeping">Tax and accounting service in English</a><br><a href="accounting-tax-service-spain.html#payroll">Payroll and employment administration</a></p>
+      </article>
+      <article class="card">
+        <h3>You want to change advisers</h3>
+        <p>We first review what has already been filed and which deadlines are open. With your permission, we request the handover from your previous adviser and agree who will handle the next reporting period.</p>
+        <p><a href="accounting-tax-service-spain.html#changing-adviser">How we arrange the handover</a></p>
+      </article>
+    </div>
+    <div class="prose">
+      <h3 id="foreign-company">Moving to Spain while keeping a company abroad</h3>
+      <p>If you already own or run a company outside Spain, tell us whether you are a shareholder, a director, an employee or hold more than one role. Prepare a short summary with:</p>
+      <ul>
+        <li>Your planned moving date, where you and your family will live, and the countries where you will physically work.</li>
+        <li>The country where the company is registered, its activity and where business decisions will be made.</li>
+        <li>How the company pays you: salary, director’s fees, dividends or payments for services.</li>
+        <li>Your contracts and payment records. If you are an employee, include any agreement with your employer about working from Spain and any Social Security coverage documents you already have.</li>
+        <li>Whether an adviser in the company’s country is already involved.</li>
+      </ul>
+      <p>We use these facts to agree which Spanish tax, accounting or employment questions we can review. Start with our <a href="tax-residence-moving-to-spain.html">guide to tax residence when moving to Spain</a>. If you remain an employee, see <a href="remote-work-spain-foreign-employer.html#documents">the documents for reviewing remote work for a foreign employer</a>. If you are considering a new Spanish company, see <a href="setting-up-limited-company-spain-foreigner.html">setting up a Spanish limited company as a foreigner</a>.</p>
+      <p>Do you also work as self-employed in another EU country? Our separate guide looks at that situation. <a hreflang="es" href="autonomo-extranjero-en-espana.html">Self-employment in two EU countries: A1 and tax residence (in Spanish)</a></p>
+      <p><a href="accounting-tax-service-spain.html">Our year-round accounting and tax service in English</a></p>
+      <p>We work with you in writing, in English. You can email or WhatsApp us, and we reply in writing.</p>
+      <h3>Tell us about your business</h3>
+      <p>Start with your activity, whether you have already started trading and whether you have employees. We will tell you whether we can help and which service fits your situation.</p>
+      <div class="ctas"><a class="btn btn--primary" hreflang="en" href="#contact">Ask about support for my business</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--surface">
+  <div class="wrap--narrow prose">
+    <hr class="rule">
+    <p class="eyebrow">Tax residence</p>
+    <h2>183 days is not the only rule</h2>
+    <p>Being tax resident in Spain does not depend on having an NIE or being registered on the town hall register (padrón). Under the Spanish Personal Income Tax Act (Ley 35/2006, article 9), you are resident if you spend more than 183 days in Spain in the calendar year, and sporadic absences count towards those days unless you prove tax residence in another country (for non-cooperative jurisdictions, under the tenth additional provision of Law 36/2006, the Tax Agency may require proof of 183 days spent there). You are also resident if Spain is the main centre or base of your business activities or economic interests. And you are presumed resident, unless you prove otherwise, if your spouse, not legally separated, and your dependent minor children habitually reside in Spain under those same criteria. If your other country also treats you as resident and there is a double taxation treaty, the treaty rules decide. Counting days and ignoring the rest is a frequent mistake.</p>
+    <h3>If you rent out a property in Spain and live abroad</h3>
+    <p>As a general rule, a non-resident pays 24% on the gross rental income, with no expenses deducted. If you are tax resident in another European Union country, or in a European Economic Area country to which mutual assistance rules on the exchange of tax information apply, under the tenth additional provision of Law 36/2006, the rate is 19% and you may deduct expenses, provided you can prove that the expenses are directly related to the income earned in Spain and have a direct and inseparable economic link to the activity carried on in Spain (Non-Resident Income Tax Act, Royal Legislative Decree 5/2004, articles 24.6 and 25.1.a). Without supporting documents, the deduction cannot be applied. The United Kingdom, the United States and Switzerland are not in the European Union or the European Economic Area.</p>
+  </div>
+</section>
+
+<section class="band" id="about">
+  <div class="wrap contact" style="align-items:center">
+    <div>
+      <hr class="rule">
+      <p class="eyebrow">Who handles your case</p>
+      <h2>Jose Vicente Díaz Madrid</h2>
+      <div class="persona">
+        <img src="img/jose-vicente-diaz.jpg" width="132" height="132" loading="lazy" alt="Jose Vicente Díaz Madrid">
+        <div>
+          <b>Jose Vicente Díaz Madrid</b>
+          <span>Tax and accounting adviser · Teacher of accounting and taxation</span>
+        </div>
+      </div>
+      <div class="prose" style="margin-top:24px">
+        <p>More than twenty years in accounting and administration, and his own practice since 2011. He holds a three-year university diploma in Business Studies (Diplomado en Ciencias Empresariales). He teaches accounting and taxation in vocational training.</p>
+        <p>A small practice means that the person who advises you is the person who handles your case.</p>
+      </div>
+    </div>
+    <div></div>
+  </div>
+</section>
+
+<section class="band band--navy" id="how">
+  <div class="wrap">
+    <hr class="rule">
+    <p class="eyebrow">How we work</p>
+    <h2>In writing, step by step</h2>
+    <div class="steps">
+      <div class="step"><div class="step__n">01</div><h3>You tell us your situation</h3>
+        <p>By email or WhatsApp. We tell you plainly whether we can help and what we need from you.</p></div>
+      <div class="step"><div class="step__n">02</div><h3>We review what has been done</h3>
+        <p>Before changing anything, we look at what has already been filed, and tell you whether anything needs correcting and how.</p></div>
+      <div class="step"><div class="step__n">03</div><h3>We take it from there</h3>
+        <p>You send the documents; we explain each step in English, in writing, and remind you of upcoming deadlines.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap--narrow">
+    <hr class="rule">
+    <p class="eyebrow">Questions</p>
+    <h2>What people ask us most</h2>
+    <div class="faq"><details><summary>Can you handle my case if I live outside Spain?</summary><p>Yes. We can review the documents remotely. The form of representation before the Spanish Tax Agency is agreed case by case, including any appropriate power of attorney (apoderamiento) and the steps needed to grant it. Before accepting the work, we confirm its scope and whether any step requires your presence.</p></details><details><summary>I have just moved to Valencia. Where do I start?</summary><p>With your NIE and with an assessment of where you are likely to be tax resident this year. That assessment shapes most of the other registrations.</p></details><details><summary>Do you work in English?</summary><p>Yes, in writing: email and documents. Documents for the Spanish authorities are prepared in Spanish, and we explain them to you in English.</p></details><details><summary>Do you only file the paperwork, or do you also advise?</summary><p>Both. We prepare and file the paperwork, and we also advise on what should be filed and how it affects your taxes, so you only explain your situation once, to one person.</p></details><details><summary>Do I have to come to the office?</summary><p>Most tax and accounting work can be handled in writing, by email or WhatsApp. Before accepting the work, we confirm its scope and whether any step requires your presence.</p></details><details><summary>What do I send you to get started?</summary><p>For a Modelo 210: your country of tax residence, your NIE or NIF, the cadastral reference or the latest IBI receipt and how the property was used during the year. For an inheritance: the date of death and where the deceased lived. For a letter from the Tax Agency: the complete letter and the date you received it. We reply in writing, in English, with the scope and the fee before starting.</p></details></div>
+  </div>
+</section>
+
+<section class="cta-final" id="contact">
+  <div class="wrap">
+    <h2>Need help with your Spanish taxes?</h2>
+    <p class="lead">Tell us where you live, what tax issue you need help with and whether a deadline is running. We reply in written English and agree the scope and fee before starting.</p>
+    <div class="ctas">
+      <a class="btn btn--onnavy" href="en-contact.html?pagina=en.html">Request a quote</a>
+      <a class="btn btn--onnavy-ghost" href="https://wa.me/34614365547?text=Hello%2C%20I%20would%20like%20a%20quote%20for%20Spanish%20tax%20assistance.%20My%20situation%3A%20__.%20Country%20where%20I%20live%3A%20__.%20Year%20or%20date%20concerned%3A%20__.%20Any%20deadline%3A%20__.%20I%20have%20seen%20your%20English%20website.%20Please%20reply%20in%20writing%20in%20English." target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+</section>
+<section class="band band--surface"><div class="wrap--narrow prose"><p>Tax sources checked on 20 October 2026: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a9">Ley 35/2006, art. 9</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527">RDL 5/2004, arts. 13.1.h, 24 and 25</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20843#da">Ley 36/2006, DA 10</a>; <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2026-13573">Orden HAC/623/2026</a>.</p></div></section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <h4>Grupo Avanza Consultores</h4>
+        <p class="foot__perfiles" style="margin-top:10px">Our business profile: <a href="https://www.cylex.es/paterna/grupo-avanza-consultores-14669606.html" target="_blank" rel="noopener">Grupo Avanza Consultores on Cylex</a> (in Spanish).</p>
+        <p>Tax, accounting and employment adviser<br>Paterna, Valencia</p>
+        <p style="margin-top:10px"><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a></p>
+      </div>
+      <div>
+        <h4>In English</h4>
+        <ul><li><a href="en.html">Tax adviser in Valencia</a></li><li><a href="en-tramites.html">Paperwork for foreigners</a></li><li><a href="gift-of-money-from-abroad-spain.html">Gifts from family abroad</a></li><li><a href="inheritance-spain-non-resident-heir.html">Inheritance for non-resident heirs</a></li><li><a href="selling-property-spain-non-resident.html">Selling property in Spain</a></li><li><a href="plusvalia-tax-spain-non-resident.html">Plusvalía tax for non-residents</a></li><li><a href="buying-property-spain-foreigner.html">Buying property in Spain</a></li><li><a href="regularising-taxes-spain-foreigner.html">Regularising your taxes</a></li><li><a href="tax-residence-moving-to-spain.html">Tax residence when moving</a></li><li><a href="beckham-law-spain-special-tax-regime.html">Beckham Law</a></li><li><a href="spanish-tax-residence-certificate.html">Tax residence certificate</a></li><li><a href="leaving-spain-tax-residence.html">Leaving Spain</a></li><li><a href="form-720-spain-assets-abroad.html">Form 720</a></li><li><a href="uk-pension-tax-spain-resident.html">UK pension in Spain</a></li><li><a href="german-pension-tax-spain-resident.html">German pension in Spain</a></li><li><a href="french-pension-tax-spain-resident.html">French pension in Spain</a></li><li><a href="italian-pension-tax-spain-resident.html">Italian pension in Spain</a></li><li><a href="dutch-pension-tax-spain-resident.html">Dutch pensions in Spain</a></li><li><a href="us-social-security-pension-tax-spain-resident.html">US Social Security in Spain</a></li><li><a href="modelo-210-non-resident-tax-spain.html">Modelo 210</a></li><li><a href="letter-from-spanish-tax-agency.html">A letter from the Tax Agency</a></li><li><a href="setting-up-limited-company-spain-foreigner.html">Setting up a limited company</a></li><li><a href="self-employed-autonomo-spain-foreigner.html">Self-employed in Spain</a></li><li><a href="first-tax-return-spain-new-resident.html">Your first Spanish tax return</a></li></ul>
+        <h4 style="margin-top:22px">In Spanish</h4>
+        <ul><li><a href="/">Home page</a></li><li><a href="fiscalidad-no-residentes-y-extranjeros.html">Non-residents and foreigners</a></li><li><a href="modelo-210-no-residentes.html">Modelo 210</a></li><li><a href="vender-inmueble-en-espana-no-residente.html">Vender si vives fuera</a></li><li><a href="regularizar-situacion-fiscal-extranjero.html">Regularizar si eres extranjero</a></li><li><a href="residencia-fiscal-al-llegar-a-espana.html">Residencia al llegar</a></li><li><a href="regimen-impatriados-ley-beckham.html">Ley Beckham</a></li><li><a href="certificado-residencia-fiscal-espana.html">Certificado de residencia</a></li><li><a href="irse-de-espana-impuestos-cambio-residencia.html">Irse de España</a></li><li><a href="modelo-720-bienes-en-el-extranjero.html">Modelo 720</a></li><li><a href="pension-reino-unido-residente-en-espana.html">Pensión del Reino Unido</a></li><li><a href="pension-alemana-residente-en-espana.html">Pensión de Alemania</a></li><li><a href="pension-francesa-residente-en-espana.html">Pensión de Francia</a></li><li><a href="pension-italiana-residente-en-espana.html">Pensión de Italia</a></li><li><a href="pension-estados-unidos-residente-en-espana.html">Pensión de Estados Unidos</a></li><li><a href="comprar-vivienda-en-espana-extranjero.html">Comprar vivienda siendo extranjero</a></li><li><a href="herencia-en-espana-heredero-no-residente.html">Herencias con no residentes</a></li><li><a href="carta-de-hacienda-requerimiento.html">Cartas de Hacienda</a></li></ul>
+      </div>
+      <div>
+        <h4>Area</h4>
+        <p>Paterna, La Cañada, l'Eliana, Burjassot, Valencia city and the metropolitan area. Clients outside Spain, remotely.</p>
+        <p style="margin-top:10px"><a href="ru.html" lang="ru">Налоговый консультант в Валенсии — на русском</a></p>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div>
+      <div><a href="aviso-legal.html">Aviso legal</a> · <a href="en-privacy.html">Privacy</a> · <a href="cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var d=document.documentElement;
+  var mq=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var tb=document.getElementById('topbar');
+  if(tb){
+    var onScroll=function(){ tb.classList.toggle('is-stuck', window.scrollY>8); };
+    onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  }
+  var bt=document.querySelector('.navtoggle'), nv=document.getElementById('topnav');
+  if(bt&&nv){
+    d.classList.add('js-nav');
+    bt.addEventListener('click',function(){
+      var open=bt.getAttribute('aria-expanded')==='true';
+      bt.setAttribute('aria-expanded', String(!open));
+      nv.classList.toggle('is-open', !open);
+      bt.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    });
+    nv.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){ bt.setAttribute('aria-expanded','false'); bt.setAttribute('aria-label', "Open menu"); nv.classList.remove('is-open'); }
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&nv.classList.contains('is-open')){ bt.setAttribute('aria-expanded','false'); bt.setAttribute('aria-label', "Open menu"); nv.classList.remove('is-open'); bt.focus(); }
+    });
+  }
+  if(mq.matches || !('IntersectionObserver' in window)) return;
+  d.classList.add('js-reveal');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.band, .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+})();
+</script>
+<script>(function(){var h=document.querySelector(".hero__logo"),t=document.querySelector(".trust");if(h){var d=document.createElement("div");d.className="marca";d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">';h.insertBefore(d,h.firstChild);}if(h&&t)h.appendChild(t);})();</script>
+</body>
+</html>

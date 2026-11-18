@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form 210 (Modelo 210) for Non-Residents | Grupo Avanza</title>
+<meta name="description" content="Form 210 (Modelo 210) help for non-resident property owners in Spain. File from abroad, review overdue years and get annual support. Replies in written English.">
+<link rel="canonical" href="https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html">
+<link rel="alternate" hreflang="es" href="https://grupoavanzaconsultores.es/modelo-210-no-residentes.html">
+<link rel="alternate" hreflang="en" href="https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html">
+<link rel="alternate" hreflang="ru" href="https://grupoavanzaconsultores.es/ru-model-210-nerezidenty.html">
+<link rel="alternate" hreflang="fr" href="https://grupoavanzaconsultores.es/fr-modele-210-non-residents.html">
+<link rel="alternate" hreflang="de" href="https://grupoavanzaconsultores.es/de-modelo-210-nichtansaessige.html">
+<link rel="alternate" hreflang="x-default" href="https://grupoavanzaconsultores.es/modelo-210-no-residentes.html">
+
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1F3763">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/icono-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:site_name" content="Grupo Avanza Consultores">
+  <meta property="og:title" content="Form 210 (Modelo 210) for Non-Residents | Grupo Avanza">
+<meta property="og:description" content="Form 210 (Modelo 210) help for non-resident property owners in Spain. File from abroad, review overdue years and get annual support. Replies in written English.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html">
+<meta property="og:image" content="https://grupoavanzaconsultores.es/img/imagen-social.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="fuentes.css">
+<link rel="stylesheet" href="estilo.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Form 210 (Modelo 210): file your Spanish tax return from abroad", "inLanguage": "en", "url": "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html", "datePublished": "2026-10-03", "dateModified": "2026-11-17", "author": {"@type": "Organization", "@id": "https://grupoavanzaconsultores.es/#despacho", "name": "Grupo Avanza Consultores"}, "publisher": {"@id": "https://grupoavanzaconsultores.es/#despacho"}, "description": "Form 210 (Modelo 210) help for non-resident property owners in Spain. File from abroad, review overdue years and get annual support. Replies in written English.", "mainEntityOfPage": "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Form 210 in Spain?", "acceptedAnswer": {"@type": "Answer", "text": "Form 210, also called Modelo 210, is used to declare Spanish-source income obtained by non-residents without a permanent establishment. For a property owner, it can cover rent, imputed income for periods when an urban property is not let, or the result of a sale. These are different types of income with different filing rules; owning a property does not by itself make you tax resident in Spain."}}, {"@type": "Question", "name": "What if I have not filed for several years?", "acceptedAnswer": {"@type": "Answer", "text": "First we check which returns are outstanding and the applicable time limits. For overdue returns with tax to pay filed without a prior request from the Tax Agency, article 27 of the General Tax Act provides a surcharge of 1% plus 1% for each full month of delay. After twelve months, the surcharge is 15%, with late-payment interest from the day after those twelve months end until filing. This surcharge regime excludes a penalty for the late filing it covers; nil returns and cases where the Tax Agency has already acted need a separate assessment."}}, {"@type": "Question", "name": "Do I need a tax representative in Spain?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. If you are not resident in the EU or in an EEA State with mutual assistance rules, you must appoint one in certain cases, for example when you operate through a permanent establishment, or when the Tax Agency requires it because of the amount of your income or because you own property in Spain. For residents of other European Economic Area countries, that obligation does not apply where there is mutual assistance on tax information and collection (Non-Resident Income Tax Act, article 10). Even when it is optional, it is useful: someone in Spain receives the notices and can act within the deadlines they open."}}, {"@type": "Question", "name": "Can these filings be done without coming to Spain?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We handle them remotely under your power of attorney; your digital certificate stays with you."}}, {"@type": "Question", "name": "Can you file my Modelo 210 if I live in the UK and do not have a Spanish digital certificate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Grupo Avanza Consultores prepares and files Modelo 210 for non-resident owners of property in Spain. When a representative authorised to file on someone else’s behalf submits the return, it is the representative who needs the electronic certificate, not you (Order EHA/3316/2010, article 12.1.c). We first check the property’s use, ownership and tax year, then explain the authorisation you need to give us. Tell us where you are tax resident, which years need attention and whether the property was rented out. We agree the scope and fee before starting and reply in writing in English."}}, {"@type": "Question", "name": "Is Form 210 the same as Model 210?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Form 210, Model 210 and Modelo 210 are the same return: the self-assessment approved by Order EHA/3316/2010 for non-residents who obtain income in Spain without a permanent establishment (article 1)."}}, {"@type": "Question", "name": "Can I file Modelo 210 online from abroad?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It is filed online at the Tax Agency’s electronic office with a recognised electronic certificate or, if you are an individual, with Cl@ve. Whoever files needs a Spanish tax number (NIF) and must be registered in the tax census beforehand. A representative authorised to file for you can submit it with their own certificate (Order EHA/3316/2010, article 12)."}}, {"@type": "Question", "name": "Do non-residents pay property tax on a Spanish home they don’t rent out?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and there are two different taxes. The local council charges the annual property tax (IBI) to the holder of the property or of the other rights that trigger it, usually the owner (Local Finance Act, article 61). Separately, if you are an individual and the home is an urban property neither let nor used for a business, non-resident income tax applies to an imputed income, declared on Modelo 210 (Non-Resident Income Tax Act, articles 13.1.h and 24.5). For 2026, that income is 2% of the cadastral value, or 1.1% where the property is in a municipality whose cadastral values were revised, modified or set under a general collective valuation procedure that came into force on or after 1 January 2012, in proportion to the days owned (different rules apply if there is no cadastral value or it has not been notified, and no income is imputed to buildings under construction or not usable for town-planning reasons) (Personal Income Tax Act, article 85 and additional provision fifty-five, as worded by Royal Decree-law 29/2026, validated by the Congress of Deputies on 12 November 2026). The rate is 19% for residents of the EU, or of an EEA country with an effective exchange of tax information, and 24% for everyone else (Non-Resident Income Tax Act, article 25.1.a). The percentages for 2027 income have been amended, so we confirm the rule for each year."}}]}</script>
+<link rel="stylesheet" href="idiomas-v2.css">
+<link rel="stylesheet" href="idiomas-zh-ar.css?v=20261027-2">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://grupoavanzaconsultores.es/en.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Modelo 210",
+      "item": "https://grupoavanzaconsultores.es/modelo-210-non-resident-tax-spain.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Skip to content</a>
+<header class="topbar" id="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="en.html" aria-label="Grupo Avanza Consultores, English home">
+      <img src="img/icono-512.png" width="38" height="38" alt="">
+      <span><b>Grupo Avanza</b><i>Consultores</i></span>
+    </a>
+    <nav class="topnav" id="topnav" aria-label="Main"><a href="en.html#services">Services</a><a href="en.html#how">How we work</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+    <div class="topbar__acc">
+      <a class="langsw" href="modelo-210-no-residentes.html" hreflang="es" lang="es" aria-label="Esta página en español"><span class="langsw__full">Español</span><span class="langsw__short" aria-hidden="true">ES</span></a>
+      <a class="langsw" href="ru-model-210-nerezidenty.html" hreflang="ru" lang="ru" aria-label="Эта страница на русском языке"><span class="langsw__full">Русский</span><span class="langsw__short" aria-hidden="true">РУС</span></a>
+<a class="langsw" href="fr-modele-210-non-residents.html" hreflang="fr" lang="fr" aria-label="Français"><span class="langsw__full">Français</span><span class="langsw__short" aria-hidden="true">FR</span></a>
+<a class="langsw" href="de-modelo-210-nichtansaessige.html" hreflang="de" lang="de" aria-label="Deutsch"><span class="langsw__full">Deutsch</span><span class="langsw__short" aria-hidden="true">DE</span></a>
+
+
+      <a class="btn btn--primary btn--sm topbar__cta" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20Modelo%20210%20in%20Spain">Email us</a>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Open menu">
+        <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="navtoggle__txt">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="contenido">
+<section class="pagehead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumbs"><a href="en.html">Home</a><span>/</span>Modelo 210</nav>
+    <h1>Form 210 (Modelo 210): file your Spanish tax return from abroad</h1>
+    <p><small>By Grupo Avanza Consultores</small></p>
+    <p>We prepare your Modelo 210 filing remotely, including if you live outside Spain. Tell us your case and we give you a prior quote, with replies in written English.</p>
+    <div class="ctas">
+      <a class="btn btn--primary" href="en-contact.html?pagina=modelo-210-non-resident-tax-spain.html">Request a quote</a>
+      <a class="btn btn--ghost" href="https://wa.me/34614365547?text=Hello%2C%20I%20would%20like%20a%20quote%20for%20Spanish%20tax%20assistance.%20My%20situation%3A%20__.%20Country%20where%20I%20live%3A%20__.%20Year%20or%20date%20concerned%3A%20__.%20Any%20deadline%3A%20__.%20I%20have%20seen%20your%20English%20guide%20to%20Modelo%20210.%20Please%20reply%20in%20writing%20in%20English." target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+    <p class="ru-note"><a href="modelo-210-no-residentes.html" hreflang="es" lang="es">Esta guía en español →</a> <a href="ru-model-210-nerezidenty.html" hreflang="ru" lang="ru">Эта статья на русском →</a></p>
+    <p class="lead">You file Modelo 210 (in English often called Form 210, and sometimes Model 210) online at the Spanish Tax Agency’s electronic office: whoever files must have a Spanish tax number (NIF) and be registered beforehand in the Tax Agency’s register of taxpayers (Censo de Obligados Tributarios); the filer identifies themselves and signs with an electronic certificate or, if an individual, with Cl@ve, after registering in that system. It is the non-resident income tax return for income from property in Spain: rent, imputed income from an individual’s unused property and sales, where the income is obtained without a permanent establishment in Spain. Grupo Avanza Consultores, a tax and accounting adviser in Paterna (Valencia), prepares these filings remotely across Spain, including for clients living outside Spain. Write to us by email: avanza@grupoavanzaconsultores.es.</p>
+    <p>A representative authorised to file returns on your behalf can also do it (article 12 of Order EHA/3316/2010; see also <a href="tax-representative-spain-non-resident.html">tax representation in Spain</a>). The return can also be generated in the Tax Agency’s online form, printed and filed on paper: with tax to pay, at a bank in Spain that collaborates with the Tax Agency in tax collection; nil and refund returns, as a rule, at a Tax Agency office, in person or by registered post (articles 10 and 11 of the same order). If you file in your own name without an electronic certificate, a return with tax to pay can be completed as a pre-return (predeclaración) and paid by bank transfer from abroad (a transfer from an account held at a bank that collaborates with the Tax Agency in tax collection is not accepted): you enter your NIF or, if you have none, the form itself issues an identification code (article 14 of the same order). We review your documents and give you a prior quote, with replies in written English by email.</p>
+    <p>If you are an individual and own an urban property in Spain that you neither let nor used for a business in 2025, the Modelo 210 for its imputed income must be filed and paid by 31 December 2026 at the latest (article 5.b of Order EHA/3316/2010 in its previous wording, which still governs 2025). For income from 2026 onwards, the window is 1 April to 31 December of the following year.</p>
+    <p>Your tax adviser: <a href="en.html#about">Jose Vicente Díaz Madrid</a>.</p>
+    <div class="ctas">
+      <a class="btn btn--primary" href="en-contact.html?pagina=modelo-210-non-resident-tax-spain.html">Request a quote</a>
+      <a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20Modelo%20210%20in%20Spain">avanza@<wbr>grupoavanzaconsultores.es</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:64px">
+  <div class="wrap--narrow prose">
+    <h2>Deadlines by type of income</h2>
+    <p>They are set by article 5 of Ministerial Order (Orden) EHA/3316/2010, as worded by Order HAC/623/2026 (Boletín Oficial del Estado, 23 June 2026). “Grouped” means declaring eligible rental income for the year in one return, subject to the grouping conditions; “separately” means declaring each accrual of rent on its own:</p>
+    <ul>
+      <li><strong>Sale of a property:</strong> a three-month window that opens one month after the sale (that is, between one and four months after it), whether or not there is tax to pay (the order refers to article 14.4 of the Non-Resident Income Tax Regulation).</li>
+      <li><strong>Imputed income from an urban property that is not let:</strong> 1 April to 31 December of the following year.</li>
+      <li><strong>Rental income with tax to pay:</strong> 1 to 20 April of the following year, whether you file it grouped or separately (with the 2026 transition explained below).</li>
+      <li><strong>Other income with tax to pay</strong> (not rent, not a property sale and not imputed income): the first twenty calendar days of April, July, October and January, for the income of the previous quarter.</li>
+      <li><strong>Nil returns:</strong> 1 to 20 January of the following year.</li>
+      <li><strong>Refund returns:</strong> from 1 February of the following year and within four years from the end of the period to declare and pay the withholding.</li>
+    </ul>
+    <h2>Deadlines for the rest of 2026</h2>
+    <p>The order itself sets when the new deadlines start to apply. For 2026, the new annual April deadline covers the whole year's rental income only if you file it grouped; if you file each period separately, it covers only the income accrued in the last quarter of 2026, and the earlier quarters keep the old quarterly deadlines. So for the rest of 2026:</p>
+    <ul>
+      <li><strong>Rent for July, August and September 2026 filed separately</strong> with tax to pay: the deadline was 20 October 2026, under the previous rules.</li>
+      <li><strong>Imputed income for 2025:</strong> by 31 December 2026 at the latest.</li>
+      <li><strong>Other income from July to September</strong> with tax to pay: the deadline was 20 October 2026.</li>
+      <li><strong>Sales:</strong> according to the date of each sale, with the rule above.</li>
+    </ul>
+    <p>Rent for April to June 2026 filed separately was due by 20 July; if it was not filed, it is now late. Rent with tax to pay for October to December 2026 filed separately, all 2026 rent with tax to pay filed grouped, and imputed income for 2026 follow the new deadlines: 1 to 20 April 2027 for rent, and 1 April to 31 December 2027 for imputed income.</p>
+    <h2>An empty property must also be declared</h2>
+    <p>If a non-resident individual owns an urban property in Spain that is neither let nor used for a business, the law, with limited exceptions, imputes an income to it and it must be declared, even if the property is closed all year (Non-Resident Income Tax Act, Royal Legislative Decree 5/2004, articles 13.1.h and 24.5). It is not a fine; it is how the tax works. And each year left undeclared remains pending until it is regularised or becomes time-barred.</p>
+    <p>For a Spanish holiday home you use yourself, look for <i lang="es">valor catastral</i> on your Spanish property tax (IBI) bill. The <i lang="es">referencia catastral</i> on that bill is the code that identifies the property. Belgium assigns its own cadastral income (<i lang="nl">kadastraal inkomen</i>) to foreign property. A Dutch tax return may use the market value of a second home abroad. For Modelo 210, use the <a href="https://sede.agenciatributaria.gob.es/Sede/en_gb/no-residentes/irnr-sin-establecimiento-permanente/cuestiones-especificas-sobre-tributacion-inmuebles/renta-imputada-inmueble-urbano-uso-propio.html">Spanish Tax Agency’s valuation rules</a>. If you have never been notified of a Spanish cadastral value, mention this when you <a href="#contact">request a quote</a>. See also our <a href="modelo-210-woning-spanje-documenten.html" hreflang="nl">document checklist in Dutch</a>.</p>
+    <h2>Tax residence in the EU or outside it</h2>
+    <p>Under the current wording of Spanish domestic law, on rental income, if you are tax resident in another European Union country, or in a European Economic Area country with an effective exchange of tax information, you may deduct the expenses the law allows, provided you can prove they are directly related to the income earned in Spain and have a direct and inseparable economic link with the activity carried out in Spain, and the rate is 19%. If you are tax resident in any other country, the rate is 24% on the gross income, with no expenses deducted (articles 24.1, 24.6 and 25.1.a of the same act). The United Kingdom, the United States and Switzerland are not in the European Union or the European Economic Area.</p>
+    <p>If you are resident outside the EU or EEA and wish to claim rental expenses or amend earlier returns, we first review the legal grounds, supporting documents and applicable deadlines in your particular case. The domestic rule above should not be treated as confirmation of an automatic right to deduct expenses or obtain a refund.</p>
+    <p>That is why, for rental income, the first step is to establish where you are tax resident before completing the form: the rate and the expenses depend on it.</p>
+    <h2>When you sell the property</h2>
+    <p>When a non-resident without a permanent establishment sells a property in Spain, the buyer must withhold and pay 3% of the agreed price, or make the corresponding payment on account, towards the seller's tax (article 25.2 of the same act). The seller then declares the result of the sale on Modelo 210, whether a gain or a loss, within the deadline for sales given above, and deducts what was withheld. What decides the result of a sale, the refund of the 3% and the plusvalía are explained in <a href="selling-property-spain-non-resident.html">selling property in Spain as a non-resident</a>.</p>
+    <p>A sale can trigger more than one tax, such as non-resident income tax on the gain and, where it applies, the municipal tax on the increase in land value (plusvalía municipal), with short deadlines, so it is worth calculating them before signing.</p>
+    <p>Rules checked on 5 November 2026: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4527">Non-Resident Income Tax Act, articles 10, 13, 24 and 25</a>; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2010-19707">Order EHA/3316/2010, article 5</a>; the <a href="https://sede.agenciatributaria.gob.es/Sede/todas-gestiones/impuestos-tasas/impuesto-sobre-renta-no-residentes/modelo-210-irnr______a-no-residentes-permanente_/nota-modificaciones-plazos-presentacion-modelo-210.html">Tax Agency’s explanation of the 2026 deadline changes</a>; the 2025 imputed income deadline, checked again on 11 November 2026; and Order EHA/3316/2010, articles 1 and 12, Non-Resident Income Tax Act, article 25, <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764">Personal Income Tax Act, article 85</a> and <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214">Local Finance Act, article 61</a>, checked on 14 November 2026; <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#da-10">Personal Income Tax Act, additional provision fifty-five</a> and <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2010-19707#a1-4">Order EHA/3316/2010, article 12</a>, checked on 17 November 2026.</p>
+  </div>
+</section>
+
+<section class="band band--surface" id="faq">
+  <div class="wrap--narrow">
+    <hr class="rule">
+    <p class="eyebrow">Questions</p>
+    <h2>What people ask us about this</h2>
+    <div class="faq"><details><summary>What is Form 210 in Spain?</summary><p>Form 210, also called Modelo 210, is used to declare Spanish-source income obtained by non-residents without a permanent establishment. For a property owner, it can cover rent, imputed income for periods when an urban property is not let, or the result of a sale. These are different types of income with different filing rules; owning a property does not by itself make you tax resident in Spain.</p></details><details><summary>What if I have not filed for several years?</summary><p>First we check which returns are outstanding and the applicable time limits. For overdue returns with tax to pay filed without a prior request from the Tax Agency, article 27 of the General Tax Act provides a surcharge of 1% plus 1% for each full month of delay. After twelve months, the surcharge is 15%, with late-payment interest from the day after those twelve months end until filing. This surcharge regime excludes a penalty for the late filing it covers; nil returns and cases where the Tax Agency has already acted need a separate assessment.</p></details><details><summary>Do I need a tax representative in Spain?</summary><p>Not always. If you are not resident in the EU or in an EEA State with mutual assistance rules, you must appoint one in certain cases, for example when you operate through a permanent establishment, or when the Tax Agency requires it because of the amount of your income or because you own property in Spain. For residents of other European Economic Area countries, that obligation does not apply where there is mutual assistance on tax information and collection (Non-Resident Income Tax Act, article 10). Even when it is optional, it is useful: someone in Spain receives the notices and can act within the deadlines they open.</p></details><details><summary>Can these filings be done without coming to Spain?</summary><p>Yes. We handle them remotely under your power of attorney; your digital certificate stays with you.</p></details><details><summary>Can you file my Modelo 210 if I live in the UK and do not have a Spanish digital certificate?</summary><p>Yes. Grupo Avanza Consultores prepares and files Modelo 210 for non-resident owners of property in Spain. When a representative authorised to file on someone else’s behalf submits the return, it is the representative who needs the electronic certificate, not you (Order EHA/3316/2010, article 12.1.c). We first check the property’s use, ownership and tax year, then explain the authorisation you need to give us. Tell us where you are tax resident, which years need attention and whether the property was rented out. We agree the scope and fee before starting and reply in writing in English.</p></details><details><summary>Is Form 210 the same as Model 210?</summary><p>Yes. Form 210, Model 210 and Modelo 210 are the same return: the self-assessment approved by Order EHA/3316/2010 for non-residents who obtain income in Spain without a permanent establishment (article 1).</p></details><details><summary>Can I file Modelo 210 online from abroad?</summary><p>Yes. It is filed online at the Tax Agency’s electronic office with a recognised electronic certificate or, if you are an individual, with Cl@ve. Whoever files needs a Spanish tax number (NIF) and must be registered in the tax census beforehand. A representative authorised to file for you can submit it with their own certificate (Order EHA/3316/2010, article 12).</p></details><details><summary>Do non-residents pay property tax on a Spanish home they don’t rent out?</summary><p>Yes, and there are two different taxes. The local council charges the annual property tax (IBI) to the holder of the property or of the other rights that trigger it, usually the owner (Local Finance Act, article 61). Separately, if you are an individual and the home is an urban property neither let nor used for a business, non-resident income tax applies to an imputed income, declared on Modelo 210 (Non-Resident Income Tax Act, articles 13.1.h and 24.5). For 2026, that income is 2% of the cadastral value, or 1.1% where the property is in a municipality whose cadastral values were revised, modified or set under a general collective valuation procedure that came into force on or after 1 January 2012, in proportion to the days owned (different rules apply if there is no cadastral value or it has not been notified, and no income is imputed to buildings under construction or not usable for town-planning reasons) (Personal Income Tax Act, article 85 and additional provision fifty-five, as worded by Royal Decree-law 29/2026, validated by the Congress of Deputies on 12 November 2026). The rate is 19% for residents of the EU, or of an EEA country with an effective exchange of tax information, and 24% for everyone else (Non-Resident Income Tax Act, article 25.1.a). The percentages for 2027 income have been amended, so we confirm the rule for each year.</p></details></div>
+    <p style="margin-top:10px"><a href="renting-out-property-spain-non-resident.html">Renting out property in Spain as a non-resident →</a></p>
+    <p style="margin-top:10px"><a href="buying-property-from-non-resident-spain.html">Buying from a non-resident: withholding and form 211 →</a></p>
+    <p style="margin-top:10px"><a href="regularising-taxes-spain-foreigner.html">Regularising your taxes in Spain →</a></p>
+    <p style="margin-top:10px"><a href="tax-residence-moving-to-spain.html">Tax residence when moving to Spain →</a></p>
+  </div>
+</section>
+
+<section class="cta-final" id="contact">
+  <div class="wrap">
+    <h2>Need to file Modelo 210 while living abroad?</h2>
+    <p class="lead">For a quote, tell us your country of tax residence, the tax years you need help with and how you used the property. If you sold it, give the sale date. If you received a tax notice, include the date you received it and the deadline shown. Keep the complete notice to hand.</p>
+    <p>If you own the property jointly, tell us your share. If you rented it out for part of the year, give the dates it was let and when it was available for your own use. If you need help with earlier years, mention which Modelo 210 returns you have already filed, if any.</p>
+    <p>A short email is enough to ask for a quote. For the review, keep your IBI bill or cadastral reference, the document showing how you acquired the property and any previous returns to hand. If you rented it out, also keep your rental income and expense records and supporting documents. We agree the scope and fee with you before starting. We reply in writing in English. You can also ask about annual support, IBI and municipal taxes.</p>
+    <div class="ctas">
+      <a class="btn btn--onnavy" href="en-contact.html?pagina=modelo-210-non-resident-tax-spain.html">Request a quote</a>
+      <a class="btn btn--onnavy-ghost" href="https://wa.me/34614365547?text=Hello%2C%20I%20would%20like%20a%20quote%20for%20Spanish%20tax%20assistance.%20My%20situation%3A%20__.%20Country%20where%20I%20live%3A%20__.%20Year%20or%20date%20concerned%3A%20__.%20Any%20deadline%3A%20__.%20I%20have%20seen%20your%20English%20guide%20to%20Modelo%20210.%20Please%20reply%20in%20writing%20in%20English." target="_blank" rel="noopener">WhatsApp us</a>
+      <a class="btn btn--onnavy-ghost" href="mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%20Modelo%20210%20in%20Spain&amp;body=I%20would%20like%20a%20quote%20for%20Modelo%20210.%20These%20are%20the%20details%20I%20have%3A%0D%0A%0D%0ACountry%20of%20tax%20residence%3A%0D%0ATax%20year%28s%29%3A%0D%0AHow%20the%20property%20was%20used%20%28or%20date%20of%20sale%29%3A%0D%0AMy%20ownership%20share%2C%20if%20jointly%20owned%3A%0D%0ARental%20dates%20and%20dates%20available%20for%20my%20own%20use%2C%20if%20applicable%3A%0D%0APeriods%20already%20filed%2C%20if%20any%3A%0D%0ATax%20notice%2C%20if%20any%20%28date%20received%20and%20deadline%20shown%29%3A">Email us</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <h4>Grupo Avanza Consultores</h4>
+        <p>Tax, accounting and employment adviser<br>Paterna, Valencia</p>
+        <p style="margin-top:10px"><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a></p>
+      </div>
+      <div>
+        <h4>In English</h4>
+        <ul><li><a href="en.html">Tax adviser in Valencia</a></li><li><a href="gift-of-money-from-abroad-spain.html">Gifts from family abroad</a></li><li><a href="inheritance-spain-non-resident-heir.html">Inheritance for non-resident heirs</a></li><li><a href="selling-property-spain-non-resident.html">Selling property in Spain</a></li><li><a href="buying-property-spain-foreigner.html">Buying property in Spain</a></li><li><a href="regularising-taxes-spain-foreigner.html">Regularising your taxes</a></li><li><a href="tax-residence-moving-to-spain.html">Tax residence when moving</a></li><li><a href="beckham-law-spain-special-tax-regime.html">Beckham Law</a></li><li><a href="spanish-tax-residence-certificate.html">Tax residence certificate</a></li><li><a href="leaving-spain-tax-residence.html">Leaving Spain</a></li><li><a href="form-720-spain-assets-abroad.html">Form 720</a></li><li><a href="uk-pension-tax-spain-resident.html">UK pension in Spain</a></li><li><a href="german-pension-tax-spain-resident.html">German pension in Spain</a></li><li><a href="french-pension-tax-spain-resident.html">French pension in Spain</a></li><li><a href="italian-pension-tax-spain-resident.html">Italian pension in Spain</a></li><li><a href="dutch-pension-tax-spain-resident.html">Dutch pensions in Spain</a></li><li><a href="us-social-security-pension-tax-spain-resident.html">US Social Security in Spain</a></li><li><a href="modelo-210-non-resident-tax-spain.html">Modelo 210</a></li><li><a href="letter-from-spanish-tax-agency.html">A letter from the Tax Agency</a></li><li><a href="setting-up-limited-company-spain-foreigner.html">Setting up a limited company</a></li><li><a href="self-employed-autonomo-spain-foreigner.html">Self-employed in Spain</a></li><li><a href="first-tax-return-spain-new-resident.html">Your first Spanish tax return</a></li></ul>
+        <h4 style="margin-top:22px">In Spanish</h4>
+        <ul><li><a href="/">Home page</a></li><li><a href="fiscalidad-no-residentes-y-extranjeros.html">Non-residents and foreigners</a></li><li><a href="modelo-210-no-residentes.html">Modelo 210</a></li><li><a href="vender-inmueble-en-espana-no-residente.html">Vender si vives fuera</a></li><li><a href="regularizar-situacion-fiscal-extranjero.html">Regularizar si eres extranjero</a></li><li><a href="residencia-fiscal-al-llegar-a-espana.html">Residencia al llegar</a></li><li><a href="regimen-impatriados-ley-beckham.html">Ley Beckham</a></li><li><a href="certificado-residencia-fiscal-espana.html">Certificado de residencia</a></li><li><a href="irse-de-espana-impuestos-cambio-residencia.html">Irse de España</a></li><li><a href="modelo-720-bienes-en-el-extranjero.html">Modelo 720</a></li><li><a href="pension-reino-unido-residente-en-espana.html">Pensión del Reino Unido</a></li><li><a href="pension-alemana-residente-en-espana.html">Pensión de Alemania</a></li><li><a href="pension-francesa-residente-en-espana.html">Pensión de Francia</a></li><li><a href="pension-italiana-residente-en-espana.html">Pensión de Italia</a></li><li><a href="pension-estados-unidos-residente-en-espana.html">Pensión de Estados Unidos</a></li><li><a href="comprar-vivienda-en-espana-extranjero.html">Comprar vivienda siendo extranjero</a></li><li><a href="herencia-en-espana-heredero-no-residente.html">Inheritance with a non-resident heir</a></li><li><a href="carta-de-hacienda-requerimiento.html">Letters from the Tax Agency</a></li></ul>
+      </div>
+      <div>
+        <h4>Area</h4>
+        <p>Paterna, La Cañada, l'Eliana, Burjassot, Valencia city and the metropolitan area. Clients outside Spain, remotely.</p>
+        <p style="margin-top:10px"><a href="ru.html" lang="ru">Налоговый консультант в Валенсии — на русском</a></p>
+      </div>
+    </div>
+    <div class="foot__legal">
+      <div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div>
+      <div><a href="aviso-legal.html">Aviso legal</a> · <a href="en-privacy.html">Privacy</a> · <a href="cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  var d=document.documentElement;
+  var mq=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var tb=document.getElementById('topbar');
+  if(tb){
+    var onScroll=function(){ tb.classList.toggle('is-stuck', window.scrollY>8); };
+    onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  }
+  var bt=document.querySelector('.navtoggle'), nv=document.getElementById('topnav');
+  if(bt&&nv){
+    d.classList.add('js-nav');
+    bt.addEventListener('click',function(){
+      var open=bt.getAttribute('aria-expanded')==='true';
+      bt.setAttribute('aria-expanded', String(!open));
+      nv.classList.toggle('is-open', !open);
+      bt.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    });
+    nv.addEventListener('click',function(e){
+      if(e.target.tagName==='A'){ bt.setAttribute('aria-expanded','false'); nv.classList.remove('is-open'); }
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'&&nv.classList.contains('is-open')){ bt.setAttribute('aria-expanded','false'); nv.classList.remove('is-open'); bt.focus(); }
+    });
+  }
+  if(mq.matches || !('IntersectionObserver' in window)) return;
+  d.classList.add('js-reveal');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  document.querySelectorAll('.band, .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+})();
+</script>
+<script>(function(){var h=document.querySelector(".hero__logo"),t=document.querySelector(".trust");if(h){var d=document.createElement("div");d.className="marca";d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">';h.insertBefore(d,h.firstChild);}if(h&&t)h.appendChild(t);})();</script>
+<script>
+(function(){
+  try {
+    var q = new URLSearchParams(window.location.search), extra = [];
+    ['utm_source','utm_campaign','utm_content'].forEach(function(k){
+      var v = q.get(k); if (v && /^[A-Za-z0-9_.-]{1,60}$/.test(v)) extra.push([k, v]);
+    });
+    if (!extra.length) return;
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="en-contact.html"]'), function(a){
+      var u = new URL(a.getAttribute('href'), window.location.href);
+      extra.forEach(function(kv){ u.searchParams.set(kv[0], kv[1]); });
+      a.setAttribute('href', u.pathname.split('/').pop() + u.search + u.hash);
+    });
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
