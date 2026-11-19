@@ -91,7 +91,8 @@
     try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
     var campana = '';
     try { var u = new URLSearchParams(window.location.search); campana = ['utm_source','utm_campaign','utm_content'].map(function(k){ var v = u.get(k) || ''; return /^[A-Za-z0-9_.-]{1,60}$/.test(v) ? v : ''; }).filter(Boolean).join(' / '); } catch (err) {}
-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + (campana ? ' · Campaña: ' + campana : '') + ' · Nos conoció por: ' + origen + ']');
+    var anuncio = ''; try { if (new URLSearchParams(window.location.search).get('origen') === 'anuncio') anuncio = ' · Llegó por: anuncio de Google'; } catch (err) {}
+    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + (campana ? ' · Campaña: ' + campana : '') + ' · Nos conoció por: ' + origen + ']');
     var cuerpo = new URLSearchParams(datos);
     var finalizado = false;
     function mostrarAviso(){
@@ -190,5 +191,5 @@
 })();
 </script>
 <script>(function(){var h=document.querySelector(".hero__logo"),t=document.querySelector(".trust");if(h){var d=document.createElement("div");d.className="marca";d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">';h.insertBefore(d,h.firstChild);}if(h&&t)h.appendChild(t);})();</script>
-</body>
+<script src="origen-anuncio.js" defer></script></body>
 </html>

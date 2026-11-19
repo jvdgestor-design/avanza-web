@@ -102,7 +102,7 @@
   </div>
   <div class="form__pie">
     <button class="btn btn--primary" type="submit">Enviar consulta</button>
-    <p class="form__nota">Te contesta un asesor, no un formulario automático. Tus datos se usan para responderte y, si nos lo indicas, para saber cómo nos has conocido: <a href="privacidad.html">política de privacidad</a>.</p>
+    <p class="form__nota">Te contesta un asesor, no un formulario automático. Tus datos se usan para responderte y, si nos lo indicas, para saber cómo nos has conocido; si llegas desde uno de nuestros anuncios, se anota también: <a href="privacidad.html">política de privacidad</a>.</p>
   </div>
   <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>No podemos confirmar la recepción de tu consulta. Tu texto sigue en el formulario. Antes de repetir el envío, escríbenos por <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> o por <a href="mailto:avanza@grupoavanzaconsultores.es">correo electrónico</a>.</p>
 </form>
@@ -127,7 +127,8 @@
     datos.set('pagina', window.location.pathname);
     var desde = '';
     try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + ' · Nos conoció por: ' + origen + ']');
+    var anuncio = ''; try { if (new URLSearchParams(window.location.search).get('origen') === 'anuncio') anuncio = ' · Llegó por: anuncio de Google'; } catch (err) {}
+    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + ' · Nos conoció por: ' + origen + ']');
     var cuerpo = new URLSearchParams(datos);
     var finalizado = false;
     function mostrarAviso(){
@@ -229,5 +230,5 @@
   document.querySelectorAll('.band, .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
 })();
 </script>
-</body>
+<script src="origen-anuncio.js" defer></script></body>
 </html>
