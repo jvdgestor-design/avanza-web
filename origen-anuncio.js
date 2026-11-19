@@ -1,7 +1,8 @@
 /* Atribución de anuncios sin cookies ni almacenamiento: si la visita llega con
    ?origen=anuncio (sufijo de URL de la campaña de Google Ads), se pasa ese dato
    a los enlaces del formulario de contacto y se añade «(ref. Ads)» al texto
-   precargado de WhatsApp (solo a los enlaces que ya traen texto). No hace nada en las visitas que no vienen de un anuncio. */
+   precargado de WhatsApp (Avanza y Anna; solo a los enlaces que ya traen texto)
+   y al asunto de los enlaces de correo. No hace nada en las visitas que no vienen de un anuncio. */
 (function () {
   try {
     if (new URLSearchParams(window.location.search).get('origen') !== 'anuncio') return;
@@ -13,8 +14,11 @@
         var u = new URL(h, window.location.href);
         u.searchParams.set('origen', 'anuncio');
         a.setAttribute('href', u.pathname.split('/').pop() + u.search + u.hash);
-      } else if (/^https:\/\/wa\.me\/34614365547/.test(h) && h.indexOf('ref.%20Ads') === -1) {
+      } else if (/^https:\/\/wa\.me\/(34614365547|34642457458)/.test(h) && h.indexOf('ref.%20Ads') === -1) {
         if (/[?&]text=[^&#]*$/.test(h)) a.setAttribute('href', h + marca);
+      } else if (/^mailto:/.test(h) && h.indexOf('ref.%20Ads') === -1) {
+        if (/[?&]subject=/.test(h)) a.setAttribute('href', h.replace(/([?&]subject=[^&#]*)/, '$1' + marca));
+        else a.setAttribute('href', h + (h.indexOf('?') === -1 ? '?' : '&') + 'subject=' + marca.replace(/^%20/, ''));
       }
     });
   } catch (e) {}
