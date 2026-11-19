@@ -1,6 +1,6 @@
-# Motor de visibilidad por API · 18/11/2026 18:30
+# Motor de visibilidad por API · 19/11/2026 01:42
 
-Gasto de hoy: 331657 tokens · 18 búsquedas (topes 1500000 / 60).
+Gasto de hoy: 0 tokens · 0 búsquedas (topes 1500000 / 60).
 
 Radar (indicador, Claude por API con búsqueda; no es la medición de la meta): 2 de 45 consultas citadas en su última tirada.
 
