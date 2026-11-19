@@ -1,0 +1,4 @@
+rama claude/herencia-en-dos-ejemplos commit 2f5ffc000e288959cff41fcb95695ede1e539347 sobre main 233f6d4
+md5 024cca19882186a0918043900b2eeb9b  sha256 3d309a5fecd9dac3846b2e30b7f8b1ecea431877a22db7a23ef6c9ea274b800d  base-inheritance-spain-non-resident-heir.html.txt
+md5 356d922212e872e61f72660b1fe19154  sha256 a9e6f84e9911b2d14f7b02c62370d4983d0d3050b05b5d840dfe807028d8e87a  inheritance-spain-non-resident-heir.html.txt
+md5 a10addac1fed63a343e1ae1e22aab524  sha256 f9b9571a36eeebaf236f9170011cea5287b1b9814f184f272c4e8410d45bdbf6  cambio.diff
