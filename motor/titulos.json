@@ -314,6 +314,11 @@
   "huella": "498ea33f08dd",
   "titulo": "Erbschaft in Spanien bei Wohnsitz im Ausland"
  },
+ "de-erbschaft-spanien-erben-wohnsitz-spanien.html": {
+  "desde": "2026-11-18",
+  "huella": "e81d9f8d7785",
+  "titulo": "Erbschaftsteuer Spanien bei Wohnsitz in Spanien | Avanza"
+ },
  "de-erste-steuererklaerung-spanien.html": {
   "desde": "2026-11-05",
   "huella": "d097f8303399",
@@ -629,6 +634,11 @@
   "huella": "eb31f1906a88",
   "titulo": "Succession en Espagne : héritier non-résident"
  },
+ "fr-succession-heritier-resident-espagne.html": {
+  "desde": "2026-11-18",
+  "huella": "8f0a55204c93",
+  "titulo": "Succession en Espagne : héritier résident | Grupo Avanza"
+ },
  "fr-teletravail-espagne-employeur-etranger.html": {
   "desde": "2026-11-05",
   "huella": "85cae14b4214",
@@ -679,6 +689,11 @@
   "huella": "6c36672eb7b8",
   "titulo": "Herencia de no residentes: Valencia y España | Grupo Avanza"
  },
+ "herencia-en-espana-heredero-residente.html": {
+  "desde": "2026-11-18",
+  "huella": "3d6e9194cffd",
+  "titulo": "Herencia en Valencia y España: heredero residente | Avanza"
+ },
  "herencias-no-residentes-por-comunidad-autonoma.html": {
   "desde": "2026-11-16",
   "huella": "c3a84b5e5d78",
@@ -698,6 +713,11 @@
   "desde": "2026-10-30",
   "huella": "c64081d05f67",
   "titulo": "Inheritance tax in Spain for non-residents | Grupo Avanza"
+ },
+ "inheritance-spain-resident-heir.html": {
+  "desde": "2026-11-18",
+  "huella": "338577d07c1d",
+  "titulo": "Inheritance tax in Spain if you live in Spain | Avanza"
  },
  "irse-de-espana-impuestos-cambio-residencia.html": {
   "desde": "2026-10-30",
@@ -953,6 +973,11 @@
   "desde": "2026-10-30",
   "huella": "ca3bf12d80ab",
   "titulo": "Налог на наследство в Испании для нерезидента | Grupo Avanza"
+ },
+ "ru-nasledstvo-v-ispanii-rezident.html": {
+  "desde": "2026-11-18",
+  "huella": "09b32e206368",
+  "titulo": "Налог на наследство в Испании для резидента | Grupo Avanza"
  },
  "ru-nie-tie-registraciya-ispaniya.html": {
   "desde": "2026-10-30",
