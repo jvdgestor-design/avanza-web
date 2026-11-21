@@ -1,0 +1,40 @@
+/* Calculadora del modelo 210: las mismas reglas que lleva en su <style> la página española
+   (calculadora-modelo-210-no-residentes.html), en un fichero para las versiones inglesa y alemana. Sin colores nuevos. */
+.calc-aviso{border:1px solid var(--line);border-top:2px solid var(--gold);background:var(--raised);padding:22px 26px;margin-top:26px;max-width:78ch}
+.calc-aviso p{margin:0;font-size:15.5px;line-height:1.6;text-align:justify;hyphens:auto}
+.calc-aviso p+p{margin-top:12px}
+#calc210{max-width:760px}
+#calc210 fieldset{border:1px solid var(--line);padding:18px 22px 20px;margin:0 0 22px;min-width:0}
+#calc210 legend{font-size:13.5px;font-weight:600;letter-spacing:.02em;padding:0 8px;color:var(--ink)}
+.calc-radio{display:flex;gap:12px;align-items:flex-start;margin-top:10px;font-size:15.5px;line-height:1.5}
+.calc-radio input{margin-top:5px;flex:none}
+#calc210 .field{margin-top:18px}
+#calc210 .field:first-of-type{margin-top:0}
+#calc210 .field select,#calc210 .field input{width:100%;max-width:100%;min-height:46px}
+.calc-ayuda{font-size:13.5px;line-height:1.5;color:var(--ink-soft);text-align:left}
+#calc210 [aria-invalid="true"]{border-color:#B4453C}
+.calc-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+.calc-btns .btn{border:0;cursor:pointer}
+.calc-btns .btn--ghost{border:1px solid var(--line)}
+#calc-resultado{max-width:760px;margin-top:30px;outline:none}
+#calc-resultado:not(:empty){border:1px solid var(--line);border-top:2px solid var(--gold);background:var(--raised);padding:24px 26px}
+.calc-dl{margin:0 0 18px}
+.calc-dl div{display:flex;justify-content:space-between;gap:18px;padding:10px 0;border-bottom:1px solid var(--line-soft)}
+.calc-dl dt{color:var(--ink-soft);font-size:15px;min-width:0}
+.calc-dl dd{margin:0;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.calc-dl .calc-total dt{color:var(--ink);font-weight:600}
+.calc-dl .calc-total dd{color:var(--navy);font-size:20px}
+.calc-av{font-size:14.5px;color:var(--ink-soft);line-height:1.55;padding-left:20px}
+p.calc-av{padding-left:0}
+.calc-pe{font-size:13.5px;color:var(--ink-faint)}
+.calc-err ul{margin:10px 0 0;padding-left:20px}
+.calc-err{color:#8E2F28}
+.calc-err a{color:inherit;text-decoration:underline}
+.norma-lista{padding-left:20px;margin-top:14px}
+.norma-lista li{margin-bottom:12px;line-height:1.6;text-align:justify;overflow-wrap:anywhere}
+@media(max-width:560px){.calc-dl div{flex-direction:column;gap:2px}.calc-dl dd{text-align:left;white-space:normal}.calc-aviso{padding:18px}#calc-resultado:not(:empty){padding:18px}#calc210 fieldset{padding:14px 14px 16px}}
+/* Lo que la página española lleva como estilo en línea */
+.calc-band{padding-top:56px}
+.calc-h3{margin-top:44px;font-size:19px}
+.calc-otras{margin-top:12px;padding-left:20px;color:var(--ink-soft)}
+.calc-dir{margin-top:22px;font-size:15px}
