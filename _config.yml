@@ -1,0 +1,5 @@
+# GitHub Pages no publica estos ficheros internos; siguen en el repositorio y en su sitio.
+exclude:
+  - README.md
+  - PROTOCOLO-CONTROL-CONTENIDO.md
+  - pruebas-calculadora-210.js
