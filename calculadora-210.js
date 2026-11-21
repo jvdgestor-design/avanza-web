@@ -73,26 +73,26 @@
     var r = leeDecimal(valor, 2);
     if (r.vacio) {
       if (opciones && opciones.opcional) { return 0n; }
-      errores.push({ campo: campo, mensaje: 'Indique ' + etiqueta + '.' }); return null;
+      errores.push({ campo: campo, mensaje: 'Indique ' + etiqueta + '.', codigo: 'vacio' }); return null;
     }
-    if (r.malo) { errores.push({ campo: campo, mensaje: etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1) + ': escriba solo números (coma o punto decimal).' }); return null; }
-    if (r.demasiadosDecimales) { errores.push({ campo: campo, mensaje: etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1) + ': como máximo dos decimales. Si ha escrito los miles con punto (100.000), escríbalos sin él (100000) o añada los decimales (100.000,00).' }); return null; }
-    if (r.signo < 0 && r.n !== 0n) { errores.push({ campo: campo, mensaje: etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1) + ' no puede ser negativo.' }); return null; }
-    if (opciones && opciones.positivo && r.n === 0n) { errores.push({ campo: campo, mensaje: 'Indique ' + etiqueta + ' (mayor que cero).' }); return null; }
+    if (r.malo) { errores.push({ campo: campo, mensaje: etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1) + ': escriba solo números (coma o punto decimal).', codigo: 'malo' }); return null; }
+    if (r.demasiadosDecimales) { errores.push({ campo: campo, mensaje: etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1) + ': como máximo dos decimales. Si ha escrito los miles con punto (100.000), escríbalos sin él (100000) o añada los decimales (100.000,00).', codigo: 'decimales' }); return null; }
+    if (r.signo < 0 && r.n !== 0n) { errores.push({ campo: campo, mensaje: etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1) + ' no puede ser negativo.', codigo: 'negativo' }); return null; }
+    if (opciones && opciones.positivo && r.n === 0n) { errores.push({ campo: campo, mensaje: 'Indique ' + etiqueta + ' (mayor que cero).', codigo: 'cero' }); return null; }
     return r.n;
   }
 
   function anioValido(v, errores) {
     var s = String(v === null || v === undefined ? '' : v).trim();
-    if (s === '') { errores.push({ campo: 'anio', mensaje: 'Indique el año de devengo.' }); return null; }
-    if (!/^\d{4}$/.test(s)) { errores.push({ campo: 'anio', mensaje: 'El año de devengo debe tener cuatro cifras.' }); return null; }
+    if (s === '') { errores.push({ campo: 'anio', mensaje: 'Indique el año de devengo.', codigo: 'anioVacio' }); return null; }
+    if (!/^\d{4}$/.test(s)) { errores.push({ campo: 'anio', mensaje: 'El año de devengo debe tener cuatro cifras.', codigo: 'anioCifras' }); return null; }
     var a = parseInt(s, 10);
     if (a > ANIO_MAX) {
-      errores.push({ campo: 'anio', mensaje: 'Esta calculadora solo recoge devengos hasta ' + ANIO_MAX + '.' });
+      errores.push({ campo: 'anio', mensaje: 'Esta calculadora solo recoge devengos hasta ' + ANIO_MAX + '.', codigo: 'anioMax', datos: { max: ANIO_MAX } });
       return null;
     }
     if (a < ANIO_MIN) {
-      errores.push({ campo: 'anio', mensaje: 'Esta calculadora solo recoge años de devengo desde ' + ANIO_MIN + ' (redacción vigente de las normas leídas).' });
+      errores.push({ campo: 'anio', mensaje: 'Esta calculadora solo recoge años de devengo desde ' + ANIO_MIN + ' (redacción vigente de las normas leídas).', codigo: 'anioMin', datos: { min: ANIO_MIN } });
       return null;
     }
     return a;
@@ -100,16 +100,16 @@
 
   function titularidadValida(v, errores) {
     var r = leeDecimal(v, 2);
-    if (r.vacio) { errores.push({ campo: 'titularidad', mensaje: 'Indique el porcentaje de titularidad (de 0 a 100).' }); return null; }
-    if (r.malo) { errores.push({ campo: 'titularidad', mensaje: 'Porcentaje de titularidad: escriba solo números (coma o punto decimal).' }); return null; }
-    if (r.demasiadosDecimales) { errores.push({ campo: 'titularidad', mensaje: 'Porcentaje de titularidad: como máximo dos decimales.' }); return null; }
-    if ((r.signo < 0 && r.n !== 0n) || r.n > 10000n) { errores.push({ campo: 'titularidad', mensaje: 'El porcentaje de titularidad debe estar entre 0 y 100.' }); return null; }
+    if (r.vacio) { errores.push({ campo: 'titularidad', mensaje: 'Indique el porcentaje de titularidad (de 0 a 100).', codigo: 'vacio' }); return null; }
+    if (r.malo) { errores.push({ campo: 'titularidad', mensaje: 'Porcentaje de titularidad: escriba solo números (coma o punto decimal).', codigo: 'malo' }); return null; }
+    if (r.demasiadosDecimales) { errores.push({ campo: 'titularidad', mensaje: 'Porcentaje de titularidad: como máximo dos decimales.', codigo: 'decimales' }); return null; }
+    if ((r.signo < 0 && r.n !== 0n) || r.n > 10000n) { errores.push({ campo: 'titularidad', mensaje: 'El porcentaje de titularidad debe estar entre 0 y 100.', codigo: 'titRango' }); return null; }
     return r.n; // centésimas de por ciento: 0..10000
   }
 
   function residenciaValida(v, errores) {
     if (v === 'UE' || v === 'EEE' || v === 'LI' || v === 'OTRO') { return v; }
-    errores.push({ campo: 'residencia', mensaje: 'Indique el país de residencia fiscal (UE, Islandia o Noruega, Liechtenstein, u otro).' });
+    errores.push({ campo: 'residencia', mensaje: 'Indique el país de residencia fiscal (UE, Islandia o Noruega, Liechtenstein, u otro).', codigo: 'residencia' });
     return null;
   }
 
@@ -123,30 +123,30 @@
     var s = anio + 1;
     if (supuesto === 'imputada') { // art. 5.b)
       if (anio >= 2026) {
-        return { desde: s + '-04-01', hasta: s + '-12-31',
+        return { desde: s + '-04-01', hasta: s + '-12-31', clave: 'impNuevo', anioSiguiente: s,
           texto: 'del 1 de abril al 31 de diciembre de ' + s + ' (presentación e ingreso)',
           articulo: 'artículo 5.b) de la Orden EHA/3316/2010, redacción de la Orden HAC/623/2026 (devengos de 2026)' };
       }
-      return { desde: s + '-01-01', hasta: s + '-12-31',
+      return { desde: s + '-01-01', hasta: s + '-12-31', clave: 'impAnt', anioSiguiente: s,
         texto: 'del 1 de enero al 31 de diciembre de ' + s + ' (presentación e ingreso)',
         articulo: 'artículo 5.b) de la Orden EHA/3316/2010, redacción anterior a la Orden HAC/623/2026 (el año natural siguiente al devengo)' };
     }
     if (cuotaCents === 0n) { // art. 5.c).2.º, cuota cero (igual en todas las redacciones)
-      return { desde: s + '-01-01', hasta: s + '-01-20',
+      return { desde: s + '-01-01', hasta: s + '-01-20', clave: 'cero', anioSiguiente: s,
         texto: 'del 1 al 20 de enero de ' + s + ' (autoliquidación de cuota cero)',
         articulo: 'artículo 5.c).2.º de la Orden EHA/3316/2010' };
     }
     if (anio >= 2026) { // art. 5.c).1.º, redacción HAC/623/2026 (DF única 2.b)
-      return { desde: s + '-04-01', hasta: s + '-04-20',
+      return { desde: s + '-04-01', hasta: s + '-04-20', clave: 'alq2026', anioSiguiente: s,
         texto: 'del 1 al 20 de abril de ' + s + ' (presentación e ingreso), si declara agrupadas las rentas de 2026 o si declara por separado las del cuarto trimestre de 2026. Las de los trimestres primero a tercero de 2026 declaradas por separado tenían el plazo trimestral (abril, julio y octubre de 2026)',
         articulo: 'artículo 5.c).1.º de la Orden EHA/3316/2010, redacción de la Orden HAC/623/2026 (devengos de 2026)' };
     }
     if (anio >= 2024) { // art. 5.c).1.º, redacción HAC/56/2024
-      return { desde: anio + '-04-01', hasta: s + '-01-20',
+      return { desde: anio + '-04-01', hasta: s + '-01-20', clave: 'alq2024', anioSiguiente: s,
         texto: 'del 1 al 20 de enero de ' + s + ' si se agrupa el año; si se declara por separado, los veinte primeros días de abril, julio, octubre y enero siguientes a cada trimestre',
         articulo: 'artículo 5.c).1.º de la Orden EHA/3316/2010, redacción de la Orden HAC/56/2024' };
     }
-    return { desde: anio + '-04-01', hasta: s + '-01-20', // 2016-2023: art. 5.c).1.º, redacción original
+    return { desde: anio + '-04-01', hasta: s + '-01-20', clave: 'alqTrim', anioSiguiente: s, // 2016-2023: art. 5.c).1.º, redacción original
       texto: 'por trimestres: los veinte primeros días de abril, julio, octubre y enero siguientes a cada trimestre natural',
       articulo: 'artículo 5.c).1.º de la Orden EHA/3316/2010, redacción original (vigente desde 2011)' };
   }
@@ -157,12 +157,12 @@
 
   function calculaImputada(e) {
     e = e || {};
-    var errores = [], avisos = [];
+    var errores = [], avisos = [], cods = [];
     var anio = anioValido(e.anio, errores);
     var residencia = residenciaValida(e.residencia, errores);
     var caso = e.caso;
     if (caso !== 'normal' && caso !== 'revisado' && caso !== 'sinCatastral') {
-      errores.push({ campo: 'caso', mensaje: 'Indique si los valores catastrales del municipio se revisaron en la fecha que corresponde a ese año (vea la pregunta), o si el inmueble no tiene valor catastral notificado.' });
+      errores.push({ campo: 'caso', mensaje: 'Indique si los valores catastrales del municipio se revisaron en la fecha que corresponde a ese año (vea la pregunta), o si el inmueble no tiene valor catastral notificado.', codigo: 'caso' });
       caso = null;
     }
     var valor = importe(e.valor, caso === 'sinCatastral'
@@ -171,13 +171,13 @@
     var tit = titularidadValida(e.titularidad, errores);
     var dias = null, dAnio = anio ? diasDelAnio(anio) : null;
     var sd = String(e.dias === null || e.dias === undefined ? '' : e.dias).trim();
-    if (sd === '') { errores.push({ campo: 'dias', mensaje: 'Indique los días del año en que el inmueble estuvo a su disposición.' }); }
-    else if (!/^\d+$/.test(sd)) { errores.push({ campo: 'dias', mensaje: 'Los días deben ser un número entero (sin decimales ni signo).' }); }
+    if (sd === '') { errores.push({ campo: 'dias', mensaje: 'Indique los días del año en que el inmueble estuvo a su disposición.', codigo: 'diasVacio' }); }
+    else if (!/^\d+$/.test(sd)) { errores.push({ campo: 'dias', mensaje: 'Los días deben ser un número entero (sin decimales ni signo).', codigo: 'diasEntero' }); }
     else {
       dias = parseInt(sd, 10);
-      if (dias < 1) { errores.push({ campo: 'dias', mensaje: 'Los días deben ser al menos 1.' }); dias = null; }
+      if (dias < 1) { errores.push({ campo: 'dias', mensaje: 'Los días deben ser al menos 1.', codigo: 'diasMin' }); dias = null; }
       else if (dAnio !== null && dias > dAnio) {
-        errores.push({ campo: 'dias', mensaje: 'El año ' + anio + ' tiene ' + dAnio + ' días: no puede indicar ' + dias + '.' }); dias = null;
+        errores.push({ campo: 'dias', mensaje: 'El año ' + anio + ' tiene ' + dAnio + ' días: no puede indicar ' + dias + '.', codigo: 'diasMax', datos: { anio: anio, diasAnio: dAnio, dias: dias } }); dias = null;
       }
     }
     if (errores.length) { return { ok: false, errores: errores }; }
@@ -190,22 +190,22 @@
     var liAntes = residencia === 'LI' && anio < LI_DESDE;
     var tipo = tipoGravamen(liAntes ? 'OTRO' : residencia);
     var cuota = divRedondeo(base * BigInt(tipo), 100n);
-    if (liAntes) { avisos.push(AVISO_LI_ANTES); }
-    else if (residencia === 'EEE' || residencia === 'LI') { avisos.push(AVISO_EEE); }
-    if (tit === 0n) { avisos.push('Con una titularidad del 0 % no hay renta que imputar.'); }
+    if (liAntes) { avisos.push(AVISO_LI_ANTES); cods.push('liAntes'); }
+    else if (residencia === 'EEE' || residencia === 'LI') { avisos.push(AVISO_EEE); cods.push('eee'); }
+    if (tit === 0n) { avisos.push('Con una titularidad del 0 % no hay renta que imputar.'); cods.push('tit0imp'); }
     if (e.anio !== undefined && anio === ANIO_MAX) {
-      avisos.push('El año ' + ANIO_MAX + ' es el ejercicio en curso a la fecha de la norma leída; compruebe que el resultado final de los días coincide con la realidad.');
+      avisos.push('El año ' + ANIO_MAX + ' es el ejercicio en curso a la fecha de la norma leída; compruebe que el resultado final de los días coincide con la realidad.'); cods.push('anioCurso');
     }
     return {
       ok: true, supuesto: 'imputada', anio: anio, caso: caso, porcentaje: caso === 'normal' ? '2' : '1,1',
       valorCents: valor, dias: dias, diasAnio: dAnio, rentaCents: renta, titularidadCentesimas: tit,
-      baseCents: base, tipo: tipo, cuotaCents: cuota, plazo: plazo('imputada', anio, cuota), avisos: avisos
+      baseCents: base, tipo: tipo, cuotaCents: cuota, plazo: plazo('imputada', anio, cuota), avisos: avisos, avisosCod: cods
     };
   }
 
   function calculaAlquiler(e) {
     e = e || {};
-    var errores = [], avisos = [];
+    var errores = [], avisos = [], cods = [];
     var anio = anioValido(e.anio, errores);
     var residencia = residenciaValida(e.residencia, errores);
     var ingresos = importe(e.ingresos, 'los ingresos íntegros', errores, 'ingresos', { positivo: true });
@@ -213,7 +213,7 @@
     var gastos = importe(e.gastos, 'los gastos deducibles', errores, 'gastos', { opcional: true });
     var tit = titularidadValida(e.titularidad, errores);
     if (errores.length) { return { ok: false, errores: errores }; }
-    if (residencia === 'LI' && anio === LI_DESDE) { return { ok: false, errores: [{ campo: 'residencia', mensaje: ERROR_LI_2021 }] }; }
+    if (residencia === 'LI' && anio === LI_DESDE) { return { ok: false, errores: [{ campo: 'residencia', mensaje: ERROR_LI_2021, codigo: 'li2021' }] }; }
 
     var liAntes = residencia === 'LI' && anio < LI_DESDE;
     var deduce = residencia === 'UE' || residencia === 'EEE' || (residencia === 'LI' && !liAntes); // art. 24.6; resto, art. 24.1 sin gastos
@@ -222,23 +222,24 @@
       avisos.push(liAntes
         ? 'Los gastos que ha indicado no se han deducido: hasta el 10/07/2021 el residente en Liechtenstein se trata como el de cualquier otro país (importe íntegro, artículo 24.1).'
         : 'Los gastos que ha indicado no se han deducido: el artículo 24.1 fija la base en el importe íntegro para quien no reside en la UE ni en el EEE.');
+      cods.push(liAntes ? 'gastosNoLI' : 'gastosNo241');
     }
-    if (deduce && gastosVacios) { avisos.push('No ha indicado gastos: se calcula sin deducir ninguno.'); }
+    if (deduce && gastosVacios) { avisos.push('No ha indicado gastos: se calcula sin deducir ninguno.'); cods.push('sinGastos'); }
     var neto = ingresos - gastosAplicados;
     if (neto < 0n) {
       neto = 0n;
-      avisos.push('Los gastos indicados superan a los ingresos: la base resulta cero. La calculadora no traslada excesos a otros años ni a otros inmuebles; si los gastos de intereses y reparación exceden de los ingresos, el artículo 23.1.a).1.º de la Ley 35/2006 prevé su aplicación en los cuatro años siguientes y aquí no se calcula.');
+      avisos.push('Los gastos indicados superan a los ingresos: la base resulta cero. La calculadora no traslada excesos a otros años ni a otros inmuebles; si los gastos de intereses y reparación exceden de los ingresos, el artículo 23.1.a).1.º de la Ley 35/2006 prevé su aplicación en los cuatro años siguientes y aquí no se calcula.'); cods.push('excesoGastos');
     }
     var base = divRedondeo(neto * tit, 10000n);
     var tipo = tipoGravamen(liAntes ? 'OTRO' : residencia);
     var cuota = divRedondeo(base * BigInt(tipo), 100n);
-    if (liAntes) { avisos.push(AVISO_LI_ANTES); }
-    else if (residencia === 'EEE' || residencia === 'LI') { avisos.push(AVISO_EEE); }
-    if (tit === 0n) { avisos.push('Con una titularidad del 0 % no hay renta que declarar.'); }
+    if (liAntes) { avisos.push(AVISO_LI_ANTES); cods.push('liAntes'); }
+    else if (residencia === 'EEE' || residencia === 'LI') { avisos.push(AVISO_EEE); cods.push('eee'); }
+    if (tit === 0n) { avisos.push('Con una titularidad del 0 % no hay renta que declarar.'); cods.push('tit0alq'); }
     return {
       ok: true, supuesto: 'alquiler', anio: anio, ingresosCents: ingresos, gastosAplicadosCents: gastosAplicados,
       rendimientoCents: neto, titularidadCentesimas: tit, baseCents: base, tipo: tipo, cuotaCents: cuota,
-      plazo: plazo('alquiler', anio, cuota), avisos: avisos
+      plazo: plazo('alquiler', anio, cuota), avisos: avisos, avisosCod: cods
     };
   }
 
