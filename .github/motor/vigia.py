@@ -19,6 +19,8 @@ Piezas (--piezas):
   semanal    informe de la semana (informe.py): Search Console 7 días frente a 7, consultas de Bing,
              índices y enlaces; lo añade el flujo los lunes a la ejecución diaria
   web        portada, formulario y sitemap en vivo (cada hora, aparte); caída = URGENTE
+  enlaces    enlaces externos de la web (BOE, AEAT, ATV…): rotos (404/410) o que ya no responden; va con
+             la semanal de los lunes y a mano con -f piezas=enlaces. Una petición por enlace, sin leer el cuerpo
 
 Respeta robots.txt (RFC 9309: si no se puede leer por error del servidor, no se entra) y pide como mucho
 UNA página por sitio y día entre fichas y listados (si un sitio tiene varias, rota entre días).
@@ -703,11 +705,82 @@ def pieza_web(cola, raiz, abre=None, ahora=None):
     return fallos
 
 
+# ------------------------------------------------------------------ enlaces externos
+EXTERNO = re.compile(r'href="(https?://[^"#\s]+)', re.I)
+PAUSA_SITIO = 1.5      # segundos entre dos peticiones al mismo sitio
+NO_CONCLUYE = {401, 403, 405, 429}   # el sitio no deja mirar a un programa: no dice si el enlace vive
+
+
+def enlaces_externos(raiz):
+    """{url: [páginas]} de los enlaces a otros sitios, sin las redirecciones de 2 kB."""
+    mapa = {}
+    for nombre in sorted(os.listdir(raiz)):
+        if not nombre.endswith(".html") or os.path.getsize(os.path.join(raiz, nombre)) < 2000:
+            continue
+        with open(os.path.join(raiz, nombre), encoding="utf-8", errors="replace") as f:
+            for url in EXTERNO.findall(f.read()):
+                url = html.unescape(url)
+                if urlparse(url).netloc.lower().removeprefix("www.") == DOMINIO:
+                    continue
+                mapa.setdefault(url, [])
+                if nombre not in mapa[url]:
+                    mapa[url].append(nombre)
+    return mapa
+
+
+def estado_enlace(url, abre=None):
+    """Código HTTP sin leer el cuerpo (0 = sin respuesta). Reintenta una vez los 5xx y la falta de red."""
+    abre = abre or _opener.open
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "es-ES,es;q=0.9"})
+    codigo = 0
+    for i in range(2):
+        try:
+            with abre(req, timeout=25) as r:
+                return getattr(r, "status", 200)
+        except urllib.error.HTTPError as e:
+            codigo = e.code
+            if e.code < 500:
+                return codigo
+        except Exception:
+            codigo = 0
+        if i == 0:
+            time.sleep(8)
+    return codigo
+
+
+def pieza_enlaces(cola, raiz, abre=None):
+    mapa = enlaces_externos(raiz)
+    ultimo = {}
+    for url in sorted(mapa):
+        sitio = urlparse(url).netloc.lower()
+        if not robots_permite(url, abre=abre):
+            continue
+        espera = PAUSA_SITIO - (time.monotonic() - ultimo.get(sitio, -99))
+        if espera > 0:
+            time.sleep(espera)
+        codigo = estado_enlace(url, abre=abre)
+        ultimo[sitio] = time.monotonic()
+        if codigo in NO_CONCLUYE or 200 <= codigo < 400:
+            continue
+        paginas = mapa[url]
+        donde = ", ".join(paginas[:3]) + (f" y {len(paginas) - 3} más" if len(paginas) > 3 else "")
+        if codigo in (404, 410):
+            que = f"enlace roto (HTTP {codigo}): {url}"
+        elif codigo == 399:
+            que = f"redirige a otro sitio, revisar que siga siendo la fuente: {url}"
+        else:
+            que = f"enlace que no responde ({'sin respuesta' if codigo == 0 else f'HTTP {codigo}'}): {url}"
+        cola.aviso("ENLACE", que, donde, fuente="enlaces", clave=f"ENLACE|{url}")
+    cola.revisada("enlaces")
+
+
 # ------------------------------------------------------------------ principal
 DIARIAS = ["fichas", "presencia", "caducados", "sitemap", "boe", "menciones", "indexacion"]
 
 
 def ejecuta_piezas(cola, piezas, raiz, datos):
+    if "semanal" in piezas and "enlaces" not in piezas:
+        piezas = list(piezas) + ["enlaces"]     # los enlaces externos, una vez por semana con el informe
     for p in piezas:
         try:
             if p == "fichas":
@@ -724,6 +797,8 @@ def ejecuta_piezas(cola, piezas, raiz, datos):
                 pieza_menciones(cola)
             elif p == "web":
                 pieza_web(cola, raiz)
+            elif p == "enlaces":
+                pieza_enlaces(cola, raiz)
             elif p == "semanal":
                 import informe
                 _, fallos = informe.ejecuta(cola, raiz)

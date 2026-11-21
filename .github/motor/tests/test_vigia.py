@@ -978,3 +978,64 @@ class TestFechaYaCerrada(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Enlaces(Base):
+    PAGINA = ('<html><body>' + 'x' * 2100 +
+              '<a href="https://www.boe.es/buscar/act.php?id=BOE-A-1&amp;p=2#a5">BOE</a>'
+              '<a href="https://sede.example/roto">roto</a>'
+              '<a href="https://sede.example/cerrado">403</a>'
+              '<a href="https://caido.example/x">caido</a>'
+              '<a href="https://grupoavanzaconsultores.es/contacto.html">propio</a></body></html>')
+
+    def setUp(self):
+        super().setUp()
+        self.web = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.web, True)
+        escribe(os.path.join(self.web, "guia.html"), self.PAGINA)
+        escribe(os.path.join(self.web, "otra.html"), self.PAGINA)
+        escribe(os.path.join(self.web, "redir.html"), '<a href="https://sede.example/roto">x</a>')
+
+    def test_extrae_sin_propios_ni_redirecciones(self):
+        mapa = vigia.enlaces_externos(self.web)
+        self.assertIn("https://www.boe.es/buscar/act.php?id=BOE-A-1&p=2", mapa)
+        self.assertNotIn("https://grupoavanzaconsultores.es/contacto.html", mapa)
+        self.assertEqual(mapa["https://sede.example/roto"], ["guia.html", "otra.html"])
+
+    def test_avisa_roto_y_caido_pero_no_403_y_resuelve(self):
+        abre = red({"https://www.boe.es/robots.txt": (404, ""), "https://sede.example/robots.txt": (404, ""),
+                    "https://caido.example/robots.txt": (404, ""), "https://www.boe.es/buscar": (200, "ok"),
+                    "https://sede.example/roto": (404, ""), "https://sede.example/cerrado": (403, ""),
+                    "https://caido.example/x": (503, "")})
+        c = self.cola()
+        vigia.pieza_enlaces(c, self.web, abre=abre)
+        c.cierra()
+        txt = "\n".join(self.lineas())
+        self.assertIn("enlace roto (HTTP 404): https://sede.example/roto", txt)
+        self.assertIn("guia.html, otra.html", txt)
+        self.assertIn("HTTP 503", txt)
+        self.assertNotIn("cerrado", txt)
+        self.assertNotIn("boe.es", txt)
+        self.assertEqual(sum(1 for m, u, *_ in abre.llamadas if u == "https://caido.example/x"), 2)
+        # Arreglado el enlace, la semana siguiente sale RESUELTO
+        escribe(os.path.join(self.web, "guia.html"), self.PAGINA.replace("/roto", "/nuevo"))
+        escribe(os.path.join(self.web, "otra.html"), self.PAGINA.replace("/roto", "/nuevo"))
+        abre2 = red({"https://": (200, "ok")})
+        vigia._robots.clear()
+        c2 = self.cola(HOY + dt.timedelta(days=7))
+        vigia.pieza_enlaces(c2, self.web, abre=abre2)
+        nuevas = c2.cierra()
+        self.assertTrue(any(l.startswith("- RESUELTO") and "sede.example/roto" in l for l in nuevas))
+
+    def test_robots_que_prohibe_no_se_pide(self):
+        abre = red({"https://": (200, "User-agent: *\nDisallow: /")})
+        c = self.cola()
+        vigia.pieza_enlaces(c, self.web, abre=abre)
+        self.assertTrue(all(u.endswith("robots.txt") for _, u, *_ in abre.llamadas))
+
+    def test_va_con_la_semanal(self):
+        llamadas = []
+        with mock.patch.object(vigia, "pieza_enlaces", lambda c, r: llamadas.append(r)), \
+                mock.patch("informe.ejecuta", lambda c, r: (None, [])):
+            vigia.ejecuta_piezas(self.cola(), ["semanal"], self.web, self.dir)
+        self.assertEqual(llamadas, [self.web])

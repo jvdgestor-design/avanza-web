@@ -43,6 +43,9 @@ p{margin:0;text-wrap:pretty}
 strong{font-weight:600}
 a{color:var(--navy);text-decoration:none}
 a:hover{color:var(--gold-deep)}
+/* Enlaces dentro del texto: subrayado fino, para que no dependan solo del color (WCAG 1.4.1) */
+main p a:not([class]),.prose li a:not([class]),.foot p a:not([class]){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent)}
+main p a:not([class]):hover,.prose li a:not([class]):hover{text-decoration-color:currentColor}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:1px}
 ::selection{background:var(--gold-soft);color:var(--ink)}
 .wrap{width:min(1160px,calc(100% - 56px));margin-inline:auto}
