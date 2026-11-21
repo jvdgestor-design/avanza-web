@@ -54,6 +54,9 @@ def cambios(repo, base, rev):
     salida = []
     for cab, ruta in zip(crudo[0::2], crudo[1::2]):
         partes = cab.split()
+        # Una ruta con salto de línea o con bytes que no son UTF-8 daría la misma lista que otra distinta.
+        if any(c in ruta for c in ("\n", "\r", "\ufffd")):
+            raise ErrorGit("ruta no admitida en el manifiesto")
         salida.append((partes[4][:1], ruta, partes[3]))
     return sorted(salida, key=lambda c: c[1].encode("utf-8"))
 

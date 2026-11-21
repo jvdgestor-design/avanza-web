@@ -188,6 +188,48 @@ class Rama(unittest.TestCase):
         git(self.repo, "commit", "-q", "-m", "un punto")
         self.assertNotEqual(repaso_sello.huella(repaso_sello.manifiesto(self.repo, "main", "HEAD")), self.huella)
 
+    # Rutas que harían la lista ambigua (repaso de ChatGPT del 22/11/2026, B1): árboles hechos con mktree, porque
+    # Windows no deja crear esos nombres en disco.
+    def rama_con_rutas(self, *rutas):
+        def crudo(*args, entrada=b""):
+            return subprocess.run(["git", "-c", "user.name=prueba", "-c", "user.email=prueba@example.invalid",
+                                   "-C", self.repo, *args], input=entrada, check=True,
+                                  capture_output=True).stdout.strip().decode("ascii")
+        blob = crudo("hash-object", "-w", "--stdin", entrada=b"<p>contenido</p>\n")
+        arbol = crudo("mktree", "-z", entrada=b"".join(b"100644 blob " + blob.encode() + b"\t" + r + b"\0"
+                                                       for r in sorted(rutas)))
+        commit = crudo("commit-tree", arbol, "-p", git(self.repo, "rev-parse", "main"), "-m", "rutas raras")
+        return commit
+
+    def test_ruta_que_no_es_utf8_se_rechaza(self):
+        # a\xfe.html y a\xff.html se leerían igual: no puede haber huella para ninguna de las dos.
+        for ruta in (b"a\xfe.html", b"a\xff.html"):
+            commit = self.rama_con_rutas(ruta)
+            with self.assertRaises(repaso_sello.ErrorGit):
+                repaso_sello.manifiesto(self.repo, "main", commit)
+            with self.assertRaises(repaso_sello.ErrorGit):
+                repaso_sello.comprobar(self.repo, "main", commit)
+
+    def test_ruta_con_salto_de_linea_se_rechaza(self):
+        # Una sola ruta «a.html\nA <sha256> b.html» daría la misma lista que las dos rutas a.html y b.html.
+        suma = "0" * 64
+        for ruta in (b"a.html\nA " + suma.encode() + b" b.html", b"a\r.html"):
+            commit = self.rama_con_rutas(ruta)
+            with self.assertRaises(repaso_sello.ErrorGit):
+                repaso_sello.manifiesto(self.repo, "main", commit)
+
+    def test_ruta_rara_sale_1_por_la_orden(self):
+        commit = self.rama_con_rutas(b"a\xfe.html")
+        programa = os.path.join(os.path.dirname(__file__), "..", "repaso_sello.py")
+        r = subprocess.run([sys.executable, "-B", programa, "comprobar", "--repo", self.repo, "--base", "main",
+                            "--rev", commit], capture_output=True)
+        self.assertEqual(r.returncode, 1, r.stdout)
+
+    def test_rutas_con_tilde_y_espacio_valen(self):
+        commit = self.rama_con_rutas("guía de alquiler.html".encode("utf-8"))
+        m = repaso_sello.manifiesto(self.repo, "main", commit)
+        self.assertIn(" guía de alquiler.html\n", m)
+
 
 if __name__ == "__main__":
     unittest.main()
