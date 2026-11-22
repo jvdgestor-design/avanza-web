@@ -104,13 +104,20 @@
   </div>
   <div class="form__pie">
     <button class="btn btn--primary" type="submit">Enviar consulta</button>
-    <p class="form__nota">Te contesta un asesor, no un formulario automático. Tus datos se usan para responderte y, si nos lo indicas, para saber cómo nos has conocido; si llegas desde uno de nuestros anuncios, se anota también: <a href="privacidad.html">política de privacidad</a>.</p>
+    <p class="form__nota">Te contesta un asesor, no un formulario automático. Tus datos se usan para responderte y, si nos lo indicas, para saber cómo nos has conocido; si llegas desde uno de nuestros anuncios, se anota también, con el nombre de la campaña: <a href="privacidad.html">política de privacidad</a>.</p>
   </div>
   <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>No podemos confirmar la recepción de tu consulta. Tu texto sigue en el formulario. Antes de repetir el envío, escríbenos por <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> o por <a href="mailto:avanza@grupoavanzaconsultores.es">correo electrónico</a>.</p>
 </form>
 <script>
 (function(){
   if (window.__avanzaEnvio) return; window.__avanzaEnvio = 1;
+  // Referencia aleatoria del envío, sin datos de la consulta. Si se repite el mismo texto, se repite la referencia.
+  var refPrevia = '', textoPrevio = '';
+  function nuevaRef(){
+    var r = 'W';
+    try { var al = new Uint8Array(6); (window.crypto || window.msCrypto).getRandomValues(al); for (var i = 0; i < al.length; i++) r += ('0' + al[i].toString(16)).slice(-2); } catch (err) { r = 'W'; while (r.length < 13) r += Math.floor(Math.random() * 16).toString(16); }
+    return r;
+  }
   document.addEventListener('submit', function(e){
     var f = e.target;
     if (!f || !f.classList || !f.classList.contains('form')) return;
@@ -129,8 +136,17 @@
     datos.set('pagina', window.location.pathname);
     var desde = '';
     try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
-    var anuncio = ''; try { if (new URLSearchParams(window.location.search).get('origen') === 'anuncio') anuncio = ' · Llegó por: anuncio de Google'; } catch (err) {}
-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + ' · Nos conoció por: ' + origen + ']');
+    var anuncio = '', campana = '';
+    try { var qs = new URLSearchParams(window.location.search); if (qs.get('origen') === 'anuncio') { anuncio = ' · Llegó por: anuncio de Google'; campana = ['utm_source','utm_campaign','utm_content'].map(function(k){ var v = qs.get(k) || ''; return /^[A-Za-z0-9_.-]{1,60}$/.test(v) ? v : ''; }).filter(Boolean).join(' / '); } } catch (err) {}
+    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + (campana ? ' · Campaña: ' + campana : '') + ' · Nos conoció por: ' + origen + ']');
+    var textoEnvio = [datos.get('nombre'), datos.get('contacto'), datos.get('caso')].join('\n');
+    if (!refPrevia || textoEnvio !== textoPrevio) { refPrevia = nuevaRef(); textoPrevio = textoEnvio; }
+    var ref = refPrevia;
+    datos.set('ref', ref);
+    datos.set('formato', 'json');
+    var prueba = false;
+    try { prueba = new URLSearchParams(window.location.search).get('prueba') === '1'; } catch (err) {}
+    if (prueba) datos.set('prueba', '1');
     var cuerpo = new URLSearchParams(datos);
     var finalizado = false;
     function mostrarAviso(){
@@ -142,14 +158,26 @@
       if (aviso) { aviso.hidden = false; aviso.focus(); }
     }
     var espera = setTimeout(mostrarAviso, 20000);
-    fetch(f.action, { method: 'POST', mode: 'no-cors', body: cuerpo })
-      .then(function(){
-        if (finalizado) return;
-        finalizado = true;
-        clearTimeout(espera);
-        window.location.href = 'gracias.html';
-      })
-      .catch(mostrarAviso);
+    function confirmar(j){
+      if (finalizado) return;
+      if (!j || j.ok !== true || j.ref !== ref) { mostrarAviso(); return; }
+      finalizado = true;
+      clearTimeout(espera);
+      window.location.href = 'gracias.html?ref=' + ref + (anuncio ? '&origen=anuncio' : '') + (prueba ? '&prueba=1' : '');
+    }
+    // Si la respuesta del envío no se puede leer, se pregunta por la referencia (sin datos de la consulta).
+    function consultarEstado(){
+      if (finalizado) return;
+      var cb = 'avanzaAcuse_' + ref;
+      window[cb] = confirmar;
+      var s = document.createElement('script');
+      s.src = f.action + '?ref=' + ref + '&callback=' + cb;
+      s.onerror = mostrarAviso;
+      document.head.appendChild(s);
+    }
+    fetch(f.action, { method: 'POST', body: cuerpo })
+      .then(function(r){ return r.json(); })
+      .then(confirmar, consultarEstado);
   });
 })();
 </script>
