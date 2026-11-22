@@ -5,7 +5,7 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 
 ## 2026-11-22
 
-(nada nuevo)
+- MOTOR · gsc ha fallado: No module named 'google.oauth2' · indexa.py · 2026-11-22
 
 ## 2026-11-21
 
