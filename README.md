@@ -63,3 +63,5 @@
 
 - [Aviso legal](https://grupoavanzaconsultores.es/aviso-legal.html)
 - [Política de privacidad](https://grupoavanzaconsultores.es/privacidad.html)
+- modelo-210-filing-service-spain.html — EN, servicio de presentación del Modelo 210 para no residentes (20/11/2026).
+- spanish-gift-tax-return-service.html — EN, servicio de declaración de donación de dinero desde el extranjero para residentes (20/11/2026).
