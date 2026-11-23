@@ -1,0 +1,6 @@
+wa.me en la página (commit 00d0a36f):
+72:class="btn btn--primary" href="https://wa.me/34614365547?text=Hola%2C%20quiero%20pre
+tel: en la página:
+73:href="tel:+34614365547">614 365 547
+109:href="tel:+34614365547">Llamar al 614 365 547
+120:href="tel:+34614365547">614 365 547

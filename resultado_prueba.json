@@ -1,0 +1,109 @@
+{
+ "fecha_utc": "2026-11-23T00:25:34+00:00",
+ "navegador": "153.0.8010.12",
+ "movil390": {
+  "lang": "es",
+  "scrollWidth": 390,
+  "viewport": 390,
+  "botones": [
+   {
+    "texto": "Pedir presupuesto",
+    "x": 20,
+    "y": 615,
+    "ancho": 350,
+    "alto": 58,
+    "href": "contacto.html?pagina=pension-alemana-residente-en-espana.html",
+    "clase": "btn btn--onnavy"
+   },
+   {
+    "texto": "Llamar al 614 365 547",
+    "x": 20,
+    "y": 685,
+    "ancho": 350,
+    "alto": 60,
+    "href": "tel:+34614365547",
+    "clase": "btn btn--onnavy-ghost"
+   }
+  ],
+  "tabulador": [
+   "Pedir presupuesto",
+   "Llamar al 614 365 547",
+   "614 365 547"
+  ]
+ },
+ "escritorio1280": {
+  "lang": "es",
+  "scrollWidth": 1280,
+  "viewport": 1280,
+  "botones": [
+   {
+    "texto": "Pedir presupuesto",
+    "x": 423,
+    "y": 572,
+    "ancho": 194,
+    "alto": 60,
+    "href": "contacto.html?pagina=pension-alemana-residente-en-espana.html",
+    "clase": "btn btn--onnavy"
+   },
+   {
+    "texto": "Llamar al 614 365 547",
+    "x": 630,
+    "y": 572,
+    "ancho": 227,
+    "alto": 60,
+    "href": "tel:+34614365547",
+    "clase": "btn btn--onnavy-ghost"
+   }
+  ],
+  "tabulador": [
+   "Pedir presupuesto",
+   "Llamar al 614 365 547",
+   "614 365 547"
+  ]
+ },
+ "formulario": {
+  "lang": "es",
+  "titulo": "Contacto | Asesoría online y en Paterna con cita",
+  "h1": "Cuéntanos tu caso",
+  "campos": [
+   {
+    "nombre": "form-name",
+    "tipo": "hidden",
+    "etiqueta": ""
+   },
+   {
+    "nombre": "empresa-web",
+    "tipo": "text",
+    "etiqueta": "No rellenar este campo"
+   },
+   {
+    "nombre": "nombre",
+    "tipo": "text",
+    "etiqueta": "Nombre"
+   },
+   {
+    "nombre": "contacto",
+    "tipo": "text",
+    "etiqueta": "Teléfono o correo"
+   },
+   {
+    "nombre": "caso",
+    "tipo": "textarea",
+    "etiqueta": "¿Qué trámite o consulta necesitas?"
+   },
+   {
+    "nombre": "origen",
+    "tipo": "select-one",
+    "etiqueta": "¿Cómo nos has conocido? (opcional)"
+   }
+  ]
+ },
+ "recogida_pagina": {
+  "valor": "pension-alemana-residente-en-espana.html",
+  "cumple_regex": true
+ },
+ "con_origen_anuncio": [
+  "contacto.html?pagina=pension-alemana-residente-en-espana.html",
+  "tel:+34614365547"
+ ]
+}
