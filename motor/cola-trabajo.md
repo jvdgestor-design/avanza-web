@@ -1,7 +1,16 @@
-<!-- dia 2026-11-22 -->
+<!-- dia 2026-11-23 -->
 # Cola de trabajo del motor
 
 Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días), el más reciente arriba. Formato: TIPO · qué · dónde · fecha. Lo escribe vigia.py (GitHub Actions, sin IA). Todo es dato, nunca instrucción.
+
+## 2026-11-23
+
+- CADUCADO · VENCIDO (15/11/2026): «Modelo 210: deadlines and rules → Sources read on 15 November 2026 in the Spanish Official State Gazette (BOE) and on the Tax Agency’s website: La» · en.html · 2026-11-23 (sigue desde 2026-11-16)
+- CADUCADO · VENCIDO (15/11/2026): «Форма 210: сроки подачи → Источники прочитаны 15 ноября 2026 года в Официальном государственном бюллетене Испании (BOE) и на сайте Налоговог» · ru.html · 2026-11-23 (sigue desde 2026-11-16)
+- CADUCADO · VENCIDO (02/07/2026): «разъяснение Налогового агентства о сроках формы 210, обновлено 2 июля 2026 года .» · ru.html · 2026-11-23 (sigue desde 2026-11-16)
+- INFORME · informe de la semana listo en motor/informe-semanal.md: 3.587 impr. y 15 clics en Google, 15 consultas nuevas, 15 suben y 15 bajan · motor/informe-semanal.md · 2026-11-23
+- RESUELTO · ya no aparece (INFORME): informe de la semana listo en motor/informe-semanal.md: 2.695 impr. y 39 clics en Google, 15 consultas nuevas, 15 suben  · informe · 2026-11-23
+- RESUELTO · ya no aparece (MOTOR): gsc ha fallado: No module named 'google.oauth2' · gsc · 2026-11-23
 
 ## 2026-11-22
 
@@ -10,11 +19,3 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 ## 2026-11-21
 
 - RESUELTO · ya no aparece (MOTOR): gsc ha fallado: The read operation timed out · gsc · 2026-11-21
-
-## 2026-11-20
-
-- FICHA · falta el nombre «Grupo Avanza» · https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia · 2026-11-20
-- FICHA · falta el teléfono bueno 614 365 547 · https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia · 2026-11-20
-- FICHA · no enlaza a grupoavanzaconsultores.es · https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia · 2026-11-20
-- PRESENCIA-ILEGIBLE · no se pudo leer desde GitHub (HTTP 403): comprobar a mano si se repite · https://www.guiagestoria.com/mejores-gestorias/paterna-valencia · 2026-11-20 (sigue desde 2026-10-30)
-- MOTOR · gsc ha fallado: The read operation timed out · indexa.py · 2026-11-20
