@@ -1,0 +1,7 @@
+salud.py · commit 17f01a80c5aaaf22ac103f8ffb8d4a23a713320c · 2026-11-23 14:46 UTC
+# Salud de grupoavanzaconsultores.es
+
+196 URL en el sitemap · 196 páginas revisadas · solo repositorio
+Errores: 0 · Avisos: 0
+
+No medido aquí: desbordamiento a 390 px.

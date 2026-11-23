@@ -1,0 +1,50 @@
+{
+ "fecha_utc": "2026-11-23T14:46:23+00:00",
+ "navegador": "153.0.8010.12",
+ "movil390": {
+  "enlaces": 1,
+  "texto": "See a worked example of the 3% withholding and Form 210",
+  "scrollWidth": 390,
+  "viewport": 390,
+  "caja_enlace": {
+   "x": 20,
+   "y": 1125,
+   "width": 350,
+   "height": 51
+  },
+  "foco": "#sale-tax-example",
+  "hash": "#sale-tax-example",
+  "h3_top_tras_salto": 106,
+  "h3_texto": "How the figures work on a €200,000 sale",
+  "ids_repetidos": 1,
+  "botones_cabecera": [
+   "Request a quote -> en-contact.html?pagina=selling-property-spain-non-resident.h",
+   "avanza@grupoavanzaconsultores.es -> mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%",
+   "Request a quote -> en-contact.html?pagina=selling-property-spain-non-resident.h",
+   "avanza@grupoavanzaconsultores.es -> mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%"
+  ]
+ },
+ "escritorio1280": {
+  "enlaces": 1,
+  "texto": "See a worked example of the 3% withholding and Form 210",
+  "scrollWidth": 1280,
+  "viewport": 1280,
+  "caja_enlace": {
+   "x": 56,
+   "y": 681,
+   "width": 467,
+   "height": 23
+  },
+  "foco": "#sale-tax-example",
+  "hash": "#sale-tax-example",
+  "h3_top_tras_salto": 106,
+  "h3_texto": "How the figures work on a €200,000 sale",
+  "ids_repetidos": 1,
+  "botones_cabecera": [
+   "Request a quote -> en-contact.html?pagina=selling-property-spain-non-resident.h",
+   "avanza@grupoavanzaconsultores.es -> mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%",
+   "Request a quote -> en-contact.html?pagina=selling-property-spain-non-resident.h",
+   "avanza@grupoavanzaconsultores.es -> mailto:avanza@grupoavanzaconsultores.es?subject=Quote%20for%"
+  ]
+ }
+}
