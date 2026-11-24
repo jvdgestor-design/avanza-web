@@ -1,0 +1,35 @@
+diff --git a/pension-estados-unidos-residente-en-espana.html b/pension-estados-unidos-residente-en-espana.html
+index 9ae3832..285f13c 100644
+--- a/pension-estados-unidos-residente-en-espana.html
++++ b/pension-estados-unidos-residente-en-espana.html
+@@ -47,7 +47,7 @@
+     <nav class="topnav" id="topnav" aria-label="Principal"><a href="/#servicios">Servicios</a><a href="tramites.html">Trámites</a><a href="/#despacho">Sobre el despacho</a><a href="/#opiniones">Opiniones</a><a href="/#guias">Guías</a><a href="calendario-fiscal.html">Calendario fiscal</a><a href="/#preguntas">Preguntas</a><a href="contacto.html">Contacto</a></nav>
+     <div class="topbar__acc">
+       <a class="langsw" href="us-social-security-pension-tax-spain-resident.html" hreflang="en" lang="en" aria-label="English"><span class="langsw__full">English</span><span class="langsw__short" aria-hidden="true">EN</span></a>
+-      <a class="btn btn--primary btn--sm topbar__cta" href="contacto.html">Consultar mi caso</a>
++      <a class="btn btn--primary btn--sm topbar__cta" href="contacto.html?pagina=pension-estados-unidos-residente-en-espana.html">Consultar mi caso</a>
+       <button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Abrir el menú">
+         <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+         <span class="navtoggle__txt">Menú</span>
+diff --git a/pension-italiana-residente-en-espana.html b/pension-italiana-residente-en-espana.html
+index 93cdf36..de1ea29 100644
+--- a/pension-italiana-residente-en-espana.html
++++ b/pension-italiana-residente-en-espana.html
+@@ -53,7 +53,7 @@
+ <a class="langsw" href="de-italienische-rente-wohnsitz-spanien.html" hreflang="de" lang="de" aria-label="Deutsch"><span class="langsw__full">Deutsch</span><span class="langsw__short" aria-hidden="true">DE</span></a>
+ 
+ 
+-      <a class="btn btn--primary btn--sm topbar__cta" href="contacto.html">Consultar mi caso</a>
++      <a class="btn btn--primary btn--sm topbar__cta" href="contacto.html?pagina=pension-italiana-residente-en-espana.html">Consultar mi caso</a>
+       <button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Abrir el menú">
+         <span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+         <span class="navtoggle__txt">Menú</span>
+@@ -81,7 +81,7 @@
+     <aside class="card" style="position:sticky;top:96px">
+       <h3>En resumen</h3>
+       <ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Pensión por un empleo anterior: tributa en España</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Función pública italiana: en Italia</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>En España si eres residente y nacional español</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Se declara en la Renta; límite de 15.876 euros, sin contar la pensión exenta</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Certificado de residencia si Italia lo pide</li></ul>
+-      <p style="margin-top:18px"><a class="btn btn--primary btn--sm" href="contacto.html">Consultar mi caso</a></p>
++      <p style="margin-top:18px"><a class="btn btn--primary btn--sm" href="contacto.html?pagina=pension-italiana-residente-en-espana.html">Consultar mi caso</a></p>
+     </aside>
+   </div>
+ </section>

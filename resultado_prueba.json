@@ -1,0 +1,127 @@
+{
+ "fecha_utc": "2026-11-24T09:05:21+00:00",
+ "navegador": "153.0.8010.12",
+ "pension-italiana-residente-en-espana.html": {
+  "390": {
+   "scrollWidth": 390,
+   "enlaces_al_destino": [
+    {
+     "texto": "Consultar mi caso",
+     "en_cabecera": true,
+     "visible": false,
+     "ancho": 0
+    },
+    {
+     "texto": "Consultar mi caso",
+     "en_cabecera": false,
+     "visible": true,
+     "ancho": 183
+    }
+   ],
+   "contacto_sin_origen": [
+    "Contacto"
+   ],
+   "tab_real": [
+    {
+     "pulsacion": 15,
+     "en_cabecera": false
+    }
+   ],
+   "tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "1280": {
+   "scrollWidth": 1280,
+   "enlaces_al_destino": [
+    {
+     "texto": "Consultar mi caso",
+     "en_cabecera": true,
+     "visible": true,
+     "ancho": 185
+    },
+    {
+     "texto": "Consultar mi caso",
+     "en_cabecera": false,
+     "visible": true,
+     "ancho": 183
+    }
+   ],
+   "contacto_sin_origen": [
+    "Contacto"
+   ],
+   "tab_real": [
+    {
+     "pulsacion": 14,
+     "en_cabecera": true
+    },
+    {
+     "pulsacion": 23,
+     "en_cabecera": false
+    }
+   ],
+   "tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  }
+ },
+ "pension-estados-unidos-residente-en-espana.html": {
+  "390": {
+   "scrollWidth": 390,
+   "enlaces_al_destino": [
+    {
+     "texto": "Consultar mi caso",
+     "en_cabecera": true,
+     "visible": false,
+     "ancho": 0
+    }
+   ],
+   "contacto_sin_origen": [
+    "Contacto"
+   ],
+   "tab_real": [],
+   "tras_enter": "/comprar-vivienda-en-espana-extranjero.html",
+   "form": {
+    "lang": "es",
+    "boton": null,
+    "pagina": null,
+    "lee_pagina": false
+   }
+  },
+  "1280": {
+   "scrollWidth": 1280,
+   "enlaces_al_destino": [
+    {
+     "texto": "Consultar mi caso",
+     "en_cabecera": true,
+     "visible": true,
+     "ancho": 185
+    }
+   ],
+   "contacto_sin_origen": [
+    "Contacto"
+   ],
+   "tab_real": [
+    {
+     "pulsacion": 12,
+     "en_cabecera": true
+    }
+   ],
+   "tras_enter": "/contacto.html?pagina=pension-estados-unidos-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-estados-unidos-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  }
+ }
+}
