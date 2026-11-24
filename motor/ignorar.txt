@@ -1,2 +1,5 @@
 # Claves de aviso silenciadas a mano (falsos positivos). Una por línea, tal como salen en estado.json.
 # Ejemplo: CADUCADO|pagina.html|1a2b3c4d5e  # motivo y fecha
+CADUCADO|en.html|2026-11-15|vencido  # Modelo 210: fecha de consulta de las fuentes (24/11/2026)
+CADUCADO|ru.html|2026-11-15|vencido  # Modelo 210: fecha de consulta de las fuentes (24/11/2026)
+CADUCADO|ru.html|2026-07-02|vencido  # Modelo 210: fecha de actualización de la ficha de la AEAT (24/11/2026)
