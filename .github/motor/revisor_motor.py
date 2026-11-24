@@ -68,6 +68,17 @@ def veredicto(respuesta, fin="end_turn"):
     return [l.strip("*_ ").strip() for l in lineas] == ["VEREDICTO: LIMPIO"], "\n".join(lineas)
 
 
+def motivo(e):
+    """El porqué de un error de la API, en una línea corta y sin órdenes del runner; «sin saldo» si es eso."""
+    try:
+        m = str(json.loads(e.read().decode("utf-8", "replace"))["error"]["message"])
+    except Exception:
+        return ""
+    if "credit balance is too low" in m:
+        return " (sin saldo en la cuenta de la API: hay que recargarlo)"
+    return " (" + limpio(" ".join(m.split()))[:200] + ")"
+
+
 def llamar(clave, contenido):
     cuerpo = json.dumps({"model": MODELO, "max_tokens": 16000, "system": ENCARGO,
                          "messages": [{"role": "user", "content": contenido}]}).encode()
@@ -82,7 +93,7 @@ def llamar(clave, contenido):
                 texto = "".join(b.get("text", "") for b in datos.get("content", []) if b.get("type") == "text")
                 return (texto, datos.get("stop_reason")), ""
         except urllib.error.HTTPError as e:
-            msg = f"La API de Claude respondió {e.code}"
+            msg = f"La API de Claude respondió {e.code}" + motivo(e)
             if e.code not in (429, 500, 502, 503, 529):
                 break
         except Exception as e:  # tiempo, red
