@@ -345,6 +345,7 @@ def main():
     revisado = {x.strip() for x in a.revisado.split(";") if x.strip()}
 
     errores, cambios, avisos, sin_red = [], [], [], []
+    pendientes = {}
     por_id = {}  # BOE-A -> {"claves": set, "paginas": set, "ficha": dict}
     previo_por_id = {v.get("id"): v for v in previo.values() if isinstance(v, dict) and v.get("id")}
 
@@ -419,8 +420,10 @@ def main():
                 guardar_huella = anterior.get("huella", guardar_huella)
                 guardar = antes  # sigue en rojo cada día hasta que se marque como revisada
                 detalle = "contenido o referencias del XML modificados" if contenido_cambiado else "fecha actualizada"
-                cambios.append(f"{nombres} ({boe_id}): {detalle}, {fi['actualizacion'][:8]} (antes: {antes[:20]}). "
-                               f"Revisar contra el BOE: {paginas}")
+                cambio = (f"{nombres} ({boe_id}): {detalle}, {fi['actualizacion'][:8]} (antes: {antes[:20]}). "
+                          f"Revisar contra el BOE: {paginas}")
+                cambios.append(cambio)
+                pendientes[boe_id] = hashlib.sha1(cambio.encode()).hexdigest()[:12]
         for c in info["claves"]:
             nuevo[c] = {"id": boe_id, "actualizacion": guardar, "titulo": fi["titulo"][:160]}
             if guardar_huella:
@@ -471,6 +474,10 @@ def main():
     salida = cabeza + "\n## Vigiladas\n\n" + "\n".join(f"- {x}" for x in vigiladas)
     print(salida)
     if os.environ.get("GITHUB_ACTIONS"):
+        # Registro compacto para los lectores. GitHub recorta el resumen y limita los errores individuales.
+        anota("notice", "BOE-PENDIENTES/1 " + json.dumps({
+            "normas": pendientes, "completa": not sin_red and not errores,
+        }, separators=(",", ":")))
         anota("notice", cabeza)
         trozo, trozos = "", []
         for linea in vigiladas:

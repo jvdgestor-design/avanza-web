@@ -74,13 +74,13 @@ class FlujoVigilancia(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.estado = str(Path(self.tmp.name) / "estado.json")
 
-    def ejecutar(self, xml=XML, extra=(), citas=None, error=None):
+    def ejecutar(self, xml=XML, extra=(), citas=None, error=None, github=""):
         salida = io.StringIO()
         with mock.patch.object(sys, "argv", ["boe.py", "--estado", self.estado, *extra]), \
              mock.patch.object(boe, "citas_de", return_value=citas or {IDENT: {"beckham-law-spain-special-tax-regime.html"}}), \
              mock.patch.object(boe, "pide", return_value=xml, side_effect=error), \
              mock.patch.object(boe, "resuelve", return_value=(None, "sin identificar")), \
-             mock.patch.dict(boe.os.environ, {"GITHUB_ACTIONS": "", "GITHUB_STEP_SUMMARY": ""}), \
+             mock.patch.dict(boe.os.environ, {"GITHUB_ACTIONS": github, "GITHUB_STEP_SUMMARY": ""}), \
              contextlib.redirect_stdout(salida), self.assertRaises(SystemExit) as fin:
             boe.main()
         return fin.exception.code, salida.getvalue()
@@ -96,6 +96,21 @@ class FlujoVigilancia(unittest.TestCase):
             self.assertIn("beckham-law-spain-special-tax-regime.html", salida)
         self.assertEqual(self.ejecutar(cambio, ("--revisado", IDENT))[0], 0)
         self.assertEqual(self.ejecutar(cambio)[0], 0)
+
+    def test_registro_github_distingue_cambio_y_error(self):
+        self.ejecutar(extra=("--inicial",))
+        cambio = XML.replace(b"Se aprueba", b"Se modifica")
+        codigo, salida = self.ejecutar(cambio, github="true")
+        registro = next(linea for linea in salida.splitlines() if linea.startswith("::notice::BOE-PENDIENTES/1 "))
+        datos = json.loads(registro.split(" ", 1)[1])
+        self.assertEqual(codigo, 1)
+        self.assertTrue(datos["completa"])
+        self.assertRegex(datos["normas"][IDENT], r"^[0-9a-f]{12}$")
+
+        codigo, salida = self.ejecutar(error=boe.SinRespuesta("fallo de red"), github="true")
+        registro = next(linea for linea in salida.splitlines() if linea.startswith("::notice::BOE-PENDIENTES/1 "))
+        self.assertEqual(codigo, 0)
+        self.assertEqual(json.loads(registro.split(" ", 1)[1]), {"normas": {}, "completa": False})
 
     def test_nueva_fecha_sigue_rojo_hasta_revision(self):
         self.ejecutar(extra=("--inicial",))

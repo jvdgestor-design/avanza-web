@@ -594,6 +594,63 @@ def reescribe_sitemap(raiz):
     return nuevo != xml
 
 
+def normas_boe_pendientes(anotaciones):
+    """Norma -> (huella, texto), y si la vigilancia pudo comprobar todas las normas."""
+    programa = "BOE-PENDIENTES/1 "
+    patron = (r"\((BOE-A-\d{4}-\d+)\)(?: actualizada el |"
+              r": (?:fecha actualizada|contenido o referencias del XML modificados), .+\. Revisar contra el BOE:)")
+    anteriores = {}
+    registro, resumen = None, ""
+    sin_red = False
+    for anotacion in anotaciones:
+        nivel = anotacion.get("annotation_level")
+        mensaje = anotacion.get("message") or ""
+        if nivel == "notice" and mensaje.startswith(programa):
+            registro = mensaje[len(programa):]
+        elif nivel == "notice" and mensaje.startswith("# Vigilancia del BOE\n"):
+            resumen = mensaje
+        elif nivel == "warning" and mensaje.startswith("BOE caído"):
+            sin_red = True
+        elif nivel == "failure":
+            primera = mensaje.partition("\n")[0].rstrip("\r")
+            coincidencia = re.search(patron, primera)
+            if coincidencia:
+                anteriores[coincidencia[1]] = (hashlib.sha1(primera.encode()).hexdigest()[:12], primera)
+
+    if registro is None:
+        recuento = re.search(
+            r"^\d+ normas vigiladas · (\d+) cambiadas sin revisar · (\d+) errores\b", resumen, re.MULTILINE)
+        nuevos_datos = ("Repite la Vigilancia del BOE en main con la versión que emite el registro completo "
+                        "o indica a la Revisión del BOE los identificadores verificados.")
+        if recuento is None:
+            if anteriores:
+                raise RuntimeError(f"Falta el recuento de la Vigilancia del BOE histórica. {nuevos_datos}")
+            return {}, False
+        declaradas = int(recuento[1])
+        if len(anteriores) != declaradas:
+            raise RuntimeError("Vigilancia del BOE histórica incompleta: "
+                               f"se identifican {len(anteriores)} de {declaradas} normas declaradas. {nuevos_datos}")
+        completa = declaradas == 0 and int(recuento[2]) == 0 and not sin_red and "BOE caído hoy" not in resumen
+        return anteriores, completa
+
+    try:
+        datos = json.loads(registro)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("registro de pendientes de la Vigilancia del BOE incompleto") from exc
+    normas = datos.get("normas") if isinstance(datos, dict) else None
+    if not isinstance(normas, dict) or type(datos.get("completa")) is not bool or any(
+            not re.fullmatch(r"BOE-A-\d{4}-\d+", norma) or not isinstance(huella, str)
+            or not re.fullmatch(r"[0-9a-f]{12}", huella) for norma, huella in normas.items()):
+        raise RuntimeError("registro de pendientes de la Vigilancia del BOE inválido")
+
+    pendientes = {}
+    for norma, huella in normas.items():
+        detalle = anteriores.get(norma)
+        texto = detalle[1] if detalle else f"{norma}: cambio pendiente de revisar contra el BOE"
+        pendientes[norma] = (huella, texto)
+    return pendientes, datos["completa"]
+
+
 def pieza_boe(cola, gh=None):
     repo = os.environ.get("GITHUB_REPOSITORY")
     if not (repo and os.environ.get("GH_TOKEN")):
@@ -607,18 +664,21 @@ def pieza_boe(cola, gh=None):
         return json.loads(r.stdout)
 
     gh = gh or _gh
-    runs = gh(f"repos/{repo}/actions/workflows/boe.yml/runs?status=completed&per_page=10").get("workflow_runs")
-    validos = [r for r in runs or [] if r.get("conclusion") in ("success", "failure")]
-    if not validos:        # canceladas u omitidas no valen para cerrar normas
-        raise RuntimeError("la Vigilancia del BOE no tiene ejecuciones válidas recientes")
-    run = validos[0]
+    runs = gh(f"repos/{repo}/actions/workflows/boe.yml/runs?branch=main&status=completed&per_page=10")
+    run = next((r for r in runs.get("workflow_runs", [])
+                if r.get("head_branch") == "main" and r.get("conclusion") in ("success", "failure")), None)
+    if run is None:
+        raise RuntimeError("la Vigilancia del BOE no tiene ejecuciones válidas recientes en main")
+    anotaciones = []
     for job in gh(f"repos/{repo}/actions/runs/{run['id']}/jobs").get("jobs", []):
-        for an in gh(f"repos/{repo}/check-runs/{job['id']}/annotations?per_page=100"):
-            msg = an.get("message") or ""
-            if an.get("annotation_level") == "failure" and "actualizada el" in msg:
-                cola.aviso("NORMA", msg.splitlines()[0][:400], f"Vigilancia del BOE run {run['id']}",
-                           fuente="boe", clave=f"NORMA|{hashlib.sha1(msg.encode()).hexdigest()[:12]}")
-    cola.revisada("boe")
+        anotaciones.extend(gh(f"repos/{repo}/check-runs/{job['id']}/annotations?per_page=100"))
+    pendientes, completa = normas_boe_pendientes(anotaciones)
+    if run["conclusion"] == "failure" and not pendientes:
+        raise RuntimeError(f"Vigilancia del BOE run {run['id']} en rojo sin normas pendientes identificadas")
+    for huella, mensaje in pendientes.values():
+        cola.aviso("NORMA", mensaje[:400], f"Vigilancia del BOE run {run['id']}", fuente="boe", clave=f"NORMA|{huella}")
+    if completa:
+        cola.revisada("boe")
 
 
 def pieza_menciones(cola, abre=None):

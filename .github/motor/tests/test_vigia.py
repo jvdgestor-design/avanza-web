@@ -347,13 +347,89 @@ class Main(Base):
 
             def gh(ruta):
                 if "/workflows/" in ruta:
-                    return {"workflow_runs": [{"id": 8, "conclusion": "cancelled"}, {"id": 9, "conclusion": "failure"}]}
+                    self.assertIn("?branch=main&", ruta)
+                    return {"workflow_runs": [
+                        {"id": 7, "head_branch": "motor/prueba", "conclusion": "success"},
+                        {"id": 8, "head_branch": "main", "conclusion": "cancelled"},
+                        {"id": 9, "head_branch": "main", "conclusion": "failure"},
+                    ]}
                 if "/jobs" in ruta:
+                    self.assertTrue(ruta.endswith("/runs/9/jobs"), ruta)
                     return {"jobs": [{"id": 5}]}
-                return [{"annotation_level": "failure",
-                         "message": "Ley 35/2006 (BOE-A-2006-20764) actualizada el 29/10/2026: revisar irpf.html"}]
+                return [
+                    {"annotation_level": "notice", "message": "# Vigilancia del BOE\n\n"
+                     "87 normas vigiladas · 1 cambiadas sin revisar · 1 errores"},
+                    {"annotation_level": "failure",
+                     "message": "Ley 35/2006 (BOE-A-2006-20764) actualizada el 29/10/2026: revisar irpf.html"},
+                ]
             vigia.pieza_boe(c, gh=gh)
         self.assertIn("NORMA · Ley 35/2006", "\n".join(c.cierra()))
+
+    def test_boe_reconoce_los_formatos_emitidos_por_la_vigilancia(self):
+        norma = "Ley 35/2006 = BOE-A-2006-20764 (BOE-A-2006-20764)"
+        resumen = {"annotation_level": "notice", "message": "# Vigilancia del BOE\n\n"
+                   "87 normas vigiladas · 1 cambiadas sin revisar · 0 errores"}
+        for cambio in ("fecha actualizada", "contenido o referencias del XML modificados"):
+            with self.subTest(cambio=cambio):
+                msg = f"{norma}: {cambio}, 20261118 (antes: 20261111T094820Z). Revisar contra el BOE: irpf.html"
+                pendientes, completa = vigia.normas_boe_pendientes(
+                    [resumen, {"annotation_level": "failure", "message": msg}])
+                self.assertEqual(pendientes["BOE-A-2006-20764"][1], msg)
+                self.assertFalse(completa)
+                self.assertEqual(vigia.normas_boe_pendientes([{"annotation_level": "warning", "message": msg}]),
+                                 ({}, False))
+
+    def test_boe_rechaza_anotaciones_historicas_parciales(self):
+        resumen = {"annotation_level": "notice", "message": "# Vigilancia del BOE\n\n"
+                   "87 normas vigiladas · 13 cambiadas sin revisar · 17 errores"}
+        cambios = [{"annotation_level": "failure",
+                   "message": f"Ley (BOE-A-2026-{n}) actualizada el 24/11/2026: revisar irpf.html"}
+                   for n in range(9)]
+        with self.assertRaisesRegex(RuntimeError, "9 de 13.*en main.*identificadores verificados"):
+            vigia.normas_boe_pendientes([resumen, *cambios, cambios[0]])
+        with self.assertRaisesRegex(RuntimeError, "Falta el recuento"):
+            vigia.normas_boe_pendientes(cambios)
+
+    def test_boe_lee_todas_las_normas_del_registro_compacto(self):
+        normas = {f"BOE-A-2026-{n}": f"{n:012x}" for n in range(13)}
+        registro = "BOE-PENDIENTES/1 " + json.dumps({"normas": normas, "completa": False})
+        anotaciones = [{"annotation_level": "notice", "message": registro},
+                       {"annotation_level": "notice", "message": "# Vigilancia del BOE\n\n"
+                        "87 normas vigiladas · 13 cambiadas sin revisar · 17 errores"}]
+        pendientes, completa = vigia.normas_boe_pendientes(anotaciones)
+        self.assertEqual({norma: huella for norma, (huella, _) in pendientes.items()}, normas)
+        self.assertFalse(completa)
+
+    def test_boe_distingue_vigilancia_limpia_y_caida_temporal(self):
+        resumen = "# Vigilancia del BOE\n\n87 normas vigiladas · 0 cambiadas sin revisar · 0 errores\n"
+        for aviso, completa in (("", True), ("\n## Avisos\n\n- BOE caído hoy (1 norma sin comprobar)", False)):
+            an = {"annotation_level": "notice", "message": resumen + aviso}
+            self.assertEqual(vigia.normas_boe_pendientes([an]), ({}, completa))
+
+    def test_boe_rechaza_registro_compacto_incompleto(self):
+        an = {"annotation_level": "notice", "message": 'BOE-PENDIENTES/1 {"normas":'}
+        with self.assertRaisesRegex(RuntimeError, "Vigilancia del BOE incompleto"):
+            vigia.normas_boe_pendientes([an])
+
+    def test_boe_en_rojo_sin_avisos_identificados_conserva_los_pendientes(self):
+        anterior = self.cola()
+        anterior.aviso("NORMA", "Revisar el IRPF", "BOE", fuente="boe", clave="NORMA|irpf")
+        anterior.cierra()
+        actual = self.cola(HOY + dt.timedelta(days=1))
+
+        def gh(ruta):
+            if "/workflows/" in ruta:
+                return {"workflow_runs": [{"id": 9, "head_branch": "main", "conclusion": "failure"}]}
+            if "/jobs" in ruta:
+                return {"jobs": [{"id": 5}]}
+            return [{"annotation_level": "failure",
+                     "message": "Vigilancia del BOE: 1 error de identificación"}]
+
+        with mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "a/b", "GH_TOKEN": "t"}):
+            with self.assertRaisesRegex(RuntimeError, "en rojo sin normas pendientes identificadas"):
+                vigia.pieza_boe(actual, gh=gh)
+        self.assertNotIn("RESUELTO", "\n".join(actual.cierra()))
+        self.assertIn("NORMA|irpf", actual.estado["avisos"])
 
 
 class Menciones(Base):
@@ -747,7 +823,10 @@ class SegundaVuelta(Base):
         c = self.cola()
         with mock.patch.dict(os.environ, {"GITHUB_REPOSITORY": "a/b", "GH_TOKEN": "t"}):
             with self.assertRaises(RuntimeError):
-                vigia.pieza_boe(c, gh=lambda r: {"workflow_runs": [{"id": 1, "conclusion": "cancelled"}, {"id": 2, "conclusion": "skipped"}]})
+                vigia.pieza_boe(c, gh=lambda r: {"workflow_runs": [
+                    {"id": 1, "head_branch": "main", "conclusion": "cancelled"},
+                    {"id": 2, "head_branch": "main", "conclusion": "skipped"},
+                ]})
 
 
 class SegundaVueltaIndexacion(Indexacion):
