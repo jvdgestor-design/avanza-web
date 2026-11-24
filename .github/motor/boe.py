@@ -119,6 +119,22 @@ DOCUMENTOS_XML = {
     "BOE-A-2023-17429": ("Orden HFP/886/2023,", "modelo 721", "hacienda"),
     "BOE-A-2025-11959": ("Ley 5/2025, de 30 de mayo,", "generalitat", "valenciana"),
     "BOE-A-2026-19331": ("Ley 5/2026, de 31 de julio,", "generalitat", "valenciana"),
+    # Identidad y emisor contrastados en el diario BOE el 24/11/2026.
+    "BOE-A-2008-18633": (
+        "Denuncia del Convenio entre España y Dinamarca", "doble imposición",
+        "ministerio de asuntos exteriores y de cooperación",
+    ),
+    "BOE-A-2026-23755": (
+        "Resolución de 12 de noviembre de 2026, del Congreso de los Diputados,",
+        "acuerdo de convalidación del real decreto-ley 29/2026,", "cortes generales",
+    ),
+    "BOE-A-2014-12327": (
+        "Ley 26/2014, de 27 de noviembre,", "otras normas tributarias", "jefatura del estado",
+    ),
+    "BOE-A-2024-1772": (
+        "Orden HAC/56/2024, de 25 de enero,", "modelos de autoliquidación 123, 210, 216",
+        "ministerio de hacienda",
+    ),
 }
 CITAS_XML = {
     "Orden HAC/623/2026": "BOE-A-2026-13573",
@@ -126,6 +142,8 @@ CITAS_XML = {
     "Orden HFP/886/2023": "BOE-A-2023-17429",
     "Ley 5/2025": "BOE-A-2025-11959",
     "Ley 5/2026": "BOE-A-2026-19331",
+    "Ley 26/2014": "BOE-A-2014-12327",
+    "Orden HAC/56/2024": "BOE-A-2024-1772",
 }
 SEMILLA.update(CITAS_XML)
 SEMILLA["Ley Orgánica 4/2000"] = "BOE-A-2000-544"
