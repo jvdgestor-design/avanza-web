@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin">
 <title>Contacto | Asesoría online y en Paterna con cita</title>
 <meta name="description" content="Contacta por teléfono, WhatsApp, correo o formulario. Asesoría fiscal, contable y laboral online en toda España; en persona en Paterna solo con cita.">
 <link rel="canonical" href="https://grupoavanzaconsultores.es/contacto.html">
@@ -119,6 +120,7 @@
     try { var al = new Uint8Array(16); (window.crypto || window.msCrypto).getRandomValues(al); for (var i = 0; i < al.length; i++) r += ('0' + al[i].toString(16)).slice(-2); } catch (err) { while (r.length < 32) r += Math.floor(Math.random() * 16).toString(16); }
     return r;
   }
+  function parametrosPagina(){ return window.avanzaMedicion && window.avanzaMedicion.parametros ? window.avanzaMedicion.parametros() : new URLSearchParams(window.location.search); }
   function leerEnvio(){
     try { return JSON.parse(sessionStorage.getItem(CLAVE_ENVIO)) || envioMemoria; } catch (err) { return envioMemoria; }
   }
@@ -187,10 +189,10 @@
     datos.set('client_submit_id', envio.id);
     datos.set('pagina', window.location.pathname);
     var desde = '';
-    try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
+    try { var q = parametrosPagina().get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
     var anuncio = '', campana = '';
     try {
-      var qs = new URLSearchParams(window.location.search);
+      var qs = parametrosPagina();
       if (qs.get('origen') === 'anuncio') {
         anuncio = ' · Llegó por: anuncio de Google';
         var marcas = [];
@@ -261,9 +263,12 @@
         pintarRecibido(f, j.ref);
         var r = f.querySelector('[data-envio-recibido]');
         if (r) r.focus();
+        // La medición, si toca, también cuenta esta consulta. Una sola vez por ref; no espera a nada.
+        if (window.avanzaMedicion) window.avanzaMedicion.conversion(j.ref, function(){});
         return;
       }
-      window.location.href = 'gracias.html?ref=' + encodeURIComponent(j.ref) + (anuncio ? '&origen=anuncio' : '');
+      var ir = function(){ window.location.href = 'gracias.html?ref=' + encodeURIComponent(j.ref) + (anuncio ? '&origen=anuncio' : ''); };
+      if (window.avanzaMedicion) window.avanzaMedicion.conversion(j.ref, ir); else ir();
     }
     enVuelo = true;
     // POST sin respuesta: a los 6 s se pregunta por la clave sin esperar a que falle. La primera
@@ -315,7 +320,7 @@
     </div>
     <div class="foot__legal">
       <div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div>
-      <div><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a></div>
+      <div><a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Privacidad</a> · <a href="cookies.html">Cookies</a> · <a id="preferencias" href="cookies.html#preferencias" data-preferencias-cookies>Preferencias de cookies</a></div>
     </div>
   </div>
 </footer>
@@ -354,5 +359,6 @@
   document.querySelectorAll('.band, .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
 })();
 </script>
+<script src="medicion-consentimiento.js" data-medicion-limpia></script>
 <script src="origen-anuncio.js" defer></script></body>
 </html>
