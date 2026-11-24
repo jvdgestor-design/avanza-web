@@ -1,57 +1,31 @@
-# Puerta 5 automática: cuando una rama (que no sea main) cambia páginas, Sonnet intenta tumbar el cambio
-# por la API de Claude (créditos de API del plan). El informe sale como anotaciones del trabajo.
-# Sin el secreto ANTHROPIC_API_KEY no hace nada y lo dice.
-# Ahorro (02/11/2026): cada subida revisa solo las páginas que cambian en ella; la rama entera se revisa
-# una vez al abrir el PR o a mano (workflow_dispatch). Sin cancelar ejecuciones a medias: cada subida
-# es pequeña y, si se cancelara, sus páginas se quedarían sin revisar.
+# Puerta 5 por sello (22/11/2026, decisión de COMO FUNCIONAR): sin llamar a la API de Claude ni gastar créditos.
+# La revisión de otro modelo la hace ChatGPT por REVISIONES, en el ordenador del despacho. Aquí se comprueba que la
+# rama que cambia páginas acaba en un sello que cita ese REPASO con dictamen favorable, 0 NO y la huella de los
+# ficheros que la rama cambia (.github/motor/repaso_sello.py). Sin REPASO, con dictamen NO o con la huella de otro
+# contenido, queda en rojo. Una rama que no cambia páginas sale bien sin pedir nada.
+# Corre en cada subida a una rama (también la del sello, que no cambia ficheros: por eso no hay filtro de rutas)
+# y al abrir el PR. El revisor por API (.github/motor/revisor.py) sigue en el repositorio, sin uso.
 name: Revisión puerta 5
 on:
   push:
     branches-ignore: [main, "motor/**"]
-    paths:
-      - "**.html"
-      - "llms.txt"
-      - "sitemap.xml"
   pull_request:
     types: [opened, reopened, ready_for_review]
-    paths:
-      - "**.html"
-      - "llms.txt"
-      - "sitemap.xml"
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   revision:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
         with:
+          # En un PR, la cabeza de la rama y no el commit de fusión de prueba: el sello es el último commit de la rama.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
-      - name: Desde dónde revisar
-        id: desde
-        env:
-          EVENTO: ${{ github.event_name }}
-          ANTES: ${{ github.event.before }}
-          FORZADO: ${{ github.event.forced }}
-        run: |
-          desde=""
-          if [ "$EVENTO" = push ] && [ "$FORZADO" != true ] && [ -n "$ANTES" ] \
-             && [ "$ANTES" != 0000000000000000000000000000000000000000 ] \
-             && git cat-file -e "$ANTES^{commit}" 2>/dev/null \
-             && git merge-base --is-ancestor "$ANTES" HEAD \
-             && ! git merge-base --is-ancestor "$ANTES" origin/main; then
-            desde="$ANTES"
-          fi
-          echo "desde=$desde" >> "$GITHUB_OUTPUT"
-          if [ -n "$desde" ]; then echo "Solo esta subida (desde $desde)"; else echo "Rama entera contra main"; fi
-      - name: Revisión adversarial
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          AVANZA_LOTE_REVISOR: "1"
-          DESDE: ${{ steps.desde.outputs.desde }}
-        run: python3 .github/motor/revisor.py --base origin/main ${DESDE:+--desde "$DESDE"}
+      - name: Sello con REPASO de ChatGPT
+        run: python3 .github/motor/repaso_sello.py comprobar --base origin/main
       - name: Salud de la rama (solo repositorio)
         if: always()
         run: python3 .github/motor/salud.py
