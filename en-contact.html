@@ -75,7 +75,7 @@
     if (ta && !ta.value && temas[pg]) ta.value = temas[pg];
   } catch (err) {}
   // Clave aleatoria del envío, sin datos de la consulta. Se reutiliza en cada reintento del mismo texto.
-  var CLAVE_ENVIO = 'avanza_envio', REF_VALIDA = /^[A-Za-z0-9_-]{6,64}$/, TEXTO_BOTON = 'Send enquiry', envioMemoria = null;
+  var CLAVE_ENVIO = 'avanza_envio', REF_VALIDA = /^W[0-9a-f]{12}$/, TEXTO_BOTON = 'Send enquiry', envioMemoria = null;
   function nuevaClave(){
     var r = '';
     try { var al = new Uint8Array(16); (window.crypto || window.msCrypto).getRandomValues(al); for (var i = 0; i < al.length; i++) r += ('0' + al[i].toString(16)).slice(-2); } catch (err) { while (r.length < 32) r += Math.floor(Math.random() * 16).toString(16); }
@@ -213,8 +213,19 @@
       clearTimeout(espera);
       envio.ref = j.ref;
       guardarEnvio(envio);
-      var ir = function(){ window.location.href = 'en-thank-you.html?ref=' + encodeURIComponent(j.ref) + (anuncio ? '&origen=anuncio' : ''); };
-      ir();
+      // La página de gracias solo confirma si lee esta ref en la sesión. Si el navegador no deja guardarla,
+      // se confirma aquí mismo, en el formulario, con la ref que ya ha dado el receptor.
+      var guardada = '';
+      try { guardada = (JSON.parse(sessionStorage.getItem(CLAVE_ENVIO)) || {}).ref || ''; } catch (err) { guardada = ''; }
+      if (guardada !== j.ref) {
+        f.removeAttribute('aria-busy');
+        if (b) { b.disabled = false; b.textContent = textoBoton; }
+        pintarRecibido(f, j.ref);
+        var r = f.querySelector('[data-envio-recibido]');
+        if (r) r.focus();
+        return;
+      }
+      window.location.href = 'en-thank-you.html?ref=' + encodeURIComponent(j.ref) + (anuncio ? '&origen=anuncio' : '');
     }
     enVuelo = true;
     // POST sin respuesta: a los 6 s se pregunta por la clave sin esperar a que falle. La primera
