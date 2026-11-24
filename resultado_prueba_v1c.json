@@ -1,0 +1,80 @@
+{
+ "fecha_utc": "2026-11-24T09:51:22+00:00",
+ "casos": [
+  {
+   "pagina": "pension-italiana-residente-en-espana.html",
+   "ancho": 390,
+   "zona": "cabecera",
+   "visible": false,
+   "resultado": "no se muestra en este ancho (no se prueba)"
+  },
+  {
+   "pagina": "pension-italiana-residente-en-espana.html",
+   "ancho": 390,
+   "zona": "cuerpo",
+   "visible": true,
+   "tab_pulsaciones": 15,
+   "url_tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   },
+   "resultado": "correcto"
+  },
+  {
+   "pagina": "pension-italiana-residente-en-espana.html",
+   "ancho": 1280,
+   "zona": "cabecera",
+   "visible": true,
+   "tab_pulsaciones": 14,
+   "url_tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   },
+   "resultado": "correcto"
+  },
+  {
+   "pagina": "pension-italiana-residente-en-espana.html",
+   "ancho": 1280,
+   "zona": "cuerpo",
+   "visible": true,
+   "tab_pulsaciones": 23,
+   "url_tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   },
+   "resultado": "correcto"
+  },
+  {
+   "pagina": "pension-estados-unidos-residente-en-espana.html",
+   "ancho": 390,
+   "zona": "cabecera",
+   "visible": false,
+   "resultado": "no se muestra en este ancho (no se prueba)"
+  },
+  {
+   "pagina": "pension-estados-unidos-residente-en-espana.html",
+   "ancho": 1280,
+   "zona": "cabecera",
+   "visible": true,
+   "tab_pulsaciones": 12,
+   "url_tras_enter": "/contacto.html?pagina=pension-estados-unidos-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-estados-unidos-residente-en-espana.html",
+    "lee_pagina": true
+   },
+   "resultado": "correcto"
+  }
+ ],
+ "navegador": "153.0.8010.12"
+}
