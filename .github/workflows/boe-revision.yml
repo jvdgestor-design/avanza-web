@@ -21,6 +21,9 @@ jobs:
     outputs:
       normas: ${{ steps.lista.outputs.normas }}
     steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Lista de normas
         id: lista
         env:
@@ -29,7 +32,10 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           python3 - <<'EOF'
-          import json, os, re, subprocess, sys
+          import json, os, subprocess, sys
+          sys.path.insert(0, ".github/motor")
+          from vigia import normas_boe_pendientes
+
           MAXIMO = 14
           normas = [n.strip() for n in os.environ.get("NORMAS", "").split(";") if n.strip()]
           if not normas:
@@ -39,19 +45,25 @@ jobs:
                       print(f"::error::gh api {a[0]}: {r.stderr.strip()[:300]}")
                       sys.exit(1)
                   return r.stdout
-              runs = json.loads(gh(f"repos/{os.environ['REPO']}/actions/workflows/boe.yml/runs?status=completed&per_page=1"))["workflow_runs"]
-              if not runs:
-                  print("::error::No hay ninguna ejecución terminada de la Vigilancia del BOE")
+              repo = os.environ["REPO"]
+              runs = json.loads(gh(f"repos/{repo}/actions/workflows/boe.yml/runs?branch=main&status=completed&per_page=10"))
+              run = next((r for r in runs.get("workflow_runs", [])
+                          if r.get("head_branch") == "main" and r.get("conclusion") in ("success", "failure")), None)
+              if run is None:
+                  print("::error::No hay ninguna ejecución válida de la Vigilancia del BOE en main")
                   sys.exit(1)
-              run = runs[0]
-              for job in json.loads(gh(f"repos/{os.environ['REPO']}/actions/runs/{run['id']}/jobs"))["jobs"]:
-                  for an in json.loads(gh(f"repos/{os.environ['REPO']}/check-runs/{job['id']}/annotations?per_page=100")):
-                      msg = an.get("message") or ""
-                      if an.get("annotation_level") == "failure" and "actualizada el" in msg:
-                          normas += re.findall(r"\((BOE-A-\d{4}-\d+)\)", msg)[:1]
+              anotaciones = []
+              for job in json.loads(gh(f"repos/{repo}/actions/runs/{run['id']}/jobs"))["jobs"]:
+                  anotaciones.extend(json.loads(gh(f"repos/{repo}/check-runs/{job['id']}/annotations?per_page=100")))
+              try:
+                  pendientes, completa = normas_boe_pendientes(anotaciones)
+              except RuntimeError as exc:
+                  print(f"::error::{exc}")
+                  sys.exit(1)
+              normas = list(pendientes)
               print(f"Vigilancia {run['id']} ({run['conclusion']}): pendientes {normas or 'ninguna'}")
-              if run["conclusion"] == "failure" and not normas:
-                  print("::error::La vigilancia está en rojo pero no se ha sacado ninguna norma pendiente (¿errores de identificación?). Revisar sus anotaciones.")
+              if not normas and (run["conclusion"] == "failure" or not completa):
+                  print("::error::La vigilancia no permite confirmar las normas pendientes. Revisar sus anotaciones.")
                   sys.exit(1)
           normas = list(dict.fromkeys(normas))
           if len(normas) > MAXIMO:
