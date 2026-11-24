@@ -1,0 +1,108 @@
+{
+ "fecha_utc": "2026-11-24T08:55:32+00:00",
+ "navegador": "153.0.8010.12",
+ "movil390": {
+  "scrollWidth": 390,
+  "viewport": 390,
+  "botones": [
+   {
+    "texto": "Pedir presupuesto por WhatsApp",
+    "x": 20,
+    "ancho": 350,
+    "alto": 58,
+    "y": 412,
+    "href": "https://wa.me/34614365547?text=Hola%2C%20quiero%20pedir%20presupuesto%",
+    "clase": "btn btn--onnavy",
+    "target": "_blank"
+   },
+   {
+    "texto": "Llamar al 614 365 547",
+    "x": 20,
+    "ancho": 350,
+    "alto": 60,
+    "y": 482,
+    "href": "tel:+34614365547",
+    "clase": "btn btn--onnavy-ghost",
+    "target": ""
+   },
+   {
+    "texto": "Consultar por el formulario",
+    "x": 20,
+    "ancho": 350,
+    "alto": 60,
+    "y": 554,
+    "href": "contacto.html?pagina=amazon-kdp-impuestos-espana.html",
+    "clase": "btn btn--onnavy-ghost",
+    "target": ""
+   }
+  ],
+  "tabulador_desde_whatsapp": [
+   "Pedir presupuesto por WhatsApp",
+   "Llamar al 614 365 547",
+   "Consultar por el formulario"
+  ],
+  "tras_enter_url": "/contacto.html?pagina=amazon-kdp-impuestos-espana.html"
+ },
+ "escritorio1280": {
+  "scrollWidth": 1280,
+  "viewport": 1280,
+  "botones": [
+   {
+    "texto": "Pedir presupuesto por WhatsApp",
+    "x": 230,
+    "ancho": 304,
+    "alto": 60,
+    "y": 494,
+    "href": "https://wa.me/34614365547?text=Hola%2C%20quiero%20pedir%20presupuesto%",
+    "clase": "btn btn--onnavy",
+    "target": "_blank"
+   },
+   {
+    "texto": "Llamar al 614 365 547",
+    "x": 548,
+    "ancho": 227,
+    "alto": 60,
+    "y": 494,
+    "href": "tel:+34614365547",
+    "clase": "btn btn--onnavy-ghost",
+    "target": ""
+   },
+   {
+    "texto": "Consultar por el formulario",
+    "x": 789,
+    "ancho": 261,
+    "alto": 60,
+    "y": 494,
+    "href": "contacto.html?pagina=amazon-kdp-impuestos-espana.html",
+    "clase": "btn btn--onnavy-ghost",
+    "target": ""
+   }
+  ],
+  "tabulador_desde_whatsapp": [
+   "Pedir presupuesto por WhatsApp",
+   "Llamar al 614 365 547",
+   "Consultar por el formulario"
+  ],
+  "tras_enter_url": "/contacto.html?pagina=amazon-kdp-impuestos-espana.html"
+ },
+ "tab_real_desde_inicio": {
+  "pulsaciones": 41,
+  "alcanzado": true
+ },
+ "formulario": {
+  "lang": "es",
+  "h1": "Cuéntanos tu caso",
+  "boton": "Enviar consulta",
+  "campos": [
+   "form-name",
+   "empresa-web",
+   "nombre",
+   "contacto",
+   "caso",
+   "origen"
+  ],
+  "pagina": "amazon-kdp-impuestos-espana.html",
+  "cumple": true
+ },
+ "script_formulario_lee_pagina": true
+}
