@@ -1,0 +1,211 @@
+{
+ "fecha_utc": "2026-11-24T10:01:56+00:00",
+ "anchos": {
+  "390": {
+   "scrollWidth": 390,
+   "viewport": 390,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "x": 20,
+     "y": 1423,
+     "ancho": 350,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "x": 20,
+     "y": 1495,
+     "ancho": 350,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "x": 20,
+     "y": 1567,
+     "ancho": 350,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": false,
+   "tab_pulsaciones": 11,
+   "url_tras_enter": "/contacto.html?pagina=pension-estados-unidos-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-estados-unidos-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "641": {
+   "scrollWidth": 641,
+   "viewport": 641,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "x": 36,
+     "y": 980,
+     "ancho": 224,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "x": 274,
+     "y": 980,
+     "ancho": 153,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "x": 36,
+     "y": 1053,
+     "ancho": 261,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": false,
+   "tab_pulsaciones": 11,
+   "url_tras_enter": "/contacto.html?pagina=pension-estados-unidos-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-estados-unidos-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "900": {
+   "scrollWidth": 900,
+   "viewport": 900,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "x": 36,
+     "y": 840,
+     "ancho": 224,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "x": 274,
+     "y": 840,
+     "ancho": 153,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "x": 440,
+     "y": 840,
+     "ancho": 261,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": true,
+   "tab_pulsaciones": 12,
+   "url_tras_enter": "/contacto.html?pagina=pension-estados-unidos-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-estados-unidos-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "1024": {
+   "scrollWidth": 1024,
+   "viewport": 1024,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "x": 36,
+     "y": 841,
+     "ancho": 224,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "x": 274,
+     "y": 841,
+     "ancho": 153,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "x": 440,
+     "y": 841,
+     "ancho": 261,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": false,
+   "tab_pulsaciones": 18,
+   "url_tras_enter": "/contacto.html?pagina=pension-estados-unidos-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-estados-unidos-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "1280": {
+   "scrollWidth": 1280,
+   "viewport": 1280,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "x": 56,
+     "y": 860,
+     "ancho": 224,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "x": 294,
+     "y": 860,
+     "ancho": 153,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "x": 460,
+     "y": 860,
+     "ancho": 261,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": true,
+   "tab_pulsaciones": 19,
+   "url_tras_enter": "/contacto.html?pagina=pension-estados-unidos-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-estados-unidos-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  }
+ },
+ "navegador": "153.0.8010.12"
+}
