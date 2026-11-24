@@ -1,7 +1,7 @@
 /* Atribución de anuncios sin cookies ni almacenamiento: si la visita llega con
    ?origen=anuncio (sufijo de URL de la campaña de Google Ads), se pasa ese dato
-   a los enlaces del formulario de contacto (al español, también el nombre de la
-   campaña: utm_source, utm_medium, utm_campaign y utm_content) y se añade «(ref. Ads)» al texto
+   a los enlaces de los cuatro formularios de contacto (ES, EN, FR y DE), junto con el nombre
+   de la campaña: utm_source, utm_medium, utm_campaign y utm_content, y se añade «(ref. Ads)» al texto
    precargado de WhatsApp (Avanza y Anna; solo a los enlaces que ya traen texto)
    y al asunto de los enlaces de correo. No hace nada en las visitas que no vienen de un anuncio. */
 (function () {
@@ -19,7 +19,7 @@
       if (contacto.test(h)) {
         var u = new URL(h, window.location.href);
         u.searchParams.set('origen', 'anuncio');
-        if (/^contacto\.html/.test(h)) utm.forEach(function (kv) { u.searchParams.set(kv[0], kv[1]); });
+        utm.forEach(function (kv) { u.searchParams.set(kv[0], kv[1]); });
         a.setAttribute('href', u.pathname.split('/').pop() + u.search + u.hash);
       } else if (/^https:\/\/wa\.me\/(34614365547|34642457458)/.test(h) && h.indexOf('ref.%20Ads') === -1) {
         if (/[?&]text=[^&#]*$/.test(h)) a.setAttribute('href', h + marca);
