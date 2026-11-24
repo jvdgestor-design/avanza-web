@@ -86,7 +86,7 @@
     datos.set('pagina', window.location.pathname);
     var desde = '';
     try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
-    var anuncio = ''; try { if (new URLSearchParams(window.location.search).get('origen') === 'anuncio') anuncio = ' · Llegó por: anuncio de Google'; } catch (err) {}
+    var anuncio = ''; try { var qa = new URLSearchParams(window.location.search); if (qa.get('origen') === 'anuncio') { anuncio = ' · Llegó por: anuncio de Google'; var ma = []; ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){ var v = qa.get(k) || ''; if (/^[A-Za-z0-9_.-]{1,60}$/.test(v)) ma.push(v); }); if (ma.length) anuncio += ' · Campaña: ' + ma.join(' / '); } } catch (err) {}
     datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + ' · Nos conoció por: ' + origen + ']');
     var cuerpo = new URLSearchParams(datos);
     var finalizado = false;
