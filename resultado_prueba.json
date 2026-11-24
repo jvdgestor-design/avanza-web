@@ -1,0 +1,241 @@
+{
+ "fecha_utc": "2026-11-24T13:01:47+00:00",
+ "anchos": {
+  "390": {
+   "scrollWidth": 390,
+   "viewport": 390,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "href": "https://wa.me/34614365547?text=Hola%2C%20quiero%20presupuesto%20por%20mi%20pensi%C3%B3n%20de%20Italia.%20Vivo%20en%20Espa%C3%B1a%20desde%3A%20__.%20Pensiones%20que%20cobro%3A%20__.%20Nacionalidades%3A%20__.%20He%20visto%20vuestra%20gu%C3%ADa%20de%20la%20pensi%C3%B3n%20italiana%20en%20espa%C3%B1ol.",
+     "target": "_blank",
+     "x": 20,
+     "y": 890,
+     "ancho": 350,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "href": "tel:+34614365547",
+     "target": null,
+     "x": 20,
+     "y": 962,
+     "ancho": 350,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "href": "contacto.html?pagina=pension-italiana-residente-en-espana.html",
+     "target": null,
+     "x": 20,
+     "y": 1034,
+     "ancho": 350,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": false,
+   "tab_pulsaciones": 13,
+   "url_tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "641": {
+   "scrollWidth": 641,
+   "viewport": 641,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "href": "https://wa.me/34614365547?text=Hola%2C%20quiero%20presupuesto%20por%20mi%20pensi%C3%B3n%20de%20Italia.%20Vivo%20en%20Espa%C3%B1a%20desde%3A%20__.%20Pensiones%20que%20cobro%3A%20__.%20Nacionalidades%3A%20__.%20He%20visto%20vuestra%20gu%C3%ADa%20de%20la%20pensi%C3%B3n%20italiana%20en%20espa%C3%B1ol.",
+     "target": "_blank",
+     "x": 36,
+     "y": 628,
+     "ancho": 224,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "href": "tel:+34614365547",
+     "target": null,
+     "x": 274,
+     "y": 628,
+     "ancho": 153,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "href": "contacto.html?pagina=pension-italiana-residente-en-espana.html",
+     "target": null,
+     "x": 36,
+     "y": 702,
+     "ancho": 261,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": false,
+   "tab_pulsaciones": 13,
+   "url_tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "900": {
+   "scrollWidth": 900,
+   "viewport": 900,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "href": "https://wa.me/34614365547?text=Hola%2C%20quiero%20presupuesto%20por%20mi%20pensi%C3%B3n%20de%20Italia.%20Vivo%20en%20Espa%C3%B1a%20desde%3A%20__.%20Pensiones%20que%20cobro%3A%20__.%20Nacionalidades%3A%20__.%20He%20visto%20vuestra%20gu%C3%ADa%20de%20la%20pensi%C3%B3n%20italiana%20en%20espa%C3%B1ol.",
+     "target": "_blank",
+     "x": 36,
+     "y": 586,
+     "ancho": 224,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "href": "tel:+34614365547",
+     "target": null,
+     "x": 274,
+     "y": 586,
+     "ancho": 153,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "href": "contacto.html?pagina=pension-italiana-residente-en-espana.html",
+     "target": null,
+     "x": 440,
+     "y": 586,
+     "ancho": 261,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": true,
+   "tab_pulsaciones": 14,
+   "url_tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "1024": {
+   "scrollWidth": 1024,
+   "viewport": 1024,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "href": "https://wa.me/34614365547?text=Hola%2C%20quiero%20presupuesto%20por%20mi%20pensi%C3%B3n%20de%20Italia.%20Vivo%20en%20Espa%C3%B1a%20desde%3A%20__.%20Pensiones%20que%20cobro%3A%20__.%20Nacionalidades%3A%20__.%20He%20visto%20vuestra%20gu%C3%ADa%20de%20la%20pensi%C3%B3n%20italiana%20en%20espa%C3%B1ol.",
+     "target": "_blank",
+     "x": 36,
+     "y": 586,
+     "ancho": 224,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "href": "tel:+34614365547",
+     "target": null,
+     "x": 274,
+     "y": 586,
+     "ancho": 153,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "href": "contacto.html?pagina=pension-italiana-residente-en-espana.html",
+     "target": null,
+     "x": 440,
+     "y": 586,
+     "ancho": 261,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": false,
+   "tab_pulsaciones": 20,
+   "url_tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  },
+  "1280": {
+   "scrollWidth": 1280,
+   "viewport": 1280,
+   "visible": true,
+   "texto_completo": true,
+   "botones_cabecera_guia": [
+    {
+     "texto": "Pedir presupuesto",
+     "href": "https://wa.me/34614365547?text=Hola%2C%20quiero%20presupuesto%20por%20mi%20pensi%C3%B3n%20de%20Italia.%20Vivo%20en%20Espa%C3%B1a%20desde%3A%20__.%20Pensiones%20que%20cobro%3A%20__.%20Nacionalidades%3A%20__.%20He%20visto%20vuestra%20gu%C3%ADa%20de%20la%20pensi%C3%B3n%20italiana%20en%20espa%C3%B1ol.",
+     "target": "_blank",
+     "x": 56,
+     "y": 606,
+     "ancho": 224,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "614 365 547",
+     "href": "tel:+34614365547",
+     "target": null,
+     "x": 294,
+     "y": 606,
+     "ancho": 153,
+     "alto": 60,
+     "dentro": true
+    },
+    {
+     "texto": "Consultar por el formulario",
+     "href": "contacto.html?pagina=pension-italiana-residente-en-espana.html",
+     "target": null,
+     "x": 460,
+     "y": 606,
+     "ancho": 261,
+     "alto": 60,
+     "dentro": true
+    }
+   ],
+   "cta_topbar_visible": true,
+   "tab_pulsaciones": 21,
+   "url_tras_enter": "/contacto.html?pagina=pension-italiana-residente-en-espana.html",
+   "form": {
+    "lang": "es",
+    "boton": "Enviar consulta",
+    "pagina": "pension-italiana-residente-en-espana.html",
+    "lee_pagina": true
+   }
+  }
+ },
+ "navegador": "153.0.8010.12"
+}

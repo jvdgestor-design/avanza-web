@@ -1,0 +1,12 @@
+diff --git a/pension-italiana-residente-en-espana.html b/pension-italiana-residente-en-espana.html
+index de1ea29..8ac06ad 100644
+--- a/pension-italiana-residente-en-espana.html
++++ b/pension-italiana-residente-en-espana.html
+@@ -71,6 +71,7 @@
+     <div class="ctas">
+       <a class="btn btn--primary" href="https://wa.me/34614365547?text=Hola%2C%20quiero%20presupuesto%20por%20mi%20pensi%C3%B3n%20de%20Italia.%20Vivo%20en%20Espa%C3%B1a%20desde%3A%20__.%20Pensiones%20que%20cobro%3A%20__.%20Nacionalidades%3A%20__.%20He%20visto%20vuestra%20gu%C3%ADa%20de%20la%20pensi%C3%B3n%20italiana%20en%20espa%C3%B1ol." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.4 8.4 0 1 1 21 11.5z"></path></svg>Pedir presupuesto</a>
+       <a class="btn btn--ghost" href="tel:+34614365547">614 365 547</a>
++      <a class="btn btn--ghost" href="contacto.html?pagina=pension-italiana-residente-en-espana.html">Consultar por el formulario</a>
+     </div>
+   </div>
+ </section>
