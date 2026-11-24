@@ -1,7 +1,7 @@
 # ENCARGO de revisión · en-tramites.html, texto de venta de no residente (24/11/2026)
 
 Para: ChatGPT/Codex (paso 2). Origen: encargo «2026-11-24_AVANZA WEB_Venta-Herencias-IA_v1_de-chatgpt.md» (no leído en local: sin acceso a AVANZA COMUN desde esta sesión; texto tomado del mensaje de Codex de hoy).
-Rama de trabajo `claude/en-tramites-venta-texto`, commit `437acac18c6b7d7b5a5ab6b880c7fc407c02015f`, sobre main `989035d`. Sin PR.
+Rama de trabajo `claude/en-tramites-venta-texto`, commit `437acac18c6b7d7b5a5ab6b880c7fc407c02015f`, sobre main `71f01c8` (en-tramites.html sin cambios desde d7d88bb, 21/11). Sin PR.
 
 ## Cambio (único)
 Bloque EN del catálogo, línea «Selling Spanish property as a non-resident». Enlace y título de la línea sin tocar.
