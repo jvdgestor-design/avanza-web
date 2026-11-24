@@ -1,0 +1,427 @@
+diff --git a/de-danke.html b/de-danke.html
+index 563a085..1d4772f 100644
+--- a/de-danke.html
++++ b/de-danke.html
+@@ -18,7 +18,7 @@
+ <a class="langsw" href="fr-merci.html" hreflang="fr" lang="fr" aria-label="Français"><span class="langsw__full">Français</span><span class="langsw__short" aria-hidden="true">FR</span></a>
+ 
+ 
+-<a class="btn btn--primary btn--sm topbar__cta" href="de-kontakt.html">Anfrage stellen</a><button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Menü öffnen"><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="navtoggle__txt">Menü</span></button></div></div></header><main id="contenido"><section class="pagehead"><div class="wrap--narrow" style="text-align:center"><p class="eyebrow">Kontakt</p><h1>Vielen Dank für Ihre Kontaktaufnahme.</h1><p class="lead">Diese Seite ist keine Eingangsbestätigung. Wenn Sie den Eingang Ihrer Anfrage prüfen möchten, schreiben Sie uns per WhatsApp oder E-Mail und erwähnen Sie, dass Sie das Formular gesendet haben.</p><p class="hero__note">Sie erreichen uns auf Deutsch per E-Mail oder WhatsApp.</p><div class="ctas" style="justify-content:center"><a class="btn btn--primary" href="https://wa.me/34614365547?text=Guten%20Tag%2C%20ich%20komme%20von%20Ihrer%20deutschsprachigen%20Website.%20Mein%20Anliegen%3A%20__.%20Wohnsitzland%3A%20__.%20Betroffenes%20Jahr%20oder%20Datum%3A%20__.%20Laufende%20Frist%3A%20__.%20Bitte%20antworten%20Sie%20mir%20schriftlich%20auf%20Deutsch." target="_blank" rel="noopener">Per WhatsApp schreiben</a><a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es">Per E-Mail schreiben</a>
++<a class="btn btn--primary btn--sm topbar__cta" href="de-kontakt.html">Anfrage stellen</a><button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Menü öffnen"><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="navtoggle__txt">Menü</span></button></div></div></header><main id="contenido"><section class="pagehead"><div class="wrap--narrow" style="text-align:center"><p class="eyebrow">Kontakt</p><h1>Vielen Dank für Ihre Kontaktaufnahme.</h1><p class="lead" data-recibido hidden>Wir haben Ihre Anfrage erhalten. Referenz: <span data-ref></span>.</p><p class="lead" data-sin-ref>Wenn Sie eine Anfrage gesendet haben und deren Referenz auf dieser Seite nicht erscheint, schreiben Sie uns per WhatsApp oder E-Mail und erwähnen Sie, dass Sie das Formular gesendet haben.</p><script>(function(){try{var q=new URLSearchParams(location.search).get("ref")||"";if(!/^W[0-9a-f]{12}$/.test(q))return;var e=null;try{e=JSON.parse(sessionStorage.getItem("avanza_envio"));}catch(x){}if(!e||e.ref!==q)return;var ok=document.querySelector("[data-recibido]"),n=document.querySelector("[data-sin-ref]"),s=ok&&ok.querySelector("[data-ref]");if(!ok||!s)return;s.textContent=q;ok.hidden=false;if(n)n.hidden=true;}catch(x){}})();</script><p class="hero__note">Sie erreichen uns auf Deutsch per E-Mail oder WhatsApp.</p><div class="ctas" style="justify-content:center"><a class="btn btn--primary" href="https://wa.me/34614365547?text=Guten%20Tag%2C%20ich%20komme%20von%20Ihrer%20deutschsprachigen%20Website.%20Mein%20Anliegen%3A%20__.%20Wohnsitzland%3A%20__.%20Betroffenes%20Jahr%20oder%20Datum%3A%20__.%20Laufende%20Frist%3A%20__.%20Bitte%20antworten%20Sie%20mir%20schriftlich%20auf%20Deutsch." target="_blank" rel="noopener">Per WhatsApp schreiben</a><a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es">Per E-Mail schreiben</a>
+       <a class="btn btn--ghost" href="de.html">Zur Startseite</a></div></div></section><section class="cta-final"><div class="wrap"><h2>Weitere Informationen zu Ihrem Anliegen</h2><p class="lead">In unseren Ratgebern finden Sie Informationen zu spanischen Steuern und Behördengängen.</p><div class="ctas"><a class="btn btn--onnavy" href="de.html#services">Leistungen und Ratgeber</a><a class="btn btn--onnavy-ghost" href="mailto:avanza@grupoavanzaconsultores.es">E-Mail schreiben</a></div></div></section></main><footer class="foot"><div class="wrap"><div class="foot__grid"><div><h4>Grupo Avanza Consultores</h4><p>Beratung zu spanischen Steuern,<br>Buchhaltung und Personalverwaltung<br>Paterna, Valencia</p><p><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a></p></div><div><h4>Informationen auf Deutsch</h4><ul><li><a href="de.html">Steuern in Spanien</a></li><li><a href="de-modelo-210-nichtansaessige.html">Modelo 210</a></li><li><a href="de-steueransaessigkeit-umzug-spanien.html">Steuerliche Ansässigkeit beim Umzug</a></li><li><a href="de-erbschaft-spanien-erben-ausland.html">Erbschaft mit Wohnsitz im Ausland</a></li><li><a href="de-geldschenkung-ausland-spanien.html">Geldschenkungen aus dem Ausland</a></li><li><a href="de-immobilie-spanien-kaufen.html">Immobilienkauf</a></li><li><a href="de-immobilie-spanien-verkaufen-ausland.html">Immobilienverkauf</a></li><li><a href="de-modelo-720-auslandsvermoegen.html">Auslandsvermögen: Modelo 720</a></li><li><a href="de-deutsche-rente-wohnsitz-spanien.html">Deutsche Rente in Spanien</a></li><li><a href="de-sl-gruenden-spanien-auslaender.html">SL in Spanien gründen</a></li><li><a href="de-selbststaendig-autonomo-spanien.html">Selbständig in Spanien</a></li><li><a href="de-erste-steuererklaerung-spanien.html">Erste spanische Steuererklärung</a></li><li><a href="de-beckham-regelung-spanien.html">Beckham-Regelung für Zuziehende</a></li><li><a href="de-ansaessigkeitsbescheinigung-spanien.html">Spanische Ansässigkeitsbescheinigung</a></li><li><a href="de-wegzug-spanien-steuern.html">Wegzug aus Spanien</a></li><li><a href="de-britische-rente-wohnsitz-spanien.html">Britische Rente bei Wohnsitz in Spanien</a></li><li><a href="de-franzoesische-rente-wohnsitz-spanien.html">Französische Rente bei Wohnsitz in Spanien</a></li><li><a href="de-italienische-rente-wohnsitz-spanien.html">Italienische Rente bei Wohnsitz in Spanien</a></li><li><a href="de-immobilie-spanien-vermieten-nichtansaessig.html">Immobilie in Spanien als Nichtansässiger vermieten</a></li><li><a href="de-kauf-nichtansaessiger-verkaeufer-modelo-211.html">Kauf vom Nichtansässigen: Einbehalt und Modelo 211</a></li><li><a href="de-homeoffice-spanien-auslaendischer-arbeitgeber.html">Homeoffice für einen ausländischen Arbeitgeber</a></li><li><a href="de-steuern-spanien-nacherklaeren.html">Versäumte spanische Steuererklärungen nachreichen</a></li><li><a href="de-schreiben-spanisches-finanzamt.html">Schreiben vom spanischen Finanzamt</a></li></ul></div><div><h4>So erreichen Sie uns</h4><p>Von Paterna bei Valencia aus betreuen wir Kunden in ganz Spanien und im Ausland online.</p><p>Sie erreichen uns auf Deutsch per E-Mail oder WhatsApp.</p><p><a href="de-kontakt.html">Kontakt aufnehmen</a></p></div></div><div class="foot__legal"><div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div><div><a href="de-impressum.html">Impressum</a> · <a href="de-datenschutz.html">Datenschutz</a> · <a href="de-cookies.html">Cookies</a></div></div></div></footer><script>
+ (function(){
+   var d=document.documentElement;
+diff --git a/de-datenschutz.html b/de-datenschutz.html
+index c906332..f550990 100644
+--- a/de-datenschutz.html
++++ b/de-datenschutz.html
+@@ -35,7 +35,8 @@
+ <p><strong>Zweck und Rechtsgrundlage:</strong> Beantwortung Ihrer Anfrage und, falls von Ihnen gewünscht, Vorbereitung der Leistung. Rechtsgrundlage ist die Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage nach Art. 6 Abs. 1 Buchst. b der Verordnung (EU) 2016/679. Die Angabe, wie Sie uns gefunden haben (sofern Sie sie machen), sowie den Hinweis, dass Sie über eine Anzeige gekommen sind, nutzen wir außerdem, um zu erfahren, über welche Wege uns Anfragen erreichen, ohne Profile zu erstellen; Rechtsgrundlage ist unser berechtigtes Interesse (Art. 6 Abs. 1 Buchst. f), dem Sie jederzeit per E-Mail widersprechen können. Diese Daten werden nicht für Werbung genutzt.</p>
+ <p><strong>WhatsApp und E-Mail aus einer Anzeige:</strong> Wenn Sie über eine unserer Anzeigen kommen und uns über die Schaltflächen der Website per WhatsApp oder E-Mail schreiben, enthält der Text bzw. der Betreff der Nachricht den Hinweis „(ref. Ads)“, den Sie vor dem Senden sehen und löschen können. Er dient demselben Zweck und beruht auf derselben Rechtsgrundlage wie der Hinweis im Formular. Es werden keine Cookies verwendet und keine Profile erstellt.</p>
+ <p><strong>Übermittlung:</strong> Das Formular übermittelt Ihre Anfrage über Google Apps Script, einen Dienst von Google, an die E-Mail-Postfächer unseres Beratungsbüros. Diese werden von Google (Gmail) und dem E-Mail-Anbieter unserer Domain bereitgestellt. Dies sind, vorbehaltlich gesetzlicher Pflichten, die einzigen Empfänger. Google LLC kann die Daten in den Vereinigten Staaten verarbeiten. Diese Übermittlungen stützen sich auf den Durchführungsbeschluss (EU) 2023/1795 der Kommission zum Datenschutzrahmen EU–USA. Google LLC ist dort als aktiver Teilnehmer aufgeführt (<a href="https://www.dataprivacyframework.gov/participant/5780">offizielle Teilnehmerliste</a>, geprüft am 3. Oktober 2026).</p>
+-<p><strong>Speicherdauer für Anfragen:</strong> während der Bearbeitung Ihrer Anfrage. Kommt kein Auftrag zustande, werden die Daten nach Abschluss der Anfrage aus den Postfächern und aus Apps Script gelöscht. Bei einer Beauftragung gelten die oben beschriebenen Fristen.</p>
++<p><strong>Referenz der Übermittlung:</strong> Jede Übermittlung des Kontaktformulars erhält eine zufällige Referenz, die auch in der E-Mail an unser Beratungsbüro erscheint. Damit wir Ihnen auf dem Bildschirm bestätigen können, dass Ihre Anfrage eingegangen ist, und die Benachrichtigung nicht wiederholt wird, wenn Sie die Schaltfläche erneut betätigen, speichert Apps Script einen technischen Eintrag mit dieser Referenz, dem Datum, der Seite, der Angabe, ob Sie über eine Anzeige gekommen sind, dem Namen der Anzeigenkampagne und, falls Sie es angeben, wie Sie uns gefunden haben. Nicht gespeichert werden der Text Ihrer Anfrage, Ihr Name, Ihre Kontaktdaten und die Klick-ID von Anzeigen. Zusätzlich wird eine technische Markierung mit derselben Referenz höchstens sechs Stunden lang aufbewahrt. Zweck und Rechtsgrundlage sind dieselben wie beim Formular.</p>
++<p><strong>Speicherdauer für Anfragen:</strong> während der Bearbeitung Ihrer Anfrage. Kommt kein Auftrag zustande, werden die Daten nach Abschluss der Anfrage aus den Postfächern und aus Apps Script gelöscht. Bei einer Beauftragung gelten die oben beschriebenen Fristen. Der technische Eintrag zur Referenz wird 30 Tage nach der Übermittlung automatisch gelöscht; die Löschung läuft einmal täglich, sodass es einen Tag länger dauern kann.</p>
+ <p><strong>Rechte:</strong> wie oben beschrieben; wenden Sie sich bitte an <a href="mailto:avanza@grupoavanzaconsultores.es">avanza@grupoavanzaconsultores.es</a>.</p>
+ <p><strong>Erforderliche Angaben:</strong> Name, E-Mail-Adresse oder WhatsApp-Nummer und eine Beschreibung Ihres Anliegens sind für die Beantwortung erforderlich. Die Angabe, wie Sie uns gefunden haben, ist freiwillig. Es finden weder automatisierte Entscheidungen noch Profiling statt.</p></div></section></main><footer class="foot"><div class="wrap"><div class="foot__grid"><div><h4>Grupo Avanza Consultores</h4><p>Beratung zu spanischen Steuern,<br>Buchhaltung und Personalverwaltung<br>Paterna, Valencia</p><p><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a></p></div><div><h4>Informationen auf Deutsch</h4><ul><li><a href="de.html">Steuern in Spanien</a></li><li><a href="de-modelo-210-nichtansaessige.html">Modelo 210</a></li><li><a href="de-steueransaessigkeit-umzug-spanien.html">Steuerliche Ansässigkeit beim Umzug</a></li><li><a href="de-erbschaft-spanien-erben-ausland.html">Erbschaft mit Wohnsitz im Ausland</a></li><li><a href="de-geldschenkung-ausland-spanien.html">Geldschenkungen aus dem Ausland</a></li><li><a href="de-immobilie-spanien-kaufen.html">Immobilienkauf</a></li><li><a href="de-immobilie-spanien-verkaufen-ausland.html">Immobilienverkauf</a></li><li><a href="de-modelo-720-auslandsvermoegen.html">Auslandsvermögen: Modelo 720</a></li><li><a href="de-deutsche-rente-wohnsitz-spanien.html">Deutsche Rente in Spanien</a></li><li><a href="de-sl-gruenden-spanien-auslaender.html">SL in Spanien gründen</a></li><li><a href="de-selbststaendig-autonomo-spanien.html">Selbständig in Spanien</a></li><li><a href="de-erste-steuererklaerung-spanien.html">Erste spanische Steuererklärung</a></li><li><a href="de-beckham-regelung-spanien.html">Beckham-Regelung für Zuziehende</a></li><li><a href="de-ansaessigkeitsbescheinigung-spanien.html">Spanische Ansässigkeitsbescheinigung</a></li><li><a href="de-wegzug-spanien-steuern.html">Wegzug aus Spanien</a></li><li><a href="de-britische-rente-wohnsitz-spanien.html">Britische Rente bei Wohnsitz in Spanien</a></li><li><a href="de-franzoesische-rente-wohnsitz-spanien.html">Französische Rente bei Wohnsitz in Spanien</a></li><li><a href="de-italienische-rente-wohnsitz-spanien.html">Italienische Rente bei Wohnsitz in Spanien</a></li><li><a href="de-immobilie-spanien-vermieten-nichtansaessig.html">Immobilie in Spanien als Nichtansässiger vermieten</a></li><li><a href="de-kauf-nichtansaessiger-verkaeufer-modelo-211.html">Kauf vom Nichtansässigen: Einbehalt und Modelo 211</a></li><li><a href="de-homeoffice-spanien-auslaendischer-arbeitgeber.html">Homeoffice für einen ausländischen Arbeitgeber</a></li><li><a href="de-steuern-spanien-nacherklaeren.html">Versäumte spanische Steuererklärungen nachreichen</a></li><li><a href="de-schreiben-spanisches-finanzamt.html">Schreiben vom spanischen Finanzamt</a></li></ul></div><div><h4>So erreichen Sie uns</h4><p>Von Paterna bei Valencia aus betreuen wir Kunden in ganz Spanien und im Ausland online.</p><p>Sie erreichen uns auf Deutsch per E-Mail oder WhatsApp.</p><p><a href="de-kontakt.html">Kontakt aufnehmen</a></p></div></div><div class="foot__legal"><div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div><div><a href="de-impressum.html">Impressum</a> · <a href="de-datenschutz.html">Datenschutz</a> · <a href="de-cookies.html">Cookies</a></div></div></div></footer><script>
+ (function(){
+diff --git a/de-kontakt.html b/de-kontakt.html
+index 89bf117..05f003b 100644
+--- a/de-kontakt.html
++++ b/de-kontakt.html
+@@ -62,11 +62,56 @@
+     <button class="btn btn--primary" type="submit">Anfrage senden</button>
+     <p class="form__nota">Ihre Anfrage wird persönlich beantwortet. Ihre Daten verwenden wir zur Bearbeitung Ihrer Anfrage und, falls Sie es angeben, um zu erfahren, wie Sie uns gefunden haben; kommen Sie über eine unserer Anzeigen, wird auch das vermerkt: <a href="de-datenschutz.html">Datenschutzerklärung</a>.</p>
+   </div>
+-  <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>Der Eingang Ihrer Anfrage konnte nicht bestätigt werden. Ihr Text bleibt im Formular erhalten. Bevor Sie die Anfrage erneut senden, klären Sie den Eingang bitte per <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> oder <a href="mailto:avanza@grupoavanzaconsultores.es">E-Mail</a>.</p>
++  <p class="form__nota" data-envio-recibido role="status" tabindex="-1" hidden>Diese Anfrage ist bereits bei uns eingegangen (Referenz <span data-envio-ref></span>). Sie müssen sie nicht erneut senden. Wenn Sie etwas anderes fragen möchten, ändern Sie den Text und senden Sie ihn ab.</p>
++  <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>Der Eingang Ihrer Anfrage konnte nicht bestätigt werden. Ihr Text bleibt im Formular erhalten. Sie können erneut auf „Anfrage senden“ klicken. Funktioniert es weiterhin nicht, schreiben Sie uns per <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> oder <a href="mailto:avanza@grupoavanzaconsultores.es">E-Mail</a>.</p>
+ </form>
+ <script>
+ (function(){
+   if (window.__avanzaEnvio) return; window.__avanzaEnvio = 1;
++  // Clave aleatoria del envío, sin datos de la consulta. Se reutiliza en cada reintento del mismo texto.
++  var CLAVE_ENVIO = 'avanza_envio', REF_VALIDA = /^W[0-9a-f]{12}$/, TEXTO_BOTON = 'Anfrage senden', envioMemoria = null;
++  function nuevaClave(){
++    var r = '';
++    try { var al = new Uint8Array(16); (window.crypto || window.msCrypto).getRandomValues(al); for (var i = 0; i < al.length; i++) r += ('0' + al[i].toString(16)).slice(-2); } catch (err) { while (r.length < 32) r += Math.floor(Math.random() * 16).toString(16); }
++    return r;
++  }
++  function leerEnvio(){
++    try { return JSON.parse(sessionStorage.getItem(CLAVE_ENVIO)) || envioMemoria; } catch (err) { return envioMemoria; }
++  }
++  function guardarEnvio(v){
++    envioMemoria = v;
++    try { sessionStorage.setItem(CLAVE_ENVIO, JSON.stringify(v)); } catch (err) {}
++  }
++  // Resumen del texto para distinguir una consulta nueva de un reintento; no guarda el texto.
++  function resumen(t){
++    var h = 2166136261;
++    for (var i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619); }
++    return (h >>> 0).toString(16) + '-' + t.length;
++  }
++  function resumenDe(f){
++    var d = new FormData(f);
++    return resumen([d.get('nombre'), d.get('contacto'), d.get('caso'), d.get('origen') || ''].join('\n'));
++  }
++  function pintarRecibido(f, ref){
++    var r = f.querySelector('[data-envio-recibido]');
++    if (!r) return;
++    var s = r.querySelector('[data-envio-ref]');
++    if (s) s.textContent = ref || '';
++    r.hidden = !ref;
++  }
++  if (!leerEnvio()) guardarEnvio({ id: nuevaClave(), h: '' });
++  var enVuelo = false;
++  // Al volver con Atrás: el botón queda libre y, si es la misma consulta ya confirmada, se dice.
++  window.addEventListener('pageshow', function(){
++    if (enVuelo) return;
++    var f = document.querySelector('form.form');
++    if (!f) return;
++    f.removeAttribute('aria-busy');
++    var b = f.querySelector('button[type=submit]');
++    if (b) { b.disabled = false; b.textContent = TEXTO_BOTON; }
++    var envio = leerEnvio();
++    pintarRecibido(f, envio && envio.ref && envio.h === resumenDe(f) ? envio.ref : '');
++  });
+   document.addEventListener('submit', function(e){
+     var f = e.target;
+     if (!f || !f.classList || !f.classList.contains('form')) return;
+@@ -76,36 +121,113 @@
+     if (f.getAttribute('aria-busy') === 'true') return;
+     f.setAttribute('aria-busy', 'true');
+     var b = f.querySelector('button[type=submit]');
+-    var textoBoton = b ? b.textContent : '';
++    var textoBoton = TEXTO_BOTON;
+     var aviso = f.querySelector('[data-envio-error]');
+     if (aviso) aviso.hidden = true;
++    pintarRecibido(f, '');
+     if (b) { b.disabled = true; b.textContent = 'Wird gesendet…'; }
+     var datos = new FormData(f);
+-    var origen = datos.get('origen') || 'sin indicar';
++    var conocio = datos.get('origen') || '';
++    var h = resumen([datos.get('nombre'), datos.get('contacto'), datos.get('caso'), conocio].join('\n'));
++    var envio = leerEnvio() || { id: nuevaClave(), h: '' };
++    // Misma consulta ya confirmada: ni se reenvía la clave ni sale otro evento.
++    if (envio.ref && envio.h === h) {
++      f.removeAttribute('aria-busy');
++      if (b) { b.disabled = false; b.textContent = textoBoton; }
++      pintarRecibido(f, envio.ref);
++      return;
++    }
++    if (envio.h && envio.h !== h) envio = { id: nuevaClave(), h: h };
++    envio.h = h;
++    guardarEnvio(envio);
++    datos.set('client_submit_id', envio.id);
+     datos.set('pagina', window.location.pathname);
+     var desde = '';
+     try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
+-    var anuncio = ''; try { if (new URLSearchParams(window.location.search).get('origen') === 'anuncio') anuncio = ' · Llegó por: anuncio de Google'; } catch (err) {}
+-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + ' · Nos conoció por: ' + origen + ']');
++    var anuncio = '', campana = '';
++    try {
++      var qs = new URLSearchParams(window.location.search);
++      if (qs.get('origen') === 'anuncio') {
++        anuncio = ' · Llegó por: anuncio de Google';
++        var marcas = [];
++        ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){
++          var v = qs.get(k) || '';
++          if (/^[A-Za-z0-9_.-]{1,60}$/.test(v)) { datos.set(k, v); marcas.push(v); }
++        });
++        campana = marcas.join(' / ');
++        datos.set('origen', 'anuncio');
++        if (conocio) datos.set('como_nos_conocio', conocio);
++      }
++    } catch (err) {}
++    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + (campana ? ' · Campaña: ' + campana : '') + ' · Nos conoció por: ' + (conocio || 'sin indicar') + ']');
++    datos.set('formato', 'json');
+     var cuerpo = new URLSearchParams(datos);
+     var finalizado = false;
+     function mostrarAviso(){
+       if (finalizado) return;
+       finalizado = true;
++      enVuelo = false;
+       clearTimeout(espera);
+       f.removeAttribute('aria-busy');
+       if (b) { b.disabled = false; b.textContent = textoBoton; }
+       if (aviso) { aviso.hidden = false; aviso.focus(); }
+     }
+     var espera = setTimeout(mostrarAviso, 20000);
+-    fetch(f.action, { method: 'POST', mode: 'no-cors', body: cuerpo })
+-      .then(function(){
++    var limite = Date.now() + 20000;
++    // Respuesta ilegible o que no llega: pudo llegar. Se pregunta a B por la misma clave dentro del plazo de 20 s;
++    // lo que vuelva pasa por confirmar(), con sus mismas validaciones.
++    var recuperando = false;
++    function recuperar(){
++      if (recuperando || finalizado) return;
++      recuperando = true;
++      var pausas = [1500, 3000, 3000, 3000], i = 0;
++      var url = f.action + (f.action.indexOf('?') > -1 ? '&' : '?') + 'client_submit_id=' + encodeURIComponent(envio.id);
++      function vuelta(){
+         if (finalizado) return;
+-        finalizado = true;
+-        clearTimeout(espera);
+-        window.location.href = 'de-danke.html';
+-      })
+-      .catch(mostrarAviso);
++        var pausa = pausas[Math.min(i++, pausas.length - 1)];
++        if (Date.now() + pausa >= limite) return;
++        setTimeout(function(){
++          var resta = limite - Date.now();
++          if (finalizado || resta <= 0) return;
++          var ctl = window.AbortController ? new AbortController() : null;
++          var corte = ctl ? setTimeout(function(){ ctl.abort(); }, Math.min(resta, 5000)) : null;
++          fetch(url, { method: 'GET', credentials: 'omit', cache: 'no-store', signal: ctl ? ctl.signal : undefined })
++            .then(function(r){ return r.json(); })
++            .then(function(j){ clearTimeout(corte); if (j && j.ok === true) confirmar(j); else vuelta(); },
++                  function(){ clearTimeout(corte); vuelta(); });
++        }, pausa);
++      }
++      vuelta();
++    }
++    function confirmar(j){
++      if (finalizado) return;
++      if (!j || j.ok !== true || !REF_VALIDA.test(j.ref || '') || (envio.ref && envio.ref !== j.ref)) { mostrarAviso(); return; }
++      finalizado = true;
++      enVuelo = false;
++      clearTimeout(espera);
++      envio.ref = j.ref;
++      guardarEnvio(envio);
++      // La página de gracias solo confirma si lee esta ref en la sesión. Si el navegador no deja guardarla,
++      // se confirma aquí mismo, en el formulario, con la ref que ya ha dado el receptor.
++      var guardada = '';
++      try { guardada = (JSON.parse(sessionStorage.getItem(CLAVE_ENVIO)) || {}).ref || ''; } catch (err) { guardada = ''; }
++      if (guardada !== j.ref) {
++        f.removeAttribute('aria-busy');
++        if (b) { b.disabled = false; b.textContent = textoBoton; }
++        pintarRecibido(f, j.ref);
++        var r = f.querySelector('[data-envio-recibido]');
++        if (r) r.focus();
++        return;
++      }
++      window.location.href = 'de-danke.html?ref=' + encodeURIComponent(j.ref) + (anuncio ? '&origen=anuncio' : '');
++    }
++    enVuelo = true;
++    // POST sin respuesta: a los 6 s se pregunta por la clave sin esperar a que falle. La primera
++    // confirmación válida cierra (finalizado); la respuesta tardía del POST ya no hace nada.
++    setTimeout(recuperar, 6000);
++    fetch(f.action, { method: 'POST', body: cuerpo })
++      .then(function(r){ return r.json(); })
++      .then(confirmar, recuperar);
+   });
+ })();
+ </script>
+diff --git a/fr-confidentialite.html b/fr-confidentialite.html
+index 05ba1a3..478e573 100644
+--- a/fr-confidentialite.html
++++ b/fr-confidentialite.html
+@@ -28,6 +28,7 @@
+ <p><strong>Finalité et base juridique :</strong> répondre à votre demande et, si vous le souhaitez, préparer la prestation. La base juridique est la mise en œuvre de mesures précontractuelles prises à votre demande, conformément à l’article 6, paragraphe 1, point b, du règlement (UE) 2016/679. La manière dont vous nous avez connus, si vous l’indiquez, et le fait que vous venez d’une annonce servent en outre à savoir par quelles voies nous parviennent les demandes, sans établir de profil ; la base juridique est l’intérêt légitime du cabinet (article 6, paragraphe 1, point f), et vous pouvez vous y opposer en nous écrivant. Ces données ne sont pas utilisées à des fins publicitaires.</p>
+ <p><strong>WhatsApp et e-mail depuis une annonce :</strong> si vous arrivez par l’une de nos annonces et que vous nous écrivez par WhatsApp ou par e-mail depuis les boutons du site, le texte ou l’objet du message comporte la mention « (ref. Ads) », que vous voyez avant l’envoi et pouvez supprimer. Elle sert à la même finalité et repose sur la même base juridique que l’indication du formulaire. Aucun cookie n’est utilisé et aucun profil n’est établi.</p>
+ <p><strong>Transmission :</strong> le formulaire transmet votre demande par Google Apps Script, un service de Google, aux boîtes de messagerie du cabinet, fournies par Google (Gmail) et par le prestataire de messagerie du domaine. Ce sont les seuls destinataires, sous réserve d’une obligation légale. Google LLC peut traiter ces données aux États-Unis. Ces transferts reposent sur la décision d’exécution (UE) 2023/1795 de la Commission relative au cadre de protection des données UE–États-Unis. Google LLC y figure comme participant actif (<a href="https://www.dataprivacyframework.gov/participant/5780">liste officielle des participants</a>, consultée le 3 octobre 2026).</p>
+-<p><strong>Conservation des demandes :</strong> pendant leur traitement. Si aucune prestation n’est confiée, les données sont supprimées des boîtes de messagerie et d’Apps Script à la clôture de la demande. Si une prestation est confiée, les délais indiqués plus haut s’appliquent.</p>
++<p><strong>Référence d’envoi :</strong> chaque envoi du formulaire de contact porte une référence aléatoire, qui figure aussi dans le courriel que reçoit notre cabinet. Pour vous confirmer à l’écran que votre demande est arrivée, et pour ne pas répéter la notification si vous cliquez de nouveau sur le bouton, Apps Script conserve un enregistrement technique contenant cette référence, la date, la page, l’indication que vous êtes arrivé par une annonce, le nom de la campagne publicitaire et, si vous l’indiquez, la façon dont vous nous avez connus. Il ne conserve ni le texte de votre demande, ni votre nom, ni vos coordonnées, ni l’identifiant de clic des annonces. Un marqueur technique portant la même référence est également conservé pendant six heures au maximum. La finalité et la base juridique sont celles du formulaire.</p>
++<p><strong>Conservation des demandes :</strong> pendant leur traitement. Si aucune prestation n’est confiée, les données sont supprimées des boîtes de messagerie et d’Apps Script à la clôture de la demande. Si une prestation est confiée, les délais indiqués plus haut s’appliquent. L’enregistrement technique de la référence est supprimé automatiquement 30 jours après l’envoi ; la suppression s’exécute une fois par jour et peut donc prendre un jour de plus.</p>
+ <p><strong>Droits :</strong> les droits indiqués ci-dessus peuvent être exercés en écrivant à <a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a>.</p>
+ <p><strong>Données nécessaires :</strong> votre nom, une adresse électronique ou un numéro WhatsApp et la description de votre demande sont nécessaires pour pouvoir vous répondre. La manière dont vous nous avez connus est facultative. Aucune décision automatisée n’est prise et aucun profilage n’est effectué.</p></div></section></main><footer class="foot"><div class="wrap"><div class="foot__grid"><div><h4>Grupo Avanza Consultores</h4><p>Conseil fiscal et comptable en Espagne<br>Paterna (Valence)</p><p><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a><br></p></div><div><h4>Guides en français</h4><ul><li><a href="fr-residence-fiscale-espagne.html">Résidence fiscale</a></li><li><a href="fr-modele-210-non-residents.html">Modelo 210</a></li><li><a href="fr-acheter-bien-immobilier-espagne.html">Acheter un logement</a></li><li><a href="fr-vendre-bien-immobilier-non-resident.html">Vendre un bien</a></li><li><a href="fr-succession-heritier-non-resident.html">Successions</a></li><li><a href="fr-donation-argent-etranger.html">Donations</a></li><li><a href="fr-retraite-francaise-espagne.html">Retraite française</a></li><li><a href="fr-creer-sl-espagne-etranger.html">Créer une SL en Espagne</a></li><li><a href="fr-independant-autonomo-espagne.html">Indépendant en Espagne</a></li><li><a href="fr-premiere-declaration-revenus-espagne.html">Première déclaration de revenus en Espagne</a></li><li><a href="fr-regime-impatries-loi-beckham.html">Régime des impatriés, dit loi Beckham</a></li><li><a href="fr-certificat-residence-fiscale.html">Certificat de résidence fiscale</a></li><li><a href="fr-quitter-espagne-fiscalite.html">Quitter l’Espagne</a></li><li><a href="fr-retraite-britannique-espagne.html">Retraite britannique</a></li><li><a href="fr-retraite-allemande-espagne.html">Retraite allemande</a></li><li><a href="fr-retraite-italienne-espagne.html">Retraite italienne</a></li><li><a href="fr-modele-720-avoirs-etranger.html">Avoirs à l’étranger et modèle 720</a></li><li><a href="fr-louer-bien-espagne-non-resident.html">Louer un bien en Espagne en tant que non-résident</a></li><li><a href="fr-acheter-vendeur-non-resident-modele-211.html">Acheter à un non-résident : retenue et modèle 211</a></li><li><a href="fr-teletravail-espagne-employeur-etranger.html">Télétravail pour un employeur étranger</a></li><li><a href="fr-regulariser-impots-espagne.html">Régulariser sa situation fiscale</a></li><li><a href="fr-courrier-agence-fiscale.html">Comprendre un courrier de l’AEAT</a></li></ul></div><div><h4>Accompagnement à distance</h4><p>Depuis Paterna (Valencia), nous travaillons à distance dans toute l’Espagne et avec les personnes résidant à l’étranger.</p><p>Vous pouvez nous écrire en français par courriel ou sur WhatsApp.</p></div></div><div class="foot__legal"><div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div><div><a href="fr-mentions-legales.html">Mentions légales</a> · <a href="fr-confidentialite.html">Confidentialité</a> · <a href="fr-cookies.html">Cookies</a></div></div></div></footer><script>(function(){var d=document.documentElement,t=document.getElementById('topbar');if(t){var s=function(){t.classList.toggle('is-stuck',window.scrollY>8)};s();window.addEventListener('scroll',s,{passive:true})}var b=document.querySelector('.navtoggle'),n=document.getElementById('topnav');if(b&&n){d.classList.add('js-nav');b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));n.classList.toggle('is-open',!o);b.setAttribute('aria-label',o?'Ouvrir le menu':'Fermer le menu')});n.addEventListener('click',function(e){if(e.target.closest('a')){b.setAttribute('aria-expanded','false');n.classList.remove('is-open')}});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('is-open')){b.setAttribute('aria-expanded','false');n.classList.remove('is-open');b.focus()}})}})();</script></body></html>
+\ No newline at end of file
+diff --git a/fr-contact.html b/fr-contact.html
+index 42c26e3..43a2bcf 100644
+--- a/fr-contact.html
++++ b/fr-contact.html
+@@ -63,11 +63,56 @@
+     <button class="btn btn--primary" type="submit">Envoyer la demande</button>
+     <p class="form__nota">Un conseiller vous répond personnellement. Vos données servent à traiter votre demande et, si vous l’indiquez, à savoir comment vous nous avez connus ; si vous arrivez par l’une de nos annonces, nous le notons également : <a href="fr-confidentialite.html">politique de confidentialité</a>.</p>
+   </div>
+-  <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>Nous ne pouvons pas confirmer la réception de votre demande. Votre texte reste dans le formulaire. Avant de renvoyer votre demande, écrivez-nous sur <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> ou par <a href="mailto:avanza@grupoavanzaconsultores.es">courriel</a>.</p>
++  <p class="form__nota" data-envio-recibido role="status" tabindex="-1" hidden>Nous avons déjà reçu cette demande (référence <span data-envio-ref></span>). Inutile de l’envoyer à nouveau. Si vous souhaitez poser une autre question, modifiez le texte et envoyez-le.</p>
++  <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>Nous ne pouvons pas confirmer la réception de votre demande. Votre texte reste dans le formulaire. Vous pouvez cliquer de nouveau sur «&nbsp;Envoyer la demande&nbsp;». Si cela ne fonctionne toujours pas, écrivez-nous sur <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> ou par <a href="mailto:avanza@grupoavanzaconsultores.es">courriel</a>.</p>
+ </form>
+ <script>
+ (function(){
+   if (window.__avanzaEnvio) return; window.__avanzaEnvio = 1;
++  // Clave aleatoria del envío, sin datos de la consulta. Se reutiliza en cada reintento del mismo texto.
++  var CLAVE_ENVIO = 'avanza_envio', REF_VALIDA = /^W[0-9a-f]{12}$/, TEXTO_BOTON = 'Envoyer la demande', envioMemoria = null;
++  function nuevaClave(){
++    var r = '';
++    try { var al = new Uint8Array(16); (window.crypto || window.msCrypto).getRandomValues(al); for (var i = 0; i < al.length; i++) r += ('0' + al[i].toString(16)).slice(-2); } catch (err) { while (r.length < 32) r += Math.floor(Math.random() * 16).toString(16); }
++    return r;
++  }
++  function leerEnvio(){
++    try { return JSON.parse(sessionStorage.getItem(CLAVE_ENVIO)) || envioMemoria; } catch (err) { return envioMemoria; }
++  }
++  function guardarEnvio(v){
++    envioMemoria = v;
++    try { sessionStorage.setItem(CLAVE_ENVIO, JSON.stringify(v)); } catch (err) {}
++  }
++  // Resumen del texto para distinguir una consulta nueva de un reintento; no guarda el texto.
++  function resumen(t){
++    var h = 2166136261;
++    for (var i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619); }
++    return (h >>> 0).toString(16) + '-' + t.length;
++  }
++  function resumenDe(f){
++    var d = new FormData(f);
++    return resumen([d.get('nombre'), d.get('contacto'), d.get('caso'), d.get('origen') || ''].join('\n'));
++  }
++  function pintarRecibido(f, ref){
++    var r = f.querySelector('[data-envio-recibido]');
++    if (!r) return;
++    var s = r.querySelector('[data-envio-ref]');
++    if (s) s.textContent = ref || '';
++    r.hidden = !ref;
++  }
++  if (!leerEnvio()) guardarEnvio({ id: nuevaClave(), h: '' });
++  var enVuelo = false;
++  // Al volver con Atrás: el botón queda libre y, si es la misma consulta ya confirmada, se dice.
++  window.addEventListener('pageshow', function(){
++    if (enVuelo) return;
++    var f = document.querySelector('form.form');
++    if (!f) return;
++    f.removeAttribute('aria-busy');
++    var b = f.querySelector('button[type=submit]');
++    if (b) { b.disabled = false; b.textContent = TEXTO_BOTON; }
++    var envio = leerEnvio();
++    pintarRecibido(f, envio && envio.ref && envio.h === resumenDe(f) ? envio.ref : '');
++  });
+   document.addEventListener('submit', function(e){
+     var f = e.target;
+     if (!f || !f.classList || !f.classList.contains('form')) return;
+@@ -77,36 +122,113 @@
+     if (f.getAttribute('aria-busy') === 'true') return;
+     f.setAttribute('aria-busy', 'true');
+     var b = f.querySelector('button[type=submit]');
+-    var textoBoton = b ? b.textContent : '';
++    var textoBoton = TEXTO_BOTON;
+     var aviso = f.querySelector('[data-envio-error]');
+     if (aviso) aviso.hidden = true;
++    pintarRecibido(f, '');
+     if (b) { b.disabled = true; b.textContent = 'Envoi en cours…'; }
+     var datos = new FormData(f);
+-    var origen = datos.get('origen') || 'sin indicar';
++    var conocio = datos.get('origen') || '';
++    var h = resumen([datos.get('nombre'), datos.get('contacto'), datos.get('caso'), conocio].join('\n'));
++    var envio = leerEnvio() || { id: nuevaClave(), h: '' };
++    // Misma consulta ya confirmada: ni se reenvía la clave ni sale otro evento.
++    if (envio.ref && envio.h === h) {
++      f.removeAttribute('aria-busy');
++      if (b) { b.disabled = false; b.textContent = textoBoton; }
++      pintarRecibido(f, envio.ref);
++      return;
++    }
++    if (envio.h && envio.h !== h) envio = { id: nuevaClave(), h: h };
++    envio.h = h;
++    guardarEnvio(envio);
++    datos.set('client_submit_id', envio.id);
+     datos.set('pagina', window.location.pathname);
+     var desde = '';
+     try { var q = new URLSearchParams(window.location.search).get('pagina') || ''; if (/^[a-z0-9-]+\.html$/.test(q)) desde = q; } catch (err) {}
+-    var anuncio = ''; try { if (new URLSearchParams(window.location.search).get('origen') === 'anuncio') anuncio = ' · Llegó por: anuncio de Google'; } catch (err) {}
+-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + ' · Nos conoció por: ' + origen + ']');
++    var anuncio = '', campana = '';
++    try {
++      var qs = new URLSearchParams(window.location.search);
++      if (qs.get('origen') === 'anuncio') {
++        anuncio = ' · Llegó por: anuncio de Google';
++        var marcas = [];
++        ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){
++          var v = qs.get(k) || '';
++          if (/^[A-Za-z0-9_.-]{1,60}$/.test(v)) { datos.set(k, v); marcas.push(v); }
++        });
++        campana = marcas.join(' / ');
++        datos.set('origen', 'anuncio');
++        if (conocio) datos.set('como_nos_conocio', conocio);
++      }
++    } catch (err) {}
++    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + (campana ? ' · Campaña: ' + campana : '') + ' · Nos conoció por: ' + (conocio || 'sin indicar') + ']');
++    datos.set('formato', 'json');
+     var cuerpo = new URLSearchParams(datos);
+     var finalizado = false;
+     function mostrarAviso(){
+       if (finalizado) return;
+       finalizado = true;
++      enVuelo = false;
+       clearTimeout(espera);
+       f.removeAttribute('aria-busy');
+       if (b) { b.disabled = false; b.textContent = textoBoton; }
+       if (aviso) { aviso.hidden = false; aviso.focus(); }
+     }
+     var espera = setTimeout(mostrarAviso, 20000);
+-    fetch(f.action, { method: 'POST', mode: 'no-cors', body: cuerpo })
+-      .then(function(){
++    var limite = Date.now() + 20000;
++    // Respuesta ilegible o que no llega: pudo llegar. Se pregunta a B por la misma clave dentro del plazo de 20 s;
++    // lo que vuelva pasa por confirmar(), con sus mismas validaciones.
++    var recuperando = false;
++    function recuperar(){
++      if (recuperando || finalizado) return;
++      recuperando = true;
++      var pausas = [1500, 3000, 3000, 3000], i = 0;
++      var url = f.action + (f.action.indexOf('?') > -1 ? '&' : '?') + 'client_submit_id=' + encodeURIComponent(envio.id);
++      function vuelta(){
+         if (finalizado) return;
+-        finalizado = true;
+-        clearTimeout(espera);
+-        window.location.href = 'fr-merci.html';
+-      })
+-      .catch(mostrarAviso);
++        var pausa = pausas[Math.min(i++, pausas.length - 1)];
++        if (Date.now() + pausa >= limite) return;
++        setTimeout(function(){
++          var resta = limite - Date.now();
++          if (finalizado || resta <= 0) return;
++          var ctl = window.AbortController ? new AbortController() : null;
++          var corte = ctl ? setTimeout(function(){ ctl.abort(); }, Math.min(resta, 5000)) : null;
++          fetch(url, { method: 'GET', credentials: 'omit', cache: 'no-store', signal: ctl ? ctl.signal : undefined })
++            .then(function(r){ return r.json(); })
++            .then(function(j){ clearTimeout(corte); if (j && j.ok === true) confirmar(j); else vuelta(); },
++                  function(){ clearTimeout(corte); vuelta(); });
++        }, pausa);
++      }
++      vuelta();
++    }
++    function confirmar(j){
++      if (finalizado) return;
++      if (!j || j.ok !== true || !REF_VALIDA.test(j.ref || '') || (envio.ref && envio.ref !== j.ref)) { mostrarAviso(); return; }
++      finalizado = true;
++      enVuelo = false;
++      clearTimeout(espera);
++      envio.ref = j.ref;
++      guardarEnvio(envio);
++      // La página de gracias solo confirma si lee esta ref en la sesión. Si el navegador no deja guardarla,
++      // se confirma aquí mismo, en el formulario, con la ref que ya ha dado el receptor.
++      var guardada = '';
++      try { guardada = (JSON.parse(sessionStorage.getItem(CLAVE_ENVIO)) || {}).ref || ''; } catch (err) { guardada = ''; }
++      if (guardada !== j.ref) {
++        f.removeAttribute('aria-busy');
++        if (b) { b.disabled = false; b.textContent = textoBoton; }
++        pintarRecibido(f, j.ref);
++        var r = f.querySelector('[data-envio-recibido]');
++        if (r) r.focus();
++        return;
++      }
++      window.location.href = 'fr-merci.html?ref=' + encodeURIComponent(j.ref) + (anuncio ? '&origen=anuncio' : '');
++    }
++    enVuelo = true;
++    // POST sin respuesta: a los 6 s se pregunta por la clave sin esperar a que falle. La primera
++    // confirmación válida cierra (finalizado); la respuesta tardía del POST ya no hace nada.
++    setTimeout(recuperar, 6000);
++    fetch(f.action, { method: 'POST', body: cuerpo })
++      .then(function(r){ return r.json(); })
++      .then(confirmar, recuperar);
+   });
+ })();
+ </script>
+diff --git a/fr-merci.html b/fr-merci.html
+index cfa41b9..65847d0 100644
+--- a/fr-merci.html
++++ b/fr-merci.html
+@@ -17,5 +17,5 @@
+ <a class="langsw" href="de-danke.html" hreflang="de" lang="de" aria-label="Deutsch"><span class="langsw__full">Deutsch</span><span class="langsw__short" aria-hidden="true">DE</span></a>
+ 
+ 
+-<a class="btn btn--primary btn--sm topbar__cta" href="fr-contact.html">Nous contacter</a><button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Ouvrir le menu"><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="navtoggle__txt">Menu</span></button></div></div></header><main id="contenido"><section class="pagehead"><div class="wrap--narrow" style="text-align:center"><p class="eyebrow">Contact</p><h1>Merci de nous avoir contactés.</h1><p class="lead">Cette page ne constitue pas un accusé de réception. Pour vérifier que votre demande nous est parvenue, écrivez-nous sur WhatsApp ou par courriel en précisant que vous avez rempli le formulaire.</p><div class="ctas" style="justify-content:center"><a class="btn btn--primary" href="https://wa.me/34614365547?text=Bonjour%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site%20en%20fran%C3%A7ais.%20Ma%20demande%20%3A%20__.%20Pays%20de%20r%C3%A9sidence%20%3A%20__.%20Ann%C3%A9e%20ou%20date%20concern%C3%A9e%20%3A%20__.%20%C3%89ch%C3%A9ance%20en%20cours%20%3A%20__." target="_blank" rel="noopener">Écrire sur WhatsApp</a><a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es">Écrire par courriel</a>
++<a class="btn btn--primary btn--sm topbar__cta" href="fr-contact.html">Nous contacter</a><button class="navtoggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Ouvrir le menu"><span class="navtoggle__bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="navtoggle__txt">Menu</span></button></div></div></header><main id="contenido"><section class="pagehead"><div class="wrap--narrow" style="text-align:center"><p class="eyebrow">Contact</p><h1>Merci de nous avoir contactés.</h1><p class="lead" data-recibido hidden>Nous avons bien reçu votre demande. Référence&nbsp;: <span data-ref></span>.</p><p class="lead" data-sin-ref>Si vous avez envoyé une demande et que sa référence n’apparaît pas sur cette page, écrivez-nous sur WhatsApp ou par courriel en précisant que vous avez rempli le formulaire.</p><script>(function(){try{var q=new URLSearchParams(location.search).get("ref")||"";if(!/^W[0-9a-f]{12}$/.test(q))return;var e=null;try{e=JSON.parse(sessionStorage.getItem("avanza_envio"));}catch(x){}if(!e||e.ref!==q)return;var ok=document.querySelector("[data-recibido]"),n=document.querySelector("[data-sin-ref]"),s=ok&&ok.querySelector("[data-ref]");if(!ok||!s)return;s.textContent=q;ok.hidden=false;if(n)n.hidden=true;}catch(x){}})();</script><div class="ctas" style="justify-content:center"><a class="btn btn--primary" href="https://wa.me/34614365547?text=Bonjour%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site%20en%20fran%C3%A7ais.%20Ma%20demande%20%3A%20__.%20Pays%20de%20r%C3%A9sidence%20%3A%20__.%20Ann%C3%A9e%20ou%20date%20concern%C3%A9e%20%3A%20__.%20%C3%89ch%C3%A9ance%20en%20cours%20%3A%20__." target="_blank" rel="noopener">Écrire sur WhatsApp</a><a class="btn btn--ghost" href="mailto:avanza@grupoavanzaconsultores.es">Écrire par courriel</a>
+       <a class="btn btn--ghost" href="fr.html">Retour à l’accueil</a></div></div></section><section class="cta-final"><div class="wrap"><h2>Consulter nos guides</h2><p class="lead">Nos guides présentent les principales démarches fiscales et administratives en Espagne.</p><div class="ctas"><a class="btn btn--onnavy" href="fr.html#services">Services et guides</a></div></div></section></main><footer class="foot"><div class="wrap"><div class="foot__grid"><div><h4>Grupo Avanza Consultores</h4><p>Conseil fiscal et comptable en Espagne<br>Paterna (Valence)</p><p><a href="mailto:avanza@grupoavanzaconsultores.es">avanza@<wbr>grupoavanzaconsultores.es</a><br></p></div><div><h4>Guides en français</h4><ul><li><a href="fr-residence-fiscale-espagne.html">Résidence fiscale</a></li><li><a href="fr-modele-210-non-residents.html">Modelo 210</a></li><li><a href="fr-acheter-bien-immobilier-espagne.html">Acheter un logement</a></li><li><a href="fr-vendre-bien-immobilier-non-resident.html">Vendre un bien</a></li><li><a href="fr-succession-heritier-non-resident.html">Successions</a></li><li><a href="fr-donation-argent-etranger.html">Donations</a></li><li><a href="fr-retraite-francaise-espagne.html">Retraite française</a></li><li><a href="fr-creer-sl-espagne-etranger.html">Créer une SL en Espagne</a></li><li><a href="fr-independant-autonomo-espagne.html">Indépendant en Espagne</a></li><li><a href="fr-premiere-declaration-revenus-espagne.html">Première déclaration de revenus en Espagne</a></li><li><a href="fr-regime-impatries-loi-beckham.html">Régime des impatriés, dit loi Beckham</a></li><li><a href="fr-certificat-residence-fiscale.html">Certificat de résidence fiscale</a></li><li><a href="fr-quitter-espagne-fiscalite.html">Quitter l’Espagne</a></li><li><a href="fr-retraite-britannique-espagne.html">Retraite britannique</a></li><li><a href="fr-retraite-allemande-espagne.html">Retraite allemande</a></li><li><a href="fr-retraite-italienne-espagne.html">Retraite italienne</a></li><li><a href="fr-modele-720-avoirs-etranger.html">Avoirs à l’étranger et modèle 720</a></li><li><a href="fr-louer-bien-espagne-non-resident.html">Louer un bien en Espagne en tant que non-résident</a></li><li><a href="fr-acheter-vendeur-non-resident-modele-211.html">Acheter à un non-résident : retenue et modèle 211</a></li><li><a href="fr-teletravail-espagne-employeur-etranger.html">Télétravail pour un employeur étranger</a></li><li><a href="fr-regulariser-impots-espagne.html">Régulariser sa situation fiscale</a></li><li><a href="fr-courrier-agence-fiscale.html">Comprendre un courrier de l’AEAT</a></li></ul></div><div><h4>Accompagnement à distance</h4><p>Depuis Paterna (Valencia), nous travaillons à distance dans toute l’Espagne et avec les personnes résidant à l’étranger.</p><p>Vous pouvez nous écrire en français par courriel ou sur WhatsApp.</p></div></div><div class="foot__legal"><div>© 2026 Grupo Avanza Consultores · Jose Vicente Díaz Madrid</div><div><a href="fr-mentions-legales.html">Mentions légales</a> · <a href="fr-confidentialite.html">Confidentialité</a> · <a href="fr-cookies.html">Cookies</a></div></div></div></footer><script>(function(){var d=document.documentElement,t=document.getElementById('topbar');if(t){var s=function(){t.classList.toggle('is-stuck',window.scrollY>8)};s();window.addEventListener('scroll',s,{passive:true})}var b=document.querySelector('.navtoggle'),n=document.getElementById('topnav');if(b&&n){d.classList.add('js-nav');b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));n.classList.toggle('is-open',!o);b.setAttribute('aria-label',o?'Ouvrir le menu':'Fermer le menu')});n.addEventListener('click',function(e){if(e.target.closest('a')){b.setAttribute('aria-expanded','false');n.classList.remove('is-open')}});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('is-open')){b.setAttribute('aria-expanded','false');n.classList.remove('is-open');b.focus()}})}})();</script></body></html>
+\ No newline at end of file

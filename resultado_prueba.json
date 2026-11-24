@@ -1,0 +1,478 @@
+{
+ "fecha_utc": "2026-11-24T16:06:23+00:00",
+ "casos": [
+  {
+   "idioma": "fr",
+   "modo": "ok",
+   "ancho": 390,
+   "boton": "Envoyer la demande",
+   "url": "/fr-merci.html?ref=W0123456789ab",
+   "gracias_visible": true,
+   "gracias_texto": "Nous avons bien reçu votre demande. Référence : W0123456789ab.",
+   "sin_ref_oculto": true,
+   "reenvio_mismo_texto_posts": 0,
+   "aviso_ya_recibido": true,
+   "posts": 1,
+   "gets_recuperacion": 0,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/fr-contact.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /fr-contact.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "fr",
+   "modo": "ok",
+   "ancho": 1280,
+   "boton": "Envoyer la demande",
+   "url": "/fr-merci.html?ref=W0123456789ab",
+   "gracias_visible": true,
+   "gracias_texto": "Nous avons bien reçu votre demande. Référence : W0123456789ab.",
+   "sin_ref_oculto": true,
+   "reenvio_mismo_texto_posts": 0,
+   "aviso_ya_recibido": true,
+   "posts": 1,
+   "gets_recuperacion": 0,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/fr-contact.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /fr-contact.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "fr",
+   "modo": "recupera",
+   "ancho": 390,
+   "boton": "Envoyer la demande",
+   "url": "/fr-merci.html?ref=W0123456789ab",
+   "gracias_visible": true,
+   "gracias_texto": "Nous avons bien reçu votre demande. Référence : W0123456789ab.",
+   "sin_ref_oculto": true,
+   "reenvio_mismo_texto_posts": 0,
+   "aviso_ya_recibido": true,
+   "posts": 1,
+   "gets_recuperacion": 1,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/fr-contact.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /fr-contact.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "fr",
+   "modo": "sin_respuesta",
+   "ancho": 390,
+   "boton": "Envoyer la demande",
+   "aviso_error_visible": true,
+   "aviso_error_ok": true,
+   "boton_libre": true,
+   "sigue_en_formulario": true,
+   "posts": 1,
+   "gets_recuperacion": 7,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/fr-contact.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /fr-contact.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "fr",
+   "modo": "mala_ref",
+   "ancho": 1280,
+   "boton": "Envoyer la demande",
+   "aviso_error_visible": true,
+   "aviso_error_ok": true,
+   "boton_libre": true,
+   "sigue_en_formulario": true,
+   "posts": 1,
+   "gets_recuperacion": 0,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/fr-contact.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /fr-contact.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "fr",
+   "modo": "anuncio",
+   "ancho": 390,
+   "boton": "Envoyer la demande",
+   "url": "/fr-merci.html?ref=W0123456789ab&origen=anuncio",
+   "gracias_visible": true,
+   "gracias_texto": "Nous avons bien reçu votre demande. Référence : W0123456789ab.",
+   "sin_ref_oculto": true,
+   "reenvio_mismo_texto_posts": 0,
+   "aviso_ya_recibido": true,
+   "posts": 1,
+   "gets_recuperacion": 0,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "origen",
+    "pagina",
+    "utm_campaign",
+    "utm_medium",
+    "utm_source"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/fr-contact.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": [
+     "anuncio"
+    ],
+    "utm_source": [
+     "google"
+    ],
+    "utm_medium": [
+     "cpc"
+    ],
+    "utm_campaign": [
+     "prueba_fr"
+    ]
+   },
+   "post_linea_origen": "[Página: /fr-contact.html · Viene de: modelo-210-no-residentes.html · Llegó por: anuncio de Google · Campaña: google / cpc / prueba_fr · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "de",
+   "modo": "ok",
+   "ancho": 390,
+   "boton": "Anfrage senden",
+   "url": "/de-danke.html?ref=W0123456789ab",
+   "gracias_visible": true,
+   "gracias_texto": "Wir haben Ihre Anfrage erhalten. Referenz: W0123456789ab.",
+   "sin_ref_oculto": true,
+   "reenvio_mismo_texto_posts": 0,
+   "aviso_ya_recibido": true,
+   "posts": 1,
+   "gets_recuperacion": 0,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/de-kontakt.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /de-kontakt.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "de",
+   "modo": "ok",
+   "ancho": 1280,
+   "boton": "Anfrage senden",
+   "url": "/de-danke.html?ref=W0123456789ab",
+   "gracias_visible": true,
+   "gracias_texto": "Wir haben Ihre Anfrage erhalten. Referenz: W0123456789ab.",
+   "sin_ref_oculto": true,
+   "reenvio_mismo_texto_posts": 0,
+   "aviso_ya_recibido": true,
+   "posts": 1,
+   "gets_recuperacion": 0,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/de-kontakt.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /de-kontakt.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "de",
+   "modo": "recupera",
+   "ancho": 390,
+   "boton": "Anfrage senden",
+   "url": "/de-danke.html?ref=W0123456789ab",
+   "gracias_visible": true,
+   "gracias_texto": "Wir haben Ihre Anfrage erhalten. Referenz: W0123456789ab.",
+   "sin_ref_oculto": true,
+   "reenvio_mismo_texto_posts": 0,
+   "aviso_ya_recibido": true,
+   "posts": 1,
+   "gets_recuperacion": 1,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/de-kontakt.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /de-kontakt.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "de",
+   "modo": "sin_respuesta",
+   "ancho": 390,
+   "boton": "Anfrage senden",
+   "aviso_error_visible": true,
+   "aviso_error_ok": true,
+   "boton_libre": true,
+   "sigue_en_formulario": true,
+   "posts": 1,
+   "gets_recuperacion": 7,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/de-kontakt.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /de-kontakt.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "de",
+   "modo": "mala_ref",
+   "ancho": 1280,
+   "boton": "Anfrage senden",
+   "aviso_error_visible": true,
+   "aviso_error_ok": true,
+   "boton_libre": true,
+   "sigue_en_formulario": true,
+   "posts": 1,
+   "gets_recuperacion": 0,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "pagina"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/de-kontakt.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": null,
+    "utm_source": null,
+    "utm_medium": null,
+    "utm_campaign": null
+   },
+   "post_linea_origen": "[Página: /de-kontakt.html · Viene de: modelo-210-no-residentes.html · Nos conoció por: sin indicar]"
+  },
+  {
+   "idioma": "de",
+   "modo": "anuncio",
+   "ancho": 390,
+   "boton": "Anfrage senden",
+   "url": "/de-danke.html?ref=W0123456789ab&origen=anuncio",
+   "gracias_visible": true,
+   "gracias_texto": "Wir haben Ihre Anfrage erhalten. Referenz: W0123456789ab.",
+   "sin_ref_oculto": true,
+   "reenvio_mismo_texto_posts": 0,
+   "aviso_ya_recibido": true,
+   "posts": 1,
+   "gets_recuperacion": 0,
+   "peticiones_fuera_bloqueadas": [],
+   "post_campos": [
+    "caso",
+    "client_submit_id",
+    "contacto",
+    "form-name",
+    "formato",
+    "nombre",
+    "origen",
+    "pagina",
+    "utm_campaign",
+    "utm_medium",
+    "utm_source"
+   ],
+   "post_formato": [
+    "json"
+   ],
+   "post_pagina": [
+    "/de-kontakt.html"
+   ],
+   "post_clave_ok": true,
+   "post_utm": {
+    "origen": [
+     "anuncio"
+    ],
+    "utm_source": [
+     "google"
+    ],
+    "utm_medium": [
+     "cpc"
+    ],
+    "utm_campaign": [
+     "prueba_de"
+    ]
+   },
+   "post_linea_origen": "[Página: /de-kontakt.html · Viene de: modelo-210-no-residentes.html · Llegó por: anuncio de Google · Campaña: google / cpc / prueba_de · Nos conoció por: sin indicar]"
+  }
+ ],
+ "navegador": "153.0.8010.12"
+}
