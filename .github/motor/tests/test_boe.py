@@ -61,6 +61,47 @@ class FichaXML(unittest.TestCase):
                 boe.ficha("BOE-A-2026-999999")
             self.assertIn("legislacion-consolidada", pedir.call_args.args[0])
 
+    def test_identifica_los_documentos_del_diario_del_aviso_81(self):
+        casos = (
+            (
+                "BOE-A-2008-18633", "BOE-A-2008-18633",
+                "Denuncia del Convenio entre España y Dinamarca para evitar la doble imposición.",
+                "Ministerio de Asuntos Exteriores y de Cooperación",
+            ),
+            (
+                "BOE-A-2026-23755", "BOE-A-2026-23755",
+                "Resolución de 12 de noviembre de 2026, del Congreso de los Diputados, por la que se ordena "
+                "la publicación del Acuerdo de convalidación del Real Decreto-ley 29/2026, de 6 de octubre.",
+                "Cortes Generales",
+            ),
+            (
+                "Ley 26/2014", "BOE-A-2014-12327",
+                "Ley 26/2014, de 27 de noviembre, por la que se modifican la Ley 35/2006 y otras normas tributarias.",
+                "Jefatura del Estado",
+            ),
+            (
+                "Orden HAC/56/2024", "BOE-A-2024-1772",
+                "Orden HAC/56/2024, de 25 de enero, por la que se modifican las órdenes ministeriales "
+                "que aprueban los modelos de autoliquidación 123, 210, 216 y otros modelos.",
+                "Ministerio de Hacienda",
+            ),
+        )
+        for cita, ident, titulo, departamento in casos:
+            with self.subTest(cita=cita):
+                xml = (XML.replace(IDENT.encode(), ident.encode())
+                       .replace(b"Orden HFP/1338/2023, de 13 de diciembre, modelo 151.", titulo.encode())
+                       .replace(b"Ministerio de Hacienda", departamento.encode()))
+                self.assertEqual(boe.SEMILLA.get(cita, cita), ident)
+                self.assertTrue(boe.RX_ID.fullmatch(cita) or boe.es_esa_norma(cita, titulo))
+                with mock.patch.object(boe, "pide", return_value=xml) as pedir:
+                    ficha = boe.ficha(ident)
+                    self.assertEqual(ficha["crudo"]["identificador"], ident)
+                    self.assertEqual(len(ficha["huella"]), 64)
+                    pedir.assert_called_once_with(f"https://www.boe.es/diario_boe/xml.php?id={ident}", formato="xml")
+                xml_otro_emisor = xml.replace(departamento.encode(), b"Comunidad de Madrid")
+                with mock.patch.object(boe, "pide", return_value=xml_otro_emisor), self.assertRaises(LookupError):
+                    boe.ficha(ident)
+
     def test_se_conserva_la_ficha_consolidada(self):
         with mock.patch.object(boe, "pide", return_value={"titulo": "Ley 5/2022, asimetrias", "fecha_actualizacion": "20251220T151301Z"}):
             fi = boe.ficha("BOE-A-2022-3712")
