@@ -1,14 +1,19 @@
 (function () {
   'use strict';
 
+  var campanaHistorica = 'extranjeros_es_historica';
   var recorridos = {
     'vender-inmueble-en-espana-no-residente.html': ['contacto.html', 'modelo210_venta_es_piloto'],
     'selling-property-spain-non-resident.html': ['en-contact.html', 'venta_en_piloto'],
     'de-immobilie-spanien-verkaufen-ausland.html': ['de-kontakt.html', 'venta_de_piloto'],
     'fr-vendre-bien-immobilier-non-resident.html': ['fr-contact.html', 'venta_fr_piloto'],
     'spanish-gift-tax-return-service.html': ['en-contact.html', 'donacion_en_piloto'],
-    'de-geldschenkung-ausland-spanien.html': ['de-kontakt.html', 'donacion_de_piloto'],
-    'fr-donation-argent-etranger.html': ['fr-contact.html', 'donacion_fr_piloto']
+    'de-geldschenkung-ausland-spanien.html': ['de-kontakt.html', 'donacion_de_piloto', campanaHistorica],
+    'fr-donation-argent-etranger.html': ['fr-contact.html', 'donacion_fr_piloto', campanaHistorica],
+    'gift-of-money-from-abroad-spain.html': ['en-contact.html', campanaHistorica],
+    'fr-modele-210-non-residents.html': ['fr-contact.html', campanaHistorica],
+    'de-modelo-210-nichtansaessige.html': ['de-kontakt.html', campanaHistorica],
+    'modelo-210-non-resident-tax-spain.html': ['en-contact.html', campanaHistorica]
   };
   var acuses = {
     'contacto.html': 'gracias.html',
@@ -53,7 +58,7 @@
   function vieneDeAnuncio(p) {
     var ruta = Object.prototype.hasOwnProperty.call(recorridos, p) ? recorridos[p] : null;
     return ruta && params.get('origen') === 'anuncio' && params.get('utm_source') === 'google' &&
-      params.get('utm_medium') === 'cpc' && params.get('utm_campaign') === ruta[1];
+      params.get('utm_medium') === 'cpc' && ruta.slice(1).includes(params.get('utm_campaign'));
   }
 
   var clic = identificador();
