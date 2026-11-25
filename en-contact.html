@@ -225,6 +225,7 @@
         if (r) r.focus();
         return;
       }
+      if (window.avanzaMedicion) window.avanzaMedicion.preparar(j);
       window.location.href = 'en-thank-you.html?ref=' + encodeURIComponent(j.ref) + (anuncio ? '&origen=anuncio' : '');
     }
     enVuelo = true;
@@ -313,5 +314,5 @@
 })();
 </script>
 <script>(function(){var h=document.querySelector(".hero__logo"),t=document.querySelector(".trust");if(h){var d=document.createElement("div");d.className="marca";d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">';h.insertBefore(d,h.firstChild);}if(h&&t)h.appendChild(t);})();</script>
-<script src="origen-anuncio.js" defer></script></body>
+<script src="origen-anuncio.js" defer></script><script src="medicion-consentimiento.js" defer></script></body>
 </html>
