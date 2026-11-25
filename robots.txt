@@ -30,4 +30,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://grupoavanzaconsultores.es/sitemap.xml
-Sitemap: https://grupoavanzaconsultores.es/sitemap-extranjeros.xml
