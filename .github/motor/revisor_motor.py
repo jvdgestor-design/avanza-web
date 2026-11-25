@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Revisión de los cambios del motor (11/11/2026, decisión de Jose): otro modelo (Sonnet, por la API de Claude)
-intenta tumbar todo cambio bajo .github/ de un PR antes de que la fusión automática lo deje entrar.
+"""Revisión de los cambios del motor (11/11/2026, decisión de Jose): otro modelo (Sonnet) intenta tumbar todo
+cambio bajo .github/ de un PR antes de que la fusión automática lo deje entrar. Desde el 25/11/2026 va con el plan
+de Claude (Claude Code sin herramientas, secreto CLAUDE_CODE_OAUTH_TOKEN, claude_plan.py); la API
+(ANTHROPIC_API_KEY) solo si no hay token del plan.
 
 Lo lanza .github/workflows/revision-motor.yml con pull_request_target: el programa es siempre el de main y de la
 rama solo se lee el diff, como dato. La fusión automática solo acepta un cambio del motor si este trabajo ha
@@ -22,6 +24,9 @@ import sys
 import time
 import urllib.error
 import urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # el claude_plan.py de main, junto a este programa
+import claude_plan  # noqa: E402
 
 MODELO = os.environ.get("AVANZA_MODELO_REVISOR", "claude-sonnet-5-5")
 MAX_DIFF = 200_000  # caracteres; un diff mayor no se revisa entero y no se fusiona solo
@@ -69,7 +74,13 @@ def veredicto(respuesta, fin="end_turn"):
 
 
 def llamar(clave, contenido):
-    cuerpo = json.dumps({"model": MODELO, "max_tokens": 16000, "system": ENCARGO,
+    if claude_plan.hay_token():
+        try:
+            r = claude_plan.pide(MODELO, ENCARGO, contenido, max_tokens=16000, timeout=900)
+        except claude_plan.FalloPlan as e:
+            return None, f"Claude (plan) no ha revisado: {e}"
+        return ("".join(b.get("text", "") for b in r["content"] if b.get("type") == "text"), r["stop_reason"]), ""
+    cuerpo =json.dumps({"model": MODELO, "max_tokens": 16000, "system": ENCARGO,
                          "messages": [{"role": "user", "content": contenido}]}).encode()
     msg = ""
     for intento in range(2):
@@ -108,8 +119,9 @@ def main():
         print("OK: el PR no cambia nada bajo .github/.")
         return 0
     clave = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not clave:
-        print("NO: falta el secreto ANTHROPIC_API_KEY; sin revisión no se fusiona nada del motor.")
+    if not clave and not claude_plan.hay_token():
+        print("NO: falta el secreto CLAUDE_CODE_OAUTH_TOKEN (plan de Claude; o ANTHROPIC_API_KEY); "
+              "sin revisión no se fusiona nada del motor.")
         return 1
     if len(diff) > MAX_DIFF:
         print(f"NO: el diff del motor tiene {len(diff)} caracteres (más de {MAX_DIFF}); se revisa y fusiona a mano.")

@@ -1,5 +1,6 @@
-# Motor de visibilidad por API (capa 2): radar de citas en IA + respuestas de foro y refuerzos de página,
-# redactados por Sonnet y revisados por Opus (puerta 5), pagados con los créditos de API del plan.
+# Motor de visibilidad (capa 2): radar de citas en IA + respuestas de foro y refuerzos de página,
+# redactados por Sonnet y revisados por Opus (puerta 5). Desde el 25/11/2026 con el plan de Claude de Jose
+# (Claude Code no interactivo, secreto CLAUDE_CODE_OAUTH_TOKEN); la API no se recarga y ANTHROPIC_API_KEY ya no se usa.
 # Escribe en la rama datos-motor, carpeta motor/visibilidad/ (INDICE.md, radar.csv, investigar.md, listo/, apartado/).
 # Nada sale a terceros desde aquí: lo de listo/ lo publica la pasada de Claude.
 # Tope diario en el propio script (AVANZA_TOPE_TOKENS / AVANZA_TOPE_BUSQUEDAS).
@@ -7,7 +8,9 @@
 name: Motor de visibilidad
 on:
   schedule:
-    - cron: "37 */2 * * *"   # cada dos horas, día y noche (14/11); el aviso de gasto del script baja el tope si el crédito no llega al 15/12
+    # Cuatro pasadas al día (25/11): el plan lo comparte todo el despacho. 8:37, 12:37, 16:37 y 20:37 en Madrid en
+    # horario de invierno (UTC+1); en verano salen una hora más tarde. Se mide una semana en el medidor y se sube si sobra.
+    - cron: "37 7,11,15,19 * * *"
   workflow_dispatch:
     inputs:
       tarea:
@@ -32,13 +35,14 @@ jobs:
           git fetch origin datos-motor:datos-motor
           git worktree add datos datos-motor
           mkdir -p datos/motor/visibilidad
+      - name: Claude Code (versión fija, de npm)
+        run: |
+          npm install -g --no-fund --no-audit @anthropic-ai/claude-code@2.1.332
+          claude --version
       - name: Visibilidad
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          AVANZA_TOPE_TOKENS: "1500000"   # tope diario (14/11); PROVISIONAL: ~4,8 US$ por ~300.000 tokens (consola, 13/11)
-          AVANZA_TOPE_MINIMO: "100000"    # si la proyección (estimada) al 15/12 pasa del crédito: tope = crédito restante / días, con este mínimo
-          AVANZA_CREDITO_USD: "200"
-          AVANZA_USD_POR_MTOK: "16"
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          AVANZA_TOPE_TOKENS: "1500000"   # tope diario de tokens (todos los modelos, también el de la búsqueda)
           AVANZA_AVISO_FICHERO: ${{ runner.temp }}/aviso-gasto.txt
           TAREA: ${{ github.event.inputs.tarea || 'auto' }}
           EVENTO: ${{ github.event_name }}

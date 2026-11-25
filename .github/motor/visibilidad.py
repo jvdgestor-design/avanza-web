@@ -15,6 +15,11 @@ Nada sale de aquí a terceros: lo que está en listo/ lo publica la pasada de Cl
 
 Tope diario de tokens y de búsquedas: al llegar, se para y lo dice. Sin la clave ANTHROPIC_API_KEY no hace nada.
 Las normas que se citan se bajan del BOE (datos abiertos, consolidado) en esta misma ejecución.
+
+Desde el 25/11/2026 (la API no se recarga) va con el plan de Claude: Claude Code en modo no interactivo con el secreto
+CLAUDE_CODE_OAUTH_TOKEN (claude_plan.py); el radar busca con la herramienta WebSearch de Claude Code. Con el token
+del plan no se usa la clave de API ni se calcula el aviso de gasto en US$ (el plan no tiene crédito que agotar); el
+tope diario de tokens y búsquedas sigue igual, y si el plan llega a su límite de uso el motor se para y lo dice.
 """
 import argparse
 import csv
@@ -31,6 +36,9 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import claude_plan  # noqa: E402
 
 MADRID = ZoneInfo("Europe/Madrid")
 REDACTOR = os.environ.get("AVANZA_MODELO_REDACTOR", "claude-sonnet-5-5")
@@ -284,13 +292,15 @@ def aplica_aviso(motor, hoy, linea):
 # ---------------------------------------------------------------- API de Claude
 
 class Claude:
-    def __init__(self, clave, estado):
-        self.clave, self.estado = clave, estado
+    def __init__(self, clave, estado, plan=False):
+        self.clave, self.estado, self.plan = clave, estado, plan
         self.ultimo_stop = None
 
     def pide(self, modelo, sistema, usuario, max_tokens=8000, herramientas=None, busquedas=0):
         if not self.estado.queda(30000, busquedas):
             raise SinSaldo(f"tope diario alcanzado ({self.estado.d['tokens']} tokens, {self.estado.d['busquedas']} búsquedas)")
+        if self.plan:
+            return self._pide_plan(modelo, sistema, usuario, max_tokens, herramientas)
         mensajes = [{"role": "user", "content": usuario}]
         bloques = []
         for _vuelta in range(4):  # pause_turn de las herramientas de servidor
@@ -313,6 +323,33 @@ class Claude:
                 anota("warning", f"{modelo}: cuatro pause_turn seguidos; respuesta parcial")
             mensajes = mensajes + [{"role": "assistant", "content": r.get("content", [])}]
         return bloques
+
+    def _pide_plan(self, modelo, sistema, usuario, max_tokens, herramientas):
+        """La misma petición por Claude Code con el plan: web_search de la API → WebSearch, con tantos turnos como
+        búsquedas permitía max_uses más dos para contestar."""
+        busca = [h for h in (herramientas or []) if h.get("name") == "web_search"]
+        if len(busca) != len(herramientas or []):
+            raise RuntimeError("herramienta sin equivalente en Claude Code")
+        restante = PLAZO - (time.time() - INICIO)
+        if restante < 60:
+            raise SinSaldo("plazo de la ejecución agotado")
+        try:
+            r = claude_plan.pide(modelo, sistema, usuario, max_tokens=max_tokens,
+                                 herramientas=("WebSearch",) if busca else (),
+                                 max_turnos=int(busca[0].get("max_uses", 4)) + 2 if busca else 1,
+                                 timeout=int(min(600, restante)))
+        except claude_plan.FalloPlan as e:
+            texto = str(e).lower()
+            if "limit" in texto and any(p in texto for p in ("usage", "hit your", "reached", "rate")):
+                raise SinSaldo(f"límite de uso del plan de Claude: {una_linea(e, 200)}")
+            raise RuntimeError(f"plan de Claude: {una_linea(e, 300)}")
+        self.estado.suma(r.get("usage", {}))
+        self.ultimo_stop = r.get("stop_reason")
+        if self.ultimo_stop == "max_tokens":
+            raise RuntimeError(f"respuesta cortada por max_tokens ({modelo})")
+        if self.ultimo_stop == "max_turns":
+            anota("warning", f"{modelo}: se acabaron los turnos de búsqueda; respuesta parcial")
+        return r.get("content", [])
 
     def _post(self, cuerpo):
         datos = json.dumps(cuerpo).encode()
@@ -775,18 +812,20 @@ def main():
             hoy, linea = f.read().split("\n")[:2]
         aplica_aviso(os.path.dirname(os.path.normpath(a.datos)), hoy, linea)
         return 0
-    clave = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not clave:
-        anota("warning", "Sin ANTHROPIC_API_KEY: el motor de visibilidad no hace nada")
+    plan = claude_plan.hay_token()
+    clave = "" if plan else os.environ.get("ANTHROPIC_API_KEY", "")
+    if not plan and not clave:
+        anota("warning", "Sin CLAUDE_CODE_OAUTH_TOKEN (plan de Claude) ni ANTHROPIC_API_KEY: el motor de visibilidad no hace nada")
         return 0
     os.makedirs(a.datos, exist_ok=True)
     with open(a.consultas, encoding="utf-8") as f:
         consultas = json.load(f)["consultas"]
     estado = Estado(os.path.join(a.datos, "estado.json"))
-    if "prueba" not in a.datos:
+    if "prueba" not in a.datos and not plan:   # el aviso de gasto en US$ es del crédito de API; el plan no lo tiene
         vigila_gasto(estado, a.datos)
-    claude = Claude(clave, estado)
-    resumen(f"## Motor de visibilidad · {ahora():%d/%m/%Y %H:%M} · tarea {a.tarea}")
+    claude = Claude(clave, estado, plan=plan)
+    resumen(f"## Motor de visibilidad · {ahora():%d/%m/%Y %H:%M} · tarea {a.tarea} · "
+            f"{'plan de Claude (Claude Code)' if plan else 'API'}")
     fallo = False
     try:
         if a.tarea in ("auto", "radar", "todo"):

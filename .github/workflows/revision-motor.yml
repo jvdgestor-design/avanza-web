@@ -1,5 +1,6 @@
 # Revisión del motor (11/11/2026, decisión de Jose): en cada PR de una rama claude/* a main, si cambia algo bajo
-# .github/, otro modelo (Sonnet, por la API de Claude) intenta tumbarlo; si no, sale bien sin llamar al modelo. El veredicto queda como estado del commit
+# .github/, otro modelo (Sonnet; desde el 25/11/2026 con el plan de Claude: Claude Code sin ninguna herramienta, secreto
+# CLAUDE_CODE_OAUTH_TOKEN) intenta tumbarlo; si no, sale bien sin llamar al modelo. El veredicto queda como estado del commit
 # «revision-motor», que no se puede borrar: primero «pending» y luego «success» o «failure», con el enlace a esta
 # ejecución. La fusión automática solo deja entrar un cambio del motor si todos los estados «revision-motor» de ese
 # commit acaban en «success», cada uno apuntando a una ejecución de ESTE flujo (pull_request_target, a la primera)
@@ -48,10 +49,17 @@ jobs:
         env:
           PR: ${{ github.event.pull_request.number }}
         run: git -C main fetch -q origin "pull/$PR/head"
+      - name: Claude Code (versión fija, de npm; nada de la rama)
+        env:
+          GH_TOKEN: ""
+        run: |
+          cd "$RUNNER_TEMP"
+          npm install -g --no-fund --no-audit @anthropic-ai/claude-code@2.1.332
+          claude --version
       - name: Revisión adversarial del motor
         id: revision
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GH_TOKEN: ""
         run: |
           set +e

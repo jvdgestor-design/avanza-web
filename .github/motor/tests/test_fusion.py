@@ -510,18 +510,36 @@ class RevisorMotor(unittest.TestCase):
         d, base, cab = self._repo("x = 2\n")
         subprocess.run(["git", "-C", d, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "--allow-empty",
                         "-m", "vacío"], check=True)
-        env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+        env = {k: v for k, v in os.environ.items() if k not in ("ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN")}
         r = subprocess.run([sys.executable, self.rm.__file__, "--repo", d, "--base", cab, "--cabeza", "HEAD"],
                            capture_output=True, text=True, env=env)
         self.assertEqual(r.returncode, 0, r.stdout)
 
     def test_sin_clave_no(self):
         d, base, cab = self._repo("x = 2\n")
-        env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+        env = {k: v for k, v in os.environ.items() if k not in ("ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN")}
         r = subprocess.run([sys.executable, self.rm.__file__, "--repo", d, "--base", base, "--cabeza", cab],
                            capture_output=True, text=True, env=env)
         self.assertEqual(r.returncode, 1)
-        self.assertIn("ANTHROPIC_API_KEY", r.stdout)
+        self.assertIn("CLAUDE_CODE_OAUTH_TOKEN", r.stdout)
+
+    def test_plan_limpio_y_cortado(self):
+        """Con el token del plan, la revisión va por claude_plan; una respuesta cortada no vale aunque diga LIMPIO."""
+        d, base, cab = self._repo("x = 2\n")
+        cp = self.rm.claude_plan
+        for stop, esperado in (("end_turn", 0), ("max_tokens", 1), ("max_turns", 1)):
+            respuesta = {"content": [{"type": "text", "text": "VEREDICTO: LIMPIO"}], "stop_reason": stop, "usage": {}}
+            sys_argv, pide = sys.argv, cp.pide
+            cp.pide = lambda *a, **k: respuesta
+            try:
+                sys.argv = ["x", "--repo", d, "--base", base, "--cabeza", cab]
+                os.environ["CLAUDE_CODE_OAUTH_TOKEN"] = "t"
+                os.environ.pop("ANTHROPIC_API_KEY", None)
+                self.assertEqual(self.rm.main(), esperado, stop)
+            finally:
+                cp.pide = pide
+                sys.argv = sys_argv
+                os.environ.pop("CLAUDE_CODE_OAUTH_TOKEN", None)
 
 
 if __name__ == "__main__":

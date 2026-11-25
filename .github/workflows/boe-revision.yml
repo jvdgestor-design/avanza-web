@@ -1,4 +1,5 @@
-# Revisión de fondo contra el BOE (créditos de API, sin usos de Claude): para cada norma que la «Vigilancia
+# Revisión de fondo contra el BOE (desde el 25/11/2026 con el plan de Claude: Claude Code sin herramientas, secreto
+# CLAUDE_CODE_OAUTH_TOKEN; antes, créditos de API): para cada norma que la «Vigilancia
 # del BOE» da por actualizada, lee los artículos citados en el consolidado vigente y pide a Claude qué
 # afirmación de las páginas ya no casa. Informe en las anotaciones de cada trabajo.
 # A mano: gh workflow run boe-revision.yml --ref main -f normas="LIVA;Ley 13/1997"  (vacío = las pendientes)
@@ -84,8 +85,14 @@ jobs:
         norma: ${{ fromJson(needs.prepara.outputs.normas) }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Claude Code (versión fija, de npm)
+        run: |
+          npm install -g --no-fund --no-audit @anthropic-ai/claude-code@2.1.332
+          claude --version
       - name: Páginas contra el texto vigente
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           NORMA: ${{ matrix.norma }}
         run: python3 .github/motor/boe_revisor.py --norma="$NORMA"

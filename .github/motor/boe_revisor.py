@@ -6,8 +6,9 @@ Para una norma que la «Vigilancia del BOE» ha dado por actualizada:
 2. Lee esos artículos del texto consolidado del BOE (API de datos abiertos, documentación oficial
    «APIconsolidada.pdf», apartado 2.2: /id/{id}/texto/indice y /id/{id}/texto/bloque/{id_bloque}),
    con la versión vigente hoy y, si las hay, las versiones con vigencia futura.
-3. Pide a Claude (por la API, secreto ANTHROPIC_API_KEY) qué afirmación de cada página ya no casa con
-   el texto vigente, con la frase literal de la página y la del BOE. El informe sale en anotaciones.
+3. Pide a Claude qué afirmación de cada página ya no casa con el texto vigente, con la frase literal de la
+   página y la del BOE. El informe sale en anotaciones. Desde el 25/11/2026, con el plan de Claude (Claude Code sin
+   herramientas, secreto CLAUDE_CODE_OAUTH_TOKEN, claude_plan.py); la API (ANTHROPIC_API_KEY), solo sin token.
 
 Lo que dice el modelo es nivel C: cada discrepancia se comprueba en el BOE (puerta 4) antes de tocar nada.
 Solo biblioteca estándar de Python. Uso: boe_revisor.py --norma "LIVA" (o «Ley 37/1992», o «BOE-A-1992-28740»).
@@ -26,6 +27,7 @@ from zoneinfo import ZoneInfo
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import boe  # noqa: E402  (mismas citas, alias e identificadores que la vigilancia)
+import claude_plan  # noqa: E402
 
 MODELO = os.environ.get("AVANZA_MODELO_BOE", "claude-opus-5-5")
 TOPE_ARTICULO = 45000      # caracteres por artículo (la LIVA 20 o la LIRPF 7 son muy largos)
@@ -210,7 +212,12 @@ def texto_bloque(ident, id_bloque, hoy):
 
 
 def llama(clave, contenido):
-    cuerpo = json.dumps({"model": MODELO, "max_tokens": 16000, "system": ENCARGO,
+    if claude_plan.hay_token():
+        try:   # sin reintento tras un tiempo agotado, como con la API
+            return claude_plan.pide(MODELO, ENCARGO, contenido, max_tokens=16000, timeout=1500), ""
+        except claude_plan.FalloPlan as e:
+            return None, f"Claude (plan) no contestó: {e}"
+    cuerpo =json.dumps({"model": MODELO, "max_tokens": 16000, "system": ENCARGO,
                          "messages": [{"role": "user", "content": contenido}]}).encode()
     msg = ""
     for _ in range(2):
@@ -316,8 +323,9 @@ def main():
         di(resumen + (f" · recortes: {recortes}" if recortes else "") + "\n\n" + contenido[:4000])
         return 0
     clave = os.environ.get("ANTHROPIC_API_KEY", "").strip()
-    if not clave:
-        msg = "Sin clave de API (ANTHROPIC_API_KEY): no se ha revisado nada; la revisión contra el BOE la hace la pasada."
+    if not clave and not claude_plan.hay_token():
+        msg = ("Sin token del plan (CLAUDE_CODE_OAUTH_TOKEN) ni clave de API: no se ha revisado nada; "
+               "la revisión contra el BOE la hace la pasada.")
         di(msg)
         if gha:
             anota("error", msg)
