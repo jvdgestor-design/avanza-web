@@ -17,10 +17,10 @@ on:
         description: "main antes de la publicación (lo pasa la fusión automática)"
         required: false
         default: ""
-permissions:
-  contents: write   # solo para subir el sitemap con sus fechas
 jobs:
   publicacion:
+    permissions:
+      contents: write   # solo para subir el sitemap con sus fechas
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -50,6 +50,38 @@ jobs:
         env:
           ANTES: ${{ github.event.before || inputs.antes }}
         run: python3 .github/motor/publicacion.py --antes "$ANTES"
+  salud:
+    needs: publicacion
+    if: ${{ !cancelled() }}
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
       - name: Salud en vivo después de publicar
-        if: always()
-        run: python3 .github/motor/salud.py --vivo --espera 600
+        shell: bash
+        run: |
+          salida="$RUNNER_TEMP/salud-publicacion.log"
+          resumen="$RUNNER_TEMP/salud-publicacion.md"
+          for intento in 1 2; do
+            git fetch -q --depth=1 origin refs/heads/main
+            revision=$(git rev-parse FETCH_HEAD)
+            git checkout -q --detach "$revision"
+            echo "Comprobación de salud de main en $revision (intento $intento)"
+            : > "$resumen"
+            estado=0
+            GITHUB_STEP_SUMMARY="$resumen" python3 .github/motor/salud.py --vivo --espera 600 > "$salida" 2>&1 || estado=$?
+            git fetch -q --depth=1 origin refs/heads/main
+            ultima=$(git rev-parse FETCH_HEAD)
+            if [ "$revision" = "$ultima" ]; then
+              cat "$salida"
+              cat "$resumen" >> "$GITHUB_STEP_SUMMARY"
+              exit "$estado"
+            fi
+            echo "::notice::main avanzó de $revision a $ultima durante la comprobación de salud."
+          done
+          echo "::error::main avanzó en ambos intentos. La salud del último SHA no se ha comprobado en esta ejecución."
+          exit 1
