@@ -121,7 +121,7 @@
 
 - [Aviso legal](https://grupoavanzaconsultores.es/aviso-legal.html): Aviso legal de grupoavanzaconsultores.es, titularidad de Jose Vicente Díaz Madrid, Grupo Avanza Consultores.
 - [Política de privacidad](https://grupoavanzaconsultores.es/privacidad.html): Política de privacidad de Grupo Avanza Consultores: responsable, finalidad, legitimación, conservación, destinatarios y derechos.
-- [Política de cookies](https://grupoavanzaconsultores.es/cookies.html): Este sitio no instala cookies propias ni de terceros y no utiliza analítica ni publicidad.
+- [Política de cookies](https://grupoavanzaconsultores.es/cookies.html): Información sobre la medición de anuncios, las preferencias de cookies y el tratamiento local de datos.
 
 ## Ley Beckham — ES / EN / RU
 - [Ley Beckham: régimen de impatriados](https://grupoavanzaconsultores.es/regimen-impatriados-ley-beckham.html): régimen especial del artículo 93 de la Ley del IRPF; quién puede acogerse, plazo de seis meses del modelo 149, tipos del 24 % y 47 %, familia y modelo 151.
@@ -196,7 +196,7 @@
 - [Kontakt | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/de-kontakt.html): Schildern Sie uns Ihr Anliegen zu spanischen Steuern oder Behördengängen. Wir klären Leistungsumfang, Fristen und die Sprache der Zusammenarbeit.
 - [Impressum](https://grupoavanzaconsultores.es/de-impressum.html): Angaben zum Betreiber der Website Grupo Avanza Consultores und rechtliche Hinweise nach spanischem Recht.
 - [Datenschutzerklärung](https://grupoavanzaconsultores.es/de-datenschutz.html): Informationen zur Verarbeitung Ihrer Kontaktdaten und Formularanfragen durch Grupo Avanza Consultores.
-- [Cookie-Hinweise](https://grupoavanzaconsultores.es/de-cookies.html): Informationen zu Cookies, externen Ressourcen und lokaler Verarbeitung auf der Website von Grupo Avanza Consultores.
+- [Cookie-Hinweise](https://grupoavanzaconsultores.es/de-cookies.html): Informationen zur Anzeigenmessung, zu Cookie-Einstellungen und zur lokalen Verarbeitung im Browser.
 - [Fiscalité espagnole : résidents et non-résidents](https://grupoavanzaconsultores.es/fr.html): Conseil en fiscalité espagnole à Paterna : résidence fiscale, revenus étrangers, immobilier, donations et successions. Informations en français.
 - [Résidence fiscale en Espagne : l’année d’arrivée](https://grupoavanzaconsultores.es/fr-residence-fiscale-espagne.html): Résidence fiscale en Espagne : règle des 183 jours, intérêts économiques, revenus étrangers et régime des impatriés. Préparer votre première déclaration.
 - [Loi Beckham : le régime espagnol des impatriés](https://grupoavanzaconsultores.es/fr-regime-impatries-loi-beckham.html): Régime des impatriés en Espagne : conditions, délai du Modelo 149, taux, famille et déclaration annuelle Modelo 151.
@@ -217,10 +217,11 @@
 - [Retraite italienne et résidence en Espagne](https://grupoavanzaconsultores.es/fr-retraite-italienne-espagne.html): Retraite italienne perçue en Espagne : pensions privées ou publiques, convention fiscale et double imposition.
 - [Contact | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-contact.html): Présentez votre demande concernant la fiscalité ou les démarches en Espagne. Nous travaillons par écrit : chaque demande, chaque information et chaque réponse restent consignées.
 - [Contact us | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/en-contact.html): Contact form in English for Spanish tax matters and formalities: describe your case, your country of residence and any deadline. Written replies in English by email or WhatsApp.
-- [Privacy notice | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/en-privacy.html): Privacy notice in English: controller, purpose, legal bases, retention, recipients, rights and the contact form.
+- [Privacy notice | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/en-privacy.html): Contact form, data protection rights and use of personal information.
+- [Cookies and advertising measurement](https://grupoavanzaconsultores.es/en-privacy.html#cookies): Conversion measurement and how to change cookie preferences.
 - [Mentions légales | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-mentions-legales.html): Identité de l’éditeur, activité et informations légales du site Grupo Avanza Consultores, régi par le droit espagnol.
 - [Confidentialité | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-confidentialite.html): Traitement des coordonnées et demandes adressées à Grupo Avanza Consultores : finalités, destinataires, conservation et droits.
-- [Cookies | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-cookies.html): Informations sur les cookies, les ressources externes et le traitement local des données sur le site Grupo Avanza Consultores.
+- [Cookies | Grupo Avanza Consultores](https://grupoavanzaconsultores.es/fr-cookies.html): Informations sur la mesure publicitaire, les préférences de cookies et le traitement local des données.
 
 
 
