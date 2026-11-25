@@ -1,9 +1,9 @@
 {
- "dia": "2026-11-24",
+ "dia": "2026-11-25",
  "tokens": 0,
  "busquedas": 0,
- "turno": 32,
- "radar_idx": 96,
+ "turno": 33,
+ "radar_idx": 99,
  "foro_vistos": {
   "12647": 97,
   "9261": 112,
@@ -109,7 +109,14 @@
    "dia": "2026-11-24",
    "tokens": 0,
    "busquedas": 0
+  },
+  {
+   "dia": "2026-11-25",
+   "tokens": 0,
+   "busquedas": 0
   }
  ],
- "foro_fallos": {}
+ "foro_fallos": {
+  "11953": 1
+ }
 }
