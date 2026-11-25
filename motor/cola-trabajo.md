@@ -23,6 +23,16 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 - RESUELTO · ya no aparece (CADUCADO): VENCIDO (02/07/2026): «разъяснение Налогового агентства о сроках формы 210, обновлено 2 июля 2026 года .» · ru.html · 2026-11-25
 - RESUELTO · ya no aparece (CADUCADO): VENCIDO (15/11/2026): «Форма 210: сроки подачи → Источники прочитаны 15 ноября 2026 года в Официальном государственном б · ru.html · 2026-11-25
 - RESUELTO · ya no aparece (MOTOR): yandex sin servicio desde 2026-11-04: Yandex recrawl: HTTP 504 · yandex · 2026-11-25
+- NORMA · Ley 37/1992 = BOE-A-1992-28740 (BOE-A-1992-28740): fecha actualizada, 20261125 (antes: 20261007T092353Z). Revisar contra el BOE: amazon-kdp-impuestos-espana.html, autonomo-extranjero-en-espana.html, buying-property-spain-foreigner.html, comprar-vivienda-en-espana-extranjero.html, de-immobilie-spanie · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · Real Decreto 1624/1992 (BOE-A-1992-28925): fecha actualizada, 20261125 (antes: 20261105T101238Z). Revisar contra el BOE: gestoria-autonomos-valencia.html · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · Real Decreto Legislativo 1/1993 (BOE-A-1993-25359): fecha actualizada, 20261125 (antes: 20260323T123132Z). Revisar contra el BOE: buying-property-spain-foreigner.html, comprar-vivienda-en-espana-extranjero.html, fr-acheter-bien-immobilier-espagne.html · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · Ley 58/2003 = BOE-A-2003-23186 (BOE-A-2003-23186): fecha actualizada, 20261125 (antes: 20261009T082721Z). Revisar contra el BOE: aplazar-una-deuda-con-hacienda.html, arraigo-residence-spain.html, asesoria-fiscal-valencia.html, asesoria-y-gestoria-en-burjassot.html, asesoria-y-gestoria-en-valencia.ht · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · Ley 35/2006 = BOE-A-2006-20764 (BOE-A-2006-20764): fecha actualizada, 20261125 (antes: 20261111T094003Z). Revisar contra el BOE: alquiler-vivienda-espana-no-residente.html, amazon-kdp-impuestos-espana.html, arraigo-residence-spain.html, asesoria-y-gestoria-en-leliana.html, autonomo-extranjero-en-esp · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · Real Decreto 439/2007 = BOE-A-2007-6820 (BOE-A-2007-6820): fecha actualizada, 20261125 (antes: 20261105T101238Z). Revisar contra el BOE: amazon-kdp-impuestos-espana.html, asesoria-contable-valencia.html, beckham-law-spain-special-tax-regime.html, certificado-residencia-fiscal-espana.html, de-britisc · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · BOE-A-2010-6737: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · BOE-A-2015-11430: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · BOE-A-2015-11724: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45639547864 · 2026-11-25
+- NORMA · BOE-A-2020-4859: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45639547864 · 2026-11-25
 
 ## 2026-11-24
 
