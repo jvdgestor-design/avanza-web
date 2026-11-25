@@ -3,6 +3,7 @@
 
   var campanaHistorica = 'extranjeros_es_historica';
   var recorridos = {
+    'herencia-en-espana-heredero-no-residente.html': ['contacto.html', 'herencias_es_piloto'],
     'vender-inmueble-en-espana-no-residente.html': ['contacto.html', 'modelo210_venta_es_piloto'],
     'selling-property-spain-non-resident.html': ['en-contact.html', 'venta_en_piloto'],
     'de-immobilie-spanien-verkaufen-ausland.html': ['de-kontakt.html', 'venta_de_piloto'],
