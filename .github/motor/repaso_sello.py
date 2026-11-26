@@ -13,7 +13,8 @@ fusion.py (Redactor, Revisado, Repaso … limpio) y llevar además una línea:
   (estado, sha256 del contenido y ruta de cada uno; ver `manifiesto`). La calcula este programa, nunca un modelo:
   `repaso_sello.py huella` la da para el encargo de REVISIONES, ChatGPT la vuelve a calcular y la pone en su REPASO,
   y el sello la copia. Si después del repaso cambia un fichero, la huella ya no coincide y la comprobación falla.
-- Si redacta OpenAI, Redactor, Repaso y Dictamen identifican modelos completos (p. ej. gpt-6.2-sol y
+- En cambios públicos de OpenAI, incluidas bajas y recursos, Redactor, Repaso y Dictamen identifican
+  modelos completos (p. ej. gpt-6.2-sol y
   gpt-6.2-astra); el sello declara «Conversación del revisor: nueva». Los dos revisores citados deben coincidir.
   Se conserva el formato anterior para autores de otras familias con dictamen de ChatGPT.
 
@@ -120,10 +121,18 @@ def evaluar_dictamen(mensaje, huella_real):
 
 
 def comprobar(repo, base, rev):
-    """(código de salida, líneas). 0 si no hay páginas cambiadas o el sello vale; 1 si no."""
+    """Comprueba publicaciones OpenAI y altas o cambios de páginas del circuito histórico."""
     todos = cambios(repo, base, rev)
     paginas = [r for e, r, _ in todos if e in "AM" and r.endswith(PAGINAS) and not r.startswith(".github/")]
-    if not paginas:
+    mensaje = git(repo, "log", "-1", "--format=%B", rev)
+    rama = (os.environ.get("GITHUB_HEAD_REF") or os.environ.get("GITHUB_REF_NAME")
+            or git(repo, "branch", "--show-current").strip())
+    hay_publicacion = any(not ruta.startswith(".github/") for _, ruta, _ in todos)
+    rama_codex = rama.startswith("codex/")
+    autor_openai = fusion.redacta_openai(mensaje)
+    if hay_publicacion and rama_codex and not autor_openai:
+        return 1, ["NO: una publicación de una rama codex/ debe identificar su modelo redactor"]
+    if not paginas and not (hay_publicacion and autor_openai):
         return 0, ["Nada que revisar: la rama no cambia páginas."]
     fallos = []
     padres = git(repo, "rev-list", "--parents", "-n", "1", rev).split()[1:]
@@ -132,7 +141,6 @@ def comprobar(repo, base, rev):
         fallos.append("el último commit no es un sello vacío: la rama cambia páginas y no lleva el REPASO de ChatGPT "
                       "(o cambia ficheros después del repaso)")
     else:
-        mensaje = git(repo, "log", "-1", "--format=%B", rev)
         ok, motivo = fusion.evaluar_mensaje(mensaje, padre)
         if not ok:
             fallos.append(motivo)

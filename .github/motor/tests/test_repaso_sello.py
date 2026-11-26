@@ -195,6 +195,30 @@ class Rama(unittest.TestCase):
         git(self.repo, "commit", "-q", "-m", "estilo")
         self.assertEqual(self.codigo()[0], 0)
 
+    def test_recursos_publicos_de_codex_en_las_dos_puertas(self):
+        programa = os.path.join(os.path.dirname(__file__), "..", "fusion.py")
+        for clase, ruta in (("cambio", "estilo.css"), ("alta", "contacto.js"), ("baja", "index.html")):
+            with self.subTest(clase=clase):
+                git(self.repo, "checkout", "-q", "-b", "codex/" + clase, "main")
+                if clase == "baja":
+                    git(self.repo, "rm", "-q", ruta)
+                else:
+                    self.escribe(ruta, "/* versión */\n")
+                    git(self.repo, "add", ruta)
+                git(self.repo, "commit", "-q", "-m", "recurso")
+                padre = git(self.repo, "rev-parse", "HEAD")
+                self.assertEqual(self.codigo()[0], 1)
+                huella = repaso_sello.huella(repaso_sello.manifiesto(self.repo, "main", padre))
+                for d, h, esperado in (("NO", huella, 1), ("SÍ", "a" * 64, 1), ("SÍ", huella, 0)):
+                    git(self.repo, "checkout", "-q", "--detach", padre)
+                    m = mensaje(dictamen(d=d, huella=h, revisor="gpt-6.1-terra"),
+                                redactor="gpt-6.2-sol", revisor="gpt-6.1-terra").replace(P, padre)
+                    git(self.repo, "commit", "-q", "--allow-empty", "-m", m + "Conversación del revisor: nueva")
+                    self.assertEqual(self.codigo()[0], esperado)
+                    r = subprocess.run([sys.executable, "-I", programa, "--rama", self.repo, "--base", "main"],
+                                       capture_output=True)
+                    self.assertEqual(r.returncode, esperado, r.stdout + r.stderr)
+
     def test_la_huella_no_cambia_si_main_avanza_en_otros_ficheros(self):
         git(self.repo, "checkout", "-q", "main")
         self.escribe("otra.html", "<p>otra</p>\n")
