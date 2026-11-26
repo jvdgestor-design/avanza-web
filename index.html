@@ -284,14 +284,16 @@
   </div>
   <div class="form__pie">
     <button class="btn btn--primary" type="submit">Enviar consulta</button>
-    <p class="form__nota">Te contesta un asesor, no un formulario automático. Tus datos se usan para responderte y, si nos lo indicas, para saber cómo nos has conocido: <a href="privacidad.html">política de privacidad</a>.</p>
+    <p class="form__nota">Te contesta un asesor, no un formulario automático. Tus datos se usan para responderte y, si nos lo indicas, para saber cómo nos has conocido: <a href="privacidad.html">política de privacidad</a>.<span data-avanza-origen-perfil hidden> Si llegas desde un anuncio de Google, también anotamos la campaña.</span></p>
   </div>
+  <p class="form__nota" data-envio-recibido role="status" tabindex="-1" hidden>Esta consulta ya nos ha llegado (referencia <span data-envio-ref></span>). No hace falta enviarla otra vez. Si quieres preguntar otra cosa, cambia el texto y envíala.</p>
   <p class="form__nota" data-envio-error role="alert" tabindex="-1" hidden>No podemos confirmar la recepción de tu consulta. Tu texto sigue en el formulario. Antes de repetir el envío, escríbenos por <a href="https://wa.me/34614365547" target="_blank" rel="noopener noreferrer">WhatsApp</a> o por <a href="mailto:avanza@grupoavanzaconsultores.es">correo electrónico</a>.</p>
 </form>
 <script>
 (function(){
-  if (window.__avanzaEnvio) return; window.__avanzaEnvio = 1;
+  if (window.__avanzaPortada) return; window.__avanzaPortada = 1;
   document.addEventListener('submit', function(e){
+    if (window.__avanzaEnvio) return;
     var f = e.target;
     if (!f || !f.classList || !f.classList.contains('form')) return;
     if (!window.fetch || !window.URLSearchParams || !window.FormData) return;
@@ -401,5 +403,7 @@
 })();
 </script>
 <script>(function(){var h=document.querySelector(".hero__logo"),t=document.querySelector(".trust");if(h){var d=document.createElement("div");d.className="marca";d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">';h.insertBefore(d,h.firstChild);}if(h&&t)h.appendChild(t);})();</script>
+<script src="medicion-consentimiento.js"></script>
+<script src="envio-consulta-es.js" data-solo-perfil></script>
 </body>
 </html>
