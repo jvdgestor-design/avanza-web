@@ -70,8 +70,13 @@
   var marcasUnicas = ['origen', 'utm_source', 'utm_medium', 'utm_campaign'].every(function (k) {
     return params.getAll(k).length === 1;
   });
-  var esPerfil = Boolean(clic && location.pathname === '/' && location.hash === '#despacho' &&
-    !params.has('avanza_entrada') && marcasUnicas && vieneDeAnuncio('index.html'));
+  var esPerfil = false;
+  if (location.pathname === '/' && location.hash === '#despacho' && !params.has('avanza_entrada') &&
+      marcasUnicas && vieneDeAnuncio('index.html')) {
+    // Tras limpiar el clic, esta entrada del historial conserva únicamente el grupo para la consulta.
+    esPerfil = Boolean(clic || (!clavesClic.some(function (k) { return params.has(k); }) &&
+      history.state && history.state.avanzaCampanaPerfil === params.get('utm_campaign')));
+  }
   // La portada ordinaria conserva su formulario y no toca preferencias ni almacenamiento de Ads.
   if (pagina === 'index.html' && !esPerfil) return;
   if (esPerfil) {
@@ -136,7 +141,13 @@
       esEntrada = false;
       clic = null;
     }
-    try { if (actual.href !== location.href) history.replaceState(history.state, '', actual.href); } catch (e) {}
+    try {
+      if (actual.href !== location.href) {
+        var estado = history.state;
+        if (esPerfil) estado = Object.assign({}, estado, { avanzaCampanaPerfil: params.get('utm_campaign') });
+        history.replaceState(estado, '', actual.href);
+      }
+    } catch (e) {}
   }
 
   function actualizarEnlaces(permitido) {
@@ -239,12 +250,16 @@
     if (invocador) titulo.focus();
   }
 
-  if (esEntrada) {
+  if (esEntrada || esPerfil) {
     enlaces = Array.from(document.querySelectorAll('a[href]')).filter(function (a) {
       var u = new URL(a.href);
       if (esPerfil && (u.pathname !== '/contacto.html' || u.searchParams.get('pagina') !== 'index.html')) return false;
       return u.origin === location.origin && u.pathname.split('/').pop() === recorridos[pagina][0];
     });
+  }
+  if (esPerfil && !clic) {
+    actualizarEnlaces(false);
+    return;
   }
 
   var opciones = Array.from(document.querySelectorAll('[data-avanza-opciones-ads]'));
