@@ -290,10 +290,10 @@ details p+p{padding-top:0;margin-top:-10px}
   background:color-mix(in srgb, var(--paper) 96%, transparent)}
 @supports not (backdrop-filter: blur(1px)){.topbar{background:var(--paper)}}
 
-/* --- revelado al hacer scroll (solo si hay JS y no se pide menos movimiento) --- */
-.js-reveal .rv{opacity:0;transform:translateY(14px);
+/* --- revelado al hacer scroll, excepto en las secciones completas --- */
+.js-reveal .rv:not(.band){opacity:0;transform:translateY(14px);
   transition:opacity .6s cubic-bezier(.22,.7,.3,1), transform .6s cubic-bezier(.22,.7,.3,1)}
-.js-reveal .rv.in{opacity:1;transform:none}
+.js-reveal .rv:not(.band).in{opacity:1;transform:none}
 .js-reveal .trust > div.rv{transition-delay:calc(var(--i,0) * 60ms)}
 @media (prefers-reduced-motion: reduce){
   .js-reveal .rv{opacity:1 !important;transform:none !important;transition:none !important}
