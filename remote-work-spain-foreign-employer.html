@@ -67,7 +67,7 @@
 <p class="lead"><strong>A foreign employer does not automatically put your salary outside Spanish tax.</strong> Before moving or preparing a tax return, clarify your tax residence, employment arrangements and the payer’s obligations. Grupo Avanza Consultores reviews your case online from Paterna, Valencia. English service is in writing, with scope and fees agreed before work starts.</p>
 <div class="ctas"><a class="btn btn--primary" href="en-contact.html?pagina=remote-work-spain-foreign-employer.html">Request a quote</a><a class="btn btn--ghost" href="#documents">Documents to prepare</a></div>
 </div></section>
-<section class="band" style="padding-top:64px"><div class="wrap contact" style="align-items:start">
+<section class="band" data-static-content style="padding-top:64px"><div class="wrap contact" style="align-items:start">
 <div class="prose">
 <h2 id="uk-employer">Where do I pay tax if I work remotely from Spain for a UK employer?</h2>
 <p>Suppose you live in Valencia and do all your work there for a company in London. If you are resident in Spain under the UK–Spain tax treaty and pay ordinary Spanish income tax, <strong>only Spain can tax your salary for that private-sector job</strong> under article 14. Being paid in pounds into a UK account makes no difference. If you also work at the London office, keep a record of those days. The UK can generally tax the pay for duties you perform there for a UK-resident employer.</p>
@@ -163,7 +163,7 @@
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   },{rootMargin:'0px 0px -8% 0px', threshold:0.08});
-  document.querySelectorAll('.band, .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+  document.querySelectorAll('.band:not([data-static-content]), .trust > div, .card, .step, .guias li, .creds li').forEach(function(el){ el.classList.add('rv'); io.observe(el); });
 })();
 </script>
 <script>(function(){var h=document.querySelector(".hero__logo"),t=document.querySelector(".trust");if(h){var d=document.createElement("div");d.className="marca";d.innerHTML='<img src="img/logo-avanza.svg" alt="Grupo Avanza Consultores" width="227" height="283">';h.insertBefore(d,h.firstChild);}if(h&&t)h.appendChild(t);})();</script>
