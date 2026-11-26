@@ -3,8 +3,11 @@
 
   var campanaHistorica = 'extranjeros_es_historica';
   var recorridos = {
+    'index.html': ['contacto.html', 'modelo210_venta_es_piloto', 'modelo210_alquiler_es_piloto', 'modelo210_anual_es_piloto'],
     'herencia-en-espana-heredero-no-residente.html': ['contacto.html', 'herencias_es_piloto'],
     'vender-inmueble-en-espana-no-residente.html': ['contacto.html', 'modelo210_venta_es_piloto'],
+    'alquiler-vivienda-espana-no-residente.html': ['contacto.html', 'modelo210_alquiler_es_piloto'],
+    'modelo-210-no-residentes.html': ['contacto.html', '210_es_piloto', 'modelo210_anual_es_piloto'],
     'selling-property-spain-non-resident.html': ['en-contact.html', 'venta_en_piloto'],
     'de-immobilie-spanien-verkaufen-ausland.html': ['de-kontakt.html', 'venta_de_piloto'],
     'fr-vendre-bien-immobilier-non-resident.html': ['fr-contact.html', 'venta_fr_piloto'],
@@ -14,9 +17,10 @@
     'gift-of-money-from-abroad-spain.html': ['en-contact.html', campanaHistorica],
     'fr-modele-210-non-residents.html': ['fr-contact.html', campanaHistorica],
     'de-modelo-210-nichtansaessige.html': ['de-kontakt.html', campanaHistorica],
-    'modelo-210-non-resident-tax-spain.html': ['en-contact.html', campanaHistorica]
+    'modelo-210-non-resident-tax-spain.html': ['en-contact.html', campanaHistorica, 'modelo210_property_en_piloto']
   };
   var acuses = {
+    'index.html': 'gracias.html',
     'contacto.html': 'gracias.html',
     'en-contact.html': 'en-thank-you.html',
     'de-kontakt.html': 'de-danke.html',
@@ -40,7 +44,7 @@
   var accion = 'AW-18575091513';
   var destino = accion + '/rNjHCI-9sb0dELnOpZlF';
   var t = textos[document.documentElement.lang] || textos.es;
-  var pagina = location.pathname.split('/').pop();
+  var pagina = location.pathname === '/' ? 'index.html' : location.pathname.split('/').pop();
   var params = new URLSearchParams(location.search);
   var entrada = params.get('avanza_entrada');
   var enlaces = [];
@@ -63,8 +67,31 @@
   }
 
   var clic = identificador();
+  var marcasUnicas = ['origen', 'utm_source', 'utm_medium', 'utm_campaign'].every(function (k) {
+    return params.getAll(k).length === 1;
+  });
+  var esPerfil = false;
+  if (location.pathname === '/' && location.hash === '#despacho' && !params.has('avanza_entrada') &&
+      marcasUnicas && vieneDeAnuncio('index.html')) {
+    // Tras limpiar el clic, esta entrada del historial conserva únicamente el grupo para la consulta.
+    esPerfil = Boolean(clic || (!clavesClic.some(function (k) { return params.has(k); }) &&
+      history.state && history.state.avanzaCampanaPerfil === params.get('utm_campaign')));
+  }
+  // La portada ordinaria conserva su formulario y no toca preferencias ni almacenamiento de Ads.
+  if (pagina === 'index.html' && !esPerfil) return;
+  if (esPerfil) {
+    window.avanzaPerfilAnuncio = true;
+    var nota = document.querySelector('[data-avanza-origen-perfil]');
+    if (nota) nota.hidden = false;
+  }
   var esEntrada = Boolean(clic && vieneDeAnuncio(pagina));
-  var esFormulario = Boolean(clic && vieneDeAnuncio(entrada) && recorridos[entrada][0] === pagina);
+  var paginaVenta = 'vender-inmueble-en-espana-no-residente.html';
+  var esEnlaceVenta = Boolean(clic && pagina === 'contacto.html' && !params.has('avanza_entrada') &&
+    params.get('pagina') === paginaVenta && vieneDeAnuncio(paginaVenta) &&
+    ['pagina', 'origen', 'utm_source', 'utm_medium', 'utm_campaign'].every(function (k) { return params.getAll(k).length === 1; }));
+  var esFormulario = esPerfil || esEnlaceVenta || Boolean(clic && vieneDeAnuncio(entrada) &&
+    recorridos[entrada][0] === pagina && (entrada !== 'index.html' || (marcasUnicas &&
+      params.getAll('avanza_entrada').length === 1 && params.getAll('pagina').length === 1 && params.get('pagina') === 'index.html')));
   var esAcuse = Object.values(acuses).includes(pagina);
 
   function preferencia() {
@@ -107,17 +134,30 @@
     if (!esFormulario && !(esEntrada && retirada)) return;
     var actual = new URL(location.href);
     ['avanza_entrada'].concat(clavesClic).forEach(function (k) { actual.searchParams.delete(k); });
-    esFormulario = false;
+    // En el enlace directo, la primera elección se hace aquí. El clic sale de la URL
+    // y solo queda en memoria mientras la persona decide en esta página.
+    if (!(esEnlaceVenta || esPerfil) || retirada) esFormulario = false;
     if (retirada) {
       esEntrada = false;
       clic = null;
     }
-    try { if (actual.href !== location.href) history.replaceState(history.state, '', actual.href); } catch (e) {}
+    try {
+      if (actual.href !== location.href) {
+        var estado = history.state;
+        if (esPerfil) estado = Object.assign({}, estado, { avanzaCampanaPerfil: params.get('utm_campaign') });
+        history.replaceState(estado, '', actual.href);
+      }
+    } catch (e) {}
   }
 
   function actualizarEnlaces(permitido) {
     for (var enlace of enlaces) {
       var url = new URL(enlace.href);
+      if (esPerfil) {
+        ['origen', 'utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+          url.searchParams.set(k, params.get(k));
+        });
+      }
       if (permitido) {
         url.searchParams.set('avanza_entrada', pagina);
         url.searchParams.set(clic[0], clic[1]);
@@ -143,7 +183,7 @@
     var opcion = preferencia();
     actualizarEnlaces(esEntrada && opcion === 'si');
     if (opcion !== 'si') cerrarMedicion(opcion === 'no');
-    if (esEntrada && !opcion && !panel) mostrarOpciones();
+    if ((esEntrada || (esEnlaceVenta && esFormulario)) && !opcion && !panel) mostrarOpciones();
     return opcion;
   }
 
@@ -202,17 +242,24 @@
     acciones.append(boton(t[2], function () { elegir('si'); }), boton(t[3], function () { elegir('no'); }), politica);
     contenido.append(titulo, detalle, acciones);
     panel.append(contenido);
+    var perfil = esPerfil && document.getElementById('despacho');
     var principal = document.querySelector('main');
-    if (principal) principal.before(panel);
+    if (perfil) perfil.prepend(panel);
+    else if (principal) principal.before(panel);
     else document.body.prepend(panel);
     if (invocador) titulo.focus();
   }
 
-  if (esEntrada) {
+  if (esEntrada || esPerfil) {
     enlaces = Array.from(document.querySelectorAll('a[href]')).filter(function (a) {
       var u = new URL(a.href);
+      if (esPerfil && (u.pathname !== '/contacto.html' || u.searchParams.get('pagina') !== 'index.html')) return false;
       return u.origin === location.origin && u.pathname.split('/').pop() === recorridos[pagina][0];
     });
+  }
+  if (esPerfil && !clic) {
+    actualizarEnlaces(false);
+    return;
   }
 
   var opciones = Array.from(document.querySelectorAll('[data-avanza-opciones-ads]'));

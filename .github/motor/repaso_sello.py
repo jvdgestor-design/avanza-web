@@ -13,7 +13,10 @@ fusion.py (Redactor, Revisado, Repaso … limpio) y llevar además una línea:
   (estado, sha256 del contenido y ruta de cada uno; ver `manifiesto`). La calcula este programa, nunca un modelo:
   `repaso_sello.py huella` la da para el encargo de REVISIONES, ChatGPT la vuelve a calcular y la pone en su REPASO,
   y el sello la copia. Si después del repaso cambia un fichero, la huella ya no coincide y la comprobación falla.
-- El revisor del dictamen es ChatGPT (chatgpt, gpt o codex) y no puede haber redactado.
+- En cambios públicos de OpenAI, incluidas bajas y recursos, Redactor, Repaso y Dictamen identifican
+  modelos completos (p. ej. gpt-6.2-sol y
+  gpt-6.2-astra); el sello declara «Conversación del revisor: nueva». Los dos revisores citados deben coincidir.
+  Se conserva el formato anterior para autores de otras familias con dictamen de ChatGPT.
 
 Sin sello, sin la línea «Dictamen:», con dictamen NO, con algún NO o con la huella de otro contenido, sale 1 (rojo).
 Lo que GitHub no puede ver es el REPASO mismo, que está en el ordenador del despacho: eso lo acredita sello.py allí.
@@ -31,7 +34,6 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import fusion  # noqa: E402
 
-CHATGPT = {"chatgpt", "gpt", "codex"}
 PAGINAS = (".html", ".txt", ".xml")
 NOMBRE_REPASO = re.compile(r"^REPASO\s+([\w .()+-]+_REPASO\.md)$")
 
@@ -99,19 +101,41 @@ def evaluar_dictamen(mensaje, huella_real):
         return False, (f"la huella del REPASO ({h.group(1)[:12]}…) no es la de los ficheros que cambia la rama "
                        f"({huella_real[:12]}…): el repaso es de otro contenido")
     rev = re.match(r"(?i)^revisor\s+(\S+)$", tramos[4])
-    if not rev or rev.group(1).lower() not in CHATGPT:
+    if not rev or rev.group(1).lower() not in fusion.ALIAS_OPENAI | fusion.MODELOS_OPENAI:
         return False, f"el revisor del dictamen tiene que ser ChatGPT: {tramos[4]!r}"
     red = [l for l in lineas if re.match(r"(?i)^redactor\s*:", l)]
-    if any(fusion._modelos_en(l.split(":", 1)[1]) & CHATGPT for l in red):
-        return False, "el redactor es ChatGPT: no puede ser también el revisor del dictamen"
+    if len(red) != 1:
+        return False, "falta una única identificación del redactor"
+    autor = red[0].split(":", 1)[1].strip()
+    revisor = rev.group(1).lower()
+    if fusion._modelos_en(autor) & fusion.ALIAS_OPENAI or revisor in fusion.MODELOS_OPENAI:
+        if revisor not in fusion.MODELOS_OPENAI:
+            return False, "el dictamen debe identificar el modelo OpenAI concreto"
+        ok, motivo = fusion.evaluar_mensaje(mensaje)
+        if not ok:
+            return False, motivo
+        repaso = next(l for l in lineas if re.search(r"(?i)(^|\.\s+)repaso\s*:", l))
+        if f"revisor {revisor}" not in [t.strip().casefold() for t in repaso.split("·")]:
+            return False, "el revisor del dictamen y el del repaso no coinciden"
     return True, f"REPASO de ChatGPT favorable ({tramos[1].split(None, 1)[1]}) sobre la huella {huella_real[:12]}…"
 
 
 def comprobar(repo, base, rev):
-    """(código de salida, líneas). 0 si no hay páginas cambiadas o el sello vale; 1 si no."""
+    """Comprueba publicaciones OpenAI y altas o cambios de páginas del circuito histórico."""
     todos = cambios(repo, base, rev)
     paginas = [r for e, r, _ in todos if e in "AM" and r.endswith(PAGINAS) and not r.startswith(".github/")]
-    if not paginas:
+    mensaje = git(repo, "log", "-1", "--format=%B", rev)
+    hay_publicacion = any(not ruta.startswith(".github/") for _, ruta, _ in todos)
+    ref = git(repo, "rev-parse", "--symbolic-full-name", rev).strip()
+    rama_codex = ref.startswith(("refs/heads/codex/", "refs/remotes/origin/codex/"))
+    if rev == "HEAD" and not ref.startswith("refs/heads/"):
+        # El checkout de Actions usa un HEAD separado de su rama.
+        rama_ci = os.environ.get("GITHUB_HEAD_REF") or os.environ.get("GITHUB_REF_NAME", "")
+        rama_codex = rama_ci.startswith("codex/")
+    autor_openai = fusion.redacta_openai(mensaje)
+    if hay_publicacion and rama_codex and not autor_openai:
+        return 1, ["NO: una publicación de una rama codex/ debe identificar su modelo redactor"]
+    if not paginas and not (hay_publicacion and autor_openai):
         return 0, ["Nada que revisar: la rama no cambia páginas."]
     fallos = []
     padres = git(repo, "rev-list", "--parents", "-n", "1", rev).split()[1:]
@@ -120,7 +144,6 @@ def comprobar(repo, base, rev):
         fallos.append("el último commit no es un sello vacío: la rama cambia páginas y no lleva el REPASO de ChatGPT "
                       "(o cambia ficheros después del repaso)")
     else:
-        mensaje = git(repo, "log", "-1", "--format=%B", rev)
         ok, motivo = fusion.evaluar_mensaje(mensaje, padre)
         if not ok:
             fallos.append(motivo)

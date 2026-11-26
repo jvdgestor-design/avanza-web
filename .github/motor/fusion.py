@@ -5,6 +5,8 @@ La rama termina SIEMPRE en un commit «sello» vacío (git commit --allow-empty)
   Revisado: <sha completo del commit anterior, el que vio el revisor>
   Repaso: <qué> · 0 reparos · revisor <otro modelo> · limpio
   (o «N reparos corregidos» en vez de «0 reparos» si la versión revisada ya los lleva corregidos)
+Para dos modelos OpenAI, Redactor y revisor llevan los identificadores del catálogo (p. ej. gpt-6.2-sol y
+gpt-6.2-astra) y el sello declara «Conversación del revisor: nueva». Codex, GPT y ChatGPT son alias de familia.
 El repaso cubre el diff completo de la rama contra main en el commit «Revisado». Así el repaso queda atado a un
 contenido concreto: si algo cambia después, el sello deja de valer.
 
@@ -19,11 +21,19 @@ La salud del sitio la comprueba el flujo con el salud.py de main.
 Uso: fusion.py --rama <dir del clon de la rama> --base <sha de main>     (sale 0 si se fusiona, 1 si no)
 """
 import argparse
+import os
 import re
 import subprocess
 import sys
 
 MODELOS = {"opus", "sonnet", "haiku", "fable", "gpt", "chatgpt", "codex", "gemini"}
+ALIAS_OPENAI = {"gpt", "chatgpt", "codex"}
+# Identificadores completos del catálogo de modelos del proyecto. La interfaz y el esfuerzo no son modelos.
+MODELOS_OPENAI = {
+    "gpt-6.2-sol", "gpt-6.2-astra", "gpt-6.1-terra", "gpt-6.1-sol",
+    "gpt-6-astra", "gpt-6-sol", "gpt-6-luna",
+    "gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna",
+}
 EXTENSIONES = (".html", ".txt", ".xml", ".css", ".js", ".png", ".jpg", ".jpeg", ".webp", ".svg", ".ico", ".pdf")
 TRAMO_REPAROS = re.compile(r"^(0\s+reparos|[1-9]\d*\s+reparos?(\s+\([^)]*\))?\s+corregidos?)$", re.IGNORECASE)
 NEGATIVO = re.compile(r"abiert|pendient|sin\s+resolver|no\s+est|no\s+limpio|falta|con\s+reparos", re.IGNORECASE)
@@ -31,6 +41,11 @@ NEGATIVO = re.compile(r"abiert|pendient|sin\s+resolver|no\s+est|no\s+limpio|falt
 
 def _modelos_en(texto):
     return {p for p in re.findall(r"[a-záéíóú]+", texto.lower()) if p in MODELOS}
+
+
+def redacta_openai(mensaje):
+    return any(_modelos_en(autor) & ALIAS_OPENAI for autor in
+               re.findall(r"(?im)^\s*redactor\s*:\s*([^\r\n]+)", mensaje))
 
 
 def evaluar_mensaje(mensaje, padre=None):
@@ -62,6 +77,14 @@ def evaluar_mensaje(mensaje, padre=None):
     if len(t_rev) != 1:
         return False, "el repaso debe llevar un tramo «revisor <modelo>»"
     nombre = t_rev[0].split(None, 1)[1].strip().lower()
+    if redactores & ALIAS_OPENAI or nombre in MODELOS_OPENAI:
+        autor = red[0].split(":", 1)[1].strip().lower()
+        if autor not in MODELOS_OPENAI or nombre not in MODELOS_OPENAI or autor == nombre:
+            return False, "se necesitan dos identificadores de modelos OpenAI reconocidos y distintos"
+        sesiones = [l for l in lineas if re.match(r"(?i)^conversación del revisor\s*:", l)]
+        if len(sesiones) != 1 or sesiones[0].casefold() != "conversación del revisor: nueva":
+            return False, "falta la declaración única de conversación nueva del revisor"
+        return True, f"repaso limpio de {nombre} sobre texto de {autor}"
     if nombre not in MODELOS:
         return False, f"revisor no reconocido: {nombre!r}"
     if nombre in redactores:
@@ -71,7 +94,8 @@ def evaluar_mensaje(mensaje, padre=None):
 
 # Ficheros que deciden qué se publica: nunca se fusionan solos, para que la puerta no pueda cambiarse a sí misma.
 GUARDIAN = {".github/motor/fusion.py", ".github/motor/fusion_barrido.sh", ".github/motor/revisor_motor.py",
-            ".github/motor/revisor.py", ".github/motor/salud.py", ".github/motor/tests/test_fusion.py"}
+            ".github/motor/revisor.py", ".github/motor/salud.py", ".github/motor/tests/test_fusion.py",
+            ".github/motor/repaso_sello.py", ".github/motor/tests/test_repaso_sello.py"}
 EXT_MOTOR = (".py", ".sh", ".json", ".txt", ".md", ".csv", ".yml", ".yaml")
 
 
@@ -118,7 +142,7 @@ def evaluar_cambios(ficheros, estados=None):
 
 def _git(rama, *args):
     return subprocess.run(["git", "-c", "core.quotepath=off", "-C", rama, *args],
-                          check=True, capture_output=True, text=True).stdout
+                          check=True, capture_output=True, encoding="utf-8").stdout
 
 
 def main():
@@ -132,7 +156,8 @@ def main():
     padre = _git(a.rama, "rev-parse", "HEAD^").strip()
     if _git(a.rama, "rev-parse", "HEAD^{tree}") != _git(a.rama, "rev-parse", "HEAD^^{tree}"):
         fallos.append("el último commit no es un sello vacío: cambia ficheros después del repaso")
-    ok, motivo = evaluar_mensaje(_git(a.rama, "log", "-1", "--format=%B"), padre)
+    mensaje = _git(a.rama, "log", "-1", "--format=%B")
+    ok, motivo = evaluar_mensaje(mensaje, padre)
     if not ok:
         fallos.append(motivo)
     crudo = _git(a.rama, "diff", "--raw", "-z", "--no-renames", "--no-abbrev", a.base, "HEAD").split("\0")
@@ -147,6 +172,13 @@ def main():
         ok2, motivo2 = False, "enlaces simbólicos o submódulos: " + ", ".join(repr(m) for m in modos_malos[:5])
     if not ok2:
         fallos.append(motivo2)
+    if not fallos and redacta_openai(mensaje) and any(not f.startswith(".github/") for f in ficheros):
+        # El programa se toma de la misma copia de main que este guardián.
+        programa = os.path.join(os.path.dirname(os.path.abspath(__file__)), "repaso_sello.py")
+        resultado = subprocess.run([sys.executable, "-I", "-X", "utf8", programa, "comprobar", "--repo", a.rama,
+                                    "--base", a.base], capture_output=True, encoding="utf-8")
+        if resultado.returncode:
+            fallos.append(resultado.stdout.strip() or "no se pudo comprobar el dictamen del contenido")
     for f in fallos:
         print("NO: " + f.replace("::", ": :"))
     if not fallos:
