@@ -142,7 +142,7 @@ def evaluar_cambios(ficheros, estados=None):
 
 def _git(rama, *args):
     return subprocess.run(["git", "-c", "core.quotepath=off", "-C", rama, *args],
-                          check=True, capture_output=True, text=True).stdout
+                          check=True, capture_output=True, encoding="utf-8").stdout
 
 
 def main():
@@ -175,8 +175,8 @@ def main():
     if not fallos and redacta_openai(mensaje) and any(not f.startswith(".github/") for f in ficheros):
         # El programa se toma de la misma copia de main que este guardián.
         programa = os.path.join(os.path.dirname(os.path.abspath(__file__)), "repaso_sello.py")
-        resultado = subprocess.run([sys.executable, "-I", programa, "comprobar", "--repo", a.rama,
-                                    "--base", a.base], capture_output=True, text=True)
+        resultado = subprocess.run([sys.executable, "-I", "-X", "utf8", programa, "comprobar", "--repo", a.rama,
+                                    "--base", a.base], capture_output=True, encoding="utf-8")
         if resultado.returncode:
             fallos.append(resultado.stdout.strip() or "no se pudo comprobar el dictamen del contenido")
     for f in fallos:
