@@ -48,6 +48,20 @@ class Mensaje(unittest.TestCase):
     def test_mismo_modelo_no(self):
         self.no(sello("Repaso: v1 · 0 reparos · revisor Sonnet · limpio", redactor="Sonnet"))
 
+    def test_modelos_openai_y_alias(self):
+        for alias_autor in ("Codex", "ChatGPT", "GPT"):
+            for alias_revisor in ("Codex", "ChatGPT", "GPT", "Sonnet"):
+                self.no(sello(f"Repaso: v1 · 0 reparos · revisor {alias_revisor} · limpio", redactor=alias_autor))
+        modelo = sello("Repaso: v1 · 0 reparos · revisor gpt-6.2-astra · limpio", redactor="gpt-6.2-sol")
+        self.no(modelo)
+        modelo += "Conversación del revisor: nueva\n"
+        self.ok(modelo)
+        self.no(modelo.replace("gpt-6.2-astra", "gpt-6.2-sol"))
+        self.no(modelo.replace("gpt-6.2-sol", "gpt-6.2-sol-high"))
+        self.no(modelo.replace("gpt-6.2-astra", "gpt-6.2-inventado"))
+        self.no(modelo.replace("gpt-6.2-astra", "Sonnet"))
+        self.no(modelo.replace("gpt-6.2-sol", "Opus y Codex").replace("gpt-6.2-astra", "Sonnet"))
+
     def test_varios_redactores_no(self):
         self.no(sello("Repaso: v1 · 0 reparos · revisor Sonnet · limpio", redactor="Opus y Sonnet"))
 

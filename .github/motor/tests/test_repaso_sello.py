@@ -58,6 +58,23 @@ class Dictamen(unittest.TestCase):
         self.no(mensaje(dictamen(), redactor="ChatGPT"))
         self.no(mensaje(dictamen(), redactor="Codex"))
 
+    def test_pareja_explicita_y_conversacion_nueva(self):
+        for autor, revisor in [("gpt-6.2-sol", "gpt-6.2-astra"), ("gpt-6.2-astra", "gpt-6.2-sol")]:
+            sello = mensaje(dictamen(revisor=revisor), autor, revisor) + "Conversación del revisor: nueva\n"
+            self.ok(sello)
+            for antiguo, nuevo in [("Redactor: " + autor, "Redactor: " + revisor),
+                                   ("Redactor: " + autor, "Redactor: Codex"),
+                                   ("Redactor: " + autor, "Redactor: " + autor + " y " + revisor),
+                                   ("Redactor: " + autor, "Redactor: " + autor + "-max"),
+                                   (" · revisor " + revisor + " · limpio", " · revisor Sonnet · limpio"),
+                                   (" · revisor " + revisor + " · limpio", " · revisor ChatGPT · limpio"),
+                                   ("Conversación del revisor: nueva", ""),
+                                   ("Conversación del revisor: nueva", "Conversación del revisor: misma"),
+                                   ("Conversación del revisor: nueva", "Conversación del revisor: nueva\nConversación del revisor: nueva"),
+                                   ("0 NO", "1 NO"), (H, "c" * 64)]:
+                with self.subTest(autor=autor, cambio=nuevo):
+                    self.no(sello.replace(antiguo, nuevo))
+
     def test_repaso_sin_nombre_o_con_ruta_no(self):
         for r in ["", "repaso.md", "..\\otro_REPASO.md", "a/b_REPASO.md", "x_REPASO_NO_VALE.md"]:
             self.no(mensaje(dictamen(repaso=r)))
@@ -114,6 +131,14 @@ class Rama(unittest.TestCase):
         c, lineas = self.codigo()
         self.assertEqual(c, 0, lineas)
 
+    def test_sello_de_dos_modelos_openai_en_una_rama(self):
+        padre = git(self.repo, "rev-parse", "HEAD")
+        sello = mensaje(dictamen(huella=self.huella, revisor="gpt-6.2-astra"),
+                        redactor="gpt-6.2-sol", revisor="gpt-6.2-astra").replace(P, padre)
+        git(self.repo, "commit", "-q", "--allow-empty", "-m", sello + "Conversación del revisor: nueva")
+        codigo, lineas = self.codigo()
+        self.assertEqual(codigo, 0, lineas)
+
     def test_commit_sin_repaso_rojo(self):
         c, lineas = self.codigo()  # la rama acaba en el commit de trabajo, sin sello
         self.assertEqual(c, 1, lineas)
@@ -169,6 +194,39 @@ class Rama(unittest.TestCase):
         git(self.repo, "add", "-A")
         git(self.repo, "commit", "-q", "-m", "estilo")
         self.assertEqual(self.codigo()[0], 0)
+
+    def test_recursos_publicos_de_codex_en_las_dos_puertas(self):
+        programa = os.path.join(os.path.dirname(__file__), "..", "fusion.py")
+        for clase, ruta in (("cambio", "estilo.css"), ("alta", "contacto.js"), ("baja", "index.html")):
+            with self.subTest(clase=clase):
+                git(self.repo, "checkout", "-q", "-b", "codex/" + clase, "main")
+                if clase == "baja":
+                    git(self.repo, "rm", "-q", ruta)
+                else:
+                    self.escribe(ruta, "/* versión */\n")
+                    git(self.repo, "add", ruta)
+                git(self.repo, "commit", "-q", "-m", "recurso")
+                padre = git(self.repo, "rev-parse", "HEAD")
+                self.assertEqual(self.codigo()[0], 1)
+                huella = repaso_sello.huella(repaso_sello.manifiesto(self.repo, "main", padre))
+                for d, h, esperado in (("NO", huella, 1), ("SÍ", "a" * 64, 1), ("SÍ", huella, 0)):
+                    git(self.repo, "checkout", "-q", "--detach", padre)
+                    m = mensaje(dictamen(d=d, huella=h, revisor="gpt-6.1-terra"),
+                                redactor="gpt-6.2-sol", revisor="gpt-6.1-terra").replace(P, padre)
+                    git(self.repo, "commit", "-q", "--allow-empty", "-m", m + "Conversación del revisor: nueva")
+                    self.assertEqual(self.codigo()[0], esperado)
+                    r = subprocess.run([sys.executable, "-I", programa, "--rama", self.repo, "--base", "main"],
+                                       capture_output=True)
+                    self.assertEqual(r.returncode, esperado, r.stdout + r.stderr)
+
+    def test_se_clasifica_la_referencia_revisada(self):
+        self.sella(dictamen(huella=self.huella))
+        git(self.repo, "checkout", "-q", "-b", "codex/recurso", "main")
+        self.escribe("estilo.css", "p{margin:0}\n")
+        git(self.repo, "commit", "-qam", "estilo")
+        self.assertEqual(repaso_sello.comprobar(self.repo, "main", "claude/prueba")[0], 0)
+        git(self.repo, "checkout", "-q", "main")
+        self.assertEqual(repaso_sello.comprobar(self.repo, "main", "codex/recurso")[0], 1)
 
     def test_la_huella_no_cambia_si_main_avanza_en_otros_ficheros(self):
         git(self.repo, "checkout", "-q", "main")
