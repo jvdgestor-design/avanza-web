@@ -7,6 +7,11 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 
 - GSC-SIN-INDEXAR · 6 de 196 URL del sitemap sin indexar en Google: herencias-no-residentes-por-comunidad-autonoma.html, fr-modele-721-cryptomonnaies-etranger.html, plusvalia-tax-spain-non-resident.html, buying-property-from-non-resident-spain.html, accounting-tax-service-spain.html … · Search Console · 2026-11-26 (sigue desde 2026-11-05)
 - INDEXA-ESPERA · yandex no responde (Yandex recrawl: HTTP 504); lo pendiente sigue en cola · indexa.py · 2026-11-26
+- NORMA · Real Decreto Legislativo 1/1993 (BOE-A-1993-25359): fecha actualizada, 20261126 (antes: 20260323T123132Z). Revisar contra el BOE: buying-property-spain-foreigner.html, comprar-vivienda-en-espana-extranjero.html, fr-acheter-bien-immobilier-espagne.html · Vigilancia del BOE run 45839158695 · 2026-11-26
+- NORMA · Ley 58/2003 = BOE-A-2003-23186 (BOE-A-2003-23186): fecha actualizada, 20261126 (antes: 20261009T082721Z). Revisar contra el BOE: aplazar-una-deuda-con-hacienda.html, arraigo-residence-spain.html, asesoria-fiscal-valencia.html, asesoria-y-gestoria-en-burjassot.html, asesoria-y-gestoria-en-valencia.ht · Vigilancia del BOE run 45839158695 · 2026-11-26
+- NORMA · BOE-A-2010-6737: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45839158695 · 2026-11-26
+- NORMA · BOE-A-2015-11430: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45839158695 · 2026-11-26
+- NORMA · BOE-A-2020-4859: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45839158695 · 2026-11-26
 
 ## 2026-11-25
 
