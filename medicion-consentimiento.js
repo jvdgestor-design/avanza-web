@@ -66,7 +66,11 @@
 
   var clic = identificador();
   var esEntrada = Boolean(clic && vieneDeAnuncio(pagina));
-  var esFormulario = Boolean(clic && vieneDeAnuncio(entrada) && recorridos[entrada][0] === pagina);
+  var paginaVenta = 'vender-inmueble-en-espana-no-residente.html';
+  var esEnlaceVenta = Boolean(clic && pagina === 'contacto.html' && !params.has('avanza_entrada') &&
+    params.get('pagina') === paginaVenta && vieneDeAnuncio(paginaVenta) &&
+    ['pagina', 'origen', 'utm_source', 'utm_medium', 'utm_campaign'].every(function (k) { return params.getAll(k).length === 1; }));
+  var esFormulario = esEnlaceVenta || Boolean(clic && vieneDeAnuncio(entrada) && recorridos[entrada][0] === pagina);
   var esAcuse = Object.values(acuses).includes(pagina);
 
   function preferencia() {
@@ -109,7 +113,9 @@
     if (!esFormulario && !(esEntrada && retirada)) return;
     var actual = new URL(location.href);
     ['avanza_entrada'].concat(clavesClic).forEach(function (k) { actual.searchParams.delete(k); });
-    esFormulario = false;
+    // En el enlace directo, la primera elección se hace aquí. El clic sale de la URL
+    // y solo queda en memoria mientras la persona decide en esta página.
+    if (!esEnlaceVenta || retirada) esFormulario = false;
     if (retirada) {
       esEntrada = false;
       clic = null;
@@ -145,7 +151,7 @@
     var opcion = preferencia();
     actualizarEnlaces(esEntrada && opcion === 'si');
     if (opcion !== 'si') cerrarMedicion(opcion === 'no');
-    if (esEntrada && !opcion && !panel) mostrarOpciones();
+    if ((esEntrada || (esEnlaceVenta && esFormulario)) && !opcion && !panel) mostrarOpciones();
     return opcion;
   }
 
