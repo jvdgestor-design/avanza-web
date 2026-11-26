@@ -5,6 +5,8 @@ La rama termina SIEMPRE en un commit «sello» vacío (git commit --allow-empty)
   Revisado: <sha completo del commit anterior, el que vio el revisor>
   Repaso: <qué> · 0 reparos · revisor <otro modelo> · limpio
   (o «N reparos corregidos» en vez de «0 reparos» si la versión revisada ya los lleva corregidos)
+Para dos modelos OpenAI, Redactor y revisor llevan los identificadores del catálogo (p. ej. gpt-6.2-sol y
+gpt-6.2-astra) y el sello declara «Conversación del revisor: nueva». Codex, GPT y ChatGPT son alias de familia.
 El repaso cubre el diff completo de la rama contra main en el commit «Revisado». Así el repaso queda atado a un
 contenido concreto: si algo cambia después, el sello deja de valer.
 
@@ -24,6 +26,9 @@ import subprocess
 import sys
 
 MODELOS = {"opus", "sonnet", "haiku", "fable", "gpt", "chatgpt", "codex", "gemini"}
+ALIAS_OPENAI = {"gpt", "chatgpt", "codex"}
+# Identificadores completos del catálogo de modelos del proyecto. La interfaz y el esfuerzo no son modelos.
+MODELOS_OPENAI = {"gpt-6.2-sol", "gpt-6.2-astra"}
 EXTENSIONES = (".html", ".txt", ".xml", ".css", ".js", ".png", ".jpg", ".jpeg", ".webp", ".svg", ".ico", ".pdf")
 TRAMO_REPAROS = re.compile(r"^(0\s+reparos|[1-9]\d*\s+reparos?(\s+\([^)]*\))?\s+corregidos?)$", re.IGNORECASE)
 NEGATIVO = re.compile(r"abiert|pendient|sin\s+resolver|no\s+est|no\s+limpio|falta|con\s+reparos", re.IGNORECASE)
@@ -62,9 +67,17 @@ def evaluar_mensaje(mensaje, padre=None):
     if len(t_rev) != 1:
         return False, "el repaso debe llevar un tramo «revisor <modelo>»"
     nombre = t_rev[0].split(None, 1)[1].strip().lower()
+    if nombre in MODELOS_OPENAI:
+        autor = red[0].split(":", 1)[1].strip().lower()
+        if autor not in MODELOS_OPENAI or autor == nombre:
+            return False, "se necesitan dos identificadores de modelos OpenAI reconocidos y distintos"
+        sesiones = [l for l in lineas if re.match(r"(?i)^conversación del revisor\s*:", l)]
+        if len(sesiones) != 1 or sesiones[0].casefold() != "conversación del revisor: nueva":
+            return False, "falta la declaración única de conversación nueva del revisor"
+        return True, f"repaso limpio de {nombre} sobre texto de {autor}"
     if nombre not in MODELOS:
         return False, f"revisor no reconocido: {nombre!r}"
-    if nombre in redactores:
+    if nombre in redactores or (nombre in ALIAS_OPENAI and redactores & ALIAS_OPENAI):
         return False, f"el revisor ({nombre}) es un modelo que redactó"
     return True, f"repaso limpio de {nombre} sobre texto de {', '.join(sorted(redactores))}"
 

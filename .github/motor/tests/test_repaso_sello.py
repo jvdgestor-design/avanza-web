@@ -58,6 +58,23 @@ class Dictamen(unittest.TestCase):
         self.no(mensaje(dictamen(), redactor="ChatGPT"))
         self.no(mensaje(dictamen(), redactor="Codex"))
 
+    def test_pareja_explicita_y_conversacion_nueva(self):
+        for autor, revisor in [("gpt-6.2-sol", "gpt-6.2-astra"), ("gpt-6.2-astra", "gpt-6.2-sol")]:
+            sello = mensaje(dictamen(revisor=revisor), autor, revisor) + "Conversación del revisor: nueva\n"
+            self.ok(sello)
+            for antiguo, nuevo in [("Redactor: " + autor, "Redactor: " + revisor),
+                                   ("Redactor: " + autor, "Redactor: Codex"),
+                                   ("Redactor: " + autor, "Redactor: " + autor + " y " + revisor),
+                                   ("Redactor: " + autor, "Redactor: " + autor + "-max"),
+                                   (" · revisor " + revisor + " · limpio", " · revisor Sonnet · limpio"),
+                                   (" · revisor " + revisor + " · limpio", " · revisor ChatGPT · limpio"),
+                                   ("Conversación del revisor: nueva", ""),
+                                   ("Conversación del revisor: nueva", "Conversación del revisor: misma"),
+                                   ("Conversación del revisor: nueva", "Conversación del revisor: nueva\nConversación del revisor: nueva"),
+                                   ("0 NO", "1 NO"), (H, "c" * 64)]:
+                with self.subTest(autor=autor, cambio=nuevo):
+                    self.no(sello.replace(antiguo, nuevo))
+
     def test_repaso_sin_nombre_o_con_ruta_no(self):
         for r in ["", "repaso.md", "..\\otro_REPASO.md", "a/b_REPASO.md", "x_REPASO_NO_VALE.md"]:
             self.no(mensaje(dictamen(repaso=r)))
@@ -113,6 +130,14 @@ class Rama(unittest.TestCase):
         self.sella(dictamen(huella=self.huella))
         c, lineas = self.codigo()
         self.assertEqual(c, 0, lineas)
+
+    def test_sello_de_dos_modelos_openai_en_una_rama(self):
+        padre = git(self.repo, "rev-parse", "HEAD")
+        sello = mensaje(dictamen(huella=self.huella, revisor="gpt-6.2-astra"),
+                        redactor="gpt-6.2-sol", revisor="gpt-6.2-astra").replace(P, padre)
+        git(self.repo, "commit", "-q", "--allow-empty", "-m", sello + "Conversación del revisor: nueva")
+        codigo, lineas = self.codigo()
+        self.assertEqual(codigo, 0, lineas)
 
     def test_commit_sin_repaso_rojo(self):
         c, lineas = self.codigo()  # la rama acaba en el commit de trabajo, sin sello
