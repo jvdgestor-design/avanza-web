@@ -5,6 +5,8 @@
   var recorridos = {
     'herencia-en-espana-heredero-no-residente.html': ['contacto.html', 'herencias_es_piloto'],
     'vender-inmueble-en-espana-no-residente.html': ['contacto.html', 'modelo210_venta_es_piloto'],
+    'alquiler-vivienda-espana-no-residente.html': ['contacto.html', 'modelo210_alquiler_es_piloto'],
+    'modelo-210-no-residentes.html': ['contacto.html', '210_es_piloto', 'modelo210_anual_es_piloto'],
     'selling-property-spain-non-resident.html': ['en-contact.html', 'venta_en_piloto'],
     'de-immobilie-spanien-verkaufen-ausland.html': ['de-kontakt.html', 'venta_de_piloto'],
     'fr-vendre-bien-immobilier-non-resident.html': ['fr-contact.html', 'venta_fr_piloto'],
@@ -14,7 +16,7 @@
     'gift-of-money-from-abroad-spain.html': ['en-contact.html', campanaHistorica],
     'fr-modele-210-non-residents.html': ['fr-contact.html', campanaHistorica],
     'de-modelo-210-nichtansaessige.html': ['de-kontakt.html', campanaHistorica],
-    'modelo-210-non-resident-tax-spain.html': ['en-contact.html', campanaHistorica]
+    'modelo-210-non-resident-tax-spain.html': ['en-contact.html', campanaHistorica, 'modelo210_property_en_piloto']
   };
   var acuses = {
     'contacto.html': 'gracias.html',
