@@ -66,6 +66,10 @@
     }
     d += '<p class="calc-pe">Resultado orientativo, calculado en su navegador con la norma leída el ' + esc(C.NORMA_LEIDA) + '. No sustituye a la declaración.</p>';
     salida.innerHTML = d;
+    var presupuesto = $('calc-presupuesto-imputada');
+    if (r.supuesto === 'imputada' && presupuesto) {
+      salida.appendChild(presupuesto.content.cloneNode(true));
+    }
     salida.setAttribute('tabindex', '-1'); salida.focus();
   }
 
