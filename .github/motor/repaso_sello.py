@@ -125,10 +125,13 @@ def comprobar(repo, base, rev):
     todos = cambios(repo, base, rev)
     paginas = [r for e, r, _ in todos if e in "AM" and r.endswith(PAGINAS) and not r.startswith(".github/")]
     mensaje = git(repo, "log", "-1", "--format=%B", rev)
-    rama = (os.environ.get("GITHUB_HEAD_REF") or os.environ.get("GITHUB_REF_NAME")
-            or git(repo, "branch", "--show-current").strip())
     hay_publicacion = any(not ruta.startswith(".github/") for _, ruta, _ in todos)
-    rama_codex = rama.startswith("codex/")
+    ref = git(repo, "rev-parse", "--symbolic-full-name", rev).strip()
+    rama_codex = ref.startswith(("refs/heads/codex/", "refs/remotes/origin/codex/"))
+    if rev == "HEAD" and not ref.startswith("refs/heads/"):
+        # El checkout de Actions usa un HEAD separado de su rama.
+        rama_ci = os.environ.get("GITHUB_HEAD_REF") or os.environ.get("GITHUB_REF_NAME", "")
+        rama_codex = rama_ci.startswith("codex/")
     autor_openai = fusion.redacta_openai(mensaje)
     if hay_publicacion and rama_codex and not autor_openai:
         return 1, ["NO: una publicación de una rama codex/ debe identificar su modelo redactor"]

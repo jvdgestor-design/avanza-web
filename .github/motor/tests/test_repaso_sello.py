@@ -219,6 +219,15 @@ class Rama(unittest.TestCase):
                                        capture_output=True)
                     self.assertEqual(r.returncode, esperado, r.stdout + r.stderr)
 
+    def test_se_clasifica_la_referencia_revisada(self):
+        self.sella(dictamen(huella=self.huella))
+        git(self.repo, "checkout", "-q", "-b", "codex/recurso", "main")
+        self.escribe("estilo.css", "p{margin:0}\n")
+        git(self.repo, "commit", "-qam", "estilo")
+        self.assertEqual(repaso_sello.comprobar(self.repo, "main", "claude/prueba")[0], 0)
+        git(self.repo, "checkout", "-q", "main")
+        self.assertEqual(repaso_sello.comprobar(self.repo, "main", "codex/recurso")[0], 1)
+
     def test_la_huella_no_cambia_si_main_avanza_en_otros_ficheros(self):
         git(self.repo, "checkout", "-q", "main")
         self.escribe("otra.html", "<p>otra</p>\n")
