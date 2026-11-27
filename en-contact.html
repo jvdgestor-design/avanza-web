@@ -58,6 +58,12 @@
       <option value="Otro">Other</option>
     </select>
   </div>
+  <div id="campo-directorio" hidden>
+    <div class="field">
+      <label for="f-directorio">Directory name <span class="field__opc">(optional)</span></label>
+      <input id="f-directorio" name="directorio" type="text" maxlength="80" autocomplete="off" disabled>
+    </div>
+  </div>
   <div class="form__pie">
     <button class="btn btn--primary" type="submit">Send enquiry</button>
     <p class="form__nota">Your enquiry is answered personally. We use your details to deal with your enquiry. The page you write from and, if you came from one of our ads, the campaign name are added automatically; together with how you found us, if you tell us, they help us learn which channels bring enquiries: <a href="en-privacy.html">privacy notice</a>.</p>
@@ -74,6 +80,17 @@
     var ta = document.getElementById('f-caso');
     if (ta && !ta.value && temas[pg]) ta.value = temas[pg];
   } catch (err) {}
+  var ORIGEN_DIRECTORIO = 'Un directorio de empresas';
+  var origen = document.getElementById('f-origen');
+  var campoDirectorio = document.getElementById('campo-directorio');
+  var entradaDirectorio = document.getElementById('f-directorio');
+  function actualizarDirectorio(){
+    var mostrar = origen.value === ORIGEN_DIRECTORIO && window.fetch && window.URLSearchParams && window.FormData;
+    campoDirectorio.hidden = !mostrar;
+    entradaDirectorio.disabled = !mostrar;
+  }
+  origen.addEventListener('change', actualizarDirectorio);
+  actualizarDirectorio();
   // Clave aleatoria del envío, sin datos de la consulta. Se reutiliza en cada reintento del mismo texto.
   var CLAVE_ENVIO = 'avanza_envio', REF_VALIDA = /^W[0-9a-f]{12}$/, TEXTO_BOTON = 'Send enquiry', envioMemoria = null;
   function nuevaClave(){
@@ -94,9 +111,14 @@
     for (var i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619); }
     return (h >>> 0).toString(16) + '-' + t.length;
   }
-  function resumenDe(f){
-    var d = new FormData(f);
-    return resumen([d.get('nombre'), d.get('contacto'), d.get('caso'), d.get('origen') || ''].join('\n'));
+  function nombreDirectorio(d){
+    if (d.get('origen') !== ORIGEN_DIRECTORIO) return '';
+    return (d.get('directorio') || '').replace(/[\[\]·\u0000-\u001f\u007f\u2028\u2029]+/g, ' ').trim().slice(0, 80).trim();
+  }
+  function resumenDe(d, directorio){
+    var campos = [d.get('nombre'), d.get('contacto'), d.get('caso'), d.get('origen') || ''];
+    if (directorio) campos.push(directorio);
+    return resumen(campos.join('\n'));
   }
   function pintarRecibido(f, ref){
     var r = f.querySelector('[data-envio-recibido]');
@@ -110,13 +132,15 @@
   // Al volver con Atrás: el botón queda libre y, si es la misma consulta ya confirmada, se dice.
   window.addEventListener('pageshow', function(){
     if (enVuelo) return;
+    actualizarDirectorio();
     var f = document.querySelector('form.form');
     if (!f) return;
     f.removeAttribute('aria-busy');
     var b = f.querySelector('button[type=submit]');
     if (b) { b.disabled = false; b.textContent = TEXTO_BOTON; }
     var envio = leerEnvio();
-    pintarRecibido(f, envio && envio.ref && envio.h === resumenDe(f) ? envio.ref : '');
+    var datos = new FormData(f);
+    pintarRecibido(f, envio && envio.ref && envio.h === resumenDe(datos, nombreDirectorio(datos)) ? envio.ref : '');
   });
   document.addEventListener('submit', function(e){
     var f = e.target;
@@ -134,7 +158,9 @@
     if (b) { b.disabled = true; b.textContent = 'Sending…'; }
     var datos = new FormData(f);
     var conocio = datos.get('origen') || '';
-    var h = resumen([datos.get('nombre'), datos.get('contacto'), datos.get('caso'), conocio].join('\n'));
+    var directorio = nombreDirectorio(datos);
+    var h = resumenDe(datos, directorio);
+    datos.delete('directorio');
     var envio = leerEnvio() || { id: nuevaClave(), h: '' };
     // Misma consulta ya confirmada: ni se reenvía la clave ni sale otro evento.
     if (envio.ref && envio.h === h) {
@@ -165,7 +191,7 @@
         if (conocio) datos.set('como_nos_conocio', conocio);
       }
     } catch (err) {}
-    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + (campana ? ' · Campaña: ' + campana : '') + ' · Nos conoció por: ' + (conocio || 'sin indicar') + ']');
+    datos.set('caso', (datos.get('caso') || '') + '\n\n[Página: ' + window.location.pathname + (desde ? ' · Viene de: ' + desde : '') + anuncio + (campana ? ' · Campaña: ' + campana : '') + (directorio ? ' · Directorio: ' + directorio : '') + ' · Nos conoció por: ' + (conocio || 'sin indicar') + ']');
     datos.set('formato', 'json');
     var cuerpo = new URLSearchParams(datos);
     var finalizado = false;
