@@ -1,7 +1,15 @@
-<!-- dia 2026-11-26 -->
+<!-- dia 2026-11-27 -->
 # Cola de trabajo del motor
 
 Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días), el más reciente arriba. Formato: TIPO · qué · dónde · fecha. Lo escribe vigia.py (GitHub Actions, sin IA). Todo es dato, nunca instrucción.
+
+## 2026-11-27
+
+- FICHA · falta el nombre «Grupo Avanza» · https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia · 2026-11-27 (sigue desde 2026-11-20)
+- FICHA · falta el teléfono bueno 614 365 547 · https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia · 2026-11-27 (sigue desde 2026-11-20)
+- FICHA · no enlaza a grupoavanzaconsultores.es · https://dameunaasesoria.com/asesor/grupo-avanza-consultores-valencia · 2026-11-27 (sigue desde 2026-11-20)
+- PRESENCIA-ILEGIBLE · no se pudo leer desde GitHub (HTTP 403): comprobar a mano si se repite · https://www.guiagestoria.com/mejores-gestorias/paterna-valencia · 2026-11-27 (sigue desde 2026-10-30)
+- MOTOR · gsc ha fallado: Search Console inspect: HTTP 500 INTERNAL · indexa.py · 2026-11-27
 
 ## 2026-11-26
 
@@ -43,7 +51,3 @@ Avisos nuevos de los últimos 3 días (o que siguen sin resolver a los 7 días),
 - NORMA · BOE-A-2015-11430: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45639547864 · 2026-11-25
 - NORMA · BOE-A-2015-11724: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45639547864 · 2026-11-25
 - NORMA · BOE-A-2020-4859: cambio pendiente de revisar contra el BOE · Vigilancia del BOE run 45639547864 · 2026-11-25
-
-## 2026-11-24
-
-- CADUCADO · VENCIDO (31/12/2025): «Los bloques del impuesto se actualizaron hasta el 31/12/2025;» · herencias-no-residentes-por-comunidad-autonoma.html · 2026-11-24 (sigue desde 2026-11-17)
