@@ -2,8 +2,8 @@
  "dia": "2026-11-27",
  "tokens": 0,
  "busquedas": 0,
- "turno": 38,
- "radar_idx": 114,
+ "turno": 39,
+ "radar_idx": 117,
  "foro_vistos": {
   "12647": 97,
   "9261": 112,
@@ -129,5 +129,7 @@
    "busquedas": 0
   }
  ],
- "foro_fallos": {}
+ "foro_fallos": {
+  "11953": 1
+ }
 }
