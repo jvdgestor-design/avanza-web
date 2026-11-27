@@ -1,4 +1,4 @@
-# Motor de visibilidad por API · 26/11/2026 22:52
+# Motor de visibilidad por API · 27/11/2026 05:29
 
 Gasto de hoy: 0 tokens · 0 búsquedas (topes 1500000 / 60).
 
